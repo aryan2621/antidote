@@ -16,7 +16,7 @@ type Info = { version: number; entries: number };
 
 const ui = {
   input: "w-full rounded border border-stone-300 bg-white px-2 py-1 dark:border-stone-700 dark:bg-stone-800",
-  button: "rounded border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100 disabled:opacity-50 dark:border-stone-700 dark:hover:bg-stone-800",
+  button: "whitespace-nowrap rounded border border-stone-300 px-3 py-1 text-sm hover:bg-stone-100 disabled:opacity-50 dark:border-stone-700 dark:hover:bg-stone-800",
   primary: "rounded bg-emerald-800 px-4 py-1.5 text-white disabled:opacity-50",
 };
 const sevClass: Record<Finding["severity"], string> = {
@@ -94,7 +94,7 @@ export default function App() {
           <p className="text-sm text-stone-500">Checks agent skills, MCP servers and prompts against known threats. Runs on this machine; nothing is uploaded.</p>
         </div>
         <div className="shrink-0 text-right text-sm text-stone-500">
-          {info && <div>{info.entries} entries · corpus {info.version}</div>}
+          {info && <div>{info.entries} entries · {info.version ? `corpus ${info.version}` : "built-in corpus"}</div>}
           <button className={ui.button} disabled={!!busy} onClick={update}>Update</button>
         </div>
       </header>
