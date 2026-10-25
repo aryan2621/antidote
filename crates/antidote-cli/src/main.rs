@@ -3,6 +3,7 @@ mod guard;
 mod incident;
 mod inspect;
 mod report;
+mod stats;
 
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
@@ -91,12 +92,27 @@ enum Cmd {
         #[arg(long, default_value = feed::FEED_URL)]
         url: String,
     },
+    /// Opt-in anonymous stats: which rules fired and how often (no paths, contents or package names)
+    Stats {
+        #[arg(value_enum)]
+        action: StatsAction,
+        /// Stats endpoint (an antidote-api `/v1/stats` URL); required for `on`
+        #[arg(long)]
+        url: Option<String>,
+    },
     /// Write up an agent incident (AGT-INC) and get a prefilled submission link
     #[command(subcommand)]
     Incident(IncidentCmd),
     /// Maintainer tools
     #[command(hide = true, subcommand)]
     Feed(FeedCmd),
+}
+
+#[derive(Clone, ValueEnum)]
+enum StatsAction {
+    On,
+    Off,
+    Status,
 }
 
 #[derive(Subcommand)]
@@ -155,6 +171,14 @@ fn run() -> Result<bool> {
         eprintln!("wrote {} ({} entries, {} rule files)", out.display(), feed.entries.len(), feed.rules.len());
         return Ok(false);
     }
+    if let Cmd::Stats { action, url } = cli.cmd {
+        match action {
+            StatsAction::On => stats::set(true, url)?,
+            StatsAction::Off => stats::set(false, None)?,
+            StatsAction::Status => stats::status(),
+        }
+        return Ok(false);
+    }
     if let Cmd::Incident(IncidentCmd::New(a)) = cli.cmd {
         incident::run(a)?;
         return Ok(false);
@@ -186,6 +210,9 @@ fn run() -> Result<bool> {
             }
             for p in &mcp {
                 scan::scan_mcp_config(&c, p, &mut findings);
+            }
+            if let Some(u) = stats::url() {
+                stats::send(&u, &stats::body(c.version, &findings));
             }
         }
         Cmd::Check { package } => {
@@ -227,7 +254,7 @@ fn run() -> Result<bool> {
             println!("Corpus at version {v}{}.", if v == c.version { " (already current)" } else { "" });
             return Ok(false);
         }
-        Cmd::Feed(_) | Cmd::Incident(_) => unreachable!(),
+        Cmd::Feed(_) | Cmd::Incident(_) | Cmd::Stats { .. } => unreachable!(),
     }
     findings.sort_by_key(|f| rank(f.severity));
     if let Some((l, max)) = &llm {
