@@ -34,7 +34,22 @@ fn pypi_spec(spec: &str) -> PkgRef {
         Some((n, v)) => (n, Some(v.to_string())),
         None => (spec, None),
     };
-    PkgRef { ecosystem: "PyPI", name: name.to_string(), version }
+    PkgRef { ecosystem: "PyPI", name: pypi_norm(name), version }
+}
+
+/// PEP 503: `Mcp_Server.Git` and `mcp-server-git` are the same project.
+fn pypi_norm(name: &str) -> String {
+    let mut out = String::new();
+    for c in name.trim().chars().map(|c| c.to_ascii_lowercase()) {
+        if matches!(c, '-' | '_' | '.') {
+            if !out.ends_with('-') {
+                out.push('-');
+            }
+        } else {
+            out.push(c);
+        }
+    }
+    out
 }
 
 /// Every package launched via npx/bunx/pnpm dlx/uvx/pipx in any `mcpServers` block, at any depth
@@ -82,7 +97,8 @@ pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mu
     let before = out.len();
     for e in &c.entries {
         for a in &e.affected {
-            if !a.package.ecosystem.eq_ignore_ascii_case(r.ecosystem) || a.package.name != r.name {
+            let name = if r.ecosystem == "PyPI" { pypi_norm(&a.package.name) } else { a.package.name.clone() };
+            if !a.package.ecosystem.eq_ignore_ascii_case(r.ecosystem) || name != r.name {
                 continue;
             }
             let all = a.versions.is_empty() && a.ranges.is_empty();
@@ -212,6 +228,7 @@ mod tests {
         assert_eq!(parse_ref("npm:@scope/pkg").unwrap().version, None);
         assert_eq!(parse_ref("npm:pkg@latest").unwrap().version, None);
         assert_eq!(parse_ref("pypi:mcp-x==0.3").unwrap().name, "mcp-x");
+        assert_eq!(parse_ref("pypi:Mcp_Server..Git").unwrap().name, "mcp-server-git");
         assert!(parse_ref("cargo:x").is_none());
     }
 

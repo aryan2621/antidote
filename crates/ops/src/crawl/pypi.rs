@@ -25,6 +25,7 @@ fn relevant(name: &str, watch: &[String]) -> bool {
 /// The feeds only hold the last few minutes of uploads, so this must run often (hourly misses some;
 /// the MCP-registry crawl backfills anything listed there).
 pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
+    refresh_popular(state);
     let mut out = Vec::new();
     // updates.xml includes first releases too; packages.xml titles carry no version
     let xml = String::from_utf8_lossy(&http::get("https://pypi.org/rss/updates.xml", 5 << 20)?).into_owned();
@@ -35,6 +36,30 @@ pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
     }
     out.dedup();
     Ok(out.into_iter().filter(|i| state.is_new(&i.key(), &i.version)).take(limit).collect())
+}
+
+/// MCP-named projects among PyPI's top 15k by downloads, for typosquat checks. The source updates
+/// monthly, so this fetches at most once a day. Best effort: keeps the old list on failure.
+fn refresh_popular(state: &mut State) {
+    let day = (std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() / 86_400).to_string();
+    if state.cursors.get("pypi-popular") == Some(&day) {
+        return;
+    }
+    match http::get_json("https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json") {
+        Ok(v) => {
+            let names = popular_mcp(&v);
+            if !names.is_empty() {
+                state.popular.insert("PyPI".into(), names);
+                state.cursors.insert("pypi-popular".into(), day);
+            }
+        }
+        Err(e) => eprintln!("PyPI popular list not refreshed: {e:#}"),
+    }
+}
+
+fn popular_mcp(v: &Value) -> Vec<String> {
+    let rows = v["rows"].as_array().into_iter().flatten();
+    rows.filter_map(|r| r["project"].as_str()).filter(|n| n.to_ascii_lowercase().split(['-', '_', '.']).any(|t| t.ends_with("mcp"))).map(String::from).collect()
 }
 
 /// Download URL + sha256 for a release, preferring the sdist (it holds the build scripts).
@@ -59,6 +84,12 @@ pub fn pick_file(doc: &Value) -> Result<(String, String)> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn popular_keeps_mcp_names() {
+        let v = serde_json::json!({"rows": [{"project": "boto3"}, {"project": "fastmcp"}, {"project": "mcp-server-git"}, {"project": "mcpi"}]});
+        assert_eq!(popular_mcp(&v), ["fastmcp", "mcp-server-git"]);
+    }
 
     #[test]
     fn parses_recorded_rss() {
