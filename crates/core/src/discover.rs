@@ -21,8 +21,8 @@ pub fn targets() -> (Vec<PathBuf>, Vec<PathBuf>) {
         home.join(".claude.json"),
         home.join(".cursor/mcp.json"),
         home.join(".openclaw/openclaw.json"),
-        home.join("Library/Application Support/Claude/claude_desktop_config.json"),
-        home.join(".config/Claude/claude_desktop_config.json"),
+        // ~/Library/Application Support, ~/.config or %APPDATA%
+        dirs::config_dir().unwrap_or_default().join("Claude/claude_desktop_config.json"),
         cwd.join(".mcp.json"),
         cwd.join(".cursor/mcp.json"),
     ];

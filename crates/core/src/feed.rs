@@ -9,6 +9,12 @@ use serde_json::Value;
 
 // shortcut: placeholder home, change when the GitHub repo exists.
 pub const FEED_URL: &str = "https://antidote-db.github.io/antidote/feed/feed.json";
+/// Website page for a corpus entry (AGT-2026-0001, AGT-INC-…); None for rule ids like AGT-R-0101.
+pub fn entry_url(id: &str) -> Option<String> {
+    let rest = id.strip_prefix("AGT-")?;
+    (rest.starts_with(|c: char| c.is_ascii_digit()) || rest.starts_with("INC-"))
+        .then(|| format!("{}entry/{id}/", FEED_URL.trim_end_matches("feed/feed.json")))
+}
 /// minisign public key (base64 line of the .pub file), set at build time. Empty → `update` refuses.
 pub const PUBLIC_KEY: &str = match option_env!("ANTIDOTE_FEED_PUBKEY") {
     Some(k) => k,

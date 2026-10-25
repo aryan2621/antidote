@@ -281,6 +281,9 @@ fn run() -> Result<bool> {
                 if let Some(x) = &f.fix {
                     println!("    fix: {x}");
                 }
+                if let Some(u) = feed::entry_url(&f.id) {
+                    println!("    see: {u}");
+                }
                 if let Some(x) = &f.explanation {
                     println!("    LLM: {x}");
                 }
@@ -330,7 +333,13 @@ fn sarif(findings: &[Finding]) -> Value {
         .iter()
         .map(|f| {
             rules.entry(f.id.clone()).or_insert_with(|| {
-                json!({ "id": f.id, "shortDescription": { "text": f.summary }, "properties": { "severity": f.severity } })
+                {
+                let mut r = json!({ "id": f.id, "shortDescription": { "text": f.summary }, "properties": { "severity": f.severity } });
+                if let Some(u) = feed::entry_url(&f.id) {
+                    r["helpUri"] = json!(u);
+                }
+                r
+            }
             });
             let p = Path::new(&f.path);
             let uri = match p.strip_prefix(&cwd).or_else(|_| p.strip_prefix(".")) {
