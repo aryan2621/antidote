@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0058",
+  "modified": "2026-07-17T17:11:40.034100Z",
+  "published": "2026-06-05T15:32:23Z",
+  "aliases": [
+    "GHSA-5gvr-v6qv-h5mm",
+    "CVE-2026-11330"
+  ],
+  "summary": "claude-mem: The computeObservationContentHash Function is Vulnerable to Hash Collision",
+  "details": "A weakness has been identified in thedotmack claude-mem up to 11.0.1. The affected element is the function computeObservationContentHash of the file src/services/sqlite/observations/store.ts of the component Observation Content Hash Handler. This manipulation causes use of weak hash. The attack can only be executed locally. The attack's complexity is rated as high. The exploitability is described as difficult. Upgrading to version 12.0.0 is sufficient to fix this issue. Patch name: f32fda8b35e9fe9329f87da65c31149362a03f97. It is suggested to upgrade the affected component.\n\nImported from OSV GHSA-5gvr-v6qv-h5mm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-5gvr-v6qv-h5mm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thedotmack/claude-mem/pull/1494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thedotmack/claude-mem/commit/f32fda8b35e9fe9329f87da65c31149362a03f97"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thedotmack/claude-mem"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thedotmack/claude-mem/releases/tag/v12.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-11330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/832401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/368870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/368870/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "claude-mem"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "low"
+  }
+}

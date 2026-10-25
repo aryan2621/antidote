@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0007",
+  "modified": "2026-02-03T03:11:14.390341Z",
+  "published": "2025-10-29T15:38:07Z",
+  "aliases": [
+    "GHSA-c2jp-c369-7pvx"
+  ],
+  "summary": "FastMCP Auth Integration Allows for Confused Deputy Account Takeover",
+  "details": "### Summary\n\nFastMCP documentation [covers the scenario](https://gofastmcp.com/integrations/azure) where it is possible to use Entra ID or other providers for authentication. In this context, because Entra ID does not support Dynamic Client Registration (DCR), the FastMCP-hosted MCP server is acting as the authorization provider, as declared in the Protected Resource Metadata (PRM) document hosted on the server.\n\nFor example, on a local MCP server, it may be hosted here:\n\n```http\nhttp://localhost:8000/.well-known/oauth-protected-resource\n```\n\nAnd the JSON representation of the PRM document:\n\n```json\n{\n  \"resource\": \"http://localhost:8000/mcp\",\n  \"authorization_servers\": [\n    \"http://localhost:8000/\"\n  ],\n  \"scopes_supported\": [\n    \"User.Read\",\n    \"email\",\n    \"openid\",\n    \"profile\"\n  ],\n  \"bearer_methods_supported\": [\n    \"header\"\n  ]\n}\n```\n\nNotice that the `authorization_servers` field contains the MCP server itself - it acts as an **OAuth Client** to the downstream authorization server (e.g., Entra ID) and as a **Authorization Server** (AS) to the MCP client.\n\nThe FastMCP server also hosts the AS metadata:\n\n```bash\nhttp://localhost:8000/.well-known/oauth-authorization-server\n```\n\nWith the following content:\n\n```json\n{\n  \"issuer\": \"http://localhost:8000/\",\n  \"authorization_endpoint\": \"http://localhost:8000/authorize\",\n  \"token_endpoint\": \"http://localhost:8000/token\",\n  \"registration_endpoint\": \"http://localhost:8000/register\",\n  \"scopes_supported\": [\n    \"User.Read\",\n    \"email\",\n    \"openid\",\n    \"profile\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\",\n    \"refresh_token\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"client_secret_post\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ]\n}\n```\n\nAll of this confirms that the FastMCP server is, in fact, handling the client-to-server authorization and then delegating the downstream effects (i.e., authorization with Entra ID) to its own redirect logic, with a call like this (as seen through MCP Inspector):\n\n```http\nhttp://localhost:8000/authorize?response_type=code&client_id=fdec0bb8-3423-40d0-aa2a-73de26bf6f93&code_challenge=2a9ZxAEr5NEsKPwFWuEFA1W-kFMXc-02u6qc8aLf_g4&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A6274%2Foauth%2Fcallback%2Fdebug&state=9f23fd47e2b8786b502f116bdbfd6ae3d7d2801167e24fea82f608bb52312bbd&scope=User.Read+email+openid+profile&resource=http%3A%2F%2Flocalhost%3A8000%2Fmcp\n```\n\nWhen using the built-in FastMCP `/authorize` endpoint, and in the example above, FastMCP server configured with Entra ID, it will then redirect the user here:\n\n```http\nhttps://login.microsoftonline.com/412e93fe-74e5-4ee6-9b67-1eeb1c79550e/oauth2/v2.0/authorize?response_type=code&client_id=7bac43f2-ca62-4148-93a5-fd5686cb16c0&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fcallback&state=Tcv7bbg_v0Qi69RHbCzqR4tQHSHKPQuDDxjuo0wu5qU&scope=User.Read+email+openid+profile&code_challenge=bxICFAJDViuTTHIPUPdSXGLKbNbgPwiB-0ITXUJkjYM&code_challenge_method=S256&resource=http%3A%2F%2Flocalhost%3A8000%2Fmcp\n```\n\n>[!NOTE]\n>In the scenario above, the app registration in Entra ID is set up in the FastMCP server, as outlined in the PoC below.\n\n<img width=\"2725\" height=\"630\" alt=\"image\" src=\"https://github.com/user-attachments/assets/7ea612bf-a49e-44da-bd79-236c26bb42f3\" />\n\nNotice that the client ID and redirect URIs in the `login.microsoftonline.com` call are different than the initial `/authorize` call - that's because we're now switching to using the MCP server's **static app registration** instead of the DCR client details.\n\nCompleting the authorization flow here for the first time for a user would trigger the Entra ID consent flow:\n\n<img width=\"751\" height=\"952\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2cc4b7ee-c110-4623-8f86-438821f4addf\" />\n\nThis consent flow is **only showed the first time the user needs to use this application**. Once the consent is set, they will nev\n\nImported from OSV GHSA-c2jp-c369-7pvx.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-c2jp-c369-7pvx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jlowin/fastmcp/security/advisories/GHSA-c2jp-c369-7pvx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jlowin/fastmcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "fastmcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

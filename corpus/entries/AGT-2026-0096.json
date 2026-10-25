@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0096",
+  "modified": "2026-07-09T14:11:38.895604Z",
+  "published": "2026-06-02T00:31:57Z",
+  "aliases": [
+    "GHSA-95f6-rfpg-c3w8",
+    "CVE-2026-10291"
+  ],
+  "summary": "@enderfga/claw-orchestrator: Claw Orchestrator has inefficient regular expression complexity via validateRegex()",
+  "details": "A security vulnerability has been detected in Enderfga claw-orchestrator up to 3.7.0. The impacted element is the function validateRegex of the file claw-orchestrator/src/embedded-server.ts of the component Session Grep Endpoint. The manipulation of the argument body.pattern leads to inefficient regular expression complexity. The attack may be initiated remotely. Upgrading to version 3.7.1 is sufficient to resolve this issue. The identifier of the patch is 3f970a974c65a94555c25af9f2796f11315e4584. It is recommended to upgrade the affected component.\n\nImported from OSV GHSA-95f6-rfpg-c3w8.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-95f6-rfpg-c3w8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/issues/64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/issues/64#issuecomment-4421942196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/commit/3f970a974c65a94555c25af9f2796f11315e4584"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Enderfga/claw-orchestrator"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/releases/tag/v3.7.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-10291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/826222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367584/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@enderfga/claw-orchestrator"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.7.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0154",
+  "modified": "2026-10-23T18:45:08.577279509Z",
+  "published": "2026-10-23T18:29:02Z",
+  "aliases": [
+    "GHSA-pqh8-4pj7-32xx",
+    "CVE-2026-77363"
+  ],
+  "summary": "obsidian-tc HTTP transport lacks Origin/DNS-rebinding protection, enabling drive-by vault access on loopback",
+  "details": "### Impact\nThe Streamable HTTP transport was constructed without `enableDnsRebindingProtection`/`allowedHosts`/`allowedOrigins` and performed no `Origin`-header validation. With the documented `auth.mode: \"none\"` loopback default, a **drive-by web page could `POST http://127.0.0.1/mcp`** and receive caller `http-local` with scopes `[\"*\"]` — full vault read/write — via DNS rebinding / a forged Origin.\n\n### Patches\nFixed in **1.3.1**. Upgrade to `>= 1.3.1`. The transport now enables DNS-rebinding protection and allowed hosts/origins and returns HTTP 403 on an invalid Origin (per MCP 2025-11-25).\n\n### Workarounds\nDo not expose the HTTP transport with `auth.mode: \"none\"`; require JWT auth, or bind to a non-loopback interface behind a proxy that validates `Origin`.\n\nImported from OSV GHSA-pqh8-4pj7-32xx.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-pqh8-4pj7-32xx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/security/advisories/GHSA-pqh8-4pj7-32xx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/pull/74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/commit/6428bfe6fdfd43aa7b4b369be3aecd6a268fb928"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/releases/tag/v1.3.1"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/cve-2026-77363"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "obsidian-tc"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

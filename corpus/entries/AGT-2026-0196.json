@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0196",
+  "modified": "2026-09-16T03:56:03.879899587Z",
+  "published": "2026-06-19T21:42:43Z",
+  "aliases": [
+    "GHSA-xcqx-9jf5-w339",
+    "CVE-2026-58483"
+  ],
+  "summary": "mcp-searxng:  SearXNG MCP Server: Unbounded Response Body Read Bypasses URL Size Limit in `web_url_read`",
+  "details": "## Unbounded Response Body Read Bypasses URL Size Limit in `web_url_read`\n\n### Summary\n\nThe `web_url_read` MCP tool in mcp-searxng enforces its 5 MiB response-size limit exclusively by inspecting the `Content-Length` header of a preliminary HEAD request. When a server omits `Content-Length` — a standard HTTP practice — `checkContentLength()` returns `null`, the guard condition short-circuits to `false`, and `response.text()` loads the entire response body into memory without any byte cap. An unauthenticated attacker who controls or can redirect to an HTTP endpoint can force the server process to consume unbounded memory and CPU, leading to a Denial of Service.\n\n### Details\n\n`web_url_read` is the entry point (`src/index.ts:226-240`). It passes the caller-supplied URL directly into `readUrlContent()` in `src/url-reader.ts`.\n\n**Size-limit check (bypassed)**\n\n```ts\n// src/url-reader.ts:352-360\nconst contentLength = await checkContentLength(...);\nif (contentLength !== null && contentLength > maxContentLengthBytes) {\n  return createContentTooLargeMessage(contentLength, maxContentLengthBytes);\n}\n```\n\n`checkContentLength()` (`src/url-reader.ts:243-245`) returns `null` when the HEAD response carries no `Content-Length` header. Because the guard uses the `!== null` conjunction, a `null` result causes the entire check to evaluate as `false`, and execution falls through without enforcing the configured 5 MiB ceiling.\n\n**Unbounded sinks**\n\nA full GET request is then issued (`src/url-reader.ts:367`) with no streaming byte cap:\n\n```ts\n// src/url-reader.ts:414  — normal response path\nhtmlContent = await response.text();\n\n// src/url-reader.ts:402  — error response path (same issue)\nresponseBody = await response.text();\n```\n\nThe full HTML string is subsequently passed to `NodeHtmlMarkdown.translate()` (`src/url-reader.ts:429`), which amplifies CPU consumption proportional to the body size.\n\n**Default exposure**\n\n`web_url_read` is enabled by default. In HTTP transport mode, authentication is disabled by default, so `AV:N/PR:N` applies unconditionally. In stdio mode, an attacker can trigger the path via prompt injection to cause the AI model to call the tool with an attacker-controlled URL.\n\n### PoC\n\n**Prerequisites**\n\n- Docker installed.\n- Build context: the repository root (`npmAI_249_ihor-sokoliuk__mcp-searxng/`).\n\n**Build the image**\n\n```bash\ndocker build \\\n  -t vuln002-test \\\n  -f vuln-002/Dockerfile \\\n  reports/npmAI_249_ihor-sokoliuk__mcp-searxng/\n```\n\n**Run the PoC**\n\n```bash\ndocker run --rm vuln002-test\n```\n\nThe container starts two processes:\n1. A malicious HTTP server on `127.0.0.1:9799` that responds to HEAD with HTTP 200 and **no `Content-Length`**, then responds to GET with a 6,291,456-byte HTML body and **no `Content-Length`**.\n2. mcp-searxng in HTTP mode (`MCP_HTTP_ALLOW_PRIVATE_URLS=true` enables loopback URLs for local reproduction).\n\nThe PoC script initializes an MCP session and calls:\n\n```json\n{\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"web_url_read\",\n    \"arguments\": { \"url\": \"http://127.0.0.1:9799/\", \"maxLength\": 1 }\n  }\n}\n```\n\n**Observed output (Phase 2 confirmation)**\n\n```\nHEAD_REQUESTS              : 1\nGET_REQUESTS               : 1\nGET_BYTES_SENT             : 6,291,456\nCONFIGURED_DEFAULT_LIMIT   : 5,242,880\nBYTES_OVER_LIMIT           : +1,048,576\nELAPSED_SEC                : 0.17\nTOOL_STATUS                : SUCCESS\nRETURNED_LENGTH_CHARS      : 1\n\n[PASS] VULNERABILITY CONFIRMED\n  6,291,456 bytes were transmitted to mcp-searxng despite a 5,242,880-byte (5 MiB) limit.\n  Root cause confirmed:\n    1. HEAD response had no Content-Length header.\n    2. checkContentLength() returned null  (url-reader.ts:243-245)\n    3. Guard condition was false (null !== null => false) (url-reader.ts:359)\n    4. response.text() read 6,291,456 bytes without a cap (url-reader.ts:414)\n```\n\n**Remediation**\n\nReplace both `response.text()` calls with a streaming reader that aborts once the byte counter exceeds `maxContentLengthBytes`:\n\n``\n\nImported from OSV GHSA-xcqx-9jf5-w339.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-xcqx-9jf5-w339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/security/advisories/GHSA-xcqx-9jf5-w339"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-searxng"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

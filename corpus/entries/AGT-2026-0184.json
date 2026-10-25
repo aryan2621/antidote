@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0184",
+  "modified": "2026-10-01T17:56:10.289562022Z",
+  "published": "2026-09-22T20:34:47Z",
+  "aliases": [
+    "GHSA-w66g-j6c4-hcfc",
+    "CVE-2026-77251",
+    "PYSEC-2026-4102"
+  ],
+  "summary": "mcp-atlassian: MCP Atlassian: JIRA_PROJECTS_FILTER / CONFLUENCE_SPACES_FILTER allow forbidden-project content exfiltration (one LIVE-proven on Atlassian Cloud)",
+  "details": "### Summary\n\n`mcp-atlassian` is a popular community MCP server wrapper exposing Jira / Confluence to MCP clients. Operators commonly restrict the surface to a small allowlist of projects/spaces via the `JIRA_PROJECTS_FILTER` and `CONFLUENCE_SPACES_FILTER` environment variables, which the README documents as the principal mechanism for limiting attacker-controlled MCP clients (= prompt-injected LLM agents) to the operator's intended subset of the workspace.\n\nWe identified **three distinct sub-bugs** that let attacker-controlled queries read content from **forbidden** projects/spaces (= projects NOT in the operator's filter) despite the filter being correctly set. The most severe is **empirically reproduced on production Atlassian Cloud** with real operator credentials and sentinel content in two real projects.\n\n| Sub-bug | Layer | Class | Live? |\n|---|---|---|---|\n| **A1** | Jira `jira_search` `jql` | substring-bypass | 🔴 **LIVE PROVEN 2026-05-18 on real Atlassian Cloud** |\n| **A2** | Confluence `confluence_search` `cql` | case-sensitive substring-bypass | code-level verified |\n| **B** | Jira agile `get_board_issues` / `get_agile_boards` | zero-filter (missing check) | code-level verified |\n\n### Details\n\n**Sub-bug A1** — `src/mcp_atlassian/jira/search.py` lines 92-94 at HEAD `d8bc78698a63cb6b321c7ca796d6329d448f7f6d`:\n\n```python\nif projects_filter and \"project = \" not in jql.lower():\n    jql = f\"{jql} AND project in ({','.join(projects_filter)})\"\n```\n\nThe substring check is satisfied by *any* JQL of the form `project = <forbidden-project>` — including a project NOT in `projects_filter`. The wrapper does NOT verify that the project named in the user JQL is a member of the allowlist. The user-supplied JQL is sent verbatim to Jira's search API which returns content from the forbidden project (Jira's authorization is satisfied because the operator's PAT typically has broader access than the operator's intended allowlist — which is *why* the operator set a filter in the first place).\n\n**Sub-bug A2** — `src/mcp_atlassian/confluence/search.py` line 60: same pattern as A1, PLUS the substring check `\"space = \" not in cql` is **case-sensitive** (no `.lower()`). User CQL `SPACE = \"<forbidden-space>\"` (uppercase) bypasses the substring match.\n\n**Sub-bug B** — `get_board_issues` and `get_agile_boards` paths have **no `projects_filter` enforcement at all** — no substring check, no AST walk, the allowlist is silently ignored. An MCP client invoking `get_agile_boards` enumerates boards across the entire workspace (including forbidden projects), and `get_board_issues(boardId=<forbidden-board>)` returns all issues with no filter check.\n\n### PoC\n\nEnd-to-end Phase C against real Atlassian Cloud + real `mcp-atlassian` Python binary v0.21.1 (latest on PyPI) with operator-provided test workspace and two real Jira projects (one allowed, one forbidden via `JIRA_PROJECTS_FILTER`):\n\n| Step | JQL submitted | Result | Verdict |\n|---|---|---|---|\n| 1 initialize | – | MCP 2024-11-05 OK | ✓ |\n| 2 tools/list | – | 33+ tools incl. `jira_search` | ✓ |\n| 3 CONTROL | `project = <allowed>` | returns allowed issue | ✓ |\n| 4 NEG CTRL | `summary ~ \"any-string\"` | wrapper appends `AND project in (<allowed>)` → 0 forbidden results | ✓ |\n| 5 **BYPASS A1** | `project = <forbidden>` | **returns forbidden issue with sentinel content** | 🔴 **BYPASS** |\n\nFull RPC log and a reproducible test script are available in a disclosure bundle I have prepared. I can share the zip via a private channel (email / your preferred private fork / encrypted upload) — please reply with your preference. The bundle includes:\n\n- 00-FINDING-REPORT.md (primary report)\n- ATTACK-MATRIX.md\n- Verbatim source files at HEAD with sha256 chain of custody (`source-jira-search.py`, `source-confluence-search.py`)\n- Phase C live test script + JSON-RPC witness log\n- Bundle zip sha256: `034cbf0bcb66c325be9373ff2dc186b8b0e1747c5165d6fba3bca83054949dd3`\n\nRepro recipe (no bundle needed) :\n\n```bash\npip install mcp-at\n\nImported from OSV GHSA-w66g-j6c4-hcfc.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-w66g-j6c4-hcfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-w66g-j6c4-hcfc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/pull/1448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/commit/b041733473f95119dd539542a43c280737a8e460"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sooperset/mcp-atlassian"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/releases/tag/v0.22.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-atlassian"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.22.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

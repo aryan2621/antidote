@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0033",
+  "modified": "2026-07-23T15:11:27.804572936Z",
+  "published": "2026-07-17T18:48:54Z",
+  "aliases": [
+    "GHSA-2v2f-mvfg-ph56",
+    "CVE-2026-54547",
+    "PYSEC-2026-3484"
+  ],
+  "summary": "meta-ads-mcp: X-Pipeboard-Token Header Auth Bypass Reuses Operator Meta Token",
+  "details": "## X-Pipeboard-Token Header Auth Bypass Reuses Operator Meta Token\n\n### Summary\n\n`AuthInjectionMiddleware` in `meta-ads-mcp` rejects HTTP MCP requests only when **both** `auth_token` and `pipeboard_token` are absent. Because `extract_token_from_headers()` does not recognise the `X-Pipeboard-Token` header, an attacker who sends that header with any arbitrary value produces `auth_token = None` and `pipeboard_token = <attacker value>`, making the guard condition evaluate to `False` and passing the request through. No authentication context is set; the token getter falls back to the server operator's `META_ACCESS_TOKEN` environment variable. Every subsequent MCP tool call executes with the operator's Meta credentials, allowing an unauthenticated network caller to read and write the operator's Meta Ads data.\n\n### Details\n\nThe vulnerable condition is at `meta_ads_mcp/core/http_auth_integration.py:259`:\n\n```python\n# http_auth_integration.py:255-260\nauth_token = FastMCPAuthIntegration.extract_token_from_headers(dict(request.headers))\npipeboard_token = FastMCPAuthIntegration.extract_pipeboard_token_from_headers(dict(request.headers))\n\nif not auth_token and not pipeboard_token:      # ← bypass condition\n    return Response(..., status_code=401)\n```\n\n`extract_token_from_headers()` (lines 77–95) recognises only `Authorization: Bearer`, `X-META-ACCESS-TOKEN`, and `X-PIPEBOARD-API-TOKEN`. It does **not** recognise `X-Pipeboard-Token`, so that header never populates `auth_token`.\n\n`extract_pipeboard_token_from_headers()` (line 108) **does** recognise `X-Pipeboard-Token`, so sending that header alone produces:\n\n```\nauth_token      = None          # not set → guard reads False for left operand\npipeboard_token = \"<anything>\"  # truthy  → guard reads False for right operand\n→ (not None) and (not \"<anything>\") = True and False = False → 401 never returned\n```\n\nAfter the bypass, `set_auth_token()` is never called (lines 283–291 only run when `auth_token` is truthy). The patched token getter at lines 163–168 resolves `get_auth_token() = None`, then delegates to `original_get_current_access_token()`. The fallback chain in `auth.py:446–453` returns `META_ACCESS_TOKEN` from the server environment:\n\n```python\n# auth.py:443-453\nenv_token = os.environ.get(\"META_ACCESS_TOKEN\")\nif env_token:\n    return env_token\n```\n\n`@meta_api_tool` at `api.py:390–396` injects this operator token into every tool's `access_token` kwarg. The sink at `api.py:225–235` forwards it to the Meta Graph API via `httpx.AsyncClient`. Verified with `accounts.py:42–62` (`get_ad_accounts`): the operator's ad account data is returned for valid tokens; for invalid tokens the Meta Graph API responds with an `OAuthException`, confirming the token traversed the full path.\n\nFull data flow:\n\n| Step | Location | Description |\n|------|----------|-------------|\n| 1 | `http_auth_integration.py:255–257` | Middleware extracts attacker-controlled headers |\n| 2 | `http_auth_integration.py:259` | Bypass: `X-Pipeboard-Token` alone satisfies guard |\n| 3 | `http_auth_integration.py:288–291` | `auth_token` is `None`; auth context never set |\n| 4 | `http_auth_integration.py:163–168` | Token getter falls back to original accessor |\n| 5 | `auth.py:446–453` | `META_ACCESS_TOKEN` env var returned as access token |\n| 6 | `api.py:390–396` | Operator token injected into tool kwargs |\n| 7 | `accounts.py:42–62` | Tool invokes Meta Graph API with operator token |\n| 8 | `api.py:225–235` | `httpx.AsyncClient` sends privileged HTTP request |\n\n**Recommended fix:**\n\n```diff\n--- a/meta_ads_mcp/core/http_auth_integration.py\n+++ b/meta_ads_mcp/core/http_auth_integration.py\n-        if not auth_token and not pipeboard_token:\n+        if not auth_token:\n```\n\n`X-Pipeboard-Token` should be treated as a supplementary service token only; it must not serve as a standalone authentication credential for MCP tool calls.\n\n### PoC\n\n**Prerequisites**\n\n- Docker installed and the `meta-ads-mcp` repository available locally.\n- The server mu\n\nImported from OSV GHSA-2v2f-mvfg-ph56.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-2v2f-mvfg-ph56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp/security/advisories/GHSA-2v2f-mvfg-ph56"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp/releases/tag/1.0.115"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "meta-ads-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.115"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

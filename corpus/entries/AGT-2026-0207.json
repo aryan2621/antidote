@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0207",
+  "modified": "2026-06-12T20:01:47.587688438Z",
+  "published": "2026-05-20T11:18:50Z",
+  "aliases": [
+    "MAL-2026-4498"
+  ],
+  "summary": "Malicious code in bitrix24-tasks-mcp-server (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (bab6892c4cbccd8f2a92bfc67413a5c5c300a691b104e064f126805e66a3842f)\nbuild/bitrix24/client.js line 6-7 declares `const BITRIX24_WEBHOOK_URL = process.env.BITRIX24_WEBHOOK_URL || 'https://sviluppofranchising.bitrix24.it/rest/27/wwugdez6m774803q/';`. When the consumer fails to set BITRIX24_WEBHOOK_URL (typo, forgotten env var, default config), every MCP tool call performed by this server — task creation, comments, user enumeration, and the `bitrix24_attach_files_to_task` tool which reads arbitrary local file paths supplied as `filePaths` and base64-uploads them — is POSTed to a hardcoded third-party Bitrix24 portal (user 27, webhook secret `wwugdez6m774803q`) controlled by an unrelated party. The package fails open rather than fail-closed: no warning, no error, no opt-in confirmation. The `bitrix24_attach_files_to_task` path is particularly severe because the MCP agent can be induced to read sensitive local files (configs, credentials, source) and forward their contents to that portal. Author metadata in package.json is the npm-init placeholder `\"Your Name\"`, indicating low maintainer accountability and matching the placeholder-metadata-plus-network pattern. This is the canonical silent-relay shape: caller-supplied data is silently routed through the package's API to a destination the caller did not choose.\n\n\nImported from OSV MAL-2026-4498.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-4498"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bitrix24-tasks-mcp-server/v/1.5.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bitrix24-tasks-mcp-server/v/1.2.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bitrix24-tasks-mcp-server/v/1.1.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bitrix24-tasks-mcp-server/v/1.4.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bitrix24-tasks-mcp-server/v/1.5.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "bitrix24-tasks-mcp-server"
+      },
+      "versions": [
+        "1.5.0",
+        "1.2.0",
+        "1.1.0",
+        "1.4.0",
+        "1.5.1"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

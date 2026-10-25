@@ -1,0 +1,31 @@
+# Weekly: import new OSV advisories (GHSA, PYSEC, OpenSSF malicious packages) for MCP packages; opens a PR.
+name: seed
+on:
+  schedule: [{ cron: "23 4 * * 1" }]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency: { group: seed, cancel-in-progress: false }
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release --locked -p antidote-ops
+      - run: ./target/release/antidote-ops seed-osv --corpus corpus
+      - run: cargo test --locked -p antidote --test corpus entries_match_schema
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -n "$(git status --porcelain corpus/entries)" ] || exit 0
+          branch=seed/osv-$(date -u +%Y%m%d)
+          git switch -c "$branch"
+          git add corpus/entries
+          git -c user.name=antidote-bot -c user.email=antidote-bot@users.noreply.github.com commit -qm "Import OSV advisories for MCP packages"
+          git push -q origin "$branch"
+          gh pr create --title "Import OSV advisories ($(date -u +%F))" --body "Automated import from OSV. Spot-check summaries and ranges before merging."

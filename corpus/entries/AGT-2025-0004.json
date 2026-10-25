@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0004",
+  "modified": "2025-10-09T22:42:34.940967Z",
+  "published": "2025-10-05T06:30:14Z",
+  "aliases": [
+    "GHSA-5q2p-3jg8-2m98",
+    "CVE-2025-11285"
+  ],
+  "summary": "@samanhappy/mcphub: MCPHub's ServerController is vulnerable to Command Injection",
+  "details": "A vulnerability was found in samanhappy MCPHub up to 0.9.10. Affected by this issue is some unknown functionality of the file src/controllers/serverController.ts. The manipulation of the argument command/args results in os command injection. The attack can be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.\n\nImported from OSV GHSA-5q2p-3jg8-2m98.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-5q2p-3jg8-2m98"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/August829/YU1/issues/6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/samanhappy/mcphub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?ctiid.327043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?id.327043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.659734"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@samanhappy/mcphub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.9.10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "low"
+  }
+}

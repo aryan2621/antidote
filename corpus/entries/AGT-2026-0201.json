@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0201",
+  "modified": "2026-08-13T17:30:11.197351356Z",
+  "published": "2026-08-13T17:22:05Z",
+  "aliases": [
+    "MAL-2026-13938"
+  ],
+  "summary": "Malicious code in @kolbo/mcp (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (4967e165bfca294b333ff71265b77d931215a540b48158d2050a4a516ca51e7c)\nsrc/auth.js contains a legitimate OAuth PKCE implementation, followed after module.exports by a top-level async IIFE that runs when the file is required. The appended block queries public Ethereum JSON-RPC endpoints (eth.blockscout.com/api, 1rpc.io/eth, eth.drpc.org, ethereum-rpc.publicnode.com, eth-mainnet.public.blastapi.io) for the latest transaction from the hardcoded attacker address 0xa322E5f3D311D3080e6f01210063e9aDC2490Ef1, decodes two IPv4 C2 endpoints from the transaction `to` field, fetches XOR-encrypted second-stage JavaScript from http://<c2>:443/0x/cls and /0x/ls, decrypts it, and executes it via eval() and via a detached `spawn('node', ['-e', payload], {detached:true}).unref()` child process. Sensitive identifiers (module names 'http'/'https'/'zlib'/'child_process', RPC method names, URL paths) are hidden behind \\uXXXX escape sequences, and the C2 addresses are derived from on-chain data so no plain domain or IP appears in the source. src/client.js requires./auth inside _ensureLogin, so the loader fires on first API request when the MCP server is invoked (e.g. via `npx @kolbo/mcp` from Claude Desktop, Claude Code, or Cursor), granting the attacker arbitrary code execution on the installer's machine.\n\n\nImported from OSV MAL-2026-13938.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-13938"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@kolbo/mcp/v/1.57.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@kolbo/mcp"
+      },
+      "versions": [
+        "1.57.1"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

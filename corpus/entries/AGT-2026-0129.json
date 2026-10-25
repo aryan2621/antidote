@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0129",
+  "modified": "2026-08-19T19:45:08.067293182Z",
+  "published": "2026-08-19T19:32:46Z",
+  "aliases": [
+    "GHSA-hjwh-xvfw-qrwj"
+  ],
+  "summary": "mcp-searxng: SearXNG Basic Authentication Credentials Exposed Through MCP Logs and JSON-RPC Error Responses",
+  "details": "### Summary\n\nmcp-searxng version 1.11.0 exposes SearXNG Basic Authentication credentials embedded in the `SEARXNG_URL` environment variable.\n\nWhen the server starts in STDIO mode and an MCP client connects, the complete `SEARXNG_URL`, including its username and password, is sent to the client through an MCP `notifications/message` logging notification.\n\nAdditionally, when URL validation fails, the complete credential-bearing URL is included in the configuration error. This error is logged through MCP and returned to the client as a JSON-RPC error response.\n\nFor example, a value such as:\n\n```text\nhttp://username:password@searxng.example.com\n```\n\nis exposed without redaction.\n\nA connected MCP client or anyone with access to captured server logs may recover the SearXNG credentials and use them to access the configured SearXNG instance.\n\nThe issue was confirmed in:\n\n```text\nmcp-searxng 1.11.0\n```\n\nSuggested severity: **Medium**\n\n### Details\n\nmcp-searxng supports SearXNG Basic Authentication by embedding credentials in the URL userinfo component:\n\n```text\nhttps://username:password@searxng.example.com\n```\n\nThe project contains a redaction function named `redactSearxngInstanceUrl()`, but it is not used in several logging and error-handling paths.\n\n#### Startup console disclosure\n\nIn `src/index.ts:373-378`, the server retrieves the raw SearXNG URLs and writes them directly to stderr:\n\n```typescript\nconst searxngInstances = getSearxngInstances();\n\nif (searxngInstances.length > 0) {\n  console.error(`🌐 SearXNG URLs: ${searxngInstances.join(\"; \")}`);\n}\n```\n\n`getSearxngInstances()` returns the unmodified environment-variable values.\n\nRelevant code in `src/searxng-instances.ts:25-38`:\n\n```typescript\nexport function parseSearxngUrls(\n  raw: string | undefined = process.env.SEARXNG_URL\n): string[] {\n  if (raw === undefined) {\n    return [];\n  }\n\n  return raw\n    .split(\";\")\n    .map((entry) => entry.trim())\n    .filter((entry) => entry !== \"\");\n}\n\nexport function getSearxngInstances(): string[] {\n  return parseSearxngUrls();\n}\n```\n\n#### MCP logging notification disclosure\n\nAfter the MCP client connects, `src/index.ts:388-393` sends the complete URL through the MCP logging interface:\n\n```typescript\nconst searxngInstances = getSearxngInstances();\n\nlogMessage(\n  mcpServer,\n  \"info\",\n  `SearXNG URLs: ${\n    searxngInstances.length > 0\n      ? searxngInstances.join(\"; \")\n      : \"not configured\"\n  }`\n);\n```\n\n`logMessage()` passes this value to `sendLoggingMessage()` in `src/logging.ts:15-25`:\n\n```typescript\nmcpServer.sendLoggingMessage({\n  level,\n  data: notificationData\n});\n```\n\nAs a result, the connected MCP client receives a message containing the username and password:\n\n```json\n{\n  \"method\": \"notifications/message\",\n  \"params\": {\n    \"level\": \"info\",\n    \"data\": {\n      \"message\": \"SearXNG URLs: http://username:password@searxng.example.com\"\n    }\n  },\n  \"jsonrpc\": \"2.0\"\n}\n```\n\n#### Configuration error disclosure\n\nThe URL validation function includes the complete unredacted value in error messages.\n\nRelevant code in `src/searxng-instances.ts:44-52`:\n\n```typescript\nexport function validateSearxngInstanceUrl(\n  value: string\n): string | null {\n  try {\n    const url = new URL(value);\n\n    if (![\"http:\", \"https:\"].includes(url.protocol)) {\n      return `SEARXNG_URL invalid protocol for \"${value}\": ${url.protocol}`;\n    }\n  } catch {\n    return `SEARXNG_URL invalid format: ${value}`;\n  }\n\n  return null;\n}\n```\n\nThe validation error is aggregated by `validateEnvironment()` in `src/error-handler.ts:175-203`:\n\n```typescript\nconst validationError =\n  validateSearxngInstanceUrl(searxngUrl);\n\nif (validationError) {\n  issues.push(validationError);\n}\n```\n\nThe complete error is then thrown from `src/search.ts:689-693`:\n\n```typescript\nconst validationError = validateEnvironment();\n\nif (validationError) {\n  logMessage(mcpServer, \"error\", \"Configuration invalid\");\n  throw new MCPSearXNGError(validationError);\n}\n```\n\nThe tool handler in `src/index.ts:254-260` sen\n\nImported from OSV GHSA-hjwh-xvfw-qrwj.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-hjwh-xvfw-qrwj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/security/advisories/GHSA-hjwh-xvfw-qrwj"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/releases/tag/v1.12.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-searxng"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.12.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

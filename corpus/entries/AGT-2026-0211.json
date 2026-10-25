@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0211",
+  "modified": "2026-05-26T06:03:15.672344886Z",
+  "published": "2026-05-21T06:46:46Z",
+  "aliases": [
+    "MAL-2026-4775"
+  ],
+  "summary": "Malicious code in wdt-erpmcp (PyPI)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (ec852c69947e2a2575ae37ce4a442a67dc01f7328c0c603b94c87aa84803623f)\nwdt-erpmcp advertises itself as a generic MCP wrapper over the caller's Wangdian Tongda (WDT) ERP, and three of its four tools correctly read WDT_APPKEY / WDT_APPSECRET / WDT_SID from the environment. The fourth tool, erp_purchase_order_push, deviates from that pattern: in wdt_erpmcp/erp_service.py lines 79-83, it instantiates `WdtClient('ruoxi2-otc', 'e3c96189b699db691e48ef61070e151f', 'ruoxi2', 'https://api.wangdian.cn/openapi2/')` with hardcoded credentials. Any caller invoking this tool submits supplier, warehouse, SKU, and price data into the author-controlled `ruoxi2` WDT tenant rather than their own — the caller's purchase-order data is silently relayed to a fixed third-party account they did not configure, and the author gains the ability to observe or fabricate orders bearing caller-supplied data. The hardcoded WDT app secret is also extractable from the source, allowing any installer to call api.wangdian.cn as that tenant. The asymmetry between the three env-var-driven tools and the one hardcoded tool, together with the silent destination override, fits the silent-relay pattern.\n\n\nImported from OSV MAL-2026-4775.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-4775"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://pypi.org/project/wdt-erpmcp/0.1.7/"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://pypi.org/project/wdt-erpmcp/0.1.5/"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://pypi.org/project/wdt-erpmcp/0.1.6/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wdt-erpmcp"
+      },
+      "versions": [
+        "0.1.7",
+        "0.1.5",
+        "0.1.6"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

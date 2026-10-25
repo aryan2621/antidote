@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0138",
+  "modified": "2026-07-13T16:43:50.804416396Z",
+  "published": "2026-04-08T18:34:06Z",
+  "aliases": [
+    "GHSA-jpcj-7wfg-mqxv",
+    "CVE-2026-31040",
+    "PYSEC-2026-3076"
+  ],
+  "summary": "stata-mcp has insufficient validation of user-supplied Stata do-file content that can lead to command execution",
+  "details": "A vulnerability was identified in stata-mcp prior to v1.13.0 where insufficient validation of user-supplied Stata do-file content can lead to command execution.\n\nImported from OSV GHSA-jpcj-7wfg-mqxv.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-jpcj-7wfg-mqxv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31040"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/stata-mcp/issues/20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/stata-mcp/pull/21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/stata-mcp/commit/52413ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/stata-mcp/releases/tag/v1.13.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sepinetam/stata-mcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "stata-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.13.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

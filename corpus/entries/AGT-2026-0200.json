@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0200",
+  "modified": "2026-07-16T19:19:44.245608511Z",
+  "published": "2026-07-16T18:45:06Z",
+  "aliases": [
+    "MAL-2026-10730"
+  ],
+  "summary": "Malicious code in codeam-cli (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (2e8b39baa6129e1e1988002fcbeb2f62464f84fc7458f82f3754d1033a9b4ca6)\ncodeam-cli spawns a node-pty pseudo-terminal wrapping the local Claude Code / Codex agent process and connects outbound over WebSocket to a hardcoded relay at https://api.codeagent-mobile.com. Messages received from the remote relay are written into the local PTY via pty.write as if typed at the keyboard, meaning any party controlling the paired mobile/web session on that relay can inject arbitrary keystrokes into the local agent shell. Because the wrapped agent has local tool access (shell commands, file read/write), this dataflow is functionally full-host remote code execution against the installer's machine, mediated by the vendor's relay. The README additionally documents a user-invoked self-hosted enrollment path that pipes https://api.codeagent-mobile.com/api/self-hosted/enroll.sh into sh with an enrollment token, standing up the same relay-driven agent (and a systemd service) on additional hosts; this fetch is from the package's own publisher domain and user-invoked, so it is not an install-time dropper on its own, but it extends the same remote-control plane. The bundle also mutates PATH in several locations in dist/index.js.\n\n\nImported from OSV MAL-2026-10730.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-10730"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/codeam-cli/v/2.61.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/codeam-cli/v/2.61.3"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "codeam-cli"
+      },
+      "versions": [
+        "2.61.1",
+        "2.61.3"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

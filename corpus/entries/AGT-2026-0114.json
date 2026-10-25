@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0114",
+  "modified": "2026-06-29T12:26:23.117778833Z",
+  "published": "2026-04-11T03:30:30Z",
+  "aliases": [
+    "GHSA-fgmx-xfp3-w28p",
+    "CVE-2026-5059",
+    "PYSEC-2026-288"
+  ],
+  "summary": "aws-mcp has a Command Injection Remote Code Execution Vulnerability",
+  "details": "aws-mcp-server AWS CLI Command Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of aws-mcp-server. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of the allowed commands list. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of the MCP server. Was ZDI-CAN-27969.\n\nImported from OSV GHSA-fgmx-xfp3-w28p.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-fgmx-xfp3-w28p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5059"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/alexei-led/aws-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-245"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "aws-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.7.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

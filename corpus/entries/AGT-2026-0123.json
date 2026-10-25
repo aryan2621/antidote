@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0123",
+  "modified": "2026-05-07T21:26:25.235971Z",
+  "published": "2026-05-02T18:30:27Z",
+  "aliases": [
+    "GHSA-gc2j-wpjv-jhrw",
+    "CVE-2026-7645"
+  ],
+  "summary": "sublinear-time-solver has a Path Traversal Issue",
+  "details": "A vulnerability was found in ruvnet sublinear-time-solver 1.5.0. Affected by this vulnerability is the function export_state of the file src/consciousness-explorer/mcp/server.js of the component MCP Interface. The manipulation results in path traversal. The attack can be executed remotely. The exploit has been made public and could be used. The project was informed of the problem early through an issue report but has not responded yet.\n\nImported from OSV GHSA-gc2j-wpjv-jhrw.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-gc2j-wpjv-jhrw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ruvnet/sublinear-time-solver/issues/19"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ruvnet/sublinear-time-solver"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/806895"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/360757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/360757/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "sublinear-time-solver"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

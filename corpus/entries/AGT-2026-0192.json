@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0192",
+  "modified": "2026-10-01T17:56:16.294033846Z",
+  "published": "2026-09-22T20:34:45Z",
+  "aliases": [
+    "GHSA-wv8v-v4c5-v75j",
+    "CVE-2026-77246",
+    "PYSEC-2026-4104"
+  ],
+  "summary": "mcp-atlassian: MCP Atlassian: MCP HTTP Client Server-Local File Exfiltration via Unvalidated Attachment Upload Path",
+  "details": "### Summary\n\nThe `mcp-atlassian` server exposes an MCP tool (`confluence_upload_attachment` and the Jira attachment variant) that accepts an arbitrary server-side file path and opens it for upload without any path validation. When the server is deployed in HTTP transport mode (`streamable-http` or `sse`), a remote, unauthenticated attacker can supply attacker-controlled Atlassian service headers (`X-Atlassian-Confluence-Url` / `X-Atlassian-Confluence-Personal-Token`) to redirect the upload to an attacker-controlled endpoint, then pass an arbitrary `file_path` (e.g. `/etc/passwd`, `~/.env`, SSH private keys, cloud credentials) to exfiltrate any file readable by the server process. No prior account, session token, or `Authorization` header is required. The vulnerability was confirmed through both static code analysis (Phase 1) and a live Docker-based proof-of-concept (Phase 2).\n\n---\n\n### Details\n\n**Data flow (source → sink)**\n\n| Step | Location | Role |\n|------|----------|------|\n| 1 | `src/mcp_atlassian/servers/main.py:498-504` | Middleware extracts `X-Atlassian-Confluence-Url` and `X-Atlassian-Confluence-Personal-Token` from incoming HTTP request headers. |\n| 2 | `src/mcp_atlassian/servers/main.py:584-595` | When no `Authorization` header is present but service headers are, `user_atlassian_auth_type` is set to `\"pat\"`, effectively bypassing authentication requirements. |\n| 3 | `src/mcp_atlassian/utils/urls.py:97-104` | `validate_url_for_ssrf` blocks only `localhost`, RFC 1918 private ranges, and a small set of metadata hostnames. An attacker-controlled public domain or an allow-listed Docker container hostname (`MCP_ALLOWED_URL_DOMAINS`) passes this check. |\n| 4 | `src/mcp_atlassian/servers/dependencies.py:544-545` | The attacker-controlled URL is injected directly as `url=` into `ConfluenceConfig`, constructing a `ConfluenceFetcher` pointed at the attacker's server. |\n| 5 | `src/mcp_atlassian/servers/confluence.py:1358-1361` | The MCP tool argument `file_path` is forwarded to `confluence_fetcher.upload_attachment()` without any sanitization. |\n| 6 | `src/mcp_atlassian/confluence/attachments.py:64-79` | The path is converted to an absolute path via `os.path.abspath()` and checked for existence only. `validate_safe_path()` — already used on download paths — is **never called** here, leaving no directory restriction in place. |\n| 7 | `src/mcp_atlassian/confluence/attachments.py:477` | **Sink**: `files = {\"file\": (filename, open(file_path, \"rb\"))}` — the file is opened and sent as multipart to the attacker's server. |\n| 8 | `src/mcp_atlassian/jira/attachments.py:374-386` | Parallel Jira sink: same `os.path.abspath()` pattern, no `validate_safe_path`, then `open(file_path, \"rb\")`. |\n\n**Key code evidence**\n\n```python\n# src/mcp_atlassian/confluence/attachments.py\n64: if not os.path.isabs(file_path):\n65:     file_path = os.path.abspath(file_path)\n68: if not os.path.exists(file_path):\n77: filename = os.path.basename(file_path)\n477: files = {\"file\": (filename, open(file_path, \"rb\"))}   # ← sink\n```\n\n```python\n# src/mcp_atlassian/jira/attachments.py\n374: if not os.path.isabs(file_path):\n375:     file_path = os.path.abspath(file_path)\n386: with open(file_path, \"rb\") as file:                    # ← sink\n387:     attachment = self.jira.add_attachment(\n```\n\n**Why `validate_safe_path` is absent**: The function exists in the codebase and is correctly applied to download/read operations, but it was not applied to the upload path. This asymmetry means an attacker can read any file the server process can access, even though the intent was clearly to restrict path access.\n\n**Default configuration enables the attack**: `READ_ONLY_MODE` defaults to `false`, making write tools (including attachment upload) active by default. HTTP transport is a first-class, documented production deployment mode (README, Helm chart, multi-tenant header-auth design).\n\n**Recommended remediation**\n\n```diff\n--- a/src/mcp_atlassian/confluence/attachments.py\n+++ b/src/mcp_\n\nImported from OSV GHSA-wv8v-v4c5-v75j.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-wv8v-v4c5-v75j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-wv8v-v4c5-v75j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/pull/1448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/commit/b041733473f95119dd539542a43c280737a8e460"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sooperset/mcp-atlassian"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/releases/tag/v0.22.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-atlassian"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.22.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

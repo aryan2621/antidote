@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0016",
+  "modified": "2025-10-09T22:42:35.007865Z",
+  "published": "2025-10-05T09:30:19Z",
+  "aliases": [
+    "GHSA-v7c4-33vf-cqqq",
+    "CVE-2025-11287"
+  ],
+  "summary": "@samanhappy/mcphub: MCPHub has an Improper Authorization vulnerability via its handleSseConnection function",
+  "details": "A vulnerability was identified in samanhappy MCPHub up to 0.9.10. This vulnerability affects the function handleSseConnection of the file src/services/sseService.ts. Such manipulation leads to improper authentication. The attack may be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.\n\nImported from OSV GHSA-v7c4-33vf-cqqq.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-v7c4-33vf-cqqq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-11287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/August829/YU1/issues/8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/samanhappy/mcphub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?ctiid.327045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?id.327045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/?submit.661170"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@samanhappy/mcphub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.9.10"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

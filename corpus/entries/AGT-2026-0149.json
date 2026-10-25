@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0149",
+  "modified": "2026-09-01T03:55:43.780375105Z",
+  "published": "2026-04-22T20:50:19Z",
+  "aliases": [
+    "GHSA-p3h2-2j4p-p83g",
+    "CVE-2026-79743"
+  ],
+  "summary": "@samanhappy/mcphub: MCPHub has Path Traversal via Malicious MCPB Manifest Name",
+  "details": "**MCPB File Upload Handler** extracts a ZIP file and reads `manifest.json` from it. The `name` field in the manifest is directly concatenated into a file path (line 107) without any sanitization or path traversal character validation. An attacker can craft a malicious MCPB file where `manifest.name` is set to something like `../../../etc/malicious`, causing the file to be extracted to an arbitrary location on the file system. The `cleanupOldMcpbServer` function (line 110) also uses the unsanitized name, potentially allowing deletion of arbitrary directories.\n\n## 1. Summary\n- **Vulnerability Type**: Path Traversal (CWE-22)\n- **Sink Location**: src/controllers/mcpbController.ts:107\n- **Vulnerability Description**: The `name` field from an uploaded MCPB manifest is used directly, without sanitization or normalization, to construct a file system path for directory creation and move operations, which may lead to path traversal attacks.\n\n## 2. Analysis Logic\n\n### Step 1: Inspect the identified sink (src/controllers/mcpbController.ts:106-116)\nI examined the upload handler and located the file system sink where `manifest.name` is used to build the final extraction path and write files to that path.\n\n```ts\n// src/controllers/mcpbController.ts:106-116\n// Use server name as the final extract directory for automatic version management\nconst finalExtractDir = path.join(path.dirname(mcpbFilePath), `server-${manifest.name}`);\n\n// Clean up any existing version of this server\ncleanupOldMcpbServer(manifest.name);\nif (!fs.existsSync(finalExtractDir)) {\n  fs.mkdirSync(finalExtractDir, { recursive: true });\n}\n\n// Move the temporary directory to the final location\nfs.renameSync(tempExtractDir, finalExtractDir);\n```\n\nAnalysis: `manifest.name` is used to build `finalExtractDir`, which is then operated on by `fs.mkdirSync` and `fs.renameSync`. These are file system write/move operations, so if `name` is user-controlled and unsanitized, this is a path traversal sink. Next, I traced the origin of `manifest.name`.\n\n### Step 2: Trace the source of `manifest.name` in the upload handler (src/controllers/mcpbController.ts:83-104)\nI traced back the data flow to see how the manifest is read and validated.\n\n```ts\n// src/controllers/mcpbController.ts:83-104\nconst manifestPath = path.join(tempExtractDir, 'manifest.json');\nif (!fs.existsSync(manifestPath)) {\n  throw new Error('manifest.json not found in MCPB file');\n}\n\nconst manifestContent = fs.readFileSync(manifestPath, 'utf-8');\nconst manifest = JSON.parse(manifestContent);\n\n// Validate required fields in manifest\nif (!manifest.manifest_version) {\n  throw new Error('Invalid manifest: missing manifest_version');\n}\nif (!manifest.name) {\n  throw new Error('Invalid manifest: missing name');\n}\n```\n\nAnalysis: `manifest` is parsed directly from `manifest.json` inside the uploaded archive. The only check on `manifest.name` is that it is non‑empty; there is no sanitization, normalization, or allow‑list validation. Next, I confirmed the entry point for uploading MCPB files to verify user control.\n\n### Step 3: Trace the HTTP entry point in src/routes/index.ts:297-299\nI located the route that exposes the upload handler.\n\n```ts\n// src/routes/index.ts:297-299\n// MCPB upload routes\nrouter.post('/mcpb/upload', uploadMiddleware, uploadMcpbFile);\n```\n\nAnalysis: The `/mcpb/upload` endpoint invokes `uploadMiddleware` and `uploadMcpbFile`, so user‑supplied uploads are the source of the manifest content. Next, I verified the upload middleware behavior.\n\n### Step 4: Confirm the upload middleware (src/controllers/mcpbController.ts:8-38)\nI inspected how the uploaded file is received and stored.\n\n```ts\n// src/controllers/mcpbController.ts:8-38\nconst storage = multer.diskStorage({\n  destination: (_req, _file, cb) => {\n    const uploadDir = path.join(process.cwd(), 'data/uploads/mcpb');\n    if (!fs.existsSync(uploadDir)) {\n      fs.mkdirSync(uploadDir, { recursive: true });\n    }\n    cb(null, uploadDir);\n  },\n  filename: (_req, file, cb) \n\nImported from OSV GHSA-p3h2-2j4p-p83g.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-p3h2-2j4p-p83g"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samanhappy/mcphub/security/advisories/GHSA-p3h2-2j4p-p83g"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/samanhappy/mcphub/commit/af5b013c09bb0add6b7ad9aaa5b875cf150d2a7c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/samanhappy/mcphub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@samanhappy/mcphub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.12.13"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

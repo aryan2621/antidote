@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0190",
+  "modified": "2026-08-19T19:33:55.304696Z",
+  "published": "2026-08-19T19:23:16Z",
+  "aliases": [
+    "GHSA-wppf-h75h-6pm6",
+    "CVE-2026-54689"
+  ],
+  "summary": "mcp-searxng: SearXNG MCP Server: Additional hardened-mode SSRF bypasses",
+  "details": "## Summary\n\n`mcp-searxng` has a hardened-mode URL-reading feature intended to prevent `web_url_read` from reaching private or internal network resources.\n\nPR #79 appears to address one SSRF class: hostnames that resolve to private or internal addresses under hardened mode. I tested PR #79 locally and confirmed that it blocks the DNS-resolves-to-loopback case.\n\nHowever, several other hardened-mode SSRF bypasses still appear to remain:\n\n1. Redirects from an allowed first-hop URL to a loopback/internal URL are followed without re-validating the redirect target.\n2. `0.0.0.0` is not treated as an internal/special address.\n3. IPv4-mapped IPv6 literals can bypass private-address checks after URL canonicalization.\n\nWith hardened mode enabled and private URLs not explicitly allowed, `web_url_read` was still able to fetch and return content from a local loopback sentinel service in all three cases.\n\n## Tested configuration\n\n```bash\nMCP_HTTP_HARDEN=true\nMCP_HTTP_ALLOW_PRIVATE_URLS unset\n```\n\nThe MCP server was driven over stdio.\n\nThe test target was a harmless internal sentinel HTTP service bound to:\n\n```text\n127.0.0.1:6789\n```\n\nThe sentinel response contained:\n\n```text\nINTERNAL_SECRET_DATA__mcp_searxng_ssrf_path2\n```\n\n## Relationship to PR #79\n\nI tested PR #79 locally:\n\n- PR: `fix(url-reader): block DNS-rebinding SSRF via socket-level lookup guard (CWE-918) #79`\n- PR commit tested: `e55d28e7be6786a71cd7a0eaf13d3ec9d0b734d4`\n- Base issue class: CWE-918 / SSRF in `web_url_read`\n- Hardened mode: enabled\n\nObserved results:\n\n```text\nCase                                         Result on PR #79\n-------------------------------------------------------------\nDNS hostname resolving to 127.0.0.1          blocked\n0.0.0.0                                      BYPASS\n[::ffff:127.0.0.1]                           BYPASS\nredirect from non-private IP to 127.0.0.1    BYPASS\n```\n\nSo PR #79 is a useful fix, but it does not fully close hardened-mode internal URL access.\n\n## Root cause\n\n### 1. Redirect targets are not re-validated\n\nThe URL policy appears to be applied to the initial URL, but redirect targets are followed by `fetch()` without applying the same policy to each hop.\n\nA non-private attacker-controlled first-hop URL can respond with:\n\n```http\n302 Location: http://127.0.0.1:6789/secret\n```\n\nThe request is then followed to loopback.\n\nThis is independent of DNS rebinding. Even if the initial host is a non-private IP literal, the redirect can still pivot to `127.0.0.1`.\n\n### 2. `0.0.0.0` is not treated as internal\n\n`0.0.0.0` is not currently blocked by the private IPv4 predicate. On Linux, connecting to `0.0.0.0:<port>` can reach a local service bound on loopback or wildcard interfaces.\n\nIn my test, this URL returned the sentinel from the local loopback service:\n\n```text\nhttp://0.0.0.0:6789/secret\n```\n\n### 3. IPv4-mapped IPv6 canonicalization bypass\n\nThe current IPv4-mapped IPv6 handling appears to expect a dotted-decimal tail such as:\n\n```text\n::ffff:127.0.0.1\n```\n\nHowever, Node's WHATWG URL parser canonicalizes:\n\n```js\nnew URL(\"http://[::ffff:127.0.0.1]/\").hostname\n```\n\nto:\n\n```text\n[::ffff:7f00:1]\n```\n\nAs a result, regex logic that expects the dotted-decimal form can miss the private IPv4-mapped address.\n\nIn my test, this URL returned the loopback sentinel:\n\n```text\nhttp://[::ffff:127.0.0.1]:6789/secret\n```\n\n## Impact\n\nThis is a hardened-mode SSRF bypass.\n\nThe sentinel service in the PoC is intentionally local and harmless. It represents an internal-only service reachable from the MCP server host.\n\nIn real deployments, the same class of issue could allow `web_url_read` to reach:\n\n- local admin panels bound to loopback;\n- Redis, Elasticsearch, or other local HTTP-like services;\n- internal HTTP APIs on private networks;\n- service mesh endpoints;\n- cloud metadata endpoints, depending on routing and environment.\n\nThis is especially relevant for MCP deployments because tool calls may be selected by an AI assistant. If untrusted content can influence tool \n\nImported from OSV GHSA-wppf-h75h-6pm6.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-wppf-h75h-6pm6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/security/advisories/GHSA-wppf-h75h-6pm6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/releases/tag/v1.2.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-searxng"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

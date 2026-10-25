@@ -3,6 +3,7 @@ mod crawl;
 mod detonate;
 mod extract;
 mod http;
+mod seed;
 mod state;
 mod triage;
 
@@ -95,6 +96,17 @@ enum Cmd {
         /// tools_hash from the previous detonation of this package, for rug-pull detection
         #[arg(long)]
         previous_tools_hash: Option<String>,
+    },
+    /// Import public OSV advisories for MCP packages as corpus entries (skips ones already imported)
+    SeedOsv {
+        #[arg(long, default_value = "corpus")]
+        corpus: PathBuf,
+        /// How many top `mcp`-keyword npm packages to look up
+        #[arg(long, default_value_t = 2000)]
+        npm_max: usize,
+        /// Max new entries to write
+        #[arg(long, default_value_t = 1000)]
+        max: usize,
     },
     /// Allowlist a rejected report's rule hits for that exact version
     Allow {
@@ -199,6 +211,13 @@ fn main() -> Result<()> {
         Cmd::DraftEntry { report, classification, summary, issue_url, corpus } => {
             let r: Report = serde_json::from_slice(&fs::read(&report)?)?;
             println!("{}", triage::draft_entry(&r, &classification, &summary, &issue_url, &corpus)?.display());
+        }
+        Cmd::SeedOsv { corpus, npm_max, max } => {
+            let names = seed::package_names(npm_max)?;
+            let ids = seed::advisory_ids(&names)?;
+            eprintln!("{} packages, {} advisories", names.len(), ids.len());
+            let written = seed::import(&corpus, &ids, max)?;
+            eprintln!("wrote {} new entries", written.len());
         }
         Cmd::McpProbe { timeout, cmd } => {
             let tools = detonate::probe(&cmd, std::time::Duration::from_secs(timeout))?;

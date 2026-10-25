@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0167",
+  "modified": "2026-08-13T17:00:11.550815092Z",
+  "published": "2026-07-02T20:38:50Z",
+  "aliases": [
+    "GHSA-rxw2-pc8j-vxwm",
+    "CVE-2026-52830",
+    "PYSEC-2026-2473"
+  ],
+  "summary": "fast-mcp-telegram: Bearer token path traversal bypasses reserved Telegram session protection",
+  "details": "## Summary\n\nfast-mcp-telegram validates HTTP Bearer tokens by joining the raw token string into a session-file path. The verifier rejects the exact reserved token `telegram`, but it does not reject path separators or normalize the path before checking whether the session file exists. A remote HTTP client can therefore authenticate as the default legacy session with a token such as `../fast-mcp-telegram/telegram` when the documented default session file `~/.config/fast-mcp-telegram/telegram.session` exists.\n\nThis bypasses the reserved session name control that is intended to prevent HTTP multi-user sessions from colliding with the default stdio or legacy account. With account-prefixed MCP tools enabled, the attacker still sees and calls the prefixed tools for the default account, so the prefix middleware does not stop the session selection bypass.\n\n## Impact\n\nAn unauthenticated network client can access the Telegram account represented by the default `telegram.session` file without knowing a generated bearer token, if that legacy or default session file is present on a server running HTTP auth. The attacker can then call Telegram MCP tools as that account, including message reading, message sending, MTProto API calls, and attachment-producing tool surfaces available to the session.\n\n## Technical details\n\n`SessionFileTokenVerifier.verify_token()` strips whitespace and rejects exact reserved names:\n\n```python\nif token.lower() in RESERVED_SESSION_NAMES:\n    return None\n```\n\nIt then appends `.session` to the raw token and checks the resulting path:\n\n```python\nsession_path = self._session_directory / f\"{token}.session\"\nif not session_path.is_file():\n    return None\n```\n\nNo check rejects `/`, `\\\\`, `..`, absolute paths, or resolved paths outside the configured session directory. The session client path is built the same way in `src/client/connection.py`:\n\n```python\nsession_path = SESSION_DIR / f\"{token}.session\"\nclient = await _build_telegram_client_for_token(session_path, token)\n```\n\nWith the default session directory, the token `../fast-mcp-telegram/telegram` resolves as follows:\n\n```text\n~/.config/fast-mcp-telegram/../fast-mcp-telegram/telegram.session\n= ~/.config/fast-mcp-telegram/telegram.session\n```\n\nThe exact token `telegram` is denied, but the traversal alias reaches the same file and is accepted. This is especially important because `telegram` is the documented default `session_name`, and the security documentation says reserved names are blocked to prevent conflicts with stdio and HTTP no-auth sessions.\n\nThe vulnerable code is present on current `master` commit `167ab705f1cd09b21e85c370570471fe75a4f8c9` and in release tag `0.19.0` commit `77bdf6d7e5c6a84d87acc423db613e6c6ba30094`.\n\n## Reproduction\n\nThe following proof uses stub session files and stub Telegram clients, so it does not need real Telegram credentials. It validates the auth decision and the eventual session path used by the client builder.\n\nRun on current master:\n\n```bash\ngit clone https://github.com/leshchenko1979/fast-mcp-telegram.git\ncd fast-mcp-telegram\npython validation_token_traversal.py\n```\n\nThe local proof script created for validation is attached below for reference:\n\n```python\n# High-level proof outline\n# 1. Create a temporary session directory containing telegram.session and a random token session.\n# 2. Instantiate SessionFileTokenVerifier with that directory.\n# 3. Verify denied controls: token `telegram` is rejected, and a traversal token to a missing file is rejected.\n# 4. Verify allowed control: a normal random token with a matching session file is accepted.\n# 5. Verify bypass: token `../fast-mcp-telegram/telegram` is accepted and the client builder receives the default telegram.session path.\n# 6. Verify prefix behavior: account-prefixed tools are listed for the traversal-authenticated default account, a prefixed call reaches send_message, and an unprefixed call is still denied.\n```\n\nKey controls from the current-master run:\n\n```json\n{\n  \"reserved_\n\nImported from OSV GHSA-rxw2-pc8j-vxwm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-rxw2-pc8j-vxwm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/leshchenko1979/fast-mcp-telegram/security/advisories/GHSA-rxw2-pc8j-vxwm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52830"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/alexeyleshchenko/fast-mcp-telegram"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/fast-mcp-telegram/PYSEC-2026-2473.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/fast-mcp-telegram"
+    },
+    {
+      "type": "WEB",
+      "url": "https://web.archive.org/web/20250926152207/https://github.com/leshchenko1979/fast-mcp-telegram"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "fast-mcp-telegram"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.19.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

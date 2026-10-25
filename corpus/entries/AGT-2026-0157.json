@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0157",
+  "modified": "2026-07-09T13:56:44.615882Z",
+  "published": "2026-06-01T21:30:42Z",
+  "aliases": [
+    "GHSA-q6qc-xp4q-rjq5",
+    "CVE-2026-10281"
+  ],
+  "summary": "@enderfga/claw-orchestrator: Claw Orchestrator is missing authentication for the component API Endpoint",
+  "details": "A weakness has been identified in Enderfga claw-orchestrator up to 3.5.5. This affects the function EmbeddedServer of the file src/embedded-server.ts of the component API Endpoint. This manipulation causes missing authentication. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 3.5.6 mitigates this issue. Patch name: d0b02a800aa0689d9428cc4cc170e0b6589fb2c3. The affected component should be upgraded.\n\nImported from OSV GHSA-q6qc-xp4q-rjq5.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-q6qc-xp4q-rjq5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/issues/61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/commit/d0b02a800aa0689d9428cc4cc170e0b6589fb2c3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Enderfga/claw-orchestrator"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Enderfga/claw-orchestrator/releases/tag/v3.5.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-10281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/825429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367574/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@enderfga/claw-orchestrator"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.5.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

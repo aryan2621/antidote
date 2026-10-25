@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0018",
+  "modified": "2025-12-05T12:28:11.494576Z",
+  "published": "2025-12-03T20:44:45Z",
+  "aliases": [
+    "GHSA-wvxp-jp4w-w8wg",
+    "CVE-2025-66404"
+  ],
+  "summary": "mcp-server-kubernetes has potential security issue in exec_in_pod tool",
+  "details": "### Summary\nA security issue exists in the `exec_in_pod` tool of the `mcp-server-kubernetes` MCP Server. The tool accepts user-provided commands in both array and string formats. When a string format is provided, it is passed directly to shell interpretation (`sh -c`) without input validation, allowing shell metacharacters to be interpreted. This vulnerability can be exploited through direct command injection or indirect prompt injection attacks, where AI agents may execute commands without explicit user intent.\n\n### Details\nThe MCP Server exposes the `exec_in_pod` tool to execute commands inside Kubernetes pods. The tool supports both array and string command formats. The Kubernetes Exec API (via `@kubernetes/client-node`) accepts commands as an array of strings, which executes commands directly without shell interpretation. However, when a string format is provided, the code automatically wraps it in shell execution (`sh -c`), which interprets shell metacharacters without any input validation.\n\nWhen string commands contain shell metacharacters (e.g., `;`, `&&`, `|`, `>`, `<`, `$`), they are interpreted by the shell rather than being passed as literal arguments, allowing command injection. This vulnerability can be exploited in two ways:\n\n1. **Direct command injection**: Users or attackers with access to the MCP server can directly inject malicious commands through the tool interface.\n2. **Indirect prompt injection**: Malicious instructions embedded in data (e.g., pod logs) can trick AI agents into executing commands without explicit user intent.\n\n### Code pattern\n\nThe following snippet illustrates the code pattern used in the `exec_in_pod` tool:\n\n**File**: `src/tools/exec_in_pod.ts`\n\n```typescript\nexport async function execInPod(\n  k8sManager: KubernetesManager,\n  input: {\n    name: string;\n    namespace?: string;\n    command: string | string[];  // User-controlled input\n    container?: string;\n    shell?: string;\n    timeout?: number;\n    context?: string;\n  }\n): Promise<{ content: { type: string; text: string }[] }> {\n  const namespace = input.namespace || \"default\";\n  let commandArr: string[];\n  \n  if (Array.isArray(input.command)) {\n    commandArr = input.command;\n  } else {\n    // User input passed to shell\n    const shell = input.shell || \"/bin/sh\";\n    commandArr = [shell, \"-c\", input.command];  // Shell metacharacters are interpreted\n  }\n\n  // ... Kubernetes Exec API call ...\n  exec.exec(\n    namespace,\n    input.name,\n    input.container ?? \"\",\n    commandArr,  // Executed inside pod via shell\n    stdoutStream,\n    stderrStream,\n    stdinStream,\n    true,\n    callback\n  );\n}\n```\n\nWhen `input.command` is a string, the code automatically wraps it in a shell command (`/bin/sh -c`), which interprets shell metacharacters. There is no input validation to detect or block shell metacharacters, allowing arbitrary command execution through command chaining (e.g., `id>/tmp/TEST && echo done`).\n\n### PoC\n### Direct command injection via MCP Inspector\n\nThis demonstrates command injection through direct tool invocation:\n\n1. **Start a Kubernetes cluster** (e.g., using minikube):\n   ```bash\n   minikube start\n   ```\n\n2. **Create a test pod:**\n   ```bash\n   kubectl run test-pod --image=busybox --command -- sleep 3600\n   ```\n\n3. **Open the MCP Inspector:**\n   ```bash\n   npx @modelcontextprotocol/inspector\n   ```\n\n4. **In MCP Inspector:**\n   - Set transport type: `STDIO`\n   - Set the `command` to `npx`\n   - Set the arguments to `-y mcp-server-kubernetes --stdio`\n   - Click **Connect**\n   - Go to the **Tools** tab and click **List Tools**\n   - Select the `exec_in_pod` tool\n\n5. **Verify the file `/tmp/TEST` does NOT exist before execution:**\n   ```bash\n   kubectl exec test-pod -n default -- cat /tmp/TEST\n   cat: /tmp/TEST: No such file or directory\n   ```\n\n6. **In MCP Inspector, fill in the fields:**\n   - **Name field**: `test-pod`\n   - **Namespace field**: `default`\n   - **Command field**: `\"id>/tmp/TEST && echo done\"` (include quotes)\n \n\nImported from OSV GHSA-wvxp-jp4w-w8wg.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-wvxp-jp4w-w8wg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/security/advisories/GHSA-wvxp-jp4w-w8wg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/commit/47d3136dd272c947464524f11f47bb519814698e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/commit/d091107ff92d9ffad1b3c295092f142d6578c48b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-server-kubernetes"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.9.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

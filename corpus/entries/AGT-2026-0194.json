@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0194",
+  "modified": "2026-07-23T15:11:18.172621940Z",
+  "published": "2026-07-14T20:47:19Z",
+  "aliases": [
+    "GHSA-x9vc-9ffq-p3gj",
+    "CVE-2026-54446",
+    "PYSEC-2026-3490"
+  ],
+  "summary": "NetLicensing-MCP: Unauthenticated Use of Server-Side NetLicensing API Key in HTTP Mode",
+  "details": "## Unauthenticated Use of Server-Side NetLicensing API Key in HTTP Mode\n\n### Summary\n\nWhen `netlicensing-mcp` is run in HTTP transport mode, the `ApiKeyMiddleware` fails to enforce authentication: requests that carry no client API key are unconditionally forwarded to the next handler (`server.py:1427`). The downstream HTTP client then falls back to the server operator's `NETLICENSING_API_KEY` environment variable (`client.py:30`) and uses it to authenticate every upstream call to the NetLicensing REST API. An unauthenticated network attacker can therefore invoke any MCP tool — including product listing, license creation/modification, and destructive delete operations — entirely under the operator's identity and account quota. CVSS 3.1 Base Score: **8.1 (High)**.\n\n### Details\n\nThe HTTP transport is started in `src/netlicensing_mcp/server.py` around line 1430 via `mcp.streamable_http_app()`, and `ApiKeyMiddleware` is registered immediately after (line 1431). The middleware implementation (lines 1412–1427) attempts to extract a per-request API key from either the `x-netlicensing-api-key` header or the `?apikey=` query parameter. However, if neither source provides a key, the middleware takes no enforcement action and simply calls `return await call_next(request)` (line 1427), passing the unauthenticated request downstream.\n\nThe downstream client module (`src/netlicensing_mcp/client.py`) uses a Python `ContextVar` named `api_key_ctx` with a default of `os.getenv(\"NETLICENSING_API_KEY\", \"\")` (line 30). Because the middleware never sets this context variable for unauthenticated requests, `api_key_ctx.get()` returns the server-level environment variable. The client then encodes this value into an HTTP Basic Authorization header (`lines 62–70`) and transmits it to the upstream NetLicensing REST API on every request (`lines 105, 109`).\n\nThe complete exploitable data flow is:\n\n| Step | Location | Description |\n|------|----------|-------------|\n| 1 | `server.py:1430` | HTTP app created with `mcp.streamable_http_app()` |\n| 2 | `server.py:1431` | `ApiKeyMiddleware` registered |\n| 3 | `server.py:1412–1419` | Middleware attempts (optional) key extraction from headers/query |\n| 4 | `server.py:1427` | **Auth bypass sink**: missing key → `return await call_next(request)` |\n| 5 | `server.py:155–163` | Unauthenticated caller invokes `netlicensing_list_products` (or any tool) |\n| 6 | `tools/products.py:9,17` | Tool delegates to `nl_get(\"/product\", ...)` |\n| 7 | `client.py:30` | **Source**: `api_key_ctx` defaults to `NETLICENSING_API_KEY` env var |\n| 8 | `client.py:62–70` | `Authorization: Basic base64(\"apiKey:<key>\")` constructed |\n| 9 | `client.py:105,109` | **Upstream sink**: `client.get(url, headers=_headers(), ...)` executed |\n\nCritical code excerpts:\n\n```python\n# src/netlicensing_mcp/server.py\n1418:     if not key:\n1419:         key = request.query_params.get(\"apikey\")\n1421:     if key:\n1422:         token = api_key_ctx.set(key)\n            ...\n1427:     return await call_next(request)   # <-- no rejection when key is absent\n```\n\n```python\n# src/netlicensing_mcp/client.py\n30:  \"api_key\", default=os.getenv(\"NETLICENSING_API_KEY\", \"\")   # server-side fallback\n...\n64:  auth_str = f\"apiKey:{api_key}\"\n70:  \"Authorization\": f\"Basic {token}\",\n...\n109: r = await client.get(url, headers=_headers(), params=params or {})\n```\n\nThe README (`README.md:90–94`) documents the HTTP mode deployment pattern with `-e NETLICENSING_API_KEY=your_key` as a first-class production deployment option, including AWS App Runner / ELB examples (`README.md:310–318`). The per-client key recommendation (`README.md:318`) is advisory only and is not technically enforced.\n\nA suggested patch replaces the unconditional pass-through with a `401` rejection:\n\n```diff\n--- a/src/netlicensing_mcp/server.py\n+++ b/src/netlicensing_mcp/server.py\n@@\n          class ApiKeyMiddleware(BaseHTTPMiddleware):\n              async def dispatch(self, request: Request, call_next):\n+                 if \n\nImported from OSV GHSA-x9vc-9ffq-p3gj.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-x9vc-9ffq-p3gj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/security/advisories/GHSA-x9vc-9ffq-p3gj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/commit/fbbb1d5ff88eb5400ec933a84e75601ebee48927"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Labs64/NetLicensing-MCP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/releases/tag/0.1.6"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "netlicensing-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.1.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

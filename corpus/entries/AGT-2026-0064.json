@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0064",
+  "modified": "2026-09-11T22:15:04.009061077Z",
+  "published": "2026-09-11T22:02:04Z",
+  "aliases": [
+    "GHSA-65h7-9wrw-629c",
+    "CVE-2026-59973"
+  ],
+  "summary": "FrontMCP and mcp-from-openapi have bypass of OpenAPI external $ref SSRF fix",
+  "details": "## Summary\n\nThe published fix for GHSA-v6ph-xcq9-qxxj / CVE-2026-39885 added a direct hostname denylist for OpenAPI external `$ref` dereferencing, but the latest patched dependency `mcp-from-openapi` 2.3.0 still makes backend-origin requests to loopback when the target is reached through hostname resolution, redirects, or IPv4-mapped IPv6 syntax.\n\nFrontMCP latest release v1.2.1 and current main still call `OpenAPIToolGenerator.fromURL()` and `OpenAPIToolGenerator.fromJSON()` from `mcp-from-openapi` 2.3.0 when loading OpenAPI adapters. An attacker who can cause a hosted or multi-user FrontMCP deployment to load an untrusted OpenAPI spec can trigger requests from the server to localhost or private services during tool generation.\n\nThis is a latest-version bypass of the previous fix. A direct `http://127.0.0.1` `$ref` control is now denied and produces zero canary hits, while semantically equivalent loopback targets still reach the canary.\n\n## Latest versions checked\n\n- `frontmcp` npm latest: 1.2.1\n- `@frontmcp/adapters` npm latest: 1.2.1\n- `mcp-from-openapi` npm latest: 2.3.0\n- FrontMCP release tag: v1.2.1, commit db323976c66297d684a3e63bbfe1db6b310f2944\n- FrontMCP current main checked: c15b79abe8c6a3cb71d4b7a3bafb8190730dc756\n\nThe release tag and current main both keep `mcp-from-openapi` 2.3.0 in `package.json` and `libs/adapters/package.json`, and both keep the OpenAPI adapter forwarding untrusted `url`, `spec`, and `loadOptions.refResolution` into `OpenAPIToolGenerator`.\n\n## Technical details\n\nFrontMCP's OpenAPI adapter reaches the affected dependency paths:\n\n- `libs/adapters/src/openapi/openapi.adapter.ts` imports `OpenAPIToolGenerator` from `mcp-from-openapi`.\n- `loadOpenAPISpec()` calls `OpenAPIToolGenerator.fromURL(this.options.url, ...)` and forwards `loadOptions.refResolution`.\n- The same method calls `OpenAPIToolGenerator.fromJSON(this.options.spec, ...)` and forwards `loadOptions.refResolution`.\n\nIn `mcp-from-openapi` 2.3.0, the patched guard is applied before the HTTP resolver fetches an external `$ref`. It checks the parsed URL hostname string against deny patterns for direct local and private addresses. The resolver does not resolve hostnames before allow or deny decisions, does not pin the validated IP to the fetch, and does not revalidate redirect targets before following them. It also misses IPv4-mapped IPv6 loopback forms.\n\nAs a result, these URLs are accepted by the guard but cause a loopback request from the backend:\n\n- `http://127.0.0.1.nip.io:<port>/schema.json`, because the hostname string is not a direct IP even though it resolves to 127.0.0.1.\n- `http://127.0.0.1.nip.io:<port>/redirect`, because the first host passes and the actual request follows a redirect to `http://127.0.0.1:<port>/schema.json`.\n- `http://[::ffff:127.0.0.1]:<port>/schema.json` and `http://[::ffff:7f00:1]:<port>/schema.json`, because IPv4-mapped IPv6 loopback is not normalized and denied.\n\n`OpenAPIToolGenerator.fromURL()` is also still unguarded for the initial OpenAPI spec URL. The PoC includes that as supporting evidence, but the primary report is the external `$ref` fix bypass.\n\n## Reproduction\n\nThe attached local PoC starts a loopback canary and loads generated OpenAPI specs using `mcp-from-openapi` 2.3.0. The request body schema contains a single external `$ref` for each test case. The canary records every backend-origin request.\n\nRun:\n\n```bash\ncd /home/unkn0wn/security_audit/frontmcp-ssrf-poc\nnode repro-frontmcp-latest-ssrf-bypasses.mjs\n```\n\nImportant output from a fresh run on 2026-05-25:\n\n```json\n{\"name\":\"direct-127-denied-control\",\"kind\":\"external_ref\",\"refUrl\":\"http://127.0.0.1:45117/schema.json\",\"ok\":false,\"hitCount\":0,\"hits\":[]}\n{\"name\":\"dns-name-to-127-bypass\",\"kind\":\"external_ref\",\"refUrl\":\"http://127.0.0.1.nip.io:45117/schema.json\",\"ok\":true,\"hitCount\":1,\"hits\":[{\"url\":\"/schema.json\",\"host\":\"127.0.0.1.nip.io:45117\",\"authorization\":null}]}\n{\"name\":\"dns-name-to-127-bypass-with-allowedHosts\",\"kind\":\"external_ref\",\"refUrl\":\n\nImported from OSV GHSA-65h7-9wrw-629c.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-65h7-9wrw-629c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentfront/frontmcp/security/advisories/GHSA-65h7-9wrw-629c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/agentfront/frontmcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-from-openapi"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "2.3.0"
+            },
+            {
+              "fixed": "2.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@frontmcp/adapters"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.2.1"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "frontmcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.2.1"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

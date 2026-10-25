@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0031",
+  "modified": "2026-10-06T16:15:05.314931440Z",
+  "published": "2026-10-06T16:09:31Z",
+  "aliases": [
+    "GHSA-2q76-m6w6-qgc6",
+    "CVE-2026-105806"
+  ],
+  "summary": "@payloadcms/plugin-mcp: Payload: Improper access control for MCP API keys",
+  "details": "### Impact\nUnder certain conditions, an authenticated user could manage MCP API keys outside their intended account allowing an attacker to escalate privileges through account takeover.\n\nApplications that do not use `@payloadcms/plugin-mcp` are not affected.\n\n### Patches\nUsers should upgrade to `@payloadcms/plugin-mcp` version `3.88.0` or later.\n\n### Workarounds\nUpgrading is recommended. Until then, disable the MCP plugin or restrict MCP API-key management to trusted users.\n\nImported from OSV GHSA-2q76-m6w6-qgc6.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-2q76-m6w6-qgc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/security/advisories/GHSA-2q76-m6w6-qgc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/commit/025581d8c5ed836039ad85397288a30f0d3c11c1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/payloadcms/payload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/payloadcms/payload/releases/tag/v3.88.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@payloadcms/plugin-mcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "3.61.0"
+            },
+            {
+              "fixed": "3.88.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

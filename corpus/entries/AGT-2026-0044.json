@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0044",
+  "modified": "2026-10-20T20:15:05.222078887Z",
+  "published": "2026-10-20T20:06:35Z",
+  "aliases": [
+    "GHSA-46jr-4wx8-v453",
+    "CVE-2026-111768"
+  ],
+  "summary": "@modelcontextprotocol/sdk: MCP TypeScript SDK: One HTTP request within the default size limit could exhaust server memory during validation",
+  "details": "### Summary\nIn affected versions, servers put no limit on how many array elements and object keys they validated in one request. One HTTP request within the default 4 MiB size limit could exhaust the server's memory, and the process aborted with `JavaScript heap out of memory`.\n\nNo credentials are needed, unless you authenticate requests before they reach the SDK.\n\n### Am I affected?\nYes, if clients you do not fully trust can reach your server over HTTP. The risk is highest for `McpServer` tools whose input contains an array or a record. stdio-only servers are not affected.\n\nAffected versions:\n\n- `@modelcontextprotocol/sdk` 1.3.0 through 1.31.0\n- `@modelcontextprotocol/server` 2.0.0 through 2.2.0\n\n### Fix\nUpgrade to:\n\n- 1.x: `@modelcontextprotocol/sdk` 1.32.0 or later\n- 2.x: `@modelcontextprotocol/server` 2.3.0 or later\n\n**Upgrading alone changes nothing.** The patched versions add an `McpServer` option, `maxToolInputElements`, that is off by default. Make both of these changes:\n\n1. Set `maxToolInputElements` just above the largest input your tools need, for example `new McpServer(info, { maxToolInputElements: 10_000 })`. It counts array elements and object keys in a call's arguments. A call over the limit gets an `isError: true` result.\n2. Lower the request size limit to what your tools need. The option covers tool arguments only, and the size limit covers everything else. Set `maxRequestBodySize` on the transport or `createMcpHandler()`. If you parse the body yourself, for example with `express.json()` or Fastify, set that parser's limit.\n\nIf you cannot upgrade yet, make the second change. `maxRequestBodySize` needs `@modelcontextprotocol/sdk` 1.30.1 or `@modelcontextprotocol/server` 2.1.0. Below that, use a reverse proxy.\n\nImported from OSV GHSA-46jr-4wx8-v453.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-46jr-4wx8-v453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-46jr-4wx8-v453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/pull/2927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/commit/6d8dbc6cb590edf766fcb66b636ca6b654e99c37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/commit/fd26801b3b387742fe24a90ed4b275dd6072209f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@modelcontextprotocol/sdk"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.3.0"
+            },
+            {
+              "fixed": "1.32.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@modelcontextprotocol/server"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

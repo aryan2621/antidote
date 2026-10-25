@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0140",
+  "modified": "2026-07-13T16:42:45.012915552Z",
+  "published": "2026-06-19T21:15:40Z",
+  "aliases": [
+    "GHSA-jr33-mw75-7j8f",
+    "CVE-2026-55837",
+    "PYSEC-2026-2443"
+  ],
+  "summary": "dbt-mcp: dbt MCP Server: Unauthenticated OAuth Context Endpoint Leaks dbt Platform Tokens",
+  "details": "## Unauthenticated OAuth Context Endpoint Leaks dbt Platform Tokens\n\n### Summary\n\nThe local OAuth helper FastAPI server bundled with `dbt-mcp` exposes the `GET /dbt_platform_context` endpoint without any form of authentication or host-origin validation. After a user completes the OAuth login flow against dbt Cloud (cloud.getdbt.com), the endpoint returns the full `DbtPlatformContext` object — including the victim's `access_token` and `refresh_token` for the dbt Platform API — verbatim to any caller that can reach `127.0.0.1:6785`. An attacker who can direct the victim's browser to the helper origin via DNS rebinding, or who has co-located process access on the same host, can silently exfiltrate both tokens. The stolen bearer token grants full dbt Cloud API access as the victim; the refresh token enables persistent access beyond the original token's expiry. **CVSS Base Score: 8.0 (High).**\n\n### Details\n\nDuring the OAuth login flow, `dbt-mcp` launches an embedded FastAPI server (the \"OAuth helper\") bound to `127.0.0.1` starting on port `6785` (configured at `src/dbt_mcp/config/credentials.py:34`, `OAUTH_REDIRECT_STARTING_PORT = 6785`). After the OAuth callback is handled, the helper persists the full token context to disk and continues serving requests.\n\n**Data flow from source to sink:**\n\n1. **Source** — `src/dbt_mcp/oauth/fastapi_app.py:106`: The OAuth callback receives `token_response` from the dbt Platform authorization server.\n2. `src/dbt_mcp/oauth/dbt_platform.py:60`: `AccessTokenResponse(**token_response)` stores `access_token` and `refresh_token` as plaintext fields.\n3. `src/dbt_mcp/oauth/dbt_platform.py:64–69`: The `AccessTokenResponse` is embedded inside `DecodedAccessToken`, which is in turn embedded inside `DbtPlatformContext`.\n4. `src/dbt_mcp/oauth/fastapi_app.py:114`: The fully token-bearing `DbtPlatformContext` object is passed to `context_manager` for persistence.\n5. **Persistence sink** — `src/dbt_mcp/oauth/context_manager.py:63–64`: `yaml.dump(context.model_dump())` serializes the entire model — including tokens — to a YAML file on disk.\n6. **HTTP sink** — `src/dbt_mcp/oauth/fastapi_app.py:162–165`: The `GET /dbt_platform_context` route reads the YAML file back and returns the raw `DbtPlatformContext` object with no redaction.\n\n```python\n# src/dbt_mcp/oauth/fastapi_app.py:162-165\n@app.get(\"/dbt_platform_context\")\ndef get_dbt_platform_context() -> DbtPlatformContext:\n    logger.info(\"Selected project received\")\n    return dbt_platform_context_manager.read_context() or DbtPlatformContext()\n```\n\n```python\n# src/dbt_mcp/oauth/dbt_platform.py:8-14\nclass AccessTokenResponse(BaseModel):\n    access_token: str\n    refresh_token: str\n    ...\n\nclass DbtPlatformContext(BaseModel):\n    decoded_access_token: DecodedAccessToken | None = None\n    ...\n```\n\n**Missing protections (confirmed by grep):**\n\n- No `TrustedHostMiddleware` — the server accepts requests with arbitrary `Host` headers, enabling DNS rebinding.\n- No `CORSMiddleware` — no cross-origin restrictions on which sites can read the response.\n- No CSRF protection, no session nonce, no `Origin` header validation.\n- The route has no FastAPI `Depends()` security dependency.\n\nA `grep -Rni \"TrustedHostMiddleware\\|CORSMiddleware\\|csrf\\|origin\"` across the OAuth FastAPI application returns no results.\n\n**Recommended remediation:**\n\n```diff\n--- a/src/dbt_mcp/oauth/fastapi_app.py\n+++ b/src/dbt_mcp/oauth/fastapi_app.py\n+from starlette.middleware.trustedhost import TrustedHostMiddleware\n+\n+def _redact_context(context: DbtPlatformContext | None) -> DbtPlatformContext:\n+    if context is None:\n+        return DbtPlatformContext()\n+    return context.model_copy(update={\"decoded_access_token\": None})\n\n     app = FastAPI()\n+    app.add_middleware(\n+        TrustedHostMiddleware,\n+        allowed_hosts=[\"localhost\", \"127.0.0.1\"],\n+    )\n\n     @app.get(\"/dbt_platform_context\")\n     def get_dbt_platform_context() -> DbtPlatformContext:\n         logger.info(\"Selected project received\")\n-\n\nImported from OSV GHSA-jr33-mw75-7j8f.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-jr33-mw75-7j8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dbt-labs/dbt-mcp/security/advisories/GHSA-jr33-mw75-7j8f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/dbt-labs/dbt-mcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "dbt-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.20.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

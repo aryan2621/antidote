@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0006",
+  "modified": "2025-12-10T17:41:16.608540Z",
+  "published": "2025-12-10T00:30:22Z",
+  "aliases": [
+    "GHSA-8fxj-2g9q-8fjw",
+    "CVE-2025-65513"
+  ],
+  "summary": "mcp-fetch-server: Fetch MCP Server has a Server-Side Request Forgery (SSRF) vulnerability",
+  "details": "fetch-mcp v1.0.2 and before is vulnerable to Server-Side Request Forgery (SSRF) vulnerability, which allows attackers to bypass private IP validation and access internal network resources.\n\nImported from OSV GHSA-8fxj-2g9q-8fjw.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-8fxj-2g9q-8fjw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65513"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Team-Off-course/MCP-Server-Vuln-Analysis/blob/main/CVE-2025-65513.md"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/zcaceres/fetch-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zcaceres/fetch-mcp/blob/c662c8ac300f715e414a64766cd95cc9ec60a1b3/src/Fetcher.ts#L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://thorn-pheasant-6d8.notion.site/fetch-mcp-2853daf7b44180029ca5d56e03195736"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-fetch-server"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

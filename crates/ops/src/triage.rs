@@ -91,7 +91,7 @@ fn today() -> (i64, u32, u32) {
     (yoe + era * 400 + i64::from(m <= 2), m, d)
 }
 
-fn next_id(entries_dir: &Path, year: i64) -> Result<String> {
+pub(crate) fn next_id(entries_dir: &Path, year: i64) -> Result<String> {
     let prefix = format!("AGT-{year}-");
     let mut max = 0;
     for e in fs::read_dir(entries_dir)? {

@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0183",
+  "modified": "2026-04-02T13:35:40.553290Z",
+  "published": "2026-04-01T23:58:50Z",
+  "aliases": [
+    "GHSA-w2fm-25vw-vh7f"
+  ],
+  "summary": "mcp-handler has a tool response leak across concurrent client sessions ('Race Condition')",
+  "details": "`mcp-handler` versions prior to 1.1.0 accepted `@modelcontextprotocol/sdk` < 1.26.0 as a peer dependency. That SDK version contains a vulnerability [[CVE-2026-25536](https://nvd.nist.gov/vuln/detail/CVE-2026-25536)] that causes concurrent requests from different clients to share server-side state including authentication context and tool execution results when a `StreamableHTTPServerTransport` instance is reused across requests.\n\n**Note:** This is _not_ a vulnerability in `mcp-handler` itself. The root cause is in the peer dependency `@modelcontextprotocol/sdk`. \n\n### Impact\n\nA low-privileged attacker making concurrent requests to an `mcp-handler` endpoint can read another client's session data, including authentication information and tool execution state. This is a confidentiality breach with potential for limited integrity impact.\n\n**Root Cause:** [CVE-2026-25536](https://nvd.nist.gov/vuln/detail/CVE-2026-25536) in `@modelcontextprotocol/sdk` < 1.26.0. The SDK did not prevent reuse of stateless transports across client connections.\n\n### Patches\n\nUpgrade to `mcp-handler@1.1.0`. This release raises the minimum peer dependency to `@modelcontextprotocol/sdk@>=1.26.0`, which contains the fix for CVE-2026-25536. \n\n### Workarounds\n\n- Upgrade `@modelcontextprotocol/sdk` to `>=1.26.0` (note: the SDK will throw on transport reuse, which will break `mcp-handler` < 1.1.0 which effectively forces the upgrade)\n- Alternatively, manually create fresh `McpServer` and transport instances per request in your handler code\n\nImported from OSV GHSA-w2fm-25vw-vh7f.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-w2fm-25vw-vh7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/mcp-handler/security/advisories/GHSA-w2fm-25vw-vh7f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25536"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-345p-7cg4-v4c7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/vercel/mcp-handler"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-handler"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

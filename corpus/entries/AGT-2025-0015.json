@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0015",
+  "modified": "2026-09-10T03:50:58.597326499Z",
+  "published": "2025-11-07T03:30:25Z",
+  "aliases": [
+    "GHSA-rwvc-j5jr-mgvh",
+    "CVE-2025-48985"
+  ],
+  "summary": "Vercel’s AI SDK's filetype whitelists can be bypassed when uploading files",
+  "details": "A vulnerability in Vercel’s AI SDK has been fixed in versions 5.0.52, 5.1.0-beta.9, and 6.0.0-beta. This issue may have allowed users to bypass filetype whitelists when uploading files. All users are encouraged to upgrade.\n\nImported from OSV GHSA-rwvc-j5jr-mgvh.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-rwvc-j5jr-mgvh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-48985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/issues/8881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/commit/930399bb9839a8baf3d349614106d78268775eed"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/vercel/ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vercel.com/changelog/cve-2025-48985-input-validation-bypass-on-ai-sdk"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "ai"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.0.52"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "ai"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "5.1.0-beta.0"
+            },
+            {
+              "fixed": "5.1.0-beta.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "low"
+  }
+}

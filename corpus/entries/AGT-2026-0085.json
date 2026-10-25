@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0085",
+  "modified": "2026-10-23T17:45:03.913249027Z",
+  "published": "2026-10-23T17:29:17Z",
+  "aliases": [
+    "GHSA-84c9-qqpq-2pq5",
+    "CVE-2026-77366"
+  ],
+  "summary": "obsidian-tc tokens can access arbitrary configured vaults",
+  "details": "### Impact\nTool dispatch did not check the caller-supplied `input.vault` against the caller's bound vault (`ctx.vaultId`); the folder ACL was a single global instance and the JWT carried no vault claim. As a result, **any valid token could read, write, or delete any configured vault** by passing `input.vault`, defeating multi-tenant isolation across ~90 tool sites. (`resources/read` was the only surface that already guarded this.)\n\n### Patches\nFixed in **1.3.1** (the fix was developed on the `v1.3.0` tag, which never published to npm; 1.3.1 is the first published release with the fix). Upgrade to `>= 1.3.1`.\n\n### Workarounds\nRun a single vault per server process, or isolate each tenant on a separate process/credential.\n\n### Fix\nA central `input.vault === ctx.vaultId` guard was added in dispatch before the scope check.\n\nImported from OSV GHSA-84c9-qqpq-2pq5.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-84c9-qqpq-2pq5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/security/advisories/GHSA-84c9-qqpq-2pq5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/pull/72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/commit/38b4992e87dc2715564236e1a42d005ab05a0194"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/releases/tag/v1.3.1"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/cve-2026-77366"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "obsidian-tc"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0208",
+  "modified": "2026-06-12T20:01:47.712802563Z",
+  "published": "2026-05-20T08:20:22Z",
+  "aliases": [
+    "MAL-2026-4500"
+  ],
+  "summary": "Malicious code in bricks-builder-mcp (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (7ad643457c1104b8f118971a9ee95702f2126a16f33a4ec9dfd8ed21c43fc1eb)\nbricks-builder-mcp is a Model Context Protocol server exposing WordPress/Bricks Builder editing tools (page JSON edits, media uploads, custom CSS/JS injection, etc.) to an LLM agent. server.js:142-144 hardcodes both the target WordPress URL and the API key as defaults: `const WORDPRESS_URL = process.env.WORDPRESS_URL || \"https://aidetravauxfibre0002.live-website.com\"; const API_KEY = process.env.API_KEY || \"bricks_syectnbripq\";`. When an operator runs the server without setting WORDPRESS_URL and API_KEY, every tool invocation — including caller/LLM-supplied page content, asset URLs, and arbitrary custom code — is POSTed (server.js:1012, 1022, 1030, 1039, 1047) with the hardcoded API key to `https://aidetravauxfibre0002.live-website.com/wp-json/bricks-mcp/v2`, an author-controlled site unrelated to the installer. The code only emits a `[WARN]` and proceeds rather than failing closed. This is the silent-relay shape: normal use of the package's advertised API silently leaks caller-supplied data to a hardcoded third-party destination chosen by the publisher. Additionally, server.js:151 honors an `INSECURE_SSL=1` env var that sets `NODE_TLS_REJECT_UNAUTHORIZED=0` process-wide, disabling certificate validation for every outbound request from the Node process — a quality/security concern but opt-in.\n\n\nImported from OSV MAL-2026-4500.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-4500"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bricks-builder-mcp/v/3.11.2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bricks-builder-mcp/v/3.10.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bricks-builder-mcp/v/3.6.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/bricks-builder-mcp/v/3.12.3"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "bricks-builder-mcp"
+      },
+      "versions": [
+        "3.11.2",
+        "3.10.0",
+        "3.6.1",
+        "3.12.3"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

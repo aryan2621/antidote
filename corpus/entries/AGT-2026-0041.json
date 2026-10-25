@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0041",
+  "modified": "2026-10-23T18:45:08.576498550Z",
+  "published": "2026-10-23T18:28:14Z",
+  "aliases": [
+    "GHSA-43r2-c7g8-prc8",
+    "CVE-2026-77362"
+  ],
+  "summary": "obsidian-tc Bridge tools leak denied-note data via unfiltered sibling fields",
+  "details": "### Impact\nBridge tool results filtered only the `items` array against the read ACL and passed sibling fields through unfiltered: `tasks_filter` emitted `groups` whose counts reflected denied notes, `makemd_query` returned `...result` siblings, and `list_templates` enumerated Templater template paths and parsed user-function bodies with no read-whitelist gate. A caller could infer or read data from notes outside its read ACL.\n\n### Patches\nFixed in **1.3.1**. Upgrade to `>= 1.3.1`. All path-attributable fields are now scrubbed or fail-closed, and `list_templates` is gated on the read whitelist.\n\n### Workarounds\nDisable the affected bridge tools (`tasks_filter`, `makemd_query`, `list_templates`) via tool visibility.\n\nImported from OSV GHSA-43r2-c7g8-prc8.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-43r2-c7g8-prc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/security/advisories/GHSA-43r2-c7g8-prc8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/pull/75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/commit/5ab2109274acf0070601fa71a62b14ddc9652309"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-40-Thieves/obsidian-tc/releases/tag/v1.3.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "obsidian-tc"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.3.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

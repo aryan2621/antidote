@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0134",
+  "modified": "2026-07-20T21:56:44.800003Z",
+  "published": "2026-06-18T14:30:43Z",
+  "aliases": [
+    "GHSA-j99q-93c9-h869",
+    "CVE-2026-57441"
+  ],
+  "summary": "@bitbonsai/mcpvault: MCPVault: PathFilter restricted-directory deny-list bypass via case and trailing dot/space equivalence",
+  "details": "On case-insensitive filesystems (macOS, Windows), PathFilter compiled its deny-list patterns case-sensitively and matched the path verbatim, so names like `.Git/config`, `.GIT/config`, or `.oBsIdIaN/secrets.md` slipped past the `.git`/`.obsidian`/`node_modules` restriction while the OS opened the real file. On Windows, trailing dots/spaces (`.git./config`, `.git /config`) bypassed it the same way. Affects both `isAllowed` (read/write/move/search) and `isAllowedForListing`. Vault-root `..` containment is NOT affected. Fixed in 0.11.4 by case-insensitive matching plus per-segment canonicalization before the deny-list check. Reported privately by novice-22.\n\nImported from OSV GHSA-j99q-93c9-h869.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-j99q-93c9-h869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitbonsai/mcpvault/security/advisories/GHSA-j99q-93c9-h869"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bitbonsai/mcpvault"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@bitbonsai/mcpvault"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.11.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

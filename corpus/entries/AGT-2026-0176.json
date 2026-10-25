@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0176",
+  "modified": "2026-09-15T21:00:08.493839004Z",
+  "published": "2026-09-15T20:54:55Z",
+  "aliases": [
+    "GHSA-vmp7-252j-cwp7",
+    "CVE-2026-61568"
+  ],
+  "summary": "@zereight/mcp-gitlab: DNS rebinding reaches local Streamable HTTP MCP transport",
+  "details": "`@zereight/mcp-gitlab` exposes its Streamable HTTP MCP endpoint without an effective Host or Origin allowlist. A malicious web page can use DNS rebinding to route browser requests to a victim's local MCP listener while preserving an attacker-controlled `Host` and `Origin`. The server accepts those headers and reaches the MCP initialization path instead of rejecting the request at the HTTP boundary.\n\nThis is CWE-350, Reliance on Reverse DNS Resolution for a Security-Critical Action. The affected package is `@zereight/mcp-gitlab` version `2.1.18` at commit `74a8c834424ff557ad8bc6f225e4dc5acf80aa13`.\n\nThe vulnerable transport setup is in `index.ts`. Express JSON parsing is installed globally before any MCP route-level Host or Origin allowlist:\n\n```typescript\n// index.ts:12077\napp.use(express.json());\n\nregisterDownloadProxy(app);\n```\n\nThe Streamable HTTP transport is then created without the SDK DNS-rebinding controls:\n\n```typescript\n// index.ts:12375\ntransport = new StreamableHTTPServerTransport({\n  sessionIdGenerator: () => randomUUID(),\n  onsessioninitialized: (newSessionId: string) => {\n    streamableTransports[newSessionId] = transport;\n    metrics.totalSessions++;\n    metrics.activeSessions++;\n  },\n});\n```\n\nThe transport constructor does not set `enableDnsRebindingProtection`, `allowedHosts`, or `allowedOrigins`. The server also does not add an Express middleware that rejects unexpected `Host` or `Origin` headers before `/mcp`.\n\nThe default host is loopback, which is the exact target DNS rebinding attacks are designed to reach:\n\n```typescript\n// config.ts:192\nexport const HOST = getConfig(\"host\", \"HOST\") || \"127.0.0.1\";\n\n// config.ts:196\nexport const PORT = _intEnv(\"PORT\", \"port\", _PORT_DEFAULT);\n```\n\nThe README documents Streamable HTTP as a supported transport for modern remote deployments and documents `REMOTE_AUTHORIZATION=true` for multi-user HTTP deployments. In that mode, unauthenticated `tools/list` and material GitLab API tool calls are blocked by token checks. The Host/Origin defect is still present at the browser boundary: the server accepts attacker-controlled browser-origin headers and processes the MCP `initialize` request instead of rejecting the connection as cross-origin localhost access.\n\n## Proof of concept\n\nThe following reproduction uses a fake GitLab API with planted data. It proves the HTTP boundary failure and the token boundary separately:\n\n- no-token `initialize` succeeds with attacker-controlled `Host` and `Origin`;\n- no-token `tools/list` is rejected with `401`;\n- the same forged-origin flow with a planted `Private-Token` lists tools and calls `list_project_variables`;\n- the fake GitLab API records the forwarded token and returns a planted fake project variable.\n\nStart the fake GitLab API:\n\n```bash\npython3 - <<'PY'\nimport json\nfrom http.server import BaseHTTPRequestHandler, ThreadingHTTPServer\nfrom urllib.parse import parse_qs, urlparse\n\nWITNESS = \"/tmp/zereight-gitlab-mcp-rebind-witness.jsonl\"\nPROJECT_ID = \"pluto/rebind-target\"\nFAKE_SECRET = \"glpat-FAKE-PROJECT-CI-SECRET-0001\"\n\nclass Handler(BaseHTTPRequestHandler):\n    def _json(self, status, payload):\n        data = json.dumps(payload).encode()\n        self.send_response(status)\n        self.send_header(\"Content-Type\", \"application/json\")\n        self.send_header(\"Content-Length\", str(len(data)))\n        self.end_headers()\n        self.wfile.write(data)\n\n    def _record(self):\n        parsed = urlparse(self.path)\n        with open(WITNESS, \"a\", encoding=\"utf-8\") as f:\n            f.write(json.dumps({\n                \"method\": self.command,\n                \"path\": parsed.path,\n                \"query\": parse_qs(parsed.query),\n                \"authorization\": self.headers.get(\"authorization\"),\n                \"private_token\": self.headers.get(\"private-token\"),\n                \"job_token\": self.headers.get(\"job-token\"),\n            }, sort_keys=True) + \"\\n\")\n\n    def do_GET(self):\n        self._record()\n        path = urlparse(self.path).path\n     \n\nImported from OSV GHSA-vmp7-252j-cwp7.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-vmp7-252j-cwp7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/security/advisories/GHSA-vmp7-252j-cwp7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/pull/555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/commit/52207c6f5c0e7a39e9235d491225edbb562a0290"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/zereight/gitlab-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/releases/tag/v2.1.30"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@zereight/mcp-gitlab"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.1.30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

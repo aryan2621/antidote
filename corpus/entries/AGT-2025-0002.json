@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0002",
+  "modified": "2026-07-16T18:45:48.199122861Z",
+  "published": "2025-07-04T22:06:49Z",
+  "aliases": [
+    "GHSA-3qhf-m339-9g5v",
+    "CVE-2025-53366",
+    "PYSEC-2026-1616"
+  ],
+  "summary": "MCP Python SDK vulnerability in the FastMCP Server causes validation error, leading to DoS",
+  "details": "A validation error in the MCP SDK can cause an unhandled exception when processing malformed requests, resulting in service unavailability (500 errors) until manually restarted. Impact may vary depending on the deployment conditions, and presence of infrastructure-level resilience measures.\n\nThank you to Rich Harang for reporting this issue.\n\nImported from OSV GHSA-3qhf-m339-9g5v.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhf-m339-9g5v"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-3qhf-m339-9g5v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/pull/822"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/commit/29c69e6a47d0104d0afcea6ac35e7ab02fde809a"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-3qhf-m339-9g5v"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/modelcontextprotocol/python-sdk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.9.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/mcp/PYSEC-2026-1616.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/mcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.9.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

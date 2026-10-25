@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2025-0013",
+  "modified": "2025-12-26T23:27:27.257304Z",
+  "published": "2025-12-26T23:20:50Z",
+  "aliases": [
+    "GHSA-rcfx-77hg-w2wv"
+  ],
+  "summary": "FastMCP updated to MCP 1.23+ due to CVE-2025-66416",
+  "details": "There was a recent CVE report on MCP: https://nvd.nist.gov/vuln/detail/CVE-2025-66416. \n\nFastMCP does not use any of the affected components of the MCP SDK directly. However, FastMCP versions prior to 2.14.0 did allow MCP SDK versions <1.23 that were vulnerable to CVE-2025-66416. Users should upgrade to FastMCP 2.14.0 or later.\n\nImported from OSV GHSA-rcfx-77hg-w2wv.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-rcfx-77hg-w2wv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jlowin/fastmcp/security/advisories/GHSA-rcfx-77hg-w2wv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/python-sdk/security/advisories/GHSA-9h52-p55h-vw2f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66416"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jlowin/fastmcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "fastmcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.14.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

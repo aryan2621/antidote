@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0111",
+  "modified": "2026-06-09T10:45:15.572125876Z",
+  "published": "2026-05-18T13:26:51Z",
+  "aliases": [
+    "GHSA-f3rg-xqjj-cj9w",
+    "CVE-2026-45582"
+  ],
+  "summary": "n8n-MCP: Workflow telemetry sanitizer could retain partial values from URL-shaped node parameters",
+  "details": "## Summary\n\nIn affected versions of n8n-mcp, the workflow telemetry sanitizer could retain partial fragments of URL-shaped node parameters before sending workflow data to the project's anonymous telemetry backend. Values placed in HTTP-Request-style node parameters — such as customer or tenant identifiers, short secrets embedded in query strings, and signed request parameters — could therefore appear in stored telemetry, contrary to the collection boundary documented in `PRIVACY.md`.\n\n## Impact\n\nOperators with access to the project's telemetry backend could read partial fragments of workflow URL parameters that should not have been collected. The bug was scoped to URL-shaped fields in workflow *definitions*; credentials, OAuth tokens, and workflow *execution* data are not affected — credentials are removed by a separate code path, and long secrets and known-provider tokens are matched by dedicated patterns.\n\n## Patches\n\nFixed in **n8n-mcp `2.51.3`**. Upgrading is the recommended remediation.\n\n## Workarounds\n\nFor users who cannot upgrade immediately, disable anonymous telemetry by setting any of these environment variables to `true`:\n\n- `N8N_MCP_TELEMETRY_DISABLED`\n- `TELEMETRY_DISABLED`\n- `DISABLE_TELEMETRY`\n\n## Credit\n\nReported by @u-ktdi.\n\nImported from OSV GHSA-f3rg-xqjj-cj9w.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-f3rg-xqjj-cj9w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/czlonkowski/n8n-mcp/security/advisories/GHSA-f3rg-xqjj-cj9w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/czlonkowski/n8n-mcp/pull/782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/czlonkowski/n8n-mcp/commit/6cf6fef653fcd6d598f2f356aac4754931c7329f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/czlonkowski/n8n-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/czlonkowski/n8n-mcp/releases/tag/v2.51.3"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "n8n-mcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.51.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

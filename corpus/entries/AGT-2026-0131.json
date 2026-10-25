@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0131",
+  "modified": "2026-10-15T18:45:10.600088359Z",
+  "published": "2026-06-18T17:22:02Z",
+  "aliases": [
+    "GHSA-hxpf-9xvq-wph8",
+    "CVE-2026-57496",
+    "PYSEC-2026-3489"
+  ],
+  "summary": "netlicensing-mcp: REST Path Traversal Bypasses Token Redaction",
+  "details": "### Summary\n\nThe `netlicensing_get_product` MCP tool in `netlicensing-mcp` interpolates a caller-controlled `product_number` argument directly into a REST URL path without any validation. Passing `../token` as the product number causes `httpx` to normalize `/product/../token` into `/token`, silently redirecting the request to the NetLicensing token endpoint instead of the intended product endpoint. The response is then serialized through the generic `_wrap_json` wrapper rather than the token-specific `_wrap_json_token_read` wrapper, bypassing all APIKEY `number` and SHOP `shopURL` redaction. An authenticated MCP client can recover plaintext API key values that the token read tools intentionally mask, including admin-level APIKEY credentials. \n\n### Details\n\nThe vulnerability is a path traversal (CWE-22) that exploits the interaction between unsanitized string interpolation and `httpx`'s WHATWG URL normalization.\n\n**Source — `src/netlicensing_mcp/tools/products.py:22`**\n\n```python\nasync def get_product(product_number: str) -> dict:\n    \"\"\"Get a single product by its number.\"\"\"\n    return strip_output_fields(await nl_get(f\"/product/{product_number}\"))\n```\n\n`product_number` is inserted directly into the REST path with no validation. A value of `../token` produces the path `/product/../token`.\n\n**Sink — `src/netlicensing_mcp/client.py:143`**\n\n```python\nasync def nl_get(path: str, params: dict[str, str] | None = None) -> dict[str, Any]:\n    client = _get_client()\n    url = f\"{BASE_URL}{path}\"\n    ...\n    r = await client.get(url, headers=_headers(), params=params or {})\n```\n\n`httpx` constructs the full URL as `{BASE_URL}/product/../token` and, per WHATWG URL normalization rules applied to absolute URLs, resolves it to `{BASE_URL}/token`. The HTTP request is therefore sent to the NetLicensing `/core/v2/rest/token` endpoint.\n\n**Redaction bypass — `src/netlicensing_mcp/server.py:336` and `src/netlicensing_mcp/redaction.py:180-239`**\n\nThe tool handler wraps the response via `_wrap_json(entity, \"Product\")`, which calls only the generic `_json()` redaction. The token-specific path `_wrap_json_token_read()` → `redact_token_read()` is never invoked. The function `redact_token_read()` at `redaction.py:180-239` is the only code that masks APIKEY `number` and SHOP `shopURL` fields; because it is not on this code path, the raw API key value is returned verbatim in the MCP tool output.\n\n**Complete data flow:**\n\n1. `server.py:312-321` — MCP dispatcher receives attacker-controlled `product_number` and calls `products.get_product(product_number)`.\n2. `tools/products.py:22` — value interpolated into `f\"/product/{product_number}\"` without validation.\n3. `client.py:143` — `url = f\"{BASE_URL}{path}\"`; `httpx` normalizes `../` and sends request to `/token` endpoint.\n4. `server.py:336` — response wrapped as `\"Product\"` via `_wrap_json`, not `_wrap_json_token_read`.\n5. `server.py:160-165` — generic `_json()` redaction applies only default-field masking.\n6. `redaction.py:180-239` — `redact_token_read()` with APIKEY/SHOP-specific masking is never reached.\n\n### PoC\n\n**Prerequisites**\n\n- Python 3.10+\n- `netlicensing-mcp` 0.1.5 (or local commit `c8a3fec`) installed or available via `PYTHONPATH`\n- `httpx`, `python-dotenv`, `mcp[cli]` installed\n\n**Option A — Docker (recommended, reproduces Phase 2 result)**\n\n```bash\n# Build from the repository root (requires repo/ and vuln-001/ directories)\ndocker build -t netlicensing-vuln-001 \\\n  -f vuln-001/Dockerfile \\\n  reports/pypiAi_1561_Labs64__NetLicensing-MCP/\n\n# Run — exit code 0 confirms the vulnerability\ndocker run --rm netlicensing-vuln-001\n```\n\n**Option B — Direct Python**\n\n```bash\ncd /path/to/Labs64__NetLicensing-MCP\nPYTHONPATH=src python3 - <<'PY'\nimport asyncio, json, threading\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\n\nseen = []\nsecret = \"actual-api-key-value-5678\"\n\nclass Handler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        seen.append(self.path)\n        if self.path.endswith(\"/token\n\nImported from OSV GHSA-hxpf-9xvq-wph8.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-hxpf-9xvq-wph8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/security/advisories/GHSA-hxpf-9xvq-wph8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/pull/6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/commit/b8fd0ea76d533202573eb24add9fb2fbd9331496"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Labs64/NetLicensing-MCP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Labs64/NetLicensing-MCP/releases/tag/0.1.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/netlicensing-mcp/PYSEC-2026-3489.yaml"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "netlicensing-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.1.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0043",
+  "modified": "2026-07-23T15:11:42.744080055Z",
+  "published": "2026-07-17T18:47:31Z",
+  "aliases": [
+    "GHSA-45gf-fjxp-cjpq",
+    "CVE-2026-54549",
+    "PYSEC-2026-3485"
+  ],
+  "summary": "meta-ads-mcp: Server-Side Request Forgery (SSRF) in `upload_ad_image` via Unrestricted `image_url` Fetch",
+  "details": "## Server-Side Request Forgery (SSRF) in `upload_ad_image` via Unrestricted `image_url` Fetch\n\n### Summary\n\nThe `upload_ad_image` MCP tool in `meta-ads-mcp` v1.0.113 passes an attacker-controlled `image_url` parameter directly to an HTTP fetch helper (`httpx.AsyncClient(follow_redirects=True).get(url)`) without any scheme, host, or IP address validation. When the server is deployed with the `streamable-http` transport (a documented, officially supported mode), an unauthenticated remote attacker can supply an arbitrary URL—including `http://127.0.0.1/`, RFC 1918 addresses, or cloud metadata endpoints such as `http://169.254.169.254/`—and cause the server to issue an outbound HTTP request to that target. The `Authorization` middleware only verifies that a non-empty Bearer token is present; actual Meta API credential validation occurs *after* the image download, so any dummy Bearer token bypasses the pre-fetch check. This constitutes a full, unauthenticated Server-Side Request Forgery with a confirmed CVSS 3.1 Base Score of 8.3 (High).\n\n### Details\n\n**Source**\n\n`meta_ads_mcp/core/ads.py`, line 1316–1322: The MCP tool `upload_ad_image` is registered with `@mcp_server.tool()` and exposes `image_url: Optional[str]` as a direct tool argument that is fully attacker-controlled over the network.\n\n```python\n# meta_ads_mcp/core/ads.py\n1316: @mcp_server.tool()\n1318: async def upload_ad_image(\n1322:     image_url: Optional[str] = None,\n```\n\n**Propagation**\n\n`meta_ads_mcp/core/ads.py`, line 1389: The value is forwarded to `try_multiple_download_methods(image_url)` without any sanitization or validation.\n\n```python\n# meta_ads_mcp/core/ads.py\n1389:     image_bytes = await try_multiple_download_methods(image_url)\n```\n\n**Sinks**\n\n`meta_ads_mcp/core/utils.py` contains three independent HTTP fetch paths, all using `httpx.AsyncClient` with `follow_redirects=True` and no URL, host, or IP validation:\n\n```python\n# meta_ads_mcp/core/utils.py\n166:     async with httpx.AsyncClient(follow_redirects=True, timeout=30.0) as client:\n168:         response = await client.get(url, headers=headers)\n\n214:     async with httpx.AsyncClient(follow_redirects=True) as client:\n215:         response = await client.get(url, headers=headers, timeout=30.0)\n\n224:     async with httpx.AsyncClient(follow_redirects=True) as client:\n228:         response = await client.get(url, timeout=30.0)\n```\n\n**Authorization bypass**\n\n`meta_ads_mcp/core/http_auth_integration.py`, lines 78–82: The middleware extracts any non-empty Bearer token value and places it into request context without validating it against Meta's API. The actual Meta OAuth token check (in `meta_ads_mcp/core/api.py:415`) occurs only after the image download completes, meaning the SSRF sink fires before any meaningful credential verification.\n\n**Absence of sanitization**\n\nA search for `urlparse`, `urlsplit`, `ipaddress`, `localhost`, `127.0.0.1`, `169.254`, `private`, `allowlist`, `blocklist`, or `is_global` in `meta_ads_mcp/core/ads.py` and `meta_ads_mcp/core/utils.py` returns no matches. No URL, scheme, hostname, or IP validation is present anywhere in the fetch path.\n\n**Transport exposure**\n\n`meta_ads_mcp/core/server.py`, line 219: The `--transport streamable-http` mode is a documented, officially supported deployment option (not a development-only stub), meaning the attack surface is reachable over the network in production deployments.\n\n### PoC\n\n**Environment setup**\n\n```bash\n# Build and run the Docker image (includes vulnerable meta-ads-mcp v1.0.113 and poc.py)\ndocker build -f vuln-001/Dockerfile \\\n  -t meta-ads-ssrf-poc \\\n  reports/pypiAi_615_pipeboard-co__meta-ads-mcp/\n\ndocker run --rm meta-ads-ssrf-poc\n# Exit code 0 = SSRF confirmed\n```\n\n**Manual reproduction (two terminals)**\n\n```bash\n# Terminal 1 — SSRF capture listener on port 9009\npython3 - <<'PY'\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\nclass H(BaseHTTPRequestHandler):\n    def do_GET(self):\n        print(\"SSRF GET\", self.path, flush=True)\n\n\nImported from OSV GHSA-45gf-fjxp-cjpq.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-45gf-fjxp-cjpq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp/security/advisories/GHSA-45gf-fjxp-cjpq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp/commit/7d9926336bbdac6285a988d043c4ccfe126c94c5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pipeboard-co/meta-ads-mcp/releases/tag/1.0.115"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "meta-ads-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.115"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

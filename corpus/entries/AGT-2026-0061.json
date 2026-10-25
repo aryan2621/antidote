@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0061",
+  "modified": "2026-07-10T17:41:40.672251Z",
+  "published": "2026-06-03T00:30:27Z",
+  "aliases": [
+    "GHSA-5xx3-j724-wmx5",
+    "CVE-2026-10690"
+  ],
+  "summary": "@wonderwhy-er/desktop-commander: DesktopCommanderMCP is vulnerable to SSRF",
+  "details": "A vulnerability was identified in wonderwhy-er DesktopCommanderMCP 0.2.37. This affects the function readFileFromUrl of the file src/tools/filesystem.ts of the component read_file. Such manipulation of the argument url leads to server-side request forgery. The attack may be performed from remote. The exploit is publicly available and might be used. The name of the patch is 53699bebba9950047bca16ac4dc8f0568f596aaa. It is best practice to apply a patch to resolve this issue.\n\nImported from OSV GHSA-5xx3-j724-wmx5.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-5xx3-j724-wmx5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/issues/410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sorlen008/DesktopCommanderMCP/commit/53699bebba9950047bca16ac4dc8f0568f596aaa"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-10690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/830735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367959/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@wonderwhy-er/desktop-commander"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.2.37"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "low"
+  }
+}

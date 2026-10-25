@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0155",
+  "modified": "2026-10-01T17:55:39.556401826Z",
+  "published": "2026-06-22T09:30:45Z",
+  "aliases": [
+    "GHSA-pqrj-4gwg-h5f7",
+    "CVE-2025-66336",
+    "PYSEC-2026-4048"
+  ],
+  "summary": "doris-mcp-server: Apache Doris MCP Server is vulnerable to SQL Injection via metadata query path",
+  "details": "Apache Doris MCP Server contains a SQL injection vulnerability in a metadata query path. A user-controlled database name is directly interpolated into a SQL query, and the query is executed without passing the caller's authorization context. This may allow an authenticated attacker, or an anonymous attacker if authentication is disabled, to bypass SQL security validation and access metadata outside the intended database scope.\n\nAffected users are recommended to upgrade to Doris version 0.6.1 or later, which fixes the issue.\n\nImported from OSV GHSA-pqrj-4gwg-h5f7.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-pqrj-4gwg-h5f7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/doris-mcp-server/pull/68"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/doris-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/4l4v3m7ofwrgp4s4s98pjb5l03fcrzo2"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/22/1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "doris-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.6.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

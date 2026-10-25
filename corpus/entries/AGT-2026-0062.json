@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0062",
+  "modified": "2026-07-13T16:42:52.830314188Z",
+  "published": "2026-06-03T00:30:27Z",
+  "aliases": [
+    "GHSA-647r-72hf-4vmh",
+    "CVE-2026-10692",
+    "PYSEC-2026-2421"
+  ],
+  "summary": "code-index-mcp: Code Index MCP is vulnerable to Uncontrolled Resource Consumption",
+  "details": "A weakness has been identified in johnhuang316 code-index-mcp up to 2.14.0. Affected is the function is_safe_regex_pattern of the component search_code_advanced. Executing a manipulation of the argument regex can lead to inefficient regular expression complexity. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 2.14.1 is able to address this issue. This patch is called 25bc02fac74051ddae15ce79e952f00211b1ea6b. Upgrading the affected component is recommended.\n\nImported from OSV GHSA-647r-72hf-4vmh.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-647r-72hf-4vmh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/johnhuang316/code-index-mcp/issues/84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/johnhuang316/code-index-mcp/commit/25bc02fac74051ddae15ce79e952f00211b1ea6b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/johnhuang316/code-index-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/johnhuang316/code-index-mcp/releases/tag/v2.14.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-10692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/830786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367961"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/367961/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "code-index-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.14.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "low"
+  }
+}

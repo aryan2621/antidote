@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0095",
+  "modified": "2026-06-29T12:26:44.050945480Z",
+  "published": "2026-05-12T18:30:38Z",
+  "aliases": [
+    "GHSA-94gr-w3q5-rfqr",
+    "CVE-2025-65719",
+    "PYSEC-2026-371"
+  ],
+  "summary": "kubectl-mcp-server: Open Source Kubectl MCP Server vulnerable to arbitrary code execution via user interaction with crafted HTML page",
+  "details": "An issue in Open Source Kubectl MCP Server v1.1.1 allows attackers to execute arbitrary code on a victim system via user interaction with a crafted HTML page.\n\nImported from OSV GHSA-94gr-w3q5-rfqr.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-94gr-w3q5-rfqr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-65719"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rohitg00/kubectl-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ox.security/blog/cve-2025-65719-critical-rce-in-kubectl-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ox.security/blog/kubectl-mcp-server-remote-code-execution"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "kubectl-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "kubectl-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

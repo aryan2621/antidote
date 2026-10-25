@@ -35,6 +35,9 @@ pub struct Package {
 #[derive(Deserialize)]
 pub struct DbSpecific {
     pub classification: String,
+    /// overrides the classification default, e.g. a low-severity CVE
+    #[serde(default)]
+    pub severity: Option<String>,
     #[serde(default)]
     pub indicators: Indicators,
 }
@@ -47,6 +50,11 @@ pub struct Indicators {
 
 impl Entry {
     pub fn severity(&self) -> &'static str {
+        if let Some(s) = self.database_specific.as_ref().and_then(|d| d.severity.as_deref()) {
+            if let Some(s) = ["critical", "high", "medium", "low"].into_iter().find(|x| *x == s) {
+                return s;
+            }
+        }
         match self.database_specific.as_ref().map(|d| d.classification.as_str()) {
             Some("malicious") => "critical",
             Some("vulnerable") => "high",

@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0171",
+  "modified": "2026-07-13T16:43:24.397928203Z",
+  "published": "2026-04-28T03:31:29Z",
+  "aliases": [
+    "GHSA-vc5j-42hh-j3mr",
+    "CVE-2026-7212",
+    "PYSEC-2026-2684"
+  ],
+  "summary": "notes-mcp has a Path Traversal issue",
+  "details": "A security vulnerability has been detected in edvardlindelof notes-mcp up to 0.1.4. This affects an unknown function of the file notes_mcp.py. The manipulation of the argument root_dir/path leads to path traversal. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.\n\nImported from OSV GHSA-vc5j-42hh-j3mr.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-vc5j-42hh-j3mr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/edvardlindelof/notes-mcp/issues/2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/edvardlindelof/notes-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/802084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/359808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/359808/cti"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "notes-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.1.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

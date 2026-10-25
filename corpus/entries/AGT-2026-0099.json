@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0099",
+  "modified": "2026-08-19T12:55:37.978994103Z",
+  "published": "2026-08-14T19:49:14Z",
+  "aliases": [
+    "GHSA-9hgc-g3w5-67cm",
+    "CVE-2026-53708",
+    "PYSEC-2026-3684"
+  ],
+  "summary": "mcp-contextforge-gateway: ContextForge: DNS TOCTOU race condition causes SSRF protection bypass (`/admin/gateways/test`)",
+  "details": "## Summary\n\nThe `/admin/gateways/test` endpoint validates submitted URLs by resolving the hostname at validation time and blocking private address ranges. The HTTP client independently re-resolves DNS at connection time with no IP binding between the two operations, creating a TOCTOU window exploitable via DNS rebinding. The source code explicitly acknowledges this limitation in two separate locations.\n\n## Details\n\n`validate_gateway_test_url()` in `mcpgateway/common/validators.py` (lines 1527–1710) calls `socket.getaddrinfo()` on the submitted hostname, checks whether the resolved IP falls in private, loopback, link-local, or cloud-metadata ranges (including `169.254.169.254`, `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`), and accepts the URL if the result is clean. The validated URL is then passed to the HTTP client **as the original hostname string**, not as the validated IP address.\n\nThe HTTP client (`httpx`, via `ResilientHttpClient`) performs its own independent DNS resolution at connection time. No mechanism bridges the two resolutions:\n\n- The validated IP address is never passed to the HTTP client.\n- Only the original hostname is forwarded, triggering a second independent lookup.\n- No TTL enforcement, mandatory DNS-cache reuse, or IP-level socket binding is\n  implemented.\n\nThe configuration options `ssrf_blocked_networks` (default: enabled, covers `169.254.169.254/32`, link-local ranges, etc.) and `ssrf_dns_fail_closed` (default: `True`) apply exclusively at **validation time**. They share the same TOCTOU gap because they operate on the validation-time resolution result, not on the connection-time resolution performed by the HTTP client.\n\n### Two independent acknowledgements in the source code\n\n**Location 1** — `mcpgateway/common/validators.py`, lines 1537–1543 (function docstring of `validate_gateway_test_url`):\n\n> \"DNS TOCTOU Limitation: This validation resolves DNS at validation time, but\n> the HTTP client will re-resolve DNS at connection time. An attacker controlling\n> DNS can return a public IP during validation and a private IP during connection\n> (DNS rebinding). True mitigation requires pinning the validated IP into the\n> connection (custom resolver/transport, or IP allowlist check at connect\n> callback). This is tracked as a known limitation for future improvement.\"\n\n**Location 2** — `mcpgateway/admin.py`, lines 14025–14029 (call site comment):\n\n> \"TODO(ICACF-15): DNS rebinding risk — allowlist and SSRF checks resolve DNS,\n> but the actual ResilientHttpClient request resolves DNS a third time. An\n> attacker-controlled DNS server could return a public IP during validation and a\n> private IP during the actual request. Consider pinning the resolved IP for\n> outbound requests (custom transport) or caching DNS resolution across\n> validation and request phases.\"\n\nThe existence of a named TODO ticket (ICACF-15) confirms the maintainers consider this an open, tracked defect.\n\n### Prerequisites\n\n1. `MCPGATEWAY_ADMIN_API_ENABLED=true` (not the default; must be explicitly\n   enabled by an operator).\n2. The attacker holds a credential with explicit `gateways.read` permission\n   assigned via a database role.\n\nRegarding prerequisite 2: the endpoint is decorated with @require_permission(\"gateways.read\", allow_admin_bypass=False). The allow_admin_bypass=False flag explicitly disables the platform-admin shortcut, meaning even a platform admin must hold an explicit database-backed role assignment that carries gateways.read. A credential produced solely via the platform-admin bootstrap bypass described in the companion advisory (GHSA-m8rv-5m6m-32ff) — a virtual identity with no database record — is rejected with HTTP 403 at this endpoint because no role lookup can succeed without a database row. An attacker who has forged a JWT via that bootstrap path does not automatically gain access to this endpoint; they still require a separately provisioned account with an appropriate role.\n\n## Proof of Concept\n\n### Setup\n\n```bash\nc\n\nImported from OSV GHSA-9hgc-g3w5-67cm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-9hgc-g3w5-67cm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/security/advisories/GHSA-9hgc-g3w5-67cm"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/IBM/mcp-context-forge"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IBM/mcp-context-forge/releases/tag/v1.0.3"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-contextforge-gateway"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

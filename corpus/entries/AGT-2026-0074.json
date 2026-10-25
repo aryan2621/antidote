@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0074",
+  "modified": "2026-06-29T12:26:18.707917787Z",
+  "published": "2026-06-26T21:05:43Z",
+  "aliases": [
+    "GHSA-73cv-556c-w3g6",
+    "CVE-2026-49257",
+    "PYSEC-2026-410"
+  ],
+  "summary": "mcp-pinot-server: mcp-pinot: Unauthenticated tool invocation via default oauth_enabled=False + host 0.0.0.0 bind",
+  "details": "## Resolution\n\nFixed in [v3.1.0](https://github.com/startreedata/mcp-pinot/releases/tag/v3.1.0), released 2026-05-25. The fix was merged in [PR #95](https://github.com/startreedata/mcp-pinot/pull/95) at commit [`1c7d3f9`](https://github.com/startreedata/mcp-pinot/commit/1c7d3f9cd384854bf72c127d230bdb32299475ad).\n\nThe fix changes the default HTTP bind host to `127.0.0.1`, refuses non-loopback HTTP/HTTPS exposure unless OAuth is enabled, makes Helm exposure opt-in and OAuth-gated, and adds parser-backed single-statement read-only validation for `read-query`.\n\n## CVSS evaluation\n\nReviewed on 2026-05-25. The advisory remains **Critical** with `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H` = **10.0**.\n\nRationale:\n\n| Metric | Value | Reason |\n|---|---|---|\n| AV | Network | The default HTTP server bound to `0.0.0.0:8080` and accepted remote HTTP requests. |\n| AC | Low | Exploitation required only a direct MCP tool call. |\n| PR | None | OAuth was disabled by default. |\n| UI | None | No user interaction was required. |\n| S | Changed | The vulnerable MCP server used its server-side credentials to act on the separate Pinot cluster security boundary. |\n| C | High | Unauthenticated callers could read table data and cluster metadata through server-side Pinot credentials. |\n| I | High | Unauthenticated callers could create or update schemas and table configs where the server-side account had those privileges. |\n| A | High | Expensive queries and configuration mutations could degrade or disrupt Pinot availability. |\n\n# Unauthenticated tool invocation via default oauth_enabled=False + host 0.0.0.0 bind\n\n## Summary\n\n`mcp-pinot` v3.0.1 (and earlier) defaults to running an HTTP MCP server bound to `0.0.0.0:8080` with no authentication enabled. All MCP tools, including SQL query execution, schema creation, and table-config mutation, are reachable by any network-adjacent caller. The server proxies these calls using server-side Pinot credentials, producing a confused-deputy condition that yields full read/write access to the configured Pinot cluster.\n\n## Affected versions\n\n- All releases on `main`, confirmed in tags v2.1.0 through v3.0.1.\n- Affected files: `mcp_pinot/server.py`, `mcp_pinot/config.py`.\n\n## Root cause\n\nThree defaults compose to produce unauthenticated network exposure:\n\n**1. Auth is opt-in and defaults to off** (`mcp_pinot/config.py:64,328`):\n\n```python\n@dataclass\nclass ServerConfig:\n    ...\n    oauth_enabled: bool = False\n    ...\n\ndef load_server_config() -> ServerConfig:\n    return ServerConfig(\n        ...\n        oauth_enabled=os.getenv(\"OAUTH_ENABLED\", \"false\").lower() == \"true\",\n        ...\n    )\n```\n\n**2. Auth construction is gated by `oauth_enabled`** (`mcp_pinot/server.py:26-46`):\n\n```python\n_auth = None\nif server_config.oauth_enabled:\n    oauth_config = load_oauth_config()\n    token_verifier = JWTVerifier(...)\n    _auth = OAuthProxy(...)\n\nmcp = FastMCP(\"Pinot MCP Server\", auth=_auth)\n```\n\nWhen `oauth_enabled` is false (default), `_auth` stays `None` and `FastMCP` registers all `@mcp.tool` endpoints with no authentication.\n\n**3. Default bind is all interfaces on a well-known port** (`mcp_pinot/config.py:60-61`):\n\n```python\nhost: str = \"0.0.0.0\"\nport: int = 8080\n```\n\nThe HTTP transport in `server.py:263-268` uses these values directly. Any operator following the README's HTTP transport instructions (`uv pip install`, `.env` from `.env.example`, run) ends up with a network-reachable MCP server with no auth.\n\n## Confused-deputy\n\nThe Pinot client uses server-side credentials loaded from environment variables (`mcp_pinot/config.py:285-294, 300-315`). When an unauthenticated MCP caller invokes `read_query` or any other tool, the request is executed with the server's `PINOT_TOKEN` or `PINOT_USERNAME`/`PINOT_PASSWORD`, which is typically a privileged service account. The MCP server effectively launders the caller's lack of identity into the server's privileges against the upstream cluster.\n\n## Exposed tools\n\nAll 14 tools in `mcp_pino\n\nImported from OSV GHSA-73cv-556c-w3g6.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-73cv-556c-w3g6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/startreedata/mcp-pinot/security/advisories/GHSA-73cv-556c-w3g6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/startreedata/mcp-pinot/issues/90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/startreedata/mcp-pinot/pull/95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/startreedata/mcp-pinot/commit/1c7d3f9cd384854bf72c127d230bdb32299475ad"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/startreedata/mcp-pinot"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-pinot-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

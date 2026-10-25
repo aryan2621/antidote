@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0113",
+  "modified": "2026-10-01T17:56:08.340607095Z",
+  "published": "2026-09-22T20:36:29Z",
+  "aliases": [
+    "GHSA-f6pj-qv47-g96w",
+    "CVE-2026-77247",
+    "PYSEC-2026-4092"
+  ],
+  "summary": "mcp-atlassian: MCP Atlassian: Arbitrary server-local file upload to Jira/Confluence attachments via unrestricted file_path parameters",
+  "details": "## Summary\n\nThe Jira and Confluence attachment upload tools accept caller-controlled file path parameters and read those paths from the MCP server's local filesystem before uploading the file as an Atlassian attachment.\n\nIn local `stdio` deployments, this can expose files readable by the user's MCP process. In documented HTTP/SSE or `streamable-http` deployments, the impact is higher: any MCP client that is allowed to invoke write/upload tools can cause the server process to read a server-local file and upload it to Jira or Confluence.\n\nThis is not dependent on an AI prompt injection or model behavior. It can be triggered deterministically with a normal MCP tool call.\n\n## Details\n\nThe vulnerable behavior exists because upload tool arguments are treated as server-local filesystem paths.\n\nRelevant implementation points:\n\n- `mcp_atlassian.confluence.attachments.AttachmentsMixin.upload_attachment`\n  - Accepts `file_path`.\n  - Converts the supplied value to an absolute path when needed.\n  - Checks existence with `os.path.exists`.\n  - Passes the path into the attachment upload flow.\n\n- `mcp_atlassian.confluence.attachments.AttachmentsMixin._upload_attachment_direct`\n  - Opens the supplied `file_path` with `open(file_path, \"rb\")`.\n  - Sends the resulting file object as multipart form data to Confluence.\n\n- `mcp_atlassian.confluence.attachments.AttachmentsMixin.upload_attachments`\n  - Iterates caller-supplied `file_paths`.\n  - Calls `upload_attachment` for each path.\n\n- `mcp_atlassian.jira.attachments.AttachmentsMixin.upload_attachment`\n  - Accepts `file_path`.\n  - Converts the supplied value to an absolute path when needed.\n  - Checks existence with `os.path.exists`.\n  - Opens the file and uploads it as a Jira attachment.\n\n- `mcp_atlassian.jira.attachments.AttachmentsMixin.upload_attachments`\n  - Iterates caller-supplied `file_paths`.\n  - Calls `upload_attachment` for each path.\n\n- `mcp_atlassian.servers.jira.update_issue`\n  - Accepts an `attachments` argument as a JSON array string or comma-separated string.\n  - Converts it into attachment paths and passes them into the Jira update flow.\n\nThe project also documents non-stdio deployment modes:\n\n- `sse`\n- `streamable-http`\n- multi-user authentication\n- Docker and Kubernetes deployment\n\nTherefore the upload path arguments should not be treated as if they always come from a single fully trusted local desktop user. In an HTTP or multi-user deployment, the caller and the server-local filesystem are separate security boundaries.\n\nThe core issue is that the MCP caller can choose a path, while the MCP server reads that path using the server process privileges and sends the bytes to a remote Jira or Confluence attachment endpoint.\n\nExpected behavior:\n\n- Server-local file uploads should be denied by default in HTTP/SSE or multi-user deployments, or\n- Uploads should be constrained to an explicit allowlisted upload directory after realpath resolution, and\n- Dangerous path forms such as remote UNC paths and `file://` URLs should be rejected before filesystem checks.\n\n## PoC\n\nThe following proof of concept uses a benign temporary file generated at runtime. It does not rely on prompt injection or any AI/LLM behavior. It uses a normal MCP client call against a test Confluence page controlled by the tester.\n\nPrerequisites:\n\n- A test Confluence site.\n- A test page content ID where the tester is allowed to upload attachments.\n- A test Confluence API token or another supported authentication method.\n- Python 3.10 or newer.\n\nStart `mcp-atlassian` in HTTP mode:\n\n```bash\ndocker run --rm -p 9000:9000 \\\n  -e CONFLUENCE_URL=\"https://<your-test-site>.atlassian.net/wiki\" \\\n  -e CONFLUENCE_USERNAME=\"<tester-email>\" \\\n  -e CONFLUENCE_API_TOKEN=\"<tester-api-token>\" \\\n  ghcr.io/sooperset/mcp-atlassian:latest \\\n  --transport streamable-http --host 0.0.0.0 --port 9000\n```\n\nInstall the MCP Python client:\n\n```bash\npython -m pip install \"mcp>=1.8.0\"\n```\n\nRun this standalone client script:\n\n```python\nimport asyncio\nimpor\n\nImported from OSV GHSA-f6pj-qv47-g96w.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-f6pj-qv47-g96w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/security/advisories/GHSA-f6pj-qv47-g96w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/pull/1448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/commit/b041733473f95119dd539542a43c280737a8e460"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sooperset/mcp-atlassian"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sooperset/mcp-atlassian/releases/tag/v0.22.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-atlassian"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.22.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

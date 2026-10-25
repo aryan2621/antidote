@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0128",
+  "modified": "2026-09-10T03:50:39.818542295Z",
+  "published": "2026-03-10T18:31:21Z",
+  "aliases": [
+    "GHSA-hhfx-wfvq-7g9c",
+    "CVE-2026-26118",
+    "PYSEC-2026-2669"
+  ],
+  "summary": "@azure/mcp: Azure MCP Server has Server-Side Request Forgery issue that allows authorized attacker to elevate privileges over a network",
+  "details": "Server-Side Request Forgery (SSRF) in Azure MCP Server allows an authorized attacker to elevate privileges over a network.\n\nImported from OSV GHSA-hhfx-wfvq-7g9c.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-hhfx-wfvq-7g9c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/microsoft/mcp/commit/804ff60293206c4d8e832f772097238561bf2c34"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/microsoft/mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/microsoft/mcp/releases/tag/Azure.Mcp.Server-1.0.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/microsoft/mcp/releases/tag/Azure.Mcp.Server-2.0.0-beta.17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26118"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@azure/mcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "2.0.0-beta.1"
+            },
+            {
+              "fixed": "2.0.0-beta.17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "msmcp-azure"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0b14"
+            },
+            {
+              "fixed": "2.0.0b17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@azure/mcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

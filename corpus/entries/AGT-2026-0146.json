@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0146",
+  "modified": "2026-09-16T03:56:04.411946894Z",
+  "published": "2026-06-19T21:42:46Z",
+  "aliases": [
+    "GHSA-mrvx-jmjw-vggc",
+    "CVE-2026-58485"
+  ],
+  "summary": "mcp-searxng:  SearXNG MCP Server: DNS-resolved Private Hostname SSRF in `web_url_read`",
+  "details": "## DNS-resolved Private Hostname SSRF in `web_url_read`\n\n### Summary\n\nThe `web_url_read` MCP tool in `mcp-searxng` is vulnerable to Server-Side Request Forgery (SSRF) via DNS rebinding bypass. The `assertUrlAllowed()` function at `src/url-reader.ts:85-93` validates only the syntactic hostname string against a private IP/hostname blocklist without performing DNS resolution. An attacker who controls a domain that resolves to a private or loopback IP address (e.g., via a wildcard DNS service like `nip.io`, or a custom DNS entry) can bypass the security check and cause the MCP server to read arbitrary internal HTTP services reachable from the server host. This allows exfiltration of sensitive data from internal services with no authentication required in the default HTTP configuration.\n\n### Details\n\nThe vulnerable code is in `src/url-reader.ts`, where the `assertUrlAllowed()` function performs a hostname-only string comparison:\n\n```ts\n// src/url-reader.ts:85-93\nfunction assertUrlAllowed(url: URL): void {\n  const security = getHttpSecurityConfig();\n  if (security.allowPrivateUrls) {\n    return;\n  }\n\n  if (isPrivateHostname(url.hostname) || isPrivateIpv4(url.hostname) || isPrivateIPv6(url.hostname)) {\n    throw createURLSecurityPolicyError(url.toString());\n  }\n}\n```\n\nThis function checks whether `url.hostname` lexically matches a private address pattern but never resolves the hostname via DNS. The OS-level DNS resolution happens later, inside `undiciFetch()` at `src/url-reader.ts:367`, after the security gate has already passed.\n\nThe full data flow is:\n\n1. `src/index.ts:37-49` — `isWebUrlReadArgs()` accepts `args.url` as any string value with no URL policy enforcement.\n2. `src/index.ts:226-240` — `web_url_read` passes `args.url` directly to `fetchAndConvertToMarkdown()`.\n3. `src/url-reader.ts:307-313` — URL is parsed and `assertUrlAllowed(parsedUrl)` is called (string check only).\n4. `src/url-reader.ts:85-93` — `assertUrlAllowed()` checks `url.hostname` as a string; no DNS resolution is performed.\n5. `src/url-reader.ts:367` — `undiciFetch(currentUrl.toString(), currentRequestOptions)` resolves the hostname via OS DNS and connects to the resolved IP, which may be a private or loopback address.\n\nIn the default HTTP mode (`MCP_HTTP_HARDEN` unset), `requireAuth` is `false` (see `src/http-security.ts:30-41`), meaning no authentication is required to invoke `web_url_read`.\n\nThe recommended remediation is to resolve the hostname via `node:dns/promises` inside `assertUrlAllowed()` before the fetch is issued:\n\n```diff\n--- a/src/url-reader.ts\n+++ b/src/url-reader.ts\n@@\n import { isIP } from \"node:net\";\n+import { lookup } from \"node:dns/promises\";\n@@\n-function assertUrlAllowed(url: URL): void {\n+async function assertUrlAllowed(url: URL): Promise<void> {\n   const security = getHttpSecurityConfig();\n   if (security.allowPrivateUrls) {\n     return;\n   }\n+  if (![\"http:\", \"https:\"].includes(url.protocol)) {\n+    throw createURLSecurityPolicyError(url.toString());\n+  }\n\n   if (isPrivateHostname(url.hostname) || isPrivateIpv4(url.hostname) || isPrivateIPv6(url.hostname)) {\n     throw createURLSecurityPolicyError(url.toString());\n   }\n+  if (isIP(url.hostname) === 0) {\n+    const answers = await lookup(url.hostname, { all: true, verbatim: true });\n+    if (answers.some(({ address }) => isPrivateIpv4(address) || isPrivateIPv6(address))) {\n+      throw createURLSecurityPolicyError(url.toString());\n+    }\n+  }\n }\n@@\n-  assertUrlAllowed(parsedUrl);\n+  await assertUrlAllowed(parsedUrl);\n@@\n-        assertUrlAllowed(nextUrl);\n+        await assertUrlAllowed(nextUrl);\n```\n\n### PoC\n\n**Prerequisites:**\n\n- Docker installed on the test machine.\n- The `mcp-searxng` repository cloned locally (version 1.6.0 / commit `90423e5`).\n\n**Build the container:**\n\n```bash\ndocker build -t mcp-searxng-ssrf-001 -f vuln-001/Dockerfile .\n```\n\n**Run the PoC:**\n\n```bash\ndocker run --rm \\\n  --add-host ssrf-target.internal:127.0.0.1 \\\n  -v $(pwd)/vuln-001/poc.py:/poc.py \\\n  mcp-sear\n\nImported from OSV GHSA-mrvx-jmjw-vggc.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-mrvx-jmjw-vggc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng/security/advisories/GHSA-mrvx-jmjw-vggc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ihor-sokoliuk/mcp-searxng"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-searxng"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

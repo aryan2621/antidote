@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0091",
+  "modified": "2026-07-24T22:45:39.105831249Z",
+  "published": "2026-07-24T22:40:00Z",
+  "aliases": [
+    "GHSA-8q49-2h5h-434x"
+  ],
+  "summary": "@frontmcp/adapters: FrontMCP: Server-Side Request Forgery (SSRF) in the OpenAPI adapter spec-change poller",
+  "details": "## Summary\n\nThe OpenAPI adapter's spec-change **poller** (`OpenApiSpecPoller`) re-fetched the\nconfigured spec `url` on a timer using a raw global `fetch()`, bypassing the SSRF\nguard (`safeFetch` / `assertUrlSafe`) that `OpenAPIToolGenerator.fromURL()` applies\nto the initial spec load. As a result, the pinning/DNS-resolution hardening delivered\nvia `mcp-from-openapi >= 2.5.0` (advisory GHSA-65h7-9wrw-629c) protected the initial\nload but **not** the recurring poll of the same URL. When polling is enabled against\nan untrusted or attacker-influenceable spec URL, this is an unguarded SSRF vector.\n\n## Details\n\nThe initial spec load is guarded. `OpenapiAdapter` resolves a secure `refResolution`\npolicy and passes it to the guarded loader:\n\n```ts\n// libs/adapters/src/openapi/openapi.adapter.ts — initializeGenerator()\nreturn await OpenAPIToolGenerator.fromURL(this.options.url, {\n  // ...\n  followRedirects: this.options.loadOptions?.followRedirects ?? false,\n  refResolution, // secure default: external $refs off, internal targets blocked\n});\n```\n\nBut the poller — which re-fetches **the same URL** on every interval — did not:\n\n```ts\n// libs/adapters/src/openapi/openapi-spec-poller.ts — doFetch() (vulnerable, <= 1.5.5)\nconst controller = new AbortController();\nconst timeout = setTimeout(() => controller.abort(), this.fetchTimeoutMs);\ntry {\n  const response = await fetch(this.url, {   // <-- raw global fetch, no SSRF guard\n    headers,\n    signal: controller.signal,\n  });\n  // ...hash the body, fire onChanged...\n}\n```\n\nBecause `doFetch()` never called `safeFetch`, none of the guard's protections applied\nto the polled request:\n\n- no allow-list / block-list enforcement (`allowedHosts` / `blockedHosts`);\n- no internal/private/loopback/link-local/CGNAT/cloud-metadata IP blocking;\n- no DNS resolution of the hostname (so a DNS name that resolves to an internal IP,\n  e.g. `http://127.0.0.1.nip.io/`, was reached);\n- no connection **pinning** to the validated IP (DNS-rebinding TOCTOU);\n- no per-hop re-validation of HTTP redirects.\n\nThis is the identical threat model to `fromURL()` / external `$ref` resolution\n(GHSA-65h7-9wrw-629c), applied to a request path that the fix for that advisory did\nnot cover.\n\n## Impact\n\nA server that enables spec polling against an untrusted or attacker-influenceable\nspec URL will, on every poll interval, issue a server-side `GET` to whatever host the\nURL (or a DNS name it resolves to, or a redirect it returns) points at — including\ninternal-only addresses unreachable from the public internet. Consequences include:\n\n- reading cloud-instance metadata endpoints (e.g. `169.254.169.254`) — credential /\n  token theft;\n- probing and reaching internal services and private-range hosts (internal network\n  scanning);\n- DNS-rebinding to swap a public host for an internal one between validation and\n  connection.\n\nThe poller issues `GET` requests only, so the primary impact is **confidentiality**\n(reaching and reading internal endpoints); the fetched body is content-hashed to\ndetect change and the subsequent tool rebuild goes back through the guarded\n`fromURL()` path.\n\n## Preconditions\n\nExploitation requires **both**:\n\n1. `polling.enabled: true` on an `OpenapiAdapter` (polling is off by default and\n   requires the URL-based `url` option, not an inline `spec`); **and**\n2. the spec `url` is untrusted / attacker-influenceable (e.g. it is derived from user\n   input, a tenant-supplied value, or otherwise not a fixed trusted constant), or an\n   otherwise-trusted spec host is attacker-controlled or can redirect.\n\nServers that poll a fixed, trusted, first-party spec URL are not exposed in practice,\nthough they still benefit from the guard as defense-in-depth.\n\n## Proof of concept\n\n```ts\nimport { OpenapiAdapter } from '@frontmcp/adapters';\n\n// url is attacker-influenceable and points (directly, via DNS, or via redirect)\n// at an internal target; polling re-fetches it every interval.\nconst adapter = OpenapiAdapter.init({\n  name: 'evil',\n  url: \n\nImported from OSV GHSA-8q49-2h5h-434x.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-8q49-2h5h-434x"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentfront/frontmcp/security/advisories/GHSA-8q49-2h5h-434x"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentfront/frontmcp/pull/510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentfront/frontmcp/commit/077201e109bf6f45dbc85c36d6bd77ded18ab13e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/agentfront/frontmcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentfront/frontmcp/releases/tag/v1.5.6"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@frontmcp/adapters"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

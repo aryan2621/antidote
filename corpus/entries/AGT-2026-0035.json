@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0035",
+  "modified": "2026-09-10T03:50:33.823318085Z",
+  "published": "2026-02-04T20:04:16Z",
+  "aliases": [
+    "GHSA-345p-7cg4-v4c7",
+    "CVE-2026-25536"
+  ],
+  "summary": "@modelcontextprotocol/sdk has cross-client data leak via shared server/transport instance reuse",
+  "details": "### Summary\n\nCross-client data leak via two distinct issues: (1) reusing a single `StreamableHTTPServerTransport` across multiple client requests, and (2) reusing a single `McpServer`/`Server` instance across multiple transports. Both are most common in stateless deployments.\n\n### Impact\n\nThis advisory covers two related but distinct vulnerabilities. A deployment may be affected by one or both.\n\n#### Issue 1: Transport re-use\n\n**What happens:** When a single `StreamableHTTPServerTransport` instance handles multiple client requests, JSON-RPC message ID collisions cause responses to be routed to the wrong client's HTTP connection. The transport maintains an internal `requestId → stream` mapping, and since MCP client SDKs generate message IDs using an incrementing counter starting at 0, two clients produce identical IDs. The second client's request overwrites the first client's mapping entry, routing the response to the wrong HTTP stream.\n\n**What is affected:** All request types — `tools/call`, `resources/read`, `prompts/get`, etc. No server-initiated features are required to trigger this.\n\n**Conditions:**\n- A single `StreamableHTTPServerTransport` instance is reused across multiple client requests (most common in stateless mode without `sessionIdGenerator`)\n- Two or more clients send requests concurrently\n- Clients generate overlapping JSON-RPC message IDs (the SDK's default client uses an incrementing counter starting at 0)\n\n#### Issue 2: Server/Protocol re-use\n\n**What happens:** When a single `McpServer` (or `Server`) instance is `connect()`ed to multiple transports (one per client), the Protocol's internal `this._transport` reference is silently overwritten. The final response to a request is routed correctly (the Protocol captures the transport reference at request time), but any **server-to-client messages sent during request handling** use the shared `this._transport` reference, which may point to a different client's transport.\n\n**What is affected:** This depends on what features your server uses:\n\n  - **Final responses** (the return value from a tool/resource/prompt handler): Affected in most cases. The Protocol captures this._transport at [request-handling time](https://github.com/modelcontextprotocol/typescript-sdk/blob/main/packages/core/src/shared/protocol.ts#L760), not the transport that delivered the request. This means:\n    - If a request is already in-flight when a second connect() occurs (i.e., the request\n   arrived before the transport was overwritten), the captured reference is correct and\n  the response routes properly.\n    - If a request arrives on the old transport after a second connect() has overwritten\n  this._transport, the captured reference points to the new transport, and the response\n  is mis-routed. The requesting client will time out.\n- **Progress notifications** sent during tool execution via `sendNotification`: **Affected.** These are dispatched through `this._transport`. When the transport has been overwritten and message IDs collide on the new transport, notifications are routed to the wrong client's HTTP stream.\n- **Sampling** (`createMessage`) and **elicitation** requests sent during tool execution via `sendRequest`: **Affected.** Same mechanism — the request is sent to the wrong client.\n- **Spontaneous server-initiated notifications** (outside any request handler): **Affected.** These are sent to whichever client's transport was most recently connected.\n\n**Conditions:**\n- A single `McpServer`/`Server` instance is `connect()`ed to multiple transports across requests or sessions\n- Two or more clients connect concurrently\n- For in-request notifications/requests: message ID collision on the other transport is required for silent data leaking (the SDK's default client uses an incrementing counter starting at 0). Without collision, the transport will throw an error rather than misroute.\n- For spontaneous notifications: no collision needed, messages are always sent to the last-connected client's \n\nImported from OSV GHSA-345p-7cg4-v4c7.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-345p-7cg4-v4c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/security/advisories/GHSA-345p-7cg4-v4c7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/issues/204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk/issues/243"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@modelcontextprotocol/sdk"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.10.0"
+            },
+            {
+              "fixed": "1.26.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}
