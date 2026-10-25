@@ -7,8 +7,9 @@ export const entries: Entry[] = (Object.values(mods) as Entry[]).sort((a, b) => 
 
 export const isIncident = (e: Entry) => e.kind === 'incident';
 
+// OSV `withdrawn`: kept for history, never matched by the scanner
 export const classification = (e: Entry): string =>
-  isIncident(e) ? 'incident' : e.database_specific?.classification ?? 'suspicious';
+  e.withdrawn ? 'withdrawn' : isIncident(e) ? 'incident' : e.database_specific?.classification ?? 'suspicious';
 
 export const pkgKey = (eco: string, name: string) => `${eco}/${name}`;
 

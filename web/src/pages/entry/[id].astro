@@ -22,6 +22,8 @@ const badges = (e.affected ?? []).map((a: any) => badgeMarkdown(a.package.ecosys
     {(e.aliases ?? []).map((a: string) => <code style="margin-left:8px">{a}</code>)}
   </p>
 
+  {e.withdrawn && <p><strong>Withdrawn on {e.withdrawn.slice(0, 10)}.</strong> This entry was retracted and no longer matches in <code>antidote scan</code>.</p>}
+
   {paragraphs(e.details).map((p) => <p>{p}</p>)}
 
   {isIncident(e) ? (

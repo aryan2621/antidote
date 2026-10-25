@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { entries } from '../lib/entries';
+
+// Accepted (non-withdrawn) entries per reporter, most first.
+const counts = new Map<string, { total: number; verified: number }>();
+for (const e of entries) {
+  const db = e.database_specific ?? {};
+  if (e.withdrawn || !db.reporter) continue;
+  const c = counts.get(db.reporter) ?? { total: 0, verified: 0 };
+  c.total++;
+  if (db.verification === 'verified') c.verified++;
+  counts.set(db.reporter, c);
+}
+const rows = [...counts].sort((a, b) => b[1].total - a[1].total || a[0].localeCompare(b[0]));
+---
+<Base title="Reporters — Antidote" description="Who reported the entries in the Antidote database.">
+  <h1>Reporters</h1>
+  <p class="muted">Entries per reporter, not counting withdrawn ones. Reporters are credited by the <code>reporter</code> field of each entry.</p>
+  <table>
+    <tr><th>#</th><th>Reporter</th><th>Entries</th><th>Verified</th></tr>
+    {rows.map(([name, c], i) => <tr><td>{i + 1}</td><td>{name}</td><td>{c.total}</td><td>{c.verified}</td></tr>)}
+  </table>
+</Base>

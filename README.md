@@ -128,7 +128,7 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 
 ## Website
 
-`web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
+`web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. A reporters page ranks reporters by accepted entries, and withdrawn entries are struck through and marked with their withdrawal date. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
 
 ## Desktop app
 
@@ -182,7 +182,6 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
 - Editor extensions and MCP-gateway plugins for other gateways
 - A hosted API, so there's no default stats endpoint and no public badges yet
 - Reporter sign-in (GitHub OAuth) and gated raw-sample storage
-- Reporter leaderboard
 - The CNA application and registry partnerships, which are paperwork rather than code
 
 See `../product-specs/antidote.md`.
