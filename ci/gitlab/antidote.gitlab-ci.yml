@@ -1,0 +1,30 @@
+# Antidote scan for GitLab CI. Include it from your .gitlab-ci.yml:
+#
+#   include:
+#     - remote: https://raw.githubusercontent.com/antidote-db/antidote/main/ci/gitlab/antidote.gitlab-ci.yml
+#
+# Findings show up in the merge request Code Quality widget. Override the variables to change
+# what is scanned, the severity that fails the job, or the release used.
+antidote:
+  stage: test
+  # matches the glibc of the release build runner (ubuntu-latest)
+  image: ubuntu:24.04
+  variables:
+    ANTIDOTE_PATHS: "."
+    ANTIDOTE_FAIL_ON: "high"
+    ANTIDOTE_VERSION: "latest"
+    ANTIDOTE_REPO: "antidote-db/antidote"
+  script:
+    - apt-get update -qq && apt-get install -y -qq --no-install-recommends curl ca-certificates >/dev/null
+    - case "$(uname -m)" in x86_64) t=x86_64-unknown-linux-gnu ;; aarch64) t=aarch64-unknown-linux-gnu ;; *) echo "unsupported arch $(uname -m)"; exit 1 ;; esac
+    - if [ "$ANTIDOTE_VERSION" = latest ]; then base="https://github.com/$ANTIDOTE_REPO/releases/latest/download"; else base="https://github.com/$ANTIDOTE_REPO/releases/download/$ANTIDOTE_VERSION"; fi
+    - curl -fsSLO "$base/antidote-$t.tar.gz" && curl -fsSLO "$base/antidote-$t.tar.gz.sha256"
+    - '[ "$(sha256sum antidote-$t.tar.gz | cut -d" " -f1)" = "$(tr -d " \r\n" < antidote-$t.tar.gz.sha256)" ] || { echo "checksum mismatch"; exit 1; }'
+    - tar xzf "antidote-$t.tar.gz" -C /usr/local/bin antidote && rm "antidote-$t.tar.gz"*
+    - antidote update || echo "feed update failed; scanning with the corpus built into this release"
+    # ANTIDOTE_PATHS is split on spaces on purpose
+    - antidote scan $ANTIDOTE_PATHS --format codequality --fail-on "$ANTIDOTE_FAIL_ON" > gl-code-quality-report.json
+  artifacts:
+    when: always
+    reports:
+      codequality: gl-code-quality-report.json

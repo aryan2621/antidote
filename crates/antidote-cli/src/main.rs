@@ -139,6 +139,8 @@ enum Format {
     Text,
     Json,
     Sarif,
+    /// GitLab Code Quality report
+    Codequality,
 }
 
 #[derive(Clone, Copy, ValueEnum)]
@@ -265,6 +267,7 @@ fn run() -> Result<bool> {
     match cli.format {
         Format::Json => println!("{}", serde_json::to_string_pretty(&findings)?),
         Format::Sarif => println!("{}", serde_json::to_string_pretty(&sarif(&findings))?),
+        Format::Codequality => println!("{}", serde_json::to_string_pretty(&codequality(&findings))?),
         Format::Text if findings.is_empty() => {
             println!("No known threats found ({} entries, corpus version {}).", c.entries.len(), c.version)
         }
@@ -294,6 +297,30 @@ fn run() -> Result<bool> {
 }
 
 /// SARIF 2.1.0 for GitHub code scanning; paths under the cwd become repo-relative URIs.
+/// https://docs.gitlab.com/ci/testing/code_quality/#code-quality-report-format
+fn codequality(findings: &[Finding]) -> Value {
+    use sha2::{Digest, Sha256};
+    let cwd = std::env::current_dir().unwrap_or_default();
+    let v: Vec<Value> = findings
+        .iter()
+        .map(|f| {
+            let p = Path::new(&f.path);
+            let path = p.strip_prefix(&cwd).or_else(|_| p.strip_prefix(".")).unwrap_or(p).to_string_lossy().replace('\\', "/");
+            let line = f.line.unwrap_or(1);
+            let fp = Sha256::digest(format!("{}\0{path}\0{line}\0{}", f.id, f.evidence.as_deref().unwrap_or("")));
+            let ctx = f.context.as_ref().map(|c| format!(" ({c})")).unwrap_or_default();
+            json!({
+                "description": format!("{}: {}{ctx}", f.id, f.summary),
+                "check_name": f.id,
+                "fingerprint": fp.iter().map(|b| format!("{b:02x}")).collect::<String>(),
+                "severity": match f.severity { "critical" => "blocker", "high" => "critical", "medium" => "major", _ => "minor" },
+                "location": { "path": path, "lines": { "begin": line } },
+            })
+        })
+        .collect();
+    Value::Array(v)
+}
+
 fn sarif(findings: &[Finding]) -> Value {
     let cwd = std::env::current_dir().unwrap_or_default();
     let mut rules = BTreeMap::new();

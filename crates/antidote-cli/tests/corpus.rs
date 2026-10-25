@@ -92,6 +92,21 @@ fn run(args: &[&str]) -> (i32, Vec<u8>) {
 }
 
 #[test]
+fn codequality_has_gitlab_fields() {
+    let (_, stdout) = run(&["scan", fixtures().join("bad").to_str().unwrap(), "--format=codequality"]);
+    let v: Value = serde_json::from_slice(&stdout).unwrap();
+    let issues = v.as_array().unwrap();
+    assert!(!issues.is_empty());
+    let mut fps = std::collections::HashSet::new();
+    for i in issues {
+        assert!(i["description"].is_string() && i["check_name"].as_str().unwrap().starts_with("AGT-"), "{i}");
+        assert!(["info", "minor", "major", "critical", "blocker"].contains(&i["severity"].as_str().unwrap()), "{i}");
+        assert!(i["location"]["path"].is_string() && i["location"]["lines"]["begin"].as_u64().unwrap() >= 1, "{i}");
+        assert!(fps.insert(i["fingerprint"].as_str().unwrap().to_string()), "duplicate fingerprint {i}");
+    }
+}
+
+#[test]
 fn sarif_is_valid() {
     let (_, stdout) = run(&["scan", fixtures().join("bad").to_str().unwrap(), "--format=sarif"]);
     let sarif: Value = serde_json::from_slice(&stdout).unwrap();
