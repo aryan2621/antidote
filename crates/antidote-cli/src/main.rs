@@ -1,5 +1,6 @@
 mod discover;
 mod guard;
+mod inspect;
 mod report;
 
 use std::collections::BTreeMap;
@@ -65,6 +66,21 @@ enum Cmd {
         pins_dir: Option<PathBuf>,
         #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
         cmd: Vec<String>,
+    },
+    /// Start each MCP server from your configs (in a Docker/Podman container by default), read its live
+    /// tools, and flag poisoned descriptions or tools that changed since last time (rug pulls)
+    Inspect {
+        /// MCP config files; default: auto-discovered Claude Code / Cursor / OpenClaw / Claude Desktop configs
+        #[arg(long)]
+        mcp: Vec<PathBuf>,
+        /// Run servers directly on this machine instead of in a container
+        #[arg(long)]
+        no_sandbox: bool,
+        /// Seconds to wait for each server (the first run includes downloading the package)
+        #[arg(long, default_value_t = 180)]
+        timeout: u64,
+        #[arg(long, hide = true)]
+        pins_dir: Option<PathBuf>,
     },
     /// Scan a suspicious skill/server and print a prefilled report link. Nothing is uploaded:
     /// the report holds file hashes and rule hits, never file contents
@@ -163,6 +179,15 @@ fn run() -> Result<bool> {
                 bail!("expected <npm|pypi>:<name>[@version], got {package}");
             };
             mcp::check(&c, &r, &package, None, &mut findings);
+        }
+        Cmd::Inspect { mut mcp, no_sandbox, timeout, pins_dir } => {
+            if mcp.is_empty() {
+                mcp = discover::targets().1;
+            }
+            let o = inspect::Opts { pins: pins_dir.unwrap_or_else(guard::pins_dir), sandbox: !no_sandbox, timeout: std::time::Duration::from_secs(timeout) };
+            for cfg in &mcp {
+                inspect::run(&c, cfg, &o, &mut findings)?;
+            }
         }
         Cmd::Report { path } => {
             if !path.exists() {

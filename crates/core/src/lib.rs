@@ -4,6 +4,7 @@ pub mod classify;
 pub mod corpus;
 pub mod feed;
 pub mod mcp;
+pub mod probe;
 pub mod review;
 pub mod scan;
 

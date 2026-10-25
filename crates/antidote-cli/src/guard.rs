@@ -8,7 +8,7 @@ use std::process::{Command, Stdio};
 use std::sync::{Arc, Mutex};
 
 use anyhow::{Context, Result};
-use antidote_core::{corpus::Corpus, rank, scan};
+use antidote_core::{corpus::Corpus, rank, scan, Finding};
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
 
@@ -66,10 +66,21 @@ pub fn run(c: Corpus, name: &str, dir: &Path, warn_only: bool, cmd: &[String]) -
         let mut line = line;
         if let Ok(mut m) = serde_json::from_str::<Value>(&line) {
             if m["result"]["tools"].is_array() && list_ids.lock().unwrap().remove(&m["id"].to_string()) {
-                let verdicts = review(&c, name, &pin_file, m["result"]["tools"].as_array().unwrap())?;
+                let mut verdicts = BTreeMap::new();
+                for (tool, f) in review(&c, name, &pin_file, m["result"]["tools"].as_array().unwrap())? {
+                    if rank(f.severity) > 1 {
+                        continue;
+                    }
+                    let hint = if f.id == RUG_PULL { format!("; review it, then run `antidote guard --name {name} --reset`") } else { String::new() };
+                    // keep the worst finding per tool
+                    let worse = verdicts.get(&tool).is_none_or(|(r, _)| rank(f.severity) < *r);
+                    if worse {
+                        verdicts.insert(tool, (rank(f.severity), format!("{} {} [{}]{hint}", f.id, f.summary, f.severity)));
+                    }
+                }
                 let mut b = blocked.lock().unwrap();
                 b.clear();
-                for (tool, why) in verdicts {
+                for (tool, (_, why)) in verdicts {
                     eprintln!("antidote guard [{name}]: {tool}: {why}{}", if warn_only { " (warn only)" } else { "" });
                     if !warn_only {
                         b.insert(tool, why);
@@ -88,17 +99,30 @@ pub fn run(c: Corpus, name: &str, dir: &Path, warn_only: bool, cmd: &[String]) -
     Ok(child.wait()?.code().unwrap_or(1))
 }
 
-/// (tool, reason) for every tool that should be hidden. Pins new tools, never overwrites a pin.
-fn review(c: &Corpus, name: &str, pin_file: &Path, tools: &[Value]) -> Result<Vec<(String, String)>> {
+pub const RUG_PULL: &str = "AGT-F-RUGPULL";
+
+/// (tool, finding) for every problem with these tools, rug pulls included. Pins new tools, never
+/// overwrites a pin. Shared by `guard` and `inspect`, so both agree on what's pinned.
+pub fn review(c: &Corpus, server: &str, pin_file: &Path, tools: &[Value]) -> Result<Vec<(String, Finding)>> {
     let mut pins: BTreeMap<String, String> = std::fs::read(pin_file).ok().and_then(|d| serde_json::from_slice(&d).ok()).unwrap_or_default();
-    let mut verdicts = Vec::new();
+    let mut out = Vec::new();
     let mut changed = false;
     for t in tools {
         let tool = t["name"].as_str().unwrap_or_default().to_string();
+        let path = format!("mcp:{server}/{tool}");
         let hash = format!("{:x}", Sha256::digest(json!([t["name"], t["description"], t["inputSchema"]]).to_string()));
         match pins.get(&tool) {
             Some(p) if *p != hash => {
-                verdicts.push((tool, format!("definition changed since it was pinned (possible rug pull); review it, then run `antidote guard --name {name} --reset`")));
+                out.push((tool, Finding {
+                    severity: "high",
+                    id: RUG_PULL.into(),
+                    summary: "Tool definition changed since it was pinned (possible rug pull)".into(),
+                    path,
+                    line: None,
+                    context: Some(server.to_string()),
+                    evidence: Some(t["description"].as_str().unwrap_or_default().chars().take(200).collect()),
+                    explanation: None,
+                }));
                 continue;
             }
             Some(_) => {}
@@ -109,17 +133,15 @@ fn review(c: &Corpus, name: &str, pin_file: &Path, tools: &[Value]) -> Result<Ve
         }
         let mut findings = Vec::new();
         for text in descriptions(t) {
-            scan::scan_text(c, &format!("mcp:{name}/{tool}"), &text, &mut findings);
+            scan::scan_text(c, &path, &text, &mut findings);
         }
-        if let Some(f) = findings.iter().filter(|f| rank(f.severity) <= 1).min_by_key(|f| rank(f.severity)) {
-            verdicts.push((tool, format!("{} {} [{}]", f.id, f.summary, f.severity)));
-        }
+        out.extend(findings.into_iter().map(|f| (tool.clone(), f)));
     }
     if changed {
         std::fs::create_dir_all(pin_file.parent().unwrap())?;
         std::fs::write(pin_file, serde_json::to_vec_pretty(&pins)?)?;
     }
-    Ok(verdicts)
+    Ok(out)
 }
 
 /// The tool description plus every `description` inside its input schema.

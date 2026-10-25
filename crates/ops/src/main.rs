@@ -220,7 +220,7 @@ fn main() -> Result<()> {
             eprintln!("wrote {} new entries", written.len());
         }
         Cmd::McpProbe { timeout, cmd } => {
-            let tools = detonate::probe(&cmd, std::time::Duration::from_secs(timeout))?;
+            let tools = antidote_core::probe::probe(&cmd, &[], std::time::Duration::from_secs(timeout))?;
             println!("{}", serde_json::to_string_pretty(&tools)?);
         }
         Cmd::DetonationReport { dir, previous_tools_hash } => {

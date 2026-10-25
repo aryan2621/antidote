@@ -55,29 +55,29 @@ fn pypi_norm(name: &str) -> String {
 /// Every package launched via npx/bunx/pnpm dlx/uvx/pipx in any `mcpServers` block, at any depth
 /// (`~/.claude.json` nests them under `projects.<path>`).
 pub fn package_refs(cfg: &Value) -> Vec<(String, PkgRef)> {
+    servers(cfg).into_iter().filter_map(|(name, def)| Some((name, server_ref(def)?))).collect()
+}
+
+/// (name, definition) of every server in any `mcpServers` block, at any depth.
+pub fn servers(cfg: &Value) -> Vec<(String, &Value)> {
+    fn walk<'a>(v: &'a Value, out: &mut Vec<(String, &'a Value)>) {
+        match v {
+            Value::Object(map) => {
+                for (k, child) in map {
+                    if k == "mcpServers" {
+                        out.extend(child.as_object().into_iter().flatten().map(|(n, d)| (n.clone(), d)));
+                    } else {
+                        walk(child, out);
+                    }
+                }
+            }
+            Value::Array(a) => a.iter().for_each(|c| walk(c, out)),
+            _ => {}
+        }
+    }
     let mut out = Vec::new();
     walk(cfg, &mut out);
     out
-}
-
-fn walk(v: &Value, out: &mut Vec<(String, PkgRef)>) {
-    match v {
-        Value::Object(map) => {
-            for (k, child) in map {
-                if k == "mcpServers" {
-                    for (server, def) in child.as_object().into_iter().flatten() {
-                        if let Some(r) = server_ref(def) {
-                            out.push((server.clone(), r));
-                        }
-                    }
-                } else {
-                    walk(child, out);
-                }
-            }
-        }
-        Value::Array(a) => a.iter().for_each(|c| walk(c, out)),
-        _ => {}
-    }
 }
 
 fn server_ref(def: &Value) -> Option<PkgRef> {
