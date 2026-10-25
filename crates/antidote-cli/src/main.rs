@@ -1,5 +1,6 @@
 mod discover;
 mod guard;
+mod incident;
 mod inspect;
 mod report;
 
@@ -90,9 +91,18 @@ enum Cmd {
         #[arg(long, default_value = feed::FEED_URL)]
         url: String,
     },
+    /// Write up an agent incident (AGT-INC) and get a prefilled submission link
+    #[command(subcommand)]
+    Incident(IncidentCmd),
     /// Maintainer tools
     #[command(hide = true, subcommand)]
     Feed(FeedCmd),
+}
+
+#[derive(Subcommand)]
+enum IncidentCmd {
+    /// Build an incident entry from flags; prompts for missing required fields in a terminal
+    New(incident::Args),
 }
 
 #[derive(Subcommand)]
@@ -143,6 +153,10 @@ fn run() -> Result<bool> {
         corpus::compile(&feed)?; // fail the build on bad entries or rules
         std::fs::write(out, serde_json::to_vec(&feed)?)?;
         eprintln!("wrote {} ({} entries, {} rule files)", out.display(), feed.entries.len(), feed.rules.len());
+        return Ok(false);
+    }
+    if let Cmd::Incident(IncidentCmd::New(a)) = cli.cmd {
+        incident::run(a)?;
         return Ok(false);
     }
     let mut c = corpus::load()?;
@@ -213,7 +227,7 @@ fn run() -> Result<bool> {
             println!("Corpus at version {v}{}.", if v == c.version { " (already current)" } else { "" });
             return Ok(false);
         }
-        Cmd::Feed(_) => unreachable!(),
+        Cmd::Feed(_) | Cmd::Incident(_) => unreachable!(),
     }
     findings.sort_by_key(|f| rank(f.severity));
     if let Some((l, max)) = &llm {

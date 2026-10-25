@@ -103,3 +103,30 @@ pub fn compile(feed: &Feed) -> Result<Corpus> {
     }
     Ok(Corpus { version: feed.version, entries, rules: compiler.build(), model, popular: feed.popular.clone(), code })
 }
+
+/// UTC (year, month, day).
+pub fn today() -> (i64, u32, u32) {
+    let days = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() as i64 / 86_400;
+    // Howard Hinnant's civil_from_days
+    let z = days + 719_468;
+    let era = z.div_euclid(146_097);
+    let doe = z - era * 146_097;
+    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let d = (doy - (153 * mp + 2) / 5 + 1) as u32;
+    let m = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
+    (yoe + era * 400 + i64::from(m <= 2), m, d)
+}
+
+/// Next free id with `prefix` (e.g. `AGT-2026-`, `AGT-INC-2026-`) in a corpus entries dir.
+pub fn next_id(entries_dir: &std::path::Path, prefix: &str) -> Result<String> {
+    let mut max = 0;
+    for e in std::fs::read_dir(entries_dir)? {
+        let name = e?.file_name().to_string_lossy().into_owned();
+        if let Some(n) = name.strip_prefix(prefix).and_then(|s| s.strip_suffix(".json")).and_then(|s| s.parse::<u32>().ok()) {
+            max = max.max(n);
+        }
+    }
+    Ok(format!("{prefix}{:04}", max + 1))
+}

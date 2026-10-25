@@ -8,6 +8,8 @@ use anyhow::{bail, Context, Result};
 use serde::Serialize;
 use serde_json::{json, Value};
 
+use antidote_core::corpus::{next_id, today};
+
 use crate::analyze::{AllowRule, Report};
 
 pub fn issue_title(r: &Report) -> String {
@@ -77,36 +79,10 @@ pub fn parse_command(body: &str, association: &str) -> Option<Command> {
 }
 
 /// Today's UTC date from the system clock (no chrono for one date).
-fn today() -> (i64, u32, u32) {
-    let days = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs() as i64 / 86_400;
-    // Howard Hinnant's civil_from_days
-    let z = days + 719_468;
-    let era = z.div_euclid(146_097);
-    let doe = z - era * 146_097;
-    let yoe = (doe - doe / 1460 + doe / 36_524 - doe / 146_096) / 365;
-    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
-    let mp = (5 * doy + 2) / 153;
-    let d = (doy - (153 * mp + 2) / 5 + 1) as u32;
-    let m = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
-    (yoe + era * 400 + i64::from(m <= 2), m, d)
-}
-
-pub(crate) fn next_id(entries_dir: &Path, year: i64) -> Result<String> {
-    let prefix = format!("AGT-{year}-");
-    let mut max = 0;
-    for e in fs::read_dir(entries_dir)? {
-        let name = e?.file_name().to_string_lossy().into_owned();
-        if let Some(n) = name.strip_prefix(&prefix).and_then(|s| s.strip_suffix(".json")).and_then(|s| s.parse::<u32>().ok()) {
-            max = max.max(n);
-        }
-    }
-    Ok(format!("{prefix}{:04}", max + 1))
-}
-
 /// Write `corpus/entries/AGT-<year>-<n>.json` from a confirmed report. Returns the path.
 pub fn draft_entry(r: &Report, classification: &str, summary: &str, issue_url: &str, corpus: &Path) -> Result<PathBuf> {
     let (y, m, d) = today();
-    let id = next_id(&corpus.join("entries"), y)?;
+    let id = next_id(&corpus.join("entries"), &format!("AGT-{y}-"))?;
     let date = format!("{y:04}-{m:02}-{d:02}T00:00:00Z");
     let summary = if summary.is_empty() {
         format!("{} {} flagged by crawler: {}", r.item.name, r.item.version, r.findings.iter().chain(&r.flags).next().map_or("", |h| h.summary.as_str()))

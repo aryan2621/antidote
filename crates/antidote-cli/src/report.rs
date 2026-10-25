@@ -52,7 +52,11 @@ pub fn issue_url(target: &Path, findings: &[Finding]) -> Result<String> {
     if findings.len() > MAX_FINDINGS {
         writeln!(body, "- … {} more", findings.len() - MAX_FINDINGS)?;
     }
-    Ok(format!("{NEW_ISSUE}?title={}&body={}", enc(&format!("Report: {name}")), enc(&body)))
+    Ok(new_issue_url(&format!("Report: {name}"), &body))
+}
+
+pub fn new_issue_url(title: &str, body: &str) -> String {
+    format!("{NEW_ISSUE}?title={}&body={}", enc(title), enc(body))
 }
 
 fn hex(b: &[u8]) -> String {

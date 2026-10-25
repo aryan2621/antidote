@@ -84,7 +84,7 @@ pub fn import(corpus: &Path, ids: &[String], max: usize) -> Result<Vec<std::path
         if dup || osv.get("withdrawn").is_some() {
             continue;
         }
-        let Some(entry) = to_entry(&osv, &aliases, &crate::triage::next_id(&dir, year(&osv))?) else { continue };
+        let Some(entry) = to_entry(&osv, &aliases, &antidote_core::corpus::next_id(&dir, &format!("AGT-{}-", year(&osv)))?) else { continue };
         let path = dir.join(format!("{}.json", entry["id"].as_str().unwrap()));
         fs::write(&path, serde_json::to_string_pretty(&entry)? + "\n")?;
         written.push(path);
