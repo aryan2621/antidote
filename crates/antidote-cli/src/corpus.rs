@@ -1,9 +1,7 @@
 use anyhow::{Context, Result};
-use include_dir::{include_dir, Dir};
 use serde::Deserialize;
 
-// shortcut: corpus is baked into the binary, add `antidote update` + signed feed in phase 2.
-static CORPUS: Dir = include_dir!("$CARGO_MANIFEST_DIR/../../corpus");
+use crate::feed::{self, Feed};
 
 #[derive(Deserialize)]
 pub struct Entry {
@@ -58,25 +56,27 @@ impl Entry {
 }
 
 pub struct Corpus {
+    pub version: u64,
     pub entries: Vec<Entry>,
     pub rules: yara_x::Rules,
 }
 
+/// The newest verified corpus: cached feed from `antidote update`, else the built-in one.
 pub fn load() -> Result<Corpus> {
+    let embedded = Feed::embedded();
+    compile(&feed::cached(embedded.version).unwrap_or(embedded))
+}
+
+pub fn compile(feed: &Feed) -> Result<Corpus> {
     let mut entries = Vec::new();
-    for f in CORPUS.get_dir("entries").map(|d| d.files()).into_iter().flatten() {
-        entries.push(
-            serde_json::from_slice(f.contents())
-                .with_context(|| format!("corpus entry {}", f.path().display()))?,
-        );
+    for e in &feed.entries {
+        let id = e["id"].as_str().unwrap_or("?");
+        entries.push(serde_json::from_value(e.clone()).with_context(|| format!("corpus entry {id}"))?);
     }
     let mut compiler = yara_x::Compiler::new();
-    for f in CORPUS.get_dir("rules").map(|d| d.files()).into_iter().flatten() {
-        let name = f.path().file_stem().unwrap().to_string_lossy();
-        compiler.new_namespace(&name);
-        compiler
-            .add_source(f.contents_utf8().context("rule file not utf-8")?)
-            .with_context(|| format!("compiling {}", f.path().display()))?;
+    for (name, src) in &feed.rules {
+        compiler.new_namespace(name);
+        compiler.add_source(src.as_str()).with_context(|| format!("compiling rules/{name}.yar"))?;
     }
-    Ok(Corpus { entries, rules: compiler.build() })
+    Ok(Corpus { version: feed.version, entries, rules: compiler.build() })
 }

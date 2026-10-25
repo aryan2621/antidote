@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import { entries, classification, isIncident, packageHref, entryHref, versionText, type Entry } from '../../lib/entries';
+
+export function getStaticPaths() {
+  return entries.map((e) => ({ params: { id: e.id }, props: { e } }));
+}
+const { e } = Astro.props as { e: Entry };
+const db = e.database_specific ?? {};
+const cls = classification(e);
+const paragraphs = (s?: string) => (s ?? '').split(/\n{2,}/).filter(Boolean);
+const refs: string[] = (e.references ?? []).map((r: any) => (typeof r === 'string' ? r : r.url));
+const ind = db.indicators ?? {};
+---
+<Base title={`${e.id}: ${e.summary}`} description={e.summary}>
+  <p class="mono muted" style="margin-top:28px">{e.id}</p>
+  <h1 style="margin-top:4px">{e.summary}</h1>
+  <p>
+    <span class={`tag ${cls}`}>{cls}</span>
+    {db.verification && <span class={`tag ${db.verification}`}>{db.verification}</span>}
+    {(e.aliases ?? []).map((a: string) => <code style="margin-left:8px">{a}</code>)}
+  </p>
+
+  {paragraphs(e.details).map((p) => <p>{p}</p>)}
+
+  {isIncident(e) ? (
+    <>
+      <h2>Incident</h2>
+      <table>
+        {e.agent && <tr><th>Agent</th><td>{e.agent}</td></tr>}
+        {e.model && <tr><th>Model</th><td>{e.model}</td></tr>}
+        <tr><th>Date</th><td>{e.date}</td></tr>
+        <tr><th>Trigger</th><td>{e.trigger}</td></tr>
+        <tr><th>Impact</th><td>{e.impact}</td></tr>
+        {e.root_cause && <tr><th>Root cause</th><td>{e.root_cause}</td></tr>}
+      </table>
+      {e.would_have_prevented?.length > 0 && (
+        <>
+          <h2>What would have prevented it</h2>
+          <ul>{e.would_have_prevented.map((x: string) => <li>{x}</li>)}</ul>
+        </>
+      )}
+      {e.related_entries?.length > 0 && (
+        <p>Related: {e.related_entries.map((id: string) => <a class="mono" href={entryHref(id)} style="margin-right:8px">{id}</a>)}</p>
+      )}
+    </>
+  ) : (
+    <>
+      <h2>Affected</h2>
+      <table>
+        {(e.affected ?? []).map((a: any) => (
+          <tr>
+            <th><a class="mono" href={packageHref(a.package.ecosystem, a.package.name)}>{a.package.ecosystem}:{a.package.name}</a></th>
+            <td>{versionText(a)}</td>
+          </tr>
+        ))}
+      </table>
+      <h2>Details</h2>
+      <table>
+        <tr><th>Artifact type</th><td>{db.artifact_type}</td></tr>
+        {db.agents_affected?.length > 0 && <tr><th>Agents</th><td>{db.agents_affected.join(', ')}</td></tr>}
+        {db.techniques?.length > 0 && <tr><th>Techniques</th><td class="mono">{db.techniques.join(', ')}</td></tr>}
+        {ind.sha256?.length > 0 && <tr><th>SHA-256</th><td class="mono">{ind.sha256.map((h: string) => <div>{h}</div>)}</td></tr>}
+        {ind.domains?.length > 0 && <tr><th>Domains</th><td class="mono">{ind.domains.map((d: string) => <div>{d.replaceAll('.', '[.]')}</div>)}</td></tr>}
+        {ind.patterns?.length > 0 && <tr><th>Patterns</th><td>{ind.patterns.map((p: string) => <div>{p}</div>)}</td></tr>}
+        {db.detections?.length > 0 && <tr><th>Detected by</th><td class="mono">{db.detections.join(', ')}</td></tr>}
+        {db.reporter && <tr><th>Reporter</th><td>{db.reporter}</td></tr>}
+      </table>
+    </>
+  )}
+
+  {refs.length > 0 && (
+    <>
+      <h2>References</h2>
+      <ul>{refs.map((u) => <li><a href={u} rel="noopener nofollow" class="mono">{u}</a></li>)}</ul>
+    </>
+  )}
+  <p class="muted" style="margin-top:32px">Wrong or outdated? Open an issue or PR against <code>corpus/entries/{e.id}.json</code>.</p>
+</Base>

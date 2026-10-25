@@ -45,7 +45,7 @@ pub fn scan_mcp_config(c: &Corpus, path: &Path, out: &mut Vec<Finding>) {
 fn mcp_config(c: &Corpus, data: &[u8], path: &str, out: &mut Vec<Finding>) {
     let Ok(cfg) = serde_json::from_slice(data) else { return };
     for (server, r) in mcp::package_refs(&cfg) {
-        mcp::check(c, &r, &format!("{path} (mcp server \"{server}\")"), out);
+        mcp::check(c, &r, path, Some(&format!("mcp server \"{server}\"")), out);
     }
 }
 
@@ -58,7 +58,9 @@ fn hash_match(c: &Corpus, data: &[u8], path: &str, out: &mut Vec<Finding>) {
                 severity: e.severity(),
                 id: e.id.clone(),
                 summary: e.summary.clone(),
-                location: path.to_string(),
+                path: path.to_string(),
+                line: None,
+                context: None,
                 evidence: Some(format!("sha256 {hash}")),
             });
         }
@@ -78,15 +80,17 @@ fn yara_match(scanner: &mut yara_x::Scanner, data: &[u8], path: &str, out: &mut 
         let (line, evidence) = match first {
             Some(m) => {
                 let r = m.range();
-                (data[..r.start].iter().filter(|b| **b == b'\n').count() + 1, Some(snippet(m.data())))
+                (Some(data[..r.start].iter().filter(|b| **b == b'\n').count() + 1), Some(snippet(m.data())))
             }
-            None => (0, None),
+            None => (None, None),
         };
         out.push(Finding {
             severity: severity(meta("severity").as_deref()),
             id: meta("id").unwrap_or_else(|| rule.identifier().to_string()),
             summary: meta("description").unwrap_or_default(),
-            location: if line > 0 { format!("{path}:{line}") } else { path.to_string() },
+            path: path.to_string(),
+            line,
+            context: None,
             evidence,
         });
     }

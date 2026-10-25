@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { entries, classification, entryHref, packageHref, href } from '../lib/entries';
+
+const index = entries.map((e) => ({
+  id: e.id,
+  summary: e.summary,
+  cls: classification(e),
+  url: entryHref(e.id),
+  aliases: e.aliases ?? [],
+  pkgs: (e.affected ?? []).map((a: any) => ({
+    label: `${a.package.ecosystem}:${a.package.name}`,
+    url: packageHref(a.package.ecosystem, a.package.name),
+  })),
+}));
+---
+<Base title="Antidote — is this agent tool safe?">
+  <h1>Is this agent tool safe?</h1>
+  <p class="muted">Search {entries.length} known malicious or vulnerable skills, MCP servers and packages, and agent incidents. Or run <code>antidote scan</code> locally.</p>
+  <input id="q" type="search" placeholder="Package name, CVE, entry ID or keyword (e.g. mcp-remote)" autocomplete="off" aria-label="Search entries" />
+  <p id="status" class="muted" aria-live="polite"></p>
+  <ul id="results" class="list">
+    {index.map((e) => (
+      <li data-entry>
+        <a class="id" href={e.url}>{e.id}</a> <span class={`tag ${e.cls}`}>{e.cls}</span>
+        <div><a href={e.url}>{e.summary}</a></div>
+        {e.pkgs.length > 0 && <div class="muted mono">{e.pkgs.map((p: any) => p.label).join(', ')}</div>}
+      </li>
+    ))}
+  </ul>
+  <script type="application/json" id="index" set:html={JSON.stringify(index)} />
+</Base>
+
+<style>
+  input { width: 100%; padding: 12px 14px; font: inherit; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg); margin-top: 8px; }
+  input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+</style>
+
+<script>
+  const index = JSON.parse(document.getElementById('index')!.textContent!);
+  const input = document.getElementById('q') as HTMLInputElement;
+  const items = [...document.querySelectorAll<HTMLLIElement>('[data-entry]')];
+  const status = document.getElementById('status')!;
+  const haystack = index.map((e: any) =>
+    [e.id, e.summary, e.cls, ...e.aliases, ...e.pkgs.map((p: any) => p.label)].join(' ').toLowerCase());
+
+  function filter() {
+    const q = input.value.trim().toLowerCase();
+    const terms = q.split(/\s+/).filter(Boolean);
+    let shown = 0;
+    items.forEach((li, i) => {
+      const hit = terms.every((t) => haystack[i].includes(t));
+      li.hidden = !hit;
+      if (hit) shown++;
+    });
+    status.textContent = !q ? '' : shown
+      ? `${shown} matching entr${shown === 1 ? 'y' : 'ies'}.`
+      : `"${input.value.trim()}" is not in the database. That is not a safety verdict: it only means nobody has reported it yet.`;
+    const url = new URL(location.href);
+    q ? url.searchParams.set('q', input.value.trim()) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  }
+  input.value = new URLSearchParams(location.search).get('q') ?? '';
+  input.addEventListener('input', filter);
+  filter();
+</script>

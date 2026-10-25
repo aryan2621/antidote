@@ -75,3 +75,42 @@ fn check_matches_versions_and_ranges() {
     assert!(!hit("npm:mcp-remote@0.1.16"));
     assert!(!hit("npm:mcp-remote"), "unpinned resolves to a fixed latest");
 }
+
+fn run(args: &[&str]) -> (i32, Vec<u8>) {
+    let out = Command::new(env!("CARGO_BIN_EXE_antidote")).args(args).output().unwrap();
+    (out.status.code().unwrap(), out.stdout)
+}
+
+#[test]
+fn sarif_is_valid() {
+    let (_, stdout) = run(&["scan", fixtures().join("bad").to_str().unwrap(), "--format=sarif"]);
+    let sarif: Value = serde_json::from_slice(&stdout).unwrap();
+    let schema: Value = serde_json::from_str(include_str!("sarif-2.1.0.schema.json")).unwrap();
+    let errors: Vec<String> = jsonschema::validator_for(&schema).unwrap().iter_errors(&sarif).map(|e| e.to_string()).collect();
+    assert!(errors.is_empty(), "{errors:#?}");
+    let results = sarif["runs"][0]["results"].as_array().unwrap();
+    let (_, findings) = antidote(&["scan", fixtures().join("bad").to_str().unwrap()]);
+    assert_eq!(results.len(), findings.len());
+    assert!(results.iter().all(|r| r["locations"][0]["physicalLocation"]["region"]["startLine"].is_u64()));
+}
+
+#[test]
+fn fail_on_threshold() {
+    let medium_only = fixtures().join("bad/AGT-R-0102.md");
+    let p = medium_only.to_str().unwrap();
+    assert_eq!(run(&["scan", p]).0, 0);
+    assert_eq!(run(&["scan", p, "--fail-on=medium"]).0, 1);
+    assert_eq!(run(&["scan", fixtures().join("bad").to_str().unwrap(), "--fail-on=never"]).0, 0);
+}
+
+#[test]
+fn feed_build_bundles_corpus() {
+    let out = std::env::temp_dir().join(format!("antidote-feed-{}.json", std::process::id()));
+    let (code, _) = run(&["feed", "build", repo().join("corpus").to_str().unwrap(), "-o", out.to_str().unwrap(), "--version", "5"]);
+    assert_eq!(code, 0);
+    let feed: Value = serde_json::from_slice(&fs::read(&out).unwrap()).unwrap();
+    fs::remove_file(out).ok();
+    assert_eq!(feed["version"], 5);
+    assert_eq!(feed["entries"].as_array().unwrap().len(), fs::read_dir(repo().join("corpus/entries")).unwrap().count());
+    assert!(feed["rules"]["tool_poisoning"].as_str().unwrap().contains("AGT-R-0001"));
+}

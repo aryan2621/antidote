@@ -1,0 +1,73 @@
+name: Antidote scan
+description: Scan agent skills, MCP configs and prompts for known-malicious and vulnerable artifacts
+branding: { icon: shield, color: green }
+inputs:
+  paths:
+    description: Space-separated paths to scan
+    default: "."
+  fail-on:
+    description: "Fail the job at this severity or above: critical, high, medium, low, never"
+    default: high
+  upload-sarif:
+    description: Upload results to GitHub code scanning (needs `security-events: write`)
+    default: "true"
+  version:
+    description: Release tag to use, or `latest`
+    default: latest
+outputs:
+  sarif:
+    description: Path of the SARIF report
+    value: antidote.sarif
+runs:
+  using: composite
+  steps:
+    - name: Install antidote
+      shell: bash
+      env:
+        REPO: ${{ github.action_repository }}
+        VERSION: ${{ inputs.version }}
+      run: |
+        case "${RUNNER_OS}-${RUNNER_ARCH}" in
+          Linux-X64) t=x86_64-unknown-linux-gnu ;;
+          Linux-ARM64) t=aarch64-unknown-linux-gnu ;;
+          macOS-ARM64) t=aarch64-apple-darwin ;;
+          macOS-X64) t=x86_64-apple-darwin ;;
+          Windows-X64) t=x86_64-pc-windows-msvc ;;
+          *) echo "::error::unsupported runner ${RUNNER_OS}-${RUNNER_ARCH}"; exit 1 ;;
+        esac
+        if [ "$VERSION" = latest ]; then base="https://github.com/$REPO/releases/latest/download"; else base="https://github.com/$REPO/releases/download/$VERSION"; fi
+        dir="$RUNNER_TEMP/antidote"; mkdir -p "$dir"; cd "$dir"
+        curl -fsSLO "$base/antidote-$t.tar.gz"
+        curl -fsSLO "$base/antidote-$t.tar.gz.sha256"
+        got=$( (command -v sha256sum >/dev/null && sha256sum antidote-$t.tar.gz || shasum -a 256 antidote-$t.tar.gz) | cut -d' ' -f1)
+        [ "$got" = "$(tr -d ' \r\n' < antidote-$t.tar.gz.sha256)" ] || { echo "::error::checksum mismatch"; exit 1; }
+        tar xzf antidote-$t.tar.gz
+        echo "$dir" >> "$GITHUB_PATH"
+    - name: Update corpus
+      shell: bash
+      run: antidote update || echo "::warning::feed update failed; scanning with the corpus built into this release"
+    - name: Scan
+      id: scan
+      shell: bash
+      env:
+        PATHS: ${{ inputs.paths }}
+        FAIL_ON: ${{ inputs.fail-on }}
+      run: |
+        set +e
+        # PATHS is split on spaces on purpose
+        antidote scan $PATHS --format sarif --fail-on "$FAIL_ON" > antidote.sarif
+        echo "code=$?" >> "$GITHUB_OUTPUT"
+    - name: Upload SARIF
+      if: always() && inputs.upload-sarif == 'true'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: antidote.sarif
+        category: antidote
+    - name: Result
+      shell: bash
+      env:
+        CODE: ${{ steps.scan.outputs.code }}
+      run: |
+        [ "$CODE" = 0 ] && exit 0
+        [ "$CODE" = 1 ] && { echo "::error::antidote found issues at or above the fail-on severity"; exit 1; }
+        echo "::error::antidote failed (exit $CODE)"; exit "$CODE"

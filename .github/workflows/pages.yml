@@ -1,0 +1,48 @@
+# Publishes the website and the signed feed (https://<owner>.github.io/<repo>/feed/feed.json).
+name: pages
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build feed
+        run: |
+          mkdir -p web/public/feed
+          cargo run --release --locked -- feed build corpus -o web/public/feed/feed.json --version $(git log -1 --format=%ct -- corpus)
+      - name: Sign feed
+        env:
+          MINISIGN_SECRET_KEY: ${{ secrets.MINISIGN_SECRET_KEY }}
+        run: |
+          if [ -z "$MINISIGN_SECRET_KEY" ]; then echo "::warning::MINISIGN_SECRET_KEY not set; feed published unsigned and clients will reject it"; exit 0; fi
+          sudo apt-get install -y minisign
+          printf '%s\n' "$MINISIGN_SECRET_KEY" > "$RUNNER_TEMP/antidote.key"
+          minisign -S -s "$RUNNER_TEMP/antidote.key" -m web/public/feed/feed.json -x web/public/feed/feed.json.minisig
+          rm "$RUNNER_TEMP/antidote.key"
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: web/package-lock.json }
+      - name: Build site
+        working-directory: web
+        env:
+          SITE: https://${{ github.repository_owner }}.github.io
+          BASE: /${{ github.event.repository.name }}
+        run: npm ci && npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: web/dist }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.deploy.outputs.page_url }}" }
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

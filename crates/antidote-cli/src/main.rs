@@ -1,14 +1,17 @@
 mod corpus;
 mod discover;
+mod feed;
 mod mcp;
 mod scan;
 
-use std::path::PathBuf;
+use std::collections::BTreeMap;
+use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 use anyhow::{bail, Result};
 use clap::{Parser, Subcommand, ValueEnum};
 use serde::Serialize;
+use serde_json::{json, Value};
 
 #[derive(Parser)]
 #[command(name = "antidote", version, about = "Scan AI agent skills, MCP servers and prompts against the Antidote threat corpus")]
@@ -17,6 +20,9 @@ struct Cli {
     cmd: Cmd,
     #[arg(long, value_enum, default_value = "text", global = true)]
     format: Format,
+    /// Exit 1 when a finding at or above this severity is reported
+    #[arg(long, value_enum, default_value = "high", global = true)]
+    fail_on: FailOn,
 }
 
 #[derive(Subcommand)]
@@ -30,12 +36,43 @@ enum Cmd {
     },
     /// Look up one package, e.g. `npm:mcp-remote@0.1.15` or `pypi:name==1.0`
     Check { package: String },
+    /// Download and verify the latest signed corpus feed
+    Update {
+        #[arg(long, default_value = feed::FEED_URL)]
+        url: String,
+    },
+    /// Maintainer tools
+    #[command(hide = true, subcommand)]
+    Feed(FeedCmd),
+}
+
+#[derive(Subcommand)]
+enum FeedCmd {
+    /// Bundle a corpus checkout into one feed.json (sign it separately with minisign)
+    Build {
+        corpus: PathBuf,
+        #[arg(short, long)]
+        out: PathBuf,
+        /// Unix time of the last corpus commit
+        #[arg(long)]
+        version: u64,
+    },
 }
 
 #[derive(Clone, ValueEnum)]
 enum Format {
     Text,
     Json,
+    Sarif,
+}
+
+#[derive(Clone, Copy, ValueEnum)]
+enum FailOn {
+    Critical,
+    High,
+    Medium,
+    Low,
+    Never,
 }
 
 #[derive(Serialize)]
@@ -43,7 +80,10 @@ pub struct Finding {
     pub severity: &'static str,
     pub id: String,
     pub summary: String,
-    pub location: String,
+    pub path: String,
+    pub line: Option<usize>,
+    /// e.g. which MCP server in a config file
+    pub context: Option<String>,
     pub evidence: Option<String>,
 }
 
@@ -67,16 +107,23 @@ fn main() -> ExitCode {
     }
 }
 
-/// Returns whether any high/critical finding was reported.
+/// Returns whether a finding at or above `--fail-on` was reported.
 fn run() -> Result<bool> {
     let cli = Cli::parse();
+    if let Cmd::Feed(FeedCmd::Build { corpus, out, version }) = &cli.cmd {
+        let feed = feed::Feed::from_dir(corpus, *version)?;
+        corpus::compile(&feed)?; // fail the build on bad entries or rules
+        std::fs::write(out, serde_json::to_vec(&feed)?)?;
+        eprintln!("wrote {} ({} entries, {} rule files)", out.display(), feed.entries.len(), feed.rules.len());
+        return Ok(false);
+    }
     let c = corpus::load()?;
     let mut findings = Vec::new();
     match cli.cmd {
         Cmd::Scan { mut paths, mut mcp } => {
             if paths.is_empty() && mcp.is_empty() {
                 (paths, mcp) = discover::targets();
-                if !matches!(cli.format, Format::Json) {
+                if matches!(cli.format, Format::Text) {
                     for p in paths.iter().chain(&mcp) {
                         eprintln!("scanning {}", p.display());
                     }
@@ -96,19 +143,28 @@ fn run() -> Result<bool> {
             let Some(r) = mcp::parse_ref(&package) else {
                 bail!("expected <npm|pypi>:<name>[@version], got {package}");
             };
-            mcp::check(&c, &r, &package, &mut findings);
+            mcp::check(&c, &r, &package, None, &mut findings);
         }
+        Cmd::Update { url } => {
+            let v = feed::update(&url, c.version)?;
+            println!("Corpus at version {v}{}.", if v == c.version { " (already current)" } else { "" });
+            return Ok(false);
+        }
+        Cmd::Feed(_) => unreachable!(),
     }
     findings.sort_by_key(|f| rank(f.severity));
 
     match cli.format {
         Format::Json => println!("{}", serde_json::to_string_pretty(&findings)?),
+        Format::Sarif => println!("{}", serde_json::to_string_pretty(&sarif(&findings))?),
         Format::Text if findings.is_empty() => {
-            println!("No known threats found ({} entries, corpus built in).", c.entries.len())
+            println!("No known threats found ({} entries, corpus version {}).", c.entries.len(), c.version)
         }
         Format::Text => {
             for f in &findings {
-                println!("[{}] {} {}\n    at {}", f.severity.to_uppercase(), f.id, f.summary, f.location);
+                let line = f.line.map(|l| format!(":{l}")).unwrap_or_default();
+                let ctx = f.context.as_ref().map(|c| format!(" ({c})")).unwrap_or_default();
+                println!("[{}] {} {}\n    at {}{line}{ctx}", f.severity.to_uppercase(), f.id, f.summary, f.path);
                 if let Some(e) = &f.evidence {
                     println!("    evidence: {e}");
                 }
@@ -116,5 +172,62 @@ fn run() -> Result<bool> {
             println!("\n{} finding(s).", findings.len());
         }
     }
-    Ok(findings.iter().any(|f| rank(f.severity) <= 1))
+    let threshold = match cli.fail_on {
+        FailOn::Never => return Ok(false),
+        FailOn::Critical => 0,
+        FailOn::High => 1,
+        FailOn::Medium => 2,
+        FailOn::Low => 3,
+    };
+    Ok(findings.iter().any(|f| rank(f.severity) <= threshold))
+}
+
+/// SARIF 2.1.0 for GitHub code scanning; paths under the cwd become repo-relative URIs.
+fn sarif(findings: &[Finding]) -> Value {
+    let cwd = std::env::current_dir().unwrap_or_default();
+    let mut rules = BTreeMap::new();
+    let results: Vec<Value> = findings
+        .iter()
+        .map(|f| {
+            rules.entry(f.id.clone()).or_insert_with(|| {
+                json!({ "id": f.id, "shortDescription": { "text": f.summary }, "properties": { "severity": f.severity } })
+            });
+            let p = Path::new(&f.path);
+            let uri = match p.strip_prefix(&cwd).or_else(|_| p.strip_prefix(".")) {
+                Ok(rel) => rel.to_string_lossy().replace('\\', "/"),
+                Err(_) if p.is_absolute() => format!("file://{}", f.path.replace('\\', "/")),
+                Err(_) => f.path.replace('\\', "/"),
+            };
+            let mut loc = json!({ "artifactLocation": { "uri": uri } });
+            if let Some(l) = f.line {
+                loc["region"] = json!({ "startLine": l });
+            }
+            let mut text = f.summary.clone();
+            if let Some(c) = &f.context {
+                text.push_str(&format!(" ({c})"));
+            }
+            if let Some(e) = &f.evidence {
+                text.push_str(&format!(". Evidence: {e}"));
+            }
+            json!({
+                "ruleId": f.id,
+                "level": match rank(f.severity) { 0 | 1 => "error", 2 => "warning", _ => "note" },
+                "message": { "text": text },
+                "locations": [{ "physicalLocation": loc }],
+            })
+        })
+        .collect();
+    json!({
+        "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+        "version": "2.1.0",
+        "runs": [{
+            "tool": { "driver": {
+                "name": "antidote",
+                "version": env!("CARGO_PKG_VERSION"),
+                "informationUri": "https://github.com/antidote-db/antidote",
+                "rules": rules.into_values().collect::<Vec<_>>(),
+            }},
+            "results": results,
+        }],
+    })
 }

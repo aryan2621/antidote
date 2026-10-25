@@ -1,0 +1,54 @@
+---
+import { href } from '../lib/entries';
+interface Props { title: string; description?: string }
+const { title, description = 'Open database of malicious and vulnerable AI agent skills, MCP servers and prompts.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style is:global>
+      :root {
+        --bg: #fbfbf9; --fg: #1c1d1f; --muted: #5d6066; --line: #e2e2dd; --card: #ffffff;
+        --accent: #1f6f4a; --crit: #b42318; --high: #b54708; --med: #8a6d00; --inc: #3b5bdb;
+        color-scheme: light dark;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121315; --fg: #e8e8e6; --muted: #a0a3a8; --line: #2b2d31; --card: #1a1b1e;
+          --accent: #5ec796; --crit: #f97066; --high: #fdb022; --med: #e8c547; --inc: #8ea4ff;
+        }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, Segoe UI, sans-serif; }
+      main, header > div, footer { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+      header { border-bottom: 1px solid var(--line); }
+      header > div { display: flex; align-items: baseline; gap: 16px; padding-block: 14px; }
+      header a.brand { font-weight: 700; color: var(--fg); text-decoration: none; font-size: 1.1rem; }
+      header nav a { color: var(--muted); font-size: .95rem; }
+      a { color: var(--accent); }
+      h1 { font-size: 1.6rem; line-height: 1.25; margin: 28px 0 8px; }
+      h2 { font-size: 1.1rem; margin: 28px 0 8px; }
+      code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; overflow-wrap: anywhere; }
+      .muted { color: var(--muted); }
+      .tag { display: inline-block; font-size: .78rem; font-weight: 600; padding: 1px 8px; border-radius: 99px; border: 1px solid currentColor; text-transform: uppercase; letter-spacing: .03em; }
+      .tag.malicious { color: var(--crit); } .tag.vulnerable { color: var(--high); } .tag.suspicious { color: var(--med); } .tag.incident { color: var(--inc); }
+      .tag.verified { color: var(--accent); } .tag.reported, .tag.disputed { color: var(--muted); }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { text-align: left; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { color: var(--muted); font-weight: 500; width: 30%; }
+      ul.list { list-style: none; padding: 0; margin: 0; }
+      ul.list li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      ul.list li a.id { font-family: ui-monospace, Menlo, monospace; font-size: .85rem; }
+      footer { color: var(--muted); font-size: .85rem; padding-block: 40px; }
+    </style>
+  </head>
+  <body>
+    <header><div><a class="brand" href={href('/')}>Antidote</a><nav><a href={href('/feed/feed.json')}>Feed</a></nav></div></header>
+    <main><slot /></main>
+    <footer>Data CC-BY-4.0. Entries describe behavior and indicators from public reports; "reported" entries are not yet independently verified.</footer>
+  </body>
+</html>

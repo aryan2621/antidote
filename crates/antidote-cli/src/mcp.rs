@@ -78,7 +78,7 @@ fn server_ref(def: &Value) -> Option<PkgRef> {
     }
 }
 
-pub fn check(c: &Corpus, r: &PkgRef, location: &str, out: &mut Vec<Finding>) {
+pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mut Vec<Finding>) {
     for e in &c.entries {
         for a in &e.affected {
             if !a.package.ecosystem.eq_ignore_ascii_case(r.ecosystem) || a.package.name != r.name {
@@ -101,7 +101,9 @@ pub fn check(c: &Corpus, r: &PkgRef, location: &str, out: &mut Vec<Finding>) {
                 severity: e.severity(),
                 id: e.id.clone(),
                 summary: e.summary.clone(),
-                location: location.to_string(),
+                path: path.to_string(),
+                line: None,
+                context: context.map(String::from),
                 evidence: Some(evidence),
             });
         }

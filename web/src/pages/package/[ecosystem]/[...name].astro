@@ -1,0 +1,30 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { packages, classification, entryHref, versionText } from '../../../lib/entries';
+
+export function getStaticPaths() {
+  return [...packages.values()].map((p) => ({ params: { ecosystem: p.ecosystem, name: p.name }, props: { p } }));
+}
+const { p } = Astro.props;
+const label = `${p.ecosystem}:${p.name}`;
+const malicious = p.entries.some((e: any) => classification(e) === 'malicious');
+---
+<Base title={`Is ${p.name} safe? — Antidote`} description={`${p.entries.length} Antidote entr${p.entries.length === 1 ? 'y' : 'ies'} for ${label}`}>
+  <h1>Is <code>{p.name}</code> safe?</h1>
+  <p class="muted">Ecosystem: {p.ecosystem}</p>
+  <p>
+    {malicious
+      ? <strong>Reported as malicious.</strong>
+      : <strong>Has known vulnerabilities.</strong>}
+    {' '}{p.entries.length} entr{p.entries.length === 1 ? 'y' : 'ies'} in the database. Check the affected versions against yours, or run <code>antidote check {p.ecosystem.toLowerCase()}:{p.name}@&lt;version&gt;</code>.
+  </p>
+  <ul class="list">
+    {p.entries.map((e: any) => (
+      <li>
+        <a class="id" href={entryHref(e.id)}>{e.id}</a> <span class={`tag ${classification(e)}`}>{classification(e)}</span>
+        <div><a href={entryHref(e.id)}>{e.summary}</a></div>
+        <div class="muted">Affected: {e.affected.filter((a: any) => a.package.name === p.name && a.package.ecosystem === p.ecosystem).map(versionText).join('; ')}</div>
+      </li>
+    ))}
+  </ul>
+</Base>
