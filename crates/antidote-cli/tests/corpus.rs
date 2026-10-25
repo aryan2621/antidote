@@ -114,3 +114,26 @@ fn feed_build_bundles_corpus() {
     assert_eq!(feed["entries"].as_array().unwrap().len(), fs::read_dir(repo().join("corpus/entries")).unwrap().count());
     assert!(feed["rules"]["tool_poisoning"].as_str().unwrap().contains("AGT-R-0001"));
 }
+
+#[test]
+fn classifier_flags_injection_fixtures() {
+    for f in ["AGT-R-0003.md", "AGT-R-0004.json", "AGT-R-0005.json"] {
+        let p = fixtures().join("bad").join(f);
+        // put the fixture where the scanner treats it as agent-facing text
+        let dir = tempfile_dir();
+        let target = dir.join("skills").join(if f.ends_with(".md") { "SKILL.md" } else { f });
+        fs::create_dir_all(target.parent().unwrap()).unwrap();
+        fs::copy(&p, &target).unwrap();
+        let (_, findings) = antidote(&["scan", dir.to_str().unwrap()]);
+        fs::remove_dir_all(&dir).ok();
+        assert!(findings.iter().any(|x| x["id"] == "AGT-C-0001"), "classifier missed {f}: {findings:?}");
+    }
+    let (_, off) = antidote(&["scan", fixtures().join("bad/AGT-R-0004.json").to_str().unwrap(), "--no-classifier"]);
+    assert!(off.iter().all(|x| x["id"] != "AGT-C-0001"));
+}
+
+fn tempfile_dir() -> PathBuf {
+    let d = std::env::temp_dir().join(format!("antidote-cls-{}-{:?}", std::process::id(), std::thread::current().id()));
+    fs::create_dir_all(&d).unwrap();
+    d
+}

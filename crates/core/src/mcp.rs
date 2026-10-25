@@ -105,6 +105,7 @@ pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mu
                 line: None,
                 context: context.map(String::from),
                 evidence: Some(evidence),
+                explanation: None,
             });
         }
     }

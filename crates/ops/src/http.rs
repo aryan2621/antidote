@@ -36,7 +36,7 @@ pub fn get(url: &str, max_bytes: u64) -> Result<Vec<u8>> {
 }
 
 pub fn get_json(url: &str) -> Result<serde_json::Value> {
-    Ok(serde_json::from_slice(&get(url, 20 << 20)?).with_context(|| format!("{url} returned invalid JSON"))?)
+    serde_json::from_slice(&get(url, 20 << 20)?).with_context(|| format!("{url} returned invalid JSON"))
 }
 
 /// Minimal percent-encoding for query values (cursors contain JSON).

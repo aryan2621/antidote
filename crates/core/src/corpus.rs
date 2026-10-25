@@ -59,6 +59,8 @@ pub struct Corpus {
     pub version: u64,
     pub entries: Vec<Entry>,
     pub rules: yara_x::Rules,
+    /// prompt-injection classifier; None if the feed has none or the user turned it off
+    pub model: Option<crate::classify::Model>,
 }
 
 /// The newest verified corpus: cached feed from `antidote update`, else the built-in one.
@@ -78,5 +80,10 @@ pub fn compile(feed: &Feed) -> Result<Corpus> {
         compiler.new_namespace(name);
         compiler.add_source(src.as_str()).with_context(|| format!("compiling rules/{name}.yar"))?;
     }
-    Ok(Corpus { version: feed.version, entries, rules: compiler.build() })
+    // shortcut: last by name wins, which breaks at injection-v10; pick by parsed version then.
+    let model = match feed.models.iter().next_back() {
+        Some((name, src)) => Some(crate::classify::Model::from_json(src).with_context(|| format!("model {name}"))?),
+        None => None,
+    };
+    Ok(Corpus { version: feed.version, entries, rules: compiler.build(), model })
 }

@@ -1,4 +1,5 @@
 mod discover;
+mod guard;
 
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
@@ -29,9 +30,41 @@ enum Cmd {
         /// MCP config file to check (package matching only)
         #[arg(long)]
         mcp: Vec<PathBuf>,
+        /// Skip the prompt-injection classifier
+        #[arg(long)]
+        no_classifier: bool,
+        /// Explain findings with a local LLM: `ollama:<model>` or an OpenAI-compatible URL (http://127.0.0.1:8080/v1)
+        #[arg(long)]
+        llm: Option<String>,
+        /// Model name for a URL `--llm`
+        #[arg(long)]
+        llm_model: Option<String>,
+        /// Allow `--llm` to be a non-local server (file excerpts are sent to it; key from ANTIDOTE_LLM_API_KEY)
+        #[arg(long)]
+        llm_allow_remote: bool,
+        /// Max findings sent for review
+        #[arg(long, default_value_t = 20)]
+        llm_max: usize,
     },
     /// Look up one package, e.g. `npm:mcp-remote@0.1.15` or `pypi:name==1.0`
     Check { package: String },
+    /// Run an MCP server behind a filter: hides tools that look poisoned or changed since first seen.
+    /// Use as the server command in your MCP config: `antidote guard --name github -- npx -y @x/server`
+    Guard {
+        /// Server name; pins are kept per name
+        #[arg(long)]
+        name: String,
+        /// Log problems to stderr but don't hide tools
+        #[arg(long)]
+        warn_only: bool,
+        /// Forget this server's pins (after reviewing a changed tool), then exit
+        #[arg(long)]
+        reset: bool,
+        #[arg(long, hide = true)]
+        pins_dir: Option<PathBuf>,
+        #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
+        cmd: Vec<String>,
+    },
     /// Download and verify the latest signed corpus feed
     Update {
         #[arg(long, default_value = feed::FEED_URL)]
@@ -92,10 +125,17 @@ fn run() -> Result<bool> {
         eprintln!("wrote {} ({} entries, {} rule files)", out.display(), feed.entries.len(), feed.rules.len());
         return Ok(false);
     }
-    let c = corpus::load()?;
+    let mut c = corpus::load()?;
     let mut findings = Vec::new();
+    let mut llm = None;
     match cli.cmd {
-        Cmd::Scan { mut paths, mut mcp } => {
+        Cmd::Scan { mut paths, mut mcp, no_classifier, llm: llm_spec, llm_model, llm_allow_remote, llm_max } => {
+            if no_classifier {
+                c.model = None;
+            }
+            if let Some(spec) = llm_spec {
+                llm = Some((antidote_core::review::parse(&spec, llm_model.as_deref(), llm_allow_remote)?, llm_max));
+            }
             if paths.is_empty() && mcp.is_empty() {
                 (paths, mcp) = discover::targets();
                 if matches!(cli.format, Format::Text) {
@@ -120,6 +160,15 @@ fn run() -> Result<bool> {
             };
             mcp::check(&c, &r, &package, None, &mut findings);
         }
+        Cmd::Guard { name, warn_only, reset, pins_dir, cmd } => {
+            let dir = pins_dir.unwrap_or_else(guard::pins_dir);
+            if reset {
+                guard::reset(&dir, &name)?;
+                eprintln!("pins for {name} cleared; they are re-pinned on the next tools/list");
+                return Ok(false);
+            }
+            std::process::exit(guard::run(c, &name, &dir, warn_only, &cmd)?);
+        }
         Cmd::Update { url } => {
             let v = feed::update(&url, c.version)?;
             println!("Corpus at version {v}{}.", if v == c.version { " (already current)" } else { "" });
@@ -128,6 +177,10 @@ fn run() -> Result<bool> {
         Cmd::Feed(_) => unreachable!(),
     }
     findings.sort_by_key(|f| rank(f.severity));
+    if let Some((l, max)) = &llm {
+        antidote_core::review::review(l, &mut findings, *max, std::time::Duration::from_secs(60));
+        findings.sort_by_key(|f| rank(f.severity));
+    }
 
     match cli.format {
         Format::Json => println!("{}", serde_json::to_string_pretty(&findings)?),
@@ -142,6 +195,9 @@ fn run() -> Result<bool> {
                 println!("[{}] {} {}\n    at {}{line}{ctx}", f.severity.to_uppercase(), f.id, f.summary, f.path);
                 if let Some(e) = &f.evidence {
                     println!("    evidence: {e}");
+                }
+                if let Some(x) = &f.explanation {
+                    println!("    LLM: {x}");
                 }
             }
             println!("\n{} finding(s).", findings.len());
@@ -183,6 +239,9 @@ fn sarif(findings: &[Finding]) -> Value {
             }
             if let Some(e) = &f.evidence {
                 text.push_str(&format!(". Evidence: {e}"));
+            }
+            if let Some(x) = &f.explanation {
+                text.push_str(&format!(". LLM review: {x}"));
             }
             json!({
                 "ruleId": f.id,

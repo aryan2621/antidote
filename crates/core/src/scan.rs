@@ -28,9 +28,51 @@ pub fn scan_tree(c: &Corpus, root: &Path, out: &mut Vec<Finding>) {
             continue;
         }
         yara_match(&mut scanner, &data, &path, out);
+        if let Some(m) = &c.model {
+            classify_file(m, e.path(), &data, &path, out);
+        }
         if path.ends_with(".json") {
             mcp_config(c, &data, &path, out);
         }
+    }
+}
+
+fn classify_file(m: &crate::classify::Model, p: &Path, data: &[u8], path: &str, out: &mut Vec<Finding>) {
+    if !crate::classify::is_prompt_file(p) {
+        return;
+    }
+    let text = String::from_utf8_lossy(data);
+    for (line, seg) in crate::classify::segments(p, &text) {
+        classify_segment(m, &seg, path, Some(line), out);
+    }
+}
+
+fn classify_segment(m: &crate::classify::Model, seg: &str, path: &str, line: Option<usize>, out: &mut Vec<Finding>) {
+    let score = m.score(seg);
+    let severity = if score >= m.threshold_high {
+        "high"
+    } else if score >= m.threshold_medium {
+        "medium"
+    } else {
+        return;
+    };
+    out.push(Finding {
+        severity,
+        id: "AGT-C-0001".into(),
+        summary: "Text reads like a prompt-injection attempt (classifier)".into(),
+        path: path.to_string(),
+        line,
+        context: None,
+        evidence: Some(format!("p={score:.2} {}", snippet(seg.as_bytes()))),
+        explanation: None,
+    });
+}
+
+/// Content rules + classifier on text that isn't a file, e.g. a live MCP tool description.
+pub fn scan_text(c: &Corpus, label: &str, text: &str, out: &mut Vec<Finding>) {
+    yara_match(&mut yara_x::Scanner::new(&c.rules), text.as_bytes(), label, out);
+    if let Some(m) = &c.model {
+        classify_segment(m, text, label, None, out);
     }
 }
 
@@ -53,7 +95,7 @@ fn hash_match(c: &Corpus, data: &[u8], path: &str, out: &mut Vec<Finding>) {
     let hash = format!("{:x}", Sha256::digest(data));
     for e in &c.entries {
         let Some(db) = &e.database_specific else { continue };
-        if db.indicators.sha256.iter().any(|h| *h == hash) {
+        if db.indicators.sha256.contains(&hash) {
             out.push(Finding {
                 severity: e.severity(),
                 id: e.id.clone(),
@@ -62,6 +104,7 @@ fn hash_match(c: &Corpus, data: &[u8], path: &str, out: &mut Vec<Finding>) {
                 line: None,
                 context: None,
                 evidence: Some(format!("sha256 {hash}")),
+                explanation: None,
             });
         }
     }
@@ -92,6 +135,7 @@ fn yara_match(scanner: &mut yara_x::Scanner, data: &[u8], path: &str, out: &mut 
             line,
             context: None,
             evidence,
+            explanation: None,
         });
     }
 }

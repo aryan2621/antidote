@@ -25,6 +25,9 @@ pub struct Feed {
     pub entries: Vec<Value>,
     /// rule file stem → YARA source
     pub rules: BTreeMap<String, String>,
+    /// model file stem → model JSON (see classify.rs); absent in pre-classifier feeds
+    #[serde(default)]
+    pub models: BTreeMap<String, String>,
 }
 
 impl Feed {
@@ -33,7 +36,7 @@ impl Feed {
         let files = |dir: &str| {
             CORPUS.get_dir(dir).map(|d| d.files()).into_iter().flatten().map(|f| (f.path().to_path_buf(), f.contents().to_vec()))
         };
-        Feed::from_files(version, files("entries"), files("rules")).expect("built-in corpus is invalid")
+        Feed::from_files(version, files("entries"), files("rules"), files("models")).expect("built-in corpus is invalid")
     }
 
     /// Build from a corpus checkout (`entries/*.json`, `rules/*.yar`).
@@ -46,15 +49,23 @@ impl Feed {
             }
             Ok(v)
         };
-        Feed::from_files(version, files("entries")?, files("rules")?)
+        let models = if dir.join("models").is_dir() { files("models")? } else { vec![] };
+        Feed::from_files(version, files("entries")?, files("rules")?, models)
     }
 
     fn from_files(
         version: u64,
         entries: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
         rules: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
+        models: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
     ) -> Result<Feed> {
-        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new() };
+        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new(), models: BTreeMap::new() };
+        for (p, data) in models {
+            if p.extension().is_some_and(|e| e == "json") {
+                let name = p.file_stem().unwrap().to_string_lossy().into_owned();
+                feed.models.insert(name, String::from_utf8(data).with_context(|| format!("model {} not utf-8", p.display()))?);
+            }
+        }
         for (p, data) in entries {
             if p.extension().is_some_and(|e| e == "json") {
                 feed.entries.push(serde_json::from_slice(&data).with_context(|| format!("entry {}", p.display()))?);
@@ -79,7 +90,7 @@ pub fn verify(pubkey: &str, data: &[u8], sig: &str) -> Result<Feed> {
     let pk = minisign_verify::PublicKey::from_base64(pubkey).map_err(|e| anyhow::anyhow!("bad public key: {e}"))?;
     let sig = minisign_verify::Signature::decode(sig).map_err(|e| anyhow::anyhow!("bad signature file: {e}"))?;
     pk.verify(data, &sig, false).map_err(|e| anyhow::anyhow!("feed signature check failed: {e}"))?;
-    Ok(serde_json::from_slice(data).context("feed is not valid JSON")?)
+    serde_json::from_slice(data).context("feed is not valid JSON")
 }
 
 fn cache_dir() -> PathBuf {

@@ -56,6 +56,35 @@ What it checks:
 
 The scanner gives deterministic verdicts only. No LLM decides whether something is safe.
 
+### Classifier and LLM explanations
+
+Text meant for an agent is also scored by a small offline classifier for prompt-injection phrasing. That covers skill files, `CLAUDE.md` / `AGENTS.md`, `*.mdc`, and `description` / `prompt` fields in JSON. Hits are reported as `AGT-C-0001`. The model is a hashed character n-gram logistic regression trained in `ml/` (see `ml/MODEL_CARD.md`). It ships inside the signed feed and runs in pure Rust. `--no-classifier` turns it off.
+
+```bash
+antidote scan --llm ollama:qwen3                        # explain each finding with a local model
+antidote scan --llm http://127.0.0.1:8080/v1 --llm-model m  # any OpenAI-compatible server
+```
+
+The LLM only sees excerpts around existing findings. It can add an explanation or raise a finding to high, but it can never lower or remove one. Non-local servers are refused unless you pass `--llm-allow-remote`, which sends file excerpts to that server, with the key taken from `ANTIDOTE_LLM_API_KEY`.
+
+### Guard: MCP gateway with rug-pull detection
+
+Put `antidote guard` in front of any stdio MCP server in your client config:
+
+```json
+{ "mcpServers": { "github": { "command": "antidote", "args": ["guard", "--name", "github", "--", "npx", "-y", "@modelcontextprotocol/server-github"] } } }
+```
+
+Every message passes through untouched, except the `tools/list` answers, which are filtered:
+- Each tool's description and input schema is scanned. Tools with a high or critical finding are hidden, and calls to them get an error.
+- The first time a tool is seen, its definition is pinned (`<config dir>/antidote/pins/<name>.json`). If the definition later changes, the tool is blocked as a possible rug pull. Review the change, then run `antidote guard --name github --reset` to re-pin it.
+- Reasons are written to stderr, which shows up in your client's MCP log.
+- `--warn-only` logs problems without hiding anything.
+
+### Using antidote from other tools
+
+`antidote check <pkg> --format json` and `antidote scan <path> --format json` print a JSON array of findings: `{severity, id, summary, path, line, context, evidence, explanation}`. Exit codes are as listed above. Package managers and sandboxes (e.g. Burrow) can call `check` before installing.
+
 ## Corpus
 
 - `schema/entry.schema.json`: an OSV extension. Artifact entries are `AGT-YYYY-NNNN`. Behavioral incidents are `AGT-INC-YYYY-NNNN`.
@@ -94,7 +123,7 @@ The scanner gives deterministic verdicts only. No LLM decides whether something 
 
 ## Not yet built
 
-Live MCP inspection and rug-pull diffing, `report` / `incident new`, tree-sitter code rules, typosquat detection, crawlers, sandbox detonation, classifier, website. See `../product-specs/antidote.md`.
+`report` / `incident new`, tree-sitter code rules, registry badges, GitLab template, editor extension. See `../product-specs/antidote.md`.
 
 ## License
 
