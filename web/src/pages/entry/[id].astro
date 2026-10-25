@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, type Entry } from '../../lib/entries';
+import { entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, frameworkRefs, type Entry } from '../../lib/entries';
 
 export function getStaticPaths() {
   return entries.map((e) => ({ params: { id: e.id }, props: { e } }));
@@ -63,6 +63,7 @@ const badges = (e.affected ?? []).map((a: any) => badgeMarkdown(a.package.ecosys
         <tr><th>Artifact type</th><td>{db.artifact_type}</td></tr>
         {db.agents_affected?.length > 0 && <tr><th>Agents</th><td>{db.agents_affected.join(', ')}</td></tr>}
         {db.techniques?.length > 0 && <tr><th>Techniques</th><td class="mono">{db.techniques.join(', ')}</td></tr>}
+        {frameworkRefs(db.techniques).length > 0 && <tr><th>Frameworks</th><td>{frameworkRefs(db.techniques).map((r) => <div><a href={r.url} rel="noopener">{r.title}</a></div>)}</td></tr>}
         {ind.sha256?.length > 0 && <tr><th>SHA-256</th><td class="mono">{ind.sha256.map((h: string) => <div>{h}</div>)}</td></tr>}
         {ind.domains?.length > 0 && <tr><th>Domains</th><td class="mono">{ind.domains.map((d: string) => <div>{d.replaceAll('.', '[.]')}</div>)}</td></tr>}
         {ind.patterns?.length > 0 && <tr><th>Patterns</th><td>{ind.patterns.map((p: string) => <div>{p}</div>)}</td></tr>}

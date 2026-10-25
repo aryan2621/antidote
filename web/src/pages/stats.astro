@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { entries, classification } from '../lib/entries';
+
+const live = entries.filter((e) => !e.withdrawn);
+const pct = (n: number) => (live.length ? Math.round((100 * n) / live.length) : 0);
+const verified = live.filter((e) => e.database_specific?.verification === 'verified').length;
+
+const tally = (keys: string[]) => {
+  const m = new Map<string, number>();
+  for (const k of keys) m.set(k, (m.get(k) ?? 0) + 1);
+  return [...m];
+};
+const byClass = tally(live.map(classification)).sort((a, b) => b[1] - a[1]);
+// entries published per month, newest first
+const byMonth = tally(live.map((e) => (e.published ?? '').slice(0, 7)).filter(Boolean)).sort((a, b) => b[0].localeCompare(a[0]));
+const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ?? [])).sort((a, b) => b[1] - a[1]);
+---
+<Base title="Stats — Antidote" description="How many entries the Antidote database holds, how many are verified, and what kinds.">
+  <h1>Stats</h1>
+  <p class="muted">{live.length} live entries ({entries.length - live.length} withdrawn), {verified} verified ({pct(verified)}%). Updated on every corpus change.</p>
+
+  <h2>By classification</h2>
+  <table>{byClass.map(([k, n]) => <tr><th><span class={`tag ${k}`}>{k}</span></th><td>{n} ({pct(n)}%)</td></tr>)}</table>
+
+  <h2>Published per month</h2>
+  <table>{byMonth.map(([k, n]) => <tr><th class="mono">{k}</th><td>{n}</td></tr>)}</table>
+
+  {byTechnique.length > 0 && (
+    <>
+      <h2>Techniques</h2>
+      <table>{byTechnique.map(([k, n]) => <tr><th class="mono">{k}</th><td>{n}</td></tr>)}</table>
+    </>
+  )}
+</Base>

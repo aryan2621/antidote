@@ -121,6 +121,7 @@ Off by default. `antidote stats on --url https://<api host>/v1/stats` turns it o
 
 - `schema/entry.schema.json`: an OSV extension. Artifact entries are `AGT-YYYY-NNNN`. Behavioral incidents are `AGT-INC-YYYY-NNNN`.
 - `corpus/entries/`: one JSON file per entry. Each entry is sourced from public reports and links them in `references`.
+- `corpus/techniques.json`: maps each `techniques` tag to OWASP Top 10 for Agentic Applications (ASI01–ASI10) and MITRE ATLAS IDs. Entry pages link them.
 - `corpus/rules/*.yar`: each rule has `meta: id, severity, description`.
 - `corpus/rules/<id>.<js|py>.scm`: tree-sitter queries with `; id:`, `; severity:` and `; description:` header lines. The reported node is captured as `@hit`. `.js` rules also run on TypeScript.
 
@@ -128,7 +129,7 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 
 ## Website
 
-`web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. A reporters page ranks reporters by accepted entries, and withdrawn entries are struck through and marked with their withdrawal date. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
+`web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. A stats page shows entry counts, the share verified, and the mix by classification, month and technique. A reporters page ranks reporters by accepted entries, and withdrawn entries are struck through and marked with their withdrawal date. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
 
 ## Desktop app
 

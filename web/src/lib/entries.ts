@@ -1,3 +1,4 @@
+import techniqueMap from '../../../corpus/techniques.json';
 // Corpus is read at build time; the site is fully static.
 const mods = import.meta.glob('../../../corpus/entries/*.json', { eager: true, import: 'default' });
 
@@ -52,4 +53,20 @@ const api = (import.meta.env.PUBLIC_API_URL ?? '').replace(/\/$/, '');
 export function badgeMarkdown(eco: string, name: string): string | null {
   if (!api || !['npm', 'pypi'].includes(eco.toLowerCase())) return null;
   return `[![antidote](${api}/badge/${eco.toLowerCase()}/${name}.svg)](${new URL(packageHref(eco, name), import.meta.env.SITE).href})`;
+}
+
+const OWASP: Record<string, string> = {
+  ASI01: 'Agent Goal Hijack', ASI02: 'Tool Misuse and Exploitation', ASI03: 'Identity and Privilege Abuse',
+  ASI04: 'Agentic Supply Chain Vulnerabilities', ASI05: 'Unexpected Code Execution', ASI06: 'Memory and Context Poisoning',
+  ASI07: 'Insecure Inter-Agent Communication', ASI08: 'Cascading Failures', ASI09: 'Human-Agent Trust Exploitation', ASI10: 'Rogue Agents',
+};
+/** OWASP Agentic Top 10 and MITRE ATLAS links for an entry's technique tags, deduplicated. */
+export function frameworkRefs(techniques: string[] = []): { id: string; title: string; url: string }[] {
+  const refs = new Map<string, { id: string; title: string; url: string }>();
+  for (const t of techniques) {
+    const m = (techniqueMap as Record<string, any>)[t] ?? {};
+    for (const id of m.owasp ?? []) refs.set(id, { id, title: `OWASP Agentic ${id}: ${OWASP[id]}`, url: 'https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/' });
+    for (const id of m.atlas ?? []) refs.set(id, { id, title: `MITRE ATLAS ${id}`, url: `https://atlas.mitre.org/techniques/${id}` });
+  }
+  return [...refs.values()];
 }
