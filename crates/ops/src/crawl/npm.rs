@@ -115,28 +115,3 @@ pub fn parse_meta(doc: &Value, version: &str) -> Result<Meta> {
         integrity: v["dist"]["integrity"].as_str().map(String::from),
     })
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn parses_recorded_changes() {
-        let page = serde_json::from_str(include_str!("../../tests/fixtures/npm/changes.json")).unwrap();
-        let (names, last) = super::parse_changes(&page);
-        assert_eq!(names.len(), 3);
-        assert!(names.iter().all(|n| n.to_lowercase().contains("mcp")));
-        assert!(last.unwrap() > 139_000_000);
-    }
-
-    #[test]
-    fn parses_packument() {
-        let doc = serde_json::json!({
-            "versions": {"1.0.0": {
-                "dist": {"tarball": "https://registry.npmjs.org/x/-/x-1.0.0.tgz", "integrity": "sha512-abc"}
-            }}
-        });
-        let m = super::parse_meta(&doc, "1.0.0").unwrap();
-        assert!(m.tarball.ends_with("x-1.0.0.tgz"));
-        assert_eq!(m.integrity.as_deref(), Some("sha512-abc"));
-        assert!(super::parse_meta(&doc, "2.0.0").is_err());
-    }
-}

@@ -92,9 +92,7 @@ Every message passes through untouched, except the `tools/list` answers, which a
 
 - `schema/entry.schema.json`: an OSV extension. Artifact entries are `AGT-YYYY-NNNN`. Behavioral incidents are `AGT-INC-YYYY-NNNN`.
 - `corpus/entries/`: one JSON file per entry. Each entry is sourced from public reports and links them in `references`.
-- `corpus/rules/*.yar`: each rule has `meta: id, severity, description` and a sample in `crates/antidote-cli/tests/fixtures/bad/<id>.*`.
-
-`cargo test` validates every entry against the schema. It checks that every rule fires on its sample and that nothing fires on `tests/fixtures/good/`.
+- `corpus/rules/*.yar`: each rule has `meta: id, severity, description`.
 
 ## Website
 

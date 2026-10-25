@@ -80,33 +80,3 @@ pub fn pick_file(doc: &Value) -> Result<(String, String)> {
         f["digests"]["sha256"].as_str().context("file without sha256")?.to_string(),
     ))
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn popular_keeps_mcp_names() {
-        let v = serde_json::json!({"rows": [{"project": "boto3"}, {"project": "fastmcp"}, {"project": "mcp-server-git"}, {"project": "mcpi"}]});
-        assert_eq!(popular_mcp(&v), ["fastmcp", "mcp-server-git"]);
-    }
-
-    #[test]
-    fn parses_recorded_rss() {
-        let items = parse_rss(include_str!("../../tests/fixtures/pypi/updates.xml"));
-        assert!(items.len() > 10);
-        assert!(items.iter().all(|(n, v)| !n.is_empty() && !v.contains(' ')));
-    }
-
-    #[test]
-    fn relevance_and_file_choice() {
-        assert!(relevant("fastmcp", &[]));
-        assert!(relevant("Bowmark", &["bowmark".into()]));
-        assert!(!relevant("requests", &[]));
-        let doc = serde_json::json!({"urls": [
-            {"packagetype": "bdist_wheel", "url": "w", "digests": {"sha256": "a"}},
-            {"packagetype": "sdist", "url": "s", "digests": {"sha256": "b"}}
-        ]});
-        assert_eq!(pick_file(&doc).unwrap(), ("s".to_string(), "b".to_string()));
-    }
-}

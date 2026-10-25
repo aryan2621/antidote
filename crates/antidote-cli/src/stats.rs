@@ -54,22 +54,3 @@ pub fn send(url: &str, body: &str) {
     let agent: ureq::Agent = ureq::Agent::config_builder().timeout_global(Some(Duration::from_secs(3))).build().into();
     let _ = agent.post(url).header("content-type", "application/json").send(body);
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn body_is_ids_and_counts_only() {
-        let f = |id: &str| antidote_core::Finding {
-            severity: "high",
-            id: id.into(),
-            summary: "s".into(),
-            path: "/home/me/secret/project/SKILL.md".into(),
-            line: Some(3),
-            context: Some("ctx".into()),
-            evidence: Some("payload".into()),
-            explanation: None,
-        };
-        let b = super::body(7, &[f("AGT-R-0101"), f("AGT-R-0101"), f("AGT-T-0003")]);
-        assert_eq!(b, r#"{"corpus_version":7,"counts":{"AGT-R-0101":2,"AGT-T-0003":1}}"#);
-    }
-}

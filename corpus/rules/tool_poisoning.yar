@@ -1,5 +1,4 @@
-// Tool-description / skill / prompt poisoning. Each rule has a matching sample in
-// crates/antidote-cli/tests/fixtures/bad/<id>.*
+// Tool-description / skill / prompt poisoning.
 
 rule hidden_unicode_tags {
     meta:

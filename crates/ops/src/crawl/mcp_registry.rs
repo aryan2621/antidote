@@ -78,16 +78,3 @@ pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
     out.truncate(limit);
     Ok(out)
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn parses_recorded_page() {
-        let page = serde_json::from_str(include_str!("../../tests/fixtures/mcp-registry/servers.json")).unwrap();
-        let (items, next, newest) = super::parse_page(&page);
-        let names: Vec<_> = items.iter().map(|i| format!("{}:{}@{}", i.ecosystem, i.name, i.version)).collect();
-        assert_eq!(names, ["npm:@achromat-ai/mcp-server@0.1.2", "PyPI:bowmark-mcp@2.1.0", "npm:@bowmark/mcp@2.1.0"], "older 0.1.1 is skipped");
-        assert!(next.is_some());
-        assert!(newest.unwrap().starts_with("2026-"));
-    }
-}

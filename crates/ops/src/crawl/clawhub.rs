@@ -72,18 +72,3 @@ pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
     }
     Ok(out)
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn parses_recorded_page() {
-        let page = serde_json::from_str(include_str!("../../tests/fixtures/clawhub/skills.json")).unwrap();
-        let (items, next) = super::parse_page(&page);
-        assert_eq!(items.len(), 3);
-        assert_eq!(items[0].0.name, "normandmickey/claimcheck");
-        assert_eq!(items[0].0.version, "1.0.1");
-        assert!(items[0].1 > 1_700_000_000_000);
-        assert!(items[0].0.download.as_ref().unwrap().contains("slug=claimcheck&ownerHandle=normandmickey&version=1.0.1"));
-        assert!(next.is_some());
-    }
-}

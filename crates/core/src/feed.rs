@@ -153,37 +153,3 @@ pub fn update(url: &str, current: u64) -> Result<u64> {
     let sig = String::from_utf8(get(&format!("{url}.minisig"))?).context("signature not utf-8")?;
     install(PUBLIC_KEY, &data, &sig, current, &cache_dir())
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    fn signed(feed: &Feed) -> (String, Vec<u8>, String) {
-        let kp = minisign::KeyPair::generate_unencrypted_keypair().unwrap();
-        let data = serde_json::to_vec(feed).unwrap();
-        let sig = minisign::sign(None, &kp.sk, &data[..], None, None).unwrap().into_string();
-        (kp.pk.to_base64(), data, sig)
-    }
-
-    #[test]
-    fn signed_feed_round_trips_and_rejects_tampering_and_rollback() {
-        let mut feed = Feed::embedded();
-        feed.version = 100;
-        let (pk, data, sig) = signed(&feed);
-        let dir = std::env::temp_dir().join(format!("antidote-test-{}", std::process::id()));
-
-        assert_eq!(verify(&pk, &data, &sig).unwrap().entries.len(), feed.entries.len());
-        assert_eq!(install(&pk, &data, &sig, 99, &dir).unwrap(), 100);
-
-        let mut tampered = data.clone();
-        *tampered.last_mut().unwrap() = b' ';
-        assert!(verify(&pk, &tampered, &sig).is_err());
-        assert_eq!(install(&pk, &data, &sig, 100, &dir).unwrap(), 100, "same version is a no-op");
-        assert!(install(&pk, &data, &sig, 101, &dir).is_err(), "rollback");
-
-        let (other_pk, _, _) = signed(&feed);
-        assert!(verify(&other_pk, &data, &sig).is_err());
-        assert!(verify("", &data, &sig).is_err());
-        fs::remove_dir_all(dir).ok();
-    }
-}

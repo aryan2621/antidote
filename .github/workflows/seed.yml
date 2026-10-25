@@ -17,7 +17,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - run: cargo build --release --locked -p antidote-ops
       - run: ./target/release/antidote-ops seed-osv --corpus corpus
-      - run: cargo test --locked -p antidote --test corpus entries_match_schema
+      # fails on entries the scanner cannot load
+      - run: cargo run -q --release --locked -p antidote -- feed build corpus -o "$RUNNER_TEMP/feed.json" --version 0
       - name: Open PR
         env:
           GH_TOKEN: ${{ github.token }}

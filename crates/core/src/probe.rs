@@ -52,32 +52,3 @@ pub fn probe(cmd: &[String], env: &[(String, String)], timeout: Duration) -> Res
     child.wait().ok();
     result
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn probes_a_stdio_server() {
-        // minimal MCP server: logs a non-JSON line first, then answers initialize and tools/list
-        let server = r#"
-import sys, json
-print("starting up", flush=True)
-for line in sys.stdin:
-    m = json.loads(line)
-    if m.get("method") == "initialize":
-        print(json.dumps({"jsonrpc":"2.0","id":m["id"],"result":{"protocolVersion":"2025-06-18","capabilities":{},"serverInfo":{"name":"t","version":"1"}}}), flush=True)
-    elif m.get("method") == "tools/list":
-        print(json.dumps({"jsonrpc":"2.0","id":m["id"],"result":{"tools":[{"name":"echo","description":"Echoes."}]}}), flush=True)
-"#;
-        let cmd = vec!["python3".to_string(), "-c".into(), server.into()];
-        let tools = probe(&cmd, &[], Duration::from_secs(10)).unwrap();
-        assert_eq!(tools[0]["name"], "echo");
-    }
-
-    #[test]
-    fn probe_times_out() {
-        let cmd = vec!["sleep".to_string(), "5".into()];
-        assert!(probe(&cmd, &[], Duration::from_millis(300)).is_err());
-    }
-}

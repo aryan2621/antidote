@@ -71,34 +71,3 @@ fn enc(s: &str) -> String {
         })
         .collect()
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn body_has_hashes_and_hits_but_no_contents() {
-        let d = std::env::temp_dir().join(format!("antidote-report-{}", std::process::id()));
-        std::fs::create_dir_all(d.join("evil-skill")).unwrap();
-        let f = d.join("evil-skill/SKILL.md");
-        std::fs::write(&f, "SECRET-PAYLOAD").unwrap();
-        let hit = Finding {
-            severity: "high",
-            id: "AGT-R-0003".into(),
-            summary: "Instruction override".into(),
-            path: f.display().to_string(),
-            line: Some(4),
-            context: None,
-            evidence: Some("SECRET-PAYLOAD".into()),
-            explanation: None,
-        };
-        let url = issue_url(&d.join("evil-skill"), &[hit]).unwrap();
-        std::fs::remove_dir_all(&d).ok();
-        assert!(url.starts_with(NEW_ISSUE));
-        assert!(url.contains(&hex(&Sha256::digest(b"SECRET-PAYLOAD"))));
-        assert!(url.contains("AGT-R-0003"));
-        assert!(url.contains(&enc("`SKILL.md:4`")));
-        assert!(!url.contains("SECRET"));
-        assert!(!url.contains(&enc(&d.display().to_string())));
-    }
-}

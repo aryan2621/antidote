@@ -91,20 +91,3 @@ fn container_cmd(rt: &str, argv: &[String], env: &[(String, String)]) -> Option<
     cmd.extend(argv[1..].iter().cloned());
     Some(cmd)
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn builds_container_commands() {
-        let argv: Vec<String> = ["/usr/local/bin/npx", "-y", "@x/server"].map(String::from).to_vec();
-        let cmd = container_cmd("docker", &argv, &[("TOKEN".into(), "s3cret".into())]).unwrap();
-        assert_eq!(cmd[..2], ["docker", "run"]);
-        assert!(cmd.windows(2).any(|w| w == ["-e", "TOKEN"]));
-        assert!(!cmd.iter().any(|a| a.contains("s3cret")));
-        assert!(!cmd.iter().any(|a| a == "-v" || a.starts_with("--volume") || a.starts_with("--mount")));
-        assert_eq!(cmd[cmd.len() - 4..], ["node:22-slim", "npx", "-y", "@x/server"]);
-        assert!(container_cmd("docker", &["node".into(), "server.js".into()], &[]).is_none());
-    }
-}

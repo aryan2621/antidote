@@ -1,5 +1,4 @@
 // Malicious code / install-instruction patterns seen in poisoned skills and MCP packages.
-// Each rule has a matching sample in crates/antidote-cli/tests/fixtures/bad/<id>.*
 
 rule credential_exfiltration {
     meta:

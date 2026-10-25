@@ -1,6 +1,6 @@
 # Training data
 
-Only permissively licensed, ungated sources are used. `fetch_data.py` downloads them into `data/`, which is gitignored. Nothing raw is committed. Only the model weights and ~200 golden test strings (`golden.json`, drawn from these sources) are checked in.
+Only permissively licensed, ungated sources are used. `fetch_data.py` downloads them into `data/`, which is gitignored. Nothing raw is committed. Only the model weights are checked in.
 
 | Source | License | Used as |
 |---|---|---|
@@ -9,7 +9,7 @@ Only permissively licensed, ungated sources are used. `fetch_data.py` downloads 
 | [Lakera/mosscap_prompt_injection](https://huggingface.co/datasets/Lakera/mosscap_prompt_injection) | MIT | positives, **held out entirely** to measure generalization |
 | [jackhhao/jailbreak-classification](https://huggingface.co/datasets/jackhhao/jailbreak-classification) | Apache-2.0 | positives (jailbreak), negatives (benign) |
 | [reshabhs/SPML_Chatbot_Prompt_Injection](https://huggingface.co/datasets/reshabhs/SPML_Chatbot_Prompt_Injection) | MIT | user prompts: positives (Prompt injection = 1), negatives (0) |
-| `corpus/` rule fixtures + tool-poisoning examples (this repo) | Apache-2.0 | positives |
+| tool-poisoning examples in `seed_positives.txt` (this repo) | Apache-2.0 | positives |
 | ClawHub `SKILL.md` files (`nonSuspiciousOnly=true`), paragraphs | per skill (public listing) | negatives: real agent instructions |
 | Official MCP registry server descriptions | per server (public listing) | negatives: real tool/server descriptions |
 

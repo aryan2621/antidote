@@ -14,6 +14,4 @@ For *vulnerable* (not malicious) items, notify the author first and allow 30–9
 ## Add a detection rule
 
 1. Add a rule to `corpus/rules/*.yar` with `meta: id = "AGT-R-NNNN"`, `severity` (`low|medium|high|critical`), and `description`.
-2. Add a minimal defanged sample at `crates/antidote-cli/tests/fixtures/bad/AGT-R-NNNN.<ext>`.
-3. If the rule could match normal text, add a benign example to `tests/fixtures/good/`.
-4. Run `cargo test`.
+2. Run `antidote scan` on a defanged sample to confirm it fires, and on normal text to confirm it doesn't.
