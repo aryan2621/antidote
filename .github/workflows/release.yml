@@ -26,7 +26,7 @@ jobs:
           ANTIDOTE_FEED_PUBKEY: ${{ vars.ANTIDOTE_FEED_PUBKEY }}
         run: |
           export ANTIDOTE_CORPUS_VERSION=$(git log -1 --format=%ct -- corpus)
-          cargo build --release --locked --target ${{ matrix.target }}
+          cargo build --release --locked -p antidote --target ${{ matrix.target }}
       - name: Package
         shell: bash
         run: |

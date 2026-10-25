@@ -1,0 +1,27 @@
+[package]
+name = "antidote-ops"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+license = "Apache-2.0"
+description = "Maintainer tooling: registry crawlers, artifact analysis, triage helpers"
+publish = false
+
+[dependencies]
+antidote-core = { path = "../core" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ureq = "3"
+walkdir = "2"
+base64 = "0.22"
+flate2 = "1"
+sha2 = "0.10"
+strsim = "0.11"
+tar = "0.4"
+tempfile = "3"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+jsonschema = "0.60"

@@ -1,0 +1,55 @@
+# Maintainer commands on triage issues: /confirm, /reject, /detonate. Only OWNER/MEMBER/COLLABORATOR
+# comments are acted on (checked by `antidote-ops command`).
+name: triage
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+jobs:
+  command:
+    if: contains(github.event.issue.labels.*.name, 'triage') && startsWith(github.event.comment.body, '/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release --locked -p antidote-ops
+      - name: Run command
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BODY: ${{ github.event.comment.body }}
+          ASSOC: ${{ github.event.comment.author_association }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE: ${{ github.event.issue.number }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          ops=./target/release/antidote-ops
+          printf '%s' "$BODY" | $ops command --association "$ASSOC" > cmd.json
+          [ -s cmd.json ] || { echo "no command for this commenter"; exit 0; }
+          action=$(jq -r .action cmd.json)
+          if [ "$action" = detonate ]; then
+            gh workflow run detonate.yml -f issue="$ISSUE"
+            gh issue comment "$ISSUE" --body "Detonation started."
+            exit 0
+          fi
+          path=$(printf '%s' "$ISSUE_BODY" | grep -oE 'antidote-report: reports/[A-Za-z0-9@._:-]+\.json' | head -1 | cut -d' ' -f2)
+          [ -n "$path" ] || { gh issue comment "$ISSUE" --body "Could not find the crawler report for this issue."; exit 1; }
+          git fetch -q origin crawl-state
+          git show "origin/crawl-state:$path" > report.json
+          branch=triage/issue-$ISSUE
+          git switch -c "$branch"
+          if [ "$action" = confirm ]; then
+            entry=$($ops draft-entry --report report.json --classification "$(jq -r .classification cmd.json)" \
+              --summary "$(jq -r .summary cmd.json)" --issue-url "$ISSUE_URL")
+            git add "$entry"; msg="Add $(basename "$entry" .json) from triage #$ISSUE"
+          else
+            $ops allow --report report.json --reason "$(jq -r .reason cmd.json) (#$ISSUE)"
+            git add corpus/allowlist.json; msg="Allowlist false positive from triage #$ISSUE"
+          fi
+          git -c user.name=antidote-bot -c user.email=antidote-bot@users.noreply.github.com commit -qm "$msg"
+          git push -q origin "$branch"
+          gh pr create --title "$msg" --body "Closes #$ISSUE" --head "$branch"

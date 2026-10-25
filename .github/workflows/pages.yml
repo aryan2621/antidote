@@ -19,7 +19,7 @@ jobs:
       - name: Build feed
         run: |
           mkdir -p web/public/feed
-          cargo run --release --locked -- feed build corpus -o web/public/feed/feed.json --version $(git log -1 --format=%ct -- corpus)
+          cargo run --release --locked -p antidote -- feed build corpus -o web/public/feed/feed.json --version $(git log -1 --format=%ct -- corpus)
       - name: Sign feed
         env:
           MINISIGN_SECRET_KEY: ${{ secrets.MINISIGN_SECRET_KEY }}

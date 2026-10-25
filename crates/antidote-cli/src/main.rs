@@ -1,8 +1,4 @@
-mod corpus;
 mod discover;
-mod feed;
-mod mcp;
-mod scan;
 
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
@@ -10,7 +6,7 @@ use std::process::ExitCode;
 
 use anyhow::{bail, Result};
 use clap::{Parser, Subcommand, ValueEnum};
-use serde::Serialize;
+use antidote_core::{corpus, feed, mcp, rank, scan, Finding};
 use serde_json::{json, Value};
 
 #[derive(Parser)]
@@ -73,27 +69,6 @@ enum FailOn {
     Medium,
     Low,
     Never,
-}
-
-#[derive(Serialize)]
-pub struct Finding {
-    pub severity: &'static str,
-    pub id: String,
-    pub summary: String,
-    pub path: String,
-    pub line: Option<usize>,
-    /// e.g. which MCP server in a config file
-    pub context: Option<String>,
-    pub evidence: Option<String>,
-}
-
-fn rank(sev: &str) -> u8 {
-    match sev {
-        "critical" => 0,
-        "high" => 1,
-        "medium" => 2,
-        _ => 3,
-    }
 }
 
 fn main() -> ExitCode {
