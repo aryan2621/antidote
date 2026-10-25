@@ -125,7 +125,8 @@ def main():
     b = float(clf.intercept_[0])
     score = lambda texts: 1 / (1 + np.exp(-(vec.transform(texts) @ w + b)))
 
-    cal = df[(df.part == "calib") & (df.label == 0)]
+    # calibrate on skill paragraphs and system prompts: the hardest benign text the scanner scores (MCP descriptions score far lower)
+    cal = df[(df.part == "calib") & (df.label == 0) & df.source.isin(["clawhub", "spml-system"])]
     s_cal = np.sort(score(cal.text))
     t_med = float(np.quantile(s_cal, 0.99))
     t_high = float(np.quantile(s_cal, 0.999))
@@ -157,7 +158,7 @@ def main():
 Character 3–5-gram hashing (2^18 features, `char_wb`, lowercase, L2) + logistic regression. Weights are stored as float16.
 
 - **Training data:** see [DATA.md](DATA.md). Training rows: {len(tr)}.
-- **Thresholds:** calibrated on {len(cal)} held-out benign texts.
+- **Thresholds:** calibrated on {len(cal)} held-out benign skill paragraphs and system prompts.
   - medium (`{t_med:.4f}`) = 1% false positives
   - high (`{t_high:.4f}`) = 0.1% false positives
 - **mosscap** is never trained on. Its row measures transfer to unseen attack styles.
