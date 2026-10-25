@@ -28,6 +28,9 @@ pub struct Feed {
     /// model file stem → model JSON (see classify.rs); absent in pre-classifier feeds
     #[serde(default)]
     pub models: BTreeMap<String, String>,
+    /// ecosystem → popular package names, for typosquat checks; absent in older feeds
+    #[serde(default)]
+    pub popular: BTreeMap<String, Vec<String>>,
 }
 
 impl Feed {
@@ -36,7 +39,7 @@ impl Feed {
         let files = |dir: &str| {
             CORPUS.get_dir(dir).map(|d| d.files()).into_iter().flatten().map(|f| (f.path().to_path_buf(), f.contents().to_vec()))
         };
-        Feed::from_files(version, files("entries"), files("rules"), files("models")).expect("built-in corpus is invalid")
+        Feed::from_files(version, files("entries"), files("rules"), files("models"), files("popular")).expect("built-in corpus is invalid")
     }
 
     /// Build from a corpus checkout (`entries/*.json`, `rules/*.yar`).
@@ -50,7 +53,8 @@ impl Feed {
             Ok(v)
         };
         let models = if dir.join("models").is_dir() { files("models")? } else { vec![] };
-        Feed::from_files(version, files("entries")?, files("rules")?, models)
+        let popular = if dir.join("popular").is_dir() { files("popular")? } else { vec![] };
+        Feed::from_files(version, files("entries")?, files("rules")?, models, popular)
     }
 
     fn from_files(
@@ -58,8 +62,15 @@ impl Feed {
         entries: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
         rules: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
         models: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
+        popular: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
     ) -> Result<Feed> {
-        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new(), models: BTreeMap::new() };
+        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new(), models: BTreeMap::new(), popular: BTreeMap::new() };
+        for (p, data) in popular {
+            if p.extension().is_some_and(|e| e == "txt") {
+                let name = p.file_stem().unwrap().to_string_lossy().into_owned();
+                feed.popular.insert(name, String::from_utf8_lossy(&data).lines().map(str::trim).filter(|l| !l.is_empty()).map(String::from).collect());
+            }
+        }
         for (p, data) in models {
             if p.extension().is_some_and(|e| e == "json") {
                 let name = p.file_stem().unwrap().to_string_lossy().into_owned();

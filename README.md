@@ -12,7 +12,8 @@ cargo install --path crates/antidote-cli
 antidote scan                          # auto-discover Claude Code / Cursor / OpenClaw / Claude Desktop config
 antidote scan ./skills/my-skill        # scan a folder or file
 antidote scan --mcp ~/.cursor/mcp.json # check the packages an MCP config launches
-antidote check npm:mcp-remote@0.1.15   # look up one package
+antidote check npm:mcp-remote@0.1.15   # look up one package (also flags likely typosquats)
+antidote report ./suspicious-skill     # print a prefilled GitHub issue link (hashes + rule hits only)
 antidote update                        # fetch the latest signed corpus feed
 antidote scan --format json|sarif
 antidote scan --fail-on medium         # critical|high (default)|medium|low|never
@@ -20,7 +21,9 @@ antidote scan --fail-on medium         # critical|high (default)|medium|low|neve
 
 Exit codes: `0` = nothing at or above `--fail-on`, `1` = findings at or above it, `2` = error.
 
-Scanning is fully offline. It uses the corpus built into the binary, or a newer one fetched by `antidote update`. `update` is the only command that touches the network. It accepts a feed only if the minisign signature checks out and the version is newer, so an old feed can't be replayed. The cache is re-verified on every run, and a tampered cache falls back to the built-in corpus. Nothing is ever uploaded.
+Scanning is fully offline. It uses the corpus built into the binary, or a newer one fetched by `antidote update`. `update` is the only command that touches the network. It accepts a feed only if the minisign signature checks out and the version is newer, so an old feed can't be replayed. The cache is re-verified on every run, and a tampered cache falls back to the built-in corpus. Nothing is ever uploaded. `report` only prints a link; you open it and submit the issue yourself.
+
+`check` and `scan --mcp` flag a package that is one character off (two for names of 10+ characters) a popular one in `corpus/popular/npm.txt`, as `AGT-F-TYPOSQUAT` (medium). That list is a snapshot of the top 500 npm packages with the `mcp` keyword; the crawler refreshes its own copy daily.
 
 ### GitHub Action
 
@@ -123,7 +126,7 @@ Every message passes through untouched, except the `tools/list` answers, which a
 
 ## Not yet built
 
-`report` / `incident new`, tree-sitter code rules, registry badges, GitLab template, editor extension. See `../product-specs/antidote.md`.
+`incident new`, tree-sitter code rules, registry badges, GitLab template, editor extension. See `../product-specs/antidote.md`.
 
 ## License
 

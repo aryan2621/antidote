@@ -4,6 +4,7 @@ use std::path::Path;
 
 use anyhow::{bail, Context, Result};
 use antidote_core::corpus::Corpus;
+use antidote_core::mcp::typosquat_of;
 use antidote_core::{rank, scan};
 use base64::Engine;
 use serde::{Deserialize, Serialize};
@@ -247,30 +248,12 @@ fn domains(dir: &Path) -> Vec<String> {
     out.into_iter().collect()
 }
 
-/// A popular name 1–2 edits away (not the package itself). Short names are too collision-prone to judge.
-pub fn typosquat_of(name: &str, popular: &[String]) -> Option<String> {
-    if name.len() < 5 {
-        return None;
-    }
-    popular.iter().find(|p| p.as_str() != name && strsim::levenshtein(name, p) <= 2).cloned()
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     fn item(name: &str) -> Item {
         Item { source: "npm".into(), ecosystem: "npm".into(), name: name.into(), version: "1.0.1".into(), download: None }
-    }
-
-    #[test]
-    fn typosquat() {
-        let pop = vec!["@modelcontextprotocol/sdk".to_string(), "mcp-remote".to_string()];
-        assert_eq!(typosquat_of("mcp-remot", &pop).as_deref(), Some("mcp-remote"));
-        assert_eq!(typosquat_of("mcp-remote", &pop), None);
-        assert_eq!(typosquat_of("@modelcontextprotocal/sdk", &pop).as_deref(), Some("@modelcontextprotocol/sdk"));
-        assert_eq!(typosquat_of("abc", &["abd".to_string()]), None);
-        assert_eq!(typosquat_of("weather-mcp", &pop), None);
     }
 
     #[test]

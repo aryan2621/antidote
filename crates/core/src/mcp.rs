@@ -79,6 +79,7 @@ fn server_ref(def: &Value) -> Option<PkgRef> {
 }
 
 pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mut Vec<Finding>) {
+    let before = out.len();
     for e in &c.entries {
         for a in &e.affected {
             if !a.package.ecosystem.eq_ignore_ascii_case(r.ecosystem) || a.package.name != r.name {
@@ -109,6 +110,31 @@ pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mu
             });
         }
     }
+    let popular = c.popular.get(&r.ecosystem.to_lowercase()).map_or(&[][..], |v| v.as_slice());
+    if out.len() == before {
+        if let Some(target) = typosquat_of(&r.name, popular) {
+            out.push(Finding {
+                severity: "medium",
+                id: "AGT-F-TYPOSQUAT".into(),
+                summary: format!("Name is one or two characters off popular package `{target}`. Check you meant this one."),
+                path: path.to_string(),
+                line: None,
+                context: context.map(String::from),
+                evidence: Some(format!("{}:{} vs {target}", r.ecosystem, r.name)),
+                explanation: None,
+            });
+        }
+    }
+}
+
+/// A popular name within 1 edit (2 for names of 10+ chars), unless the name is itself popular.
+/// Short names are too collision-prone to judge.
+pub fn typosquat_of(name: &str, popular: &[String]) -> Option<String> {
+    if name.len() < 5 || popular.iter().any(|p| p == name) {
+        return None;
+    }
+    let max = if name.len() < 10 { 1 } else { 2 };
+    popular.iter().find(|p| strsim::levenshtein(name, p) <= max).cloned()
 }
 
 /// OSV range events, applied in order: `introduced` opens, `fixed` (exclusive) / `last_affected` closes.
@@ -163,6 +189,18 @@ mod tests {
         assert!(!in_range("0.10.0", &rg));
         let open: Range = serde_json::from_str(r#"{"events":[{"introduced":"0"}]}"#).unwrap();
         assert!(in_range("9.9", &open));
+    }
+
+    #[test]
+    fn typosquat() {
+        let pop: Vec<String> = ["@modelcontextprotocol/sdk", "mcp-remote", "n8n-mcp", "nx-mcp"].map(String::from).to_vec();
+        assert_eq!(typosquat_of("mcp-remot", &pop).as_deref(), Some("mcp-remote"));
+        assert_eq!(typosquat_of("mcp-remote", &pop), None);
+        assert_eq!(typosquat_of("@modelcontextprotocal/sdk", &pop).as_deref(), Some("@modelcontextprotocol/sdk"));
+        assert_eq!(typosquat_of("abc", &["abd".to_string()]), None);
+        assert_eq!(typosquat_of("weather-mcp", &pop), None);
+        // short names: 2 edits apart is a different package, not a typo
+        assert_eq!(typosquat_of("nds-mcp", &pop), None);
     }
 
     #[test]

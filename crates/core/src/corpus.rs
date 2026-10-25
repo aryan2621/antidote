@@ -61,6 +61,8 @@ pub struct Corpus {
     pub rules: yara_x::Rules,
     /// prompt-injection classifier; None if the feed has none or the user turned it off
     pub model: Option<crate::classify::Model>,
+    /// ecosystem (lowercase) → popular package names, for typosquat checks
+    pub popular: std::collections::BTreeMap<String, Vec<String>>,
 }
 
 /// The newest verified corpus: cached feed from `antidote update`, else the built-in one.
@@ -85,5 +87,5 @@ pub fn compile(feed: &Feed) -> Result<Corpus> {
         Some((name, src)) => Some(crate::classify::Model::from_json(src).with_context(|| format!("model {name}"))?),
         None => None,
     };
-    Ok(Corpus { version: feed.version, entries, rules: compiler.build(), model })
+    Ok(Corpus { version: feed.version, entries, rules: compiler.build(), model, popular: feed.popular.clone() })
 }

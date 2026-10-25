@@ -1,5 +1,6 @@
 mod discover;
 mod guard;
+mod report;
 
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
@@ -65,6 +66,9 @@ enum Cmd {
         #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
         cmd: Vec<String>,
     },
+    /// Scan a suspicious skill/server and print a prefilled report link. Nothing is uploaded:
+    /// the report holds file hashes and rule hits, never file contents
+    Report { path: PathBuf },
     /// Download and verify the latest signed corpus feed
     Update {
         #[arg(long, default_value = feed::FEED_URL)]
@@ -159,6 +163,16 @@ fn run() -> Result<bool> {
                 bail!("expected <npm|pypi>:<name>[@version], got {package}");
             };
             mcp::check(&c, &r, &package, None, &mut findings);
+        }
+        Cmd::Report { path } => {
+            if !path.exists() {
+                bail!("{} does not exist", path.display());
+            }
+            scan::scan_tree(&c, &path, &mut findings);
+            findings.sort_by_key(|f| rank(f.severity));
+            eprintln!("{} finding(s). Open this link to file the report, then fill in the details:", findings.len());
+            println!("{}", report::issue_url(&path, &findings)?);
+            return Ok(false);
         }
         Cmd::Guard { name, warn_only, reset, pins_dir, cmd } => {
             let dir = pins_dir.unwrap_or_else(guard::pins_dir);
