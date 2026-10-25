@@ -31,6 +31,9 @@ pub struct Feed {
     /// ecosystem → popular package names, for typosquat checks; absent in older feeds
     #[serde(default)]
     pub popular: BTreeMap<String, Vec<String>>,
+    /// rule file stem (`AGT-T-0001.js`) → tree-sitter query source; absent in older feeds
+    #[serde(default)]
+    pub queries: BTreeMap<String, String>,
 }
 
 impl Feed {
@@ -42,7 +45,7 @@ impl Feed {
         Feed::from_files(version, files("entries"), files("rules"), files("models"), files("popular")).expect("built-in corpus is invalid")
     }
 
-    /// Build from a corpus checkout (`entries/*.json`, `rules/*.yar`).
+    /// Build from a corpus checkout (`entries/*.json`, `rules/*.{yar,scm}`).
     pub fn from_dir(dir: &Path, version: u64) -> Result<Feed> {
         let files = |sub: &str| -> Result<Vec<(PathBuf, Vec<u8>)>> {
             let mut v = Vec::new();
@@ -64,7 +67,7 @@ impl Feed {
         models: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
         popular: impl IntoIterator<Item = (PathBuf, Vec<u8>)>,
     ) -> Result<Feed> {
-        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new(), models: BTreeMap::new(), popular: BTreeMap::new() };
+        let mut feed = Feed { version, entries: Vec::new(), rules: BTreeMap::new(), models: BTreeMap::new(), popular: BTreeMap::new(), queries: BTreeMap::new() };
         for (p, data) in popular {
             if p.extension().is_some_and(|e| e == "txt") {
                 let name = p.file_stem().unwrap().to_string_lossy().into_owned();
@@ -87,6 +90,9 @@ impl Feed {
             if p.extension().is_some_and(|e| e == "yar") {
                 let name = p.file_stem().unwrap().to_string_lossy().into_owned();
                 feed.rules.insert(name, String::from_utf8(data).with_context(|| format!("rule {} not utf-8", p.display()))?);
+            } else if p.extension().is_some_and(|e| e == "scm") {
+                let name = p.file_stem().unwrap().to_string_lossy().into_owned();
+                feed.queries.insert(name, String::from_utf8(data).with_context(|| format!("rule {} not utf-8", p.display()))?);
             }
         }
         Ok(feed)

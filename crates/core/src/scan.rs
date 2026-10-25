@@ -28,6 +28,9 @@ pub fn scan_tree(c: &Corpus, root: &Path, out: &mut Vec<Finding>) {
             continue;
         }
         yara_match(&mut scanner, &data, &path, out);
+        if let Some(lang) = crate::code::Lang::of(e.path()) {
+            crate::code::scan(&c.code, lang, &data, &path, out);
+        }
         if let Some(m) = &c.model {
             classify_file(m, e.path(), &data, &path, out);
         }

@@ -1,6 +1,7 @@
 //! Corpus loading, signed feed, and the scan engine shared by the `antidote` CLI and `antidote-ops`.
 
 pub mod classify;
+pub mod code;
 pub mod corpus;
 pub mod feed;
 pub mod mcp;

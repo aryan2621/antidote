@@ -37,18 +37,28 @@ fn entries_match_schema() {
 
 #[test]
 fn every_rule_fires_on_its_sample() {
-    let mut rule_ids = Vec::new();
+    // (rule id, fixture file name or None for "any extension")
+    let mut rules: Vec<(String, Option<String>)> = Vec::new();
     for f in fs::read_dir(repo().join("corpus/rules")).unwrap() {
-        let src = fs::read_to_string(f.unwrap().path()).unwrap();
-        rule_ids.extend(src.lines().filter_map(|l| l.trim().strip_prefix("id = \"")?.strip_suffix('"').map(String::from)));
+        let p = f.unwrap().path();
+        let src = fs::read_to_string(&p).unwrap();
+        if p.extension().unwrap() == "scm" {
+            // AGT-T-0001.js.scm → fixture bad/AGT-T-0001.js
+            rules.push((p.file_stem().unwrap().to_str().unwrap().split('.').next().unwrap().into(), Some(p.file_stem().unwrap().to_str().unwrap().into())));
+        } else {
+            rules.extend(src.lines().filter_map(|l| l.trim().strip_prefix("id = \"")?.strip_suffix('"').map(|id| (id.to_string(), None))));
+        }
     }
-    assert!(!rule_ids.is_empty());
-    for id in rule_ids {
+    assert!(rules.iter().any(|r| r.1.is_some()) && rules.iter().any(|r| r.1.is_none()));
+    for (id, file) in rules {
         let sample = fs::read_dir(fixtures().join("bad"))
             .unwrap()
             .map(|e| e.unwrap().path())
-            .find(|p| p.file_stem().unwrap() == id.as_str())
-            .unwrap_or_else(|| panic!("no fixture for rule {id}"));
+            .find(|p| match &file {
+                Some(f) => p.file_name().unwrap() == f.as_str(),
+                None => p.file_stem().unwrap() == id.as_str(),
+            })
+            .unwrap_or_else(|| panic!("no fixture for rule {id} {file:?}"));
         let (_, findings) = antidote(&["scan", sample.to_str().unwrap()]);
         assert!(findings.iter().any(|f| f["id"] == id.as_str()), "{id} did not fire on {}: {findings:?}", sample.display());
     }
