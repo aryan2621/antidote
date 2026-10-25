@@ -83,7 +83,8 @@ pub fn load() -> Result<Corpus> {
 
 pub fn compile(feed: &Feed) -> Result<Corpus> {
     let mut entries = Vec::new();
-    for e in &feed.entries {
+    // withdrawn entries stay in the feed for history but never match
+    for e in feed.entries.iter().filter(|e| e.get("withdrawn").is_none()) {
         let id = e["id"].as_str().unwrap_or("?");
         entries.push(serde_json::from_value(e.clone()).with_context(|| format!("corpus entry {id}"))?);
     }
