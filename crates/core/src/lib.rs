@@ -3,6 +3,7 @@
 pub mod classify;
 pub mod code;
 pub mod corpus;
+pub mod discover;
 pub mod feed;
 pub mod mcp;
 pub mod probe;

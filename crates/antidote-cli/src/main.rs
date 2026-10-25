@@ -1,4 +1,3 @@
-mod discover;
 mod guard;
 mod incident;
 mod inspect;
@@ -11,7 +10,7 @@ use std::process::ExitCode;
 
 use anyhow::{bail, Result};
 use clap::{Parser, Subcommand, ValueEnum};
-use antidote_core::{corpus, feed, mcp, rank, scan, Finding};
+use antidote_core::{corpus, discover, feed, mcp, rank, scan, Finding};
 use serde_json::{json, Value};
 
 #[derive(Parser)]
