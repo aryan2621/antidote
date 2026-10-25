@@ -44,3 +44,11 @@ export function versionText(a: any): string {
   }
   return parts.length ? parts.join('; ') : 'all versions';
 }
+
+// antidote-api base URL (PUBLIC_API_URL at build time); badges are shown only once an API is deployed.
+const api = (import.meta.env.PUBLIC_API_URL ?? '').replace(/\/$/, '');
+/** README badge Markdown for an npm/PyPI package, or null when there's no API or the ecosystem has no checks. */
+export function badgeMarkdown(eco: string, name: string): string | null {
+  if (!api || !['npm', 'pypi'].includes(eco.toLowerCase())) return null;
+  return `[![antidote](${api}/badge/${eco.toLowerCase()}/${name}.svg)](${new URL(packageHref(eco, name), import.meta.env.SITE).href})`;
+}

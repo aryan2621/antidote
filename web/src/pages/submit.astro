@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+const ecosystems = ['npm', 'PyPI', 'clawhub', 'mcp-registry', 'smithery', 'claude-skill', 'cursor-rule', 'GitHub'];
+---
+<Base title="Submit a report — Antidote" description="Report a malicious or vulnerable AI agent skill, MCP server or prompt.">
+  <h1>Submit a report</h1>
+  <p class="muted">This form only builds a prefilled GitHub issue; nothing is sent until you submit it on GitHub. For agent incidents, use <code>antidote incident new</code>.</p>
+  <form id="f">
+    <label>Ecosystem
+      <select name="ecosystem" required>{ecosystems.map((e) => <option>{e}</option>)}</select>
+    </label>
+    <label>Name <input name="name" required placeholder="@scope/package or skill name" /></label>
+    <label>Affected versions <input name="versions" placeholder="1.0.16, or all" /></label>
+    <label>Classification
+      <select name="classification" required>
+        <option value="malicious">malicious (intentional)</option>
+        <option value="vulnerable">vulnerable (bug)</option>
+        <option value="suspicious">suspicious</option>
+      </select>
+    </label>
+    <label>Evidence <textarea name="evidence" rows="3" required placeholder="Links to public reports, advisories, CVE/GHSA ids; sha256 of files"></textarea></label>
+    <label>Behavior <textarea name="behavior" rows="4" required placeholder="What it does, in plain words"></textarea></label>
+    <p class="muted">Don't paste live payloads. Defang domains (<code>evil[.]example</code>). For <em>vulnerable</em> items, tell the author first and allow 30–90 days before the entry goes public.</p>
+    <button type="submit">Open prefilled GitHub issue</button>
+  </form>
+  <style>
+    form { display: grid; gap: 14px; margin-top: 20px; }
+    label { display: grid; gap: 4px; font-weight: 500; }
+    input, select, textarea, button { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--fg); width: 100%; }
+    button { background: var(--accent); color: var(--bg); border: 0; font-weight: 600; cursor: pointer; width: auto; justify-self: start; }
+  </style>
+  <script>
+    const form = document.getElementById('f') as HTMLFormElement;
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const v = (k: string) => String(new FormData(form).get(k) ?? '').trim();
+      const body = [
+        'Submitted from the Antidote website.',
+        '',
+        `- **What:** ${v('ecosystem')}:${v('name')}, versions: ${v('versions') || 'unknown'}`,
+        `- **Classification:** ${v('classification')}`,
+        `- **Evidence:** ${v('evidence')}`,
+        `- **Behavior:** ${v('behavior')}`,
+      ].join('\n');
+      const url = `https://github.com/antidote-db/antidote/issues/new?title=${encodeURIComponent(`Report: ${v('ecosystem')}:${v('name')}`)}&body=${encodeURIComponent(body)}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
+</Base>

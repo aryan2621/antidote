@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { entries, classification, isIncident, packageHref, entryHref, versionText, type Entry } from '../../lib/entries';
+import { entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, type Entry } from '../../lib/entries';
 
 export function getStaticPaths() {
   return entries.map((e) => ({ params: { id: e.id }, props: { e } }));
@@ -11,6 +11,7 @@ const cls = classification(e);
 const paragraphs = (s?: string) => (s ?? '').split(/\n{2,}/).filter(Boolean);
 const refs: string[] = (e.references ?? []).map((r: any) => (typeof r === 'string' ? r : r.url));
 const ind = db.indicators ?? {};
+const badges = (e.affected ?? []).map((a: any) => badgeMarkdown(a.package.ecosystem, a.package.name)).filter(Boolean);
 ---
 <Base title={`${e.id}: ${e.summary}`} description={e.summary}>
   <p class="mono muted" style="margin-top:28px">{e.id}</p>
@@ -73,6 +74,12 @@ const ind = db.indicators ?? {};
     <>
       <h2>References</h2>
       <ul>{refs.map((u) => <li><a href={u} rel="noopener nofollow" class="mono">{u}</a></li>)}</ul>
+    </>
+  )}
+  {badges.length > 0 && (
+    <>
+      <h2>README badge</h2>
+      {badges.map((b: string) => <pre class="mono" style="white-space:pre-wrap">{b}</pre>)}
     </>
   )}
   <p class="muted" style="margin-top:32px">Wrong or outdated? Open an issue or PR against <code>corpus/entries/{e.id}.json</code>.</p>

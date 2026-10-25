@@ -1,12 +1,13 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { packages, classification, entryHref, versionText } from '../../../lib/entries';
+import { packages, classification, entryHref, versionText, badgeMarkdown } from '../../../lib/entries';
 
 export function getStaticPaths() {
   return [...packages.values()].map((p) => ({ params: { ecosystem: p.ecosystem, name: p.name }, props: { p } }));
 }
 const { p } = Astro.props;
 const label = `${p.ecosystem}:${p.name}`;
+const badge = badgeMarkdown(p.ecosystem, p.name);
 const malicious = p.entries.some((e: any) => classification(e) === 'malicious');
 ---
 <Base title={`Is ${p.name} safe? — Antidote`} description={`${p.entries.length} Antidote entr${p.entries.length === 1 ? 'y' : 'ies'} for ${label}`}>
@@ -27,4 +28,11 @@ const malicious = p.entries.some((e: any) => classification(e) === 'malicious');
       </li>
     ))}
   </ul>
+  {badge && (
+    <>
+      <h2>README badge</h2>
+      <p class="muted">Shows the current status of the latest release.</p>
+      <pre class="mono" style="white-space:pre-wrap">{badge}</pre>
+    </>
+  )}
 </Base>
