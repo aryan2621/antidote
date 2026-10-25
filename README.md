@@ -130,6 +130,10 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 
 `web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
 
+## Desktop app
+
+`apps/desktop` is a Tauri app with one page: it lists the agent configs it finds on this machine, scans them, checks a single package and updates the feed. It uses the same core as the CLI. To run it: `cd apps/desktop && pnpm install && pnpm tauri dev`. Tagged releases also build installers for macOS, Linux and Windows (the `desktop` job in `release.yml`); they're unsigned until the Apple secrets are set.
+
 ## API
 
 `crates/api` builds `antidote-api` (axum), which serves:
@@ -151,7 +155,7 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
 
 1. Generate the feed key once: `minisign -G -W -p antidote.pub -s antidote.key`. Store the second line of `antidote.pub` as the repo variable `ANTIDOTE_FEED_PUBKEY`. Store the contents of `antidote.key` as the secret `MINISIGN_SECRET_KEY`, then delete the local copy or keep it offline.
 2. Pushing to `master` publishes the site and the signed feed.
-3. Tag `vX.Y.Z` to build release binaries (`release.yml`). They embed the public key and the corpus version.
+3. Tag `vX.Y.Z` to build release binaries and desktop installers (`release.yml`). They embed the public key and the corpus version.
 
 ## Crawling and triage (maintainers)
 
@@ -175,7 +179,6 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
 
 ## Not yet built
 
-- Desktop app
 - Editor extensions and MCP-gateway plugins for other gateways
 - A hosted API, so there's no default stats endpoint and no public badges yet
 - Reporter sign-in (GitHub OAuth) and gated raw-sample storage
