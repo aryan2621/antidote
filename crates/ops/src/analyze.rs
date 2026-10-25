@@ -58,17 +58,17 @@ pub fn load_allowlist(path: &Path) -> Vec<AllowRule> {
 
 /// Download, verify, extract and analyze one registry item.
 pub fn analyze_remote(c: &Corpus, item: &Item, state: &State, allow: &[AllowRule]) -> Result<Report> {
-    let (url, expect): (String, Option<Expect>) = match item.ecosystem.as_str() {
+    let (url, expect, created): (String, Option<Expect>, Option<String>) = match item.ecosystem.as_str() {
         "npm" => {
             let m = npm::meta(&item.name, &item.version)?;
-            (m.tarball, m.integrity.and_then(|i| i.strip_prefix("sha512-").map(|b| Expect::Sha512B64(b.to_string()))))
+            (m.tarball, m.integrity.and_then(|i| i.strip_prefix("sha512-").map(|b| Expect::Sha512B64(b.to_string()))), m.created)
         }
         "PyPI" => {
-            let (u, sha) = pypi::release_file(&item.name, &item.version)?;
-            (u, Some(Expect::Sha256Hex(sha)))
+            let (u, sha, created) = pypi::release_file(&item.name, &item.version)?;
+            (u, Some(Expect::Sha256Hex(sha)), created)
         }
         // shortcut: ClawHub's list API has no archive digest; per-file sha256 needs a version-detail call.
-        _ => (item.download.clone().context("item has no download url")?, None),
+        _ => (item.download.clone().context("item has no download url")?, None, None),
     };
     let mut data = crate::http::get(&url, 50 << 20)?;
     if let Some(e) = expect {
@@ -99,7 +99,31 @@ pub fn analyze_remote(c: &Corpus, item: &Item, state: &State, allow: &[AllowRule
         Err(e) => Report::malformed(item, &e),
     };
     r.archive_sha256 = archive_sha256;
+    // npm/PyPI don't expose account age, so a brand-new package stands in for a brand-new publisher
+    if let Some(days) = created.as_deref().and_then(age_days).filter(|d| *d < NEW_PACKAGE_DAYS) {
+        let mut h = hit("low", "AGT-F-NEW-PACKAGE", &format!("Package first published {days} day(s) ago"));
+        h.evidence = created;
+        r.flags.push(h);
+        if r.score == "none" {
+            r.score = "low".into();
+        }
+    }
     Ok(r)
+}
+
+const NEW_PACKAGE_DAYS: i64 = 7;
+
+/// Whole days since an ISO-8601 timestamp (`2026-10-20T…`).
+fn age_days(ts: &str) -> Option<i64> {
+    let (y, m, d) = (ts.get(..4)?.parse::<i64>().ok()?, ts.get(5..7)?.parse::<i64>().ok()?, ts.get(8..10)?.parse::<i64>().ok()?);
+    // Howard Hinnant's days_from_civil
+    let y = if m <= 2 { y - 1 } else { y };
+    let era = y.div_euclid(400);
+    let yoe = y - era * 400;
+    let doy = (153 * (if m > 2 { m - 3 } else { m + 9 }) + 2) / 5 + d - 1;
+    let then = era * 146_097 + yoe * 365 + yoe / 4 - yoe / 100 + doy - 719_468;
+    let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).ok()?.as_secs() as i64 / 86_400;
+    Some(now - then)
 }
 
 enum Expect {

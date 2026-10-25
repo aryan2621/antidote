@@ -100,6 +100,8 @@ fn refresh_popular(state: &mut State) {
 pub struct Meta {
     pub tarball: String,
     pub integrity: Option<String>,
+    /// when the package (not this version) was first published
+    pub created: Option<String>,
 }
 
 pub fn meta(name: &str, version: &str) -> Result<Meta> {
@@ -113,5 +115,6 @@ pub fn parse_meta(doc: &Value, version: &str) -> Result<Meta> {
     Ok(Meta {
         tarball: v["dist"]["tarball"].as_str().with_context(|| format!("no tarball for {version}"))?.to_string(),
         integrity: v["dist"]["integrity"].as_str().map(String::from),
+        created: doc["time"]["created"].as_str().map(String::from),
     })
 }

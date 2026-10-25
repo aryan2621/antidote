@@ -63,13 +63,23 @@ fn popular_mcp(v: &Value) -> Vec<String> {
 }
 
 /// Download URL + sha256 for a release, preferring the sdist (it holds the build scripts).
-pub fn release_file(name: &str, version: &str) -> Result<(String, String)> {
-    let doc = http::get_json(&format!("https://pypi.org/pypi/{name}/{version}/json"))?;
-    pick_file(&doc)
+/// (file url, sha256, first upload time of any release of the project)
+pub fn release_file(name: &str, version: &str) -> Result<(String, String, Option<String>)> {
+    let doc = http::get_json(&format!("https://pypi.org/pypi/{name}/json"))?;
+    let created = doc["releases"]
+        .as_object()
+        .into_iter()
+        .flatten()
+        .flat_map(|(_, files)| files.as_array().into_iter().flatten())
+        .filter_map(|f| f["upload_time_iso_8601"].as_str())
+        .min()
+        .map(String::from);
+    let (url, sha) = pick_file(&doc["releases"][version])?;
+    Ok((url, sha, created))
 }
 
-pub fn pick_file(doc: &Value) -> Result<(String, String)> {
-    let urls = doc["urls"].as_array().context("no files in release")?;
+pub fn pick_file(files: &Value) -> Result<(String, String)> {
+    let urls = files.as_array().context("no files in release")?;
     let f = urls
         .iter()
         .find(|u| u["packagetype"] == "sdist")
