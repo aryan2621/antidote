@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0025",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "Claude Code runs project hooks/MCP before trust approval (CVE-2025-59536)",
+  "details": "Check Point Research reported that malicious repository configuration (Hooks, MCP servers) could execute commands when an untrusted project is opened, before the user approves trust. NVD: versions before 1.0.111 vulnerable. A related issue, CVE-2026-21852, let a repo setting redirect API traffic (including the key) before the trust prompt; one source says versions before 2.0.65.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files/"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59536"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@anthropic-ai/claude-code"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.111"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "config-injection",
+      "pre-trust-execution"
+    ],
+    "agents_affected": [
+      "claude-code"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-59536",
+    "GHSA-4fgq-fpq9-mr3g"
+  ]
+}

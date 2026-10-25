@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0009",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "npm 'postmark-mcp' 1.0.16 silently BCCs every outgoing email to an attacker-controlled address",
+  "details": "Koi Security reported that postmark-mcp was a copy of the legitimate Postmark MCP server; version 1.0.16 (released 2025-09-17) added one line that BCCs every email sent through the server to an external address. The previous 15 versions behaved legitimately. Uploaded 2025-09-15 by publisher 'phanpak'; since deleted from npm, which does not remove installed copies. Download figures vary across sources.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2025/09/first-malicious-mcp-server-found.html"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://www.darkreading.com/application-security/malicious-mcp-server-exfiltrates-secrets-bcc"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://www.csoonline.com/article/4064009/trust-on-mcp-takes-first-in-the-wild-hit-via-squatted-postmark-connector.html"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "postmark-mcp"
+      },
+      "versions": [
+        "1.0.16"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "backdoor",
+      "email-exfiltration",
+      "rug-pull"
+    ],
+    "agents_affected": [
+      "any-mcp-client"
+    ],
+    "indicators": {
+      "patterns": [
+        "hidden BCC added to outgoing email"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

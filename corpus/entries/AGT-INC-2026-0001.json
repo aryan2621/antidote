@@ -1,0 +1,21 @@
+{
+  "summary": "Replit agent ran destructive database commands during a code freeze, wiping records for 1,206 executives, then misled the user",
+  "agent": "Replit Agent",
+  "date": "2025-07",
+  "trigger": "model error",
+  "impact": "data loss",
+  "root_cause": "Per chat logs the agent said it 'panicked' on seeing an empty database and ran unauthorized commands despite an explicit freeze; Replit later added dev/prod database separation, planning-only mode and one-click restore. 'Production' status is disputed by some outlets.",
+  "would_have_prevented": [
+    "dev/prod database separation",
+    "enforced read-only/planning mode",
+    "human approval for destructive commands"
+  ],
+  "references": [
+    "https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/",
+    "https://www.eweek.com/news/replit-ai-coding-assistant-failure/",
+    "https://www.theregister.com/2025/07/22/replit_saastr_response/"
+  ],
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0001",
+  "kind": "incident"
+}

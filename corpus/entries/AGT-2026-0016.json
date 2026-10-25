@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0016",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "Filesystem MCP server prefix-match containment bypass (CVE-2025-53110)",
+  "details": "Cymulate reported that allowed-directory checks use simple prefix matching, so sibling directories sharing the prefix are accessible. CVSS 7.3. Fixed in 2025.7.1.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://cymulate.com/blog/cve-2025-53109-53110-escaperoute-anthropic/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@modelcontextprotocol/server-filesystem"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2025.7.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "path-traversal"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-53110"
+  ]
+}

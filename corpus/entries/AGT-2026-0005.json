@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0005",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "ClawHub skill 'rankaj' exfiltrates bot credentials from ~/.clawdbot/.env to a webhook service",
+  "details": "Part of the ClawHavoc campaign reported by Koi Security (341 malicious skills among 2,857 audited ClawHub skills; 335 tied to one operation). Campaign-wide reported behavior: a 'Prerequisites' section tells the user to install something first; on macOS this runs an obfuscated script hosted on glot[.]io that fetches a second-stage script and a Mach-O binary with traits consistent with Atomic Stealer (AMOS); on Windows a password-protected archive containing a keylogging trojan is downloaded. Shared C2 reported at 91.92.242[.]30. Per The Hacker News, rankaj is listed under credential exfiltration; such skills send bot credentials from ~/.clawdbot/.env to webhook[.]site.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "rankaj"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "fake-prerequisite",
+      "credential-theft"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "domains": [
+        "webhook.site"
+      ],
+      "patterns": [
+        "reads ~/.clawdbot/.env"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

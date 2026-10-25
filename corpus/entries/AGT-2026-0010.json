@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0010",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-remote OS command injection via malicious authorization_endpoint (CVE-2025-6514)",
+  "details": "JFrog reported that mcp-remote 0.0.5 through 0.1.15 mishandles the authorization_endpoint URL received during OAuth init, so a malicious MCP server can trigger OS command execution on the client (full parameter control on Windows, limited on macOS/Linux). CVSS 9.6. Fixed in 0.1.16.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://jfrog.com/blog/2025-6514-critical-mcp-remote-rce-vulnerability/"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://osv.dev/vulnerability/CVE-2025-6514"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://www.wiz.io/vulnerability-database/cve/cve-2025-6514"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-remote"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.0.5"
+            },
+            {
+              "fixed": "0.1.16"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "command-injection",
+      "malicious-server"
+    ],
+    "agents_affected": [
+      "claude-desktop",
+      "cursor",
+      "windsurf"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-6514"
+  ]
+}

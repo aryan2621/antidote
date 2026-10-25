@@ -1,0 +1,77 @@
+use std::fs;
+use std::path::{Path, PathBuf};
+use std::process::Command;
+
+use serde_json::Value;
+
+fn repo() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("../..")
+}
+
+fn fixtures() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures")
+}
+
+fn antidote(args: &[&str]) -> (i32, Vec<Value>) {
+    let out = Command::new(env!("CARGO_BIN_EXE_antidote")).args(args).arg("--format=json").output().unwrap();
+    let findings = serde_json::from_slice::<Vec<Value>>(&out.stdout)
+        .unwrap_or_else(|_| panic!("bad output: {}", String::from_utf8_lossy(&out.stderr)));
+    (out.status.code().unwrap(), findings)
+}
+
+#[test]
+fn entries_match_schema() {
+    let schema: Value = serde_json::from_str(&fs::read_to_string(repo().join("schema/entry.schema.json")).unwrap()).unwrap();
+    let validator = jsonschema::validator_for(&schema).unwrap();
+    let mut ids = std::collections::HashSet::new();
+    for f in fs::read_dir(repo().join("corpus/entries")).unwrap() {
+        let path = f.unwrap().path();
+        let entry: Value = serde_json::from_str(&fs::read_to_string(&path).unwrap()).unwrap();
+        let errors: Vec<String> = validator.iter_errors(&entry).map(|e| e.to_string()).collect();
+        assert!(errors.is_empty(), "{}: {errors:?}", path.display());
+        let id = entry["id"].as_str().unwrap();
+        assert_eq!(path.file_stem().unwrap(), id, "file name must equal id");
+        assert!(ids.insert(id.to_string()), "duplicate id {id}");
+    }
+}
+
+#[test]
+fn every_rule_fires_on_its_sample() {
+    let mut rule_ids = Vec::new();
+    for f in fs::read_dir(repo().join("corpus/rules")).unwrap() {
+        let src = fs::read_to_string(f.unwrap().path()).unwrap();
+        rule_ids.extend(src.lines().filter_map(|l| l.trim().strip_prefix("id = \"")?.strip_suffix('"').map(String::from)));
+    }
+    assert!(!rule_ids.is_empty());
+    for id in rule_ids {
+        let sample = fs::read_dir(fixtures().join("bad"))
+            .unwrap()
+            .map(|e| e.unwrap().path())
+            .find(|p| p.file_stem().unwrap() == id.as_str())
+            .unwrap_or_else(|| panic!("no fixture for rule {id}"));
+        let (_, findings) = antidote(&["scan", sample.to_str().unwrap()]);
+        assert!(findings.iter().any(|f| f["id"] == id.as_str()), "{id} did not fire on {}: {findings:?}", sample.display());
+    }
+}
+
+#[test]
+fn known_good_is_clean() {
+    let (code, findings) = antidote(&["scan", fixtures().join("good").to_str().unwrap()]);
+    assert!(findings.is_empty(), "false positives: {findings:#?}");
+    assert_eq!(code, 0);
+}
+
+#[test]
+fn bad_exits_nonzero() {
+    let (code, _) = antidote(&["scan", fixtures().join("bad").to_str().unwrap()]);
+    assert_eq!(code, 1);
+}
+
+#[test]
+fn check_matches_versions_and_ranges() {
+    let hit = |r: &str| !antidote(&["check", r]).1.is_empty();
+    assert!(hit("npm:postmark-mcp@1.0.16"));
+    assert!(hit("npm:mcp-remote@0.1.15"));
+    assert!(!hit("npm:mcp-remote@0.1.16"));
+    assert!(!hit("npm:mcp-remote"), "unpinned resolves to a fixed latest");
+}

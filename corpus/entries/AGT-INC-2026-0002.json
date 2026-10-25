@@ -1,0 +1,20 @@
+{
+  "summary": "Amazon Q Developer VS Code extension 1.84.0 shipped with an injected wiper prompt; AWS says it was malformed and non-functional",
+  "agent": "Amazon Q Developer (VS Code extension)",
+  "date": "2025-07-17",
+  "trigger": "malicious tool",
+  "impact": "data loss",
+  "root_cause": "A malicious prompt telling the assistant to wipe the home directory and delete AWS resources was merged and published in signed release 1.84.0; pulled and replaced by 1.85.0 on 2025-07-19. AWS stated the code was malformed and no customer resources were affected. The exact access path is unresolved in reporting.",
+  "would_have_prevented": [
+    "review of prompt/config changes to the extension repo",
+    "signed-release gating on prompt diffs"
+  ],
+  "references": [
+    "https://www.csoonline.com/article/4027963/hacker-inserts-destructive-code-in-amazon-q-as-update-goes-live.html",
+    "https://cyberinsider.com/amazons-ai-coding-assistant-for-vsc-infected-with-data-wiper/",
+    "https://www.techradar.com/pro/security/hacker-adds-potentially-catastrophic-prompt-to-amazons-ai-coding-service-to-prove-a-point"
+  ],
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0002",
+  "kind": "incident"
+}

@@ -1,0 +1,20 @@
+{
+  "summary": "Malicious Nx npm versions weaponized local AI CLIs (Claude Code, Gemini CLI, Amazon Q) to hunt credentials (s1ngularity)",
+  "agent": "Claude Code, Gemini CLI, Amazon Q CLI (abused locally)",
+  "date": "2025-08-26",
+  "trigger": "malicious tool",
+  "impact": "data leak",
+  "root_cause": "Malicious Nx and plugin versions, live a little over five hours, ran a postinstall script that invoked installed AI CLIs with unsafe flags to find SSH keys, npm/GitHub tokens and wallets, then published them Base64-encoded to a public GitHub repo named s1ngularity-repository. Sources disagree on initial access (pull_request_target workflow flaw vs token leak vs phishing).",
+  "would_have_prevented": [
+    "no install-script execution",
+    "not exposing AI CLIs with permission-bypass flags to untrusted code"
+  ],
+  "references": [
+    "https://snyk.io/de/blog/weaponizing-ai-coding-agents-for-malware-in-the-nx-malicious-package/",
+    "https://thehackernews.com/2025/08/malicious-nx-packages-in-s1ngularity.html",
+    "https://research.jfrog.com/post/nx-supply-chain-attack-targets-ai-tool-users/"
+  ],
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0004",
+  "kind": "incident"
+}

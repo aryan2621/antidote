@@ -1,0 +1,20 @@
+{
+  "summary": "Supabase MCP 'lethal trifecta': support-ticket prompt injection can make an agent leak a private integration_tokens table (researcher demo)",
+  "agent": "Cursor with Supabase MCP (demo)",
+  "date": "2025-07",
+  "trigger": "prompt injection",
+  "impact": "data leak",
+  "root_cause": "General Analysis demonstrated an agent with service_role access reading attacker-supplied ticket text, then writing private table contents back into the ticket. Described via Simon Willison; a research demonstration, not an in-the-wild exploit. Supabase docs recommend manual tool approval and read-only project-scoped mode.",
+  "would_have_prevented": [
+    "read-only scoped MCP mode",
+    "manual tool-call approval",
+    "not combining private data, untrusted input and an output channel"
+  ],
+  "references": [
+    "https://simonwillison.net/2025/Jul/6/supabase-mcp-lethal-trifecta",
+    "https://supabase.com/docs/guides/ai-tools/mcp"
+  ],
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0005",
+  "kind": "incident"
+}

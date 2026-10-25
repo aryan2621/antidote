@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0008",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "ClawHub skill 'moltbookagent' (publisher pepe276) uses Unicode contraband injection and DAN-style jailbreaks",
+  "details": "Snyk's ToxicSkills IOC table lists clawhub.ai/pepe276/moltbookagent with the note 'Unicode contraband injection, DAN-style jailbreaks'. The sibling skill pepe276/publish-dist is listed as similar. Snyk's study scanned 3,984 skills from ClawHub and skills.sh (as of 2026-02-05); 534 (13.4%) had at least one critical-level issue.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "pepe276/moltbookagent"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "prompt-injection",
+      "hidden-unicode",
+      "jailbreak"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "patterns": [
+        "hidden unicode characters",
+        "DAN-style jailbreak text"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

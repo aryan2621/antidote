@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0019",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "MCP Python SDK lacks default DNS rebinding protection for HTTP servers (CVE-2025-66416)",
+  "details": "Versions before 1.23.0 leave DNS rebinding protection off by default for FastMCP streamable HTTP/SSE servers on localhost without authentication, letting a malicious website call tools or read resources. stdio is unaffected.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://nvd.nist.gov/vuln/detail/cve-2025-66416"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://vulert.com/vuln-db/model-context-protocol-mcp-python-sdk-does-not-enable-dns-rebinding-protection-by-default"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.23.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "dns-rebinding"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-66416"
+  ]
+}

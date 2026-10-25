@@ -1,0 +1,20 @@
+{
+  "summary": "Smithery build path traversal exposed an over-privileged fly.io token controlling 3,000+ hosted MCP server apps",
+  "agent": "Smithery.ai MCP hosting platform",
+  "date": "2025-06-13",
+  "trigger": "misconfiguration",
+  "impact": "data leak",
+  "root_cause": "The build pipeline accepted an arbitrary dockerBuildPath in smithery.yaml, letting a build read the builder's .docker/config.json and recover a fly.io token. GitGuardian reported it 2025-06-13; Smithery rotated the token and fixed by 2025-06-15. No confirmed malicious exploitation before the fix.",
+  "would_have_prevented": [
+    "validating build paths",
+    "least-privilege registry/machines tokens"
+  ],
+  "references": [
+    "https://www.scworld.com/news/smithery-ai-fixes-path-traversal-flaw-that-exposed-3000-mcp-servers",
+    "https://cybersecuritynews.com/mcp-server-platform-vulnerability/amp",
+    "https://itwire.com/business-it-news/security/from-path-traversal-to-supply-chain-compromise-breaking-mcp-server-hosting.html"
+  ],
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0003",
+  "kind": "incident"
+}

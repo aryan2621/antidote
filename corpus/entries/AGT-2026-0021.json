@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0021",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-server-kubernetes command injection via unsanitized input to execSync (CVE-2025-53355)",
+  "details": "Unsanitized input reaches child_process.execSync, allowing arbitrary commands. Affects 2.4.9 and earlier; fixed in 2.5.0.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://github.com/Flux159/mcp-server-kubernetes/security/advisories/GHSA-gjv4-ghm7-q58q"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53355"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-server-kubernetes"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "command-injection"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-53355",
+    "GHSA-gjv4-ghm7-q58q"
+  ]
+}

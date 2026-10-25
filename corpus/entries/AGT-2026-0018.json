@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0018",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "figma-developer-mcp command injection via curl fallback (CVE-2025-53967)",
+  "details": "Imperva reported that fetch-with-retry.ts runs a curl command through child_process.exec when fetch fails, allowing command injection. Affects 0.6.2 and earlier; fixed in 0.6.3 (2025-09-29).",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2025/10/severe-figma-mcp-vulnerability-lets.html"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://www.wiz.io/vulnerability-database/cve/cve-2025-53967"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://www.imperva.com/blog/another-critical-rce-discovered-in-a-popular-mcp-server/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "figma-developer-mcp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.6.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "command-injection"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-53967"
+  ]
+}

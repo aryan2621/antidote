@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0020",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "MCP TypeScript SDK lacks default DNS rebinding protection (CVE-2025-66414)",
+  "details": "Listed by the Vulnerable MCP Project as paired with CVE-2025-66416: MCP TypeScript SDK before 1.24.0 is affected.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://advisories.gitlab.com/pkg/npm/%40modelcontextprotocol/sdk/CVE-2025-66414/"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://vulnerablemcp.info"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@modelcontextprotocol/sdk"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "dns-rebinding"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-66414"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0002",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "ClawHub skill 'polymarket-traiding-bot' (publisher Aslaep123): typosquatted trading bot",
+  "details": "Part of the ClawHavoc campaign reported by Koi Security (341 malicious skills among 2,857 audited ClawHub skills; 335 tied to one operation). Campaign-wide reported behavior: a 'Prerequisites' section tells the user to install something first; on macOS this runs an obfuscated script hosted on glot[.]io that fetches a second-stage script and a Mach-O binary with traits consistent with Atomic Stealer (AMOS); on Windows a password-protected archive containing a keylogging trojan is downloaded. Shared C2 reported at 91.92.242[.]30. Snyk lists clawhub.ai/Aslaep123/polymarket-traiding-bot as a typosquatted trading bot; the same publisher is reported to have multiple malicious crypto/trading skills (e.g. base-agent, bybit-agent).",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "Aslaep123/polymarket-traiding-bot"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "fake-prerequisite",
+      "credential-theft"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "patterns": [
+        "typosquatted skill name"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

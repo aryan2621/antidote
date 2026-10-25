@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0017",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "GitHub MCP integration: malicious public issue hijacks agent into leaking private repo data",
+  "details": "Invariant Labs showed that a malicious issue in a public repo can steer a user's agent, on a benign request, into reading private repository data and leaking it through a PR in the public repo. Heise and DevClass describe it as prompt injection / architectural, not a server code bug. Suggested mitigations: single-repo sessions and least-privilege tokens.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://heise.de/-10400040"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://devclass.com/2025/05/27/researchers-warn-of-prompt-injection-vulnerability-in-github-mcp-with-no-obvious-fix/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "GitHub",
+        "name": "github/github-mcp-server"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "indirect-prompt-injection",
+      "data-exfiltration"
+    ],
+    "agents_affected": [
+      "claude-desktop"
+    ]
+  }
+}

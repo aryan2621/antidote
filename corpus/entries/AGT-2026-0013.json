@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0013",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-server-git git_diff/git_checkout argument injection into GitPython (CVE-2025-68144)",
+  "details": "User-controlled arguments reached GitPython without sanitization. Fixed in 2025.12.18 per The Hacker News. Cyata showed that, chained with the Filesystem MCP server and Git smudge/clean filters, this can reach code execution via prompt injection.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://www.theregister.com/2026/01/20/anthropic_prompt_injection_flaws/"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2026/01/three-flaws-in-anthropic-mcp-git-server.html"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-server-git"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2025.12.18"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "argument-injection",
+      "prompt-injection-chain"
+    ],
+    "agents_affected": [
+      "claude-desktop"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-68144"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0006",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "ClawHub skill 'youtube-summarize-pro' cited as example of ClawHavoc fake-prerequisite malware",
+  "details": "Part of the ClawHavoc campaign reported by Koi Security (341 malicious skills among 2,857 audited ClawHub skills; 335 tied to one operation). Campaign-wide reported behavior: a 'Prerequisites' section tells the user to install something first; on macOS this runs an obfuscated script hosted on glot[.]io that fetches a second-stage script and a Mach-O binary with traits consistent with Atomic Stealer (AMOS); on Windows a password-protected archive containing a keylogging trojan is downloaded. Shared C2 reported at 91.92.242[.]30. Named by The Hacker News as an example of a YouTube-utility lure used by ClawHavoc.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "youtube-summarize-pro"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "fake-prerequisite",
+      "credential-theft"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "domains": [
+        "glot.io"
+      ],
+      "patterns": [
+        "fake 'Prerequisites' install step in skill docs",
+        "shared C2 IP 91.92.242.30"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

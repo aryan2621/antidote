@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0022",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-server-kubernetes port_forward argument injection (CVE-2026-39884)",
+  "details": "Versions 3.4.0 and prior have an argument injection in the port_forward tool; fixed in 3.5.0. Could expose internal Kubernetes services.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://www.tenable.com/plugins/cloud-security/440378"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39884"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-server-kubernetes"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "argument-injection"
+    ]
+  },
+  "aliases": [
+    "CVE-2026-39884",
+    "GHSA-4xqg-gf5c-ghwq"
+  ]
+}

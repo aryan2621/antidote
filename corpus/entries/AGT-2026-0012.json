@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0012",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-server-git git_init accepts arbitrary filesystem paths (CVE-2025-68143)",
+  "details": "The git_init tool created Git repositories at arbitrary paths without validation; Anthropic removed the tool. The Hacker News reports a fix in 2025.9.25; other sources say versions before 2025.12.18 are at risk.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://www.theregister.com/2026/01/20/anthropic_prompt_injection_flaws/"
+    },
+    {
+      "type": "REPORT",
+      "url": "https://thehackernews.com/2026/01/three-flaws-in-anthropic-mcp-git-server.html"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mcp-server-git"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2025.12.18"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "path-traversal",
+      "prompt-injection-chain"
+    ],
+    "agents_affected": [
+      "claude-desktop"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-68143"
+  ]
+}

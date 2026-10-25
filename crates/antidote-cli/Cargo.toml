@@ -1,0 +1,25 @@
+[package]
+name = "antidote"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+license = "Apache-2.0"
+description = "Offline scanner for malicious and vulnerable AI agent skills, MCP servers and prompts"
+
+[[bin]]
+name = "antidote"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+dirs = "6"
+include_dir = "0.7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+walkdir = "2"
+yara-x = "1"
+
+[dev-dependencies]
+jsonschema = "0.60"

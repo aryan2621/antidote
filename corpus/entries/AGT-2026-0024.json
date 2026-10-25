@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0024",
+  "modified": "2026-10-25T00:00:00Z",
+  "published": "2026-10-25T00:00:00Z",
+  "summary": "mcp-package-docs command injection via unsanitized child_process.exec (CVE-2025-54073)",
+  "details": "The exec call used unsanitized input in versions before the fix commit cb4ad49615275379fd6f2f1cf1ec4731eec56eb9; no fixed release version confirmed in the source.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://www.tenable.com/cve/CVE-2025-54073"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "mcp-package-docs"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "command-injection"
+    ]
+  },
+  "aliases": [
+    "CVE-2025-54073"
+  ]
+}
