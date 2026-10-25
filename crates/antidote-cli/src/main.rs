@@ -279,6 +279,9 @@ fn run() -> Result<bool> {
                 if let Some(e) = &f.evidence {
                     println!("    evidence: {e}");
                 }
+                if let Some(x) = &f.fix {
+                    println!("    fix: {x}");
+                }
                 if let Some(x) = &f.explanation {
                     println!("    LLM: {x}");
                 }
@@ -346,6 +349,9 @@ fn sarif(findings: &[Finding]) -> Value {
             }
             if let Some(e) = &f.evidence {
                 text.push_str(&format!(". Evidence: {e}"));
+            }
+            if let Some(x) = &f.fix {
+                text.push_str(&format!(". Fix: {x}"));
             }
             if let Some(x) = &f.explanation {
                 text.push_str(&format!(". LLM review: {x}"));

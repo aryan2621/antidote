@@ -24,6 +24,9 @@ pub struct Finding {
     /// filled only by opt-in LLM review
     #[serde(skip_serializing_if = "Option::is_none")]
     pub explanation: Option<String>,
+    /// what to do about it, e.g. "Upgrade to 0.1.16 or later"
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fix: Option<String>,
 }
 
 /// 0 = critical … 3 = low; lower is worse.

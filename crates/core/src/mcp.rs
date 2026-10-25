@@ -93,6 +93,16 @@ fn server_ref(def: &Value) -> Option<PkgRef> {
     }
 }
 
+/// "Upgrade to <highest fixed>" when a fix exists, else remove (or pin, for a few bad versions).
+fn fix(e: &crate::corpus::Entry, a: &crate::corpus::Affected) -> String {
+    let fixed = a.ranges.iter().flat_map(|r| &r.events).filter_map(|ev| ev.get("fixed")).max_by(|x, y| cmp_ver(x, y));
+    match fixed {
+        Some(v) => format!("Upgrade to {v} or later"),
+        None if e.severity() == "critical" || a.versions.is_empty() => "Remove it".into(),
+        None => format!("Remove it, or pin a version other than {}", a.versions.join(", ")),
+    }
+}
+
 pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mut Vec<Finding>) {
     let before = out.len();
     for e in &c.entries {
@@ -123,6 +133,7 @@ pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mu
                 context: context.map(String::from),
                 evidence: Some(evidence),
                 explanation: None,
+                fix: Some(fix(e, a)),
             });
         }
     }
@@ -138,6 +149,7 @@ pub fn check(c: &Corpus, r: &PkgRef, path: &str, context: Option<&str>, out: &mu
                 context: context.map(String::from),
                 evidence: Some(format!("{}:{} vs {target}", r.ecosystem, r.name)),
                 explanation: None,
+                fix: Some(format!("Use `{target}` if that's what you meant")),
             });
         }
     }

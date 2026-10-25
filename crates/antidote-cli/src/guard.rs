@@ -122,6 +122,7 @@ pub fn review(c: &Corpus, server: &str, pin_file: &Path, tools: &[Value]) -> Res
                     context: Some(server.to_string()),
                     evidence: Some(t["description"].as_str().unwrap_or_default().chars().take(200).collect()),
                     explanation: None,
+                    fix: Some(format!("Review the new definition, then `antidote guard --name {server} --reset` to accept it")),
                 }));
                 continue;
             }
@@ -135,7 +136,10 @@ pub fn review(c: &Corpus, server: &str, pin_file: &Path, tools: &[Value]) -> Res
         for text in descriptions(t) {
             scan::scan_text(c, &path, &text, &mut findings);
         }
-        out.extend(findings.into_iter().map(|f| (tool.clone(), f)));
+        out.extend(findings.into_iter().map(|mut f| {
+            f.fix = Some(format!("Restrict or disable tool `{tool}` on server `{server}`"));
+            (tool.clone(), f)
+        }));
     }
     if changed {
         std::fs::create_dir_all(pin_file.parent().unwrap())?;

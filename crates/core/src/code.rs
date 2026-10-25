@@ -104,6 +104,7 @@ pub fn scan(rules: &[Rule], lang: Lang, src: &[u8], path: &str, out: &mut Vec<Fi
                 context: None,
                 evidence: Some(text.split_whitespace().collect::<Vec<_>>().join(" ").chars().take(80).collect()),
                 explanation: None,
+                fix: Some("Don't run this package until you've reviewed this code".into()),
             });
         }
     }

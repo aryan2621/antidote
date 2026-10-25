@@ -68,6 +68,7 @@ fn classify_segment(m: &crate::classify::Model, seg: &str, path: &str, line: Opt
         context: None,
         evidence: Some(format!("p={score:.2} {}", snippet(seg.as_bytes()))),
         explanation: None,
+        fix: Some("Review this text; remove it if the skill or tool doesn't need it".into()),
     });
 }
 
@@ -108,6 +109,7 @@ fn hash_match(c: &Corpus, data: &[u8], path: &str, out: &mut Vec<Finding>) {
                 context: None,
                 evidence: Some(format!("sha256 {hash}")),
                 explanation: None,
+                fix: Some("Remove this file; it matches a known-bad sample".into()),
             });
         }
     }
@@ -139,6 +141,7 @@ fn yara_match(scanner: &mut yara_x::Scanner, data: &[u8], path: &str, out: &mut 
             context: None,
             evidence,
             explanation: None,
+            fix: Some("Remove it, or review the matched text before using it".into()),
         });
     }
 }
