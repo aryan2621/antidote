@@ -2,7 +2,7 @@
 
 An open database of malicious and vulnerable AI agent artifacts (skills, MCP servers, tool descriptions, prompts, packages), plus an offline scanner. Like ClamAV / OSV, but for AI agents.
 
-> Working name. Status: phase 2 (scanner, signed feed, GitHub Action, website). Not yet published; `antidote-db/antidote` is a placeholder.
+> Working name. Status: phases 0–4 built, plus most of phase 5: corpus, scanner, signed feed, CI integrations, website, crawlers, detonation, classifier, live MCP inspection, API and the Burrow integration. Not yet published; `antidote-db/antidote` is a placeholder.
 
 ## Scanner
 
@@ -13,9 +13,12 @@ antidote scan                          # auto-discover Claude Code / Cursor / Op
 antidote scan ./skills/my-skill        # scan a folder or file
 antidote scan --mcp ~/.cursor/mcp.json # check the packages an MCP config launches
 antidote check npm:mcp-remote@0.1.15   # look up one package (also flags likely typosquats)
+antidote inspect --mcp ~/.cursor/mcp.json  # start each server in a container, scan its live tools, diff vs last time
 antidote report ./suspicious-skill     # print a prefilled GitHub issue link (hashes + rule hits only)
+antidote incident new                  # write up an agent incident (AGT-INC) and get a submission link
 antidote update                        # fetch the latest signed corpus feed
-antidote scan --format json|sarif
+antidote stats on --url <api>/v1/stats # opt in to anonymous rule-hit counts (off by default)
+antidote scan --format json|sarif|codequality
 antidote scan --fail-on medium         # critical|high (default)|medium|low|never
 ```
 
@@ -41,6 +44,15 @@ steps:
 
 Findings show up in the repo's Security → Code scanning tab.
 
+### GitLab CI
+
+```yaml
+include:
+  - remote: https://raw.githubusercontent.com/antidote-db/antidote/main/ci/gitlab/antidote.gitlab-ci.yml
+```
+
+Findings show up in the merge request's Code Quality widget (`--format codequality`). To change the defaults, override `ANTIDOTE_PATHS`, `ANTIDOTE_FAIL_ON` or `ANTIDOTE_VERSION`.
+
 ### pre-commit
 
 ```yaml
@@ -55,9 +67,10 @@ What it checks:
 |---|---|
 | Hash | SHA-256 of every file vs `indicators.sha256` in the corpus |
 | Signatures | [YARA-X](https://github.com/VirusTotal/yara-x) rules in `corpus/rules/`: hidden Unicode, instruction overrides, concealment, `<IMPORTANT>` blocks aimed at secrets, credential exfiltration, `curl \| sh`, encoded exec, reverse shells, Gatekeeper bypass |
+| Code rules | [tree-sitter](https://tree-sitter.github.io/) queries (`corpus/rules/*.scm`, `AGT-T-*`) on JS/TS/Python: shell commands built from dynamic strings, reads of SSH/cloud/keychain/browser credentials, the whole environment sent over the network, eval of runtime-decoded code |
 | Packages | `npx`/`uvx`/`bunx`/`pnpm dlx` servers in any `mcpServers` block, matched against `affected` versions and OSV ranges |
 
-The scanner gives deterministic verdicts only. No LLM decides whether something is safe.
+Each finding comes with a suggested fix, e.g. "Upgrade to 0.1.16 or later", "Remove it" or "Restrict or disable tool `x`". The scanner gives deterministic verdicts only. No LLM decides whether something is safe.
 
 ### Classifier and LLM explanations
 
@@ -84,19 +97,55 @@ Every message passes through untouched, except the `tools/list` answers, which a
 - Reasons are written to stderr, which shows up in your client's MCP log.
 - `--warn-only` logs problems without hiding anything.
 
+### Inspect: live MCP tools
+
+`antidote inspect` reads your MCP configs (or `--mcp <file>`), then starts each stdio server and asks it for its tools. Each tool's description goes through the same checks as `guard`, using the same pin files. So a tool that changed since you last ran `inspect` or `guard` is reported as `AGT-F-RUGPULL`.
+
+- By default, servers run in Docker or Podman: `--cap-drop ALL`, a read-only root, no host mounts, and secrets passed by name so they stay out of the process list.
+- `npx`, `uvx` and `bunx` servers are supported. A local binary is skipped unless you pass `--no-sandbox`, which runs servers directly on your machine.
+- `--timeout` (default 180s) covers the first package download.
+
+### Incidents
+
+`antidote incident new --summary … --date 2026-09 --trigger "prompt injection" --impact "data leak" --ref https://…` checks the fields against the schema, then prints the AGT-INC JSON and a prefilled issue link. In a terminal, it asks for any required field you left out. Maintainers can pass `--write corpus` to write the file with the next free id instead.
+
 ### Using antidote from other tools
 
-`antidote check <pkg> --format json` and `antidote scan <path> --format json` print a JSON array of findings: `{severity, id, summary, path, line, context, evidence, explanation}`. Exit codes are as listed above. Package managers and sandboxes (e.g. Burrow) can call `check` before installing.
+`antidote check <pkg> --format json` and `antidote scan <path> --format json` print a JSON array of findings: `{severity, id, summary, path, line, context, evidence, fix, explanation}`. Exit codes are as listed above. Burrow runs `check` on every stdio MCP server you add. It refuses critical and high findings and shows medium and low ones as warnings.
+
+### Opt-in stats
+
+Off by default. `antidote stats on --url https://<api host>/v1/stats` turns it on. After that, each `scan` sends `{"corpus_version": N, "counts": {"AGT-R-0101": 2, …}}`: which rules fired and how often. It sends nothing else: no paths, file contents, package names or hostnames. The request has a 3-second timeout, and errors are ignored. `antidote stats off` turns it off, and `antidote stats status` shows the current setting. There is no hosted endpoint yet, so `--url` is required.
 
 ## Corpus
 
 - `schema/entry.schema.json`: an OSV extension. Artifact entries are `AGT-YYYY-NNNN`. Behavioral incidents are `AGT-INC-YYYY-NNNN`.
 - `corpus/entries/`: one JSON file per entry. Each entry is sourced from public reports and links them in `references`.
 - `corpus/rules/*.yar`: each rule has `meta: id, severity, description`.
+- `corpus/rules/<id>.<js|py>.scm`: tree-sitter queries with `; id:`, `; severity:` and `; description:` header lines. The reported node is captured as `@hit`. `.js` rules also run on TypeScript.
+
+Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Website
 
-`web/` is an Astro site with a search page, one page per entry, and an "is X safe?" page per package. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
+`web/` is an Astro site with a search page, one page per entry, an "is X safe?" page per package, and a submit form that builds a prefilled GitHub issue in the browser. Entry and package pages show README badge Markdown once `PUBLIC_API_URL` (the repo variable `ANTIDOTE_API_URL`) points at a deployed API. It is built from `corpus/entries` and deployed with the signed feed to GitHub Pages by `.github/workflows/pages.yml`. To run it locally: `cd web && npm install && npm run dev`.
+
+## API
+
+`crates/api` builds `antidote-api` (axum), which serves:
+- `GET /v1/feed.json` and `/v1/feed.json.minisig`;
+- `GET /v1/entries/{id}`;
+- `GET /v1/check/{npm|pypi}/{name}?version=`, which returns the same JSON as `antidote check`;
+- `GET /badge/{npm|pypi}/{name}.svg`, a README badge for the latest release, or for `?version=`;
+- `POST /v1/stats` and `GET /v1/stats`, opt-in rule-hit counts stored in SQLite. Only `AGT-*` ids are accepted, at most 500 keys, in a 16 KB body.
+
+```bash
+cargo run -p antidote-api -- --listen 127.0.0.1:8080            # built-in corpus
+antidote-api --feed feed.json --db stats.sqlite                  # signed feed; feed.json.minisig next to it
+docker build -f crates/api/Dockerfile -t antidote-api .
+```
+
+With `--feed`, the signature is checked at start. The file is re-checked every minute, and a newer verified feed is swapped in without a restart.
 
 ## Releasing (maintainers)
 
@@ -111,7 +160,7 @@ Every message passes through untouched, except the `tools/list` answers, which a
 - **`crawl.yml` (hourly)** watches four sources for new and changed artifacts: the official MCP registry, ClawHub (owner/slug), npm (the replication feed, filtered to names containing "mcp") and PyPI (the updates RSS feed plus every package listed in the MCP registry). For each new version it:
   1. downloads the archive and checks its registry digest;
   2. extracts it safely (path escapes abort, links are skipped, size is capped);
-  3. scans it with the YARA rules and checks install scripts, new domains and typosquat names.
+  3. scans it with the YARA and tree-sitter rules, and checks install scripts, new domains, typosquat names and package age (`AGT-F-NEW-PACKAGE`, first published under 7 days ago).
 
   Anything at `high` or above opens an issue labelled `triage`. Crawl state and reports live on the `crawl-state` branch.
 - **`triage.yml`** acts on comments from repo owners, members and collaborators:
@@ -122,9 +171,18 @@ Every message passes through untouched, except the `tools/list` answers, which a
   PRs opened with `GITHUB_TOKEN` don't trigger CI. Close and reopen the PR, or swap the token for a GitHub App token.
 - **`detonate.yml`** installs the package inside gVisor. The container has no route out except a proxy that forwards only registry traffic and sinkholes everything else. The run then starts the package as an MCP server and lists its tools. It reports blocked egress, DNS lookups, writes to sensitive paths, poisoned live tool descriptions, and tool changes since the last detonation (rug-pulls). Auto-detonating high or critical crawler findings is off unless the repo variable `ANTIDOTE_AUTO_DETONATE=true` is set. Running suspected malware on GitHub-hosted runners is a grey area under GitHub's terms, so move this to your own disposable host before using it at volume.
 
+- **`seed.yml` (weekly)** imports new public OSV advisories for MCP packages (`antidote-ops seed-osv`) and opens a PR.
+
 ## Not yet built
 
-`incident new`, tree-sitter code rules, registry badges, GitLab template, editor extension. See `../product-specs/antidote.md`.
+- Desktop app
+- Editor extensions and MCP-gateway plugins for other gateways
+- A hosted API, so there's no default stats endpoint and no public badges yet
+- Reporter sign-in (GitHub OAuth) and gated raw-sample storage
+- Reporter leaderboard
+- The CNA application and registry partnerships, which are paperwork rather than code
+
+See `../product-specs/antidote.md`.
 
 ## License
 
