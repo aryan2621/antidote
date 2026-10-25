@@ -25,13 +25,20 @@ def hf():
 
 
 def get(url, **kw):
+    r = None
     for attempt in range(4):
-        r = requests.get(url, headers=UA, timeout=60, **kw)
+        try:
+            r = requests.get(url, headers=UA, timeout=60, **kw)
+        except requests.ConnectionError:
+            time.sleep(2 ** (attempt + 1))
+            continue
         if r.status_code == 429 or r.status_code >= 500:
             time.sleep(max(int(r.headers.get("retry-after", "0") or 0), 2 ** (attempt + 1)))
             continue
         return r
-    r.raise_for_status()
+    if r is not None:
+        r.raise_for_status()
+    return None  # connection kept failing; clawhub() skips the item
 
 
 def mcp_registry():
