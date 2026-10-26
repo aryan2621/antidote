@@ -97,6 +97,58 @@ fn year(osv: &Value) -> i64 {
     osv["published"].as_str().and_then(|p| p.get(..4)?.parse().ok()).unwrap_or(2026)
 }
 
+/// Strip live secret material from OSV prose (Telegram bot tokens, long API keys) so the public corpus
+/// does not trip host secret scanning. Indicators and behavior stay; values become redacted placeholders.
+pub fn redact_secrets(input: &str) -> String {
+    let mut out = String::with_capacity(input.len());
+    let mut i = 0;
+    let chars: Vec<char> = input.chars().collect();
+    while i < chars.len() {
+        if let Some(end) = telegram_token_end(&chars, i) {
+            out.push_str("<telegram bot token redacted>");
+            i = end;
+            continue;
+        }
+        if chars[i..].starts_with(&['s', 'k', '-']) {
+            let end = sk_key_end(&chars, i);
+            if end > i + 10 {
+                out.push_str("sk-…REDACTED");
+                i = end;
+                continue;
+            }
+        }
+        out.push(chars[i]);
+        i += 1;
+    }
+    out
+}
+
+fn telegram_token_end(chars: &[char], start: usize) -> Option<usize> {
+    let mut j = start;
+    let mut digits = 0;
+    while j < chars.len() && chars[j].is_ascii_digit() {
+        digits += 1;
+        j += 1;
+    }
+    if !(8..=10).contains(&digits) || j >= chars.len() || chars[j] != ':' {
+        return None;
+    }
+    j += 1;
+    let token_start = j;
+    while j < chars.len() && (chars[j].is_ascii_alphanumeric() || chars[j] == '_' || chars[j] == '-') {
+        j += 1;
+    }
+    if j - token_start >= 35 { Some(j) } else { None }
+}
+
+fn sk_key_end(chars: &[char], start: usize) -> usize {
+    let mut j = start + 3;
+    while j < chars.len() && (chars[j].is_ascii_alphanumeric() || chars[j] == '_' || chars[j] == '-') {
+        j += 1;
+    }
+    j
+}
+
 /// OSV record → AGT entry, keeping only npm/PyPI packages. None if nothing usable is affected.
 pub fn to_entry(osv: &Value, aliases: &[String], id: &str) -> Option<Value> {
     let osv_id = osv["id"].as_str()?;
@@ -137,7 +189,7 @@ pub fn to_entry(osv: &Value, aliases: &[String], id: &str) -> Option<Value> {
         if malicious { format!("Malicious code in {pkg}") } else { osv["details"].as_str().unwrap_or(osv_id).lines().next().unwrap_or(osv_id).to_string() }
     });
     let summary = if summary.to_lowercase().contains(&pkg.to_lowercase()) { summary } else { format!("{pkg}: {summary}") };
-    let mut details: String = osv["details"].as_str().unwrap_or("").chars().take(4000).collect();
+    let mut details: String = redact_secrets(&osv["details"].as_str().unwrap_or("").chars().take(4000).collect::<String>());
     details.push_str(&format!("\n\nImported from OSV {osv_id}."));
     let references: Vec<Value> = std::iter::once(json!({"type": "ADVISORY", "url": format!("https://osv.dev/vulnerability/{osv_id}")}))
         .chain(osv["references"].as_array().into_iter().flatten().take(10).filter_map(|r| Some(json!({"type": r["type"].as_str()?, "url": r["url"].as_str()?}))))
@@ -174,5 +226,18 @@ fn severity(s: &str) -> Option<&'static str> {
         "HIGH" => Some("high"),
         "CRITICAL" => Some("critical"),
         _ => None,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::redact_secrets;
+
+    #[test]
+    fn redact_telegram_bot_token() {
+        let raw = "token 8898185692:AAEjW5PcFLiwKJYf58X4pYY47HpbZvWGOUk end";
+        let out = redact_secrets(raw);
+        assert!(!out.contains("AAEjW5PcFLiwKJYf58X4pYY47HpbZvWGOUk"));
+        assert!(out.contains("<telegram bot token redacted>"));
     }
 }
