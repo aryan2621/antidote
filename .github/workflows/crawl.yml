@@ -22,6 +22,9 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - run: cargo build --release --locked -p antidote-ops
       - name: Crawl and analyze
+        env:
+          GITHUB_TOKEN: ${{ github.token }}   # repo search + commit lookups
+          SMITHERY_API_KEY: ${{ secrets.SMITHERY_API_KEY }}   # Smithery is skipped while unset
         run: ./target/release/antidote-ops run --state state/state.json --out out --allowlist corpus/allowlist.json
       - name: Open triage issues
         env:

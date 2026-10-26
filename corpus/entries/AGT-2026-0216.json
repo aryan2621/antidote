@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0216",
+  "modified": "2026-10-26T00:00:00Z",
+  "published": "2026-10-26T00:00:00Z",
+  "summary": "Unit 42: nine ClawHub skills tied to AMOS droppers, macOS infostealer lures, affiliate rerouting and a token scheme",
+  "details": "Unit 42 (published 2026-06-23) lists these skills as IOCs; publisher names are redacted in the source so only slugs are recorded. tradingview-ai-indicator-assistant and ai-tradingview-assistant-for-macos: malicious prerequisite block leads to a rentry.co lure and a payload from 2.26.75.16, a macOS infostealer named cluw. omnicogg: Base64 curl-pipe-bash dropper delivering AMOS via 91.92.242.30, README padded to about 22 MB to evade scanners. money-radar: financial recommendations routed through affiliate links fetched from laosji.net, changeable by the publisher after install. letssendit: installed agents pool SOL for the SENDIT token linked to letssendit.fun and pump.fun. santi-text-game, pdfcheck, update and wistec-core are listed as IOCs without description. Domains download.setup-service.com, install.app-distribution.net and openclawcli.vercel.app, and github.com/Ddoy233/openclawcli, glot.io/snippets/hfd3x9ueu5, rentry.co/openclaw-code are listed without a linked skill.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://unit42.paloaltonetworks.com/openclaw-ai-supply-chain-risk/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "santi-text-game"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "omnicogg"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "letssendit"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "money-radar"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "ai-tradingview-assistant-for-macos"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "tradingview-ai-indicator-assistant"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "pdfcheck"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "update"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "wistec-core"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "fake-prerequisite",
+      "credential-theft"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "sha256": [
+        "818aea6143282b352fdfdc0f3ebf77a36e54eb3befb5cad1a355a99ab97c6aa7",
+        "881ce5cb124c4d2e814783724cc1388f6a1cbf6eee274c3f3366e77ba3503ad7",
+        "b30eaed1f7478c28f4ec50d07ed5ef014ffbc4b2bc5a38d689ba9f7abb5e19c2",
+        "b6c7e0bf573b1c7d9d3a05eb08d26579199515b847df984862805f44a7af8007",
+        "ebb73dbb5aac1f6fe1a88e8f26126a1e1aa34c9f3345ad4345189b40d9bf1d1d",
+        "f4e41aa269c88bf11a2022701a9cf41e9a186aa1b224d837c31bf34e0b875d0e"
+      ],
+      "domains": [
+        "download.setup-service.com",
+        "install.app-distribution.net",
+        "laosji.net",
+        "openclawcli.vercel.app",
+        "rentry.co",
+        "glot.io",
+        "letssendit.fun",
+        "pump.fun"
+      ],
+      "patterns": [
+        "IPs 2.26.75.16 and 91.92.242.30",
+        "Base64 curl-pipe-bash dropper in skill docs",
+        "README padded to ~22 MB",
+        "affiliate links fetched from remote domain",
+        "github.com/Ddoy233/openclawcli"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

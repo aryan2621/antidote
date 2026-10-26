@@ -67,7 +67,7 @@ What it checks:
 |---|---|
 | Hash | SHA-256 of every file vs `indicators.sha256` in the corpus |
 | Signatures | [YARA-X](https://github.com/VirusTotal/yara-x) rules in `corpus/rules/`: hidden Unicode, instruction overrides, concealment, `<IMPORTANT>` blocks aimed at secrets, credential exfiltration, `curl \| sh`, encoded exec, reverse shells, Gatekeeper bypass |
-| Code rules | [tree-sitter](https://tree-sitter.github.io/) queries (`corpus/rules/*.scm`, `AGT-T-*`) on JS/TS/Python: shell commands built from dynamic strings, reads of SSH/cloud/keychain/browser credentials, the whole environment sent over the network, eval of runtime-decoded code |
+| Code rules | [tree-sitter](https://tree-sitter.github.io/) queries (`corpus/rules/*.scm`, `AGT-T-*`) on JS/TS/Python and shell scripts: shell commands built from dynamic strings, reads of SSH/cloud/keychain/browser credentials, the whole environment sent over the network, eval of runtime-decoded code; in `.sh`/`.bash`/`.zsh`, code downloaded and run (`curl … \| bash`, `bash <(curl …)`, `eval "$(curl …)"`) and base64 blobs piped into a shell |
 | Packages | `npx`/`uvx`/`bunx`/`pnpm dlx` servers in any `mcpServers` block, matched against `affected` versions and OSV ranges |
 
 Each finding comes with a suggested fix, e.g. "Upgrade to 0.1.16 or later", "Remove it" or "Restrict or disable tool `x`". The scanner gives deterministic verdicts only. No LLM decides whether something is safe.
@@ -144,6 +144,13 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 - `GET /badge/{npm|pypi}/{name}.svg`, a README badge for the latest release, or for `?version=`;
 - `POST /v1/stats` and `GET /v1/stats`, opt-in rule-hit counts stored in SQLite. Only `AGT-*` ids are accepted, at most 500 keys, in a 16 KB body.
 
+There is no hosted instance. Anyone who wants the API runs it themselves from the image that each tagged release publishes:
+
+```bash
+docker run -p 8080:8080 -v antidote:/data ghcr.io/antidote-db/antidote-api   # built-in corpus
+curl localhost:8080/v1/check/npm/mcp-remote?version=0.1.15
+```
+
 ```bash
 cargo run -p antidote-api -- --listen 127.0.0.1:8080            # built-in corpus
 antidote-api --feed feed.json --db stats.sqlite                  # signed feed; feed.json.minisig next to it
@@ -155,17 +162,17 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
 ## Releasing (maintainers)
 
 1. Generate the feed key once: `minisign -G -W -p antidote.pub -s antidote.key`. Store the second line of `antidote.pub` as the repo variable `ANTIDOTE_FEED_PUBKEY`. Store the contents of `antidote.key` as the secret `MINISIGN_SECRET_KEY`, then delete the local copy or keep it offline.
-2. Pushing to `master` publishes the site and the signed feed.
+2. Pushing to `master` publishes the site and the signed feed. Next to `feed.json` it publishes `all.zip`, one JSON file per entry in OSV's `all.zip` layout so OSV tooling can import the corpus, signed as `all.zip.minisig`.
 3. Tag `vX.Y.Z` to build release binaries and desktop installers (`release.yml`). They embed the public key and the corpus version.
 
 ## Crawling and triage (maintainers)
 
 `crates/ops` builds `antidote-ops`, which runs only in CI and is not shipped to users.
 
-- **`crawl.yml` (hourly)** watches four sources for new and changed artifacts: the official MCP registry, ClawHub (owner/slug), npm (the replication feed, filtered to names containing "mcp") and PyPI (the updates RSS feed plus every package listed in the MCP registry). For each new version it:
-  1. downloads the archive and checks its registry digest;
+- **`crawl.yml` (hourly)** watches six sources for new and changed artifacts: the official MCP registry, ClawHub (owner/slug), npm (the replication feed, filtered to names containing "mcp"), PyPI (the updates RSS feed plus every package listed in the MCP registry), GitHub (recently pushed repos tagged `mcp-server`, `claude-skills` or `agent-skills`, pinned to their head commit) and Smithery (new servers: the stdio bundle plus every tool description, skipped unless the `SMITHERY_API_KEY` secret is set). For each new version it:
+  1. downloads the archive and checks its registry digest where the registry publishes one (npm, PyPI);
   2. extracts it safely (path escapes abort, links are skipped, size is capped);
-  3. scans it with the YARA and tree-sitter rules, and checks install scripts, new domains, typosquat names and package age (`AGT-F-NEW-PACKAGE`, first published under 7 days ago).
+  3. scans it with the YARA and tree-sitter rules (and listed tool descriptions with the YARA rules and classifier), and checks install scripts, new domains, typosquat names and package age (`AGT-F-NEW-PACKAGE`, first published under 7 days ago).
 
   Anything at `high` or above opens an issue labelled `triage`. Crawl state and reports live on the `crawl-state` branch.
 - **`triage.yml`** acts on comments from repo owners, members and collaborators:

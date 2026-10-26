@@ -58,6 +58,12 @@ pub fn load_allowlist(path: &Path) -> Vec<AllowRule> {
 
 /// Download, verify, extract and analyze one registry item.
 pub fn analyze_remote(c: &Corpus, item: &Item, state: &State, allow: &[AllowRule]) -> Result<Report> {
+    // a remote-only Smithery server ships no code: its tool descriptions are the whole artifact
+    if item.download.is_none() && item.tools.is_some() {
+        let mut r = Report { item: item.clone(), archive_sha256: None, findings: vec![], flags: vec![], domains: vec![], install_script: false, score: "none".into() };
+        add_tool_hits(c, &mut r, allow);
+        return Ok(r);
+    }
     let (url, expect, created): (String, Option<Expect>, Option<String>) = match item.ecosystem.as_str() {
         "npm" => {
             let m = npm::meta(&item.name, &item.version)?;
@@ -68,6 +74,8 @@ pub fn analyze_remote(c: &Corpus, item: &Item, state: &State, allow: &[AllowRule
             (u, Some(Expect::Sha256Hex(sha)), created)
         }
         // shortcut: ClawHub's list API has no archive digest; per-file sha256 needs a version-detail call.
+        // GitHub tarballs are pinned to a commit sha but have no published digest either; Smithery
+        // bundles have neither. The archive's own sha256 is recorded in the report.
         _ => (item.download.clone().context("item has no download url")?, None, None),
     };
     let mut data = crate::http::get(&url, 50 << 20)?;
@@ -99,6 +107,7 @@ pub fn analyze_remote(c: &Corpus, item: &Item, state: &State, allow: &[AllowRule
         Err(e) => Report::malformed(item, &e),
     };
     r.archive_sha256 = archive_sha256;
+    add_tool_hits(c, &mut r, allow);
     // npm/PyPI don't expose account age, so a brand-new package stands in for a brand-new publisher
     if let Some(days) = created.as_deref().and_then(age_days).filter(|d| *d < NEW_PACKAGE_DAYS) {
         let mut h = hit("low", "AGT-F-NEW-PACKAGE", &format!("Package first published {days} day(s) ago"));
@@ -231,13 +240,29 @@ pub fn analyze_dir(c: &Corpus, item: &Item, dir: &Path, state: &State, allow: &[
     };
     let findings: Vec<Hit> = findings.into_iter().filter(|h| !allowed(&h.id)).collect();
     let flags: Vec<Hit> = flags.into_iter().filter(|h| !allowed(&h.id)).collect();
-    let score = findings
-        .iter()
-        .chain(&flags)
-        .min_by_key(|h| rank(&h.severity))
-        .map_or_else(|| "none".to_string(), |h| h.severity.clone());
+    let score = worst(&findings, &flags);
 
     Report { item: item.clone(), archive_sha256: None, findings, flags, domains, install_script, score }
+}
+
+fn worst(findings: &[Hit], flags: &[Hit]) -> String {
+    findings.iter().chain(flags).min_by_key(|h| rank(&h.severity)).map_or_else(|| "none".to_string(), |h| h.severity.clone())
+}
+
+/// Content rules + classifier on each listed tool description, reported as `tool:<name>`.
+fn add_tool_hits(c: &Corpus, r: &mut Report, allow: &[AllowRule]) {
+    let mut raw = Vec::new();
+    for t in r.item.tools.iter().flatten() {
+        scan::scan_text(c, &format!("tool:{}", t.name), &t.description, &mut raw);
+    }
+    let allowed = |id: &str| allow.iter().any(|a| a.key == r.item.key() && (a.version == "*" || a.version == r.item.version) && a.id == id);
+    let hits: Vec<Hit> = raw
+        .into_iter()
+        .filter(|f| !allowed(&f.id))
+        .map(|f| Hit { severity: f.severity.into(), id: f.id, summary: f.summary, path: Some(f.path), line: None, evidence: f.evidence, file_sha256: None })
+        .collect();
+    r.findings.extend(hits);
+    r.score = worst(&r.findings, &r.flags);
 }
 
 /// `pre/post/install` scripts from the package.json at the archive root (npm puts it under `package/`).

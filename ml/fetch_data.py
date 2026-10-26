@@ -68,14 +68,19 @@ def clawhub(n=1500):
     with out.open("a") as f:
         while len(done) < n:
             params = {"limit": 50, "sort": "downloads", "nonSuspiciousOnly": "true", **({"cursor": cursor} if cursor else {})}
-            page = get(f"{api}/skills", params=params).json()
+            r = get(f"{api}/skills", params=params)
+            if r is None:
+                print("clawhub listing unreachable; re-run to resume", flush=True)
+                break
+            page = r.json()
             for s in page["items"]:
                 key = f'{s["ownerHandle"]}/{s["slug"]}'
                 if key in done:
                     continue
                 r = get(f"{api}/skills/{s['slug']}/file", params={"path": "SKILL.md", "ownerHandle": s["ownerHandle"]})
                 if r is not None and r.status_code == 200:
-                    f.write(json.dumps({"slug": key, "text": r.text[:50_000]}) + "\n")
+                    # ClawHub sends no charset, so requests would decode the UTF-8 body as Latin-1
+                    f.write(json.dumps({"slug": key, "text": r.content.decode("utf-8", "replace")[:50_000]}) + "\n")
                 done.add(key)
                 fetched += 1
                 time.sleep(0.2)

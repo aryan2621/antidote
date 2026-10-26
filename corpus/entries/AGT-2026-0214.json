@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0214",
+  "modified": "2026-10-26T00:00:00Z",
+  "published": "2026-10-26T00:00:00Z",
+  "summary": "Snyk ToxicSkills: four more ClawHub skills (zaycv, Aslaep123, moonshine-100rze) confirmed malicious",
+  "details": "Snyk's ToxicSkills IOC table lists these skills as part of its confirmed malicious dataset and says all remained publicly available on clawhub.ai at publication. Snyk notes zaycv's skills are part of an automated malware campaign (publisher reported responsible for 40+ skills); Aslaep123/base-agent is described as a generic agent skill used as cover and Aslaep123/bybit-agent as targeting crypto exchange users. No note is given for moonshine-100rze/moltbook-lm8. Snyk publishes no domains, IPs or hashes for these skills.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "zaycv/clawhud"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "Aslaep123/base-agent"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "Aslaep123/bybit-agent"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "moonshine-100rze/moltbook-lm8"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "patterns": [
+        "part of automated malware campaign (zaycv)",
+        "generic agent skill used as cover (Aslaep123/base-agent)"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

@@ -119,7 +119,9 @@ def main():
     vec = HashingVectorizer(analyzer="char_wb", ngram_range=NGRAM, n_features=N_FEATURES, alternate_sign=False, lowercase=True, norm="l2")
     tr = df[df.part == "train"]
     clf = LogisticRegression(C=4.0, class_weight="balanced", max_iter=3000, solver="liblinear")
-    clf.fit(vec.transform(tr.text), tr.label)
+    # 1/sqrt(group size): the 30k+ clawhub/mcp-registry rows don't drown the small sets, but 22 seed rows don't outweigh them either
+    sw = 1 / np.sqrt(tr.groupby(["source", "label"]).text.transform("size"))
+    clf.fit(vec.transform(tr.text), tr.label, sample_weight=sw * len(tr) / sw.sum())
 
     w = f16_roundtrip(clf.coef_[0].astype(np.float32))
     b = float(clf.intercept_[0])
@@ -127,9 +129,10 @@ def main():
 
     # calibrate on skill paragraphs and system prompts: the hardest benign text the scanner scores (MCP descriptions score far lower)
     cal = df[(df.part == "calib") & (df.label == 0) & df.source.isin(["clawhub", "spml-system"])]
-    s_cal = np.sort(score(cal.text))
-    t_med = float(np.quantile(s_cal, 0.99))
-    t_high = float(np.quantile(s_cal, 0.999))
+    # per source, then the strictest: otherwise the far larger clawhub set alone sets the threshold
+    s_cal = [score(g.text) for _, g in cal.groupby("source")]
+    t_med = max(float(np.quantile(s, 0.99)) for s in s_cal)
+    t_high = max(float(np.quantile(s, 0.999)) for s in s_cal)
     print(f"thresholds: medium={t_med:.4f} high={t_high:.4f} (from {len(cal)} benign calib texts)")
 
     te = df[df.part == "test"].assign(score=lambda d: score(d.text))
@@ -159,8 +162,8 @@ Character 3–5-gram hashing (2^18 features, `char_wb`, lowercase, L2) + logisti
 
 - **Training data:** see [DATA.md](DATA.md). Training rows: {len(tr)}.
 - **Thresholds:** calibrated on {len(cal)} held-out benign skill paragraphs and system prompts.
-  - medium (`{t_med:.4f}`) = 1% false positives
-  - high (`{t_high:.4f}`) = 0.1% false positives
+  - medium (`{t_med:.4f}`) = at most 1% false positives on each source
+  - high (`{t_high:.4f}`) = at most 0.1% false positives on each source
 - **mosscap** is never trained on. Its row measures transfer to unseen attack styles.
 - **Limits:** English-heavy data, so multilingual injection is weak. Character n-grams don't understand intent, so text *about* injection (security docs) can score high; the scanner limits scoring to agent-facing files for this reason. It is never a "safe" verdict.
 

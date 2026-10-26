@@ -65,7 +65,7 @@ pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
         };
         // unpublished packages have no dist-tags
         let Some(version) = doc["dist-tags"]["latest"].as_str() else { continue };
-        let item = Item { source: "npm".into(), ecosystem: "npm".into(), name, version: version.into(), download: None };
+        let item = Item { source: "npm".into(), ecosystem: "npm".into(), name, version: version.into(), download: None, tools: None };
         if state.is_new(&item.key(), &item.version) {
             out.push(item);
         }

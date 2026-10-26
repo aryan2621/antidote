@@ -1,6 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, frameworkRefs, type Entry } from '../../lib/entries';
+import Mark from '../../components/Mark.astro';
+import {
+  entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, frameworkRefs,
+  lookalikeOf, verificationText, artifactType, REPO, href, type Entry,
+} from '../../lib/entries';
+import CodeBlock from '../../components/CodeBlock.astro';
 
 export function getStaticPaths() {
   return entries.map((e) => ({ params: { id: e.id }, props: { e } }));
@@ -8,82 +13,152 @@ export function getStaticPaths() {
 const { e } = Astro.props as { e: Entry };
 const db = e.database_specific ?? {};
 const cls = classification(e);
+const incident = isIncident(e);
 const paragraphs = (s?: string) => (s ?? '').split(/\n{2,}/).filter(Boolean);
 const refs: string[] = (e.references ?? []).map((r: any) => (typeof r === 'string' ? r : r.url));
+const host = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 const ind = db.indicators ?? {};
-const badges = (e.affected ?? []).map((a: any) => badgeMarkdown(a.package.ecosystem, a.package.name)).filter(Boolean);
+const fw = frameworkRefs(db.techniques);
+const badges = (e.affected ?? []).map((a: any) => badgeMarkdown(a.package.ecosystem, a.package.name)).filter(Boolean) as string[];
+const lookalikes = (e.affected ?? [])
+  .map((a: any) => ({ a, real: lookalikeOf(a.package.ecosystem, a.package.name) }))
+  .filter((x: any) => x.real);
+const related = (id: string) => entries.find((x) => x.id === id);
+const verdictSentence: Record<string, string> = {
+  malicious: 'Built to do harm. Do not install it; if you already did, treat the machine as exposed.',
+  vulnerable: 'A real bug in otherwise honest software. Check your version against the affected range below.',
+  suspicious: 'Behavior that looks wrong but is not confirmed malicious. Review before installing.',
+  incident: 'A behavioral incident: no malicious file, but an agent did something it should not have.',
+  withdrawn: 'Retracted. It no longer matches in the scanner.',
+};
 ---
-<Base title={`${e.id}: ${e.summary}`} description={e.summary}>
-  <p class="mono muted" style="margin-top:28px">{e.id}</p>
-  <h1 style="margin-top:4px">{e.summary}</h1>
-  <p>
-    <span class={`tag ${cls}`}>{cls}</span>
-    {db.verification && <span class={`tag ${db.verification}`}>{db.verification}</span>}
-    {(e.aliases ?? []).map((a: string) => <code style="margin-left:8px">{a}</code>)}
-  </p>
+<Base title={`${e.id}: ${e.summary}`} description={e.summary} current="database">
+  <nav class="crumb" aria-label="Breadcrumb"><a href={href('/')}>Database</a> <span aria-hidden="true">/</span> <span class="mono">{e.id}</span></nav>
 
-  {e.withdrawn && <p><strong>Withdrawn on {e.withdrawn.slice(0, 10)}.</strong> This entry was retracted and no longer matches in <code>antidote scan</code>.</p>}
+  <article class="sheet">
+    <header class={`head ${cls}`}>
+      <div class="meta">
+        <span class="plate-no mono">Plate {e.id.replace('AGT-', '')}</span>
+        <Mark kind={cls} />
+        {incident ? null : db.verification && <span class="ver">{verificationText[db.verification] ?? db.verification}</span>}
+      </div>
+      <h1>{e.summary}</h1>
+      <p class="verdict column">{verdictSentence[cls]}</p>
+      {(e.aliases ?? []).length > 0 && <p class="aliases mono">{(e.aliases ?? []).join('  ·  ')}</p>}
+    </header>
 
-  {paragraphs(e.details).map((p) => <p>{p}</p>)}
+    {e.withdrawn && <p class="callout"><strong>Withdrawn on {e.withdrawn.slice(0, 10)}.</strong> This entry was retracted and no longer matches in <code>antidote scan</code>.</p>}
 
-  {isIncident(e) ? (
-    <>
-      <h2>Incident</h2>
-      <table>
-        {e.agent && <tr><th>Agent</th><td>{e.agent}</td></tr>}
-        {e.model && <tr><th>Model</th><td>{e.model}</td></tr>}
-        <tr><th>Date</th><td>{e.date}</td></tr>
-        <tr><th>Trigger</th><td>{e.trigger}</td></tr>
-        <tr><th>Impact</th><td>{e.impact}</td></tr>
-        {e.root_cause && <tr><th>Root cause</th><td>{e.root_cause}</td></tr>}
-      </table>
-      {e.would_have_prevented?.length > 0 && (
-        <>
-          <h2>What would have prevented it</h2>
-          <ul>{e.would_have_prevented.map((x: string) => <li>{x}</li>)}</ul>
-        </>
-      )}
-      {e.related_entries?.length > 0 && (
-        <p>Related: {e.related_entries.map((id: string) => <a class="mono" href={entryHref(id)} style="margin-right:8px">{id}</a>)}</p>
-      )}
-    </>
-  ) : (
-    <>
-      <h2>Affected</h2>
-      <table>
-        {(e.affected ?? []).map((a: any) => (
-          <tr>
-            <th><a class="mono" href={packageHref(a.package.ecosystem, a.package.name)}>{a.package.ecosystem}:{a.package.name}</a></th>
-            <td>{versionText(a)}</td>
-          </tr>
-        ))}
-      </table>
-      <h2>Details</h2>
-      <table>
-        <tr><th>Artifact type</th><td>{db.artifact_type}</td></tr>
-        {db.agents_affected?.length > 0 && <tr><th>Agents</th><td>{db.agents_affected.join(', ')}</td></tr>}
-        {db.techniques?.length > 0 && <tr><th>Techniques</th><td class="mono">{db.techniques.join(', ')}</td></tr>}
-        {frameworkRefs(db.techniques).length > 0 && <tr><th>Frameworks</th><td>{frameworkRefs(db.techniques).map((r) => <div><a href={r.url} rel="noopener">{r.title}</a></div>)}</td></tr>}
-        {ind.sha256?.length > 0 && <tr><th>SHA-256</th><td class="mono">{ind.sha256.map((h: string) => <div>{h}</div>)}</td></tr>}
-        {ind.domains?.length > 0 && <tr><th>Domains</th><td class="mono">{ind.domains.map((d: string) => <div>{d.replaceAll('.', '[.]')}</div>)}</td></tr>}
-        {ind.patterns?.length > 0 && <tr><th>Patterns</th><td>{ind.patterns.map((p: string) => <div>{p}</div>)}</td></tr>}
-        {db.detections?.length > 0 && <tr><th>Detected by</th><td class="mono">{db.detections.join(', ')}</td></tr>}
-        {db.reporter && <tr><th>Reporter</th><td>{db.reporter}</td></tr>}
-      </table>
-    </>
-  )}
+    <div class="prose column">{paragraphs(e.details).map((p) => <p>{p}</p>)}</div>
 
-  {refs.length > 0 && (
-    <>
-      <h2>References</h2>
-      <ul>{refs.map((u) => <li><a href={u} rel="noopener nofollow" class="mono">{u}</a></li>)}</ul>
-    </>
-  )}
-  {badges.length > 0 && (
-    <>
-      <h2>README badge</h2>
-      {badges.map((b: string) => <pre class="mono" style="white-space:pre-wrap">{b}</pre>)}
-    </>
-  )}
-  <p class="muted" style="margin-top:32px">Wrong or outdated? Open an issue or PR against <code>corpus/entries/{e.id}.json</code>.</p>
+    {incident ? (
+      <>
+        <h2>What happened</h2>
+        <dl class="leaders">
+          {e.agent && <div><dt>Agent</dt><dd>{e.agent}</dd></div>}
+          {e.model && <div><dt>Model</dt><dd>{e.model}</dd></div>}
+          {e.date && <div><dt>Date</dt><dd>{e.date}</dd></div>}
+          <div><dt>Trigger</dt><dd>{e.trigger}</dd></div>
+          <div><dt>Impact</dt><dd>{e.impact}</dd></div>
+          {e.root_cause && <div><dt>Root cause</dt><dd class="column">{e.root_cause}</dd></div>}
+        </dl>
+        {e.would_have_prevented?.length > 0 && (
+          <>
+            <h2>What would have stopped it</h2>
+            <ul class="stops">{e.would_have_prevented.map((x: string) => <li>{x}</li>)}</ul>
+          </>
+        )}
+        {e.related_entries?.length > 0 && (
+          <>
+            <h2>Related plates</h2>
+            <ul class="stops">
+              {e.related_entries.map((id: string) => <li><a class="mono" href={entryHref(id)}>{id}</a>{related(id) && <span class="muted"> — {related(id)!.summary}</span>}</li>)}
+            </ul>
+          </>
+        )}
+      </>
+    ) : (
+      <>
+        {lookalikes.length > 0 && (
+          <section class="pair" aria-label="Lookalike comparison">
+            <h2>Lookalike</h2>
+            {lookalikes.map((x: any) => (
+              <div class="spec">
+                <div class="side bad"><span class="sc">This entry</span><code>{x.a.package.name}</code></div>
+                <div class="side good"><span class="sc">The genuine package</span><code>{x.real}</code></div>
+              </div>
+            ))}
+            <p class="muted column">The name is within a couple of characters of a popular package, the same rule <code>antidote check</code> uses. Compare it letter by letter before you install anything.</p>
+          </section>
+        )}
+
+        <h2>Affected</h2>
+        <dl class="leaders">
+          {(e.affected ?? []).map((a: any) => (
+            <div>
+              <dt><a class="mono" href={packageHref(a.package.ecosystem, a.package.name)}>{a.package.ecosystem}:{a.package.name}</a></dt>
+              <dd>{versionText(a)}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <h2>Field marks</h2>
+        <dl class="leaders">
+          <div><dt>Kind</dt><dd>{artifactType(e).replaceAll('_', ' ')}</dd></div>
+          {db.agents_affected?.length > 0 && <div><dt>Agents</dt><dd>{db.agents_affected.join(', ')}</dd></div>}
+          {ind.sha256?.length > 0 && <div><dt>SHA-256</dt><dd class="mono stack">{ind.sha256.map((h: string) => <span>{h}</span>)}</dd></div>}
+          {ind.domains?.length > 0 && <div><dt>Domains</dt><dd class="mono stack">{ind.domains.map((d: string) => <span>{d.replaceAll('.', '[.]')}</span>)}</dd></div>}
+          {ind.patterns?.length > 0 && <div><dt>Patterns</dt><dd class="stack">{ind.patterns.map((p: string) => <span>{p}</span>)}</dd></div>}
+          {db.techniques?.length > 0 && <div><dt>Techniques</dt><dd class="mono">{db.techniques.join(', ')}</dd></div>}
+          {fw.length > 0 && <div><dt>Frameworks</dt><dd class="stack">{fw.map((r) => <a href={r.url} rel="noopener">{r.title}</a>)}</dd></div>}
+          {db.detections?.length > 0 && <div><dt>Scanner rules</dt><dd class="mono">{db.detections.join(', ')}</dd></div>}
+          {db.reporter && <div><dt>Reported by</dt><dd>{db.reporter}</dd></div>}
+        </dl>
+      </>
+    )}
+
+    {refs.length > 0 && (
+      <>
+        <h2>Sources</h2>
+        <ul class="stops">{refs.map((u) => <li><a href={u} rel="noopener nofollow">{host(u)}</a> <span class="mono muted">{u.length > 70 ? u.slice(0, 68) + '…' : u}</span></li>)}</ul>
+      </>
+    )}
+
+    {badges.length > 0 && (
+      <>
+        <h2>README badge</h2>
+        {badges.map((b) => <CodeBlock code={b} />)}
+      </>
+    )}
+
+    <p class="muted fix column">Wrong or outdated? Open an issue or PR against <a href={`https://github.com/${REPO}/blob/master/corpus/entries/${e.id}.json`}><code>corpus/entries/{e.id}.json</code></a>.</p>
+  </article>
 </Base>
+
+<style>
+  .crumb { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2); margin-bottom: 1.5rem; }
+  .crumb a { color: var(--ink-2); }
+  .head { padding-bottom: 1.5rem; border-bottom: 2px solid var(--ink); }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.25rem; margin-bottom: 0.9rem; }
+  .plate-no { color: var(--ink-2); font-size: 0.85rem; }
+  .ver { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.03em; color: var(--ink-2); }
+  .head h1 { max-width: 24ch; font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.6rem); line-height: 1.12; }
+  .verdict { margin: 1rem 0 0; font-size: 1.15rem; color: var(--ink); }
+  .aliases { margin: 0.75rem 0 0; color: var(--ink-2); }
+  .callout { margin: 1.5rem 0 0; padding: 0.9rem 1rem; background: var(--wash-incident); border: 1px solid var(--rule-strong); border-radius: var(--r); max-width: var(--measure); }
+  .prose { margin-top: 1.75rem; }
+  .prose p { margin-bottom: 1rem; }
+  .stack { display: grid; gap: 0.2rem; }
+  .stack span, .stack a { overflow-wrap: anywhere; }
+  .stops { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .stops li::marker { color: var(--ink-2); }
+  .pair .spec { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule-strong); border-radius: var(--r); background: var(--plate); margin-bottom: 0.75rem; max-width: 46rem; }
+  .side { display: grid; gap: 0.25rem; padding: 0.9rem 1rem; min-width: 0; }
+  .side .sc { font-size: 0.85rem; color: var(--ink-2); }
+  .side code { font-size: 1.05rem; font-weight: 600; }
+  .side.bad { border-right: 1px solid var(--rule-strong); }
+  .side.bad code { color: var(--malicious); }
+  .side.good code { color: var(--verified); }
+  @media (max-width: 560px) { .pair .spec { grid-template-columns: 1fr; } .side.bad { border-right: 0; border-bottom: 1px solid var(--rule-strong); } }
+  .fix { margin-top: 3rem; }
+</style>

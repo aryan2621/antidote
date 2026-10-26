@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import { href, REPO } from '../lib/entries';
+
+const cli = `cargo install --path crates/antidote-cli
+
+antidote scan                          # find Claude Code, Cursor, OpenClaw and Claude Desktop config
+antidote scan ./skills/my-skill        # a folder or file
+antidote check npm:mcp-remote@0.1.15   # one package, also flags likely typosquats
+antidote inspect --mcp ~/.cursor/mcp.json   # start each server in a container, read its live tools
+antidote update                        # fetch the latest signed feed`;
+const action = `permissions:
+  contents: read
+  security-events: write   # for the SARIF upload
+steps:
+  - uses: actions/checkout@v4
+  - uses: ${REPO}@v0
+    with:
+      paths: .claude .cursor skills
+      fail-on: high`;
+const gitlab = `include:
+  - remote: https://raw.githubusercontent.com/${REPO}/main/ci/gitlab/antidote.gitlab-ci.yml`;
+const precommit = `- repo: https://github.com/${REPO}
+  rev: v0.1.0
+  hooks: [{ id: antidote }]   # needs antidote on PATH`;
+---
+<Base title="Install: Antidote" description="Install the Antidote scanner, the desktop app, or add it to CI." current="install">
+  <h1>Install</h1>
+  <p class="column lede">
+    The scanner is one offline binary. It checks against the corpus built into it, or a newer one from <code>antidote update</code>. Nothing you scan is ever uploaded.
+  </p>
+
+  <h2>Command line</h2>
+  <CodeBlock code={cli} label="Shell" />
+  <p class="column muted">Exit code 0 means nothing at or above <code>--fail-on</code>, 1 means findings, 2 means an error.</p>
+
+  <h2>Desktop app</h2>
+  <p class="column">
+    The desktop app does the same scan and package check with a window instead of a terminal. Installers for macOS, Linux and Windows are attached to each tagged
+    <a href={`https://github.com/${REPO}/releases`}>release</a>. They are unsigned until the signing secrets are set.
+  </p>
+
+  <h2>In CI</h2>
+  <CodeBlock code={action} label="GitHub Action. Findings appear under Security, Code scanning" />
+  <CodeBlock code={gitlab} label="GitLab CI. Findings appear in the merge request's Code Quality widget" />
+  <CodeBlock code={precommit} label="pre-commit" />
+
+  <h2>The data</h2>
+  <p class="column">The corpus is open data, signed so that a tampered copy is rejected.</p>
+  <dl class="leaders">
+    <div><dt>Signed feed</dt><dd><a class="mono" href={href('/feed/feed.json')}>feed/feed.json</a> with <a class="mono" href={href('/feed/feed.json.minisig')}>feed.json.minisig</a></dd></div>
+    <div><dt>OSV bundle</dt><dd><a class="mono" href={href('/feed/all.zip')}>feed/all.zip</a>, one JSON file per entry, importable by OSV tooling</dd></div>
+    <div><dt>Licenses</dt><dd>Data CC-BY-4.0. Code Apache-2.0.</dd></div>
+  </dl>
+</Base>
+
+<style>
+  .lede { margin: 0.9rem 0 0; font-size: 1.15rem; color: var(--ink-2); }
+  .column { margin-bottom: 1rem; }
+</style>

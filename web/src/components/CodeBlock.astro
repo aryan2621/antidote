@@ -1,0 +1,37 @@
+---
+// A copyable snippet. The copy button is added by script, so the text stays usable without JS.
+interface Props { code: string; label?: string }
+const { code, label } = Astro.props;
+---
+<figure class="code">
+  {label && <figcaption class="sc">{label}</figcaption>}
+  <div class="box">
+    <pre><code>{code}</code></pre>
+    <button type="button" class="copy" data-copy={code} aria-label={label ? `Copy ${label}` : 'Copy snippet'} hidden>Copy</button>
+  </div>
+</figure>
+
+<style>
+  .code { margin: 0 0 1.25rem; }
+  figcaption { font-size: 0.85rem; color: var(--ink-2); margin-bottom: 0.35rem; }
+  .box { position: relative; background: var(--plate); border: 1px solid var(--rule); border-radius: var(--r); }
+  pre { margin: 0; padding: 0.85rem 4.75rem 0.85rem 1rem; overflow-x: auto; font-size: 0.95rem; line-height: 1.55; }
+  pre code { font-size: 0.86rem; overflow-wrap: normal; white-space: pre; }
+  .copy {
+    position: absolute; top: 0.45rem; right: 0.45rem; min-height: 32px; padding: 0 0.7rem;
+    font: 700 0.8rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2);
+    background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); cursor: pointer;
+  }
+  .copy:hover { color: var(--ink); border-color: var(--rule-strong); }
+</style>
+
+<script>
+  for (const b of document.querySelectorAll<HTMLButtonElement>('button.copy')) {
+    b.hidden = !navigator.clipboard;
+    b.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(b.dataset.copy ?? '');
+      b.textContent = 'Copied';
+      setTimeout(() => (b.textContent = 'Copy'), 1600);
+    });
+  }
+</script>

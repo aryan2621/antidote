@@ -1,7 +1,22 @@
 ---
-import { href } from '../lib/entries';
-interface Props { title: string; description?: string }
-const { title, description = 'Open database of malicious and vulnerable AI agent skills, MCP servers and prompts.' } = Astro.props;
+import '@fontsource/alegreya-sans/400.css';
+import '@fontsource/alegreya-sans/500.css';
+import '@fontsource/alegreya-sans/700.css';
+import '@fontsource/alegreya-sans/800.css';
+import '@fontsource/alegreya-sans-sc/500.css';
+import '@fontsource/alegreya-sans-sc/700.css';
+import '../styles/global.css';
+import { href, REPO } from '../lib/entries';
+
+interface Props { title: string; description?: string; current?: string }
+const { title, description = 'Open database of malicious and vulnerable AI agent skills, MCP servers and prompts.', current = '' } = Astro.props;
+const nav = [
+  { key: 'database', label: 'Database', path: '/' },
+  { key: 'install', label: 'Install', path: '/install/' },
+  { key: 'submit', label: 'Submit', path: '/submit/' },
+  { key: 'stats', label: 'Stats', path: '/stats/' },
+  { key: 'reporters', label: 'Reporters', path: '/reporters/' },
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -10,45 +25,63 @@ const { title, description = 'Open database of malicious and vulnerable AI agent
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <style is:global>
-      :root {
-        --bg: #fbfbf9; --fg: #1c1d1f; --muted: #5d6066; --line: #e2e2dd; --card: #ffffff;
-        --accent: #1f6f4a; --crit: #b42318; --high: #b54708; --med: #8a6d00; --inc: #3b5bdb;
-        color-scheme: light dark;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #121315; --fg: #e8e8e6; --muted: #a0a3a8; --line: #2b2d31; --card: #1a1b1e;
-          --accent: #5ec796; --crit: #f97066; --high: #fdb022; --med: #e8c547; --inc: #8ea4ff;
-        }
-      }
-      * { box-sizing: border-box; }
-      body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, Segoe UI, sans-serif; }
-      main, header > div, footer { max-width: 860px; margin: 0 auto; padding: 0 16px; }
-      header { border-bottom: 1px solid var(--line); }
-      header > div { display: flex; align-items: baseline; gap: 16px; padding-block: 14px; }
-      header a.brand { font-weight: 700; color: var(--fg); text-decoration: none; font-size: 1.1rem; }
-      header nav a { color: var(--muted); font-size: .95rem; }
-      a { color: var(--accent); }
-      h1 { font-size: 1.6rem; line-height: 1.25; margin: 28px 0 8px; }
-      h2 { font-size: 1.1rem; margin: 28px 0 8px; }
-      code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; overflow-wrap: anywhere; }
-      .muted { color: var(--muted); }
-      .tag { display: inline-block; font-size: .78rem; font-weight: 600; padding: 1px 8px; border-radius: 99px; border: 1px solid currentColor; text-transform: uppercase; letter-spacing: .03em; }
-      .tag.malicious { color: var(--crit); } .tag.vulnerable { color: var(--high); } .tag.suspicious { color: var(--med); } .tag.incident { color: var(--inc); } .tag.withdrawn { color: var(--muted); text-decoration: line-through; }
-      .tag.verified { color: var(--accent); } .tag.reported, .tag.disputed { color: var(--muted); }
-      table { border-collapse: collapse; width: 100%; }
-      th, td { text-align: left; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-      th { color: var(--muted); font-weight: 500; width: 30%; }
-      ul.list { list-style: none; padding: 0; margin: 0; }
-      ul.list li { padding: 12px 0; border-bottom: 1px solid var(--line); }
-      ul.list li a.id { font-family: ui-monospace, Menlo, monospace; font-size: .85rem; }
-      footer { color: var(--muted); font-size: .85rem; padding-block: 40px; }
-    </style>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#1d2b22" />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
   </head>
   <body>
-    <header><div><a class="brand" href={href('/')}>Antidote</a><nav><a href={href('/feed/feed.json')}>Feed</a> <a href={href('/submit/')}>Submit</a> <a href={href('/reporters/')}>Reporters</a> <a href={href('/stats/')}>Stats</a></nav></div></header>
-    <main><slot /></main>
-    <footer>Data CC-BY-4.0. Entries describe behavior and indicators from public reports; "reported" entries are not yet independently verified.</footer>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="cover">
+      <div class="frame bar">
+        <a class="brand" href={href('/')} aria-label="Antidote, home">
+          <svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+            <circle cx="27" cy="33" r="14" fill="currentColor" />
+            <path d="M27 33 46 17h10" fill="none" stroke="var(--moss-2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="27" cy="33" r="5" fill="var(--moss)" />
+          </svg>
+          <span>Antidote</span>
+        </a>
+        <nav aria-label="Main">
+          {nav.map((n) => <a href={href(n.path)} aria-current={current === n.key ? 'page' : undefined}>{n.label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="frame">
+      <slot />
+    </main>
+    <footer class="frame foot">
+      <p>
+        Data is CC-BY-4.0, code is Apache-2.0. Entries describe behavior and indicators from public reports; "reported" entries are not yet independently verified.
+      </p>
+      <p>
+        <a href={`https://github.com/${REPO}`}>Source</a> ·
+        <a href={href('/feed/feed.json')}>Signed feed</a> ·
+        <a href={href('/feed/all.zip')}>OSV bundle</a> ·
+        <a href={`https://github.com/${REPO}/blob/master/GOVERNANCE.md`}>Governance</a>
+      </p>
+    </footer>
   </body>
 </html>
+
+<style is:global>
+  .skip { position: absolute; left: 8px; top: -60px; z-index: 10; background: var(--plate); color: var(--ink); padding: 8px 14px; border: 2px solid var(--focus); border-radius: var(--r); }
+  .skip:focus { top: 8px; }
+  .cover { background: var(--moss); color: var(--moss-ink); border-bottom: 3px solid var(--fern); }
+  .cover .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 24px; padding-block: 10px; }
+  .cover .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--moss-ink); text-decoration: none; font: 700 1.5rem/1 var(--sc); letter-spacing: 0.05em; min-height: 44px; }
+  .cover nav { display: flex; flex-wrap: wrap; gap: 2px 4px; }
+  @media (max-width: 719px) {
+    /* Keep nav on one row; lone wrapped items looked broken on phone widths. */
+    .cover nav { flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; gap: 0; -webkit-overflow-scrolling: touch; }
+    .cover nav::-webkit-scrollbar { display: none; }
+    .cover nav a { flex: none; padding: 0 10px; font-size: 0.92rem; }
+  }
+  .cover nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; color: var(--moss-2); text-decoration: none; font: 500 1rem/1 var(--sc); letter-spacing: 0.05em; border-bottom: 2px solid transparent; }
+  .cover nav a:hover { color: var(--moss-ink); }
+  .cover nav a[aria-current='page'] { color: var(--moss-ink); border-bottom-color: var(--moss-ink); }
+  .cover a:focus-visible { outline-color: var(--moss-ink); }
+  main { padding-block: 2.5rem 4rem; min-height: 60vh; }
+  .foot { border-top: 1px solid var(--rule); padding-block: 1.75rem 3rem; color: var(--ink-2); font-size: 0.95rem; }
+  .foot p { margin: 0 0 0.5rem; max-width: var(--measure); }
+</style>

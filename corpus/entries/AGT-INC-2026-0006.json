@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0006",
+  "kind": "incident",
+  "summary": "Invariant Labs: whatsapp-mcp agent steered to leak WhatsApp chats via tool-description rug pull or injected message",
+  "agent": "MCP client with whatsapp-mcp",
+  "date": "2025-04",
+  "trigger": "prompt injection",
+  "impact": "data leak",
+  "root_cause": "Per Invariant Labs, a malicious MCP server changes its tool description after approval to alter how the agent uses whatsapp-mcp's send_message (never needing to be called), or a crafted WhatsApp message read via list_chats hijacks the agent. Data leaves via the trusted WhatsApp channel; the approval dialog hides part of the message.",
+  "would_have_prevented": [
+    "pinning tool descriptions by hash",
+    "showing full tool descriptions in the UI",
+    "cross-server data-flow controls"
+  ],
+  "references": [
+    "https://invariantlabs.ai/blog/whatsapp-mcp-exploited"
+  ]
+}

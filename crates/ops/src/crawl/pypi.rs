@@ -31,7 +31,7 @@ pub fn crawl(state: &mut State, limit: usize) -> Result<Vec<Item>> {
     let xml = String::from_utf8_lossy(&http::get("https://pypi.org/rss/updates.xml", 5 << 20)?).into_owned();
     for (name, version) in parse_rss(&xml) {
         if relevant(&name, &state.pypi_watch) {
-            out.push(Item { source: "pypi".into(), ecosystem: "PyPI".into(), name, version, download: None });
+            out.push(Item { source: "pypi".into(), ecosystem: "PyPI".into(), name, version, download: None, tools: None });
         }
     }
     out.dedup();

@@ -35,6 +35,7 @@ pub fn parse_page(page: &Value) -> (Vec<Item>, Option<String>, Option<String>) {
                 name: name.into(),
                 version: version.into(),
                 download: None,
+                tools: None,
             });
         }
     }

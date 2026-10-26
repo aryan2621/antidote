@@ -14,11 +14,22 @@ for (const e of entries) {
 }
 const rows = [...counts].sort((a, b) => b[1].total - a[1].total || a[0].localeCompare(b[0]));
 ---
-<Base title="Reporters — Antidote" description="Who reported the entries in the Antidote database.">
+<Base title="Reporters: Antidote" description="Who reported the entries in the Antidote database." current="reporters">
   <h1>Reporters</h1>
-  <p class="muted">Entries per reporter, not counting withdrawn ones. Reporters are credited by the <code>reporter</code> field of each entry.</p>
+  <p class="column lede">Entries per reporter, not counting withdrawn ones. Reporters are credited by the <code>reporter</code> field of each entry.</p>
   <table>
-    <tr><th>#</th><th>Reporter</th><th>Entries</th><th>Verified</th></tr>
-    {rows.map(([name, c], i) => <tr><td>{i + 1}</td><td>{name}</td><td>{c.total}</td><td>{c.verified}</td></tr>)}
+    <thead><tr><th scope="col">Rank</th><th scope="col">Reporter</th><th scope="col" class="num">Entries</th><th scope="col" class="num">Verified</th></tr></thead>
+    <tbody>
+      {rows.map(([name, c], i) => <tr><td class="mono">{i + 1}</td><th scope="row">{name}</th><td class="num mono">{c.total}</td><td class="num mono">{c.verified}</td></tr>)}
+    </tbody>
   </table>
 </Base>
+
+<style>
+  .lede { margin: 0.9rem 0 1.75rem; font-size: 1.1rem; color: var(--ink-2); }
+  table { width: 100%; max-width: 46rem; border-collapse: collapse; border-top: 2px solid var(--ink); }
+  th, td { text-align: left; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--rule); }
+  thead th { font: 500 0.9rem/1.2 var(--sc); letter-spacing: 0.04em; color: var(--ink-2); }
+  tbody th { font-weight: 500; }
+  .num { text-align: right; padding-right: 0; }
+</style>

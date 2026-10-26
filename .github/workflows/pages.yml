@@ -20,6 +20,8 @@ jobs:
         run: |
           mkdir -p web/public/feed
           cargo run --release --locked -p antidote -- feed build corpus -o web/public/feed/feed.json --version $(git log -1 --format=%ct -- corpus)
+          # one JSON file per entry at the zip root, like OSV's all.zip, so OSV tooling can import it
+          zip -q -j -X web/public/feed/all.zip corpus/entries/*.json
       - name: Sign feed
         env:
           MINISIGN_SECRET_KEY: ${{ secrets.MINISIGN_SECRET_KEY }}
@@ -28,6 +30,7 @@ jobs:
           sudo apt-get install -y minisign
           printf '%s\n' "$MINISIGN_SECRET_KEY" > "$RUNNER_TEMP/antidote.key"
           minisign -S -s "$RUNNER_TEMP/antidote.key" -m web/public/feed/feed.json -x web/public/feed/feed.json.minisig
+          minisign -S -s "$RUNNER_TEMP/antidote.key" -m web/public/feed/all.zip -x web/public/feed/all.zip.minisig
           rm "$RUNNER_TEMP/antidote.key"
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm, cache-dependency-path: web/package-lock.json }

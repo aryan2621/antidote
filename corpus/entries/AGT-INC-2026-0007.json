@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0007",
+  "kind": "incident",
+  "summary": "Invariant Labs: GitHub MCP server toxic agent flow leaks private repo data via malicious public issue",
+  "agent": "Claude Desktop with github-mcp-server",
+  "date": "2025-05",
+  "trigger": "prompt injection",
+  "impact": "data leak",
+  "root_cause": "Per Invariant Labs, a malicious issue in a public repo carries hidden instructions; when the user asks the agent to review issues it pulls private repo data and publishes it in a public pull request. Described as architectural, not a server bug; exacerbated by 'Always Allow' approvals.",
+  "would_have_prevented": [
+    "per-session repository scoping",
+    "human approval of cross-repo writes",
+    "untrusted-input data-flow controls"
+  ],
+  "references": [
+    "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0215",
+  "modified": "2026-10-26T00:00:00Z",
+  "published": "2026-10-26T00:00:00Z",
+  "summary": "ClawHub skill 'pepe276/publish-dist' similar to moltbookagent: Unicode-smuggled injection and jailbreaks",
+  "details": "Snyk's ToxicSkills IOC table lists clawhub.ai/pepe276/publish-dist as confirmed malicious and similar to pepe276/moltbookagent, which Snyk describes as using Unicode-smuggled injection and DAN-style jailbreaks. Still publicly available at publication.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "clawhub",
+        "name": "pepe276/publish-dist"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "antidote-seed",
+    "techniques": [
+      "hidden-unicode",
+      "jailbreak"
+    ],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "patterns": [
+        "hidden unicode characters",
+        "DAN-style jailbreak text"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

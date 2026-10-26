@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0217",
+  "modified": "2026-10-26T00:00:00Z",
+  "published": "2026-10-26T00:00:00Z",
+  "summary": "GitHub repo aztr0nutzs/NET_NiNjA.v1.2 hosts malicious ClawHub-style skills not yet on ClawHub",
+  "details": "Snyk's ToxicSkills post names this repository (user aztr0nutzs) as containing malicious skills not yet on ClawHub, at paths clawhub, whatsapp-mgv, coding-agent-1gx and google-qx4 under main. Snyk describes them as malicious but does not confirm each individually.",
+  "references": [
+    {
+      "type": "REPORT",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "GitHub",
+        "name": "aztr0nutzs/NET_NiNjA.v1.2"
+      }
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "skill",
+    "classification": "malicious",
+    "verification": "reported",
+    "reporter": "antidote-seed",
+    "techniques": [],
+    "agents_affected": [
+      "openclaw"
+    ],
+    "indicators": {
+      "patterns": [
+        "repo paths: clawhub, whatsapp-mgv, coding-agent-1gx, google-qx4"
+      ]
+    },
+    "sample": {
+      "available": false,
+      "defanged": true,
+      "access": "none"
+    }
+  }
+}

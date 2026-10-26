@@ -1,66 +1,180 @@
 ---
 import Base from '../layouts/Base.astro';
-import { entries, classification, entryHref, packageHref, href } from '../lib/entries';
+import Mark from '../components/Mark.astro';
+import { entries, classification, artifactType, entryHref, packageHref } from '../lib/entries';
 
-const index = entries.map((e) => ({
-  id: e.id,
-  summary: e.summary,
-  cls: classification(e),
-  url: entryHref(e.id),
-  aliases: e.aliases ?? [],
-  pkgs: (e.affected ?? []).map((a: any) => ({
-    label: `${a.package.ecosystem}:${a.package.name}`,
-    url: packageHref(a.package.ecosystem, a.package.name),
-  })),
-}));
+const live = entries.filter((e) => !e.withdrawn);
+const index = entries
+  .map((e) => ({
+    id: e.id,
+    summary: e.summary,
+    cls: classification(e),
+    type: artifactType(e),
+    url: entryHref(e.id),
+    aliases: e.aliases ?? [],
+    published: (e.published ?? e.date ?? '').slice(0, 10),
+    pkgs: (e.affected ?? []).map((a: any) => ({
+      eco: a.package.ecosystem,
+      label: `${a.package.ecosystem}:${a.package.name}`,
+      url: packageHref(a.package.ecosystem, a.package.name),
+    })),
+  }))
+  .sort((a, b) => b.published.localeCompare(a.published) || b.id.localeCompare(a.id));
+
+const count = (f: (e: (typeof index)[number]) => string[]) => {
+  const m = new Map<string, number>();
+  for (const e of index) for (const k of new Set(f(e))) m.set(k, (m.get(k) ?? 0) + 1);
+  return [...m].sort((a, b) => b[1] - a[1]);
+};
+const classes = ['malicious', 'vulnerable', 'suspicious', 'incident'].map((k) => [k, index.filter((e) => e.cls === k).length] as const).filter(([, n]) => n);
+const types = count((e) => [e.type]);
+const ecos = count((e) => e.pkgs.map((p) => p.eco));
+const label = (t: string) => t.replaceAll('_', ' ');
 ---
-<Base title="Antidote — is this agent tool safe?">
-  <h1>Is this agent tool safe?</h1>
-  <p class="muted">Search {entries.length} known malicious or vulnerable skills, MCP servers and packages, and agent incidents. Or run <code>antidote scan</code> locally.</p>
-  <input id="q" type="search" placeholder="Package name, CVE, entry ID or keyword (e.g. mcp-remote)" autocomplete="off" aria-label="Search entries" />
-  <p id="status" class="muted" aria-live="polite"></p>
-  <ul id="results" class="list">
+<Base title="Antidote: is this agent tool safe?" current="database">
+  <section class="key" aria-labelledby="h">
+    <h1 id="h">Is this agent tool safe?</h1>
+    <p class="lede column">
+      A field guide to the lookalikes: {live.length} skills, MCP servers, packages and incidents that were reported malicious or vulnerable, each with the marks that identify it.
+    </p>
+    <form role="search" id="search" class="search" onsubmit="return false">
+      <label for="q" class="sc">Look up a package, skill, CVE or keyword</label>
+      <input id="q" type="search" placeholder="mcp-remote" autocomplete="off" spellcheck="false" />
+    </form>
+
+    <div class="couplets" role="group" aria-label="Narrow by">
+      <div class="couplet">
+        <span class="sc">Verdict</span>
+        <div class="chips">
+          {classes.map(([k, n]) => <button type="button" class="chip" data-facet="cls" data-value={k} aria-pressed="false"><Mark kind={k} label={k} /><span class="n">{n}</span></button>)}
+        </div>
+      </div>
+      <div class="couplet">
+        <span class="sc">Kind</span>
+        <div class="chips">
+          {types.map(([k, n]) => <button type="button" class="chip" data-facet="type" data-value={k} aria-pressed="false">{label(k)}<span class="n">{n}</span></button>)}
+        </div>
+      </div>
+      <div class="couplet">
+        <span class="sc">Ecosystem</span>
+        <div class="chips">
+          {ecos.map(([k, n]) => <button type="button" class="chip" data-facet="eco" data-value={k} aria-pressed="false">{k}<span class="n">{n}</span></button>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+
+  <ol class="plates" id="results">
     {index.map((e) => (
-      <li data-entry>
-        <a class="id" href={e.url}>{e.id}</a> <span class={`tag ${e.cls}`}>{e.cls}</span>
-        <div><a href={e.url}>{e.summary}</a></div>
-        {e.pkgs.length > 0 && <div class="muted mono">{e.pkgs.map((p: any) => p.label).join(', ')}</div>}
+      <li class={`plate ${e.cls}`} data-entry>
+        <a class="no mono" href={e.url} aria-label={`${e.id}, ${e.cls}`}>{e.id.replace('AGT-', '')}</a>
+        <div class="body">
+          <Mark kind={e.cls} />
+          <h2><a href={e.url}>{e.summary}</a></h2>
+          {e.pkgs.length > 0 && (
+            <p class="pkgs mono">
+              {e.pkgs.slice(0, 4).map((p) => <a href={p.url}>{p.label}</a>)}
+              {e.pkgs.length > 4 && <span class="muted">+{e.pkgs.length - 4} more</span>}
+            </p>
+          )}
+        </div>
       </li>
     ))}
-  </ul>
+  </ol>
   <script type="application/json" id="index" set:html={JSON.stringify(index)} />
 </Base>
 
 <style>
-  input { width: 100%; padding: 12px 14px; font: inherit; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg); margin-top: 8px; }
-  input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .key { padding-bottom: 0.5rem; }
+  .lede { margin: 0.9rem 0 1.75rem; font-size: 1.2rem; color: var(--ink-2); }
+  .search { display: grid; gap: 0.4rem; max-width: 46rem; }
+  .search label { font-size: 0.95rem; color: var(--ink-2); }
+  .search input {
+    width: 100%; min-height: 56px; padding: 0.7rem 1rem; font: 500 1.25rem/1.2 var(--mono);
+    color: var(--ink); background: var(--plate); border: 2px solid var(--ink); border-radius: var(--r);
+  }
+  .search input::placeholder { color: var(--rule-strong); }
+  .search input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .couplets { display: grid; gap: 0.35rem; margin-top: 1.5rem; max-width: 60rem; }
+  .couplet { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; align-items: start; padding-block: 0.45rem; border-top: 1px solid var(--rule); }
+  .couplet > .sc { font-size: 0.9rem; color: var(--ink-2); padding-top: 0.55rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 0.85rem; font: 500 0.98rem/1 var(--sans);
+    color: var(--ink); background: var(--plate); border: 1px solid var(--rule-strong); border-radius: var(--r); cursor: pointer;
+  }
+  .chip :global(.mark) { font-size: 0.95rem; }
+  .chip .n { font: 500 0.82rem/1 var(--mono); color: var(--ink-2); }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed='true'] { background: var(--moss); border-color: var(--moss); color: var(--moss-ink); }
+  .chip[aria-pressed='true'] .n { color: var(--moss-2); }
+  .chip[aria-pressed='true'] :global(.mark) { color: var(--moss-ink); }
+  @media (max-width: 560px) { .couplet { grid-template-columns: 1fr; gap: 0; } .couplet > .sc { padding-top: 0.2rem; } }
+
+  .status { min-height: 1.6rem; margin: 1.5rem 0 0.5rem; color: var(--ink-2); max-width: var(--measure); }
+  .status strong { color: var(--ink); }
+
+  .plates { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
+  .plate { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--rule); }
+  .plate[hidden] { display: none; }
+  .no { align-self: start; padding-top: 0.2rem; color: var(--ink-2); text-decoration: none; font-size: 0.82rem; }
+  .no:hover { text-decoration: underline; }
+  .body { display: grid; gap: 0.3rem; min-width: 0; }
+  .body h2 { font: 700 1.2rem/1.3 var(--sans); letter-spacing: 0; margin: 0; max-width: 62ch; text-wrap: pretty; }
+  .body h2 a { color: var(--ink); text-decoration: none; }
+  .body h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+  .pkgs { display: flex; flex-wrap: wrap; gap: 0.1rem 0.9rem; margin: 0; font-size: 0.82rem; }
+  .pkgs a { color: var(--ink-2); }
+  @media (max-width: 560px) { .plate { grid-template-columns: 1fr; gap: 0.2rem; } .no { padding-top: 0; } }
 </style>
 
 <script>
-  const index = JSON.parse(document.getElementById('index')!.textContent!);
+  type Row = { id: string; summary: string; cls: string; type: string; aliases: string[]; pkgs: { eco: string; label: string }[] };
+  const index: Row[] = JSON.parse(document.getElementById('index')!.textContent!);
   const input = document.getElementById('q') as HTMLInputElement;
   const items = [...document.querySelectorAll<HTMLLIElement>('[data-entry]')];
   const status = document.getElementById('status')!;
-  const haystack = index.map((e: any) =>
-    [e.id, e.summary, e.cls, ...e.aliases, ...e.pkgs.map((p: any) => p.label)].join(' ').toLowerCase());
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.chip')];
+  const hay = index.map((e) => [e.id, e.summary, e.cls, e.type, ...e.aliases, ...e.pkgs.map((p) => p.label)].join(' ').toLowerCase());
+  const on: Record<string, Set<string>> = { cls: new Set(), type: new Set(), eco: new Set() };
 
-  function filter() {
-    const q = input.value.trim().toLowerCase();
-    const terms = q.split(/\s+/).filter(Boolean);
+  function render() {
+    const raw = input.value.trim();
+    const terms = raw.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     items.forEach((li, i) => {
-      const hit = terms.every((t) => haystack[i].includes(t));
-      li.hidden = !hit;
-      if (hit) shown++;
+      const e = index[i];
+      const ok =
+        terms.every((t) => hay[i].includes(t)) &&
+        (!on.cls.size || on.cls.has(e.cls)) &&
+        (!on.type.size || on.type.has(e.type)) &&
+        (!on.eco.size || e.pkgs.some((p) => on.eco.has(p.eco)));
+      li.hidden = !ok;
+      if (ok) shown++;
     });
-    status.textContent = !q ? '' : shown
-      ? `${shown} matching entr${shown === 1 ? 'y' : 'ies'}.`
-      : `"${input.value.trim()}" is not in the database. That is not a safety verdict: it only means nobody has reported it yet.`;
+    const filtered = raw || on.cls.size || on.type.size || on.eco.size;
+    if (!filtered) status.textContent = '';
+    else if (shown) status.textContent = `${shown} matching entr${shown === 1 ? 'y' : 'ies'}.`;
+    else if (raw && !on.cls.size && !on.type.size && !on.eco.size)
+      status.innerHTML = `<strong>"${raw.replace(/[<&]/g, '')}" is not in the database.</strong> That is not a safety verdict: it only means nobody has reported it yet. Check its name against the real package, and run <code>antidote check</code> before you install.`;
+    else status.textContent = 'Nothing matches these filters.';
     const url = new URL(location.href);
-    q ? url.searchParams.set('q', input.value.trim()) : url.searchParams.delete('q');
+    raw ? url.searchParams.set('q', raw) : url.searchParams.delete('q');
     history.replaceState(null, '', url);
   }
+
+  for (const c of chips) {
+    c.addEventListener('click', () => {
+      const set = on[c.dataset.facet!];
+      const v = c.dataset.value!;
+      set.has(v) ? set.delete(v) : set.add(v);
+      c.setAttribute('aria-pressed', String(set.has(v)));
+      render();
+    });
+  }
   input.value = new URLSearchParams(location.search).get('q') ?? '';
-  input.addEventListener('input', filter);
-  filter();
+  input.addEventListener('input', render);
+  render();
 </script>

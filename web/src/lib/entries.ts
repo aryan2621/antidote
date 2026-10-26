@@ -1,4 +1,6 @@
 import techniqueMap from '../../../corpus/techniques.json';
+import popularNpm from '../../../corpus/popular/npm.txt?raw';
+import popularPypi from '../../../corpus/popular/pypi.txt?raw';
 // Corpus is read at build time; the site is fully static.
 const mods = import.meta.glob('../../../corpus/entries/*.json', { eager: true, import: 'default' });
 
@@ -22,6 +24,41 @@ for (const e of entries) {
     if (!packages.has(k)) packages.set(k, { ecosystem: a.package.ecosystem, name: a.package.name, entries: [] });
     packages.get(k)!.entries.push(e);
   }
+}
+
+// shortcut: placeholder repo until the GitHub org exists; also used by submit and install pages
+export const REPO = 'antidote-db/antidote';
+
+export const artifactType = (e: Entry): string => (isIncident(e) ? 'incident' : e.database_specific?.artifact_type ?? 'package');
+
+/** Plain-words label for a verification state. */
+export const verificationText: Record<string, string> = {
+  verified: 'Verified',
+  reported: 'Reported, not yet independently verified',
+  disputed: 'Disputed by the publisher',
+};
+
+const popular: Record<string, string[]> = {
+  npm: popularNpm.split('\n').map((l: string) => l.trim()).filter(Boolean),
+  pypi: popularPypi.split('\n').map((l: string) => l.trim()).filter(Boolean),
+};
+
+function levenshtein(a: string, b: string): number {
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
+  }
+  return prev[b.length];
+}
+
+/** The popular package a name imitates, by the scanner's own rule (crates/core/src/mcp.rs `typosquat_of`). */
+export function lookalikeOf(eco: string, name: string): string | null {
+  const list = popular[eco.toLowerCase()] ?? [];
+  if (name.length < 5 || list.includes(name)) return null;
+  const max = name.length < 10 ? 1 : 2;
+  return list.find((p) => levenshtein(name, p) <= max) ?? null;
 }
 
 /** Link inside the site, respecting the GitHub Pages base path. */

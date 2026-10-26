@@ -95,7 +95,13 @@ pub fn draft_entry(r: &Report, classification: &str, summary: &str, issue_url: &
     let mut detections: Vec<&str> = r.findings.iter().chain(&r.flags).map(|h| h.id.as_str()).collect();
     detections.sort();
     detections.dedup();
-    let artifact_type = if r.item.ecosystem == "clawhub" { "skill" } else { "package" };
+    let artifact_type = match r.item.ecosystem.as_str() {
+        "clawhub" => "skill",
+        "smithery" => "mcp_server",
+        "GitHub" if r.item.source.contains("skills") => "skill",
+        "GitHub" => "mcp_server",
+        _ => "package",
+    };
     let entry: Value = json!({
         "schema_version": "0.1.0",
         "id": id,

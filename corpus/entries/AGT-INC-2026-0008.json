@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-INC-2026-0008",
+  "kind": "incident",
+  "summary": "General Analysis: Supabase MCP in Cursor leaks integration tokens via support-ticket prompt injection",
+  "agent": "Cursor with Supabase MCP server",
+  "date": "2025-07",
+  "trigger": "prompt injection",
+  "impact": "data leak",
+  "root_cause": "Per General Analysis, a support ticket with hidden instructions was read by the assistant, which ran SQL through the MCP server under a service_role (bypasses row-level security) and wrote results back into the attacker-visible ticket thread. Demo used dummy data.",
+  "would_have_prevented": [
+    "least-privilege database role",
+    "read-only MCP mode",
+    "human approval of SQL"
+  ],
+  "references": [
+    "https://www.generalanalysis.com/blog/supabase-mcp-blog"
+  ]
+}

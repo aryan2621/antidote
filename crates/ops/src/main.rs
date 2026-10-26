@@ -32,6 +32,8 @@ enum Source {
     Clawhub,
     Npm,
     Pypi,
+    Smithery,
+    Github,
 }
 
 #[derive(Subcommand)]
@@ -59,7 +61,8 @@ enum Cmd {
         #[arg(long, default_value_t = 200)]
         limit: usize,
     },
-    /// Analyze one package, e.g. `npm:mcp-remote@0.1.16`, `pypi:mcp@1.23.0`, `clawhub:steipete/sonoscli@1.0.0`
+    /// Analyze one package, e.g. `npm:mcp-remote@0.1.16`, `pypi:mcp@1.23.0`, `clawhub:steipete/sonoscli@1.0.0`,
+    /// `github:owner/repo@main` (branch, tag or sha), `smithery:namespace/server@latest`
     Analyze {
         spec: String,
         #[arg(long, default_value = "state/state.json")]
@@ -125,6 +128,8 @@ fn crawl(source: Source, state: &mut State, limit: usize) -> Result<Vec<Item>> {
         Source::Clawhub => crawl::clawhub::crawl(state, limit),
         Source::Npm => crawl::npm::crawl(state, limit),
         Source::Pypi => crawl::pypi::crawl(state, limit),
+        Source::Smithery => crawl::smithery::crawl(state, limit),
+        Source::Github => crawl::github::crawl(state, limit),
     }
 }
 
@@ -148,7 +153,7 @@ fn main() -> Result<()> {
             fs::create_dir_all(out.join("issues"))?;
             // MCP registry first: it teaches the PyPI crawler which names to watch
             let mut items = Vec::new();
-            for s in [Source::McpRegistry, Source::Clawhub, Source::Npm, Source::Pypi] {
+            for s in [Source::McpRegistry, Source::Clawhub, Source::Npm, Source::Pypi, Source::Smithery, Source::Github] {
                 match crawl(s, &mut st, limit) {
                     Ok(v) => items.extend(v),
                     Err(e) => eprintln!("crawl failed for one source, continuing: {e:#}"),
@@ -190,14 +195,27 @@ fn main() -> Result<()> {
                 "npm" => "npm",
                 "pypi" => "PyPI",
                 "clawhub" => "clawhub",
-                _ => bail!("ecosystem must be npm, pypi or clawhub"),
+                "github" => "GitHub",
+                "smithery" => "smithery",
+                _ => bail!("ecosystem must be npm, pypi, clawhub, github or smithery"),
             };
-            let download = match (ecosystem, name.split_once('/')) {
-                ("clawhub", Some((owner, slug))) => Some(crawl::clawhub::download_url(owner, slug, version)),
-                ("clawhub", None) => bail!("clawhub names are <owner>/<slug>"),
-                _ => None,
+            let item = match (ecosystem, name.split_once('/')) {
+                // Smithery has no versions; the current listing is analyzed whatever follows the @
+                ("smithery", _) => crawl::smithery::fetch(name)?,
+                ("clawhub" | "GitHub", None) => bail!("{eco} names are <owner>/<name>"),
+                (_, split) => {
+                    let (version, download) = match (ecosystem, split) {
+                        ("clawhub", Some((owner, slug))) => (version.to_string(), Some(crawl::clawhub::download_url(owner, slug, version))),
+                        // a branch or tag is resolved to its commit so the report names exact code
+                        ("GitHub", _) => {
+                            let sha = if version.len() == 40 && version.bytes().all(|b| b.is_ascii_hexdigit()) { version.to_string() } else { crawl::github::head_sha(name, version)? };
+                            (sha.clone(), Some(crawl::github::download_url(name, &sha)))
+                        }
+                        _ => (version.to_string(), None),
+                    };
+                    Item { source: "manual".into(), ecosystem: ecosystem.into(), name: name.into(), version, download, tools: None }
+                }
             };
-            let item = Item { source: "manual".into(), ecosystem: ecosystem.into(), name: name.into(), version: version.into(), download };
             let r = analyze::analyze_remote(&antidote_core::corpus::load()?, &item, &State::load(&state)?, &[])?;
             println!("{}", serde_json::to_string_pretty(&r)?);
         }

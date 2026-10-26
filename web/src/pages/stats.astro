@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import { entries, classification } from '../lib/entries';
+import Mark from '../components/Mark.astro';
+import Bars from '../components/Bars.astro';
+import { entries, classification, artifactType } from '../lib/entries';
 
 const live = entries.filter((e) => !e.withdrawn);
 const pct = (n: number) => (live.length ? Math.round((100 * n) / live.length) : 0);
@@ -9,27 +11,45 @@ const verified = live.filter((e) => e.database_specific?.verification === 'verif
 const tally = (keys: string[]) => {
   const m = new Map<string, number>();
   for (const k of keys) m.set(k, (m.get(k) ?? 0) + 1);
-  return [...m];
+  return [...m] as [string, number][];
 };
 const byClass = tally(live.map(classification)).sort((a, b) => b[1] - a[1]);
-// entries published per month, newest first
-const byMonth = tally(live.map((e) => (e.published ?? '').slice(0, 7)).filter(Boolean)).sort((a, b) => b[0].localeCompare(a[0]));
+const byKind = tally(live.map((e) => artifactType(e).replaceAll('_', ' '))).sort((a, b) => b[1] - a[1]);
+const byEco = tally(live.flatMap((e) => [...new Set((e.affected ?? []).map((a: any) => a.package.ecosystem as string))])).sort((a, b) => b[1] - a[1]);
+const byMonth = tally(live.map((e) => (e.published ?? e.date ?? '').slice(0, 7)).filter(Boolean)).sort((a, b) => a[0].localeCompare(b[0]));
 const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ?? [])).sort((a, b) => b[1] - a[1]);
 ---
-<Base title="Stats — Antidote" description="How many entries the Antidote database holds, how many are verified, and what kinds.">
+<Base title="Stats: Antidote" description="How many entries the Antidote database holds, how many are verified, and what kinds." current="stats">
   <h1>Stats</h1>
-  <p class="muted">{live.length} live entries ({entries.length - live.length} withdrawn), {verified} verified ({pct(verified)}%). Updated on every corpus change.</p>
+  <p class="lede column">
+    {live.length} live entries, {entries.length - live.length} withdrawn. {verified} are verified ({pct(verified)}%); the rest are reported and waiting for a second look. Rebuilt on every corpus change.
+  </p>
 
-  <h2>By classification</h2>
-  <table>{byClass.map(([k, n]) => <tr><th><span class={`tag ${k}`}>{k}</span></th><td>{n} ({pct(n)}%)</td></tr>)}</table>
+  <h2>By verdict</h2>
+  <ul class="verdicts">
+    {byClass.map(([k, n]) => <li><Mark kind={k} /> <span class="mono">{n}</span> <span class="muted">({pct(n)}%)</span></li>)}
+  </ul>
+
+  <h2>By kind of artifact</h2>
+  <Bars rows={byKind} caption="Live entries by artifact type" />
+
+  <h2>By ecosystem</h2>
+  <Bars rows={byEco} caption="Live entries by ecosystem" />
 
   <h2>Published per month</h2>
-  <table>{byMonth.map(([k, n]) => <tr><th class="mono">{k}</th><td>{n}</td></tr>)}</table>
+  <Bars rows={byMonth} mono caption="Live entries published per month" />
 
   {byTechnique.length > 0 && (
     <>
       <h2>Techniques</h2>
-      <table>{byTechnique.map(([k, n]) => <tr><th class="mono">{k}</th><td>{n}</td></tr>)}</table>
+      <Bars rows={byTechnique} mono caption="Live entries by technique tag" />
     </>
   )}
 </Base>
+
+<style>
+  .lede { margin: 0.9rem 0 0; font-size: 1.15rem; color: var(--ink-2); }
+  .verdicts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+  .verdicts li { display: inline-flex; align-items: baseline; gap: 0.5rem; }
+  .verdicts :global(.mark) { font-size: 1rem; }
+</style>

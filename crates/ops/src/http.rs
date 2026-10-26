@@ -11,13 +11,22 @@ pub fn get(url: &str, max_bytes: u64) -> Result<Vec<u8>> {
 }
 
 pub fn get_with(url: &str, accept: Option<&str>, max_bytes: u64) -> Result<Vec<u8>> {
+    get_auth(url, accept, None, max_bytes)
+}
+
+/// `get_with` plus an optional `Authorization: Bearer` token (GitHub, Smithery).
+pub fn get_auth(url: &str, accept: Option<&str>, bearer: Option<&str>, max_bytes: u64) -> Result<Vec<u8>> {
     let agent: ureq::Agent = ureq::Agent::config_builder()
         .http_status_as_error(false)
         .timeout_global(Some(Duration::from_secs(60)))
         .build()
         .into();
     for attempt in 0..4u32 {
-        let mut resp = agent.get(url).header("User-Agent", UA).header("Accept", accept.unwrap_or("*/*")).call().with_context(|| format!("GET {url}"))?;
+        let mut req = agent.get(url).header("User-Agent", UA).header("Accept", accept.unwrap_or("*/*"));
+        if let Some(t) = bearer {
+            req = req.header("Authorization", &format!("Bearer {t}"));
+        }
+        let mut resp = req.call().with_context(|| format!("GET {url}"))?;
         let status = resp.status().as_u16();
         if status == 429 || status >= 500 {
             let wait = resp
@@ -41,6 +50,10 @@ pub fn get_with(url: &str, accept: Option<&str>, max_bytes: u64) -> Result<Vec<u
 
 pub fn get_json(url: &str) -> Result<serde_json::Value> {
     serde_json::from_slice(&get(url, 20 << 20)?).with_context(|| format!("{url} returned invalid JSON"))
+}
+
+pub fn get_json_auth(url: &str, accept: Option<&str>, bearer: Option<&str>) -> Result<serde_json::Value> {
+    serde_json::from_slice(&get_auth(url, accept, bearer, 20 << 20)?).with_context(|| format!("{url} returned invalid JSON"))
 }
 
 pub fn post_json(url: &str, body: &serde_json::Value) -> Result<serde_json::Value> {

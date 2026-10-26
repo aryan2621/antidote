@@ -1,7 +1,12 @@
 # Build from the repo root: docker build -f crates/api/Dockerfile -t antidote-api .
 FROM rust:1.93-slim AS build
 WORKDIR /src
+# .git isn't copied, so CI passes the corpus version and feed key in.
+ARG ANTIDOTE_CORPUS_VERSION=0
+ARG ANTIDOTE_FEED_PUBKEY
+ENV ANTIDOTE_CORPUS_VERSION=$ANTIDOTE_CORPUS_VERSION ANTIDOTE_FEED_PUBKEY=$ANTIDOTE_FEED_PUBKEY
 COPY . .
+ARG CARGO_BUILD_JOBS
 RUN cargo build --release -p antidote-api
 
 FROM debian:bookworm-slim

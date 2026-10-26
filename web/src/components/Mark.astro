@@ -1,0 +1,15 @@
+---
+// Verdict as a drawn shape plus its word, so it reads without colour.
+interface Props { kind: string; label?: string; class?: string }
+const { kind, label = kind, class: cls = '' } = Astro.props;
+---
+<span class={`mark ${kind} ${cls}`}>
+  <svg viewBox="0 0 12 12" aria-hidden="true">
+    {kind === 'malicious' && <circle cx="6" cy="6" r="5.5" fill="currentColor" />}
+    {kind === 'vulnerable' && <path d="M6 0.4 11.6 6 6 11.6 0.4 6Z" fill="currentColor" />}
+    {kind === 'suspicious' && <path d="M6 0.8 11.6 11.2H0.4Z" fill="currentColor" />}
+    {kind === 'incident' && <rect x="1" y="1" width="10" height="10" fill="currentColor" />}
+    {kind === 'withdrawn' && <><circle cx="6" cy="6" r="4.9" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M2.4 9.6 9.6 2.4" stroke="currentColor" stroke-width="1.2" /></>}
+  </svg>
+  {label}
+</span>

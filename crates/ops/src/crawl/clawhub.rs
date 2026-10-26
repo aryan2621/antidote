@@ -24,6 +24,7 @@ pub fn parse_page(page: &Value) -> (Vec<(Item, u64)>, Option<String>) {
                 name: format!("{owner}/{slug}"),
                 version: version.into(),
                 download: Some(download_url(owner, slug, version)),
+                tools: None,
             };
             Some((item, s["updatedAt"].as_u64().unwrap_or(0)))
         })

@@ -1,4 +1,4 @@
-//! Structural code rules: tree-sitter queries (`corpus/rules/<id>.<js|py>.scm`) run on JS/TS/Python
+//! Structural code rules: tree-sitter queries (`corpus/rules/<id>.<js|py|sh>.scm`) run on JS/TS/Python/shell
 //! sources. Each query marks the reported node with `@hit`; its header comments give the metadata.
 
 use std::path::Path;
@@ -14,6 +14,7 @@ pub enum Lang {
     Ts,
     Tsx,
     Py,
+    Sh,
 }
 
 impl Lang {
@@ -23,6 +24,7 @@ impl Lang {
             Lang::Ts => tree_sitter_typescript::LANGUAGE_TYPESCRIPT.into(),
             Lang::Tsx => tree_sitter_typescript::LANGUAGE_TSX.into(),
             Lang::Py => tree_sitter_python::LANGUAGE.into(),
+            Lang::Sh => tree_sitter_bash::LANGUAGE.into(),
         }
     }
 
@@ -32,6 +34,7 @@ impl Lang {
             "ts" | "mts" | "cts" => Lang::Ts,
             "tsx" => Lang::Tsx,
             "py" => Lang::Py,
+            "sh" | "bash" | "zsh" => Lang::Sh,
             _ => return None,
         })
     }
@@ -55,7 +58,8 @@ pub fn compile(name: &str, src: &str) -> Result<Vec<Rule>> {
     let langs: &[Lang] = match name.rsplit('.').next() {
         Some("js") => &[Lang::Js, Lang::Ts, Lang::Tsx],
         Some("py") => &[Lang::Py],
-        _ => bail!("rules/{name}.scm: name must end in .js.scm or .py.scm"),
+        Some("sh") => &[Lang::Sh],
+        _ => bail!("rules/{name}.scm: name must end in .js.scm, .py.scm or .sh.scm"),
     };
     let severity = match header("severity").as_deref() {
         Some("critical") => "critical",

@@ -1,6 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { packages, classification, entryHref, versionText, badgeMarkdown } from '../../../lib/entries';
+import Mark from '../../../components/Mark.astro';
+import CodeBlock from '../../../components/CodeBlock.astro';
+import { packages, classification, entryHref, versionText, badgeMarkdown, lookalikeOf, href } from '../../../lib/entries';
 
 export function getStaticPaths() {
   return [...packages.values()].map((p) => ({ params: { ecosystem: p.ecosystem, name: p.name }, props: { p } }));
@@ -8,31 +10,73 @@ export function getStaticPaths() {
 const { p } = Astro.props;
 const label = `${p.ecosystem}:${p.name}`;
 const badge = badgeMarkdown(p.ecosystem, p.name);
-const malicious = p.entries.some((e: any) => classification(e) === 'malicious');
+const live = p.entries.filter((e: any) => !e.withdrawn);
+const verdict = live.some((e: any) => classification(e) === 'malicious') ? 'malicious'
+  : live.some((e: any) => classification(e) === 'vulnerable') ? 'vulnerable'
+  : live.length ? 'suspicious' : 'withdrawn';
+const headline: Record<string, string> = {
+  malicious: 'Reported as malicious',
+  vulnerable: 'Has known vulnerabilities',
+  suspicious: 'Flagged as suspicious',
+  withdrawn: 'Earlier reports were withdrawn',
+};
+const real = lookalikeOf(p.ecosystem, p.name);
+const n = p.entries.length;
 ---
-<Base title={`Is ${p.name} safe? — Antidote`} description={`${p.entries.length} Antidote entr${p.entries.length === 1 ? 'y' : 'ies'} for ${label}`}>
-  <h1>Is <code>{p.name}</code> safe?</h1>
-  <p class="muted">Ecosystem: {p.ecosystem}</p>
-  <p>
-    {malicious
-      ? <strong>Reported as malicious.</strong>
-      : <strong>Has known vulnerabilities.</strong>}
-    {' '}{p.entries.length} entr{p.entries.length === 1 ? 'y' : 'ies'} in the database. Check the affected versions against yours, or run <code>antidote check {p.ecosystem.toLowerCase()}:{p.name}@&lt;version&gt;</code>.
-  </p>
-  <ul class="list">
+<Base title={`Is ${p.name} safe? Antidote`} description={`${n} Antidote entr${n === 1 ? 'y' : 'ies'} for ${label}`} current="database">
+  <nav class="crumb" aria-label="Breadcrumb"><a href={href('/')}>Database</a> <span aria-hidden="true">/</span> <span class="mono">{label}</span></nav>
+
+  <header class={`verdict-card ${verdict}`}>
+    <p class="q sc">Is this safe?</p>
+    <h1><code>{p.name}</code></h1>
+    <p class="answer"><Mark kind={verdict} label={headline[verdict]} /></p>
+    <p class="column">
+      {n} entr{n === 1 ? 'y' : 'ies'} in the database for {p.ecosystem}. Check the affected versions against yours, or run
+      <code>antidote check {p.ecosystem.toLowerCase()}:{p.name}@&lt;version&gt;</code>.
+      Absence from the database is never a safety verdict.
+    </p>
+    {real && <p class="column imitates">The name is close to the popular package <code>{real}</code>. Make sure you meant this one.</p>}
+  </header>
+
+  <h2>Plates</h2>
+  <ol class="plates">
     {p.entries.map((e: any) => (
-      <li>
-        <a class="id" href={entryHref(e.id)}>{e.id}</a> <span class={`tag ${classification(e)}`}>{classification(e)}</span>
-        <div><a href={entryHref(e.id)}>{e.summary}</a></div>
-        <div class="muted">Affected: {e.affected.filter((a: any) => a.package.name === p.name && a.package.ecosystem === p.ecosystem).map(versionText).join('; ')}</div>
+      <li class="plate">
+        <a class="no mono" href={entryHref(e.id)}>{e.id.replace('AGT-', '')}</a>
+        <div class="body">
+          <Mark kind={classification(e)} />
+          <h3><a href={entryHref(e.id)}>{e.summary}</a></h3>
+          <p class="muted">Affected: {e.affected.filter((a: any) => a.package.name === p.name && a.package.ecosystem === p.ecosystem).map(versionText).join('; ')}</p>
+        </div>
       </li>
     ))}
-  </ul>
+  </ol>
+
   {badge && (
     <>
       <h2>README badge</h2>
-      <p class="muted">Shows the current status of the latest release.</p>
-      <pre class="mono" style="white-space:pre-wrap">{badge}</pre>
+      <p class="muted column">Shows the current status of the latest release.</p>
+      <CodeBlock code={badge} />
     </>
   )}
 </Base>
+
+<style>
+  .crumb { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2); margin-bottom: 1.5rem; }
+  .crumb a { color: var(--ink-2); }
+  .verdict-card { padding: 1.5rem 0 1.75rem; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .q { margin: 0 0 0.4rem; color: var(--ink-2); font-size: 1rem; }
+  .verdict-card h1 code { font-family: var(--mono); font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem); letter-spacing: -0.01em; font-weight: 700; overflow-wrap: anywhere; }
+  .answer { margin: 1rem 0 0.75rem; }
+  .answer :global(.mark) { font-size: 1.15rem; }
+  .imitates { color: var(--malicious); font-weight: 500; }
+  .plates { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+  .plate { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+  .no { color: var(--ink-2); text-decoration: none; font-size: 0.82rem; padding-top: 0.2rem; }
+  .body { display: grid; gap: 0.3rem; min-width: 0; }
+  .body h3 { font: 700 1.15rem/1.3 var(--sans); margin: 0; max-width: 62ch; }
+  .body h3 a { color: var(--ink); text-decoration: none; }
+  .body h3 a:hover { text-decoration: underline; }
+  .body p { margin: 0; }
+  @media (max-width: 560px) { .plate { grid-template-columns: 1fr; gap: 0.2rem; } }
+</style>
