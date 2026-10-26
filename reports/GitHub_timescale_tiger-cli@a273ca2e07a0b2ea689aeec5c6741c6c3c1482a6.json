@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "timescale/tiger-cli",
+    "version": "a273ca2e07a0b2ea689aeec5c6741c6c3c1482a6",
+    "download": "https://codeload.github.com/timescale/tiger-cli/tar.gz/a273ca2e07a0b2ea689aeec5c6741c6c3c1482a6"
+  },
+  "archive_sha256": "d96cf9db5ed8ff62a5bec455da021b331d8677e9926f2c04ba38e13f7d68cab6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tiger-cli-a273ca2e07a0b2ea689aeec5c6741c6c3c1482a6/scripts/install.sh",
+      "line": 12,
+      "evidence": "curl -fsSL https://cli.tigerdata.com | sh",
+      "file_sha256": "331fb081e7fa80c8ef8da1c2ac42870118498421fffeabebba6332511af9c5c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tiger-cli-a273ca2e07a0b2ea689aeec5c6741c6c3c1482a6/README.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://cli.tigerdata.com | sh",
+      "file_sha256": "89e805f16b36db5a9c1b11bc897b741df03a71b95306a29f95dcff94d54d0cec"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "tiger-cli-a273ca2e07a0b2ea689aeec5c6741c6c3c1482a6/CLAUDE.md",
+      "line": 50,
+      "evidence": "p=0.96 You can also run without installing via `go run ./cmd/tiger --help`.",
+      "file_sha256": "3b1426d0df22698bc2928502bc03f866d36df07b59fea1bb3a61ead28e3f4055"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.deepmap.com",
+    "api.github.com",
+    "cli.tigerdata.com",
+    "console.cloud.tigerdata.com",
+    "console.dev.tigerdata.com",
+    "console.example.com",
+    "custom.api.com",
+    "docs.docker.com",
+    "docs.renovatebot.com",
+    "eastus-1.in.applicationinsights.azure.com",
+    "env.api.com",
+    "file.api.com",
+    "github.com",
+    "goreleaser.com",
+    "local.dev.tigerdata.com",
+    "mcp.tigerdata.com",
+    "new.api.com",
+    "packagecloud.io",
+    "raw.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "test.api.com",
+    "test.console.com",
+    "test.docs.com",
+    "test.releases.com",
+    "www.apache.org",
+    "www.postgresql.org",
+    "www.tigerdata.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

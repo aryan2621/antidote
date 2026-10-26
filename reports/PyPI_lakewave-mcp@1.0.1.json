@@ -1,0 +1,42 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "PyPI",
+    "name": "lakewave-mcp",
+    "version": "1.0.1",
+    "download": null
+  },
+  "archive_sha256": "328681027ee4699e621eba4ceaf9b5a308a54722ba09730ac15bbb74e7cc371f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "lakewave_mcp-1.0.1/release.sh",
+      "line": 15,
+      "evidence": "curl -s https://pypi.org/pypi/lakewave-mcp/json | python3 -c \"import sys,json;pr",
+      "file_sha256": "aae6c8bca936b2444b13ab21350d14b42dd9644aa2e54f37d4459cf74bbe4de9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "lakewave_mcp-1.0.1/release.sh",
+      "line": 33,
+      "evidence": "curl -s https://pypi.org/pypi/lakewave-mcp/json | python3 -c \"import sys,json;i=",
+      "file_sha256": "aae6c8bca936b2444b13ab21350d14b42dd9644aa2e54f37d4459cf74bbe4de9"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "app.lakewave.ai",
+    "github.com",
+    "glama.ai",
+    "lakewave.ai",
+    "pypi.org",
+    "smithery.ai",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

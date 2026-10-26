@@ -1,0 +1,80 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "etincel",
+    "version": "0.10.1",
+    "download": null
+  },
+  "archive_sha256": "f0eed8645952bfed7e182546f4f71ecd4877abca2528f60a367d19437bda8fa3",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/etincel-nonfiction/references/tells-reference.md",
+      "line": 21,
+      "evidence": "p=0.96 **Elegant variation.** Renaming the same referent for variety (\"the company... t",
+      "file_sha256": "d51528faa23720b951b6051988e8cfb0806e606220be1192f7ea1e5034e6425b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/etincel-nonfiction/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.93 The `get_style_guide` output is drafting context for you, the model. It is not i",
+      "file_sha256": "16605f8e2cf5a8eba3967afda9b0b8ba55520568b51f222e4b98d2c5f4bb064f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/etincel-nonfiction/SKILL.md",
+      "line": 48,
+      "evidence": "p=0.94 **If the user declines or has nothing to add**, say so directly rather than proc",
+      "file_sha256": "16605f8e2cf5a8eba3967afda9b0b8ba55520568b51f222e4b98d2c5f4bb064f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/etincel-nonfiction/SKILL.md",
+      "line": 107,
+      "evidence": "p=0.98 Separate from the dictionary and separate from voice: the user can also save fre",
+      "file_sha256": "16605f8e2cf5a8eba3967afda9b0b8ba55520568b51f222e4b98d2c5f4bb064f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/etincel-nonfiction/SKILL.md",
+      "line": 173,
+      "evidence": "p=0.92 1. Call `audit_text` first and treat it as a diagnostic, not a rewrite trigger. ",
+      "file_sha256": "16605f8e2cf5a8eba3967afda9b0b8ba55520568b51f222e4b98d2c5f4bb064f"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "id": "AGT-F-INSTALL",
+      "summary": "Runs code at install time",
+      "path": null,
+      "line": null,
+      "evidence": "postinstall: node -e \"require('fs').existsSync('tsconfig.json')&&require('child_process').execSync('npm run build',{stdio:'inherit'})\"",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "aistoryhub.co",
+    "dl.circleci.com",
+    "etincel.ai",
+    "github.com",
+    "img.shields.io",
+    "mcpscore.dev",
+    "registry.modelcontextprotocol.io",
+    "vale.sh"
+  ],
+  "install_script": true,
+  "score": "high"
+}

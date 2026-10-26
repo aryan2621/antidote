@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "PyPI",
+    "name": "codenib",
+    "version": "0.2.4",
+    "download": null
+  },
+  "archive_sha256": "bf3f70ff2c7970b256da0a1a6ccd60ae59e90e4d4b0066c0ee0ab9b4e5cc36d9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "codenib-0.2.4/web/dist/assets/katex-HP8lGamR.js",
+      "line": 255,
+      "evidence": "\\u{202a}",
+      "file_sha256": "0b89c21cb463fd8180e300cb79a3e9e538accb78df5bdec67f0cbba4bdb7949e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "codenib-0.2.4/codenib/agent/skills/codenib_context/skill.md",
+      "line": 15,
+      "evidence": "p=0.97 This replaces the usual fan-out of repeated grep/search/read: one call gives you",
+      "file_sha256": "5b0fe662b00d33ff7fb809a762692db2ff622146113b4a80e27ba621ceba6479"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "arxiv.org",
+    "chevrotain.io",
+    "code.claude.com",
+    "codenib.ai",
+    "demo.codenib.ai",
+    "demo.example",
+    "discord.gg",
+    "docs.codenib.ai",
+    "docs.devin.ai",
+    "en.wikipedia.org",
+    "example.com",
+    "example.test",
+    "github.com",
+    "img.shields.io",
+    "inference.example.test",
+    "langium.org",
+    "media.example",
+    "nickel-lang.org",
+    "opencollective.com",
+    "openrouter.ai",
+    "oraios.github.io",
+    "platform.claude.com",
+    "public.example",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "reactjs.org",
+    "registry.npmjs.org",
+    "semver.org",
+    "source.example",
+    "static.modelcontextprotocol.io",
+    "test.pypi.org",
+    "thanks.dev",
+    "tidelift.com",
+    "www.apache.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

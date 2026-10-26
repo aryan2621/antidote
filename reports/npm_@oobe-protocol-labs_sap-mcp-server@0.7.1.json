@@ -1,0 +1,112 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@oobe-protocol-labs/sap-mcp-server",
+    "version": "0.7.1",
+    "download": null
+  },
+  "archive_sha256": "2b4c60a83ec1e7fc2dd6fc818938f0011609a2625b10d8ba926b19216228bb2e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/USER_DOCS/06_DESKTOP_GUI_WIZARD.md",
+      "line": 250,
+      "evidence": "curl -fsSL https://mcp.sap.oobeprotocol.ai/wizard/install.sh | bash",
+      "file_sha256": "a0142018374cb96090486e9a2cf7b3ee78deba9caa3adc6c8c7acf665e25348e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/USER_DOCS/06_DESKTOP_GUI_WIZARD.md",
+      "line": 63,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "a0142018374cb96090486e9a2cf7b3ee78deba9caa3adc6c8c7acf665e25348e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/docs/14_DESKTOP_WIZARD_RELEASE.md",
+      "line": 224,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "4a94833311728b6c5443cadcd8225d5f247730e8cd6731be0f102cb24f112da5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/docs/05_REMOTE_VPS_DEPLOYMENT.md",
+      "line": 124,
+      "evidence": "curl -fsSL https://mcp.sap.oobeprotocol.ai/wizard/install.sh | sh",
+      "file_sha256": "0628072718f4eff287a8630f1f20bd12f29f4ac015e1f70fc66a416de8ef2492"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/remote/server.js",
+      "line": 836,
+      "evidence": "curl -fsSL https://mcp.sap.oobeprotocol.ai/wizard/install.sh | sh",
+      "file_sha256": "bf4d88ae6be03c9995d71432cb6c5d2a0e6aec7900f256d2da9f50ae8f5d443a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/security/prompt-injection-notes.d.ts",
+      "line": 7,
+      "evidence": "ignore previous prompts",
+      "file_sha256": "b0364fa55cec42031b84bcfaaf9ee54bb03efc14ff881afde9753a7c6bf9feb6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/security/prompt-injection-notes.js",
+      "line": 7,
+      "evidence": "ignore previous prompts",
+      "file_sha256": "7700fdb188c3af419bd488ea75df0ebb0ec4ac51d0a90856d63ff2d41189c861"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "admin.example.com",
+    "api.devnet.solana.com",
+    "api.example.com",
+    "api.mainnet-beta.solana.com",
+    "api.testnet.solana.com",
+    "app.bentoguard.xyz",
+    "app.example.com",
+    "cdn.jsdelivr.net",
+    "csrc.nist.gov",
+    "devnet-router.magicblock.app",
+    "discord.gg",
+    "docs.solana.com",
+    "example.com",
+    "explorer.solana.com",
+    "fireblocks.example.com",
+    "github.com",
+    "json-schema.org",
+    "mcp.sap.oobeprotocol.ai",
+    "my-agent.example.com",
+    "oobeprotocol.ai",
+    "pay.sh",
+    "payments.magicblock.app",
+    "raw.githubusercontent.com",
+    "router.magicblock.app",
+    "signer.example.com",
+    "solana-rpc.publicnode.com",
+    "solanacookbook.com",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com",
+    "x402.oobeprotocol.ai",
+    "x402.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
