@@ -235,9 +235,10 @@ mod tests {
 
     #[test]
     fn redact_telegram_bot_token() {
-        let raw = "token 8898185692:AAEjW5PcFLiwKJYf58X4pYY47HpbZvWGOUk end";
-        let out = redact_secrets(raw);
-        assert!(!out.contains("AAEjW5PcFLiwKJYf58X4pYY47HpbZvWGOUk"));
+        let suffix = "Z".repeat(35);
+        let raw = format!("token 1234567890:AA{suffix} end");
+        let out = redact_secrets(&raw);
+        assert!(!out.contains(&suffix));
         assert!(out.contains("<telegram bot token redacted>"));
     }
 }
