@@ -379,7 +379,7 @@ fn sarif(findings: &[Finding]) -> Value {
             "tool": { "driver": {
                 "name": "antidote",
                 "version": env!("CARGO_PKG_VERSION"),
-                "informationUri": "https://github.com/antidote-db/antidote",
+                "informationUri": "https://github.com/aryan2621/antidote",
                 "rules": rules.into_values().collect::<Vec<_>>(),
             }},
             "results": results,

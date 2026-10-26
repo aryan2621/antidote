@@ -2,7 +2,7 @@
 
 An open database of malicious and vulnerable AI agent artifacts (skills, MCP servers, tool descriptions, prompts, packages), plus an offline scanner. Like ClamAV / OSV, but for AI agents.
 
-> Working name. Status: phases 0–4 built, plus most of phase 5: corpus, scanner, signed feed, CI integrations, website, crawlers, detonation, classifier, live MCP inspection, API and the Burrow integration. Not yet published; `antidote-db/antidote` is a placeholder.
+> Working name. Status: phases 0–4 built, plus most of phase 5: corpus, scanner, signed feed, CI integrations, website, crawlers, detonation, classifier, live MCP inspection, API and the Burrow integration. Repo: [github.com/aryan2621/antidote](https://github.com/aryan2621/antidote); site: [aryan2621.github.io/antidote](https://aryan2621.github.io/antidote).
 
 ## Scanner
 
@@ -36,7 +36,7 @@ permissions:
   security-events: write   # for the SARIF upload
 steps:
   - uses: actions/checkout@v4
-  - uses: antidote-db/antidote@v0
+  - uses: aryan2621/antidote@v0
     with:
       paths: .claude .cursor skills   # default "."
       fail-on: high
@@ -48,7 +48,7 @@ Findings show up in the repo's Security → Code scanning tab.
 
 ```yaml
 include:
-  - remote: https://raw.githubusercontent.com/antidote-db/antidote/main/ci/gitlab/antidote.gitlab-ci.yml
+  - remote: https://raw.githubusercontent.com/aryan2621/antidote/master/ci/gitlab/antidote.gitlab-ci.yml
 ```
 
 Findings show up in the merge request's Code Quality widget (`--format codequality`). To change the defaults, override `ANTIDOTE_PATHS`, `ANTIDOTE_FAIL_ON` or `ANTIDOTE_VERSION`.
@@ -56,7 +56,7 @@ Findings show up in the merge request's Code Quality widget (`--format codequali
 ### pre-commit
 
 ```yaml
-- repo: https://github.com/antidote-db/antidote
+- repo: https://github.com/aryan2621/antidote
   rev: v0.1.0
   hooks: [{ id: antidote }]   # needs `antidote` on PATH
 ```
@@ -147,7 +147,7 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 There is no hosted instance. Anyone who wants the API runs it themselves from the image that each tagged release publishes:
 
 ```bash
-docker run -p 8080:8080 -v antidote:/data ghcr.io/antidote-db/antidote-api   # built-in corpus
+docker run -p 8080:8080 -v antidote:/data ghcr.io/aryan2621/antidote-api   # built-in corpus (when published)
 curl localhost:8080/v1/check/npm/mcp-remote?version=0.1.15
 ```
 

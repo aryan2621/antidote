@@ -27,7 +27,7 @@ for (const e of entries) {
 }
 
 // shortcut: placeholder repo until the GitHub org exists; also used by submit and install pages
-export const REPO = 'antidote-db/antidote';
+export const REPO = 'aryan2621/antidote';
 
 export const artifactType = (e: Entry): string => (isIncident(e) ? 'incident' : e.database_specific?.artifact_type ?? 'package');
 

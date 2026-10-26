@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 // shortcut: placeholder home, change when the GitHub repo exists.
-pub const FEED_URL: &str = "https://antidote-db.github.io/antidote/feed/feed.json";
+pub const FEED_URL: &str = "https://aryan2621.github.io/antidote/feed/feed.json";
 /// Website page for a corpus entry (AGT-2026-0001, AGT-INC-…); None for rule ids like AGT-R-0101.
 pub fn entry_url(id: &str) -> Option<String> {
     let rest = id.strip_prefix("AGT-")?;

@@ -16,7 +16,7 @@ type Finding = {
 };
 type Info = { version: number; entries: number };
 
-const DB_URL = "https://antidote-db.github.io/antidote/";
+const DB_URL = "https://aryan2621.github.io/antidote/";
 
 export default function App() {
   const [info, setInfo] = useState<Info | null>(null);
@@ -204,7 +204,7 @@ export default function App() {
       <footer className="foot">
         Browse the open database at{" "}
         <a href={DB_URL} target="_blank" rel="noreferrer">
-          antidote-db.github.io/antidote
+          aryan2621.github.io/antidote
         </a>
         . Data CC-BY-4.0 · code Apache-2.0.
       </footer>

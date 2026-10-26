@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 
 DATA = pathlib.Path(__file__).parent / "data"
-UA = {"User-Agent": "antidote-ml/0.1 (+https://github.com/antidote-db/antidote)"}
+UA = {"User-Agent": "antidote-ml/0.1 (+https://github.com/aryan2621/antidote)"}
 HF = ["deepset/prompt-injections", "Lakera/gandalf_ignore_instructions", "Lakera/mosscap_prompt_injection",
       "jackhhao/jailbreak-classification", "reshabhs/SPML_Chatbot_Prompt_Injection"]
 

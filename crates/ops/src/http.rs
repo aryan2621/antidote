@@ -3,7 +3,7 @@ use std::time::Duration;
 
 use anyhow::{bail, Context, Result};
 
-const UA: &str = "antidote-crawler/0.1 (+https://github.com/antidote-db/antidote)";
+const UA: &str = "antidote-crawler/0.1 (+https://github.com/aryan2621/antidote)";
 
 /// GET with a polite User-Agent, retrying 429/5xx (honours `Retry-After`) and capping the body size.
 pub fn get(url: &str, max_bytes: u64) -> Result<Vec<u8>> {

@@ -9,7 +9,7 @@ use antidote_core::Finding;
 use sha2::{Digest, Sha256};
 use walkdir::WalkDir;
 
-const NEW_ISSUE: &str = "https://github.com/antidote-db/antidote/issues/new";
+const NEW_ISSUE: &str = "https://github.com/aryan2621/antidote/issues/new";
 // keeps the URL under GitHub's ~8 KB limit
 const MAX_FILES: usize = 40;
 const MAX_FINDINGS: usize = 25;

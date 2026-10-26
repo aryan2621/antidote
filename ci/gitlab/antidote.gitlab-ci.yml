@@ -1,7 +1,7 @@
 # Antidote scan for GitLab CI. Include it from your .gitlab-ci.yml:
 #
 #   include:
-#     - remote: https://raw.githubusercontent.com/antidote-db/antidote/main/ci/gitlab/antidote.gitlab-ci.yml
+#     - remote: https://raw.githubusercontent.com/aryan2621/antidote/main/ci/gitlab/antidote.gitlab-ci.yml
 #
 # Findings show up in the merge request Code Quality widget. Override the variables to change
 # what is scanned, the severity that fails the job, or the release used.
@@ -13,7 +13,7 @@ antidote:
     ANTIDOTE_PATHS: "."
     ANTIDOTE_FAIL_ON: "high"
     ANTIDOTE_VERSION: "latest"
-    ANTIDOTE_REPO: "antidote-db/antidote"
+    ANTIDOTE_REPO: "aryan2621/antidote"
   script:
     - apt-get update -qq && apt-get install -y -qq --no-install-recommends curl ca-certificates >/dev/null
     - case "$(uname -m)" in x86_64) t=x86_64-unknown-linux-gnu ;; aarch64) t=aarch64-unknown-linux-gnu ;; *) echo "unsupported arch $(uname -m)"; exit 1 ;; esac
