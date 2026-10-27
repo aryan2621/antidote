@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zambodotdev/zambo-mcp",
+    "version": "44a55fde9013c564c362fbcad52e9f261df05810",
+    "download": "https://codeload.github.com/zambodotdev/zambo-mcp/tar.gz/44a55fde9013c564c362fbcad52e9f261df05810"
+  },
+  "archive_sha256": "7672152e902412e5030b7ee3d734100c54b730475369f57377ba3459feef0b9d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "zambo-mcp-44a55fde9013c564c362fbcad52e9f261df05810/tools.json",
+      "line": 380,
+      "evidence": "p=0.97 Generate a QR code for any URL, text, phone number, WiFi credentials, contact in",
+      "file_sha256": "daedd1f6d57d62c3c53a8fe7e8781da6b78a539bf635abd3797e1d8dfb106cc9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "zambodotdev.github.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "datatracker.ietf.org",
+    "example.com",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "www.contributor-covenant.org",
+    "www.w3.org",
+    "x.com",
+    "zambo.dev",
+    "zambodotdev.github.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

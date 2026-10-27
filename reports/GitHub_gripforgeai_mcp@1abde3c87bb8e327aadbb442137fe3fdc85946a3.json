@@ -1,0 +1,55 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "gripforgeai/mcp",
+    "version": "1abde3c87bb8e327aadbb442137fe3fdc85946a3",
+    "download": "https://codeload.github.com/gripforgeai/mcp/tar.gz/1abde3c87bb8e327aadbb442137fe3fdc85946a3"
+  },
+  "archive_sha256": "36a3f623afd7e3a14edf1383e4b9ffcda9c6bcce167033e9fc1392ff6b19e9ba",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-1abde3c87bb8e327aadbb442137fe3fdc85946a3/src/docs.generated.ts",
+      "line": 19,
+      "evidence": "curl -fsSL https://gripforge.ai/cli/install.sh | sh",
+      "file_sha256": "5b2b5453910c69014b2c941a4cd217ca2924f76f96da2dbfa915317478ca27ee"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mcp-1abde3c87bb8e327aadbb442137fe3fdc85946a3/src/docs.generated.ts",
+      "line": 19,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "5b2b5453910c69014b2c941a4cd217ca2924f76f96da2dbfa915317478ca27ee"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-1abde3c87bb8e327aadbb442137fe3fdc85946a3/package.json",
+      "line": 4,
+      "evidence": "p=0.94 The tools your AI needs to make your games. Turn prompts into production-ready g",
+      "file_sha256": "e6e29ef9839c0ade462da2e9319b1c9c5397ad041a258723078174e9e325bc95"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "central.example.com",
+    "github.com",
+    "glama.ai",
+    "gripforge.ai",
+    "play.example.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "smithery.ai",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

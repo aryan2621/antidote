@@ -1,0 +1,98 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "dogeheng/MCP-server-controller",
+    "version": "28bd5a806d15de571e033fda2a90011ea7cfc831",
+    "download": "https://codeload.github.com/dogeheng/MCP-server-controller/tar.gz/28bd5a806d15de571e033fda2a90011ea7cfc831"
+  },
+  "archive_sha256": "92c1ece1f2dc9d1a42a87b3c8003c32d9d1c7055fb242dcc231d12de5af330df",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/test/unit/core.test.ts",
+      "line": 119,
+      "evidence": "curl -fsSL https://x.sh | sh",
+      "file_sha256": "f043e8c445003e0cf073f366a971874b0524ad47f5f5366f6d78b1d59a5e1f6a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/src/server.ts",
+      "line": 107,
+      "evidence": "curl|sh",
+      "file_sha256": "aeb857504af353811668e59a55cfba6cfcd517f4c52d285281bb29a536a5edc6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/src/config/schema.ts",
+      "line": 64,
+      "evidence": "curl | sh",
+      "file_sha256": "3e9fca5ed24db4a81c15c78eef77277cff7d15a083a21aac4e01744d3298b0b7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/skills/mcp-terminal-controller/references/workflows.md",
+      "line": 79,
+      "evidence": "p=1.00 Only after the user approves, repeat the original tool call with the same argume",
+      "file_sha256": "29ecdbcf183868b0639453ffa8326eb2f6f5b3a65f37301b944eb6205ced20d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/docs/tech-selection-report.md",
+      "line": 241,
+      "evidence": "curl … | sh",
+      "file_sha256": "7122fa6e1b805705ad6cd0eea1fddddfb18536c6b0f33d71ca8b06590e0b3d8f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/config.example.toml",
+      "line": 20,
+      "evidence": "curl … | sh",
+      "file_sha256": "2e22d9fc6cffa0b8d38ddaac5bec0bdf04aa8334d630cebb3d1026c1163c108b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-server-controller-28bd5a806d15de571e033fda2a90011ea7cfc831/README.md",
+      "line": 164,
+      "evidence": "curl … | sh",
+      "file_sha256": "8b2d52f3cc9356e80d0b3af50764c14274487d831809fb966886bc463c7418e7"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "aeb.win.tue.nl",
+    "blog.modelcontextprotocol.io",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "contour-terminal.org",
+    "devblogs.microsoft.com",
+    "docs.kernel.org",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "manus.im",
+    "mitchellh.com",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "registry.npmjs.org",
+    "tidelift.com",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}

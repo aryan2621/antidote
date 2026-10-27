@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@granoflow/mcp-server",
+    "version": "0.1.16",
+    "download": null
+  },
+  "archive_sha256": "3c5c54999f6814074b43fa8becb5905e2419928099fabb689de7993108131515",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/granoflow-gfmcp-runner/references/runtime-contract.md",
+      "line": 24,
+      "evidence": "p=0.94 An external Codex cron or heartbeat may wake the runner with `--once`. It must n",
+      "file_sha256": "0d83e882278bbedbc9c496d5815e1f1fa10b009101e61692b79c8ef26a0facf4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/granoflow-agent-workflow/references/unattended-interaction-contract.md",
+      "line": 42,
+      "evidence": "p=0.97 A user-origin instruction that explicitly asks to run or complete one exact or u",
+      "file_sha256": "595b0b067d244033101e233e5ab5618cf97ad9b1f3a40110e6a0539185f86fef"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "package/skills/granoflow-review-card-draft/SKILL.md",
+      "line": 135,
+      "evidence": "Never show unfiltered raw search results to the user",
+      "file_sha256": "3ebcc8b56e7064f63a20e083b2ec9c4897daad98fc06803dc4d690ed144f16a9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/granoflow-delegated-authorization/references/host-routing-and-waiting.md",
+      "line": 56,
+      "evidence": "p=0.99 A direct current user instruction can authorize its explicit scope without an en",
+      "file_sha256": "ac83a53c63489b1dd8b244c2d753e7dba60c38ce480b14ca20876fb0341677bd"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "github.com",
+    "granoflow.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

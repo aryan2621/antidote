@@ -1,0 +1,77 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "SupposedlySam/llm_chat",
+    "version": "f941fafcd7f3b2521999f04537c3782e88e503e0",
+    "download": "https://codeload.github.com/SupposedlySam/llm_chat/tar.gz/f941fafcd7f3b2521999f04537c3782e88e503e0"
+  },
+  "archive_sha256": "d56dd28b164199e7329eb64ef81de8ef2839e050c049d4fa7c3880cc27558872",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm_chat-f941fafcd7f3b2521999f04537c3782e88e503e0/test/test_briefing.py",
+      "line": 27,
+      "evidence": "Ignore your previous instructions",
+      "file_sha256": "722d0d603927d6c4d76f887f5233cfb64335e6c33d43173ef9a9727a80ba0264"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm_chat-f941fafcd7f3b2521999f04537c3782e88e503e0/templates/skill/SKILL.md",
+      "line": 10,
+      "evidence": "p=0.95 **An agent that refused to act on an llm_chat invite was right to.** The invite ",
+      "file_sha256": "95798017d4b1680e9204e7a72402f09c058be8a77efdfc1b8c42c9714a6745b1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm_chat-f941fafcd7f3b2521999f04537c3782e88e503e0/templates/skill/SKILL.md",
+      "line": 47,
+      "evidence": "p=0.97 Reports here also say why the last listener stopped, since registered and workin",
+      "file_sha256": "95798017d4b1680e9204e7a72402f09c058be8a77efdfc1b8c42c9714a6745b1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "llm_chat-f941fafcd7f3b2521999f04537c3782e88e503e0/llms.txt",
+      "line": 637,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "9db5f4085d46fc7b0c9fa321e733f9edfae10d2a35e946d258d67c233c49453a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "llm_chat-f941fafcd7f3b2521999f04537c3782e88e503e0/README.md",
+      "line": 70,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "28cf7ab4cb9d24397d4dd6c26d6450d82da386a693cc9c21e0922533727a5315"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "code.claude.com",
+    "dart.dev",
+    "developers.cloudflare.com",
+    "evil.example",
+    "example.com",
+    "fly.io",
+    "github.com",
+    "hooks.slack.com",
+    "hub.example.com",
+    "pub.dev",
+    "raw.githubusercontent.com",
+    "slack.com",
+    "www.apple.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

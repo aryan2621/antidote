@@ -1,0 +1,184 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "raulkivi/sheet-music-mcp",
+    "version": "7b4033b682b34fdba30a7ae356018d2d4235a7bb",
+    "download": "https://codeload.github.com/raulkivi/sheet-music-mcp/tar.gz/7b4033b682b34fdba30a7ae356018d2d4235a7bb"
+  },
+  "archive_sha256": "9c3cc603948c623c32f57f7361939b26f3ad0e6c476ee0ab8b192300d366e484",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/synth-mcp/install.sh",
+      "line": 46,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "1950e97b611287f783c569ee7ad39af264264281dd4af0e85b0e23384741fd80"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/synth-mcp/install.sh",
+      "line": 46,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "1950e97b611287f783c569ee7ad39af264264281dd4af0e85b0e23384741fd80"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/render-mcp/install.sh",
+      "line": 21,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "26f39218861c332daa1ac2535ebf2be26ef37c8755c9a1c816550801fff877c1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/render-mcp/install.sh",
+      "line": 21,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "26f39218861c332daa1ac2535ebf2be26ef37c8755c9a1c816550801fff877c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/pitch-mcp/install.sh",
+      "line": 21,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "20b4fc9823c4325b2a824fce9c494f316b25692c666ddf09893df1944b1fe0dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/pitch-mcp/install.sh",
+      "line": 21,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "20b4fc9823c4325b2a824fce9c494f316b25692c666ddf09893df1944b1fe0dd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/omr-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8279f523d761880eaac0473340de4271083195a73692e791bca96794b7bb1f48"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/omr-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8279f523d761880eaac0473340de4271083195a73692e791bca96794b7bb1f48"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/musicxml-abc-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "2a83d8a137981a8bcd595ebd2bf2e38375122bd50137bcb3014aa9f331295ebb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/musicxml-abc-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "2a83d8a137981a8bcd595ebd2bf2e38375122bd50137bcb3014aa9f331295ebb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/docs/SETUP_UX_PLAN.md",
+      "line": 82,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "a4b89fde2c5b06cb29d0e9b2db251a0635b6e602abfed0f424b46ac7201f0b8a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/comparer-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "a3c1402bbb19111b5c9aa6ddd504b01f0a3645d1fc4cf1e59d4295522483490f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/comparer-mcp/install.sh",
+      "line": 33,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "a3c1402bbb19111b5c9aa6ddd504b01f0a3645d1fc4cf1e59d4295522483490f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sheet-music-mcp-7b4033b682b34fdba30a7ae356018d2d4235a7bb/CLAUDE.md",
+      "line": 3,
+      "evidence": "p=0.94 Project-level instructions for Claude Code. Read this before doing any work in t",
+      "file_sha256": "ace357f1f8d0c0248f55a45aabfe3fce4e56d2e6ba825e30ad889ee07af41765"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "abcnotation.com",
+    "api.scorecard.dev",
+    "astral.sh",
+    "audition.ens.fr",
+    "cairosvg.org",
+    "docs.abcjs.net",
+    "docs.astral.sh",
+    "docs.pypi.org",
+    "doi.org",
+    "en.wikipedia.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "jsonlint.com",
+    "librosa.org",
+    "marketplace.visualstudio.com",
+    "michaeleskin.com",
+    "modelcontextprotocol.io",
+    "musescore.org",
+    "numpy.org",
+    "onnxruntime.ai",
+    "pypdf.readthedocs.io",
+    "pypi.org",
+    "pytest-asyncio.readthedocs.io",
+    "python-pillow.org",
+    "python-sounddevice.readthedocs.io",
+    "registry.modelcontextprotocol.io",
+    "scipy.org",
+    "scorecard.dev",
+    "sourceforge.net",
+    "static.modelcontextprotocol.io",
+    "web.mit.edu",
+    "www.contributor-covenant.org",
+    "www.fluidsynth.org",
+    "www.music-encoding.org",
+    "www.music21.org",
+    "www.musicxml.com",
+    "www.musicxml.org",
+    "www.verovio.org",
+    "www.w3.org",
+    "zenodo.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
