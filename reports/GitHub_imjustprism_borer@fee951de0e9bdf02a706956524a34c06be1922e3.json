@@ -1,0 +1,70 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "imjustprism/borer",
+    "version": "fee951de0e9bdf02a706956524a34c06be1922e3",
+    "download": "https://codeload.github.com/imjustprism/borer/tar.gz/fee951de0e9bdf02a706956524a34c06be1922e3"
+  },
+  "archive_sha256": "26cf001372ed956390c8439633f2dd038c03140a042ca5d18fa459f4298c99a7",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "borer-fee951de0e9bdf02a706956524a34c06be1922e3/plugins/borer/hooks/ensure.sh",
+      "line": 86,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3bada51051c25ed9052b6c2e3e3e19166e0582494811768f7f3c138623f8c6da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "borer-fee951de0e9bdf02a706956524a34c06be1922e3/README.md",
+      "line": 133,
+      "evidence": "curl -fsSL https://borer.lol/install | sh",
+      "file_sha256": "842d5434999873ec118108c98a595f4e6db8eec1baf87500f52b3f8fa313903c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.5",
+    "100.64.0.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "172.16.1.1",
+    "192.168.1.1",
+    "8.8.8.8",
+    "b64.example.net",
+    "borer.lol",
+    "c2.example.test",
+    "c2.host",
+    "crates.io",
+    "editorconfig.org",
+    "evil.example.com",
+    "evil.test",
+    "example.com",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "host.example.com",
+    "img.shields.io",
+    "msdl.microsoft.com",
+    "ocsp.digicert.com",
+    "rhai.rs",
+    "roll1.test",
+    "schemas.microsoft.com",
+    "symbols.example",
+    "tdqs.dev",
+    "www.apache.org",
+    "www.gnu.org",
+    "www.w3.org",
+    "x.io",
+    "x3.test",
+    "xor1.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

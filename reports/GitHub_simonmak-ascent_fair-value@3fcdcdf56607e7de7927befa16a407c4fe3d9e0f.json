@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "simonmak-ascent/fair-value",
+    "version": "3fcdcdf56607e7de7927befa16a407c4fe3d9e0f",
+    "download": "https://codeload.github.com/simonmak-ascent/fair-value/tar.gz/3fcdcdf56607e7de7927befa16a407c4fe3d9e0f"
+  },
+  "archive_sha256": "ee9252bb29f267ec1eccf924b77073542e687b7e5bb076ba1a27e404e96d2bc3",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "fair-value-3fcdcdf56607e7de7927befa16a407c4fe3d9e0f/.deploy/runner-bootstrap.sh",
+      "line": 22,
+      "evidence": "curl -fsSL https://api.github.com/repos/actions/runner/releases/latest \\ | pytho",
+      "file_sha256": "7f146292b1ffc4554796cd86a3ec63414f92fe68e28f1edd496f3fd70aa2815a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "context7.com",
+    "eslint.org",
+    "example.org",
+    "fair-value.ascent-partners.com",
+    "files.accurri.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "ivsc.org",
+    "openapi.vercel.sh",
+    "opencode.ai",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "standards.aasb.gov.au",
+    "static.modelcontextprotocol.io",
+    "unpkg.com",
+    "www.aasb.gov.au",
+    "www.ascent-partners.com",
+    "www.contributor-covenant.org",
+    "www.hkicpa.org.hk",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

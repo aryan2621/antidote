@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "beatra-ai/zhongcao-cover-maker",
+    "version": "0.2.9",
+    "download": "https://clawhub.ai/api/v1/download?slug=zhongcao-cover-maker&ownerHandle=beatra-ai&version=0.2.9"
+  },
+  "archive_sha256": "46e3182cb585a46de374b5986b2f835e92bb80fd49df9fc74e0773b2cfd566dc",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 85,
+      "evidence": "p=0.95 Planning and brief preparation are free, with or without the optional Xiaohongsh",
+      "file_sha256": "7c160003339845bec588eb1ef3664b201129fa5e9a552ef0326559c9aefc9fbe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "references/note-lookup.md",
+      "line": 29,
+      "evidence": "Do not tell the user",
+      "file_sha256": "4f439d9d6a06012683c72cb69d52a3887a25fd03fd9cfd712a75f8fdeb831d7d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.beatra.ai",
+    "api.beatra.cn",
+    "beatra.ai",
+    "cdn.beatra.ai",
+    "clawhub.ai",
+    "mcp.beatra.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

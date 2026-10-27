@@ -1,0 +1,90 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@getedge/mcp",
+    "version": "0.6.42",
+    "download": null
+  },
+  "archive_sha256": "b0d281a784f4abcd7d39b3bc5a4f6ebeb7f67ebe2c03b9c6aaa3c2fd09d595fe",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/edge/SKILL.md",
+      "line": 361,
+      "evidence": "p=0.95 Installed skills are not read or sent unless you opt in. With a Pro key, the fir",
+      "file_sha256": "ca9a8d147b016037cb67fc4bd5b8bbb79264b0890b3d2a5e39cb2054a169d56c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/src/local-skills.js",
+      "line": 55,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6b85fe322171484dd664422ab078b8413ab85d5142ba91bf67c7ee03af5deb99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/src/local-scan.js",
+      "line": 166,
+      "evidence": "\\u{202a}",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/src/local-scan.js",
+      "line": 88,
+      "evidence": ".aws/credentials",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/bundle/index.js",
+      "line": 18045,
+      "evidence": "\\u{202a}",
+      "file_sha256": "4b64126362291c432358ee415978ff31c96a3860dc3732dacf5a88f855f38aaf"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/bundle/index.js",
+      "line": 17932,
+      "evidence": ".aws/credentials",
+      "file_sha256": "4b64126362291c432358ee415978ff31c96a3860dc3732dacf5a88f855f38aaf"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "code.claude.com",
+    "cursor.com",
+    "developers.openai.com",
+    "example.com",
+    "getedge.cc",
+    "gist.github.com",
+    "github.com",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "mathiasbynens.be",
+    "raw.githubusercontent.com",
+    "skills.sh",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.npmjs.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

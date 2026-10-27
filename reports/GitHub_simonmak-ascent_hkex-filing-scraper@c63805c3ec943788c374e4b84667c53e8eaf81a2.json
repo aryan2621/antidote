@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "simonmak-ascent/hkex-filing-scraper",
+    "version": "c63805c3ec943788c374e4b84667c53e8eaf81a2",
+    "download": "https://codeload.github.com/simonmak-ascent/hkex-filing-scraper/tar.gz/c63805c3ec943788c374e4b84667c53e8eaf81a2"
+  },
+  "archive_sha256": "96b0a483a004dc369d6b3abb745155bb791adb48f4a1b60b2af158b17299b268",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "hkex-filing-scraper-c63805c3ec943788c374e4b84667c53e8eaf81a2/.deploy/runner-bootstrap.sh",
+      "line": 37,
+      "evidence": "curl -fsSL https://api.github.com/repos/actions/runner/releases/latest \\ | pytho",
+      "file_sha256": "c880f86bd4d283632dd9843860a36b8ff58b9fe87852e3dd5464def9534e5e97"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "context7.com",
+    "cyclonedx.org",
+    "dev.to",
+    "evil.example",
+    "evil.example.com",
+    "example.invalid",
+    "example.test",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "hkex-listco-updates.ascent-partners.com",
+    "hkexnews.hk",
+    "hkexnews.hk.evil.example.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "openapi.vercel.sh",
+    "opencode.ai",
+    "opensource.org",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "schema.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "vercel.com",
+    "www.ascent.partners",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.hkex.com.hk",
+    "www.npmjs.com",
+    "www.python.org",
+    "www.w3.org",
+    "www1.hkexnews.hk"
+  ],
+  "install_script": false,
+  "score": "high"
+}

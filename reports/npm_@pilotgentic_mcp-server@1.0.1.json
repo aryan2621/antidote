@@ -1,0 +1,183 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@pilotgentic/mcp-server",
+    "version": "1.0.1",
+    "download": null
+  },
+  "archive_sha256": "79a3aa630e9ec6a54e61e34791c99c57edc7a15842af98a723910d0501e444c5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/assets/skills/pg-status/SKILL.md",
+      "line": 9,
+      "evidence": "p=0.94 One command answers most of this:",
+      "file_sha256": "7e74691697535cfea6ee940dd29375e74092813b6fb09223016109681e42279b"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/assets/skills/pg-pilotgentic-full/SKILL.md",
+      "line": 120,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "94154ec5fa9b18823ed3de74d743da047363a449c868750c467d847c6a09e16f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/assets/skills/pg-pilotgentic-full/SKILL.md",
+      "line": 90,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "94154ec5fa9b18823ed3de74d743da047363a449c868750c467d847c6a09e16f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/assets/skills/pg-cdp-ext/SKILL.md",
+      "line": 40,
+      "evidence": "p=0.97 ## What this CANNOT do — say so rather than pretending",
+      "file_sha256": "f1865a04d5c82286528043708d6abffe793f42c22fa8fd00c460525f92190828"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/assets/bundled-agents/pilotgentic-orchestrator.md",
+      "line": 980,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "fd4d6138d12d31744a39f2331cbece438c3a766f391f17a4de684d1bf4fdf89a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/assets/bundled-agents/pilotgentic-orchestrator.md",
+      "line": 950,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "fd4d6138d12d31744a39f2331cbece438c3a766f391f17a4de684d1bf4fdf89a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/assets/bundled-agents/medic.md",
+      "line": 372,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "7697d90b398dea52c87728b4cd1f5f0906db3f79131518ced241d84d24edacb9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/assets/bundled-agents/committee-review.md",
+      "line": 67,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ef69def9b8be77789adf8ec4bd7c066ea2ef671c537e63868efb8b8add13f2b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/src/marketplace/test-e2e.js",
+      "line": 44,
+      "evidence": "execSync(`cd \"${src}\" && zip -r \"${zip}\" .`)",
+      "file_sha256": "2ffd6c3c7578783e22329f6a8e980869c92126ea92255e839993929b448ae27a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/src/utils/typed-text-screen.js",
+      "line": 95,
+      "evidence": "\\u{202a}",
+      "file_sha256": "25afa8cf3258b9219f1035b29f20b8340461224cad8a3dc59108f27716111a24"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/src/tools/list-skills.js",
+      "line": 372,
+      "evidence": "curl | bash",
+      "file_sha256": "200d5cdc0e275d1a208550aecc886e471d0b9f4d34f947cf288b60e02c132e5e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/src/tools/list-skills.js",
+      "line": 470,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "200d5cdc0e275d1a208550aecc886e471d0b9f4d34f947cf288b60e02c132e5e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/src/tools/launch.js",
+      "line": 107,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "e0c89598b354983c8415fd1bfbfda5322a71dd8154575c723c057d0e8dc22747"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/src/tools/context-menu.js",
+      "line": 355,
+      "evidence": "execSync(`printf '%s' ${JSON.stringify(text.trim())} | pbcopy`)",
+      "file_sha256": "2f48755a31838fd7c8d3baf2a3f558e56c933c92708cb99aae9c85ec4c2a7ac7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/src/tools/context-menu.js",
+      "line": 614,
+      "evidence": "execSync(`printf '%s' ${JSON.stringify(text.trim())} | pbcopy`)",
+      "file_sha256": "2f48755a31838fd7c8d3baf2a3f558e56c933c92708cb99aae9c85ec4c2a7ac7"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.appstoreconnect.apple.com",
+    "api.example.com",
+    "api.github.com",
+    "api.ipify.org",
+    "api.machines.dev",
+    "api.voyageai.com",
+    "apps.apple.com",
+    "brew.sh",
+    "claude.ai",
+    "code.visualstudio.com",
+    "consolemaven.com",
+    "dev-wc-ducomb.fly.dev",
+    "docker.com",
+    "example.com",
+    "github.com",
+    "host.internal",
+    "itunes.apple.com",
+    "nas.local",
+    "nodejs.org",
+    "pilotgentic-registry.fly.dev",
+    "pilotgentic.com",
+    "prod.fly.dev",
+    "python.org",
+    "www.apple.com",
+    "www.example.com",
+    "www.icloud.com",
+    "x.example",
+    "zoom.us"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

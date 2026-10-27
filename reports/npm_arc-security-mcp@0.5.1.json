@@ -1,0 +1,67 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "arc-security-mcp",
+    "version": "0.5.1",
+    "download": null
+  },
+  "archive_sha256": "c9d94753d6baf328e98e564451384bee9215ffb5edcd1f309bcd52fbe30341bc",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/server.py",
+      "line": 2687,
+      "evidence": "id_rsa",
+      "file_sha256": "e5cc129d35e5c8104fa2a0f670c4d9ca21fadf4595cea86a14a403a0629c4d93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/server.py",
+      "line": 550,
+      "evidence": "curl | sh",
+      "file_sha256": "e5cc129d35e5c8104fa2a0f670c4d9ca21fadf4595cea86a14a403a0629c4d93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/README.md",
+      "line": 67,
+      "evidence": "curl|sh",
+      "file_sha256": "2a79a5a5af3afa4e4bdb5e4390369902b54e5d29395d5399c3fc2fb61a35a57f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/bin/arc-security-mcp.js",
+      "line": 23,
+      "evidence": "execSync(`which ${cmd}`, { stdio: \"ignore\" })",
+      "file_sha256": "2e8863b30b3d6816ecb64b3a2c52aa06b6cd085d1e68d6899858a422cbe09590"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/bin/arc-security-mcp.js",
+      "line": 42,
+      "evidence": "execSync(`pip3 install -r \"${requirementsTxt}\"`, { stdio: \"inherit\" })",
+      "file_sha256": "2e8863b30b3d6816ecb64b3a2c52aa06b6cd085d1e68d6899858a422cbe09590"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "arcself.com",
+    "clawhub.ai",
+    "github.com",
+    "openrouter.ai",
+    "python.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

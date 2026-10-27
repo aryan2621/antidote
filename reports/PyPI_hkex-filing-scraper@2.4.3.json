@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "PyPI",
+    "name": "hkex-filing-scraper",
+    "version": "2.4.3",
+    "download": null
+  },
+  "archive_sha256": "cdc465abc7f95dccc5335a0c5b8238140e81c9b3a099807cb251fb4c143135aa",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "hkex_filing_scraper-2.4.3/.deploy/runner-bootstrap.sh",
+      "line": 22,
+      "evidence": "curl -fsSL https://api.github.com/repos/actions/runner/releases/latest \\ | pytho",
+      "file_sha256": "7f146292b1ffc4554796cd86a3ec63414f92fe68e28f1edd496f3fd70aa2815a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "context7.com",
+    "cyclonedx.org",
+    "dev.to",
+    "evil.example",
+    "evil.example.com",
+    "example.invalid",
+    "example.test",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "hkex-listco-updates.ascent-partners.com",
+    "hkexnews.hk",
+    "hkexnews.hk.evil.example.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "openapi.vercel.sh",
+    "opencode.ai",
+    "opensource.org",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "vercel.com",
+    "www.ascent.partners",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.hkex.com.hk",
+    "www.npmjs.com",
+    "www.python.org",
+    "www.w3.org",
+    "www1.hkexnews.hk"
+  ],
+  "install_script": false,
+  "score": "high"
+}
