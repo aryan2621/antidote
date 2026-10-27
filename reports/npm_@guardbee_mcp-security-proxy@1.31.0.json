@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-security-proxy",
+    "version": "1.31.0",
+    "download": null
+  },
+  "archive_sha256": "6b82cf849a16f333665ac50a65554ca47e10971cc8c9acc18c1abdc597dc66da",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 152,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3e8f71934933b6b585a8e340d9aa3fe8578fa3f4ec50a56e1af065d4dbf1de45"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 152,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "3e8f71934933b6b585a8e340d9aa3fe8578fa3f4ec50a56e1af065d4dbf1de45"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.openai.com",
+    "app.guardbee.ai",
+    "dc.acme.com",
+    "github.com",
+    "guardbee.acme.internal",
+    "guardbee.ai",
+    "img.shields.io",
+    "json.schemastore.org",
+    "login.acme.com",
+    "mcp.linear.app",
+    "otel-collector.example.com",
+    "pypi.org",
+    "registry.npmjs.org",
+    "www.apache.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

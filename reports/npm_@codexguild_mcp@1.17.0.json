@@ -1,0 +1,46 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@codexguild/mcp",
+    "version": "1.17.0",
+    "download": null
+  },
+  "archive_sha256": "1e87f9f730c752ce712c93577b0cb4ef9eed2d2979623a710d0d2b6e0af1cf46",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/codexguild-mcp.js",
+      "line": 660,
+      "evidence": "~/.ssh",
+      "file_sha256": "df78ea5ed665e4dc582541670bdf1d3e3987450d8c96ee897aea935ad3d650c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/codexguild-mcp.js",
+      "line": 484,
+      "evidence": "curl \\u2026 | sh",
+      "file_sha256": "df78ea5ed665e4dc582541670bdf1d3e3987450d8c96ee897aea935ad3d650c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/codexguild-mcp.js",
+      "line": 298,
+      "evidence": "\\u{202a}",
+      "file_sha256": "df78ea5ed665e4dc582541670bdf1d3e3987450d8c96ee897aea935ad3d650c7"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.codexguild.com",
+    "codexguild.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

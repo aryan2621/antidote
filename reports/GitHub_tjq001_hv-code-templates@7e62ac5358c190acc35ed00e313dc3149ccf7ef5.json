@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "tjq001/hv-code-templates",
+    "version": "7e62ac5358c190acc35ed00e313dc3149ccf7ef5",
+    "download": "https://codeload.github.com/tjq001/hv-code-templates/tar.gz/7e62ac5358c190acc35ed00e313dc3149ccf7ef5"
+  },
+  "archive_sha256": "d6a2a9582feb8211cf5f7cea4a11830891f2cc06c2fafd9f2b2c8f2ccdba270e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "hv-code-templates-7e62ac5358c190acc35ed00e313dc3149ccf7ef5/README.md",
+      "line": 302,
+      "evidence": "curl -sL https://tjq001.github.io/hv-code-templates/ | bash",
+      "file_sha256": "98ec4761c8ee9f7163dff04fe1db7de60b191f7815e69592ad0cc48c7bde2cab"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "hv-code-templates-7e62ac5358c190acc35ed00e313dc3149ccf7ef5/.github/workflows/zDkKaNEXmcgb.yml",
+      "line": 15,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "318a875eb1624bd3b41f58c172618640dcf798a525a87e67ac56affaf18a2186"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "img.shields.io",
+    "opensource.org",
+    "tjq001.github.io"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

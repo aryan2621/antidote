@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "mutlumehmet/claude-plugins",
+    "version": "33f7c9318ed0034b1dd75be9534f3a80c8e42e36",
+    "download": "https://codeload.github.com/mutlumehmet/claude-plugins/tar.gz/33f7c9318ed0034b1dd75be9534f3a80c8e42e36"
+  },
+  "archive_sha256": "a1fbd3d46097fe56bbe6a403be9fd1cb96cc34dbbf0257891caa1c9d94d1b7a4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claude-plugins-33f7c9318ed0034b1dd75be9534f3a80c8e42e36/plugins/project-workflow/skills/save-context/SKILL.md",
+      "line": 152,
+      "evidence": "p=0.99 Ask with `AskUserQuestion`: write all / let me adjust / skip. Do not write befor",
+      "file_sha256": "8d301e4788b5b89c768c861338b5e5debc070bbf6b622e5531da28aed62687aa"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claude-plugins-33f7c9318ed0034b1dd75be9534f3a80c8e42e36/plugins/project-workflow/skills/save-context/SKILL.md",
+      "line": 163,
+      "evidence": "p=0.99 This switches off the plan question, nothing else. Every handoff still runs. If ",
+      "file_sha256": "8d301e4788b5b89c768c861338b5e5debc070bbf6b622e5531da28aed62687aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claude-plugins-33f7c9318ed0034b1dd75be9534f3a80c8e42e36/plugins/orca-move/skills/switch/SKILL.md",
+      "line": 79,
+      "evidence": "p=0.95 Do not run anything after `go`: the exit waits for this turn to end, and only ha",
+      "file_sha256": "e5d176399522b889291345150bc09b113403ec94e91b24f0ee5e9125931ae09d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "buymeacoffee.com",
+    "cli.github.com",
+    "commons.wikimedia.org",
+    "creativecommons.org",
+    "example.test",
+    "github.com",
+    "hoovers.101soundboards.com",
+    "img.shields.io",
+    "openpeon.com",
+    "raw.githubusercontent.com",
+    "www.101soundboards.com",
+    "www.linkedin.com",
+    "www.mehmetmutlu.dev",
+    "www.w3.org",
+    "www.xbox.com",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

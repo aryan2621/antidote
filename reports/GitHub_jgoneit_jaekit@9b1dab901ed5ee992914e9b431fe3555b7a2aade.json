@@ -1,0 +1,77 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "jgoneit/jaekit",
+    "version": "9b1dab901ed5ee992914e9b431fe3555b7a2aade",
+    "download": "https://codeload.github.com/jgoneit/jaekit/tar.gz/9b1dab901ed5ee992914e9b431fe3555b7a2aade"
+  },
+  "archive_sha256": "b977b54b6a40c9c893d3e53d4f5c1288f9e9c8add24ac18a7b5755b0bb7ab9d2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "jaekit-9b1dab901ed5ee992914e9b431fe3555b7a2aade/plugins/seal/skills/seal/references/bundle.md",
+      "line": 227,
+      "evidence": "p=0.91 Seal 0.1.12 introduces an optional `## 완료 뒤 발견` detail section or a reference to",
+      "file_sha256": "f89ead8680b4c3dbdc262ede145452ca2d640f87f366cba7f8bce547511b5eff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "jaekit-9b1dab901ed5ee992914e9b431fe3555b7a2aade/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.99 # Repository instructions",
+      "file_sha256": "eaace107011f9aa0559eb9d5273a7075af52b04d07bf138c9e3ab75e10989146"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jaekit-9b1dab901ed5ee992914e9b431fe3555b7a2aade/guides/INSTALL.md",
+      "line": 190,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "7cd3f2ee31c6ceb20197fff19b652f0966bc9e43ab26f99f90e12cd574ee4739"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jaekit-9b1dab901ed5ee992914e9b431fe3555b7a2aade/guides/INSTALL.en.md",
+      "line": 190,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "429a5f7b00a3f62f20d4a51fb8f7eed39fe8f87d094697e1e206309c1c1948d8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.b",
+    "api.github.com",
+    "brew.sh",
+    "code.claude.com",
+    "developers.openai.com",
+    "docs.github.com",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "in.code",
+    "jgoneit.github.io",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "toml.io",
+    "www.w3.org",
+    "x.y",
+    "z.w"
+  ],
+  "install_script": false,
+  "score": "high"
+}

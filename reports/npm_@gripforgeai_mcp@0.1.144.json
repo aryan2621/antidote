@@ -1,0 +1,51 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@gripforgeai/mcp",
+    "version": "0.1.144",
+    "download": null
+  },
+  "archive_sha256": "5c2d5baee2eb0a56ff145d451f5f0b67a8ff7f45abacf1405b321cf8b43b57d7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/docs.generated.js",
+      "line": 16,
+      "evidence": "curl -fsSL https://gripforge.ai/cli/install.sh | sh",
+      "file_sha256": "b70de446a97437c2ceef5601860ee994697cdabbf83ef432770d59e7f2629155"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/dist/docs.generated.js",
+      "line": 16,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "b70de446a97437c2ceef5601860ee994697cdabbf83ef432770d59e7f2629155"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/package.json",
+      "line": 4,
+      "evidence": "p=0.94 The tools your AI needs to make your games. Turn prompts into production-ready g",
+      "file_sha256": "50c4fc1692554690ea40b5d05ac2e222227fc241054cbab3268a4ce1cb685b43"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "central.example.com",
+    "github.com",
+    "gripforge.ai",
+    "play.example.com",
+    "registry.npmjs.org",
+    "rustup.rs"
+  ],
+  "install_script": false,
+  "score": "high"
+}

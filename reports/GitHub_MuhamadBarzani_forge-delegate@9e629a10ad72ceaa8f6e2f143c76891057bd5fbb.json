@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "MuhamadBarzani/forge-delegate",
+    "version": "9e629a10ad72ceaa8f6e2f143c76891057bd5fbb",
+    "download": "https://codeload.github.com/MuhamadBarzani/forge-delegate/tar.gz/9e629a10ad72ceaa8f6e2f143c76891057bd5fbb"
+  },
+  "archive_sha256": "1804c63c78cc0b98656251993bc559dfe11a7b97d8bd129a577a14da4676a747",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "forge-delegate-9e629a10ad72ceaa8f6e2f143c76891057bd5fbb/install.sh",
+      "line": 8,
+      "evidence": "curl -fsSL <raw-url> | bash",
+      "file_sha256": "511fa08542fac5e8250e8096d49e6bac7ccba44359f34eb187962f2596a9a9cf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "forge-delegate-9e629a10ad72ceaa8f6e2f143c76891057bd5fbb/install.sh",
+      "line": 62,
+      "evidence": "curl -fsSL https://opencode.ai/install | bash",
+      "file_sha256": "511fa08542fac5e8250e8096d49e6bac7ccba44359f34eb187962f2596a9a9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "forge-delegate-9e629a10ad72ceaa8f6e2f143c76891057bd5fbb/cli.mjs",
+      "line": 100,
+      "evidence": "execSync(`claude mcp remove --scope ${scope} forge-delegate`, { ...opts, stdio: ",
+      "file_sha256": "54a4d428689951ca7b11bc2333fbead07d6f0222acd4a36b09af5a68a0667b0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "forge-delegate-9e629a10ad72ceaa8f6e2f143c76891057bd5fbb/cli.mjs",
+      "line": 105,
+      "evidence": "execSync(`claude mcp add --scope ${scope} forge-delegate -- ${launch}`, { ...opt",
+      "file_sha256": "54a4d428689951ca7b11bc2333fbead07d6f0222acd4a36b09af5a68a0667b0b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "models.dev",
+    "muhamadbarzani.github.io",
+    "opencode.ai",
+    "opencollective.com",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

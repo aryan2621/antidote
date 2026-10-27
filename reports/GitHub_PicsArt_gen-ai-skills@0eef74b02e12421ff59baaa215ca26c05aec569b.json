@@ -1,0 +1,161 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "PicsArt/gen-ai-skills",
+    "version": "0eef74b02e12421ff59baaa215ca26c05aec569b",
+    "download": "https://codeload.github.com/PicsArt/gen-ai-skills/tar.gz/0eef74b02e12421ff59baaa215ca26c05aec569b"
+  },
+  "archive_sha256": "3ac5a3888cdf887d641b08d8b768a94a1f51d5f9649c80045c4022cbbae20ffb",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/scripts/scan-skill.py",
+      "line": 195,
+      "evidence": "curl\\s+.*-o\\s+.*&&\\s*(?:bash|sh",
+      "file_sha256": "aae09f6b3adf4a20d45e23e6452ecaae094dee78b0f3dbc67c46acc7d2695f6f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/scripts/scan-skill.py",
+      "line": 123,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "aae09f6b3adf4a20d45e23e6452ecaae094dee78b0f3dbc67c46acc7d2695f6f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/style-guide-builder/references/extrapolation.md",
+      "line": 35,
+      "evidence": "p=0.99 For each class, ask what the style does about these, and write the answer as an ",
+      "file_sha256": "ceea6364940c6dc2499a9c4bc280b7652d356432837002e03a493210adbd0c4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/style-guide-builder/references/output-files.md",
+      "line": 206,
+      "evidence": "p=0.92 Many models expose no negative field, so a ban can act as a mention. Anything th",
+      "file_sha256": "56a7c9251f85eebb6336df9463df67f8af1f8e20420832d51e3675b4f17858b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/style-guide-builder/SKILL.md",
+      "line": 36,
+      "evidence": "p=0.90 The usual case: a user has screenshots from a cartoon, a game, a brand campaign ",
+      "file_sha256": "39286fadcbecd1e79b44e34095654572d00d2eaa9145641884623b00e0f32a43"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/video-prompt-engineer/references/exclusions.md",
+      "line": 40,
+      "evidence": "p=0.99 Many video models expose no separate negative field, so a prohibition inside the",
+      "file_sha256": "46d917cdbe4be457b842a74aa3b3f07ce73c6ad7f93a8ab40b5618d3e655aebd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/video-prompt-engineer/SKILL.md",
+      "line": 16,
+      "evidence": "p=0.96 You turn a rough video idea, or a prompt that is not working, into a prompt that",
+      "file_sha256": "1ddbfdd9600ab5ff5d88b8a5f0b995e440c22c237c1bf8e49e0e9da9085a31b2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/video-prompt-engineer/SKILL.md",
+      "line": 150,
+      "evidence": "p=0.98 If the user does not know or does not mind, write for text to video with no nega",
+      "file_sha256": "1ddbfdd9600ab5ff5d88b8a5f0b995e440c22c237c1bf8e49e0e9da9085a31b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/quality-review/references/agent-critic-roots.md",
+      "line": 32,
+      "evidence": "p=0.91 You ignore the typography, the motion craft, the grade and the platform tactics.",
+      "file_sha256": "6c781fb92dd9873d607fb9d53f490d75439255248fe2807f5a722ca1a3e4cf21"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/quality-review/references/viewer-panel.md",
+      "line": 58,
+      "evidence": "p=0.99 1. Would you stop scrolling? Yes, maybe or no, and why. 2. What do you think thi",
+      "file_sha256": "9b83d59ca966c64e3b91e79dc35f46212cb329fa013edf8ea06a4a685335f904"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/quality-review/references/agent-critic-art.md",
+      "line": 20,
+      "evidence": "p=0.98 You ignore the message, the platform tactics and the safe zones. Others judge th",
+      "file_sha256": "f685ba24dbdc6f2adbf4fe92c394adb21997d0f952d2ef4dc3b92cb95d84b7a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/quality-review/references/agent-critic-art.md",
+      "line": 22,
+      "evidence": "p=0.92 Your temper: a strong eye and little patience for the generic. You say what you ",
+      "file_sha256": "f685ba24dbdc6f2adbf4fe92c394adb21997d0f952d2ef4dc3b92cb95d84b7a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/quality-review/references/agent-critic-growth.md",
+      "line": 23,
+      "evidence": "p=0.95 You ignore the grade, the typography and the truth of the message. Others judge ",
+      "file_sha256": "325d79ca051e15bd352d183a57e96573df1add5d36099297d227e9b439c029c5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gen-ai-skills-0eef74b02e12421ff59baaa215ca26c05aec569b/skills/background-music/SKILL.md",
+      "line": 33,
+      "evidence": "p=0.98 **Instrumental under speech, always.** Sung words fight the speech for the same ",
+      "file_sha256": "77a160eb544ecc78fb2bed5c2d6d09ea6ebb12c17f46346cd6250f6f8e69fbbe"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "api.picsart.com",
+    "cdn-template.picsart.com",
+    "cdn.picsart.com",
+    "cdn.picsart.io",
+    "cdn111.picsart.com",
+    "cdn271.picsart.com",
+    "cursor.com",
+    "github.com",
+    "hermes-agent.nousresearch.com",
+    "img.shields.io",
+    "openclaw.ai",
+    "pcdn.picsart.com",
+    "picsart.com",
+    "platform.claude.com",
+    "semver.org",
+    "www.contributor-covenant.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

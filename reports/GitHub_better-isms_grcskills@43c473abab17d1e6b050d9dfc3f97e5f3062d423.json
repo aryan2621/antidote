@@ -1,0 +1,156 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "better-isms/grcskills",
+    "version": "43c473abab17d1e6b050d9dfc3f97e5f3062d423",
+    "download": "https://codeload.github.com/better-isms/grcskills/tar.gz/43c473abab17d1e6b050d9dfc3f97e5f3062d423"
+  },
+  "archive_sha256": "7de2908bdd7407afdaddab2234bd720fecdb0fb9d272c50ddbd959cb1cc3b84d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/site/scripts/content-lib.mjs",
+      "line": 75,
+      "evidence": "\\u{202a}",
+      "file_sha256": "78d738fbf8e13eff685d625452975bc12168c0a7516cb30bb9fa20327aaca7bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/site/tests/llms.test.mjs",
+      "line": 12,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0cfb7091d8ddda46c2cd45c48d211c45d45767fc166efb9c1e53db7a943e458a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/reviews/security/library-security-review.md",
+      "line": 224,
+      "evidence": "ignore the above instructions",
+      "file_sha256": "c90edae0fc237842ed9dcdbdfce3e6dc6da89825f38a1a226a7c103b2068a968"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/CHANGELOG.md",
+      "line": 20,
+      "evidence": "ignore the above instructions",
+      "file_sha256": "ee48ba23cbfa5400ee882df7d95048328930e575fe167c81ddfc0e5ca9868c96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/skills/tristan-roth/ai-vendor-due-diligence/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.95 Read the order form or the plan the company will actually be on, the terms of se",
+      "file_sha256": "7599d774017317fa643abc32a80ae07ab0ad713a5a388b28c2435613cf5a83e4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/skills/tristan-roth/soa-exclusion-justification-review/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.97 Read: the statement of applicability (security, privacy or AI extension), the sc",
+      "file_sha256": "d0093050b38837d069d6418646295d0145e715fa431236e8b6eb587ccf661827"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/skills/tristan-roth/ai-acceptable-use-rules/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.91 List the tools people use and what for, team by team. A rule set written without",
+      "file_sha256": "69800b3060cd942153bc587ce2f58203fc9d54d58ba2065585338e3431f3669e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/skills/tristan-roth/nis2-entity-applicability-check/SKILL.md",
+      "line": 39,
+      "evidence": "p=0.91 Article 2 also lists cases that apply whatever the size: certain digital infrast",
+      "file_sha256": "262866612dfbf90f2d65ed76c1de426abf9d680d112013e2433e7ed8ea936dff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/skills/tristan-roth/risk-register-first-pass/SKILL.md",
+      "line": 23,
+      "evidence": "p=0.97 Read what exists before asking anything: the scope statement, the asset or servi",
+      "file_sha256": "68b0e39dc63d838505d902ef9417b966cb2817d8ba29bc8865ccc186b23a223a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/SECURITY.md",
+      "line": 9,
+      "evidence": "curl | sh",
+      "file_sha256": "6b02f7c0dc5737a0372a3f724f93231ecd6ce36243fb6ec393f30a96bd093a09"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/tools/validate.test.mjs",
+      "line": 244,
+      "evidence": "Ignore the above instructions",
+      "file_sha256": "a61cc7b3d56678162358205afb51883991178c671d088ce640515439a4374d49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grcskills-43c473abab17d1e6b050d9dfc3f97e5f3062d423/tools/validate.test.mjs",
+      "line": 226,
+      "evidence": "curl -fsSL https://www.ismscopilot.com/i | sh",
+      "file_sha256": "a61cc7b3d56678162358205afb51883991178c671d088ce640515439a4374d49"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "account.ismscopilot.com",
+    "betterisms.co",
+    "collector.example.net",
+    "digital-strategy.ec.europa.eu",
+    "docs.ismscopilot.com",
+    "ec.europa.eu",
+    "eur-lex.europa.eu",
+    "evil.example",
+    "example.com",
+    "github.com",
+    "grcskills.com",
+    "heygrc.com",
+    "img.shields.io",
+    "mcp.example.net",
+    "openapi.vercel.sh",
+    "opencollective.com",
+    "opensource.org",
+    "owasp.github.io",
+    "owasp.org",
+    "registry.npmjs.org",
+    "schema.org",
+    "tidelift.com",
+    "www.digital-operational-resilience-act.com",
+    "www.ecfr.gov",
+    "www.edpb.europa.eu",
+    "www.ismscopilot.com",
+    "www.linkedin.com",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

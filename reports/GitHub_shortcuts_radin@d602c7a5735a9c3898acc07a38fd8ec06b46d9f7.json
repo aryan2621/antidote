@@ -1,0 +1,59 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "shortcuts/radin",
+    "version": "d602c7a5735a9c3898acc07a38fd8ec06b46d9f7",
+    "download": "https://codeload.github.com/shortcuts/radin/tar.gz/d602c7a5735a9c3898acc07a38fd8ec06b46d9f7"
+  },
+  "archive_sha256": "0478e419eeb052b4e25f187e88e6bb02051873a8bfbf742cbde30b325ba0562e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "radin-d602c7a5735a9c3898acc07a38fd8ec06b46d9f7/install.sh",
+      "line": 82,
+      "evidence": "curl | bash",
+      "file_sha256": "0ef31f1ac61a6927338597017fa2231478ff1cc3450fb1f7564f7ab184b97959"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "radin-d602c7a5735a9c3898acc07a38fd8ec06b46d9f7/README.md",
+      "line": 18,
+      "evidence": "curl | bash",
+      "file_sha256": "e263e851a65c5dc897edb417a4af754f7bc15192820d1096f9c80c3f7dd213b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "radin-d602c7a5735a9c3898acc07a38fd8ec06b46d9f7/docs/DECISIONS.md",
+      "line": 26,
+      "evidence": "curl | bash",
+      "file_sha256": "faae029159d6edf466fd15be35e6a3f43f3221c8ea173092c912d32a0243a2f0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "radin-d602c7a5735a9c3898acc07a38fd8ec06b46d9f7/skills/radin-record/SKILL.md",
+      "line": 13,
+      "evidence": "p=0.99 The instruction sets the scope:",
+      "file_sha256": "4c71b47aacb171ec259a215b62dd1b5adfcc4e274399b5af769c2e9e599e5cc8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "img.shields.io",
+    "pele.run",
+    "raw.githubusercontent.com",
+    "www.contributor-covenant.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
