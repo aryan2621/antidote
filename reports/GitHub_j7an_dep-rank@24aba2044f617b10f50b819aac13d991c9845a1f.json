@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "j7an/dep-rank",
+    "version": "24aba2044f617b10f50b819aac13d991c9845a1f",
+    "download": "https://codeload.github.com/j7an/dep-rank/tar.gz/24aba2044f617b10f50b819aac13d991c9845a1f"
+  },
+  "archive_sha256": "ab0db209c5561d8743cc77e5eb4570176d82acb5ce5d928778c96afcd924fa60",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "dep-rank-24aba2044f617b10f50b819aac13d991c9845a1f/tests/test_shared_workflows_contract.py",
+      "line": 272,
+      "evidence": "(ROOT / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "e6653e11cd07f5cdbbf917bc681d70b5a69bb69c4af249964f370fed107e53d4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dep-rank-24aba2044f617b10f50b819aac13d991c9845a1f/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.97 # Project Instructions",
+      "file_sha256": "37686675d2113692dd7173b4f4cfa849c348021265377816bc08f93b3c3b3857"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.deps.dev",
+    "api.github.com",
+    "api.npmjs.org",
+    "arxiv.org",
+    "conf.researchr.org",
+    "deps.dev",
+    "docs.docker.com",
+    "docs.github.com",
+    "evil.example",
+    "example.com",
+    "files.pythonhosted.org",
+    "ghcr.io",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "osv.dev",
+    "packages.ecosyste.ms",
+    "proxy.invalid",
+    "pypi.org",
+    "static.modelcontextprotocol.io",
+    "test.pypi.org",
+    "www.github.com",
+    "www.python.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,107 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GabrielMartinMoran/mind",
+    "version": "4e9a41e9432810269553e7a369d05d0bd1f36852",
+    "download": "https://codeload.github.com/GabrielMartinMoran/mind/tar.gz/4e9a41e9432810269553e7a369d05d0bd1f36852"
+  },
+  "archive_sha256": "4e50d2326a26ea6bbf9a39b8c4ad1c834ebac9dfa371b84318279c7b7cf1e7e5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/scripts/install.sh",
+      "line": 28,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "e3c82a7d0a656536a7a1e3d1eb82d2ad89a65c85de27436bdc21db41c2768eb3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/scripts/install.sh",
+      "line": 28,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "e3c82a7d0a656536a7a1e3d1eb82d2ad89a65c85de27436bdc21db41c2768eb3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/README.md",
+      "line": 89,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GabrielMartinMoran/mind/main/script",
+      "file_sha256": "3e23950c5f47a883f99072ae37c7bf5fd709552b31e724e495c642397b9fed63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/Dockerfile.test-curl-installer",
+      "line": 15,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "9fa1df1043bc921cd2e919944f890d9404b1e031156878ccb41ad646f30d9d17"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/.agents/skills/clean-architecture/references/entity-pure-business-rules.md",
+      "line": 10,
+      "evidence": "p=0.93 Entities encapsulate enterprise-wide business rules that would exist regardless ",
+      "file_sha256": "7bae61562de181dd6255a08b2675274bcd56d42c37c501b1a4861e91c8f126a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mind-4e9a41e9432810269553e7a369d05d0bd1f36852/.agents/skills/bun-development/SKILL.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "f5ecf8a22f01be88194e0158003ee91ce8d7639f4db3b34497d5e6a8c103f107"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "antigravity.google",
+    "api.github.com",
+    "api.openai.com",
+    "api.star-history.com",
+    "blog.cleancoder.com",
+    "blog.ploeh.dk",
+    "bun.sh",
+    "code.visualstudio.com",
+    "cursor.com",
+    "daringfireball.net",
+    "developers.openai.com",
+    "docs.anthropic.com",
+    "docs.microsoft.com",
+    "docs.windsurf.com",
+    "elysiajs.com",
+    "evil.test",
+    "example.test",
+    "foundry.ivandack.ar",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "martinfowler.com",
+    "opencode.ai",
+    "openrouter.ai",
+    "platform.openai.com",
+    "raw.githubusercontent.com",
+    "registry.npmmirror.com",
+    "semver.org",
+    "unpkg.com",
+    "www.apache.org",
+    "www.archunit.org",
+    "www.growing-object-oriented-software.com",
+    "www.oreilly.com",
+    "www.star-history.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

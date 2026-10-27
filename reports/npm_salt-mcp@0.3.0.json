@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "salt-mcp",
+    "version": "0.3.0",
+    "download": null
+  },
+  "archive_sha256": "a2d75d82527ca4a0a09655f3b4cc6f8cef7b2ecde60163457a5f60b5a29884ee",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/src/http.mjs",
+      "line": 288,
+      "evidence": "app.post(\"/mcp\", async (req, res) => { // Rate limit FIRST -- ahead of legacy/be",
+      "file_sha256": "b947eea56643721c2f2bab1d12f35fefd1728f8a01d47b1fc030a742bd149c88"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "anysphere.cursor-deeplink",
+    "api.saltapp.ai",
+    "attacker.example",
+    "code.claude.com",
+    "cursor.com",
+    "github.com",
+    "img.shields.io",
+    "mcp.saltapp.ai",
+    "modelcontextprotocol.io",
+    "registry.modelcontextprotocol.io",
+    "saltapp.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

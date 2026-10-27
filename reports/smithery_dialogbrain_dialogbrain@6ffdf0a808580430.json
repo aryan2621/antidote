@@ -1,0 +1,1143 @@
+{
+  "item": {
+    "source": "smithery",
+    "ecosystem": "smithery",
+    "name": "dialogbrain/dialogbrain",
+    "version": "6ffdf0a808580430",
+    "download": null,
+    "tools": [
+      {
+        "name": "contacts_find",
+        "description": "👤 Search for contacts in your address book by name or username.\n\nWhen to use:\n- User asks 'find contact X' or 'who is Y?'\n- User wants to know someone's username or ID\n- Before sending a message to verify contact exists\n- To get contact's channel reference for messaging\n\nExamples:\n❓ User: 'find contact named [name]'\n→ contacts_search(query='[name]', limit=5)\n\n❓ User: 'who is [full name]?'\n→ contacts_search(query='[full name]', limit=1)\n\n❓ User: 'search for @username'\n→ contacts_search(query='username', limit=10)\n\nA single first name ('Dima') also finds private chats where the owner wrote that name (match_type='addressed_in_outgoing', with `evidence`): people are often saved under a nickname but called by name in the chat.\n\nReturns: name, username, channel, channel_ref, similarity_score, match_type. Plus:\n- entity_id: local DB key — pass to contacts.profile. Null for live-discovered contacts (skip contacts.profile for those).\n- telegram_user_id (when channel='telegram'): the Telegram user ID — pass to calls.make / messages.send. NOT entity_id."
+      },
+      {
+        "name": "contacts_discover",
+        "description": "Search for a contact on a live channel (Telegram, WhatsApp, etc.) before adding them. Use this to look up a person by username or phone number before calling contacts.sync. This is the right tool when asked to add or find a specific person by @username or phone (use contacts.sync afterwards to actually add them) — not group_discovery."
+      },
+      {
+        "name": "contacts_research",
+        "description": "Research a person before outreach: returns a synthesized profile (current role, company, location, career history, education, LinkedIn/social URLs) plus a candidates array for disambiguating namesakes. Use to personalize a first touch or brief before a meeting. Does NOT return contact channels (email/phone/telegram) — use contacts.discover to add a reachable channel, or the LinkedIn URL from the result for a connection request."
+      },
+      {
+        "name": "contacts_sync",
+        "description": "Add a discovered contact and open a conversation thread. Returns thread_id for the new conversation, plus entity_id — the canonical handle to pass as contacts.update's contact_id. Call contacts.discover first to verify the contact exists."
+      },
+      {
+        "name": "contacts_profile",
+        "description": "👤 Get full profile for a contact: all channel identities, notes, role, capabilities, birthday.\n\nWhen to use:\n- After contacts.find to get complete info about a specific person\n- To see all channels a contact is reachable on\n- To read notes, role, or capabilities for a contact\n\nRequires contact_id (entity_id) from contacts.find."
+      },
+      {
+        "name": "contacts_groups",
+        "description": "👥 Every group and channel a person is in together with us: Telegram's own 'groups in common' list, asked from each Telegram account of the workspace.\n\nPass contact_id (entity_id from contacts.find), or telegram_user_id, or a Telegram @username. Each group has its title, kind (group/channel), members, which of our accounts is in it, and thread_id when we keep it as a chat (read it with messages.read_history).\n\nGroups none of our accounts is in cannot be seen; Telegram does not show them."
+      },
+      {
+        "name": "contacts_update",
+        "description": "✏️ Update a contact's profile: name, notes, role, capabilities, birthday, preferred channel.\n\nWhen to use:\n- User wants to add notes about a contact\n- User wants to set/update role or capabilities for a contact\n- User wants to rename a contact or update birthday\n\nRequires contact_id — the entity_id returned by contacts.find or contacts.sync. At least one optional field must be provided."
+      },
+      {
+        "name": "contacts_add_channel",
+        "description": "🔗 Link a channel identity (email, phone, Telegram/WhatsApp handle) to an existing contact.\n\nWhen to use:\n- User learns a contact's email or phone and wants to save it\n- Adding a second channel for an existing person\n\nEmail/phone are stamped as the contact's identity keys, so channel sync attaches the matching conversation to the same contact automatically.\nIf the identity already belongs to a DIFFERENT contact, the call fails unless merge_if_linked=true — which IRREVERSIBLY merges the two contacts into one. Requires contact_id (entity_id) from contacts.find."
+      },
+      {
+        "name": "contacts_merge",
+        "description": "🧬 Merge two contacts into one: all channel identities, scores and summaries of the second contact move onto the first, and the second contact record is deleted.\n\nWhen to use:\n- contacts.find shows the same person twice (e.g. a messenger contact and an email contact)\n- The user explicitly asks to merge two specific contacts\n\nBoth ids are entity_id values from contacts.find. The merge is recorded in Review Duplicates and can be undone there (undo is heuristic, not guaranteed). Never merge on name similarity alone — confirm the pair is really one person first."
+      },
+      {
+        "name": "contacts_capture_lead",
+        "description": "📝 Save the current contact's details as a structured lead (contact + Contacts tab).\n\nWhen to use:\n- In a website-chat OR voice-call conversation, as soon as the person has given at least ONE way to reach or identify them — a name, a phone number or an email (plus company / use case if mentioned) — e.g. when booking a demo or a class. A phone number with no name is still a lead: capture it, then ask for the name if you need it.\n- Call it once you have the details; then continue (e.g. share the booking link).\n\nCreates/links a contact record and a lead entry in the workspace's lead inbox. Works in any conversation thread (website chat, voice call, DM)."
+      },
+      {
+        "name": "group_search",
+        "description": "Search for public groups or channels by topic on Telegram (or other channels). Returns matching groups with title, member count, and whether messages can be previewed.\n\nFinds public groups/channels by topic — NOT individual people. To find or add a specific person by @username, use contacts.discover / contacts.find instead.\n\nWhen to use:\n- Finding groups related to a topic or niche\n- Building a list of groups for outreach or monitoring\n\nAfter searching, use group.scan to evaluate quality before joining."
+      },
+      {
+        "name": "group_add",
+        "description": "Add a specific group to your discovery list by @username or invite link (t.me/...).\n\nGroups and channels only — this does NOT add an individual person/contact. To add a person by @username (e.g. a customer or lead), use contacts.discover then contacts.sync instead.\n\nWhen to use:\n- You already know the group's @username or invite link\n- Adding a known group without searching\n\nReturns: group metadata including id, title, member_count."
+      },
+      {
+        "name": "group_list",
+        "description": "List groups in this workspace's DISCOVERY/SCORING list (the discovered_group table).\n\n⚠️ This is NOT your messageable inbox. It is a subset used for discovery + quality scoring. Absence here does NOT mean a chat isn't joined or can't be messaged.\nEach row includes thread_channel_ref — the ref a synced thread carries — so you can match rows against search_threads results. To get a thread_id you can send to, use search_threads.\n\nLifecycle values:\n- discovered: found but not yet evaluated\n- bookmarked: saved for later\n- monitored: joined and actively syncing messages\n- dismissed: hidden\n\nBy default, dismissed groups are excluded.\nReturns: id, title, member_count, lifecycle, scan_status, overall_score, is_member, can_post, my_rank."
+      },
+      {
+        "name": "group_preview_messages",
+        "description": "Read recent public messages from a group without joining it. Only works for groups where can_preview_history=true.\n\nUse this to manually evaluate message quality before deciding to join. For an automated quality score, use group.scan instead.\n\nReturns: list of recent messages with sender identity (username, name, admin flag), text (150-char previews; pass full_text=true for untruncated), date, is_reply."
+      },
+      {
+        "name": "group_scan",
+        "description": "Scan a group to evaluate its quality before joining. Fetches recent messages, analyzes activity, spam, and engagement, then returns a quality score and plain-English verdict.\n\nWhen to use:\n- After finding groups with group.search\n- Before deciding which groups to join\n\nReturns: overall_score (0-1), is_disqualified, disqualify_reasons, individual scores, and a verdict string."
+      },
+      {
+        "name": "group_join",
+        "description": "Join a group and start syncing its messages to your inbox. The group must be in your discovery list (use group.search or group.add first).\n\nWhat this does:\n- Joins the group on Telegram (or other channel)\n- Creates a thread in your inbox for syncing messages\n- Optionally enables AI auto-reply drafts\n\nReturns: success, thread_id, auto_reply_enabled."
+      },
+      {
+        "name": "group_admins",
+        "description": "List administrators of a group on Telegram (or other channels).\n\nReturns admin metadata including:\n- Admin rank (creator or admin)\n- Username and real name\n- Can they post (for restricted groups)\n- Bot status\n\nUse this to understand group leadership before outreach or evaluation.\nReturns: group_id, title, admins list, total admin count."
+      },
+      {
+        "name": "group_leave",
+        "description": "Leave a group and stop syncing its messages to your inbox. The group will be moved back to discovered state (can rejoin later).\n\nWhat this does:\n- Leaves the group on Telegram (or other channel)\n- Stops syncing new messages\n- Disables any AI auto-reply drafts for this group\n- Keeps the group in discovery list (not deleted)\n\nReturns: success, thread_id."
+      },
+      {
+        "name": "group_create",
+        "description": "Create a new group on a channel (Telegram or WhatsApp). Returns the new group's chat ID and invite link.\n\nWhat this does:\n- Creates a new group with the specified title\n- Returns chat_id, invite_link, and channel_ref for further operations\n- Optionally registers the group in your inbox for monitoring\n\nReturns: success, chat_id, channel_ref, title, thread_id."
+      },
+      {
+        "name": "group_add_member",
+        "description": "Add a member to an existing group on Telegram or WhatsApp.\n\nWhat this does:\n- Adds the specified member to the group\n- Resolves the member by username, phone number, or JID\n- Reports if the member is already in the group\n\nReturns: success, chat_id, member, already_member."
+      },
+      {
+        "name": "group_promote_admin",
+        "description": "Promote a member to admin in an existing group on Telegram or WhatsApp.\n\nWhat this does:\n- Gives the specified member admin status in the group\n- On Telegram, this grants visibility of all group messages (even if not a bot)\n- Defaults to minimal/empty rights; specify custom rights if needed\n\nReturns: success, chat_id, member."
+      },
+      {
+        "name": "group_get_invite_link",
+        "description": "Get an invite link for an existing group (Telegram, WhatsApp).\n\nWhat this does:\n- Telegram: mints a FRESH link (e.g. t.me/+...) on every call; previously issued links stay valid\n- WhatsApp: returns the group's EXISTING link, the same one each time. Do not describe it to anyone as newly issued\n- Requires the connected account to be the group's owner or an admin with invite rights\n\nWhen to use:\n- A member can't be added directly because their privacy settings block invites (group.add_member fails with a privacy error) — send them this link instead\n- Onboarding people to a private group\n\nReturns: success, chat_id, invite_link."
+      },
+      {
+        "name": "group_moderate",
+        "description": "Run ONE moderation action on a group the connected account administers (Telegram bot groups today).\n\nActions:\n- invite_link: mint a fresh invite link; older links stay valid. Optional params: name, member_limit, expire_date, creates_join_request\n- revoke_invite_link: params: invite_link\n- admins: list administrators (user_id, username, name, status)\n- member_count: how many members the group has\n- member_status: one member's status. params: user_id\n- promote / demote: params: user_id, optional rights {can_*: bool}\n- ban / unban: params: user_id, optional revoke_messages\n- mute / unmute: params: user_id, optional until_date (unix ts)\n- pin / unpin: params: message_id (omit on unpin for the latest), optional silent\n- set_title: params: title\n- set_description: params: description\n\n⚠️ A Telegram BOT cannot add a member or create a group — the Bot API has no method for either. To bring someone in, mint an invite_link and send it to them.\n\nTelegram rules that surprise callers (all verified against a live group):\n- A bot may only promote/demote admins IT promoted. Check `can_be_edited` in member_status first: false means demote will answer 'not enough rights', and that is Telegram, not a failure on our side.\n- promote additionally needs the bot to hold can_promote_members in the group; plain admin rights are not enough.\n- After unmute the status stays 'restricted' while every can_send_* is true. That is Telegram labelling anyone who carries an explicit permission set — it does NOT mean still muted. Read the permissions, not the status.\n- unban lifts the ban but does not bring the person back: the status becomes 'left' and they must rejoin.\n\nReturns: success plus the action's own keys (invite_link, admins, member_count, status) and `result`, Telegram's own payload."
+      },
+      {
+        "name": "files_ingest",
+        "description": "Save and index a file into the knowledge base. Use this when the user asks to save, store, or remember a document. The file will be processed (OCR if needed) and indexed for future search."
+      },
+      {
+        "name": "files_read",
+        "description": "Read **text content** of an attached file. Works for: .txt, .md, .json, code files, and PDFs (after files.ingest extracts text). DO NOT call on binary files — for IMAGES use `files.get_base64`, for AUDIO/VIDEO it cannot be transcribed via this tool, and for non-PDF DOCUMENTS run `files.ingest` first, THEN files.read. Calling on a binary mime-type returns an error — saves you a turn to read the routing hint before deciding."
+      },
+      {
+        "name": "files_upload",
+        "description": "Upload a file to DialogBrain and get a file_id for use in messages_send.\n\nWhen to use:\n- User wants to send a file/image to a contact\n- Before calling messages_send with an attachment\n\nFor a file that already exists on disk, use files_create_upload_url instead: `content` here travels through the conversation twice (once read, once written back), so it is only sensible up to about 50 KB. `source_url` is fine at any size — the fetch happens server-side.\n\nReturns: file_id (integer) to pass to messages_send attachments parameter."
+      },
+      {
+        "name": "files_create_upload_url",
+        "description": "Get a URL to upload a local file DIRECTLY to storage, without passing its bytes through this conversation.\n\nUse this for any file you already have on disk — it is the only way to send one without spending tokens on its contents, and the only way to send anything above ~50 KB at all.\n\nThree steps:\n1. files_create_upload_url(filename, mime_type, size_bytes, sha256)\n2. curl -X PUT --data-binary @/path/to/file <upload_url> (send every header from `headers` verbatim)\n3. files_complete_upload(file_id) -> the file is ready\n\nPass sha256 when you can: if the workspace already holds that exact file you get its file_id back immediately with deduplicated=true and no upload at all.\n\nReturns: file_id, upload_url, method, headers, expires_at."
+      },
+      {
+        "name": "files_complete_upload",
+        "description": "Finish an upload started with files_create_upload_url, after the bytes have been PUT to the upload_url.\n\nVerifies the object actually landed and matches the size (and sha256, when one was declared), then makes the file usable: from here file_id works in messages_send, messages_send_email attachments, documents.create, and the rest.\n\nReturns: file_id, status, byte_size, mime_type."
+      },
+      {
+        "name": "images_generate",
+        "description": "Generates a PNG image from a text prompt using Gemini 2.5 Flash Image. Returns a file_id consumable by messages.send(attachments=[...]) and other file-aware tools. Supports up to 12 reference image file_ids for subject-consistent edits and composition (use file IDs from the [ATTACHMENTS] block, files.search, or search.files). Latency: ~8-10s per image. Output: 1024×1024 PNG."
+      },
+      {
+        "name": "videos_generate",
+        "description": "Generate a short video (5-10s) from a text prompt using BytePlus Seedance. Optionally accepts up to 12 image file IDs from the user's attached files (visible in the [ATTACHMENTS] block) as `reference_file_ids` for style and composition. Returns immediately with a job_id; the video is delivered back via continuation when the job completes (~30-90s for fast model, ~2-5min for pro). Reference images are temporarily re-hosted on a third-party CDN (imgbb) for the duration of generation and deleted on completion — don't submit confidential references. Gated behind a workspace opt-in flag."
+      },
+      {
+        "name": "images_search",
+        "description": "Searches images in this workspace by visual content using vector embeddings (Voyage multimodal-3). Pass a text description; returns ranked file_ids with cosine scores and presigned download URLs. Up to 50 results."
+      },
+      {
+        "name": "vision_query",
+        "description": "Look at the screen currently being shared in a meeting and answer a question about it. Returns a natural-language answer based on the visual content. Use ONLY when the user explicitly asks about the screen/slide/document being shown."
+      },
+      {
+        "name": "youtube_list_videos",
+        "description": "List videos on the connected YouTube channel. Returns id, title, published_at, view_count. Paginate via page_token."
+      },
+      {
+        "name": "youtube_list_comments",
+        "description": "List comment threads on a YouTube video. Pass video_id (e.g. 'dQw4w9WgXcQ') or channel_ref ('youtube:video:<id>'). Returns top-level comments with inline replies."
+      },
+      {
+        "name": "youtube_post_comment_reply",
+        "description": "Post a comment on a YouTube video, or reply to an existing comment. Pass video_id for a top-level comment, OR parent_comment_id to reply. AI-disclosure suffix appended automatically when configured."
+      },
+      {
+        "name": "youtube_delete_comment",
+        "description": "Permanently delete a YouTube comment by id (or 'youtube:comment:<id>'). Cannot be undone. Costs 50 quota units."
+      },
+      {
+        "name": "youtube_delete_video",
+        "description": "Permanently delete a YouTube video by id (or 'youtube:video:<id>'). Cannot be undone. Costs 50 quota units. Caller must own the channel."
+      },
+      {
+        "name": "youtube_update_video",
+        "description": "Update title, description, privacy, or tags on a YouTube video. Costs 1600 quota units. Only fields provided are changed."
+      },
+      {
+        "name": "youtube_moderate_comment",
+        "description": "Apply a moderation status to a YouTube comment. Allowed status values: heldForReview, published, rejected, spam. Costs 50 quota units."
+      },
+      {
+        "name": "youtube_upload_video",
+        "description": "Upload a workspace-owned video file (file_id) to the connected YouTube channel. Returns video_id + thread_id. Costs 1600 quota units. Default privacy is 'private' — pass privacy='public' to publish."
+      },
+      {
+        "name": "youtube_video_query",
+        "description": "Ask Gemini about a YouTube video. Pass a video URL and any prompt — verbatim transcript with timestamps, summary, targeted Q&A about content or visuals, translation, etc. Works on any public/unlisted video."
+      },
+      {
+        "name": "tiktok_publish_video",
+        "description": "Publish a workspace-owned video file (file_id) to the connected TikTok account via the Content Posting API. Returns publish_id + final status. Note: until the TikTok app audit passes, TikTok forces SELF_ONLY (private) visibility."
+      },
+      {
+        "name": "tiktok_list_videos",
+        "description": "List videos on the connected TikTok account. Returns id, title, share_url, view/like/comment/share counts. Paginate via cursor."
+      },
+      {
+        "name": "tiktok_account_stats",
+        "description": "Get the connected TikTok account's profile (username, display name, avatar) and stats (followers, following, likes, videos)."
+      },
+      {
+        "name": "threads_channel_publish_post",
+        "description": "Publish a post to the connected Meta Threads account. Supports TEXT, IMAGE, VIDEO and CAROUSEL (2-20 items). Text is limited to 500 characters and 5 links. Media must be given as a PUBLIC URL — Threads has no file upload endpoint. Returns the published post id and permalink."
+      },
+      {
+        "name": "threads_channel_list_posts",
+        "description": "List posts published by the connected Meta Threads account. Returns id, text, permalink, media_type and timestamp. Paginate with the returned `after` cursor."
+      },
+      {
+        "name": "threads_channel_post_insights",
+        "description": "Get engagement metrics for one Meta Threads post: views, likes, replies, reposts and quotes."
+      },
+      {
+        "name": "threads_channel_account_stats",
+        "description": "Get the connected Meta Threads account's profile (username, name, avatar) and account-level insights (followers, views, likes, replies, reposts, quotes)."
+      },
+      {
+        "name": "threads_channel_hide_reply",
+        "description": "Hide a reply on a Meta Threads post owned by the connected account. Also hides every nested reply beneath it."
+      },
+      {
+        "name": "threads_channel_unhide_reply",
+        "description": "Unhide a previously hidden reply on a Meta Threads post owned by the connected account. Also unhides its nested replies."
+      },
+      {
+        "name": "instagram_publish_media",
+        "description": "Publish a photo (IMAGE), a video (REELS) or a carousel of 2-10 images from workspace files to a connected Instagram Business/Creator account. Pass file_id for one, file_ids for a carousel. Returns media_id + permalink. Instagram allows ~25 publishes per day."
+      },
+      {
+        "name": "instagram_update_media",
+        "description": "Update the caption of a published Instagram photo or Reel. Only caption is editable after publish (Instagram limitation)."
+      },
+      {
+        "name": "instagram_list_media",
+        "description": "List photos and Reels on the connected Instagram Business/Creator account. Returns id, caption, media_type, permalink, thumbnail_url, timestamp."
+      },
+      {
+        "name": "x_publish_post",
+        "description": "Publish a post to the connected X (Twitter) account with optional media. Text can include mentions, hashtags, and URLs. Media files are uploaded via v2 chunked upload. Returns tweet_id and URL."
+      },
+      {
+        "name": "files_info",
+        "description": "Get metadata and download URLs for files by their IDs.\n\nWhen to use:\n- After messages_read_history returns attachment_file_ids\n- To get a presigned download URL to read a received file\n\nReturns: filename, mime_type, byte_size, download_url (1-hour presigned URL)."
+      },
+      {
+        "name": "files_get_base64",
+        "description": "Download one or more files server-side and return their content as base64-encoded strings. Use this to inspect images, PDFs, or any binary file attached to messages when you cannot access presigned S3 URLs directly. Supports up to 5 files per call, max 15 MB each. For large files batch in groups of 1-2 to avoid oversized responses. For images, pass `variants` to get processed copies instead of the original: rotate (clockwise) a photo taken sideways or upside down, enhance a faded print, or crop and enlarge a region with small text. Ask for both rotate 90 and 270 in one call when the text runs vertically and you cannot tell which way is up. An MCP client shows at most 5 images per response; the rest are listed, not shown."
+      },
+      {
+        "name": "files_delete",
+        "description": "Permanently delete files from this workspace by their IDs (generated documents, uploads, screenshots, etc.).\n\nIRREVERSIBLE: removes the DB record, detaches every reference (knowledge collections, thread pins, message attachments), and deletes the stored blob. There is no undo.\n\nUse to clean up leftover / superseded generated files. Only files that belong to this workspace are touched; unknown or other-workspace ids are returned under `not_found`. Max 20 per call."
+      },
+      {
+        "name": "messages_read_history",
+        "description": "Read messages from a conversation thread. Use text_contains to find specific messages by content. text_contains searches the loaded part of the conversation and, when that is not all of it, asks the channel's own server (Telegram) to search the rest and stores the hits with their neighbouring messages. `search_coverage` says which: `complete = true` with a `source`, or `complete = false` with the reason, in which case an empty list is not proof the text is absent. Returns the most recent messages, including sender info and timestamps.\n\nVoice calls: each row carries a `meta` object with allowlisted keys (`event_type` ∈ 'call_started'|'call_ended'|null, `source` ∈ 'voice_transcript'|null, `call_id`, `speaker_display_name`, `duration_seconds`, `outcome`, `direction`) plus per-message `channel`. To find calls without scanning every row, use `calls.list_history` instead.\n\nUsage:\n1. Get thread_id from threads.list first, OR\n2. Use contact_name to auto-resolve thread_id\n\nExamples:\n- User: 'show me messages from chat with [contact]' → read_history(contact_name='[contact]', limit=10)\n- User: 'last 5 messages from thread 571' → read_history(thread_id=571, limit=5)"
+      },
+      {
+        "name": "channels_connect_telegram_bot",
+        "description": "🤖 Connect a Telegram Bot (Bot API) channel from its bot token.\n\nWhen to use:\n- After a bot was created via @BotFather and you have its token.\n- The token alone is sufficient — no Telegram user account is needed.\n\nValidates the token, creates the channel account, and registers the webhook so the bot starts receiving messages immediately."
+      },
+      {
+        "name": "channels_connect",
+        "description": "🔌 Connect a messaging channel to this workspace, or find out how.\n\nCall with no `channel` for the catalogue: every channel, its connect_mode and its link.\nCall with `channel` only to learn what to ask the person for (credential_fields).\nCall with `channel` + `credentials` to connect a credentials channel: email over IMAP with an app password, telegram_bot with a bot token, line with the channel access token and channel secret, avito.\n\nChannels that need a QR scan, a phone code or a browser sign-in (telegram, whatsapp, instagram, facebook, email (Google sign-in), youtube, tiktok, x, threads, linkedin, wechat, zalo, maxru, the voice carriers) cannot be connected from here: the tool answers success with needs_person=true and the link https://dialogbrain.com/connect/<channel>, which opens the connection dialog for that channel. Give the person that link; do not tell them to look for it in settings. A website widget is not connected here at all: use widgets.create."
+      },
+      {
+        "name": "channels_list",
+        "description": "📋 The messaging channels connected to this workspace and whether they are working.\n\nOne row per channel account: channel, display_name, status, error, and `reconnect_url` when the account needs repair. A channel in status 'error' is NOT receiving messages — say so plainly and give the person `reconnect_url`; it opens the repair directly, so do not tell them to look for it in settings and do not build a link of your own.\n\nPass `only_broken=true` to check for outages without listing the healthy channels."
+      },
+      {
+        "name": "channels_contacts",
+        "description": "👥 Load people into a custom channel account, so its conversations are titled with names and each person has a card in the workspace's contacts.\n\n`contacts` is a list of {contact_id, display_name, conversation_id?, avatar_url?, details?}. `contact_id` is the platform's id for the person. `details` may carry email, phone, about, company, job_title, linkedin, website. Give `conversation_id` for people the account already has a conversation with.\n\n`import_history`: 'answered' reads into the inbox only the conversations in which the other side wrote; 'all' reads every conversation; omit it to load names only. The import runs in the background; a second request while one runs is queued, not lost. Check progress with channels.list(account_id=...): history_import.skipped counts the conversations left out and not_imported names the first 100 with the reason. Up to 5000 contacts per call; loading again is safe."
+      },
+      {
+        "name": "channels_update_profile",
+        "description": "🪪 Update a connected channel's bot profile: display name, long description (the \"What can this bot do?\" card), short description, the `/` command menu, and the persistent menu button next to the input field.\n\nEvery field is optional — pass only what you want to change; any field you omit is left exactly as it is.\n\n`menu_button` with `type=\"web_app\"` is what puts a persistent button next to the input field that opens a Mini App page bound to this bot (pass the page's https URL as `menu_button.url`).\n\nTwo things this tool CANNOT set, because the Bot API does not expose them — both stay BotFather-only: the bot's AVATAR, and registering a NAMED Mini App (t.me/bot/appname). `menu_button.web_app` and any `web_app` message button work off a direct URL and need no such registration."
+      },
+      {
+        "name": "channels_get_profile",
+        "description": "🪪 Read a connected channel's current bot profile: display name, long description, short description, the `/` command menu and the persistent menu button.\n\nPass `language_code` to read back a localized variant instead of the default one."
+      },
+      {
+        "name": "threads_update",
+        "description": "✏️ Update a conversation thread: rename it, add notes/description, move it to a folder, or take it out of sync.\n\nWhen to use:\n- User wants to rename a chat or group\n- User wants to add notes/context about a conversation\n- User wants to organize threads into folders\n- User wants a chat to stop showing up and stop syncing (`synced=false`) — e.g. the personal chats on an account that is only in the workspace for its work groups. Nothing is deleted; `synced=true` brings it back.\n\nFor DM threads, renaming also updates the linked contact's display name by default.\nPass thread_id for one thread, or thread_ids to apply the same change to several. Ids come from threads.list / search.threads."
+      },
+      {
+        "name": "threads_delete",
+        "description": "🗑️ PERMANENTLY delete conversation thread(s) and their messages + user-facing state (tags, assignments, drafts, reminders, RAG chunks). Destructive and NOT undoable — requires confirm=true.\n\nPass thread_id for one, or thread_ids for a bulk delete. Kept intentionally: call history (voice_sessions), usage/billing, traces, and outreach dedup are NOT removed.\nNote: for a live synced channel (Telegram/WhatsApp) this clears the LOCAL copy; a new inbound can re-create the thread on next sync. For livechat/voice/test/duel threads it's effectively permanent."
+      },
+      {
+        "name": "folders_create",
+        "description": "📁 Create a new inbox folder to organize threads.\n\nWhen to use:\n- User wants to create a folder to group related conversations\n- User wants to organize threads by topic, project, or contact type\n\nAfter creating a folder, use threads.update with folder_id to move threads into it."
+      },
+      {
+        "name": "folders_delete",
+        "description": "🗑️ Delete an inbox folder. Threads inside become unfiled (not deleted).\n\nWhen to use:\n- User wants to remove a folder they no longer need\n- User wants to clean up their inbox organization\n\nThreads inside the folder are NOT deleted — they simply move back to the inbox."
+      },
+      {
+        "name": "ai_tags_list",
+        "description": "List all personal AI tags.\n\nAI tags are automatic message filters: the system runs a lightweight classifier on every incoming message and applies matching tags to threads. This lets AI agents skip expensive full analysis on most messages — they only act on threads that match relevant tags, dramatically cutting LLM costs.\n\nWhen to use:\n- Check which auto-classification filters exist before creating one\n- Get tag IDs for add_to_thread / remove_from_thread\n- See how many threads each tag currently matches\n\nReturns all tags with thread counts (non-archived, included threads only)."
+      },
+      {
+        "name": "ai_tags_create",
+        "description": "Create a new AI tag (automatic message filter).\n\nAI tags are lightweight classifiers that run on every incoming message. When a message matches the tag's description/criteria, the thread is automatically labelled — so AI agents can cheaply pre-filter threads instead of running full LLM analysis on everything. Good descriptions are the key: they tell the classifier exactly when to apply this tag.\n\nWhen to use:\n- User wants to auto-classify incoming messages (e.g. bug reports, sales leads, support requests)\n- User wants to reduce AI agent costs by pre-filtering threads by topic or intent\n\nTips for the description field:\n- Be specific: 'Messages reporting errors, crashes, or unexpected behavior in the product'\n- Include examples of what qualifies and what doesn't\n\nLimit: 20 active personal tags / 50 active team tags."
+      },
+      {
+        "name": "ai_tags_update",
+        "description": "Update an existing personal AI tag's name, description, icon, color, or active state.\n\nWhen to use:\n- User wants to rename a tag\n- User wants to change a tag's icon, color, or description\n- User wants to enable or disable a tag\n\nProvide only the fields you want to change. At least one field is required."
+      },
+      {
+        "name": "ai_tags_delete",
+        "description": "Delete a personal AI tag. All thread associations are removed automatically.\n\nWhen to use:\n- User wants to permanently remove a tag they no longer need\n\nThis cannot be undone. Threads are NOT deleted — they just lose this tag."
+      },
+      {
+        "name": "ai_tags_add_to_thread",
+        "description": "Apply one or more AI tags to a thread (manually).\n\nWhen to use:\n- User wants to label a conversation with one or more tags\n- User asks to categorize or tag a thread\n\nProvide the thread_id (integer) and an array of tag_ids to apply.\nIf a tag is already applied it will be updated to is_manual=true."
+      },
+      {
+        "name": "ai_tags_remove_from_thread",
+        "description": "Remove a specific AI tag from a thread.\n\nWhen to use:\n- User wants to un-label or remove a specific tag from a conversation\n- User wants to correct an incorrectly applied tag\n\nProvide both thread_id and tag_id."
+      },
+      {
+        "name": "ai_filters_list",
+        "description": "List all AI filters for the current workspace.\n\nAI filters are semantic intent-based message filters that use embeddings (vector representations) to detect whether an incoming message matches a specific intent or topic. Unlike keyword filters, they understand meaning: 'I need help with my order' and 'my package hasn't arrived' both match a 'shipping support' filter even without shared keywords.\n\nEach filter stores a reference embedding of its description. When a message arrives, its embedding is compared via cosine similarity against the filter's reference vector. If the similarity exceeds the threshold, the filter matches.\n\nWhen to use:\n- Check which semantic filters already exist before creating a new one\n- Get filter IDs for use in trigger conditions\n- Review thresholds and active status of existing filters\n\nReturns all filters with id, name, description, threshold, and is_active."
+      },
+      {
+        "name": "ai_filters_create",
+        "description": "Create a new AI filter for semantic intent-based message matching.\n\nAI filters use vector embeddings (via Voyage AI) to detect whether an incoming message matches a specific intent or topic. The filter's description is embedded as a reference vector at creation time. When a message arrives, its embedding is compared against this reference using cosine similarity.\n\nThe description field is the most important part — it becomes the reference embedding that all incoming messages are compared against. Write it as a clear statement of what kind of messages should match:\n- 'Customer asking about pricing, subscription plans, or billing'\n- 'User reporting a bug, crash, or unexpected behavior in the product'\n- 'Inbound sales lead expressing interest in purchasing or trialing'\n\nThe threshold controls sensitivity: 0.5 is a balanced default, lower values (0.3) cast a wider net, higher values (0.8) require closer matches.\n\nNote: This tool calls the Voyage AI embedding API to generate the reference vector."
+      },
+      {
+        "name": "ai_filters_update",
+        "description": "Update an existing AI filter's name, description, threshold, or active state.\n\nWhen to use:\n- User wants to rename a filter\n- User wants to refine the filter description to improve match accuracy\n- User wants to adjust the similarity threshold (higher = stricter matching)\n- User wants to enable or disable a filter without deleting it\n\nProvide only the fields you want to change. At least one field is required.\n\nNote: If the description is changed, this tool calls the Voyage AI embedding API to re-generate the reference vector with the new description text."
+      },
+      {
+        "name": "ai_filters_delete",
+        "description": "Permanently delete an AI filter.\n\nWhen to use:\n- User wants to remove a filter they no longer need\n\nThis action cannot be undone. Any triggers that reference this filter by ID will no longer match it — review and update those triggers after deletion."
+      },
+      {
+        "name": "ai_filters_test",
+        "description": "Test a message against an AI filter to check whether it would match.\n\nThis tool embeds the provided message using Voyage AI and computes the cosine similarity between the message vector and the filter's stored reference vector. It returns the similarity score, whether the message would match (similarity >= threshold), and the filter's threshold value.\n\nUse this to:\n- Verify a filter works as intended before using it in a trigger\n- Tune the threshold by testing borderline messages\n- Debug why a message did or did not match a filter in production\n\nReturns: {similarity: float, matched: bool, threshold: float}\n\nNote: This tool calls the Voyage AI embedding API to embed the test message."
+      },
+      {
+        "name": "messages_send",
+        "description": "Send a message to a thread, channel, or contact. Supports Telegram, Email, LinkedIn, and other connected channels. For LinkedIn posts (comment_thread kind), this posts a comment on the post. Can automatically resolve recipients and channels when not specified. Can send files/images/documents as attachments — pass `attachments=[file_id, ...]` with integer file IDs obtained from collections.list_files, search.files, or files.search. `text` is optional when attachments are provided."
+      },
+      {
+        "name": "messages_send_email",
+        "description": "Compose and send an email — with subject, CC/BCC, and attachments. Use for email; for chat messages (Telegram/WhatsApp/livechat) use messages.send instead."
+      },
+      {
+        "name": "messages_delete",
+        "description": "Delete a message from a thread. Supports Telegram, WhatsApp, and other connected channels. Note: Some channels have time limits on message deletion."
+      },
+      {
+        "name": "messages_edit",
+        "description": "Edit the text of a message you already sent, in place. Supported on Telegram, WhatsApp, LiveChat, Max.ru, LINE, WeChat and similar channels; NOT supported on Gmail, Instagram, or LinkedIn (their platforms forbid editing) — those return an explicit error. Note: channels impose their own limits (own messages only, edit time windows such as ~48h on Telegram / ~15min on WhatsApp).\n\nGet the message_id from messages.read_history (each row's id)."
+      },
+      {
+        "name": "messages_press_button",
+        "description": "Press a button under a message in a Telegram chat, as the connected Telegram account: the inline menus bots such as @BotFather reply with. Name the button by its exact label.\n\nReturns the message as it looks after the press (bots usually edit it into the next menu) and anything the bot sent after it, each with its own buttons and a message_id you can pass back to press the next one.\n\nRefused: buttons that need the account's cloud password (the owner confirms those in the Telegram app), and buttons that share a phone number or location, pay, or open a web app. A link button is not pressed; its URL is returned. A label that matches no button returns the buttons that exist.\n\nGet the message_id from messages.read_history. Telegram user accounts only; a bot account cannot press buttons."
+      },
+      {
+        "name": "messages_forward",
+        "description": "Forward a message from one thread to another. Supports native Telegram forwarding (preserves original sender attribution) and text-based forwarding for cross-channel scenarios."
+      },
+      {
+        "name": "knowledge_query",
+        "description": "Answer questions using knowledge base (uploaded documents, handbooks, files).\n\nUse for QUESTIONS that need an answer synthesized from documents or messages.\nReturns an evidence pack with source citations, KG entities, and extracted numbers.\n\nModes:\n- 'auto' (default): Smart routing — works for most questions\n- 'rag': Semantic search across documents & messages\n- 'entity': Entity-centric queries (e.g., 'Tell me about [entity]')\n- 'relationship': Two-entity queries (e.g., 'How is [entity A] related to [entity B]?')\n\nExamples:\n- 'What did we discuss about the budget?' → knowledge.query\n- 'Tell me about [entity]' → knowledge.query mode=entity\n- 'How is [A] related to [B]?' → knowledge.query mode=relationship\n\nNOT for finding/listing files, threads, or links — use search.files / search.threads / search.links for that."
+      },
+      {
+        "name": "knowledge_gaps_list",
+        "description": "List the questions agents could not answer from the knowledge base, merged by meaning and ordered by how often they were asked. Answer one with knowledge.gaps_answer."
+      },
+      {
+        "name": "knowledge_gaps_answer",
+        "description": "Answer a question from knowledge.gaps_list. Your title and answer are published as a knowledge article the asking agents will find next time; nothing is sent to the customer. Answering again replaces the previous answer."
+      },
+      {
+        "name": "kg_find_entity",
+        "description": "Find an entity by name in the Knowledge Graph.\n\nUSE WHEN user mentions a person, project, company by name and you need:\n- To resolve a name to entity_id for subsequent queries\n- 'Кто работает над X?' → find X first\n- 'Расскажи про Y' → find Y first\n\nRETURNS entity_id for use in kg.get_relationships or kg.explore.\nALWAYS use this as the FIRST step in KG query chains."
+      },
+      {
+        "name": "kg_get_relationships",
+        "description": "Get relationships for a specific entity from Knowledge Graph.\n\nUSE WHEN:\n- 'Кто работает над X?' - filter by works_on\n- 'С кем общался Y?' - filter by discussed_with\n- 'Кто из компании Z?' - filter by member_of\n- 'Что связано с W?' - no filter, get all\n\nREQUIRES: entity_id from previous kg.find_entity step.\nUse: {{step_N.entity_id}} where N is the find_entity step number."
+      },
+      {
+        "name": "calendar_create_event",
+        "description": "Create a new event in Google Calendar. Specify the title, start time, end time, and optionally invite attendees. Use ISO 8601 format for dates (e.g., 2024-12-15T14:00:00)."
+      },
+      {
+        "name": "calendar_list_events",
+        "description": "List events from Google Calendar. Shows upcoming events by default. Can filter by date range and search query."
+      },
+      {
+        "name": "calendar_update_event",
+        "description": "Update an existing event in Google Calendar. Can modify title, time, location, description, and attendees, and add a Google Meet link to an event that has none. Only specified fields will be updated."
+      },
+      {
+        "name": "calendar_delete_event",
+        "description": "Delete an event from Google Calendar. This action cannot be undone. Use with caution."
+      },
+      {
+        "name": "calendar_check_availability",
+        "description": "Check when you have free time in Google Calendar. Shows busy periods and free slots in a given time range. Useful for finding meeting times or checking schedule conflicts."
+      },
+      {
+        "name": "web_search",
+        "description": "Search the web for current information, news, facts, prices, or events. Use this when the user asks about something that requires up-to-date information from the internet, or when internal knowledge base doesn't have the answer. Examples: recent news, stock prices, weather, product information, current events."
+      },
+      {
+        "name": "web_fetch",
+        "description": "Fetches a single URL and returns its content. Use this when you have a specific URL in mind — for example, after web.search returns a link you want to read, or when the user pastes a URL.\n\nModes (extract):\n- 'auto' (default): picks the right mode based on response content type.\n- 'markdown': for HTML pages; returns cleaned markdown plus the page <title>.\n- 'text': for JSON/XML/plaintext APIs; returns the raw decoded body.\n- 'file': for images, PDFs, audio, video, archives, or any binary — ingests the bytes into the user's file storage and returns a file_id you can pass to messages.send (to send as an attachment), agents.add_file (to add to agent knowledge), or files.read.\n\nUse web.fetch (not files.upload) when you need the file_id immediately for the next tool call — files.upload(source_url=…) is async and won't have the file ready in the same turn.\n\nUse web.search (not web.fetch) when you don't have a specific URL yet and need to find one."
+      },
+      {
+        "name": "web_research",
+        "description": "Answer a research question from live web sources in one call — returns a synthesized answer with numbered [N] citation markers and a citations array of {url, title, index}. Supports recency and domain filters. Use for questions needing current, sourced information (news about a company, market state, comparisons). For raw search result links use web.search; mode='deep' runs minutes-long exhaustive research — only when explicitly requested."
+      },
+      {
+        "name": "web__local_search",
+        "description": "Multi-source web research with citations. Returns a synthesized answer with numbered [^1] markers and a citations array of {url, title, snippet, index}. Use for evidence-backed synthesis (competitive analysis, regulatory summary, whitepaper section). For quick fact lookups use web.search instead."
+      },
+      {
+        "name": "documents_create",
+        "description": "Render a document (PDF / HTML / PPTX / DOCX) and save it to the workspace.\n\nThis tool has two input pipelines — pass **exactly one** of `content_html` or `content_markdown`.\n\n# Pipeline A — `content_html` (canonical for decks, proposals, designed pages)\n\nYou author full HTML+CSS. A baked-in design-system preamble ships first\n(`<style>` with Inter/Manrope as data-URI fonts, CSS-variable palette tokens,\n8px spacing scale, and pre-styled layout helpers); your markup and any of\nyour own `<style>` blocks land after the preamble so you can override\nanything. Chromium renders the assembled document into a static PDF —\nJavaScript is disabled and DNS is blackholed, so external font / image /\nscript fetches will fail by configuration.\n\nRequired when this pipeline is used:\n- `title` — human-readable, used for PDF metadata and the saved filename.\n- `content_html` — the `<body>` and any custom `<style>` blocks. The\n  renderer wraps this in `<html>…</html>` and injects the preamble + a\n  canonical `<meta charset>` + `<title>`. Do NOT emit `<script>`,\n  `<iframe>`, `<object>`, `<embed>`, `<meta>`, `<link>`, `<base>`,\n  `<form>`, or event handlers — the sanitizer strips them.\n- `output_type` — `\"pdf\"` or `\"html\"`. (`\"pptx\"` and `\"docx\"` require\n  `content_markdown` since they need structured markdown intermediates.)\n\nOptional:\n- `page_preset` — `\"slide_16_9\"` (default for any deck), `\"a4\"` (default\n  for flowing documents — used if omitted), `\"letter\"`, or `\"none\"` (you\n  declare your own `@page` rule). For a web-styled page (dark background,\n  full-bleed sections) use `\"none\"` and declare `@page { margin: 0 }`,\n  set the background on `html` as well as `body`, and add\n  `print-color-adjust: exact` — the a4/letter presets keep 24mm paper\n  margins, which paint as a white frame around dark designs.\n- `design_tokens` — flat dict overriding the preamble's CSS variables.\n  Whitelisted keys: `brand_primary`, `accent`, `surface_dark` (hex color),\n  `font_display`, `font_body` (font name from ['Inter', 'Manrope', 'monospace', 'sans-serif', 'serif', 'system-ui', 'ui-monospace', 'ui-sans-serif', 'ui-serif']).\n- `language` — BCP-47 tag (default `\"en\"`). Drives `<html lang>`.\n\n## Slide structure (`page_preset=\"slide_16_9\"`)\n\nEach slide is `<section class=\"slide …\">…</section>`. The base `.slide`\nclass is what sizes it to the viewport and forces the page break — do\nnot drop it. Composable variants (apply alongside `.slide`):\n- `.slide-cover` — gradient hero, big display title.\n- `.slide-split` — two equal columns, image + narrative.\n- `.slide-stats` — three-up KPI cards (use `<div class=\"stat\">` with\n  `.stat-value` + `.stat-label` inside).\n- `.slide-quote` — centered pull quote + `<cite>` attribution.\n\nLayout helpers (work in any preset): `.grid-2`, `.grid-3`, `.split`,\n`.stack`, `.cluster`, `.callout`, `.muted`, `.kbd`.\n\n## Speaker notes\n\n`<aside class=\"notes\">…text…</aside>` inside a `<section class=\"slide\">`.\nThe sanitizer strips them from the rendered PDF and returns them as\n`slide_notes[]` (parallel to slide order). Orphan notes outside any slide\nare dropped with a warning.\n\n## Images\n\nOnly these `src` schemes resolve:\n- `file:NNN` — workspace `file_id`.\n- `data:image/...;base64,...` — inline.\n- `https://<host>` where `<host>` ∈ `DOCUMENTS_MEDIA_URL_ALLOWLIST`.\nOther URLs are dropped and replaced with an HTML comment placeholder.\n\n# Pipeline B — `content_markdown` (invoice / contract only)\n\nRequired:\n- `title`, `content_markdown`, `output_type`.\n\nOptional:\n- `theme` — `\"invoice\"` or `\"contract\"`. Triggers the corresponding\n  exemplar styling and (for invoices) the arithmetic validator that\n  fail-closes on missing or mismatched totals.\n- `language` — BCP-47 (default `\"en\"`).\n\n# Delivery contract (CRITICAL)\n\nAfter this tool returns `file_id`, deliver the file with\n`messages.send(attachments=[file_id], text=\"<short caption>\")`. Embedding\nthe file_id in a markdown link, `sandbox:` URL, or `/api/files/<id>/download`\ntext will render as plain text on the recipient's channel — the\n`attachments` parameter is the only way the file actually attaches.\n\n# Exemplars\n\nINVOICE (English):\n# Invoice INV-{YYYYMMDD-HHMMSS}\n\n**From:** {Issuer Legal Name}, {Address}, {Tax ID}\n**To:** {Customer Name}, {Customer Address}, {Customer Tax ID}\n**Issue date:** {YYYY-MM-DD}     **Due date:** {YYYY-MM-DD}\n\n| Description | Qty | Unit price | Total |\n|---|---:|---:|---:|\n| {Service 1} | 1 | 1500.00 | 1500.00 |\n| {Service 2} | 2 |  500.00 | 1000.00 |\n\n**Subtotal:** USD 2500.00\n**Tax (20%):** USD  500.00\n**Total:** USD 3000.00\n\n**Payment:** {bank details OR crypto wallet — never both}\n\n\nINVOICE (Russian):\n# Счёт-фактура № INV-{YYYYMMDD-HHMMSS}\n\n**От:** {Юридическое название организации}, {Адрес}, ИНН {Tax ID}\n**Кому:** {Название клиента}, {Адрес клиента}, ИНН {Tax ID}\n**Дата:** {YYYY-MM-DD}     **Срок оплаты:** {YYYY-MM-DD}\n\n| Описание | Кол-во | Цена | Сумма |\n|---|---:|---:|---:|\n| {Услуга 1} | 1 | 1500.00 | 1500.00 |\n| {Услуга 2} | 2 |  500.00 | 1000.00 |\n\n**Подытог:** USD 2500.00\n**НДС (20%):** USD  500.00\n**Итого:** USD 3000.00\n\n**Реквизиты:** {банковские реквизиты ИЛИ криптокошелёк — не оба сразу}\n\n\nCONTRACT (English):\n# Service Agreement\n\n**Between:** {Provider Legal Name}, {Address} (\"Provider\")\n**And:** {Client Legal Name}, {Address} (\"Client\")\n**Effective date:** {YYYY-MM-DD}\n\n## 1. Scope of services\n{Concise description of what Provider agrees to deliver.}\n\n## 2. Term\nThis Agreement begins on the Effective date and continues until {termination\ncondition or end date}.\n\n## 3. Compensation\nClient pays Provider {amount and currency} according to {payment schedule}.\n\n## 4. Confidentiality\nBoth parties agree to keep proprietary information of the other party\nconfidential during and after the term of this Agreement.\n\n## 5. Termination\nEither party may terminate with {N} days' written notice.\n\n## 6. Governing law\n{Jurisdiction}.\n\n---\n\n**Provider:** ____________________     **Client:** ____________________\n{Provider signatory name}              {Client signatory name}\n\n\nCONTRACT (Russian):\n# Договор оказания услуг\n\n**Между:** {Юридическое название Исполнителя}, {Адрес} (\"Исполнитель\")\n**И:** {Юридическое название Заказчика}, {Адрес} (\"Заказчик\")\n**Дата вступления в силу:** {YYYY-MM-DD}\n\n## 1. Предмет договора\n{Краткое описание услуг, которые Исполнитель обязуется оказать.}\n\n## 2. Срок действия\nДоговор вступает в силу с указанной даты и действует до {условие прекращения\nили дата окончания}.\n\n## 3. Стоимость и порядок оплаты\nЗаказчик оплачивает услуги Исполнителя в размере {сумма и валюта} в порядке\n{график платежей}.\n\n## 4. Конфиденциальность\nСтороны обязуются сохранять конфиденциальность сведений, полученных в ходе\nисполнения настоящего Договора, в течение срока его действия и после его\nпрекращения.\n\n## 5. Расторжение\nЛюбая из сторон вправе расторгнуть Договор, направив письменное уведомление\nне менее чем за {N} дней.\n\n## 6. Применимое право\n{Юрисдикция}.\n\n---\n\n**Исполнитель:** ____________________     **Заказчик:** ____________________\n{ФИО подписанта Исполнителя}              {ФИО подписанта Заказчика}\n\n"
+      },
+      {
+        "name": "artifacts_create",
+        "description": "Host a self-contained HTML page at a stable, default-private, shareable URL — the Artifact experience, in-app.\n\nPass **exactly one** of:\n- `html` — the full page: your `<body>` plus any `<style>`/`<script>`. Unlike documents.create, the page is served **live** (JavaScript runs), so charts, interactivity, and small tools work.\n- `file_id` — a workspace file whose contents are already the HTML page.\n- `analytics_card_ids` — ids of saved analytics dashboard cards; the platform re-runs their queries and composes one designed report page (static charts, snapshot at build time). Best way to give someone a shareable analytics report.\n\nThe page runs in a locked-down sandbox: a dedicated origin + a strict CSP. That means it is **fully self-contained** — it CANNOT call out to the network (`fetch`/XHR/WebSocket are blocked) or load anything from a CDN. Inline all assets: CSS/JS inline, images/fonts as `data:` URIs. Draw charts yourself as inline SVG (no external chart library).\n\n`access_level` defaults to `'private'` (viewable only in-app). Set `'shared'` to make the unguessable link itself the capability (anyone-with-link). You can flip this later with artifacts.set_access.\n\nReturns `{artifact_id, slug, url, app_url, version, access_level}`. `app_url` always opens for workspace members, in the app. `url` is the public link and is set ONLY for a shared artifact (a private one has no public page: handed out bare, the public link answers \"not available\"). Republish with artifacts.update — both links stay the same."
+      },
+      {
+        "name": "artifacts_update",
+        "description": "Republish an existing artifact with new HTML. The slug and URL stay the SAME; a new version is stored (older versions are retained up to a cap). Use this to refresh a shared dashboard — anyone with the link sees the new snapshot."
+      },
+      {
+        "name": "artifacts_get",
+        "description": "Fetch an artifact's metadata by id or slug — title, access level, version, view count, URL. Set include_html=true to also return the latest HTML body (so you can read-then-edit before calling artifacts.update)."
+      },
+      {
+        "name": "artifacts_list",
+        "description": "List the workspace's artifacts (most-recently-updated first): title, url, access level, version, view count. Soft-deleted artifacts are excluded."
+      },
+      {
+        "name": "artifacts_set_access",
+        "description": "Change an artifact's access level. 'shared' makes the unguessable link the capability (anyone-with-link); 'private' revokes that — the link 404s for anyone not signed into the workspace. Existing shared links keep the same URL when re-shared."
+      },
+      {
+        "name": "artifacts_export_pdf",
+        "description": "Snapshot an artifact's current version to a PDF saved in the workspace. NOTE: the PDF is a STATIC capture rendered with JavaScript disabled — interactive or JS-drawn content (charts on <canvas>, script-generated SVG) will not appear. Author charts as static SVG if they must show in the PDF. Returns the file_id; deliver it with messages.send(attachments=[file_id])."
+      },
+      {
+        "name": "artifacts_refresh",
+        "description": "Publish a new version of an artifact at the SAME URL, without sending HTML. Two kinds of artifact: one built from saved analytics cards (artifacts.create/update with analytics_card_ids) is rebuilt by passing artifact_id alone — its cards' queries re-run and the charts are redrawn; one created/updated with a `template` (HTML with {{placeholder}} tokens) takes `data`, a flat map of placeholder -> value (e.g. {\"leads\": \"3 200\", \"date\": \"15 июля 2026\"}), and every placeholder must have a value. Ideal for a scheduled refresh of live numbers."
+      },
+      {
+        "name": "agents_list",
+        "description": "List all AI agents configured in the workspace.\n\nReturns agents with their basic info, trigger count, and knowledge collection count.\n\nEach agent's `description` field tells you when that agent is useful. If you're a router-style agent deciding whether to delegate via `agent.handoff`, read descriptions and pick the best fit.\n\nUse this to:\n- See all configured AI agents\n- Filter by status (active/paused/archived)\n- Get agent IDs for further operations"
+      },
+      {
+        "name": "agents_get",
+        "description": "Get detailed information about a specific AI agent.\n\nReturns full agent config including:\n- Execution configuration\n- Tool configuration\n- Knowledge configuration\n- Escalation configuration\n- Triggers list\n- Knowledge collections\n- Custom AI instructions (prompt_text)\n- Auto-reply rules override (auto_reply_rules)"
+      },
+      {
+        "name": "agents_create",
+        "description": "Create a new AI agent in the workspace.\n\nExecution modes:\n- ai_assisted (default): Two-phase AI — fast pre-classifier (Haiku) for keyword filtering and simple replies, then full AI with tools for complex messages.\n- agentic: Autonomous multi-step agent with planning and tool execution.\n- rule_based: Simple pattern matching without AI.\n\nKeyword filtering is available in ai_assisted mode via keywords in trigger conditions (free, deterministic) and/or auto_reply_rules (LLM-based) set through agents.update.\n\nPass `prompt_text` for the agent's instructions (stored inline on the agent) or `prompt_id` to link an existing prompt row, not both.\n\nTools: a new agent starts with the standard tool set (knowledge base lookup, replying, lead capture, reading files, handoff, plus the default voice-call tools). Pass `allowed_tools` to replace that set.\n\nFrom a template: pass `template` (e.g. 'dm-auto-reply') to create the agent AND its built-in trigger in one call — deterministic, no need to add a trigger separately. When `template` is set, name/text_engine/send_mode come from the template."
+      },
+      {
+        "name": "agents_update",
+        "description": "Update an existing AI agent's configuration.\n\nAll parameters are optional — only provided fields will be updated.\n\nUse this to:\n- Enable or disable an agent\n- Change agent name or description\n- Assign or detach a prompt\n- Change default send mode\n- Replace knowledge collections\n- Update agent status\n- Change agent priority for trigger matching (lower number = higher priority)\n- Override which tools the agent can/can't call on triggered runs\n- Override which context sections (situation, communication style, job state, conversation history, thread summary) the agent receives\n- Opt into boilerplate prompt sections (safety guidelines, data confidentiality, factual accuracy) — all default OFF"
+      },
+      {
+        "name": "agents_delete",
+        "description": "Permanently delete an AI agent.\n\nWARNING: This cannot be undone. The agent and all its triggers will be removed."
+      },
+      {
+        "name": "agents_ask",
+        "description": "Send a message to an AI agent and get its response.\n\nThe agent runs with its configured prompt, tools, and knowledge.\nUse this to test agents or have them process a task.\n\nReturns: {status: 'replied'|'silent', response_text, messages[], full_reply, model_used, tokens_*, send_mode, execution_mode, tool_calls[]}. `tool_calls[]` is the per-tool trace in call order — each {tool, success, error, duration_ms} — so you can see which tool the agent ran and why it failed (e.g. a workbench script error) directly from this response, no trace lookup needed. `messages[]` carries each messages.send invocation the agent made (text, subject, reply_to_message_id, timestamp, message_id, attachments=[{file_id,name,mime}]). `full_reply` concatenates text only — attachment-only sends show up in `messages` but not `full_reply`. `status='silent'` iff both response_text is empty AND messages is empty.\n\nExecution may take 10-60s depending on agent complexity. For runs that may exceed ~2 minutes (heavy multi-step agents), pass background=true: the call returns immediately with status='started' and the run continues server-side, detached from this connection — poll agents.traces_list / agents.trace_get for the outcome and agents.list_drafts for produced drafts."
+      },
+      {
+        "name": "agents_trigger_create",
+        "description": "Create a new trigger for an AI agent.\n\nTriggers determine when the agent activates.\n\nTrigger types:\n- incoming_message: Activates on new incoming messages\n- schedule: Activates on a schedule\n- webhook: Activates on webhook events\n- event: Activates on system events"
+      },
+      {
+        "name": "agents_trigger_update",
+        "description": "Update an existing AI agent trigger.\n\nAll parameters are optional — only provided fields will be updated."
+      },
+      {
+        "name": "agents_trigger_delete",
+        "description": "Delete a trigger from an AI agent.\n\nWARNING: This cannot be undone."
+      },
+      {
+        "name": "webhooks_configure_enrichment",
+        "description": "Enable enrichment on an agent's webhook trigger so reference-only webhook payloads are resolved to full data before the agent runs. One tool for every provider — choose `provider` and pass its `config`.\n\nProviders & required config:\n- meta_leadgen (Meta/Facebook Lead Ads): config = {app_id, app_secret, user_access_token}. The user token needs pages_show_list + leads_retrieval (+ pages_manage_metadata; add business_management to auto-discover Business-Manager pages that /me/accounts omits). Stores all page tokens encrypted per workspace and resolves each lead's name/email/phone. Reuses the existing webhook URL (no token rotation); creates a webhook trigger if the agent has none.\n- tiktok_leadgen (TikTok Instant Form and direct-message leads): config = {access_token, advertiser_ids?}. access_token is a TikTok Marketing API advertiser token issued to DialogBrain's Business app; without advertiser_ids every ad account the token reaches is subscribed. Adds a separate webhook trigger on the agent (a Meta-wired trigger is left alone) and subscribes it to LEAD events; each lead arrives with its answers, signature-verified."
+      },
+      {
+        "name": "agents_list_drafts",
+        "description": "List pending agent drafts awaiting approval.\n\nShows drafts that have been generated by AI agents but not yet sent.\nEach draft includes:\n- Thread/conversation info\n- Trigger message (what prompted the reply)\n- Generated response text\n- Creation time and expiration\n\nUse this when user asks:\n- 'Show pending agent drafts'\n- 'What messages are waiting for approval?'\n- 'List drafts to approve'"
+      },
+      {
+        "name": "agents_approve_draft",
+        "description": "Approve a pending agent draft and send the message.\n\nThe draft will be sent to the conversation it was generated for.\nYou can optionally edit the text before sending.\n\nUse this when user says:\n- 'Approve this draft'\n- 'Send this reply'\n- 'Approve and send'\n- 'Looks good, send it'\n\nIMPORTANT: This will send a message to a real person."
+      },
+      {
+        "name": "agents_reject_draft",
+        "description": "Reject a pending agent draft without sending.\n\nThe draft will be marked as rejected and won't be sent.\nUse this when the generated response isn't appropriate.\n\nUse this when user says:\n- 'Reject this draft'\n- 'Don't send this'\n- 'Cancel this reply'\n- 'Delete this draft'\n- 'This response is wrong'"
+      },
+      {
+        "name": "agents_list_files",
+        "description": "List files directly attached to this agent (agent-specific files, not shared collections).\n\nReturns file_id, title, status, and chunk_count for each file.\nchunk_count shows how many indexed chunks were created — 0 means the file is still processing.\n\nUse agents.add_file to attach a new file, or agents.remove_file to detach one."
+      },
+      {
+        "name": "agents_add_file",
+        "description": "Attach a file to this agent's private knowledge (agent-specific files, not shared with other agents).\n\nWorkflow:\n1. Upload the file with files_upload (pass source_url for remote files)\n2. Index it with files_ingest (pass the file_id)\n3. Call this tool with agent_id + file_id\n\nReturns chunk_count — shows 0 while still processing. Call agents.list_files later to see the final chunk count once indexing completes."
+      },
+      {
+        "name": "agents_remove_file",
+        "description": "Remove a file from this agent's private knowledge.\n\nThe file itself is not deleted — it's just detached from this agent.\nUse agents.list_files to find the file_id to remove."
+      },
+      {
+        "name": "agents_task_complete",
+        "description": "Report that an agent run handed to you by DialogBrain is over: a Claude Code agent task, or a run started in an external agent. Call this when you finish processing it."
+      },
+      {
+        "name": "agent_handoff",
+        "description": "Delegate a multi-step task (research, composing messages, booking, scheduling) to the full agentic planner. Use when a user ask needs more than a direct answer. The specialist runs synchronously — its response is already shown to the user in real-time. Summarize the OUTCOME in past tense (e.g. 'The Media Creator generated your video' or 'The Document Composer failed because...'). Do NOT say 'I will delegate' — the delegation already happened. If status is `timeout` or `error`, explain what went wrong and offer to retry."
+      },
+      {
+        "name": "agent_silence",
+        "description": "End this turn without sending any message. Use when the thread is owned by a human operator after job.escalate, when the guest is self-resolving, when the message is a duplicate, or for observation-only turns. Calling this tool is the ONLY correct way to stay silent — narrated silence text (e.g. '*(Staying silent…)*', 'Internal:…') would be delivered to the guest verbatim."
+      },
+      {
+        "name": "agents_traces_list",
+        "description": "List recent execution traces for an agent — the same data as /admin/requests, scoped to one agent and readable by an LLM.\n\nUse this when an agent call timed out, drafted the wrong response, or you want to know which tool/LLM call burned the latency. Pair with `agents.trace_get` for full detail on a specific trace.\n\nFilters: `status`, `success`, `source` (single value or comma-separated: `agent,voice`), `date_from`/`date_to` (ISO-8601), pagination via `limit`/`offset`.\n\nReturns `returned_count`, `dropped_on_page` (should be 0 — positive means the backend agent_id predicate let something through), and `has_more`. Edge case: a raw page of all-dedup-dropped rows yields `returned_count=0, has_more=true`; re-call with `offset += limit`."
+      },
+      {
+        "name": "agents_trace_get",
+        "description": "Fetch the full execution detail for a single trace — tool executions, events timeline, LLM call spans (with error_message on failures), and what the run cost.\n\n`cost_usd` is the run's billed cost in USD, recorded even when the workspace pays with its own vendor key; 0 means nothing billable was recorded, null means the lookup could not run. Per-token detail is on each LLM span (`input_tokens`, `output_tokens`, `cache_read_tokens`, `cache_creation_tokens`).\n\nUse after `agents.traces_list` identifies a specific trace of interest (failed run, slow run, unexpected outcome).\n\nBy default LLM `system_prompt` and `prompt_messages` are stripped — set `include_llm_bodies=true` to fetch them when diagnosing prompt engineering issues (emits a WARNING audit log). Set `full=true` to disable all field truncation. `completion_text` on failed LLM calls is always returned (capped at 8 KB)."
+      },
+      {
+        "name": "agents_traces_stats",
+        "description": "Aggregated trace statistics for one agent over the last N days — total runs, success rate, avg duration, error breakdown, top tools used, runs-per-day histogram, and what the agent spent.\n\n`spend` totals the agent's LLM usage over the same window: `llm_calls`, `tokens_input`, `tokens_output`, `cost_usd`, and `own_key_cost_usd` (the slice paid with the workspace's own vendor key, included in cost_usd rather than added to it). It covers usage recorded since per-agent attribution shipped, so it reads 0 for older runs; null means the lookup could not run.\n\nUse this when you want a bird's-eye view of an agent's health before diving into individual traces with `agents.traces_list` / `agents.trace_get`. Scoped to the target agent (exact match, no substring bleed). `days` is capped at 30 — matches the ClickHouse request_traces TTL."
+      },
+      {
+        "name": "agents_activity",
+        "description": "See what you — or another agent in your workspace — actually did over a time window: messages sent, documents created, calls made, plus a summary (run counts, per-day, top tools). Use this to answer 'what did I do today / yesterday / last week / in the last hour?' or 'what did <agent> do?' with real data instead of guessing.\n\nOmit `agent` for your own activity, or pass another workspace agent's name, slug, or id. Pass `since`/`until` as ISO datetimes (e.g. '2026-06-03T09:00:00') for sub-day windows like the last hour, or plain dates ('2026-06-03') for whole days — compute them from the current date/time you were given. Defaults to the last 24h. Traces are retained 30 days.\n\nTimes are interpreted as UTC — if the current time you were given is in another timezone, convert to UTC before passing since/until."
+      },
+      {
+        "name": "agents_prompt_history",
+        "description": "List past versions of an agent's `prompt_text`. Every edit to the agent's prompt is snapshotted to an append-only table — use this tool to browse history, find a prior known-good version, and copy it into `agents.prompt_restore`."
+      },
+      {
+        "name": "agents_prompt_restore",
+        "description": "Restore a past version of an agent's `prompt_text` by version_number. Creates a new version pointing at the restored content — history is preserved. Use `agents.prompt_history` first to find the version_number you want."
+      },
+      {
+        "name": "agents_simulate_inbound",
+        "description": "Replay an inbound message on a thread through the real trigger pipeline and return what would have happened. The router auto-picks the winning enabled agent + trigger by priority/specificity (same logic as production). By default send_mode='draft' so no real message is sent; pass send_mode='auto' on a test account to let the matched agent actually deliver (drafts get overwritten by the next draft, so 'auto' is the only way to verify Telegram/email delivery end-to-end).\n\nUse to verify routing for a thread: which agent answers, which trigger wins, or — when nothing matches — the structured skip reason. Pass blockchain_tx_data instead of message_text to simulate a blockchain:transfer event on the thread.\n\nReturns: {matched: true, matched_agent: {id, name, execution_mode}, matched_trigger: {id, trigger_type, conditions, specificity_score}, routing_reason, response_text, messages[], execution_mode, send_mode, model_used, tokens_input, tokens_output, latency_ms, } on a hit, or {matched: false, skip_reason, simulator_warnings} on a miss."
+      },
+      {
+        "name": "agents_update_from_template",
+        "description": "Update a forked agent's instructions (prompt) to the latest version of the system template it was created from.\n\nUse when the platform has improved a template and the user wants their forked agent to pick up the new prompt. This OVERWRITES the agent's prompt_text with the template's current prompt — any customizations to the prompt are replaced (recoverable via prompt history). Tool/model/execution settings are NOT changed. Only works on agents forked from a template (not from-scratch agents or templates themselves)."
+      },
+      {
+        "name": "agents_set_integration",
+        "description": "Enable or disable a connected workspace integration on an AI agent — this controls which ext<id>_<name> integration tools the agent (and its sandboxed workbench runs) may call. Use integrations_list to get the workspace_integration_id.\n\nWhen enabling with no explicit denied_tools, WRITE-class tools are auto-disabled by default (read tools stay on); pass denied_tools=[] to force-allow everything, or a list of ext slugs / bare tool names to block specific ones. Idempotent upsert — safe to call repeatedly."
+      },
+      {
+        "name": "agents_list_integrations",
+        "description": "List the workspace integrations enabled (or available) for an AI agent, with each one's workspace_integration_id, provider, enabled flag, and count of denied tools. Use this to see what an agent can call before toggling with agents_set_integration."
+      },
+      {
+        "name": "collections_list",
+        "description": "List all knowledge collections in the workspace.\n\nCollections are named groups of files used for RAG search. Auto-created collections (per-agent, per-prompt) are hidden by default."
+      },
+      {
+        "name": "collections_create",
+        "description": "Create a named knowledge collection.\n\nCollections group files for RAG search. After creating, add files with collections.add_file and assign to agents with collections.assign_agent."
+      },
+      {
+        "name": "collections_delete",
+        "description": "Delete a knowledge collection.\n\nIf the collection is assigned to agents, prompts, or channels, pass force=true to delete anyway. CASCADE removes all assignments automatically."
+      },
+      {
+        "name": "collections_add_file",
+        "description": "Add a file to a knowledge collection.\n\nThe file must be uploaded and indexed first (files_upload + files_ingest). If the file was previously removed, it is re-enabled."
+      },
+      {
+        "name": "collections_remove_file",
+        "description": "Remove a file from a knowledge collection.\n\nThe file itself is not deleted — only the collection membership is removed."
+      },
+      {
+        "name": "collections_list_files",
+        "description": "List all files in a knowledge collection with their indexing status and chunk counts. Each returned file has a `file_id` (integer) that can be passed to messages.send as `attachments=[file_id]` to send the file to a contact, or to files.read to read its text content."
+      },
+      {
+        "name": "collections_assign_agent",
+        "description": "Assign a knowledge collection to an AI agent.\n\nOnce assigned, the agent's knowledge.query will automatically scope RAG search to files in its assigned collections."
+      },
+      {
+        "name": "collections_unassign_agent",
+        "description": "Remove a knowledge collection from an AI agent.\n\nThe collection and its files are not deleted — only the agent assignment is removed."
+      },
+      {
+        "name": "collections_add_website",
+        "description": "Add a website to a knowledge collection. Its pages are indexed in the background (sitemap first, else links on the same host) and kept current.\n\nPass `path_prefix` (e.g. '/help') to index only one section. Check progress with collections.list_websites."
+      },
+      {
+        "name": "collections_list_websites",
+        "description": "List the websites of a knowledge collection with indexing status, pages indexed / found, last indexed time and last error."
+      },
+      {
+        "name": "collections_refresh_website",
+        "description": "Queue a website of a collection for re-indexing now. Unchanged pages are skipped."
+      },
+      {
+        "name": "collections_remove_website",
+        "description": "Remove a website from a knowledge collection and DELETE every page file indexed from it. Cannot be undone."
+      },
+      {
+        "name": "prompts_list",
+        "description": "List all prompt templates in this workspace.\n\nReturns id + name + description + category so you know which prompt_id to use in prompts.get or prompts.update."
+      },
+      {
+        "name": "prompts_get",
+        "description": "Get full content of a prompt template: system instructions (prompt_text) and auto-reply rules.\n\nRun prompts.list first to find the prompt_id."
+      },
+      {
+        "name": "prompts_update",
+        "description": "Update a prompt template's name, system instructions, or auto-reply rules.\n\nChanges affect every agent using this template, unless the agent has its own override (set via agents.update → prompt_text).\n\nAll parameters except prompt_id are optional — only provided fields are updated."
+      },
+      {
+        "name": "prompts_prompt_history",
+        "description": "List past versions of a prompt template's `prompt_text`. Every edit is snapshotted to an append-only table — use this to browse history and find a version_number for `prompts.prompt_restore`."
+      },
+      {
+        "name": "prompts_prompt_restore",
+        "description": "Restore a past version of a prompt template by version_number. Creates a new version pointing at the restored content — history is preserved. Fans out to every agent using this template without a per-agent override; the response includes `affected_agents` as a receipt of the fan-out."
+      },
+      {
+        "name": "prompts_blocks_registry",
+        "description": "List every block the platform assembles into agent system prompts: id, kind (fact = platform data, guidance = platform text you can rewrite or disable, user = your own text), cache phase, order, the fact labels you can reference from your instructions (e.g. thread_id in [SITUATION]), which labels are locked by enabled tools, and each guidance text's platform default with its md5. Read this before prompts.blocks_update."
+      },
+      {
+        "name": "prompts_blocks_get",
+        "description": "Read the stored prompt-block overrides. Without agent_id: the workspace level (applies to every agent). With agent_id: that agent's own layer (beats the workspace per field) plus its legacy include_* toggles. Missing keys and null fields mean 'inherit'."
+      },
+      {
+        "name": "prompts_blocks_update",
+        "description": "Replace the stored prompt-block overrides at one level (workspace when agent_id is omitted, else that agent). prompt_blocks is the FULL desired object for the level: {\"<block_id>\": {\"enabled\": bool|null, \"text\": str|null (guidance blocks only), \"order\": int|null (reorders within the block's cache tier), \"hidden_rows\": [label, ...] (fact blocks only)}}. Pass null for an entry to remove it (inherit). Fails loudly: unknown block/label ids, editing a fact block's text, empty text, size caps, and newly hiding a fact row that an enabled tool consumes are all rejected with the full error list — read prompts.blocks_registry for valid ids. Pre-existing stored state is never re-validated (grandfathered)."
+      },
+      {
+        "name": "prompts_blocks_preview",
+        "description": "Assemble an agent's system prompt through the REAL builder and return it block by block with attribution (id, kind, cache phase, token estimate), the cached-prefix/dynamic-suffix split, and any ignored stale overrides or missing translations. Byte-equality with the production assembly is verified — the preview cannot lie. Use after prompts.blocks_update to see the effect."
+      },
+      {
+        "name": "widgets_list",
+        "description": "List all livechat widgets.\n\nReturns widgets with their configuration, embed code, and status.\n\nUse this when user wants to see their widgets or chat widgets."
+      },
+      {
+        "name": "widgets_create",
+        "description": "Create a new livechat widget for your website.\n\nThe widget will be created with default settings.\nYou can customize theme, auto-reply mode, and more.\n\nUse this when user wants to add a chat widget to their site."
+      },
+      {
+        "name": "widgets_update",
+        "description": "Update an existing livechat widget configuration.\n\nYou can change name, theme, auto-reply mode, and other settings.\nOnly provided fields will be updated.\n\nUse this when user wants to modify their chat widget settings."
+      },
+      {
+        "name": "widgets_delete",
+        "description": "Delete a livechat widget permanently.\n\nThis will remove the widget and its embed code will stop working.\nIts conversations and their messages are deleted with it: the widget IS the channel, and thread.channel_account_id cascades.\n\nUse this when user wants to remove a chat widget."
+      },
+      {
+        "name": "widgets_get_embed_code",
+        "description": "Get the embed code snippet for a livechat widget.\n\nReturns HTML/JavaScript code to add to your website.\nThe code should be placed before the closing </body> tag.\n\nUse this when user wants to install the chat widget on their site."
+      },
+      {
+        "name": "widgets_get",
+        "description": "Get full configuration of a single livechat widget.\n\nReturns all settings including theme, identification, actions, and more.\n\nUse this when user wants to see or verify a specific widget's settings."
+      },
+      {
+        "name": "linkedin_update_profile",
+        "description": "Update the authenticated user's own LinkedIn profile. Supports adding/editing experience entries (role, company, skills, dates). Also supports updating location. Headline, summary, education are NOT supported by the API. Not available in this version."
+      },
+      {
+        "name": "linkedin_raw_request",
+        "description": "Send an arbitrary LinkedIn API request. Only GET and POST methods are allowed. WARNING: This bypasses structured rate limiting and can perform destructive actions. Use this only when no other LinkedIn tool covers the needed functionality. Not available in this version."
+      },
+      {
+        "name": "search_messages",
+        "description": "Search message content across all chats — semantic + keyword. Use to find what was said: quotes, topics, info exchanged. Pass `direction`, `chat_kind` or `per_chat` for an EXACT text search instead: who wrote it (outgoing = the owner), private chats or groups, one result per chat with the number of matches. That is the way to find the chat of a person by how the owner addresses them, e.g. query='Дима', direction='outgoing', chat_kind='dm', per_chat=true. For chats/threads themselves use search.threads; for files use search.files; for links use search.links."
+      },
+      {
+        "name": "search_threads",
+        "description": "Find or list chat threads/conversations — by topic, participant, unread/unanswered status, or recency. Omit `query` to list threads by filter. For message content use search.messages; for files use search.files. `since` filters by recency and pairs with only_unread / only_unanswered. Each thread names the LINE it speaks from (`account`: id, channel, name, phone) and whether the owner ever really wrote there (`has_real_outgoing`; imported history does not count). The same person can appear once per connected number — pick the thread by `account`, not by title, before you messages.send."
+      },
+      {
+        "name": "search_files",
+        "description": "Search files and attachments across the workspace — by content, filename, document type, or origin. For message content use search.messages; for links use search.links."
+      },
+      {
+        "name": "search_links",
+        "description": "Search links/URLs shared across the workspace — by type, owner, or associated contact. For files use search.files; for message content use search.messages."
+      },
+      {
+        "name": "workspace_create",
+        "description": "Create a new team workspace owned by the calling user. Returns its `id` and `slug` — pass either to `workspace.switch` to start working inside it. `slug` is derived from `name` when omitted. NOT idempotent: calling twice with the same name yields two workspaces (the second gets a `-1` slug suffix), so check `workspace.list` first if the workspace may already exist. A user may own at most 25 team workspaces."
+      },
+      {
+        "name": "workspace_list",
+        "description": "List every workspace the caller is a member of, with `is_current` marking the workspace this MCP key is currently routed to. Pair with `workspace.switch` to change the active workspace without reconnecting."
+      },
+      {
+        "name": "workspace_current",
+        "description": "Return the workspace this MCP API key is currently routed to, with the caller's role inside it. Use this to confirm context before/after `workspace.switch`."
+      },
+      {
+        "name": "workspace_desktops",
+        "description": "List the Claude Code sessions currently connected to this workspace over a channel. Each one can be handed a task by name. Use this before assigning work to a claude_channels agent when more than one session may be open, so the task goes to the machine you mean."
+      },
+      {
+        "name": "workspace_members",
+        "description": "List the members of the current workspace with their roles, so you know who can be assigned a task. Set include_agents to also list the workspace's AI agents, which can hold tasks too."
+      },
+      {
+        "name": "workspace_switch",
+        "description": "Switch the workspace THIS MCP session works in. Pass exactly one of `workspace_id` or `slug` (find them via `workspace.list`). Takes effect on the very next tool call — no MCP reconnect, no new API key. The switch is scoped to the current MCP session (the response says `scope: session`), or, for a client that sends no MCP session id, to that client (`scope: client`: every conversation of that client on this key moves together). Other sessions using the same API key are not affected, and the key's own workspace stays the default for new sessions. Sequential checkpoint: do not parallelize tool calls across a switch — calls already in flight when the switch commits will run against the previous workspace. Keys created with workspace_locked=true refuse to switch in either scope (they are pinned to their workspace); use a key belonging to the target workspace instead."
+      },
+      {
+        "name": "workspace_update",
+        "description": "Edit the active workspace (or one named by `workspace_id`): its name, description, logo_url, and/or `settings`. Requires ADMIN role in that workspace. `settings` is MERGED, not replaced — send only the keys you want to change (e.g. `{\"translation_glossary\": \"...\"}` or `{\"translation_tts_provider\": \"cartesia\"}`); other keys are left intact. Omit `workspace_id` to target the workspace this MCP key is currently routed to (see `workspace.current`)."
+      },
+      {
+        "name": "workspace_invite",
+        "description": "Invite a person to the active workspace (or one named by `workspace_id`) by email address. Requires owner or admin role. The backend emails them a join link and the invite expires in 7 days; the same link is returned as `invite_url` so you can pass it on yourself. Inviting an address that already has an account works too — they see the invitation in the app once logged in. Use `workspace.invites` to see what is still pending."
+      },
+      {
+        "name": "workspace_invites",
+        "description": "List the invitations to the active workspace (or one named by `workspace_id`) that are still pending — who was invited, as what role, and when the invite expires. Requires owner or admin role. Join links are not returned; revoke with `workspace.invite_revoke` or re-send with `workspace.invite`."
+      },
+      {
+        "name": "workspace_invite_revoke",
+        "description": "Revoke a pending invitation to the active workspace (or one named by `workspace_id`) so its link stops working. Requires owner or admin role. Get the invite id from `workspace.invites`. An invite that is already accepted, expired or revoked answers not_found."
+      },
+      {
+        "name": "workspace_member_update",
+        "description": "Change a member's role in the active workspace (or one named by `workspace_id`). Requires owner or admin role. Name the person by email, username or numeric user id — `workspace.members` lists them. Promoting to 'admin' also grants member management; ownership is moved separately and cannot be set here."
+      },
+      {
+        "name": "workspace_member_remove",
+        "description": "Remove a person from the active workspace (or one named by `workspace_id`), and revoke the channel shares they had granted into it. Requires owner or admin role. Name them by email, username or numeric user id — `workspace.members` lists them. The workspace owner cannot be removed."
+      },
+      {
+        "name": "onboarding_start_signup",
+        "description": "🚪 Start a person's own DialogBrain account without a password.\n\nCreates the account if the email is new (it keeps no password, like a Google sign-in), mails a 6-digit sign-in code to that address, and returns the link to send them. Use it for a lead who ASKED to try the product themselves, or who ticked 'create my account' on a form — never for someone who did not ask.\n\nTell them the code is in the email and give them the returned link: they enter the code and land on the screen that connects their channel. Do NOT ask them for a password and do not send one; there is none. The code is not returned to you, so you cannot read it out — if they say it never arrived, call again after a minute (a second call inside 60s is refused with rate_limited)."
+      },
+      {
+        "name": "integrations_list",
+        "description": "List the workspace's external integrations (HTTP-API + MCP), each with its id, provider name, base_url, transport, status, and registered tool count. Use before integrations.add_endpoints to find the integration id / base_url."
+      },
+      {
+        "name": "integrations_get_endpoints",
+        "description": "List every endpoint (operationId, method, path) registered on an HTTP-API integration. Identify it by `integration_id` or `base_url`. Use this to review what tools exist before integrations.remove_endpoints or add_endpoints."
+      },
+      {
+        "name": "integrations_add_endpoints",
+        "description": "Add one or more API endpoints to an HTTP-API integration as callable tools, merged additively into the integration for `base_url` (created if none exists). Each endpoint becomes a tool with params + request/response schemas inferred from the samples you pass. When CREATING a new integration, provide auth: either `identity` (saved Browser Identity name/id) for cookie-session APIs, OR an `auth` block for token/header APIs, e.g. {type:'bearer', token:'...'} or {type:'api_key', token:'...', header_name:'X-API-Key'}. Updates keep the existing auth unless a new `auth` is passed. Returns the new tool count and names. Refresh the tools list afterwards to use them."
+      },
+      {
+        "name": "integrations_remove_endpoints",
+        "description": "Remove endpoints (tools) from an HTTP-API integration — e.g. junk paths like static assets, /socket.io, or SPA routes that aren't real API calls. Identify the integration by `integration_id` or `base_url`, and the endpoints to drop by `operation_ids` (e.g. getSocketIo) and/or `paths` (e.g. /socket.io/). Re-registers the catalog so the removed tools disappear. Returns removed + remaining counts."
+      },
+      {
+        "name": "integrations_set_auth",
+        "description": "Set or update the authentication on an HTTP-API integration, generically. Identify it by `integration_id` or `base_url`. Pass `auth` = {type: bearer|api_key|basic|query|custom_headers|browser_identity|none, ...}: bearer/basic → {token}; api_key → {token, header_name?} (key rides in a HEADER); query → {token, param_name} (key rides in the QUERY STRING, e.g. param_name='api_key' → `?api_key=…`); custom_headers → {headers:{name:value,...}}; browser_identity → {identity_id|identity_name, extract}; an extract block that echoes a percent-encoded cookie (Laravel's XSRF-TOKEN; a 419 means this) takes value_format:'urlencoded'. Token values are encrypted; nothing is stored in cleartext. To only refresh a browser_identity session, OMIT `auth` and pass `cookies` (and/or `local_storage`) — they are merged into the bound identity without touching its config. (oauth2 / service_account use the REST settings flow.)"
+      },
+      {
+        "name": "integrations_set_realtime",
+        "description": "Add, replace or remove the realtime (websocket) connector of an HTTP-API integration, leaving the rest of its configuration and its credentials untouched. `realtime` is the whole block: {protocol: 'actioncable' | 'raw_json', ws_url, auth: {type, placement: 'header' | 'query', query_param, token_mint: {method, path, token_path}}, channel_template, actions: [{name, description, is_write, input_schema, frame}]}. Its actions become tools of the integration. To remove the connector pass remove=true and no block. Needs the admin or owner role."
+      },
+      {
+        "name": "integrations_capture_session",
+        "description": "Restore an expired integration session by capturing the LIVE auth of an open browser page — works for COOKIE sessions (browser_identity) AND TOKEN/HEADER sessions (bearer / api_key / custom_headers, e.g. Devise access-token/client/uid). First call browser_open(url, identity_name) for the integration's site (the page must be logged in AND have called its API), then pass that `page_id` here with `integration_id` or `base_url`. For cookie sessions it captures the full storage_state (incl httpOnly cookies page JS can't read) into the bound identity; for token sessions it captures the auth headers the page sends to the API host and binds them. Re-connects the integration. The captured secret never leaves the server (returns counts only). Generic — any site, any auth scheme, no local Playwright."
+      },
+      {
+        "name": "integrations_sync_knowledge",
+        "description": "Refresh a knowledge collection from an integration's endpoints, for content too large to return in a tool response (a 300KB+ catalogue an agent could never fit in one call). Pass `sources` + `collection` to configure and run in one step — they are stored on the integration, so later runs need only `integration_id`. Every run is a FULL refresh; a source whose rendered text is unchanged is skipped (reported `unchanged`) rather than re-uploaded. Returns a per-source report: created / updated / unchanged / no_records / error."
+      },
+      {
+        "name": "job_read_context",
+        "description": "Read the current job context. Returns the full state of your active job including assignments, escalations, and any data you previously stored."
+      },
+      {
+        "name": "job_update_context",
+        "description": "Update the job context by merging new data. Existing keys are preserved unless explicitly overwritten. Use this to record progress, update assignment statuses, or store intermediate results."
+      },
+      {
+        "name": "job_complete",
+        "description": "Mark the job as completed. This sanitizes PII from the context and records a completion summary. Use when all tasks in the job are done."
+      },
+      {
+        "name": "job_escalate",
+        "description": "Escalate the job to a human. Use when you cannot resolve an issue, someone is not responding, or a situation requires human judgment."
+      },
+      {
+        "name": "notes_save",
+        "description": "Save a fact or note into the agent's memory. Use scope to choose visibility: 'workspace' = visible to every agent in this workspace (use for shared facts, project conventions); 'agent' = private to this agent (use for personal working notes); 'thread' = scoped to one conversation (use for thread-specific reminders); 'person' = scoped to one contact (use for per-contact context). If a note with the same key+scope exists it will be updated. Do NOT use this tool for behavioral rules or corrections — use feedback.save for those."
+      },
+      {
+        "name": "notes_recall",
+        "description": "Recall notes from your notebook. By default returns only your own notes (all scopes, newest first). Pass filter_agent_id=<int> to read another agent's notebook, or filter_agent_id=\"all\" (or \"*\") to read across every agent in the workspace. Pass scope to narrow to global/thread/person. Each result includes agent_id and agent_name of the author."
+      },
+      {
+        "name": "notes_search",
+        "description": "Full-text search in your notebook. By default searches only your own notes. Pass filter_agent_id=<int> to search another agent's notebook, or \"all\" (or \"*\") for workspace-wide. Or list all notes for a person/thread by scope_ref_id."
+      },
+      {
+        "name": "notes_delete",
+        "description": "Delete a note by ID from the target notebook. Same identity rules as notes.save — agents can only delete from their own notebook."
+      },
+      {
+        "name": "feedback_save",
+        "description": "Save a behavioral rule, preference, or correction that should guide future agent behavior. Use this when the user gives explicit guidance like 'always reply in Russian', 'don't suggest meetings before 11am', or 'invoice link goes via email, not chat'. Structure the rule as: the rule itself, why it matters (if stated), and how to apply it. Scope: 'workspace' for org-wide rules, 'agent' for per-agent overrides, 'person' for per-contact preferences. Prefer feedback.save over notes.save for anything that's instructive rather than informational."
+      },
+      {
+        "name": "tasks_create",
+        "description": "Create a task in this workspace. Leave the assignee empty to put it in the backlog, or name someone to hand it over."
+      },
+      {
+        "name": "tasks_update",
+        "description": "Update a task. Set status='done' to complete it, 'cancelled' to cancel. Reassign with assignee. Status and assignee changes are recorded in the task's comment thread."
+      },
+      {
+        "name": "tasks_list",
+        "description": "List tasks in this workspace. Defaults to everything a person can see; an agent calling this sees its own tasks. Filter by assignee, status, or overdue to narrow it down."
+      },
+      {
+        "name": "tasks_get",
+        "description": "Read one task in full: its fields, attachments, and the whole comment thread including recorded status and assignee changes. Pass agent_id when you are acting as an agent, and the reply says assigned_to_me so you need not infer it from matching ids."
+      },
+      {
+        "name": "tasks_comment",
+        "description": "Post a comment on a task. Attach files (screenshots, documents) by uploading them with files.upload first and passing the file IDs."
+      },
+      {
+        "name": "tasks_delete",
+        "description": "Delete a task. Only its creator or a workspace owner/admin may do this; to close a task instead, set status='cancelled'."
+      },
+      {
+        "name": "campaigns_create",
+        "description": "Start a bulk outbound call campaign: dial a list of phone numbers with a voice agent, at a bounded concurrency, retrying no-answers. Phone network only (twilio/telnyx). It begins dialing on its own — no separate start."
+      },
+      {
+        "name": "campaigns_status",
+        "description": "Progress of one campaign: status and per-number counts."
+      },
+      {
+        "name": "campaigns_list",
+        "description": "List this workspace's campaigns, newest first."
+      },
+      {
+        "name": "campaigns_pause",
+        "description": "Pause a campaign — stop starting new calls; in-flight ones finish."
+      },
+      {
+        "name": "campaigns_resume",
+        "description": "Resume a paused campaign."
+      },
+      {
+        "name": "campaigns_cancel",
+        "description": "Cancel a campaign — no further numbers are dialed."
+      },
+      {
+        "name": "reminder_set",
+        "description": "Schedule a reminder. One-time reminders fire at a specific datetime. Recurring reminders fire on a schedule (daily, weekly, every N days, or every N minutes). Optionally scope to a thread or target another agent."
+      },
+      {
+        "name": "reminder_list",
+        "description": "List your active reminders (both one-time and recurring)."
+      },
+      {
+        "name": "reminder_cancel",
+        "description": "Cancel an active reminder by its trigger ID."
+      },
+      {
+        "name": "system_sleep",
+        "description": "Pause execution for a given number of seconds (max 30). Use when you need to wait for an external process to complete before retrying — e.g. message sync, backfill, or API propagation. Total sleep per run is capped at 60 seconds."
+      },
+      {
+        "name": "calls_make",
+        "description": "Place an outbound AUDIO/VOICE phone call via Twilio (PSTN) or Telegram (MTProto 1:1 call). Use this any time the user asks to 'call', 'ring', 'phone', 'dial', or have a spoken conversation. Do NOT use messages.send when the user asks to call someone — a call is real-time voice, not a text message. You conduct the conversation as the voice agent using the provided greeting and instructions."
+      },
+      {
+        "name": "calls_agent_duel",
+        "description": "Start an agent-vs-agent VOICE test call: two AI voice agents share one LiveKit room — a 'caller' persona agent pursues a task brief against the 'callee' business agent under test. Use to evaluate booking flows, latency, and conversation quality without a human caller.\n\nThe CALLER agent should have an EMPTY voice_greeting (it must stay silent until the callee greets) and voice_filler_enabled=false.\nAfterwards inspect both call_ids with agents.traces_list / calls.get_transcript. A subscribe-only `listen` token is returned for listening in live."
+      },
+      {
+        "name": "background_run",
+        "description": "Run ANOTHER tool off the critical path: returns INSTANTLY while the target tool runs in the background, so a slow write/log/notify never delays your reply. Pass `tool` (the id of a tool you already have) and `args` (the target tool's arguments as a JSON object STRING). Optional `serialize_key` serializes background runs that share the key (e.g. the spreadsheet id when appending rows). Use ONLY for tools whose result you don't need this turn (logging, side-effect writes). Cannot run a tool you don't already have, cannot run a tool that requires approval, and cannot run a tool that deletes data — call those directly. Only callable from within an agent turn."
+      },
+      {
+        "name": "calls_dispatch_agent",
+        "description": "Send a workspace AI agent into a live call — ONE tool for every surface; `target` decides where: a Google Meet or Microsoft Teams link → meeting bot; a Telegram @group / t.me link / chat_id / t.me/call slug → Telegram group voice chat or conference; 'new' → creates a NEW Telegram conference call and returns its shareable link; a WhatsApp group JID (digits@g.us) → WhatsApp group call; a live session UUID (from calls.list_active), or thread_id of a running call → WAKES the agent on the bot already in that call instead of spawning a second one. For a meeting link the router also checks for a bot already in that meeting and wakes it rather than double-joining. Always pass agent_id (from agents.list). For a live TRANSLATOR use calls.dispatch_translator instead."
+      },
+      {
+        "name": "calls_dispatch_translator",
+        "description": "Send a live speech translator to a call. `target` decides where: a Google Meet or Microsoft Teams link → meeting bot; a Telegram @group / t.me link / chat_id → Telegram group voice chat; 'new' (or omitted) → creates a native DialogBrain meeting with translation on and returns the join + guest links; a native meeting call_id or /meeting/ URL → enables translation on that running meeting. Always pass target_language (ISO code); optional app_languages (extra subtitle-only languages), sentence_length (short|medium|long, native only), silent (subtitles without voice), source_language (the meeting's spoken language, ISO code — improves recognition; omit for autodetect), tts_provider + tts_voice (the translator's voice; omit for the workspace default)."
+      },
+      {
+        "name": "workbench_run_python",
+        "description": "Run Python in an isolated sandbox to process LARGE or paginated tool results without pulling every row into the conversation. Inside the code, call your connected integration tools with `call_tool('ext<id>_<name>', {..})`, or this agent's own platform tools by their dotted id (e.g. `call_tool('db.query', {'sql': 'SELECT ...'})`) — a platform tool must be in the agent's allowed_tools, and calling one requires an agent context. RETURN SHAPE: call_tool ALWAYS returns a dict with a boolean r['success']. The payload key DIFFERS by tool kind: integration (ext*) results are under r['body'] (e.g. r['body']['results']), platform tools are under r['data'] (e.g. r['data']['rows'] for db.query). Reading the wrong key returns nothing even though the call SUCCEEDED — so when in doubt print(r) once and inspect before extracting. On FAILURE r['success'] is False and r['error'] explains. Aggregate/filter/paginate in the sandbox, then assign ONLY the small summary you want back to a variable named `result`. FIRST discover exact tool slugs with integrations_search_tools, THEN write code that calls them. pandas/numpy available."
+      },
+      {
+        "name": "analytics_query",
+        "description": "Answer analytics questions about this workspace's own data (conversations, messages, voice calls) — e.g. 'how many new conversations this week by channel' or 'inbound vs outbound messages per day this month'. Returns rows plus a chart hint. Read-only and scoped to the current workspace."
+      },
+      {
+        "name": "db_schema",
+        "description": "List the tables and columns of this workspace's own database. Call this before db.query or db.execute to learn what exists."
+      },
+      {
+        "name": "db_query",
+        "description": "Read from this workspace's own database. Pass either a natural-language question (e.g. 'how many records were added this week') or a raw SQL SELECT. Read-only; returns rows plus a chart hint."
+      },
+      {
+        "name": "db_execute",
+        "description": "Run SQL (CREATE TABLE / INSERT / UPDATE / DELETE / ALTER) against this workspace's own database. Use db.schema first to see what exists, and db.query to read."
+      },
+      {
+        "name": "db_create",
+        "description": "Provision this workspace's own database (one per workspace). Returns the connection string and password ONCE — relay them to the user immediately; they cannot be retrieved later. Errors if the workspace already has a database. Use db.schema / db.query / db.execute to work with it afterwards."
+      },
+      {
+        "name": "calls_meet_browser",
+        "description": "Attach to a Google Meet bot's live browser to diagnose and recover a bot that isn't visibly joining. Pass the meet session's call_id; returns a page_id. Then drive the bot's Meet page with the generic browser tools (browser.snapshot / browser.click / browser.take_screenshot / browser.evaluate / browser.console_messages / browser.network_requests) using that page_id — read the snapshot to see whether the bot is in the lobby, blocked, or admitted, and click guest-side controls to recover a stalled join. Note: host admission ('Admit') happens in the host's own browser and is not present on the bot's page."
+      },
+      {
+        "name": "browser_handoff",
+        "description": "When a site asks for verification (2FA, captcha, identity check, re-login) that only the person can do, call this tool with the browser identity name and the URL that needs them. Returns a link to give the person — clicking it opens their browser identity already on that page. When they finish and click 'I'm logged in — save session', you can continue.\n\nWith prepare=True (optional): start the identity's browser server-side on the URL, attach it for form-filling, and return a page_id. Use the page_id with browser.fill / browser.click to fill the form in the live browser before giving the person the link — they will see it already filled and only need to review and complete verification steps that only they can do (CAPTCHA, consent, 2FA code). The window stays open for 30 minutes; if you do not send the link within that time, the window closes and the person must start over."
+      },
+      {
+        "name": "calls_set_translation_language",
+        "description": "Change the target language of an active voice/Meet call's live translator on the fly — no hangup or re-dispatch (also arms translator mode if it isn't already on). Pass the call_id and an ISO language code, e.g. 'th' (Thai), 'ru' (Russian), 'es' (Spanish), 'en' (English). Takes effect within ~10ms — speak and the translation switches to the new language."
+      },
+      {
+        "name": "calls_set_translation_languages",
+        "description": "Set the EXTRA target languages an active voice/Meet call's translator produces for the APP ONLY (subtitles + listenable audio in the inbox — NOT spoken into the call). Operators switch between them in the UI. Pass call_id and `app_languages` (ISO codes, e.g. ['de','fr']); pass [] to drop all extras. Max 4. The primary spoken language is managed by calls.set_translation_language. Takes effect within ~10ms; new languages translate NEW speech only."
+      },
+      {
+        "name": "calls_mute_translation_tts",
+        "description": "Mute or unmute an active call's live-translation TTS. scope='call' (default, Google Meet sessions ONLY): the translator goes silent INSIDE the call — participants hear no bot voice, in-flight audio is cut immediately, but translation audio + subtitles remain available in the app (listen overlay). scope='everywhere' (any channel): stop synthesizing entirely from the next utterance — subtitles only, no audio anywhere. muted=false reverses either. Translation itself keeps running throughout."
+      },
+      {
+        "name": "present_tab",
+        "description": "Put one of the agent's browser tabs on the live call's screen-share. Pass the page_id you got from browser.open. Only usable while the agent is in an active voice call. THIS IS THE ONLY WAY TO CHANGE WHAT THE ROOM SEES — scrolling or pressing keys changes the page, never which tab is shared. The shared tab stays the active share until you call present_tab with a different page_id, call present_stop to take it down, close the tab via browser.close, or the call ends. Returns the page_id, url and title actually on screen; check them before telling anyone what they are looking at, and use present_status to re-check later."
+      },
+      {
+        "name": "present_status",
+        "description": "Ask what the room is ACTUALLY seeing on the screen-share right now. Returns presenting plus the page_id, url and title read live from the shared tab. Use it before telling participants what is on screen, and whenever you are not certain the share still points at the tab you meant — pressing keys or scrolling does NOT change which tab is shared, only present_tab does."
+      },
+      {
+        "name": "present_stop",
+        "description": "Take whatever is on the call's screen-share back down, so the room sees nobody presenting. Takes no arguments — it stops whatever THIS call is showing. Use it when you are done with a tab and the room should stop looking at it; present_tab with a different page_id switches the share instead, and browser.close on the shared tab also ends it. Stopping when nothing is being shared is a success, not an error — the room already sees nothing. Returns presenting=false once the share is down; present_status will then report nothing on screen. If it comes back ok=false the share may STILL BE UP — do not tell the room you stopped it; retry, or call present_status to see what the room can actually see."
+      },
+      {
+        "name": "calls_list_active",
+        "description": "List active voice calls in this workspace. Use before calls.make on a Telegram account (only one MTProto call per account at a time) to check whether the line is free."
+      },
+      {
+        "name": "calls_get_transcript",
+        "description": "Get the structured transcript and final state of a voice call by call_id. Returns per-turn rows in chronological order, call status (active/completed/failed/abandoned), duration, and an `outcome` field telling whether the recipient picked up (answered/no_answer/busy/declined/failed/unknown). `answered_at` is non-null once the recipient picked up. Returns active turns if the call is still in progress."
+      },
+      {
+        "name": "calls_list_history",
+        "description": "Search historical voice calls in this workspace by participant name, contact_id, thread, channel, source, and/or date range. Returns one row per call (NOT per turn) with call_id, duration_seconds, outcome, direction, started_at, source, channel_label, and parent_thread_id (the originating chat thread for Telegram-group / Twilio-outbound / Meet calls). Pair with calls.get_transcript(call_id) for the full per-turn transcript. Use this instead of messages.read_history for cross-thread call queries — group calls and Meet sessions live on per-call sub-threads, not on the parent chat thread."
+      },
+      {
+        "name": "calls_wait",
+        "description": "Block until a voice call ends (status changes from 'active') or timeout elapses. Returns ended=true with final state when the call has ended; ended=false on timeout (re-issue to keep waiting). The returned state includes `outcome` so callers can branch on pickup vs. no-answer (answered/no_answer/busy/declined/failed/unknown). Default timeout 90s; cap 110s — bounded by nginx proxy_read_timeout 120s on /mcp."
+      },
+      {
+        "name": "calls_hangup",
+        "description": "Hang up an active voice call by call_id. Use after calls.make when the agent decides to terminate before the callee does, or to abort a stuck call. Idempotent: returns success if the call is already terminal."
+      },
+      {
+        "name": "calls_transfer",
+        "description": "Transfer the current phone call to a person on another number (e.g. 'let me put you through to a manager'). Only works on a live PHONE call, and only to a number the operator has pre-approved for this agent. Say one short sentence to the caller first ('connecting you now'), THEN call this. It rings the destination and returns when they pick up — which can take most of a minute — and only then do you leave the call. If nobody answers you are told so and are still on the line with the caller."
+      },
+      {
+        "name": "android_screenshot",
+        "description": "Capture a screenshot from the Android device. Returns JPEG image data encoded as base64."
+      },
+      {
+        "name": "android_tap",
+        "description": "Tap on the Android device screen at specified coordinates. Coordinates are in device pixels."
+      },
+      {
+        "name": "android_swipe",
+        "description": "Swipe/drag on the Android device screen from one coordinate to another. Use for scrolling, opening app drawer, etc."
+      },
+      {
+        "name": "android_key",
+        "description": "Send a key event to the Android device. Use keycode (e.g., '3' for HOME, '4' for BACK) or common name (e.g., 'HOME')."
+      },
+      {
+        "name": "android_type",
+        "description": "Type text on the Android device keyboard."
+      },
+      {
+        "name": "android_launch_app",
+        "description": "Launch an app on the Android device by package name. Example: 'com.whatsapp'. Returns success status and process ID if launched."
+      },
+      {
+        "name": "android_close_app",
+        "description": "Close an app on the Android device (safe method: HOME key + am kill). Never uses am force-stop (corrupts PackageManager). Example: 'com.whatsapp'."
+      },
+      {
+        "name": "android_install_apk",
+        "description": "Install an app on the Android device from an APK or split bundle (XAPK/APKS — how most large modern apps ship). Provide apk_url (an https link the device downloads itself — preferred, and the only workable option for real apps) or, for tiny payloads, as apk_base64. Max 300MB. Large apps can take several minutes; if this call times out the install keeps running on the device — verify with the app-list tool instead of re-installing. Use reinstall=true to uninstall then install (for signature changes)."
+      },
+      {
+        "name": "android_list_apps",
+        "description": "List installed apps on the Android device. By default returns third-party apps; use all=true for all apps."
+      },
+      {
+        "name": "android_current_app",
+        "description": "Get the currently focused app and activity on the Android device."
+      },
+      {
+        "name": "android_ui_dump",
+        "description": "Get UI structure dump from the Android device. Uses dumpsys (uiautomator OOM-kills on this build). Returns window list and focused activity for frame-based clicking."
+      },
+      {
+        "name": "android_shell",
+        "description": "Run an allowlisted shell command on the Android device. First element of cmd array must be allowlisted: input, pm, dumpsys, am, getprop, screencap, monkey, uiautomator, settings, wm, cmd, content, ls, cat, pidof, ps, echo, service."
+      },
+      {
+        "name": "browser_open",
+        "description": "Open a URL in a remote browser. Saved login cookies are auto-attached when the URL domain matches a claimed browser identity. Pass identity_name to override auto-matching or force a specific identity."
+      },
+      {
+        "name": "browser_snapshot",
+        "description": "Return a YAML aria_snapshot of the page DOM. Each interactive node is tagged with `[ref=eN]` (e.g. `[ref=e7]`). Pass that exact token as the `ref` arg to browser.click / browser.fill / browser.type / browser.press_key. Do NOT pass the role name ('combobox', 'button') as ref — only the eN token. Truncated at 32KB."
+      },
+      {
+        "name": "browser_click",
+        "description": "Click an element. `ref` is either an aria-ref token from browser.snapshot ('e7') OR a CSS selector ('button.submit'). Prefer the aria-ref token."
+      },
+      {
+        "name": "browser_fill",
+        "description": "Fill an input or textarea with the given value. `ref` is either an aria-ref token from browser.snapshot ('e7') OR a CSS selector ('input[name=email]'). Prefer the aria-ref token — it's stable and matches exactly what snapshot returned."
+      },
+      {
+        "name": "browser_wait_for",
+        "description": "Wait for a selector to appear OR a navigation URL to match a glob pattern. Provide `ref` (selector) OR `url_pattern` (glob)."
+      },
+      {
+        "name": "browser_attach_identity",
+        "description": "Switch the page's identity by loading saved cookies + storage. Use only when switching identity mid-page; for first navigation, pass `identity_name` to browser.open instead."
+      },
+      {
+        "name": "browser_close",
+        "description": "Close a page opened by browser.open."
+      },
+      {
+        "name": "browser_hover",
+        "description": "Hover the mouse over an element (reveals tooltips + hover menus). `ref` is a CSS selector."
+      },
+      {
+        "name": "browser_select_option",
+        "description": "Pick option(s) in a native <select> dropdown. Pass `value` (matches the option's value attr) OR `label` (matches its visible text). Lists allowed for multi-select."
+      },
+      {
+        "name": "browser_press_key",
+        "description": "Press a keyboard key (e.g., 'Enter', 'Tab', 'Escape', 'ArrowDown') or a single character. Optional `ref` focuses an element first — aria-ref token from browser.snapshot ('e7') or a CSS selector."
+      },
+      {
+        "name": "browser_navigate_back",
+        "description": "Navigate back in the page's history (browser back button). Returns the new URL + title."
+      },
+      {
+        "name": "browser_take_screenshot",
+        "description": "Capture a PNG screenshot of the page or a specific element. Returns base64-encoded image bytes AND a file_id (persisted in DialogBrain files storage). Pass file_id straight to messages.send(attachment_file_ids=[file_id]) — do NOT call files.upload again. Use sparingly — favor browser.snapshot for structured DOM understanding."
+      },
+      {
+        "name": "browser_tabs",
+        "description": "Manage tabs within the same BrowserContext as `page_id`. `action` ∈ {list, switch, close, new}. For list, returns all open tab metadata; for new, returns the new tab's page_id."
+      },
+      {
+        "name": "browser_evaluate",
+        "description": "Run JavaScript in the page context and return the result. Use for state not in the a11y tree, captcha iframe inspection, DOM events. Expression is either a plain JS value ('document.title') or a zero-arg IIFE ('(() => { … })()'). Inline any runtime values into the expression itself. Result is JSON-serialized; non-serializable values become strings. 256KB cap on output."
+      },
+      {
+        "name": "browser_add_init_script",
+        "description": "Register JavaScript that runs BEFORE the page's own code, at document start, on every page opened afterwards in this identity's context. Use when browser.evaluate is too late — most often to hook window.fetch/XMLHttpRequest and capture a SPA's request bodies, which network_requests cannot show. Does NOT affect already-open pages: add the script first, then browser.open. Cannot be removed once added; it lives until the context is evicted or browser.close is called."
+      },
+      {
+        "name": "browser_drag",
+        "description": "Drag one element onto another. `source_ref` is the element to grab; `target_ref` is where to drop. Both are CSS selectors. Used for slider captchas, kanban, drag-and-drop uploads."
+      },
+      {
+        "name": "browser_type",
+        "description": "Type text into an element with per-keystroke delay (organic). Each character dispatches keydown/keypress/keyup, unlike browser.fill which replaces .value instantly. Use when the page listens to keystroke events or for typing-speed fingerprint checks. `ref` is an aria-ref token from browser.snapshot ('e7') or a CSS selector. `delay_ms` defaults to 50."
+      },
+      {
+        "name": "browser_fill_form",
+        "description": "Fill multiple form fields in one call. `fields` is a list of {ref, value} dicts. ref is a CSS selector; value is a string (text) or boolean (checkbox). Saves N round-trips vs calling browser.fill repeatedly."
+      },
+      {
+        "name": "browser_resize",
+        "description": "Resize the page viewport. Useful when a site serves different HTML based on viewport width (mobile vs desktop) or when an anti-bot scores risk by viewport dimensions."
+      },
+      {
+        "name": "browser_file_upload",
+        "description": "Attach files to an <input type=file>. Pass either `local_paths` (absolute host paths) or `data` (list of {name, mime, base64} blobs written to /tmp). 25MB cap per file."
+      },
+      {
+        "name": "browser_handle_dialog",
+        "description": "Respond to a pending JS dialog (alert/confirm/prompt). Pass accept=true for OK or false for Cancel. For prompt() dialogs also pass prompt_text. Dialogs are queued at page-open time; returns {pending: false} if none is waiting."
+      },
+      {
+        "name": "browser_console_messages",
+        "description": "Return console.log/warn/error events captured since the last drain. Filter by level ('log'|'info'|'warning'|'error'|'debug') and/or pattern (regex). Buffer caps at 500 entries; oldest are dropped first. Set clear=false to peek without draining."
+      },
+      {
+        "name": "browser_network_requests",
+        "description": "List HTTP requests the page made since open or last drain. Optional filters: method (GET/POST/...), url_pattern (regex), status_min (e.g. 400 for errors). Captures up to 200 most recent requests per page."
+      },
+      {
+        "name": "browser_attach_meet",
+        "description": "Attach to THIS meet's bot browser and return a page_id for its live Google Meet tab. Then use the normal browser.* tools (browser.snapshot to see the page, browser.click to press a control, browser.take_screenshot, browser.evaluate, browser.console_messages, browser.network_requests) with that page_id to inspect why the bot isn't visibly joining (lobby/blocked/admitted) and to recover a stalled join. Call with no arguments from inside a meet."
+      },
+      {
+        "name": "integrations_search_tools",
+        "description": "Search your connected integrations for tools by intent. Returns matching tool slugs (ext<id>_<name>) + summaries + required params. Then call integrations_get_tool_schema for full input schemas, and integrations_execute_tool to run one. Use this instead of guessing tool names for external actions."
+      },
+      {
+        "name": "integrations_get_tool_schema",
+        "description": "Get the full input schema(s) for external tool slugs returned by integrations_search_tools, before executing them."
+      },
+      {
+        "name": "integrations_execute_tool",
+        "description": "Run a connected integration tool by its ext<id>_<name> slug (from integrations_search_tools) with the given arguments. Discovers + executes WITHOUT changing the tool list — so the catalog can grow without an MCP reload."
+      }
+    ]
+  },
+  "archive_sha256": null,
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "tool:prompts_get",
+      "line": null,
+      "evidence": "p=0.99 Get full content of a prompt template: system instructions (prompt_text) and aut",
+      "file_sha256": null
+    }
+  ],
+  "flags": [],
+  "domains": [],
+  "install_script": false,
+  "score": "high"
+}
