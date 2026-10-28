@@ -1,0 +1,48 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Palisades-Labs/atlas-agent-plugins",
+    "version": "bc72be919d897c81557bf347390450c050f31494",
+    "download": "https://codeload.github.com/Palisades-Labs/atlas-agent-plugins/tar.gz/bc72be919d897c81557bf347390450c050f31494"
+  },
+  "archive_sha256": "62f04765d1222c5605fe48adcd3ca44d520542da7c8272c664b3a06aeb18b23d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "atlas-agent-plugins-bc72be919d897c81557bf347390450c050f31494/GETTING_STARTED.md",
+      "line": 68,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "2fc21d659324720c58d66ac36b027b91fc613daffaff0e8b3c889f0c44815fef"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "atlas-agent-plugins-bc72be919d897c81557bf347390450c050f31494/README.md",
+      "line": 63,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "32aaffe69ecfb669c9a2c6079f92110e3814c98047b49e08fe91c8c33ae2c02d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.example.invalid",
+    "app.atlasprospect.ai",
+    "app.example.com",
+    "atlas.example.invalid",
+    "atlasprospect.ai",
+    "docs.google.com",
+    "example.invalid",
+    "github.com",
+    "json-schema.org",
+    "palisadeslabs.ai",
+    "token.actions.githubusercontent.com",
+    "www.linkedin.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,104 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@getedge/mcp",
+    "version": "0.6.46",
+    "download": null
+  },
+  "archive_sha256": "e84e121f1be606aa998bf3c8b996560ffad57fc74d221f72bfbac0d194fd0ebb",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/bundle/index.js",
+      "line": 17944,
+      "evidence": ".aws/credentials",
+      "file_sha256": "7e77eca12fd41ef20ca7e82bef90395e20c7b9a230efad8ef5064e5299294d23"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/bundle/index.js",
+      "line": 18057,
+      "evidence": "\\u{202a}",
+      "file_sha256": "7e77eca12fd41ef20ca7e82bef90395e20c7b9a230efad8ef5064e5299294d23"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/src/local-scan.js",
+      "line": 88,
+      "evidence": ".aws/credentials",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/src/local-scan.js",
+      "line": 166,
+      "evidence": "\\u{202a}",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/src/local-skills.js",
+      "line": 55,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6b85fe322171484dd664422ab078b8413ab85d5142ba91bf67c7ee03af5deb99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/edge/SKILL.md",
+      "line": 363,
+      "evidence": "p=0.95 Installed skills are not read or sent unless you opt in. With a Pro key, the fir",
+      "file_sha256": "442e4cccf66acf51e1f326f4a0951642104e351963bf580c70eb23e81d40c1fe"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "huggingface.co, registry.npmjs.org, route.getedge.cc, www.apple.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "code.claude.com",
+    "cursor.com",
+    "developers.openai.com",
+    "example.com",
+    "getedge.cc",
+    "gist.github.com",
+    "github.com",
+    "huggingface.co",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "mathiasbynens.be",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "route.getedge.cc",
+    "skills.sh",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
