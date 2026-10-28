@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Pantrist-dev/pantrist-mcp",
+    "version": "89ff922df153a56bbae1484ad9badfcfbfe6cb08",
+    "download": "https://codeload.github.com/Pantrist-dev/pantrist-mcp/tar.gz/89ff922df153a56bbae1484ad9badfcfbfe6cb08"
+  },
+  "archive_sha256": "663ff55b49d4015137a77ca5bc32dbabc1f97ea37650a27792faa41bb24831ec",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pantrist-mcp-89ff922df153a56bbae1484ad9badfcfbfe6cb08/openapi/pantrist-openapi.json",
+      "line": 6000,
+      "evidence": "p=1.00 Instruction text for this step",
+      "file_sha256": "193cad805f36f8b1a2d5835d37218138f3fa197131676ec3e588bfd0d70da710"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "pantrist-mcp-89ff922df153a56bbae1484ad9badfcfbfe6cb08/README.md",
+      "line": 108,
+      "evidence": "<secret>",
+      "file_sha256": "f46cad4ce3ed7f9c23b08bc15267bef17a88a255faa536e2194c63295769a4ca"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.pantrist.app",
+    "claude.ai",
+    "docs.renovatebot.com",
+    "github.com",
+    "glama.ai",
+    "json.schemastore.org",
+    "mcp.pantrist.app",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "pantrist.app",
+    "registry.npmjs.org",
+    "www.example.com",
+    "www.instagram.com",
+    "www.pantrist.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

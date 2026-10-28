@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@pinappai/mcp",
+    "version": "0.9.9",
+    "download": null
+  },
+  "archive_sha256": "fbbb2e1cf0bf077ed6ae5b4711a04629cd93f48cb7cf24c2facc9e2cfedbdaa8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/src/prompts/remove.md",
+      "line": 125,
+      "evidence": "p=0.98 # What this prompt does NOT touch",
+      "file_sha256": "588b022e79c58b1c1cd5ddb659018d748a36b42ead04f5186801e5fe75c0b7b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/src/prompts/apply.md",
+      "line": 23,
+      "evidence": "p=0.96 Run the **Before you edit — preflight** subsection above (git status + branch ch",
+      "file_sha256": "f99eda2435386ea6824ada54ff6d6ca2cf11597e5750f44ac889ae333e654920"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/src/prompts/_shared/landing-chooser.md",
+      "line": 53,
+      "evidence": "p=0.94 ### Hard rules while waiting for the answer",
+      "file_sha256": "d619750781d91f695acfcc73e1853e2ac6426cc6995520ba55ef5f29c2cb3a96"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/src/prompts/reset-project.md",
+      "line": 86,
+      "evidence": "p=0.98 # What this prompt does NOT touch",
+      "file_sha256": "5a12d876fe330db6b13e525ff07545d0a659f66448d5f3afe86b67b108ff7b2c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.pinappai.com",
+    "api.staging.pinappai.com",
+    "app.pinappai.com",
+    "example.com",
+    "github.com",
+    "mcp.pinappai.com",
+    "modelcontextprotocol.io",
+    "pinappai.com",
+    "registry.modelcontextprotocol.io",
+    "review.pinappai.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

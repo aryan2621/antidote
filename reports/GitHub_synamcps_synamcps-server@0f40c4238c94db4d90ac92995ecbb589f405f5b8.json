@@ -1,0 +1,51 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "synamcps/synamcps-server",
+    "version": "0f40c4238c94db4d90ac92995ecbb589f405f5b8",
+    "download": "https://codeload.github.com/synamcps/synamcps-server/tar.gz/0f40c4238c94db4d90ac92995ecbb589f405f5b8"
+  },
+  "archive_sha256": "c63686e2fef517d2b392f18d063b216ff2b48cc32be28a86173e77d83a60051d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "synamcps-server-0f40c4238c94db4d90ac92995ecbb589f405f5b8/scripts/examples/audit-unused-tokens.sh",
+      "line": 44,
+      "evidence": "curl -fsS \"$SYNA_BASE_URL/api/admin/tokens\" \\ -H \"Authorization: Bearer $SYNA_TO",
+      "file_sha256": "3ec4b537d89a3189810f0f44192b870b7816a5bfdb385bb2ee8963b648858442"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "accounts.google.com",
+    "api.example.com",
+    "api.openai.com",
+    "ares.example",
+    "ares.synamcps.net",
+    "claude.ai",
+    "configured.example",
+    "docs.example.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "github.com",
+    "json-schema.org",
+    "keycloak.local",
+    "oauth2.googleapis.com",
+    "ok.example",
+    "openrouter.ai",
+    "other.example",
+    "syna.example",
+    "syna.example.com",
+    "teleport.local",
+    "test9.synamcps.net",
+    "www.apache.org",
+    "www.googleapis.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

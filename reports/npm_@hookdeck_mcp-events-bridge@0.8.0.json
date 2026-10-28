@@ -1,0 +1,48 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@hookdeck/mcp-events-bridge",
+    "version": "0.8.0",
+    "download": null
+  },
+  "archive_sha256": "5b6dc9da670a49c2f147308bc50442a28260e6a4232690daad32afc9070a2a21",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/dist/host/watch-cli.js",
+      "line": 34,
+      "evidence": "<secret>",
+      "file_sha256": "b80dccc95e53386d19db39ffddc3bd9aaffbedae9c5ae3fb558a34e6340f77a6"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/dist/host/watch-cli.d.ts",
+      "line": 1,
+      "evidence": "<secret>",
+      "file_sha256": "2a73ee6399f3262b2215a934d4f787099995c66cafd4af592d577282a9ede1ea"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "ai-sdk.dev",
+    "api.github.com",
+    "api.hookdeck.com",
+    "api.resend.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "docs.npmjs.com",
+    "github.com",
+    "hkdk.events",
+    "hookdeck.com",
+    "www.standardwebhooks.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

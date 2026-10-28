@@ -1,0 +1,105 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@pilotgentic/mcp-server",
+    "version": "1.0.0",
+    "download": null
+  },
+  "archive_sha256": "f4edec4aa52ed11f551bf81270e14a196bfd17311c655b768d1ab8ad6b84f429",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "package/src/security/test-corpus/malicious-12-nc-reverse.md",
+      "line": 7,
+      "evidence": "nc -e /bin/bash",
+      "file_sha256": "f5ac8e95a4698973b113f904edff8905594b83aea72cdb05a51504ecc57faccd"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/src/security/test-corpus/malicious-24-base64-pipe.md",
+      "line": 7,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "677291a735292e4dc7fa0f083b2ac54952bf9e3ba22ff864cba6272b2cf25a02"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/src/marketplace/test-e2e.js",
+      "line": 44,
+      "evidence": "execSync(`cd \"${src}\" && zip -r \"${zip}\" .`)",
+      "file_sha256": "2ffd6c3c7578783e22329f6a8e980869c92126ea92255e839993929b448ae27a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/src/tools/list-skills.js",
+      "line": 318,
+      "evidence": "curl | bash",
+      "file_sha256": "683487eb9ed714e50c0c15127574373e9ebee979e8ab4e0917de4450c5bb3d11"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/src/tools/list-skills.js",
+      "line": 421,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "683487eb9ed714e50c0c15127574373e9ebee979e8ab4e0917de4450c5bb3d11"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "attacker.com, backup.attacker.net, dash.voyageai.com, data-collector.attacker.net, malicious-host.net, monitor.external-service.com, registry.pilotgentic.com, static.modelcontextprotocol.io, telemetry.third-party-tracker.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0.0.0.0",
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "api.ipify.org",
+    "api.voyageai.com",
+    "apps.apple.com",
+    "attacker.com",
+    "backup.attacker.net",
+    "brew.sh",
+    "claude.ai",
+    "code.visualstudio.com",
+    "consolemaven.com",
+    "dash.voyageai.com",
+    "data-collector.attacker.net",
+    "docker.com",
+    "example.com",
+    "github.com",
+    "host.internal",
+    "itunes.apple.com",
+    "malicious-host.net",
+    "monitor.external-service.com",
+    "nas.local",
+    "nodejs.org",
+    "pilotgentic.com",
+    "python.org",
+    "registry.pilotgentic.com",
+    "static.modelcontextprotocol.io",
+    "telemetry.third-party-tracker.com",
+    "www.apple.com",
+    "www.example.com",
+    "www.icloud.com",
+    "zoom.us"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

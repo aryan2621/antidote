@@ -1,0 +1,43 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "daidaiJ/2native-ssh-mcp",
+    "version": "9dd195e9240be17fe7dddf54422044ee742db659",
+    "download": "https://codeload.github.com/daidaiJ/2native-ssh-mcp/tar.gz/9dd195e9240be17fe7dddf54422044ee742db659"
+  },
+  "archive_sha256": "e651a0217771b6b001a5fa4d481ebdc4aa36c115d11909d2c7c090ba06618631",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "2native-ssh-mcp-9dd195e9240be17fe7dddf54422044ee742db659/internal/manager/lint_test.go",
+      "line": 41,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "38f3f26efd7dc605655455d28ba4333a4d050b6af1003a7d4866641c09155db1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "2native-ssh-mcp-9dd195e9240be17fe7dddf54422044ee742db659/skills/2native-ssh-mcp-agent/SKILL.md",
+      "line": 33,
+      "evidence": "base64 -d \\| bash",
+      "file_sha256": "e361e3cf3aa4132ac345697e486750f51ed61b06b56feafdfe392ff8c0e1c00f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "1.2.3.4",
+    "127.0.0.1",
+    "github.com",
+    "img.shields.io",
+    "registry.modelcontextprotocol.io",
+    "simonwillison.net",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

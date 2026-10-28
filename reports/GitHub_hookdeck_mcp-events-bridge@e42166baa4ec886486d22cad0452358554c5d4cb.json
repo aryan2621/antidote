@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "hookdeck/mcp-events-bridge",
+    "version": "e42166baa4ec886486d22cad0452358554c5d4cb",
+    "download": "https://codeload.github.com/hookdeck/mcp-events-bridge/tar.gz/e42166baa4ec886486d22cad0452358554c5d4cb"
+  },
+  "archive_sha256": "b4751c3454087c867b4491d76883383d2a0eee4eeb1f5f03ee861934afdce1b7",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-events-bridge-e42166baa4ec886486d22cad0452358554c5d4cb/src/host/watch-cli.ts",
+      "line": 36,
+      "evidence": "<secret>",
+      "file_sha256": "51a2f44dccefc6b49eaa899cf159e178d240d05955ba0885f4ecc695efdf7421"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-events-bridge-e42166baa4ec886486d22cad0452358554c5d4cb/docs/ARCHITECTURE.md",
+      "line": 425,
+      "evidence": "<secret>",
+      "file_sha256": "f04e4d0f51ca078103327db65e098431703a2b7e67d2626196155d5048759719"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.5",
+    "127.0.0.1",
+    "169.254.169.254",
+    "8.8.8.8",
+    "agentskills.io",
+    "ai-sdk.dev",
+    "api.github.com",
+    "api.hookdeck.com",
+    "api.resend.com",
+    "b.example",
+    "bridge.example.com",
+    "connectors.api.openai.com",
+    "dashboard.hookdeck.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "docs.composio.dev",
+    "docs.npmjs.com",
+    "docs.zapier.com",
+    "events.hookdeck.com",
+    "example.com",
+    "github.com",
+    "hkdk.events",
+    "hookdeck.com",
+    "my-bridge.fly.dev",
+    "opencollective.com",
+    "other.example.com",
+    "pipedream.com",
+    "pypi.org",
+    "receiver.example.com",
+    "registry.npmjs.org",
+    "smithery.ai",
+    "tidelift.com",
+    "www.conventionalcommits.org",
+    "www.hook0.com",
+    "www.standardwebhooks.com",
+    "www.svix.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,64 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "VidGuiCode/assemblash",
+    "version": "175f6d4b4b42d8fdca147371492ab391f7e01997",
+    "download": "https://codeload.github.com/VidGuiCode/assemblash/tar.gz/175f6d4b4b42d8fdca147371492ab391f7e01997"
+  },
+  "archive_sha256": "20c458bd952cc54f53e8ed8cbc23be20dc6682b5a9f42452939917f9d9a41551",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "assemblash-175f6d4b4b42d8fdca147371492ab391f7e01997/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent instructions",
+      "file_sha256": "ab2347347811bb35d86eb119e252799f62b36a626d24752410ececf05743d91d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "assemblash-175f6d4b4b42d8fdca147371492ab391f7e01997/README.md",
+      "line": 198,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "9acaefb5785ed1f39c0a0b3d09f2109414b142186210278d6ef0e17f5fb29947"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "assemblash.example.com",
+    "attacker.example",
+    "developer.mozilla.org",
+    "elsewhere.test",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "fixtures.invalid",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "mantine.dev",
+    "opencollective.com",
+    "openfontlicense.org",
+    "raw.githubusercontent.com",
+    "react.dev",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "semver.org",
+    "sindresorhus.com",
+    "tidelift.com",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.rust-lang.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
