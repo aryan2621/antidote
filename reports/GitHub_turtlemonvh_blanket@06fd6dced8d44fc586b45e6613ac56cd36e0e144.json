@@ -1,0 +1,91 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "turtlemonvh/blanket",
+    "version": "06fd6dced8d44fc586b45e6613ac56cd36e0e144",
+    "download": "https://codeload.github.com/turtlemonvh/blanket/tar.gz/06fd6dced8d44fc586b45e6613ac56cd36e0e144"
+  },
+  "archive_sha256": "832b4aed9d92622152a1c349c7a96742477b7dcceea332a6cb12996a249a36b3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "blanket-06fd6dced8d44fc586b45e6613ac56cd36e0e144/README.md",
+      "line": 17,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/turtlemonvh/blanket/master/scripts/",
+      "file_sha256": "120effaa6b1c1dfe46f5d619ce5e875fc1969ee7f45703d8c7e416f9931d8f58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "blanket-06fd6dced8d44fc586b45e6613ac56cd36e0e144/docs/autostart.md",
+      "line": 23,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/turtlemonvh/blanket/master/scripts/",
+      "file_sha256": "66c115ffcba264e9a395b49ddc912610a2e42de5d70de175763585e5fcfe0c5c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "blanket-06fd6dced8d44fc586b45e6613ac56cd36e0e144/scripts/setup.sh",
+      "line": 85,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh",
+      "file_sha256": "0224297dd986705ae4b94f7c8adbea26e59697053e6ddc946eed4014fe3cbdb5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "blanket-06fd6dced8d44fc586b45e6613ac56cd36e0e144/scripts/setup.sh",
+      "line": 85,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh",
+      "file_sha256": "0224297dd986705ae4b94f7c8adbea26e59697053e6ddc946eed4014fe3cbdb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "blanket-06fd6dced8d44fc586b45e6613ac56cd36e0e144/scripts/install.sh",
+      "line": 9,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/turtlemonvh/blanket/master/scripts/",
+      "file_sha256": "ffbfa3d49407352d2059f103d89e231755db9bef5645f0e9af954bf47a8ae8da"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "blog.golang.org",
+    "claude.com",
+    "code.claude.com",
+    "craigwickesser.com",
+    "docs.github.com",
+    "en.wikipedia.org",
+    "evil.example",
+    "example.com",
+    "github.com",
+    "go.dev",
+    "godoc.org",
+    "golang.org",
+    "groups.google.com",
+    "htmx.org",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "npf.io",
+    "pkg.go.dev",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "tailscale.com",
+    "unpkg.com",
+    "vic.demuzere.be",
+    "www.apple.com",
+    "www.gtri.gatech.edu",
+    "www.rabbitmq.com",
+    "www.sikuli.org",
+    "www.socketloop.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

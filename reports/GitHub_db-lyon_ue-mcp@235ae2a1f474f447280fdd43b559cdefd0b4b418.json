@@ -1,0 +1,234 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "db-lyon/ue-mcp",
+    "version": "235ae2a1f474f447280fdd43b559cdefd0b4b418",
+    "download": "https://codeload.github.com/db-lyon/ue-mcp/tar.gz/235ae2a1f474f447280fdd43b559cdefd0b4b418"
+  },
+  "archive_sha256": "8b1a627d71961fb9903bd3f587383a79ca3014b235ca5cc0dd2fa7cdb47b43d9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/editor/engine-root.ts",
+      "line": 621,
+      "evidence": "execSync( `reg query \"HKCU\\\\SOFTWARE\\\\Epic Games\\\\Unreal Engine\\\\Builds\" /v \"${g",
+      "file_sha256": "eee6a552a220c446542f51d13626afe2d674f3fb49ef0d526e8c44616bbf4a58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/cli/resolve.ts",
+      "line": 26,
+      "evidence": "execSync(`${cmd} --version`, { windowsHide: true, stdio: \"ignore\" })",
+      "file_sha256": "40ce59a33153ae7745a9e3e7ff6d64c566d81d20d07b9f90a03cc24d574c675e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/cli/resolve.ts",
+      "line": 124,
+      "evidence": "execSync(`git checkout -b ${branch} origin/main`, { windowsHide: true, stdio: \"p",
+      "file_sha256": "40ce59a33153ae7745a9e3e7ff6d64c566d81d20d07b9f90a03cc24d574c675e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/cli/resolve.ts",
+      "line": 128,
+      "evidence": "execSync(`git checkout ${branch}`, { windowsHide: true, stdio: \"pipe\" })",
+      "file_sha256": "40ce59a33153ae7745a9e3e7ff6d64c566d81d20d07b9f90a03cc24d574c675e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/cli/resolve.ts",
+      "line": 206,
+      "evidence": "execSync(`git push -u origin ${branch}`, { windowsHide: true, stdio: \"pipe\" })",
+      "file_sha256": "40ce59a33153ae7745a9e3e7ff6d64c566d81d20d07b9f90a03cc24d574c675e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/src/cli/update.ts",
+      "line": 203,
+      "evidence": "execSync(`npm install ue-mcp@${aligned}`, { windowsHide: true, stdio: \"inherit\",",
+      "file_sha256": "200267dc37c0258aa1d365dcfb719da10477bcee6fe858e1e8aa8dbe59d999d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/.claude/settings.json",
+      "line": 55,
+      "evidence": "curl * | bash",
+      "file_sha256": "ab1fd5a5231ccbfbc67c74bb753ea6465d6a80a02602f7ec5521cc330de5b352"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/scripts/build-and-run.js",
+      "line": 141,
+      "evidence": "execSync(`node \"${buildScript}\"`, { stdio: 'inherit' })",
+      "file_sha256": "8a5d31de70ee9c7444e70288d74876d14e5a908d4c3c1565df81f73da2719fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/scripts/build-and-run.js",
+      "line": 146,
+      "evidence": "execSync(`node \"${runScript}\"`, { stdio: 'inherit' })",
+      "file_sha256": "8a5d31de70ee9c7444e70288d74876d14e5a908d4c3c1565df81f73da2719fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/unit/version-check.test.ts",
+      "line": 202,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "013cbbb38cb8567296f0992bc2af58503acd1b029d42bf26d827839961f27b0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39735,
+      "evidence": "p=0.95 List of alternate/previous names for this variable. Note that this is not normal",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39836,
+      "evidence": "p=0.99 This will be used as display name instead of the enum value",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39735,
+      "evidence": "p=0.95 List of alternate/previous names for this variable. Note that this is not normal",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39836,
+      "evidence": "p=0.99 This will be used as display name instead of the enum value",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39735,
+      "evidence": "p=0.95 List of alternate/previous names for this variable. Note that this is not normal",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39836,
+      "evidence": "p=0.99 This will be used as display name instead of the enum value",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39735,
+      "evidence": "p=0.95 List of alternate/previous names for this variable. Note that this is not normal",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39836,
+      "evidence": "p=0.99 This will be used as display name instead of the enum value",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39735,
+      "evidence": "p=0.95 List of alternate/previous names for this variable. Note that this is not normal",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ue-mcp-235ae2a1f474f447280fdd43b559cdefd0b4b418/tests/golden/epic-catalog.json",
+      "line": 39836,
+      "evidence": "p=0.99 This will be used as display name instead of the enum value",
+      "file_sha256": "3cdc25ececd56fdcaa34874408a8cfe964827f47fc37b937ce237805252e63d1"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.github.com",
+    "cdn.example",
+    "claude.ai",
+    "cli.github.com",
+    "dev.epicgames.com",
+    "developer.microsoft.com",
+    "docs.anthropic.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "feedback.local.test",
+    "feedback.ue-mcp.com",
+    "feross.org",
+    "git-lfs.com",
+    "git-lfs.github.com",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "json-schema.org",
+    "nodejs.org",
+    "opencollective.com",
+    "plugins.ue-mcp.com",
+    "registry.internal.test",
+    "registry.invalid",
+    "registry.npmjs.org",
+    "signing.example.test",
+    "tidelift.com",
+    "ue-mcp.com",
+    "unpkg.com",
+    "visualstudio.microsoft.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.unrealengine.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

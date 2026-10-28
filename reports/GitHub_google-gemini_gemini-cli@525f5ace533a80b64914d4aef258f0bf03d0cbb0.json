@@ -1,0 +1,883 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "google-gemini/gemini-cli",
+    "version": "525f5ace533a80b64914d4aef258f0bf03d0cbb0",
+    "download": "https://codeload.github.com/google-gemini/gemini-cli/tar.gz/525f5ace533a80b64914d4aef258f0bf03d0cbb0"
+  },
+  "archive_sha256": "731e9d399e6e867837eca335fc1df2aa15adc0f67af605a056e1e95c77b499d9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/ide/ide-installer.ts",
+      "line": 31,
+      "evidence": "child_process .execSync(`where.exe ${command}`)",
+      "file_sha256": "6140ff19396f8e1b025d6202eacef6519a8a550f8047b09b88b3917268cc2ae3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/ide/ide-installer.ts",
+      "line": 41,
+      "evidence": "child_process.execSync(`command -v ${command}`, { stdio: 'ignore', })",
+      "file_sha256": "6140ff19396f8e1b025d6202eacef6519a8a550f8047b09b88b3917268cc2ae3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/hooks/hookRunner.ts",
+      "line": 375,
+      "evidence": "execSync(`taskkill /pid ${child.pid} /f /t`, { timeout: 2000 })",
+      "file_sha256": "fce6d7a6e160d308c92fec3eab4a69b82d38eb621cec6875476ef982d34ae652"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/hooks/hookRunner.ts",
+      "line": 389,
+      "evidence": "execSync(`taskkill /pid ${child.pid} /f /t`, { timeout: 2000 })",
+      "file_sha256": "fce6d7a6e160d308c92fec3eab4a69b82d38eb621cec6875476ef982d34ae652"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/prompts/snippets.ts",
+      "line": 917,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b2cccbd0cf68e33d057f33938e457fe3c781cc7e65c593f7a3974d70c5c68fe7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/prompts/snippets.legacy.ts",
+      "line": 736,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b44b4142794ca2d5d4e9eabf30480acb0af73e7f1241672a7b332f0712c7bd67"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/core/src/skills/builtin/antigravity-support/SKILL.md",
+      "line": 41,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "2b866bce962f642be8c0dd74ffc2548fa29f2100bc945518b2f738b7d7d6fd38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/vscode-ide-companion/scripts/check-vscode-release.js",
+      "line": 13,
+      "evidence": "execSync( `gcloud storage ls --recursive ${bucketUri}`, { encoding: 'utf-8' }, )",
+      "file_sha256": "30c5ea3d201693216bf802407097e1051bc46e92bf70049d6f9d5e71a3323634"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/vscode-ide-companion/scripts/check-vscode-release.js",
+      "line": 48,
+      "evidence": "execSync( `git log ${lastReleaseCommit}..origin/main --invert-grep --grep=\"chore",
+      "file_sha256": "30c5ea3d201693216bf802407097e1051bc46e92bf70049d6f9d5e71a3323634"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/vscode-ide-companion/scripts/check-vscode-release.js",
+      "line": 54,
+      "evidence": "execSync( `git diff ${lastReleaseCommit}..origin/main -- packages/vscode-ide-com",
+      "file_sha256": "30c5ea3d201693216bf802407097e1051bc46e92bf70049d6f9d5e71a3323634"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/test-utils/src/test-rig.ts",
+      "line": 994,
+      "evidence": "execSync(`taskkill /F /T /PID ${pid}`, { stdio: 'ignore' })",
+      "file_sha256": "7a0e56af20a094ceed84f35cfc75de59561f3b86b107e50c1d5eee58d982e96a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/test-utils/src/test-rig.ts",
+      "line": 1011,
+      "evidence": "execSync(`taskkill /F /T /PID ${child.pid}`, { stdio: 'ignore' })",
+      "file_sha256": "7a0e56af20a094ceed84f35cfc75de59561f3b86b107e50c1d5eee58d982e96a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/test-utils/assets/test-servers/google-workspace.json",
+      "line": 294,
+      "evidence": "p=0.96 The formatting instructions to apply.",
+      "file_sha256": "cd8b41430064bdea9db234640ae92e309fa88cbd6caf946355e883d850a45c81"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/utils/sandbox.ts",
+      "line": 462,
+      "evidence": "execSync( `cd ${gcRoot} && node scripts/build_sandbox.js -s ${buildArgs}`, { std",
+      "file_sha256": "044ee2cd3e4fac010be6bcfeb84216ddbd8b39ea1d2e88ab452a18f07832c0a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/utils/sandbox.ts",
+      "line": 703,
+      "evidence": "execSync( `${command} network inspect ${SANDBOX_NETWORK_NAME} || ${command} netw",
+      "file_sha256": "044ee2cd3e4fac010be6bcfeb84216ddbd8b39ea1d2e88ab452a18f07832c0a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/utils/sandbox.ts",
+      "line": 713,
+      "evidence": "execSync( `${command} network inspect ${SANDBOX_PROXY_NAME} || ${command} networ",
+      "file_sha256": "044ee2cd3e4fac010be6bcfeb84216ddbd8b39ea1d2e88ab452a18f07832c0a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/ui/commands/helpCommand.test.ts",
+      "line": 62,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "d37a4de6c83e51d0f200cb7a1359cd03a629d11bb00b5314ba6dbe0c4dc4a889"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/ui/hooks/useBanner.test.ts",
+      "line": 160,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "f49dfbd7d213de10bc5a103abf00458a2a795f804da32ff9dc9a4c12158036e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/ui/utils/antigravityUtils.test.ts",
+      "line": 25,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "ed8de44feb676b1653b7a0b4528243ef2bfd116a3fd73a91ac5631982e1d2563"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/ui/utils/antigravityUtils.ts",
+      "line": 10,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "86f60fbf4e7fbe67dfc58ed908f381993d24845df01e66843303b5a0bbe09f4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/packages/cli/src/ui/utils/clipboardUtils.ts",
+      "line": 52,
+      "evidence": "execSync(`command -v ${toolName}`, { stdio: 'ignore' })",
+      "file_sha256": "eb41ee0b2ca41fc9680fe77ab7a75ca351dfb116f1cbe85f4674f24ed59a2321"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/evals/prompt_injection_mcp.eval.ts",
+      "line": 45,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "5aa637e8a0c0cf962740d6116d03d32b2a498502f3fb4e6504f2acdb3ced3010"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 39,
+      "evidence": "execSync(`node \"${initScript}\" ${skillName} --path \"${tempDir}\"`, { stdio: 'inhe",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 51,
+      "evidence": "execSync( `node \"${validateScript}\" \"${skillDir}\" 2>&1`, { encoding: 'utf8' }, )",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 59,
+      "evidence": "execSync(`node \"${packageScript}\" \"${skillDir}\" \"${tempDir}\"`, { stdio: 'pipe', ",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 81,
+      "evidence": "execSync(`node \"${validateScript}\" \"${skillDir}\"`, { encoding: 'utf8', })",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 87,
+      "evidence": "execSync(`node \"${packageScript}\" \"${skillDir}\" \"${tempDir}\"`, { stdio: 'inherit",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 97,
+      "evidence": "execSync(`unzip -l \"${skillFile}\"`, { encoding: 'utf8' })",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-scripts.test.ts",
+      "line": 99,
+      "evidence": "execSync(`tar -tf \"${skillFile}\"`, { encoding: 'utf8' })",
+      "file_sha256": "ef369156e2e5f673a07f053ac828aee4a56154a793a429b683ec866a875f5265"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-vulnerabilities.test.ts",
+      "line": 39,
+      "evidence": "execSync(`node \"${initScript}\" ${skillName} --path \"${tempDir}\"`)",
+      "file_sha256": "f4160236010e00c3432ac9bf620f6b2beacf3c1765272edd6cae64f242d0e3a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/skill-creator-vulnerabilities.test.ts",
+      "line": 92,
+      "evidence": "execSync(`node \"${initScript}\" ${skillName} --path \"${tempDir}\"`)",
+      "file_sha256": "f4160236010e00c3432ac9bf620f6b2beacf3c1765272edd6cae64f242d0e3a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/integration-tests/clipboard-linux.test.ts",
+      "line": 67,
+      "evidence": "execSync( `xclip -selection clipboard -t image/png -i \"${dummyImagePath}\"`, { st",
+      "file_sha256": "2ddd633f51106eb8000c24c47c74ae0afd076b1accde6e0eff7ac4da8559811c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/agent-tui/SKILL.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/pproenca/agent-tui/master/install.s",
+      "file_sha256": "e5d1452e1089d92aeb429f8d7aef9c112b15add7d7d557c28eabef722b6ba8b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/ci/scripts/ci.mjs",
+      "line": 30,
+      "evidence": "execSync(`gh ${args}`, { stdio: ['ignore', 'pipe', 'ignore'], })",
+      "file_sha256": "3039408aee454bb52ae555ce3ae273012c9dc26ecb729009ab838b7c5f1a3018"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/ci/scripts/ci.mjs",
+      "line": 125,
+      "evidence": "execSync(`git rev-parse \"${BRANCH}\"`)",
+      "file_sha256": "3039408aee454bb52ae555ce3ae273012c9dc26ecb729009ab838b7c5f1a3018"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/docs-writer/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.90 # `docs-writer` skill instructions",
+      "file_sha256": "a7e5c1e5ed154e698c5f688f4a33f98c6c69558d99c4ec2dd49231c4ea915921"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/docs-writer/SKILL.md",
+      "line": 97,
+      "evidence": "p=0.97 <!-- prettier-ignore --> > [!NOTE] > This is an example of a multi-line note tha",
+      "file_sha256": "a7e5c1e5ed154e698c5f688f4a33f98c6c69558d99c4ec2dd49231c4ea915921"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/.gemini/skills/docs-writer/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.96 {/* prettier-ignore */} > [!NOTE] > This is an example of a multi-line note that",
+      "file_sha256": "a7e5c1e5ed154e698c5f688f4a33f98c6c69558d99c4ec2dd49231c4ea915921"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/schemas/settings.schema.json",
+      "line": 3372,
+      "evidence": "p=0.93 Whether to ignore generic .env files in the project directory.",
+      "file_sha256": "5517471627bf712c88e7d27ddbf419629df73edad7a676344ede9f2d2379d408"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/docs/core/local-model-routing.md",
+      "line": 65,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "a0746424a484dbcb0952db3c775d6e0b30399a3f3837b7f36a306ea4c8ee62ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/changed_prompt.js",
+      "line": 34,
+      "evidence": "execSync(`git fetch ${remoteUrl} ${targetBranch}`, { stdio: 'ignore', })",
+      "file_sha256": "3e462a65ee6b059a35dccc37d6b0f70d543992e4c1754494e4c210bf3d94792e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/changed_prompt.js",
+      "line": 40,
+      "evidence": "execSync(`git diff --name-only FETCH_HEAD...${head}`, { encoding: 'utf-8', })",
+      "file_sha256": "3e462a65ee6b059a35dccc37d6b0f70d543992e4c1754494e4c210bf3d94792e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/changed_prompt.js",
+      "line": 73,
+      "evidence": "execSync( `git diff -U0 FETCH_HEAD...${head} -- packages/core/src/`, { encoding:",
+      "file_sha256": "3e462a65ee6b059a35dccc37d6b0f70d543992e4c1754494e4c210bf3d94792e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/build_sandbox.js",
+      "line": 160,
+      "evidence": "execSync( `${sandboxCommand} build ${buildCommandArgs} ${ process.env.BUILD_SAND",
+      "file_sha256": "bb84108f197a4e28092e9a0dbe770ffbfa4d8382c0b61facbf42a95fe3dab967"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/build_sandbox.js",
+      "line": 192,
+      "evidence": "execSync(`${sandboxCommand} image prune -f`, { stdio: 'ignore' })",
+      "file_sha256": "bb84108f197a4e28092e9a0dbe770ffbfa4d8382c0b61facbf42a95fe3dab967"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/aggregate_evals.js",
+      "line": 119,
+      "evidence": "execSync( `gh run download ${run.databaseId} -p \"eval-logs-*\" -D \"${tmpDir}\"`, {",
+      "file_sha256": "eea89ef16d697d1bc97beb50bdfa99e36fae86c6c9766de9ffdd968a821d5029"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/sandbox_command.js",
+      "line": 78,
+      "evidence": "execSync(`${checkCommand} ${cmd}`, { stdio: 'ignore' })",
+      "file_sha256": "686801e1cb5fad8b1ec7dc992cdc1498ef80a33acd736cffd734872c04d43555"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/sandbox_command.js",
+      "line": 83,
+      "evidence": "execSync(`${checkCommand} ${cmd}.exe`, { stdio: 'ignore' })",
+      "file_sha256": "686801e1cb5fad8b1ec7dc992cdc1498ef80a33acd736cffd734872c04d43555"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/build.js",
+      "line": 56,
+      "evidence": "execSync( `npx --no-install npm-run-all --parallel ${parallelWorkspaces.map((w) ",
+      "file_sha256": "c8e8f8f3ab9ff4d4b953477cd744b83af224bf4eb40911d176155c45aa20672d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/run_eval_regression.js",
+      "line": 39,
+      "evidence": "execSync( `node scripts/get_trustworthy_evals.js \"${model}\"`, { encoding: 'utf-8",
+      "file_sha256": "392fa8ab1e0d1add3f8fc5cef3c181b443bd5525b039f1352232a46778221983"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/run_eval_regression.js",
+      "line": 54,
+      "evidence": "execSync(`node scripts/run_regression_check.js \"${model}\" \"${output}\"`, { stdio:",
+      "file_sha256": "392fa8ab1e0d1add3f8fc5cef3c181b443bd5525b039f1352232a46778221983"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/run_eval_regression.js",
+      "line": 60,
+      "evidence": "execSync(`node scripts/compare_evals.js \"${model}\"`, { encoding: 'utf-8', stdio:",
+      "file_sha256": "392fa8ab1e0d1add3f8fc5cef3c181b443bd5525b039f1352232a46778221983"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/lint.js",
+      "line": 261,
+      "evidence": "execSync(`git fetch origin ${baseRef}`)",
+      "file_sha256": "24c93801bb4e51464e219d1c055d5ac12eefa7c63efe55dda5f04d865921a223"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/lint.js",
+      "line": 262,
+      "evidence": "execSync(`git merge-base HEAD origin/${baseRef}`)",
+      "file_sha256": "24c93801bb4e51464e219d1c055d5ac12eefa7c63efe55dda5f04d865921a223"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/lint.js",
+      "line": 265,
+      "evidence": "execSync(`git diff --name-only ${mergeBase}..HEAD`)",
+      "file_sha256": "24c93801bb4e51464e219d1c055d5ac12eefa7c63efe55dda5f04d865921a223"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/cleanup-branches.ts",
+      "line": 141,
+      "evidence": "execSync(`git push origin --delete ${branchList}`, { stdio: 'inherit', })",
+      "file_sha256": "d21215ce7f1c4963296432855652ae7d2675dc060355a9f34f0e7984aa490a9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/cleanup-branches.ts",
+      "line": 148,
+      "evidence": "execSync(`git push origin --delete ${branch}`, { stdio: 'pipe', })",
+      "file_sha256": "d21215ce7f1c4963296432855652ae7d2675dc060355a9f34f0e7984aa490a9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/eval_utils.js",
+      "line": 111,
+      "evidence": "execSync( `gh run download ${run.databaseId} -p \"eval-logs-*\" -D \"${tmpDir}\"`, {",
+      "file_sha256": "c9820e14df1bcdba3fa04e7ef3ae07fececb6904206b8ef48298e73fb4c2de05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/releasing/create-patch-pr.js",
+      "line": 107,
+      "evidence": "execSync( `gh pr list --head ${hotfixBranch} --json number,url --jq '.[0] // emp",
+      "file_sha256": "9bd562c1e3a83262ef38faf0eea645f7316054f1d29c3a0b8c91e93158687f0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/releasing/create-patch-pr.js",
+      "line": 147,
+      "evidence": "execSync(`git cherry-pick ${commit}`, { stdio: 'pipe' })",
+      "file_sha256": "9bd562c1e3a83262ef38faf0eea645f7316054f1d29c3a0b8c91e93158687f0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/releasing/create-patch-pr.js",
+      "line": 269,
+      "evidence": "execSync(`git ls-remote --exit-code --heads origin ${branchName}`)",
+      "file_sha256": "9bd562c1e3a83262ef38faf0eea645f7316054f1d29c3a0b8c91e93158687f0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/utils/eval-validate.ts",
+      "line": 304,
+      "evidence": "execSync(`git merge-base HEAD ${base}`, { cwd, encoding: 'utf8', stdio: ['ignore",
+      "file_sha256": "8392585bcc7531d98ef5e0d3e206d16a0e7ca0f9e816cf89fb50ef0527cc186c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/utils/eval-validate.ts",
+      "line": 310,
+      "evidence": "execSync( `git diff --diff-filter=A --name-only ${mergeBase}`, { cwd, encoding: ",
+      "file_sha256": "8392585bcc7531d98ef5e0d3e206d16a0e7ca0f9e816cf89fb50ef0527cc186c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/tests/patch-create-comment.test.js",
+      "line": 27,
+      "evidence": "execSync(`node ${scriptPath} ${args}`, { encoding: 'utf8', env: fullEnv, })",
+      "file_sha256": "727286e192044f28a17c937e00c99cb2f5014a86049a5cf007f27e257cc1043c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/run_regression_check.js",
+      "line": 105,
+      "evidence": "execSync( `grep -l ${quote([manualPattern])} evals/*.eval.ts`, { encoding: 'utf-",
+      "file_sha256": "c29d1e8ac819d946682a587ab9034fa22ca66ee053aa62bdae8c638e062da697"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/get-release-version.js",
+      "line": 171,
+      "evidence": "execSync(`git rev-parse v${version}^{commit} 2>/dev/null`)",
+      "file_sha256": "6df5b3d3cd0ccc06357f071c7a0270ba643252e125cd8b8b6fa1782102cf7718"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/scripts/get-release-version.js",
+      "line": 174,
+      "evidence": "execSync( `git ls-remote --tags origin refs/tags/v${version} 2>/dev/null`, )",
+      "file_sha256": "6df5b3d3cd0ccc06357f071c7a0270ba643252e125cd8b8b6fa1782102cf7718"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/caretaker-agent/cloudrun/triage-worker/.gemini/triage_orchestrator.md",
+      "line": 7,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "4f72027e488a2aaba24a29806fe36c2df961041831cea7a22b5859b9e8278c4e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/caretaker-agent/cloudrun/triage-worker/.gemini/skills/effort/SKILL.md",
+      "line": 6,
+      "evidence": "p=0.97 # Effort Estimator Instructions",
+      "file_sha256": "e88c3c85cfe724dd5819b73280229208f6412c11410cbf0f22e33f3eb909d9e5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/caretaker-agent/cloudrun/triage-worker/.gemini/skills/spec_generator/SKILL.md",
+      "line": 6,
+      "evidence": "p=0.96 # Spec Generator Instructions",
+      "file_sha256": "cebff453fc13043ac5383b8818f456251abf15609e282f225dbf291f0dd99ac6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/caretaker-agent/cloudrun/triage-worker/.gemini/skills/quality/SKILL.md",
+      "line": 23,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "4c771b29facfd45d3ef7cc743405a1372ae66ffe8d20f8c2f717b014099db29c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/caretaker-agent/cloudrun/triage-worker/.gemini/skills/code_explorer/SKILL.md",
+      "line": 6,
+      "evidence": "p=0.98 # Code Explorer Instructions",
+      "file_sha256": "daf02cab765f7275554241399c8386ac76c10f4c05a34ae467e5d9432d7c2f25"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/open_prs.ts",
+      "line": 22,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "1509a4a4ce55c254ff4cc7d9ce60160a64dd0ec3107a25a5f811cda9f9c4639f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/domain_expertise.ts",
+      "line": 37,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "7f88445c0e034d369d6a135270c038bb5566b7993fa886691cec06bf9c4ffe1d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/domain_expertise.ts",
+      "line": 67,
+      "evidence": "execSync( `git log --format=\"%an|%ae\" -- ${JSON.stringify(targetPath)}`, { cwd: ",
+      "file_sha256": "7f88445c0e034d369d6a135270c038bb5566b7993fa886691cec06bf9c4ffe1d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/domain_expertise.ts",
+      "line": 90,
+      "evidence": "execSync( `git diff-tree --no-commit-id --name-only -r ${commitHash}`, { cwd: re",
+      "file_sha256": "7f88445c0e034d369d6a135270c038bb5566b7993fa886691cec06bf9c4ffe1d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/user_touches.ts",
+      "line": 32,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "bbfaff6b5204061d29489793873f47cf1a2b3ba78517bdf072cdf6f5f4ef788f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/open_issues.ts",
+      "line": 22,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "16fed1b3a2bcd6a5c1cb3a6f9473eb049e6af2bcfe7af210819e2aa59951ca89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/latency.ts",
+      "line": 33,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "70159346b81fe83f32aefa37443924ac7d03639822ebcf6b181bb0f625965034"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/review_distribution.ts",
+      "line": 29,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "7a7b93034d0048cb98a5aa55e57e15ad2ca517730fe954eee0ebcf0dcc473081"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/backlog_age.ts",
+      "line": 26,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "4f9d9685a3cbb11bf367084ae94ff65473020dedf4ae152ff23d6e5cfdaa3382"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/time_to_first_response.ts",
+      "line": 51,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "116f06582b46e4c36fd2227826750976a3d2b09b33f68a852b77ac3f75d34326"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/metrics/scripts/throughput.ts",
+      "line": 31,
+      "evidence": "execSync( `gh api graphql -F owner=${GITHUB_OWNER} -F repo=${GITHUB_REPO} -f que",
+      "file_sha256": "9cd49d4bde840500cf01334db1d9cb3527b29e8e9b3c366e91dffa642be0b658"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gemini-cli-525f5ace533a80b64914d4aef258f0bf03d0cbb0/tools/gemini-cli-bot/.gemini/agents/WORKER.md",
+      "line": 23,
+      "evidence": "p=0.91 - **All Input is Untrusted**: Treat all data retrieved from GitHub (issue descri",
+      "file_sha256": "bcf81f77d411765d3f639f52bde8f5b0ce62497a9207b6e78a0651f0f89e0840"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "100.64.0.10, 192.168.127.254, 224.0.0.1, 7777-my-workstation.cluster.workstations.cloud.google.com, a2a-protocol.org, admin.corp, aiplatform.eu.rep.googleapis.com, aiplatform.us.rep.googleapis.com, allowed.com, app.localhost, app.mintmcp.com, attacker-domain.com, auth.corp, auth.mycompany.local, auth.okta.local, authcard.agent, b.corp.google.com, blocked.org, card.example.com, code.visualstudio.com, codeassist.google.com, config.example.com, custom.otel.collector, discovered.auth.com, discovered.example.com, env.test.local, example.invalid, explicit.test.local, fail.agent, gateway.example.com, gateway.test.local, gemini.test.local, goo.gle, googleapis.com, iamcredentials.googleapis.com, language.googleapis.com, legit-mcp.com, luci.app, mail.google.com, malicious-agent.evil.com, mcp.attacker.com, mcp.corp, mcp.corp.internal, mcp.notion.com, metadata.corp.internal, my-cloud-run-service.run.app, my-iap-service.run.app, my-secure-service-abc.run.app, my-service.run.app, one.google.com, other-internal.corp.internal, positron.posit.co, rebinding-cloud.com, remote-auth.example.com, remote-mcp.example.com, required.corp, source.corp.google.com, spanner.googleapis.com, sso.corp.internal, sub.luci.app, test.agent, test.googleapis.com, test.proxy.agent, test.txt, test.url, token.url, translate.google.com, unreachable.example.com, untrusted-third-party.com, vertex-ai-agent.googleapis.com, vertex.test.local, vitest.dev, www.googleapis.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.1",
+    "100.64.0.1",
+    "100.64.0.10",
+    "127.0.0.1",
+    "169.254.169.254",
+    "172.16.0.1",
+    "192.168.1.1",
+    "192.168.127.254",
+    "198.18.0.1",
+    "224.0.0.1",
+    "7777-my-workstation.cluster.workstations.cloud.google.com",
+    "a2a-protocol.org",
+    "accounts.google.com",
+    "admin.corp",
+    "ai.google.dev",
+    "aiplatform.eu.rep.googleapis.com",
+    "aiplatform.us.rep.googleapis.com",
+    "allowed.com",
+    "api.example.com",
+    "app.localhost",
+    "app.mintmcp.com",
+    "attacker-domain.com",
+    "attacker.com",
+    "auth.corp",
+    "auth.example.com",
+    "auth.mycompany.local",
+    "auth.okta.local",
+    "authcard.agent",
+    "b.corp.google.com",
+    "blocked.org",
+    "card.example.com",
+    "cloudcode-pa.googleapis.com",
+    "code.visualstudio.com",
+    "codeassist.google.com",
+    "config.example.com",
+    "custom.example.com",
+    "custom.otel.collector",
+    "developers.google.com",
+    "discovered.auth.com",
+    "discovered.example.com",
+    "env.test.local",
+    "evil.com",
+    "example.com",
+    "example.invalid",
+    "explicit.test.local",
+    "fail.agent",
+    "gateway.example.com",
+    "gateway.test.local",
+    "gemini.test.local",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "goo.gle",
+    "google.com",
+    "googleapis.com",
+    "huggingface.co",
+    "iamcredentials.googleapis.com",
+    "json-schema.org",
+    "language.googleapis.com",
+    "legit-mcp.com",
+    "luci.app",
+    "mail.google.com",
+    "malicious-agent.evil.com",
+    "malicious.com",
+    "mcp.attacker.com",
+    "mcp.corp",
+    "mcp.corp.internal",
+    "mcp.example.com",
+    "mcp.notion.com",
+    "metadata.corp.internal",
+    "my-cloud-run-service.run.app",
+    "my-iap-service.run.app",
+    "my-secure-service-abc.run.app",
+    "my-service.run.app",
+    "one.google.com",
+    "other-idp.example.com",
+    "other-internal.corp.internal",
+    "positron.posit.co",
+    "proxy.example.com",
+    "rebinding-cloud.com",
+    "registry.npmjs.org",
+    "remote-auth.example.com",
+    "remote-mcp.example.com",
+    "required.corp",
+    "source.corp.google.com",
+    "spanner.googleapis.com",
+    "sso.corp.internal",
+    "sub.luci.app",
+    "test.agent",
+    "test.googleapis.com",
+    "test.proxy.agent",
+    "test.txt",
+    "test.url",
+    "token.url",
+    "translate.google.com",
+    "unreachable.example.com",
+    "untrusted-third-party.com",
+    "vertex-ai-agent.googleapis.com",
+    "vertex.test.local",
+    "vitest.dev",
+    "www.googleapis.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

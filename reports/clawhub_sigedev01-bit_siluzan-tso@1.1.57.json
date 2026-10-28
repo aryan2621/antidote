@@ -1,0 +1,76 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "sigedev01-bit/siluzan-tso",
+    "version": "1.1.57",
+    "download": "https://clawhub.ai/api/v1/download?slug=siluzan-tso&ownerHandle=sigedev01-bit&version=1.1.57"
+  },
+  "archive_sha256": "b514483b18c66cd5301ca776cf1b12af222efa3c2a19afa178beb10f8f3fa0b5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash",
+      "file_sha256": "13774c4bca92fc80dac0a4cff517145de68a7f94d7e66d97f6ce9b0449b93365"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "13774c4bca92fc80dac0a4cff517145de68a7f94d7e66d97f6ce9b0449b93365"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 75,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "13774c4bca92fc80dac0a4cff517145de68a7f94d7e66d97f6ce9b0449b93365"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "a.com",
+    "ads.tiktok.com",
+    "agent-ci.mysiluzan.com",
+    "agent.mysiluzan.com",
+    "agentskills.io",
+    "cdn.tailwindcss.com",
+    "cdnjs.cloudflare.com",
+    "competitor.com",
+    "cursor.com",
+    "deb.nodesource.com",
+    "developer.work.weixin.qq.com",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "googleapi.mysiluzan.com",
+    "install-node.vercel.app",
+    "json-schema.org",
+    "nodejs.org",
+    "open.feishu.cn",
+    "registry.npmmirror.com",
+    "rpm.nodesource.com",
+    "schemas.openxmlformats.org",
+    "staticpn.siluzan.com",
+    "tso-api.siluzan.com",
+    "www-ci.siluzan.com",
+    "www.brand-a.com",
+    "www.example.com",
+    "www.hy-steelpipe.com",
+    "www.siluzan.com",
+    "www.youtube.com",
+    "your-crm.example.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

