@@ -1,0 +1,104 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Muvon/octocode",
+    "version": "ca64a30200b5ddfd242b8a7cfb9998b1880a3b59",
+    "download": "https://codeload.github.com/Muvon/octocode/tar.gz/ca64a30200b5ddfd242b8a7cfb9998b1880a3b59"
+  },
+  "archive_sha256": "238f23902724bff290d769eb9bbf3ed4c60e6d7fabd226775a676794dab36b37",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/install.sh",
+      "line": 329,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Muvon/octocode/master/install.sh | ",
+      "file_sha256": "409a71aa6e8107e074182b3cd18d716ffead4cdd8d6fb53491bebacbec97f63a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/doc/RELEASE_MANAGEMENT.md",
+      "line": 387,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muvon/octocode/master/install.sh | ",
+      "file_sha256": "30cb1e946b5af6d13976c7656081f15f8d82b704fc06a125fa2489c5a24714c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/doc/MCP_CLIENTS.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muvon/octomind/master/install.sh | ",
+      "file_sha256": "efe84890aeaaf9f0e02bffe4f224e24e25d7b3e64bd0abdb502468b7f8a501cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/README.md",
+      "line": 133,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Muvon/octocode/master/install.sh | ",
+      "file_sha256": "5c2cd8e5f9d997fb467bd2db0137924f5ace67cee215b19552686e45187f49a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/INSTALL.md",
+      "line": 7,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muvon/octocode/master/install.sh | ",
+      "file_sha256": "e4ad4ef28f7634a86e6ec2b3f089efbfda846cbda99b4b6c5f6aeb2efd4fb5f5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "octocode-ca64a30200b5ddfd242b8a7cfb9998b1880a3b59/INSTALL.md",
+      "line": 228,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "e4ad4ef28f7634a86e6ec2b3f089efbfda846cbda99b4b6c5f6aeb2efd4fb5f5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "aistudio.google.com",
+    "api.github.com",
+    "console.anthropic.com",
+    "continue.dev",
+    "crates.io",
+    "developers.openai.com",
+    "docs.example.com",
+    "docs.rs",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jina.ai",
+    "llm.example.com",
+    "makersuite.google.com",
+    "manticoresearch.com",
+    "marketplace.visualstudio.com",
+    "muvon.io",
+    "octocode.muvon.io",
+    "octomind.run",
+    "openrouter.ai",
+    "opensource.org",
+    "platform.deepseek.com",
+    "platform.openai.com",
+    "raw.githubusercontent.com",
+    "rustup.rs",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "twitter.com",
+    "www.apache.org",
+    "www.rust-lang.org",
+    "www.voyageai.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

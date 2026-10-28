@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@sendinel/mcp-server",
+    "version": "1.0.83",
+    "download": null
+  },
+  "archive_sha256": "b08e6b0ef1f451802eb030d823c9651ceb93876cf89daa342c530edbcb4377f7",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/build/index.js",
+      "line": 75,
+      "evidence": "app.post('/mcp', async (req, res) => { const info = req._apiKeyInfo; // Resolve ",
+      "file_sha256": "023225426ebdc183d639169f995c2c652ae1de3f6d61ea376bc8067ab590f6c4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.elasticemail.com",
+    "api.github.com",
+    "api.mailgun.net",
+    "api.postmarkapp.com",
+    "api.sendgrid.com",
+    "api.telnyx.com",
+    "api.twilio.com",
+    "api.upload-post.com",
+    "github.com",
+    "sendinel.ai",
+    "synchronex.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

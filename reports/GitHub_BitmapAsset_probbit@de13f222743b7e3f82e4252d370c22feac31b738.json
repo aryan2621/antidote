@@ -1,0 +1,176 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "BitmapAsset/probbit",
+    "version": "de13f222743b7e3f82e4252d370c22feac31b738",
+    "download": "https://codeload.github.com/BitmapAsset/probbit/tar.gz/de13f222743b7e3f82e4252d370c22feac31b738"
+  },
+  "archive_sha256": "42d8c00f76b29df93312056e4bbf8e5f25ae496f16fd99c4ef913cdd30c8597a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/scripts/bench/test_install_sh.sh",
+      "line": 3,
+      "evidence": "curl ... | sh",
+      "file_sha256": "b79e845525ddf8556d5ec6b483405abf40431182e8686541263f78f954c63b2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/plugins/openclaw/test/units.test.ts",
+      "line": 114,
+      "evidence": "curl -fsSL https://x.sh | bash",
+      "file_sha256": "09131c68acd99f1ee125a7ab3098cee0b5474e61943ba7c36dd15e99512b7db8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/plugins/openclaw/test/hook.test.ts",
+      "line": 196,
+      "evidence": "curl -H \"Authorization: token ${secret}\" https://x/i.sh | sh",
+      "file_sha256": "527c5d94e1a761ec97140fb8f3f681a8591c97fe37cca4734ab67035752b43d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/plugins/openclaw/README.md",
+      "line": 209,
+      "evidence": "curl | sh",
+      "file_sha256": "14487f2faece64f79b10d3fc96f8bcb4d6c6f446fdac033c43cb39d802887684"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/llms.txt",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "a2f1c60e0449d472ea0dbae062fca7ff7be6aaeab04bd5f9b6404b417e6884c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/llms-full.txt",
+      "line": 36,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "23d974d8176d4a839dea06e1402b9dcf31ccbdab2feb76c6d77342a71a41772c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "a5b22df2b8ee1dcedfe5191a6ab638ff22a78855d6e35be7b56542b5a32f9ce6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/examples/hosts/langchain/stance_callbacks.py",
+      "line": 73,
+      "evidence": "Ignore the previous instructions",
+      "file_sha256": "f544bc29c5171a10888af8fcf8431194bd797ea938ce5f9db8e0eb483be4eb3f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/examples/hosts/claude-code/README.md",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "e504935fe601ddf2b38b6a03cc16937fbcda948e8de282d59768a1378e16f8a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/docs/registry/mcp-listing.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "17cf580326742297e3397ab802c99442758b04337e2da02613f246811119fca2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/docs/monitor-app.md",
+      "line": 27,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "45c4a6ceb6d382743cd0c27db976ca7eae1fa0cc4b7615d5170a572bf1e8b90d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/REPRODUCE.md",
+      "line": 9,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "c347ddee031dd032c98aba2076a918f3bcfce72814701fdf4e4eb865c642f34e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/README.md",
+      "line": 32,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "4c739bf9e90bad6dee25ccf3cf896992ca4973ee28e448f85f494b05fdf66cd1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/PORTABILITY.md",
+      "line": 120,
+      "evidence": "curl \\| sh",
+      "file_sha256": "2d24b084540fe1ff3699077a5beed0bcb5ace2b60552279ba3db9b2e15d3de89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "probbit-de13f222743b7e3f82e4252d370c22feac31b738/AGENTS.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/BitmapAsset/probbit/main/install.sh",
+      "file_sha256": "5774a660eb5882f9ad9d41c2a1085b4821f7c3e69f1c43f987b85fd6d0c4d990"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentdojo.spylab.ai",
+    "api.cloudflare.com",
+    "api.github.com",
+    "api.typesafe.ai",
+    "bitmapasset.github.io",
+    "developers.cloudflare.com",
+    "example.com",
+    "example.invalid",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "openrouter.ai",
+    "proxy.invalid",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "www.apache.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}

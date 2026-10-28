@@ -1,0 +1,454 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Mygentic-AI/cello-client",
+    "version": "d1cba065f30ea5210a76386280a56f607e44cdbc",
+    "download": "https://codeload.github.com/Mygentic-AI/cello-client/tar.gz/d1cba065f30ea5210a76386280a56f607e44cdbc"
+  },
+  "archive_sha256": "8f0da168e66669c124637717c0891bd622f5b06b29940006b02559288d6e68a5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/plugins/cello/skills/setup/SKILL.md",
+      "line": 221,
+      "evidence": "p=0.94 So the session wakes on an incoming message instead of you polling:",
+      "file_sha256": "c20781f4ec3e3f0de2fe85642c69f99f2500b310712d7c0cf313e09568ccbc9e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/plugins/cello/skills/remote-access/SKILL.md",
+      "line": 78,
+      "evidence": "curl -fsSL https://tailscale.com/install.sh | sh",
+      "file_sha256": "7c92c72f408fc84d08efef3a67dfacd3e02040eaffc126bbe583e73f8e028dac"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/plugins/cello/skills/cello/SKILL.md",
+      "line": 390,
+      "evidence": "p=0.99 **Handing someone a proof also hands them this session's salt.** It has to trave",
+      "file_sha256": "88c4e12a5ecd13823809865b2b4211db1c1c74a0fd9885c0e46ccb09ad48e454"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/screen/outbound.test.ts",
+      "line": 40,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d1620d019aa82c21ccf180421b33252981043b65f41840ce51ba161c6549ba03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/detect/classifier-selfcheck.ts",
+      "line": 15,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b74083bcac97bd02fbd459ccb523f987d2b4a2fe400ed5e9f8ff1c7894b25086"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/detect/__tests__/injection-classifier-wasm-real-model.test.ts",
+      "line": 26,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "85efacbaf0128f2d25661b8f9dd97ca47704553ac3115e33dd08677c6cd0e97f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenpassive-delivery.test.ts",
+      "line": 36,
+      "evidence": "\\u{e0067}",
+      "file_sha256": "ac9cda26884c90b0e4de7657fb96890bdb9fd24734857e4d3a5ae8435306b334"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenpassive-delivery.test.ts",
+      "line": 85,
+      "evidence": "\\u{202e}",
+      "file_sha256": "ac9cda26884c90b0e4de7657fb96890bdb9fd24734857e4d3a5ae8435306b334"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenpassive-delivery.test.ts",
+      "line": 138,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "ac9cda26884c90b0e4de7657fb96890bdb9fd24734857e4d3a5ae8435306b334"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenorder-language-reads-original.test.ts",
+      "line": 31,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8f6efbb08579e7484ac6c246bebca80facfb8ef0990480c10022f2b53fd652d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screener-e2e-real-model.test.ts",
+      "line": 46,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "42ffa252b5f5d8dee6d02d7c1ce60f6756bfe0ba7b824dd978ae3c873af0a2fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screencorpus-classify-every-copy.test.ts",
+      "line": 39,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "d545c8f28456bec7dbfd22c6d2ad3b1bff9e63b8ca6c2d58a018efc23eb65d56"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenbase-scan-variants.test.ts",
+      "line": 51,
+      "evidence": "\\u{202c}",
+      "file_sha256": "5811b742829133152ebcd7f346f7c55a50004681eb5822d3f5cb6ff939f70227"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/screenbase-scan-variants.test.ts",
+      "line": 60,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "5811b742829133152ebcd7f346f7c55a50004681eb5822d3f5cb6ff939f70227"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/scan-marker-strip.test.ts",
+      "line": 105,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "e8dbfb108113eb1c8acaa8c3d5ccffa94d95fe818ddb51a3bb1b3f68f4bee2b3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/out-003-exfil.test.ts",
+      "line": 51,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "409fe2bc6c289d95a741b15b26a047c3c18c0eaed9e1398a14e069a9be574b8e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/injection-classifier-onnx.test.ts",
+      "line": 102,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "ae4da1d0029282e7ba636b1833d143c7950333bb08904f0f133701a461f21599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/in-screen-terminal.test.ts",
+      "line": 65,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "a39cd18eed24b8608e581657df7531fdfc7e648f4b9095f743c64cb5b587d65f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/in-002-scanner-logic.test.ts",
+      "line": 27,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "f24cc48dda2ab97ac8545b78d237e1bfdfc4297d9a4d354e15a35e6b6e773bf0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/in-001-step9-injection.test.ts",
+      "line": 48,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6f1d2ddae2570ecf4cfa9b1f68b3e460c76670635e1123ebb9867f0287822f0f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/in-001-sanitize.test.ts",
+      "line": 47,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2be0751e7cc40467a63c7ac13657b81bc18dfd040300f15338828f1a849fab6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/in-001-sanitize.test.ts",
+      "line": 43,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "2be0751e7cc40467a63c7ac13657b81bc18dfd040300f15338828f1a849fab6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/gateway/src/__tests__/gateway-sidecar.test.ts",
+      "line": 97,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1be10b8eccbe38f897e34102044fed8e3d418dfb5a3d6589f917ba7bad9dd9a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/m9-core-001-seam.test.ts",
+      "line": 753,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ea0dc1bcfb102ce817a2c9ef564abf708e4bd5ba330a0f27a10e90d3fe5f1eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/m8c-away-1.test.ts",
+      "line": 709,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "7e8a05ea58de63f4c4133ae835c67e76f6f806c29f161d148b80e45e46f411c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/m16-020-join-through-directory.test.ts",
+      "line": 549,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f131997a986ef440c07df5976b0bb162221f8b1e7d85a338261748027c6f553a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/m12-p17-annex-screening.test.ts",
+      "line": 337,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "40c42a1806b13aa5bb2cebe705eb49c270aa7874ced8922227889c959689b443"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/dod-m15-refusedevidence-1.test.ts",
+      "line": 60,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "025f281ada6ff1b8587337d9e79985d4da241c8ff99514c8fdbdfaea7ab7fff0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/dod-m15-refusalterminal-1.test.ts",
+      "line": 49,
+      "evidence": "ignore your previous instructions",
+      "file_sha256": "c3fe77df7b3e7ebe953dacc4cecb31ed0a42ba61ac6bf0f87d928ac1428e81ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/dod-m15-no-silent-refusal-1.test.ts",
+      "line": 47,
+      "evidence": "ignore your previous instructions",
+      "file_sha256": "7faff441dc4375e18ed71bd31baa3326850e775c3d64bb6996f0955010e72947"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/dod-doc-watch.test.ts",
+      "line": 126,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "63fdd7c080fd71f63cf66650691287fa57b51609b0adcbab9f1631dd6e51b7a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/document-screen.test.ts",
+      "line": 63,
+      "evidence": "\\u{202e}",
+      "file_sha256": "666ac14cb75cf19624ccfd139caa0201426c640a096a9337f127d7ebd2a785e1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/document-handlers.test.ts",
+      "line": 1463,
+      "evidence": "\\u{202e}",
+      "file_sha256": "85469b4670700b7bc2c4e79a9fa4bba245be3a5871c24c794c2f0a7aa5b1dba9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/document-handlers.test.ts",
+      "line": 2180,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "85469b4670700b7bc2c4e79a9fa4bba245be3a5871c24c794c2f0a7aa5b1dba9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/daemon/src/__tests__/client-no-retry-dedup.test.ts",
+      "line": 21,
+      "evidence": "execSync( `grep -r \"RetryQueue\\\\|retryQueue\\\\|seenNonces\\\\|nonceDedup\\\\|NonceDed",
+      "file_sha256": "d9a6f68a115c095a8c1f6169226377dc853f05cc20df639123a6c94df6aa97c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/cli/src/__tests__/hermes-wake-prompt.test.ts",
+      "line": 137,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "5fadd118311827fc15fff1500899ce8c3fa22bb0bf1a4ca5572d68ee8e32d8da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/src/__tests__/fixtures/stdio-tools-list.pre-082.json",
+      "line": 336,
+      "evidence": "p=0.93 A line for the administrator saying who you are and why",
+      "file_sha256": "1afbe80474f37c1fe369d1e0b4d9aad0b527439a7d76904d965c4418e0b2e307"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/src/__tests__/fixtures/stdio-tools-list.pre-082.docs.json",
+      "line": 336,
+      "evidence": "p=0.93 A line for the administrator saying who you are and why",
+      "file_sha256": "5b36e7e69b83e63b057d88c165224fcec344a9a31b884e7b21d772d7a5ddfc3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/src/__tests__/fixtures/stdio-tools-list.pre-082.docs.json",
+      "line": 1127,
+      "evidence": "p=0.91 What changed in a shared document since YOU last read it. Use this before buildi",
+      "file_sha256": "5b36e7e69b83e63b057d88c165224fcec344a9a31b884e7b21d772d7a5ddfc3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/src/__tests__/fixtures/stdio-tools-list.pre-082.docs.json",
+      "line": 1309,
+      "evidence": "p=0.95 Read a shared document's current text, including everything the counterparty has",
+      "file_sha256": "5b36e7e69b83e63b057d88c165224fcec344a9a31b884e7b21d772d7a5ddfc3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/SKILL.md",
+      "line": 393,
+      "evidence": "p=0.91 `cello_doc_write` takes the **complete new text**, never a patch or just your ad",
+      "file_sha256": "72b250523a6fdecfcd2570268cd2195a5ffe258dc1c9fade1f3ce424e3c757a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cello-client-d1cba065f30ea5210a76386280a56f607e44cdbc/core/adapter-claude-code/SKILL.md",
+      "line": 427,
+      "evidence": "p=0.99 **Handing someone a proof also hands them this session's salt.** It has to trave",
+      "file_sha256": "72b250523a6fdecfcd2570268cd2195a5ffe258dc1c9fade1f3ce424e3c757a6"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "portal.example.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "1.2.3.4",
+    "127.0.0.1",
+    "a.com",
+    "a.example",
+    "a.example.com",
+    "ap.example.com",
+    "api.telegram.org",
+    "attacker.example",
+    "b.example.com",
+    "c.example.com",
+    "cdn.example.com",
+    "celloprotocol.com",
+    "code.claude.com",
+    "csrc.nist.gov",
+    "d.example",
+    "d.example.com",
+    "dev.example",
+    "dir-us-east-1.cello.example.com",
+    "dir.example",
+    "dir.example.com",
+    "dir.example.test",
+    "directory-euw1.celloprotocol.com",
+    "directory-us1.celloprotocol.com",
+    "directory-usc1.celloprotocol.com",
+    "directory-use1.celloprotocol.com",
+    "directory.example.com",
+    "docs.cello.dev",
+    "eu.example.com",
+    "example.com",
+    "github.com",
+    "hermes-agent.nousresearch.com",
+    "huggingface.co",
+    "ip-172-31-88-62.tail7f6559.ts.net",
+    "json-schema.org",
+    "libp2p.io",
+    "n1.example.test",
+    "n2.example.com",
+    "noiseprotocol.org",
+    "portal.example.test",
+    "primary.example.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "relay.example.com",
+    "tailscale.com",
+    "test.cello.test",
+    "us.example.com",
+    "www.npmjs.com",
+    "x.dev",
+    "x.example.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

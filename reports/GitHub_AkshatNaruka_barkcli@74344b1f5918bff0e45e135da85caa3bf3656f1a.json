@@ -1,0 +1,546 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AkshatNaruka/barkcli",
+    "version": "74344b1f5918bff0e45e135da85caa3bf3656f1a",
+    "download": "https://codeload.github.com/AkshatNaruka/barkcli/tar.gz/74344b1f5918bff0e45e135da85caa3bf3656f1a"
+  },
+  "archive_sha256": "971f2999cf857271ecaa57b5479328a6f7d56865983deed72e026cebea2a4960",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/web/src/components/AgentPromptView.tsx",
+      "line": 31,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "85f8af3b459b8b59adedbb3c2751193505720b8315cdaf3fc22d0d970ee33745"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/vscode-extension/src/boardEditor.ts",
+      "line": 131,
+      "evidence": "execSync(`barkcli context sync --board ${boardName} --quiet`, { cwd: projectRoot",
+      "file_sha256": "3f4fef1820db599e17940d9d940395508074774345b1001599f1a1c1987e4509"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/src/app/page.tsx",
+      "line": 45,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "b3082e35ee07d7e891382c9d12e79827e2ee8e1aec4a51baa17ec655f27ccb67"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/src/app/llms.txt/route.ts",
+      "line": 37,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "006ad8866586558d4a155fc485024ac49232b9cc5bad098ee1d0955fc8a24c1e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/src/app/llms-full.txt/route.ts",
+      "line": 18,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "7a9dac8087aa862a3fde4b2b81f9727733924f9a2f2078e485cf4be78eafe662"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/src/app/docs/interfaces/[slug]/page.tsx",
+      "line": 16,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "080370a74bba18af76757a10c12bcbda44ad89b556428580bf5230a5d34f516f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/src/app/docs/getting-started/page.tsx",
+      "line": 17,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "ec9f1f57e24fcb628c9a0a27f6cf2baeded8a6fb10a39f3ca0af87c4e35afd1f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/public/pricing.md",
+      "line": 83,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "d28a6c2f9276a03edf29857d8a0146db6c74bdb0b9aab2ee06c82dccc9193a05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/public/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "6051486863d46afa3cd85e94b74f4990a1a44f4964511fec07fd1f28724483db"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/public/install.sh",
+      "line": 164,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "6051486863d46afa3cd85e94b74f4990a1a44f4964511fec07fd1f28724483db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/landing-next/public/ai.txt",
+      "line": 42,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "206c676240be574163cb3d5cb53fa3f799d16104f42f11c8ae7bb7281212b4f8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/yc/launch-playbook.md",
+      "line": 52,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "243b845e9796f20061db8e644a1907aa92771b62fdd5f06b378a109c037f7598"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/internal/SPECS.md",
+      "line": 9,
+      "evidence": "curl barkcli.vercel.app | sh",
+      "file_sha256": "16a2986874baeffcb18197eaf37d0f2777764ff4d6955545407558a1e2acafba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/internal/SHIPPING_SPECS.md",
+      "line": 36,
+      "evidence": "curl -fsSL https://akshatnaruka.github.io/barkcli | sh",
+      "file_sha256": "9bf1fdf708ca2bc7952af4865c6369d818c16511712102a8f93ebe6011d86054"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/internal/MARKETING.md",
+      "line": 38,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "c699df8fbe482319627ffd9da0aa383d91295a9b8c317ccd578997aff3483eb1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/internal/MANUAL.md",
+      "line": 54,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "2c541086621d805134757ff4146ded33ed1704142a9c45741d175c1bbe66df99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/internal/LAUNCH.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://akshatnaruka.github.io/barkcli | sh",
+      "file_sha256": "d011cdfaef5a1964684eba8885dd2446eba7a451832a5fe3b74b301f9211bd71"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/content/index.html",
+      "line": 1009,
+      "evidence": "curl -fsSL https://barkcli.vercel.app/install.sh | sh",
+      "file_sha256": "a4aef6ee60ce9d037df7eff1f6070e25b45f71375f59bfe0095d1eba973be262"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/content/docs/installation.mdx",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/AkshatNaruka/barkcli/main/install.s",
+      "file_sha256": "2d2321a3c8622796cb1cc31c3766a7b47b80137166ffa477257b2c22c353b4fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/content/USAGE_MANUAL.md",
+      "line": 32,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "bcbbb6d725c78cd983d0deb13fdd2d6ef56ce3655b9aaac121d6ecaefdb51971"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/content/GETTING_STARTED.md",
+      "line": 11,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/AkshatNaruka/barkcli/main/install.s",
+      "file_sha256": "1df61ea8f1bdc839434781a8d4dfd6ab98d5bad573b769d45beed934bab98909"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/docs/content/AI_AGENT_PROMPT.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "91c3387617fa9961923b52ba810662b7fe37c85f7940271f19d9439eff7be57d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 528,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 564,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 636,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 810,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 1080,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 1590,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/macOS-schema.json",
+      "line": 2064,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 528,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 564,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 636,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 810,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 456,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 1080,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 1590,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/desktop-schema.json",
+      "line": 2064,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "4a946fe48fbb0c7c535ea53e6070bd8276f3f3d74f96efbaa6d85bd7b53b0f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/desktop/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "bdc3ced2ae416f11b23bc9c9b62341a3a59aa7bb5322f04f197bb08cb610409f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "barkcli-74344b1f5918bff0e45e135da85caa3bf3656f1a/README.md",
+      "line": 97,
+      "evidence": "curl -fsSL https://github.com/AkshatNaruka/barkcli/releases/latest/download/inst",
+      "file_sha256": "7c1631ff7c2e4ef56e5026b6c1054a17bfb7d762756903981a8340d19516a320"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.100",
+    "akshatnaruka.github.io",
+    "api.github.com",
+    "api.linear.app",
+    "api.openai.com",
+    "api.star-history.com",
+    "bark.test",
+    "barkcli.github.io",
+    "barkcli.vercel.app",
+    "blog.superhuman.com",
+    "crates.io",
+    "d8j0ntlcm91z4.cloudfront.net",
+    "dev.azure.com",
+    "docs.retool.com",
+    "eslint.org",
+    "feross.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "hacker-news.firebaseio.com",
+    "help.github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "linear.app",
+    "marketplace.visualstudio.com",
+    "mydomain.dev",
+    "news.ycombinator.com",
+    "nextjs.org",
+    "opencollective.com",
+    "opensource.org",
+    "paulmillr.com",
+    "polar.sh",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "schema.tauri.app",
+    "tidelift.com",
+    "twitter.com",
+    "urlpattern.spec.whatwg.org",
+    "vercel.com",
+    "www.apple.com",
+    "www.augmentcode.com",
+    "www.contributor-covenant.org",
+    "www.linkedin.com",
+    "www.notionapps.com",
+    "www.patreon.com",
+    "www.producthunt.com",
+    "www.rust-lang.org",
+    "www.star-history.com",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

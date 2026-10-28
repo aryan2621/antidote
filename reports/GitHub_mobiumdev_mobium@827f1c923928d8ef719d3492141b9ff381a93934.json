@@ -1,0 +1,137 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "mobiumdev/mobium",
+    "version": "827f1c923928d8ef719d3492141b9ff381a93934",
+    "download": "https://codeload.github.com/mobiumdev/mobium/tar.gz/827f1c923928d8ef719d3492141b9ff381a93934"
+  },
+  "archive_sha256": "53af6190520d067dc6f6515fcf11eed651f84b2c0755b2569191327c78ad71e8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/probes/slider-attributes-ios.sh",
+      "line": 20,
+      "evidence": "curl -s \"$B/status\" | python3 -c 'import json, sys; print(json.load(sys.stdin).g",
+      "file_sha256": "e69874e5753306145077dfa0d77fc713ae14f4dfb45f264d42806904edae5213"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/probes/slider-attributes-ios.sh",
+      "line": 22,
+      "evidence": "curl -s \"$B/session/$S/element/$1/attribute/$2\" | python3 -c ' import json, sys ",
+      "file_sha256": "e69874e5753306145077dfa0d77fc713ae14f4dfb45f264d42806904edae5213"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/probes/slider-attributes-ios.sh",
+      "line": 26,
+      "evidence": "curl -s -X POST \"$B/session/$S/elements\" -d '{\"using\":\"class name\",\"value\":\"XCUI",
+      "file_sha256": "e69874e5753306145077dfa0d77fc713ae14f4dfb45f264d42806904edae5213"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/checks/siri.sh",
+      "line": 50,
+      "evidence": "curl -s -g -m 10 \"$WDA/status\" | python3 -c 'import json, sys; print(json.load(s",
+      "file_sha256": "d96587857e625aac3bd938a4eeb2b06a1922f714316a1c8e8c07d4ac9771a2fc"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/checks/siri.sh",
+      "line": 53,
+      "evidence": "curl -s -g -m 30 -H 'Content-Type: application/json' -X POST \"$WDA/session/$sess",
+      "file_sha256": "d96587857e625aac3bd938a4eeb2b06a1922f714316a1c8e8c07d4ac9771a2fc"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/checks/pwa.sh",
+      "line": 64,
+      "evidence": "curl -s \"http://127.0.0.1:$port/json/list\" | python3 -c ' import json, re, sys p",
+      "file_sha256": "1bb93f88054bd73255c96ae3258eeb1e48ea914981c0b1e8c6119eee9a61644e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/checks/codegen.sh",
+      "line": 70,
+      "evidence": "curl -sf \"${URL}state\" | python3 -I -c ' import json, sys mores = [e for e in js",
+      "file_sha256": "92e5c7a1c57a2b2757a0e9acf1d76bb4fc3f2110d29e13ee83286aa8ab46f274"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/checks/chrome.sh",
+      "line": 42,
+      "evidence": "curl -s \"http://127.0.0.1:$port/json/list\" | python3 -c ' import json, re, sys p",
+      "file_sha256": "7fddda22a06af0e28b6b6bc9c23fa6d08baf119b067cf2186557bdfe049de604"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mobium-827f1c923928d8ef719d3492141b9ff381a93934/docs/SETUP.md",
+      "line": 63,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "4bf01367f8619771f0168b8a9de2d41387049913359655f9b096763a177b7762"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.1",
+    "10.0.2.2",
+    "127.0.0.1",
+    "appclip.apple.com",
+    "central.sonatype.com",
+    "control.charles",
+    "cs.opensource.google",
+    "developer.android.com",
+    "dl.google.com",
+    "download.kiwix.org",
+    "example.com",
+    "example.org",
+    "f-droid.org",
+    "fonts.googleapis.com",
+    "github.com",
+    "go.dev",
+    "isfdb.org",
+    "jwz.org",
+    "kasmana.people.charleston.edu",
+    "mastodon.social",
+    "maven.apache.org",
+    "medium.com",
+    "mobiumapp.test",
+    "mobiumdev.github.io",
+    "other.example",
+    "player.vibium.dev",
+    "poulandersonappreciation.blogspot.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "repo.maven.apache.org",
+    "shop.example",
+    "squoosh.app",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.apple.com",
+    "www.isfdb.org",
+    "www.projectrho.com",
+    "www.topografix.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

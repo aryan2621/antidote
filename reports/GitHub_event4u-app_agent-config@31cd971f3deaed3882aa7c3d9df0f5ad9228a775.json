@@ -1,0 +1,1152 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "event4u-app/agent-config",
+    "version": "31cd971f3deaed3882aa7c3d9df0f5ad9228a775",
+    "download": "https://codeload.github.com/event4u-app/agent-config/tar.gz/31cd971f3deaed3882aa7c3d9df0f5ad9228a775"
+  },
+  "archive_sha256": "717be37fcaf60456a4c261fc2aa3eb8393d69a600fc72c3664fd2ed9115d75c1",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/subagents/ac-worker.md",
+      "line": 58,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b133d5d36e148e17b55e989b7d95dd9772b287df7d8ee7bd169900526da963a4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/subagents/ac-researcher.md",
+      "line": 56,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1ae7fbae17e00f053bdfc2cd9fc6eb941296d30f4f0af9420d74d5ab5110e49b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/subagents/_prompt-defense.md",
+      "line": 10,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2f2d918f4a67cb0f300cdab6595469d13547b382abfb9a5005196c0b5ba16803"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/supply-chain-intake/evals/triggers.json",
+      "line": 4,
+      "evidence": "curl|bash",
+      "file_sha256": "e61b2fcb6409cf0817ea8527a1fda3b1cdabb35e28264146a0d449991e9fe87c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/supply-chain-intake/SKILL.md",
+      "line": 20,
+      "evidence": "curl … | bash",
+      "file_sha256": "c698ff5d3aa3a33126f1ae1a0d06bf9220faca03abc9c2ae3ebebf88bbb1ac4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/judge-with-debate.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a3e0bd77ada752728d554f6bfaa085dcbb8f700b1fee96a531bb0f190383eae2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-in-worktrees.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ac5b8571bc17c4a61d494ad740b6fe23de828e965a0cc9a1aaabc07fa430af37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-in-steps.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c64ed258c7736fd88ba48e34f28d405c20fb4f4ec0b1035bc724c723a851ed8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-in-parallel.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7110174a3680852da337faa8dff146cdb6da1e44c9118154fde6f8767dda2b13"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-competitively.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d9ba047cb8698a6a95cb13bc35ba6a1df5e2a66c94a405c23fa08be82f88c426"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-and-judge.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3b568193b09adfe39e3b3b3e9a4659871deccee8f7314e23687d4f25851dfed8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/do-and-judge-two-stage.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ecb0fab23c5a87b04c2fcbcb2c5c8ff8131ff897915e0a8918c1cfb4c8365e94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/subagent-orchestration/prompts/adversarial-verification-council.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c70e91fc8c5a8188b33aa85afd3184b3ababa0d60e7e7283d6b982d478cc5abf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/sequential-thinking/SKILL.md",
+      "line": 157,
+      "evidence": "p=0.93 - Do NOT use this for simple, well-understood tasks — it adds unnecessary overhe",
+      "file_sha256": "48a495ef198035288715fa559fe808a7abc8ff4cb664916231c4de733fe41785"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/rtk-output-filtering/SKILL.md",
+      "line": 103,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh",
+      "file_sha256": "50c70c1117244c3e673236aadf577e0382260b95ff78af951b52ad37aabe429f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/refine-prompt/SKILL.md",
+      "line": 139,
+      "evidence": "p=0.99 Anything the prompt implies but does not state. Examples:",
+      "file_sha256": "673e5b23ae1b9235458810c504a22413f858786780877879ef16c113ffa46444"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/receiving-code-review/SKILL.md",
+      "line": 106,
+      "evidence": "p=0.92 * For inline PR comments → reply **in the thread** of that comment, not as a top",
+      "file_sha256": "12a47e4ec9f5f343d6b6c6e2ea8981e108a07287ee13c688c5e0833b73ca2945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/prompt-optimizer/SKILL.md",
+      "line": 4,
+      "evidence": "p=0.94 When the user wants a prompt optimized for ChatGPT, Claude, Gemini, or another A",
+      "file_sha256": "8b36806f15e00c2af4f31ca1ce9f56179491d50cba612849b65ba76d4aeb6fb9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/prompt-optimizer/SKILL.md",
+      "line": 119,
+      "evidence": "p=0.93 Format per § Output format. Do **not** execute the optimized prompt yourself unl",
+      "file_sha256": "8b36806f15e00c2af4f31ca1ce9f56179491d50cba612849b65ba76d4aeb6fb9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/project-analysis-symfony/SKILL.md",
+      "line": 117,
+      "evidence": "p=0.99 * Do NOT analyze Symfony without explicit version context * Do NOT ignore servic",
+      "file_sha256": "07e875ec90ab26b0c15c8a16f88ad7b5c25cc5ac943dbb8a87fa88716e2cc8a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/project-analysis-react/SKILL.md",
+      "line": 125,
+      "evidence": "p=0.91 * Do NOT treat React as imperative UI code * Do NOT ignore dependency arrays * D",
+      "file_sha256": "b45d629a234cb2ea3c7acb3336a6ce562acb46949e2f63a2dd484565cabf90dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/project-analysis-node-express/SKILL.md",
+      "line": 118,
+      "evidence": "p=0.99 * Do NOT ignore middleware order * Do NOT assume async code is correct just beca",
+      "file_sha256": "766d350dcb9047fc172988b3f466ad6ec579d21dcc0abd4ec6d5c8d956967be5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/project-analysis-nextjs/SKILL.md",
+      "line": 129,
+      "evidence": "p=0.96 * Do NOT assume everything runs on the client * Do NOT ignore caching behavior *",
+      "file_sha256": "9dbf13b6c6d9b0bb54017d9e27a26b95057319bd6d8040137e199645dc43cbdf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/project-analysis-laravel/SKILL.md",
+      "line": 125,
+      "evidence": "p=0.99 * Do NOT assume Laravel behavior without version context * Do NOT stop at contro",
+      "file_sha256": "5da3b8236fe94c773e8630103013d33bf83cbfb0e016ad22fb24b38f243e053a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/markitdown/SKILL.md",
+      "line": 184,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d29040290a126ca3c793dcb27c6aa2a34916dfc1153a03ee56dc22a72f6b6dd3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/markitdown/SKILL.md",
+      "line": 183,
+      "evidence": "p=0.97 <!-- security-lint: allow instruction-smuggling \"teaching example: quotes a prom",
+      "file_sha256": "d29040290a126ca3c793dcb27c6aa2a34916dfc1153a03ee56dc22a72f6b6dd3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/launch-readiness/SKILL.md",
+      "line": 131,
+      "evidence": "p=0.91 Pre-mortem rule: every trip wire must answer *\"what would have caused this in si",
+      "file_sha256": "d2930dcffdefc5c095c29814f1c686f41233a461655d91571d26253c93f6b052"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/dependency-upgrade/SKILL.md",
+      "line": 47,
+      "evidence": "p=0.95 Ask in this order, and stop at the first that answers:",
+      "file_sha256": "8d44c96c58980031b1782659a456e87a68961b4e4cab29a651cbb688a3eb721a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/skills/ai-code-blindspots/SKILL.md",
+      "line": 95,
+      "evidence": "curl | bash",
+      "file_sha256": "116fbe943437e4a4af3101201a68d2dc568c16bf3ce1c573b2f41ec8ea7cbb5c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/validate_reach_prescriptions.ts",
+      "line": 42,
+      "evidence": "curl … | sh",
+      "file_sha256": "052b6f4a4c4537ae8d527c3cd2850beb1bae78b5b2335142535f5dc0182059c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/second_brain_retrieval.ts",
+      "line": 213,
+      "evidence": "\\u{202a}",
+      "file_sha256": "ba82436c06dc453724b8e09a66920cae8ccfe43d82f274b2e94b51b60e5e21ec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/lint_instruction_smuggling.ts",
+      "line": 62,
+      "evidence": "curl|sh",
+      "file_sha256": "d79a1b07615ba26e6c68157baa01b8ea78007047382e07d58715fe82898e3160"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/install",
+      "line": 273,
+      "evidence": "curl|bash",
+      "file_sha256": "0d6ddfbb3348dfcd30ada6df62edb966531d9bfb4020ba2b5507112bbb6ffb3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/injection_scan_hook.ts",
+      "line": 362,
+      "evidence": "ignore your previous instructions",
+      "file_sha256": "9caf1a2bf5527e1a229e7efe89cfb2130aa6cab2c88ff6874d8b7bee19a57225"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/generate_subagent_floor.ts",
+      "line": 87,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3a8afcb7f923bf0a99f1fd3a879ab6b813dbf52bff44c2f97d9c8c19a6d35740"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/scripts/_lib/egress_normalize.ts",
+      "line": 29,
+      "evidence": "\\u{202a}",
+      "file_sha256": "4717f93eacb59ee1dc60671ca8e167343cfb9a498a202692d269c86a05c2967d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/rules/user-interrupt-priority.md",
+      "line": 5,
+      "evidence": "p=0.98 New user instruction mid-flight — STOP the current task, run the new one in full",
+      "file_sha256": "993991e0792828bc23293592a92ec1162ddd0a347bca13c9e5e7d21ec091f876"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/rules/untrusted-input-defense.md",
+      "line": 48,
+      "evidence": "p=0.93 ## Found-instructions quarantine",
+      "file_sha256": "2b519bc7fbb901928e274beb656301a029fcfe2665c73684712901ccfc856151"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/rules/token-efficiency.md",
+      "line": 78,
+      "evidence": "p=0.97 Not exempt, and still the failure this rule exists to catch: re-reading the *sam",
+      "file_sha256": "d39946d8d7def4c857a212d5508d3a8d4bc952a30af03a166ca44691a23182c7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/rules/active-remediation.md",
+      "line": 91,
+      "evidence": "p=0.97 While implementing/modifying code you pass an issue outside the literal task. Al",
+      "file_sha256": "e4e1c97a3928c069f82913457bc33fed522bf52f6d329a98b4aefdac66fd01e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/install/rtkDetection.ts",
+      "line": 269,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh",
+      "file_sha256": "f855c3e7206e5435f65c4b53d664364a1821c64dc781ae47ab34984f57d09389"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/domains/meta/agents/user/accept/command.md",
+      "line": 173,
+      "evidence": "p=0.90 On `3. Cancel`: stop without any write.",
+      "file_sha256": "fc189e3b2e43fb96de56fad9bcb0ea43277362284e8140c723542a33e21ea1c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/cli/initRouting.ts",
+      "line": 80,
+      "evidence": "curl|bash",
+      "file_sha256": "3d5895ccb95adc40f05726928b0dfdf4b82979fdd86bbf2ebef35fa83f3fb8d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/src/agent-src/commands/evals/optimize.json",
+      "line": 10,
+      "evidence": "p=0.95 tune the augmentignore for this project",
+      "file_sha256": "3ab29bfcfe820891d98614a46c75af491300d346426b33316465c84515ed9469"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/site/src/content/docs/getting-started/installation.md",
+      "line": 24,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/event4u-app/agent-config/main/setup.",
+      "file_sha256": "88d8502ac1d6d206a64c831362511fa83c3464390a26a3d4ee12386354c021de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/setup.sh",
+      "line": 2,
+      "evidence": "curl | bash",
+      "file_sha256": "17aa27253f69192b985e2b971522c1e00905eaca5f0cc183bbc884e41f997b0e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/second-brain/retrieval-store/domain-invariants.yml",
+      "line": 155,
+      "evidence": "\\u{202e}",
+      "file_sha256": "0a0717b967fef8a00b5ae3738ce291355b4a01d96cf962b231f0649e8e07c94d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/second-brain/retrieval-store/domain-invariants.yml",
+      "line": 155,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0a0717b967fef8a00b5ae3738ce291355b4a01d96cf962b231f0649e8e07c94d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/corpora/token-quality-golden.yaml",
+      "line": 478,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d30fc5086db0d5f6ddd11ebaa1e77ec0b360792d64ed34e4a404c46ec928eb83"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/corpora/encoding-channels/positives.jsonl",
+      "line": 61,
+      "evidence": "\\u{e0041}",
+      "file_sha256": "47932617159c8eee464eda2a23f8a40835254d0a38e17e3132acb304c2e573e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/corpora/encoding-channels/positives.jsonl",
+      "line": 41,
+      "evidence": "\\u{202e}",
+      "file_sha256": "47932617159c8eee464eda2a23f8a40835254d0a38e17e3132acb304c2e573e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/internal/bench/corpora/encoding-channels/negatives.jsonl",
+      "line": 267,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a558162f6908972a1429caad962b889d44951dd5ac36bd7dac2d3ebb849daae6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/wedge/production-validator/production-validator.md",
+      "line": 17,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3806772af13aadb96e95515b818a1928d5ee56f7ae65e146d0b66993ca88956f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/wedge/ac-worker/ac-worker.md",
+      "line": 18,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8a241dfb4235f05e1cbb0f3d9a6313e4213b23b3b9626c20bd6432a14e7ce632"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/wedge/ac-researcher/ac-researcher.md",
+      "line": 18,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6a05cd9e3d7d9280434b3418ccce8f829e502063c118af6018b4f2e8cd282f75"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/troubleshooting.md",
+      "line": 147,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/event4u-app/agent-config/main/setup.",
+      "file_sha256": "5b8207a0fdf2a9d89301d1be4a0990c697996b1a380fbd1db9054468f5de3743"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/maintainers/reproducible-install-bundle.md",
+      "line": 14,
+      "evidence": "curl | bash",
+      "file_sha256": "4a266ce6cc8d8dbde3b8c22ff9e82f212f6e3ac6ff306279029609a9aa31cd9c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/installation.md",
+      "line": 202,
+      "evidence": "curl | bash",
+      "file_sha256": "2674fb970e053bcefed0324407f54ed92ff44b42be3ff6f5afcc75172c53dadb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/guidelines/agent-infra/untrusted-input-spotlighting.md",
+      "line": 1,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5a1bf8e779fa5c120891d45fca10c934400117717ffbe0e5cb8c1c52f56048fc"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/guidelines/agent-infra/untrusted-input-spotlighting.md",
+      "line": 1,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "5a1bf8e779fa5c120891d45fca10c934400117717ffbe0e5cb8c1c52f56048fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/guidelines/agent-infra/security-lint-containment.md",
+      "line": 14,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5a3874a7d3bbd1b291730aabe052f2cad4812127180640b8318cd0cd6384b56f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/getting-started.md",
+      "line": 15,
+      "evidence": "curl | bash",
+      "file_sha256": "f1f61f56c273ab10959849b2db9467643dc20c2c1032d95c550e2f67270a5357"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/distribution/public-install-smoke.md",
+      "line": 31,
+      "evidence": "curl … setup.sh \\| bash",
+      "file_sha256": "b1e9af24bbf9050a5dec55f1034b8709422d0d3be11f93b858b4b759eaca3779"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/docs/archive/CHANGELOG-6.0.0-overview.md",
+      "line": 218,
+      "evidence": "curl | bash",
+      "file_sha256": "e70a82fcf35a54430d5e4b19eee0e8499cde140e627c3ee331cfbd5a53a8c190"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/install/rtkDetection.js",
+      "line": 207,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh",
+      "file_sha256": "48ddc5b7960ce51070fae3b5be18b050e5f9870619689575da2c85fa4becbca4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/supply-chain-intake/evals/triggers.json",
+      "line": 4,
+      "evidence": "curl|bash",
+      "file_sha256": "e61b2fcb6409cf0817ea8527a1fda3b1cdabb35e28264146a0d449991e9fe87c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/supply-chain-intake/SKILL.md",
+      "line": 20,
+      "evidence": "curl … | bash",
+      "file_sha256": "49d4284e8e0624e51197d1122ae753ecf5f3233896b0b90febfe56845f1105d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/judge-with-debate.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a3e0bd77ada752728d554f6bfaa085dcbb8f700b1fee96a531bb0f190383eae2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-in-worktrees.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ac5b8571bc17c4a61d494ad740b6fe23de828e965a0cc9a1aaabc07fa430af37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-in-steps.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c64ed258c7736fd88ba48e34f28d405c20fb4f4ec0b1035bc724c723a851ed8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-in-parallel.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7110174a3680852da337faa8dff146cdb6da1e44c9118154fde6f8767dda2b13"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-competitively.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d9ba047cb8698a6a95cb13bc35ba6a1df5e2a66c94a405c23fa08be82f88c426"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-and-judge.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3b568193b09adfe39e3b3b3e9a4659871deccee8f7314e23687d4f25851dfed8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/do-and-judge-two-stage.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ecb0fab23c5a87b04c2fcbcb2c5c8ff8131ff897915e0a8918c1cfb4c8365e94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/subagent-orchestration/prompts/adversarial-verification-council.md",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c70e91fc8c5a8188b33aa85afd3184b3ababa0d60e7e7283d6b982d478cc5abf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/sequential-thinking/SKILL.md",
+      "line": 157,
+      "evidence": "p=0.93 - Do NOT use this for simple, well-understood tasks — it adds unnecessary overhe",
+      "file_sha256": "48a495ef198035288715fa559fe808a7abc8ff4cb664916231c4de733fe41785"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/rtk-output-filtering/SKILL.md",
+      "line": 103,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh",
+      "file_sha256": "50c70c1117244c3e673236aadf577e0382260b95ff78af951b52ad37aabe429f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/refine-prompt/SKILL.md",
+      "line": 139,
+      "evidence": "p=0.99 Anything the prompt implies but does not state. Examples:",
+      "file_sha256": "673e5b23ae1b9235458810c504a22413f858786780877879ef16c113ffa46444"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/receiving-code-review/SKILL.md",
+      "line": 106,
+      "evidence": "p=0.92 * For inline PR comments → reply **in the thread** of that comment, not as a top",
+      "file_sha256": "f6d2936022fbc06bee19a7214db775cc295a30103c9391aeb7dacbdd65ee940d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/prompt-optimizer/SKILL.md",
+      "line": 4,
+      "evidence": "p=0.94 When the user wants a prompt optimized for ChatGPT, Claude, Gemini, or another A",
+      "file_sha256": "ef144682d5418e9cd852d9fbe8a8dcc01d59285233ebc4b08ea683d057c9fcd7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/prompt-optimizer/SKILL.md",
+      "line": 119,
+      "evidence": "p=0.93 Format per § Output format. Do **not** execute the optimized prompt yourself unl",
+      "file_sha256": "ef144682d5418e9cd852d9fbe8a8dcc01d59285233ebc4b08ea683d057c9fcd7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/project-analysis-symfony/SKILL.md",
+      "line": 117,
+      "evidence": "p=0.99 * Do NOT analyze Symfony without explicit version context * Do NOT ignore servic",
+      "file_sha256": "07e875ec90ab26b0c15c8a16f88ad7b5c25cc5ac943dbb8a87fa88716e2cc8a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/project-analysis-react/SKILL.md",
+      "line": 125,
+      "evidence": "p=0.91 * Do NOT treat React as imperative UI code * Do NOT ignore dependency arrays * D",
+      "file_sha256": "b45d629a234cb2ea3c7acb3336a6ce562acb46949e2f63a2dd484565cabf90dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/project-analysis-node-express/SKILL.md",
+      "line": 118,
+      "evidence": "p=0.99 * Do NOT ignore middleware order * Do NOT assume async code is correct just beca",
+      "file_sha256": "766d350dcb9047fc172988b3f466ad6ec579d21dcc0abd4ec6d5c8d956967be5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/project-analysis-nextjs/SKILL.md",
+      "line": 129,
+      "evidence": "p=0.96 * Do NOT assume everything runs on the client * Do NOT ignore caching behavior *",
+      "file_sha256": "9dbf13b6c6d9b0bb54017d9e27a26b95057319bd6d8040137e199645dc43cbdf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/project-analysis-laravel/SKILL.md",
+      "line": 125,
+      "evidence": "p=0.99 * Do NOT assume Laravel behavior without version context * Do NOT stop at contro",
+      "file_sha256": "5da3b8236fe94c773e8630103013d33bf83cbfb0e016ad22fb24b38f243e053a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/markitdown/SKILL.md",
+      "line": 184,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d29040290a126ca3c793dcb27c6aa2a34916dfc1153a03ee56dc22a72f6b6dd3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/markitdown/SKILL.md",
+      "line": 183,
+      "evidence": "p=0.97 <!-- security-lint: allow instruction-smuggling \"teaching example: quotes a prom",
+      "file_sha256": "d29040290a126ca3c793dcb27c6aa2a34916dfc1153a03ee56dc22a72f6b6dd3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/launch-readiness/SKILL.md",
+      "line": 131,
+      "evidence": "p=0.91 Pre-mortem rule: every trip wire must answer *\"what would have caused this in si",
+      "file_sha256": "0f79de6acc14362db8bd1b82ccaf764aebcc2749444c9605e779684d702885b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/dependency-upgrade/SKILL.md",
+      "line": 47,
+      "evidence": "p=0.95 Ask in this order, and stop at the first that answers:",
+      "file_sha256": "8d44c96c58980031b1782659a456e87a68961b4e4cab29a651cbb688a3eb721a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/skills/ai-code-blindspots/SKILL.md",
+      "line": 95,
+      "evidence": "curl | bash",
+      "file_sha256": "116fbe943437e4a4af3101201a68d2dc568c16bf3ce1c573b2f41ec8ea7cbb5c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/rules/user-interrupt-priority.md",
+      "line": 5,
+      "evidence": "p=0.98 New user instruction mid-flight — STOP the current task, run the new one in full",
+      "file_sha256": "e1204079b5b62e5db9e4c9d3763dfcab2d945951cf3e585c34149a379c406641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/rules/untrusted-input-defense.md",
+      "line": 48,
+      "evidence": "p=0.93 ## Found-instructions quarantine",
+      "file_sha256": "7fc36a2c6d54187e56f0a19642c3c7e59b23ecb992e56d51a4f3a07f7216c312"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/rules/token-efficiency.md",
+      "line": 78,
+      "evidence": "p=0.97 Not exempt, and still the failure this rule exists to catch: re-reading the *sam",
+      "file_sha256": "4013f8a2031dfacee9ce113779baa2ea6b4ecd596ddd2913b5f6cfeb77741d12"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/rules/active-remediation.md",
+      "line": 91,
+      "evidence": "p=0.97 While implementing/modifying code you pass an issue outside the literal task. Al",
+      "file_sha256": "b7a4fd56ec739074ace3ab4668f449c000f178976816b22fc1f33598eb714a7d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/guidelines/agent-infra/untrusted-input-spotlighting.md",
+      "line": 1,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "bc308ad14eddea36e65f2969e0ffea6eed8c6cc8970248fb34d7bb60aceb617b"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/guidelines/agent-infra/untrusted-input-spotlighting.md",
+      "line": 1,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "bc308ad14eddea36e65f2969e0ffea6eed8c6cc8970248fb34d7bb60aceb617b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/guidelines/agent-infra/security-lint-containment.md",
+      "line": 14,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2df6d312183b81a14c28d863975793d863de481b596348bce0e05c814da707f0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/sync/gitignore/fix.md",
+      "line": 142,
+      "evidence": "p=0.99 After the legacy-cleanup sync, run the tracked-but-ignored check and surface any",
+      "file_sha256": "d84e89c67c7a8747fc4dc02728f98f84fc375f65f8191cc09883684a19eec6a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/pr/create/description-only.md",
+      "line": 32,
+      "evidence": "p=0.96 The user may or may not provide a PR URL or branch name.",
+      "file_sha256": "cc57b6447eb9a01b55a63acd6dc6be226452395c44c53bae6087cf4d436c280a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/pr/create.md",
+      "line": 63,
+      "evidence": "p=0.91 The branch may have diverged from its target base while you were working. A PR o",
+      "file_sha256": "613fb76471688c567da6aa1513fafe5e1587700e1fca369a5153cc1169a3da94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/optimize/augmentignore.md",
+      "line": 20,
+      "evidence": "p=0.91 # /optimize augmentignore",
+      "file_sha256": "6bb43497784bb04a5e7d9289636fc719116f2c8dd1dd496c276ded224c5b9ef7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/optimize/augmentignore.md",
+      "line": 94,
+      "evidence": "p=0.99 If identical files exist in multiple modules, ignore all but one copy.",
+      "file_sha256": "6bb43497784bb04a5e7d9289636fc719116f2c8dd1dd496c276ded224c5b9ef7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/optimize/augmentignore.md",
+      "line": 251,
+      "evidence": "p=0.98 ### 12. Write .augmentignore",
+      "file_sha256": "6bb43497784bb04a5e7d9289636fc719116f2c8dd1dd496c276ded224c5b9ef7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/optimize/augmentignore.md",
+      "line": 286,
+      "evidence": "p=0.98 Also count ignored skills and estimate system prompt savings:",
+      "file_sha256": "6bb43497784bb04a5e7d9289636fc719116f2c8dd1dd496c276ded224c5b9ef7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/mode.md",
+      "line": 82,
+      "evidence": "p=0.95 Do NOT write anything for `/mode` without an argument (status only).",
+      "file_sha256": "6659692aa75eccf9512f11bd3ad56cc18d34b47c4a480ad8163e395925ea8a09"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/memory/promote.md",
+      "line": 183,
+      "evidence": "p=0.98 This keeps the intake stream truthful — lookups will ignore the superseded signa",
+      "file_sha256": "85de9cbbbd118ba5d81d80ff9b47b2b82e12f14f39f1da785b8a3e5935ccd629"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/fix/pr-comments.md",
+      "line": 85,
+      "evidence": "p=0.96 ## Instructions (shared)",
+      "file_sha256": "52eb78977f26a801f35a1976350349d326b670a51ad3a177b68805158a8eeab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/fix/commit-messages.md",
+      "line": 157,
+      "evidence": "p=0.92 **Default: only commits whose author email matches the current user.** Widen onl",
+      "file_sha256": "caeca9fb9025e0d9612f067de7bc547bb1c1cf2269dcf4b7cabbe0caa0ae834c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/fix/commit-messages.md",
+      "line": 351,
+      "evidence": "p=0.95 - Do NOT rewrite anything before both the style answer and the step-6 yes. - Do ",
+      "file_sha256": "caeca9fb9025e0d9612f067de7bc547bb1c1cf2269dcf4b7cabbe0caa0ae834c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/evals/optimize.json",
+      "line": 10,
+      "evidence": "p=0.95 tune the augmentignore for this project",
+      "file_sha256": "3ab29bfcfe820891d98614a46c75af491300d346426b33316465c84515ed9469"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/analyze/inbox.md",
+      "line": 163,
+      "evidence": "p=0.98 Reconciled, not ignored:",
+      "file_sha256": "0d15cb21b98de197762c9836e668b510ed9df1466efd62db375df6115f82bc62"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/dist/agent-src/commands/agents/user/accept.md",
+      "line": 173,
+      "evidence": "p=0.90 On `3. Cancel`: stop without any write.",
+      "file_sha256": "1eaff078759e30932886fa8ba15be11969f023649db0aa88b6722a3350040345"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/MIGRATION.md",
+      "line": 134,
+      "evidence": "curl | bash",
+      "file_sha256": "57c7f2471c3b1bc0078e0db7b4f15e166aba262e6e96eb9df20a0fcc8c2dabe1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-config-31cd971f3deaed3882aa7c3d9df0f5ad9228a775/BREAKING_CHANGES.md",
+      "line": 90,
+      "evidence": "curl \\| bash",
+      "file_sha256": "4079f3eff5fd551e948722731fcf076742979ab78d61ffd6bba953d6ab343a49"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "acme.atlassian.net",
+    "angular.dev",
+    "anyio.readthedocs.io",
+    "api.example.com",
+    "api.flutter.dev",
+    "api.iconify.design",
+    "app.example.com",
+    "appium.io",
+    "arxiv.org",
+    "aws.amazon.com",
+    "callstack.github.io",
+    "cdnjs.cloudflare.com",
+    "cdnjs.com",
+    "cheatsheetseries.owasp.org",
+    "cloud.google.com",
+    "csrc.nist.gov",
+    "dart.dev",
+    "dash.cloudflare.com",
+    "dev.mysql.com",
+    "developer.android.com",
+    "developer.apple.com",
+    "developer.hashicorp.com",
+    "developer.mozilla.org",
+    "doc.rust-lang.org",
+    "docs.aiohttp.org",
+    "docs.astro.build",
+    "docs.augmentcode.com",
+    "docs.aws.amazon.com",
+    "docs.expo.dev",
+    "docs.flutter.dev",
+    "docs.github.com",
+    "docs.python.org",
+    "docs.swmansion.com",
+    "event4u.dev",
+    "example.com",
+    "external-secrets.io",
+    "fluxui.dev",
+    "fonts.google.com",
+    "fonts.googleapis.com",
+    "github.com",
+    "go.dev",
+    "google.github.io",
+    "grafana.example.com",
+    "gsap.com",
+    "iconify.design",
+    "inertiajs.com",
+    "json-schema.org",
+    "kentbeck.github.io",
+    "kit.svelte.dev",
+    "laravel.com",
+    "learn.microsoft.com",
+    "livewire.laravel.com",
+    "maestro.mobile.dev",
+    "mariadb.com",
+    "martinfowler.com",
+    "material.angular.io",
+    "modelcontextprotocol.io",
+    "nextjs.org",
+    "ngrx.io",
+    "nuxt.com",
+    "owasp.org",
+    "pages.nist.gov",
+    "pinia.vuejs.org",
+    "pkg.go.dev",
+    "pub.dev",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "react.dev",
+    "reactnative.dev",
+    "reactnavigation.org",
+    "registry.acme.com",
+    "registry.npmjs.org",
+    "riverpod.dev",
+    "router.vuejs.org",
+    "sentry.io",
+    "svelte.dev",
+    "tailwindcss.com",
+    "test-utils.vuejs.org",
+    "testing-library.com",
+    "threejs.org",
+    "trio.readthedocs.io",
+    "ui.nuxt.com",
+    "ui.shadcn.com",
+    "unpkg.com",
+    "vuejs.org",
+    "wix.github.io",
+    "www.apache.org",
+    "www.augmentcode.com",
+    "www.mintlify.com",
+    "www.php.net",
+    "www.postgresql.org",
+    "www.python-httpx.org",
+    "www.reddit.com",
+    "www.rfc-editor.org",
+    "www.typescriptlang.org",
+    "x.com",
+    "your-domain.localhost",
+    "your-worker.workers.dev"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
