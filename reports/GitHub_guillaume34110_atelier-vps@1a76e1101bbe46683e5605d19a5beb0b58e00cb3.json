@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "guillaume34110/atelier-vps",
+    "version": "1a76e1101bbe46683e5605d19a5beb0b58e00cb3",
+    "download": "https://codeload.github.com/guillaume34110/atelier-vps/tar.gz/1a76e1101bbe46683e5605d19a5beb0b58e00cb3"
+  },
+  "archive_sha256": "bd16e478e9bc7f856c0e9549ff0d80dfe55ce9adb93df7239edc2c971e4a703b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "atelier-vps-1a76e1101bbe46683e5605d19a5beb0b58e00cb3/ops/team_settings.py",
+      "line": 149,
+      "evidence": "Path('/home/usevps/.ssh/authorized_keys').read_text()",
+      "file_sha256": "92c44ff81901030ae30d7c429e0ff879c7c46c967d93e5b1492604dc656ad162"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "app.coolify.io",
+    "archive.ubuntu.com",
+    "cdimage.ubuntu.com",
+    "coolify.example.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "docs.hetzner.com",
+    "downloads.claude.ai",
+    "example.test",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "learn.chatgpt.com",
+    "man.openbsd.org",
+    "nodejs.org",
+    "openbox.org",
+    "persistent.oaistatic.com",
+    "ports.ubuntu.com",
+    "pypi.org",
+    "services.gradle.org",
+    "support.claude.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

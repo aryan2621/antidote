@@ -1,0 +1,122 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Carbonitex/smartermail-agent",
+    "version": "837d1b634e5b1478e3b1a7253142f7983a5bd838",
+    "download": "https://codeload.github.com/Carbonitex/smartermail-agent/tar.gz/837d1b634e5b1478e3b1a7253142f7983a5bd838"
+  },
+  "archive_sha256": "5d19e5597317845649c8d870d2d5a3460e180f4c51ddb52397ca9272a8e86dd3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/src/Agent/wwwroot/dev/test/subagent.test.mjs",
+      "line": 114,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "739037b21ccf0a23ca46b6ce79e7add88b74396abf4eb3b530d1da995367ad9c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/src/Agent/wwwroot/dev/stub-profiles.mjs",
+      "line": 629,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "d6bd63d82423a24b8bab81b73314af79d6d986069b91c8a674188fff6a2e84ee"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/src/Agent/wwwroot/dev/local-model/fixtures/tools-multi.json",
+      "line": 2482,
+      "evidence": "p=0.96 List all users in a specific domain",
+      "file_sha256": "1ecbbeb3b9e473de1991c210ee270ffbdcb203b925c1b6a000b5c38c51a487e6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/src/Agent/wwwroot/dev/local-model/fixtures/tools-domainadmin.json",
+      "line": 1174,
+      "evidence": "p=0.96 Permanently delete one or more users in your domain and all of their mail data. ",
+      "file_sha256": "d367f4837e3682ee4632a9cdb22f7608fa7230dcb0f40d101a6f6b64b3b46ab6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/src/Agent/wwwroot/dev/local-model/fixtures/tools-sysadmin.json",
+      "line": 849,
+      "evidence": "p=0.96 List all users in a specific domain",
+      "file_sha256": "d11f7411367a7dc7ed32185915fb737ca8bb7a1dc3b4de06c2f3574a9e39e660"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/CLAUDE.md",
+      "line": 802,
+      "evidence": "p=0.96 ### Standing instructions",
+      "file_sha256": "8ae001cefd6e8c06f9aca1db5cf5c5e795feeeaeb58ec6815643c85fb22f4190"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "smartermail-agent-837d1b634e5b1478e3b1a7253142f7983a5bd838/CLAUDE.md",
+      "line": 808,
+      "evidence": "p=0.94 - **Chats**: kept in the encrypted settings (`instructions`), so the server neve",
+      "file_sha256": "8ae001cefd6e8c06f9aca1db5cf5c5e795feeeaeb58ec6815643c85fb22f4190"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "100.64.0.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.1.5",
+    "93.184.215.14",
+    "93.184.215.15",
+    "a.example.com",
+    "agent.example.com",
+    "anything.example",
+    "api.nuget.org",
+    "b.example.com",
+    "c.example.com",
+    "carbonitex.dev",
+    "cdn.jsdelivr.net",
+    "dotnet.microsoft.com",
+    "e.example.com",
+    "evil.example",
+    "evil.example.net",
+    "example.com",
+    "github.com",
+    "keepachangelog.com",
+    "llm.test",
+    "mail-agent.example.com",
+    "mail.example.com",
+    "mail.other.com",
+    "mail.smartertools.com",
+    "mail.x.com",
+    "mcp.example.com",
+    "modelcontextprotocol.io",
+    "mx.contoso.com",
+    "opencollective.com",
+    "openrouter.ai",
+    "other.example.com",
+    "raw.githubusercontent.com",
+    "rebind.example",
+    "registry.npmjs.org",
+    "schemas.microsoft.com",
+    "semver.org",
+    "third.example.com",
+    "www.npmjs.com",
+    "www.smartertools.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

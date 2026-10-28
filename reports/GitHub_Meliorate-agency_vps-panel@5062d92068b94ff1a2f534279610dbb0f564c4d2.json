@@ -1,0 +1,74 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Meliorate-agency/vps-panel",
+    "version": "5062d92068b94ff1a2f534279610dbb0f564c4d2",
+    "download": "https://codeload.github.com/Meliorate-agency/vps-panel/tar.gz/5062d92068b94ff1a2f534279610dbb0f564c4d2"
+  },
+  "archive_sha256": "83f7441b29b9528fddee0e66292fa14762d26a0c082e187614d823960ab99f1e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "vps-panel-5062d92068b94ff1a2f534279610dbb0f564c4d2/scripts/install.sh",
+      "line": 155,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "7e5ece1db5c99e773ba6907cc36157048c155076b3c4b984324c1ff8a6906443"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "vps-panel-5062d92068b94ff1a2f534279610dbb0f564c4d2/scripts/install.sh",
+      "line": 155,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash -",
+      "file_sha256": "7e5ece1db5c99e773ba6907cc36157048c155076b3c4b984324c1ff8a6906443"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "vps-panel-5062d92068b94ff1a2f534279610dbb0f564c4d2/scripts/install.sh",
+      "line": 171,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --defaul",
+      "file_sha256": "7e5ece1db5c99e773ba6907cc36157048c155076b3c4b984324c1ff8a6906443"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "acme-v02.api.letsencrypt.org",
+    "api.example.com",
+    "api.ipify.org",
+    "api.telegram.org",
+    "blog.example.com",
+    "deb.nodesource.com",
+    "example.com",
+    "feross.org",
+    "fsf.org",
+    "github.com",
+    "help.github.com",
+    "hooks.slack.com",
+    "img.shields.io",
+    "login.tailscale.com",
+    "n8n.example.com",
+    "new.example.com",
+    "opencollective.com",
+    "panel.example.com",
+    "paulmillr.com",
+    "pkgs.tailscale.com",
+    "pma.example.com",
+    "registry.npmjs.org",
+    "rspamd.com",
+    "sh.rustup.rs",
+    "tidelift.com",
+    "www.gnu.org",
+    "www.patreon.com",
+    "www.w3.org",
+    "x.example.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

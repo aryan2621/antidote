@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "mechubsec/rustunifimcp",
+    "version": "48ae3b4c40114fc03e4e3902e9a329cbb870d8d9",
+    "download": "https://codeload.github.com/mechubsec/rustunifimcp/tar.gz/48ae3b4c40114fc03e4e3902e9a329cbb870d8d9"
+  },
+  "archive_sha256": "a2d66cd8332cc64633bbe614a7795aae39026f331082354feddc917d45e06987",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "rustunifimcp-48ae3b4c40114fc03e4e3902e9a329cbb870d8d9/scripts/capture-fixtures.sh",
+      "line": 13,
+      "evidence": "curl -sS -H \"X-API-KEY: $UNIFI_API_KEY\" \\ \"$CONTROLLER/proxy/network/integration",
+      "file_sha256": "3c3c94232dce4b8cdeabc03d74c9256093d4ee7d276b61885d01dc91f634d29f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "rustunifimcp-48ae3b4c40114fc03e4e3902e9a329cbb870d8d9/scripts/capture-fixtures.sh",
+      "line": 22,
+      "evidence": "curl -sS -H \"X-API-KEY: $UNIFI_API_KEY\" \\ \"$CONTROLLER/proxy/network/integration",
+      "file_sha256": "3c3c94232dce4b8cdeabc03d74c9256093d4ee7d276b61885d01dc91f634d29f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.10",
+    "console.example.org",
+    "controller.example",
+    "cyclonedx.org",
+    "docs.github.com",
+    "ghcr.io",
+    "github.com",
+    "idp.example.test",
+    "keepachangelog.com",
+    "mechub.org",
+    "prod-unifi2mcp.example.org",
+    "prod-unifimcp.example.org",
+    "prod-unifimcp.mechub.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "test-labmode-unifi.example.org",
+    "test-labmode-unifi.mechub.org",
+    "test-twoperson-unifi.example.org",
+    "test-twoperson-unifi.mechub.org",
+    "token.actions.githubusercontent.com",
+    "unifi.example.org",
+    "unifi.local",
+    "unifi.mechub.org",
+    "unifimcp.example.lan",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

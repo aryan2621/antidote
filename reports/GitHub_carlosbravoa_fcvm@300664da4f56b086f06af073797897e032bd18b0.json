@@ -1,0 +1,127 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "carlosbravoa/fcvm",
+    "version": "300664da4f56b086f06af073797897e032bd18b0",
+    "download": "https://codeload.github.com/carlosbravoa/fcvm/tar.gz/300664da4f56b086f06af073797897e032bd18b0"
+  },
+  "archive_sha256": "a50819d2a08b98bcb1fa9e41a7979ac793e3504b7b0ff92c05d1fef13ee67f05",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/sdk/mcp/README.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carlosbravoa/fcvm/main/install.sh |",
+      "file_sha256": "140bd4296892003344867a696adc6b118e2c536cf709f3472166d1de70648b47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/sdk/mcp/fcvm_mcp.py",
+      "line": 42,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carlosbravoa/fcvm/main/install.sh |",
+      "file_sha256": "2129c303c4060d13c968f0666a0e017e4f6366d258244f5af855f9ab7902f7dc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carlosbravoa/fcvm/main/install.sh |",
+      "file_sha256": "44bbf6e79603c6c7cecd96a4a3f741ed9f753f9b5249f58c9707d1d75fefa133"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/README.md",
+      "line": 89,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carlosbravoa/fcvm/main/install.sh |",
+      "file_sha256": "016a17a14b39fe616f43f6ac10992ab298d078c3ec5631bfbde501dd2d36ffff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/lib/vm.sh",
+      "line": 353,
+      "evidence": "cat \"$HOME\"/.ssh/id_*.pub",
+      "file_sha256": "793fe1f9292246ed81769ca16b641609e92408d86485680b68b70c2c8579e743"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/docs/getting-started.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carlosbravoa/fcvm/main/install.sh |",
+      "file_sha256": "150078a0428a17a9a704a28f6c7c87093d20fea9f145c8d66c207bc62d8e1114"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/tests/integration/test_lifecycle.py",
+      "line": 258,
+      "evidence": "open(os.path.join(home, \".ssh\", \"config\"))",
+      "file_sha256": "12eaf95e23d8a06ed35fa63a00aeff975934591d211077fb6a523097196d7706"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "fcvm-300664da4f56b086f06af073797897e032bd18b0/tests/integration/test_lifecycle.py",
+      "line": 260,
+      "evidence": "open(os.path.join(home, \".ssh\", \"fcvm_config\"))",
+      "file_sha256": "12eaf95e23d8a06ed35fa63a00aeff975934591d211077fb6a523097196d7706"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.1.0.1",
+    "127.0.0.1",
+    "172.30.1.1",
+    "api.github.com",
+    "archive.ubuntu.com",
+    "bellard.org",
+    "cabra-consulting.com",
+    "cdn.jsdelivr.net",
+    "cdn.kernel.org",
+    "checkip.amazonaws.com",
+    "cp.example",
+    "developer.mozilla.org",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "files.pythonhosted.org",
+    "firecracker-microvm.github.io",
+    "github.com",
+    "html.spec.whatwg.org",
+    "invalid.invalid",
+    "m8ven.ai",
+    "nowhere.test",
+    "objects.githubusercontent.com",
+    "other.test",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "reg.example",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.apache.org",
+    "www.iana.org",
+    "www.kernel.org",
+    "www.npmjs.com",
+    "www.sourcelair.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

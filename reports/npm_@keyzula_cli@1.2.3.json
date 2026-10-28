@@ -1,0 +1,43 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@keyzula/cli",
+    "version": "1.2.3",
+    "download": null
+  },
+  "archive_sha256": "5a4b82469dce2732feb28af7867b57259f1824b42e5acb30ac7c341554d097f5",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/keyzula.js",
+      "line": 164,
+      "evidence": "~/.ssh",
+      "file_sha256": "0f3dc493371e706d6daa2db2fc35bda36d3fe73063ef3519aef032ff9eb89de6"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-10-27T11:09:56.058Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "app.keyzula.com",
+    "github.com",
+    "json-schema.org",
+    "kasa.sirketiniz.com",
+    "keyzula.com",
+    "vault.example.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

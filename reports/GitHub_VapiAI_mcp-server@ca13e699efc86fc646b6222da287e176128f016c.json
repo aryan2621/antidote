@@ -1,0 +1,54 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "VapiAI/mcp-server",
+    "version": "ca13e699efc86fc646b6222da287e176128f016c",
+    "download": "https://codeload.github.com/VapiAI/mcp-server/tar.gz/ca13e699efc86fc646b6222da287e176128f016c"
+  },
+  "archive_sha256": "34823f76c749f98a310aa9e88fed957e62bcc56f35c8970e130d8c392f89e5ab",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-server-ca13e699efc86fc646b6222da287e176128f016c/src/__tests__/fixtures/tools-list.json",
+      "line": 26,
+      "evidence": "p=0.95 Instructions for the assistant",
+      "file_sha256": "1ca8542ef73f8245289358a24b3897d0ca516622974de58936dbefb918bfb64f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-server-ca13e699efc86fc646b6222da287e176128f016c/src/__tests__/fixtures/tools-list.json",
+      "line": 664,
+      "evidence": "p=0.98 New instructions for the assistant",
+      "file_sha256": "1ca8542ef73f8245289358a24b3897d0ca516622974de58936dbefb918bfb64f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "dashboard.vapi.ai",
+    "docs.vapi.ai",
+    "dotenvx.com",
+    "example.com",
+    "example.test",
+    "feross.org",
+    "github.com",
+    "json-schema.org",
+    "mcp.vapi.ai",
+    "modelcontextprotocol.com",
+    "opencollective.com",
+    "paypal.me",
+    "polar.sh",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "smithery.ai",
+    "tidelift.com",
+    "vapi.ai",
+    "www.patreon.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

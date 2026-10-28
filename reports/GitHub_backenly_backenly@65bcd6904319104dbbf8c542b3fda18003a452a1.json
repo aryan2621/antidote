@@ -1,0 +1,1224 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "backenly/backenly",
+    "version": "65bcd6904319104dbbf8c542b3fda18003a452a1",
+    "download": "https://codeload.github.com/backenly/backenly/tar.gz/65bcd6904319104dbbf8c542b3fda18003a452a1"
+  },
+  "archive_sha256": "edd1e31ceffcd298b44eef33725464d4a3c1a16c1d6002ecca6ef3f738a20053",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 258,
+      "evidence": "exec(`CREATE SCHEMA ${qi(scratch.schema)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 259,
+      "evidence": "exec( `CREATE TABLE ${host} (LIKE ${fq(live, spec.host)} INCLUDING DEFAULTS INCL",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 263,
+      "evidence": "exec( `INSERT INTO ${host} (${insertable})${overriding} (SELECT ${insertable} FR",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 313,
+      "evidence": "exec( `UPDATE ${host} SET (${m.join(', ')}) = (SELECT ${m.join(', ')} FROM ${hos",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 321,
+      "evidence": "exec(`DELETE FROM ${host} WHERE ${pk}::text = $1`, p1)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 322,
+      "evidence": "exec( `INSERT INTO ${host} (${insertable})${overriding} SELECT ${insertable} FRO",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 335,
+      "evidence": "exec(`UPDATE ${host} SET ${m.map(c => `${c} = NULL`).join(', ')} WHERE ${pk}::te",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 386,
+      "evidence": "exec( `UPDATE ${sat} SET (${m.join(', ')}) = (SELECT ${m.join(', ')} FROM ${sat}",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 395,
+      "evidence": "exec(`DELETE FROM ${sat} WHERE ${fk}::text = $1`, s1)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 398,
+      "evidence": "exec( `INSERT INTO ${sat} (${fk}, ${m.join(', ')}) SELECT h.${pk}, ${m.map(c => ",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 415,
+      "evidence": "exec(`UPDATE ${sat} SET ${fk} = h.${pk} FROM ${host} h WHERE h.${pk}::text = $1 ",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 431,
+      "evidence": "exec(`DELETE FROM ${host} WHERE ${pk}::text = $1`, victim)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 500,
+      "evidence": "exec(`ALTER TABLE ${host} ENABLE ROW LEVEL SECURITY`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 501,
+      "evidence": "exec(`ALTER TABLE ${host} FORCE ROW LEVEL SECURITY`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 531,
+      "evidence": "exec( `CREATE POLICY ${qi(p.name)} ON ${host} AS ${p.permissive ? 'PERMISSIVE' :",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 548,
+      "evidence": "exec(`GRANT ${[...privileges].join(', ')} ON ${host} TO ${grantee(who)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 563,
+      "evidence": "exec(`GRANT ${g.privilege} (${qi(g.col)}) ON ${host} TO ${grantee(g.who)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 568,
+      "evidence": "exec(`GRANT USAGE ON SCHEMA ${qi(scratch.schema)} TO ${[...everyone].map(grantee",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 676,
+      "evidence": "exec(`SET LOCAL ROLE ${qi(role)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 750,
+      "evidence": "exec(`SET LOCAL ROLE ${qi(scope.platformRole)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 995,
+      "evidence": "exec(`SET LOCAL ROLE ${qi(role)}`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/structural-evolution/rehearse.ts",
+      "line": 998,
+      "evidence": "exec(`SELECT set_config(${lit(names.access)}, '', true)`)",
+      "file_sha256": "78da71a2e9d025bd40880cadf262346cb76a12f77209c2419b1f8d9e30987c3d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/lib/ai/brain/tools.ts",
+      "line": 700,
+      "evidence": "Never tell the user",
+      "file_sha256": "c8c78962ae6a8bf5b9ad81d753a40a433ae18b953620a9b9c0c814406fc0e215"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 93,
+      "evidence": "exec(`CREATE SCHEMA \"${sa}\"`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 94,
+      "evidence": "exec(`CREATE TABLE \"${sa}\".authors (id uuid PRIMARY KEY)`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 95,
+      "evidence": "exec(`CREATE TABLE \"${sa}\".books (id uuid PRIMARY KEY, author_id uuid REFERENCES",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 96,
+      "evidence": "exec(`CREATE INDEX books_author_id_idx ON \"${sa}\".books (author_id)`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 97,
+      "evidence": "exec(`CREATE SCHEMA \"${branch}\"`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 98,
+      "evidence": "exec(`CREATE SCHEMA \"${sb}\"`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 99,
+      "evidence": "exec(`CREATE TABLE \"${sb}\".members (id uuid PRIMARY KEY)`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 100,
+      "evidence": "exec(`CREATE TABLE \"${sb}\".invoices (id uuid PRIMARY KEY, member_id uuid REFEREN",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 101,
+      "evidence": "exec(`CREATE INDEX invoices_member_id_idx ON \"${sb}\".invoices (member_id)`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/__tests__/auth/catalog-routes-own-schema.test.ts",
+      "line": 116,
+      "evidence": "exec(`DROP SCHEMA IF EXISTS \"${s}\" CASCADE`)",
+      "file_sha256": "83cfc393b9025ebb25c3c42eb8375690197fc1860dbbf726d3e52eece853bf79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/preflight-oss.ts",
+      "line": 364,
+      "evidence": "execSync(`git show HEAD:\"${file}\"`, { maxBuffer: 256 * 1024 * 1024, stdio: ['ign",
+      "file_sha256": "8d212dc2d702c3d751d7eaa802ea335f82ae58061ee4fe9e759d6620c22ab04a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 129,
+      "evidence": "exec(`ALTER TABLE \"${SCHEMA}\".subjects ADD COLUMN status_v2 text`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 155,
+      "evidence": "exec(` CREATE OR REPLACE FUNCTION \"${SCHEMA}\".mirror_status() RETURNS trigger LA",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 163,
+      "evidence": "exec(` CREATE TRIGGER mirror_status_trg BEFORE INSERT OR UPDATE ON \"${SCHEMA}\".s",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 167,
+      "evidence": "exec(`INSERT INTO \"${SCHEMA}\".subjects (id, status) VALUES (9001, 'active')`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 189,
+      "evidence": "exec(` CREATE OR REPLACE FUNCTION \"${SCHEMA}\".mirror_status() RETURNS trigger LA",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 209,
+      "evidence": "exec(`INSERT INTO \"${SCHEMA}\".subjects (id, status) VALUES (9002, 'pending')`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 228,
+      "evidence": "exec(` CREATE OR REPLACE FUNCTION \"${SCHEMA}\".mirror_status() RETURNS trigger LA",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 261,
+      "evidence": "exec( `UPDATE \"${SCHEMA}\".backfill_checkpoint SET cursor_id = ${maxId} WHERE job",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 281,
+      "evidence": "exec(`UPDATE \"${SCHEMA}\".backfill_checkpoint SET cursor_id = 0 WHERE job = 'stat",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 283,
+      "evidence": "exec( `UPDATE \"${SCHEMA}\".backfill_checkpoint SET cursor_id = ${resumedFrom} WHE",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 328,
+      "evidence": "exec(`DROP TRIGGER IF EXISTS mirror_status_trg ON \"${SCHEMA}\".subjects`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 329,
+      "evidence": "exec(`UPDATE \"${SCHEMA}\".subjects SET status_v2 = 'WRONG' WHERE id = 1`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 340,
+      "evidence": "exec(`UPDATE \"${SCHEMA}\".subjects SET status_v2 = upper(status) WHERE id = 1`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 341,
+      "evidence": "exec(` CREATE TRIGGER mirror_status_trg BEFORE INSERT OR UPDATE ON \"${SCHEMA}\".s",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 356,
+      "evidence": "exec(`DROP TRIGGER IF EXISTS mirror_status_trg ON \"${SCHEMA}\".subjects`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 357,
+      "evidence": "exec(`DROP FUNCTION IF EXISTS \"${SCHEMA}\".mirror_status()`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 358,
+      "evidence": "exec(`ALTER TABLE \"${SCHEMA}\".subjects DROP COLUMN IF EXISTS status_v2`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 359,
+      "evidence": "exec(`DROP TABLE IF EXISTS \"${SCHEMA}\".mismatch_ledger`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 360,
+      "evidence": "exec(`DROP TABLE IF EXISTS \"${SCHEMA}\".backfill_checkpoint`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 455,
+      "evidence": "exec(`CREATE SCHEMA \"${SCHEMA}\"`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 456,
+      "evidence": "exec(`CREATE TABLE \"${SCHEMA}\".subjects (id bigint PRIMARY KEY, status text NOT ",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 457,
+      "evidence": "exec( `INSERT INTO \"${SCHEMA}\".subjects (id, status) SELECT i, (ARRAY['active','",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 462,
+      "evidence": "exec(`ANALYZE \"${SCHEMA}\".subjects`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 467,
+      "evidence": "exec(`CREATE TABLE \"${SCHEMA}\".mismatch_ledger ( id bigserial PRIMARY KEY, subje",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 469,
+      "evidence": "exec(`CREATE TABLE \"${SCHEMA}\".backfill_checkpoint ( job text PRIMARY KEY, curso",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 471,
+      "evidence": "exec(`INSERT INTO \"${SCHEMA}\".backfill_checkpoint (job, cursor_id) VALUES ('stat",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/scripts/rehearse-maintenance-rds.ts",
+      "line": 483,
+      "evidence": "exec(`DROP SCHEMA IF EXISTS \"${SCHEMA}\" CASCADE`)",
+      "file_sha256": "47f6e93f46594b038fce826adb1b237386273e47e7b142cf39e3c3b9301dd86b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 175,
+      "evidence": "exec( `CREATE POLICY \"p_${t}_owner\" ON \"${schema}\".\"${t}\" ` + `USING (\"${column}",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 196,
+      "evidence": "exec(`ALTER TABLE \"${schema}\".\"posts\" DISABLE ROW LEVEL SECURITY`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 239,
+      "evidence": "exec(`ALTER TABLE \"${schema}\".\"orders\" DROP CONSTRAINT \"fk_orders_user_id\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 266,
+      "evidence": "exec(`CREATE INDEX \"idx_orders_user_id\" ON \"${schema}\".\"orders\" (\"user_id\")`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 269,
+      "evidence": "exec(`DROP INDEX \"${schema}\".\"idx_orders_user_id\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 296,
+      "evidence": "exec(`DROP POLICY \"p_posts_owner\" ON \"${schema}\".\"posts\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 297,
+      "evidence": "exec(`CREATE POLICY \"p_posts_open\" ON \"${schema}\".\"posts\" USING (true)`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 342,
+      "evidence": "exec(`ALTER SCHEMA \"${schema}\" RENAME TO \"${schema}_moved\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 344,
+      "evidence": "exec(`ALTER SCHEMA \"${schema}_moved\" RENAME TO \"${schema}\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 410,
+      "evidence": "exec(`DROP POLICY \"p_posts_owner\" ON \"${schema}\".\"posts\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 411,
+      "evidence": "exec(`CREATE POLICY \"p_posts_open\" ON \"${schema}\".\"posts\" USING (true)`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 477,
+      "evidence": "exec(`DROP POLICY \"p_posts_owner\" ON \"${schema}\".\"posts\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 478,
+      "evidence": "exec(`CREATE POLICY \"p_posts_open\" ON \"${schema}\".\"posts\" USING (true)`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 575,
+      "evidence": "exec(`REVOKE SELECT ON ALL TABLES IN SCHEMA \"${schema}\" FROM \"bkn_lab_observer\"`",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 576,
+      "evidence": "exec(`REVOKE USAGE ON SCHEMA \"${schema}\" FROM \"bkn_lab_observer\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 578,
+      "evidence": "exec(`GRANT USAGE ON SCHEMA \"${schema}\" TO \"bkn_lab_observer\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 579,
+      "evidence": "exec(`GRANT SELECT ON ALL TABLES IN SCHEMA \"${schema}\" TO \"bkn_lab_observer\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 633,
+      "evidence": "exec(`ALTER TABLE \"${schema}\".\"orders\" ADD COLUMN IF NOT EXISTS \"placed_at\" time",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/lab/faults.ts",
+      "line": 639,
+      "evidence": "exec(`ALTER TABLE \"${schema}\".\"orders\" DROP COLUMN \"placed_at\"`)",
+      "file_sha256": "e9c765b26e20c6624074d7ac72485252b9a959d047739398d29b022086d074ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 275,
+      "evidence": "exec(`DROP SCHEMA IF EXISTS \"${v.nspname}\" CASCADE`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 276,
+      "evidence": "exec(`DROP SCHEMA IF EXISTS \"${schema}\" CASCADE`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 302,
+      "evidence": "exec(`INSERT INTO ${T('journals')} (title) VALUES ('day one'), ('day two')`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 364,
+      "evidence": "exec(`INSERT INTO ${T('journals')} (title, \"updatedAt\") VALUES ('trigger probe',",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 365,
+      "evidence": "exec(`UPDATE ${T('journals')} SET title = 'trigger probe, edited' WHERE title = ",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 370,
+      "evidence": "exec(`DELETE FROM ${T('journals')} WHERE title = 'trigger probe, edited'`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 408,
+      "evidence": "exec(`INSERT INTO ${T('shelves')} (label) VALUES ('top'), ('middle'), ('bottom')",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 431,
+      "evidence": "exec(`INSERT INTO ${T('pantry')} (item, qty) VALUES ('rice', 2), ('beans', NULL)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 461,
+      "evidence": "exec(`INSERT INTO ${T('meters')} (label, reading) VALUES ('hall', 120), ('attic'",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 480,
+      "evidence": "exec(`INSERT INTO ${T('scales')} (label, weight) VALUES ('flour', 10.25), ('suga",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 499,
+      "evidence": "exec(`INSERT INTO ${T('contacts')} (name, phone) VALUES ('ada', '111'), ('alan',",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 533,
+      "evidence": "exec(`INSERT INTO ${T('archive_box')} (label) SELECT 'item ' || g FROM generate_",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 573,
+      "evidence": "exec(`INSERT INTO ${T('lookups')} (code, region) VALUES ('a', 'eu'), ('a', 'us')",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 596,
+      "evidence": "exec(`INSERT INTO ${T('badges')} (code, points) VALUES ('gold', 30), ('silver', ",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 612,
+      "evidence": "exec(`INSERT INTO ${T('scores')} (player, points) VALUES ('p1', 3), ('p2', 0)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 621,
+      "evidence": "exec(`INSERT INTO ${T('scores')} (player, points) VALUES ('probe', -1)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 622,
+      "evidence": "exec(`DELETE FROM ${T('scores')} WHERE player = 'probe'`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 625,
+      "evidence": "exec(`INSERT INTO ${T('scores')} (player, points) VALUES ('probe', -1)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 637,
+      "evidence": "exec(`INSERT INTO ${T('crews')} (name) VALUES ('red'), ('blue')`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 638,
+      "evidence": "exec(`INSERT INTO ${T('memberships')} (squad_id, role_name) SELECT id, 'captain'",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 659,
+      "evidence": "exec(`INSERT INTO ${T('chores')} (title, effort) VALUES ('dishes', 1), ('laundry",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 675,
+      "evidence": "exec(`INSERT INTO ${T('errands')} (title, effort) VALUES ('post office', 2), ('b",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 687,
+      "evidence": "exec(`INSERT INTO ${T('errands')} (title, effort) VALUES ('pharmacy', NULL)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 705,
+      "evidence": "exec(`INSERT INTO ${T('tallies')} (hits) VALUES (4)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 723,
+      "evidence": "exec(`INSERT INTO ${T('postcards')} (caption) VALUES ('greetings'), ('wish you w",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 755,
+      "evidence": "exec(`INSERT INTO ${T('people')} (full_name) VALUES ('Ada Lovelace'), ('Alan Tur",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 778,
+      "evidence": "exec(`INSERT INTO ${T('postal')} (street, city) VALUES ('1 Loop', 'London'), ('2",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 799,
+      "evidence": "exec(`INSERT INTO ${T('signups')} (full_name) VALUES ('Ada Lovelace'), (NULL)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 818,
+      "evidence": "exec(`INSERT INTO ${T('tickets_dm')} (code, state) VALUES ('5', 'OPEN'), (NULL, ",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 837,
+      "evidence": "exec(`INSERT INTO ${T('kiosks')} (label, note, level) VALUES ('north', 'by the d",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 864,
+      "evidence": "exec(`INSERT INTO ${T('clients')} (name, street, city) VALUES ('ada', '1 Loop', ",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 870,
+      "evidence": "exec(`INSERT INTO ${T('client_addresses')} (client_id, street, city) SELECT id, ",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 926,
+      "evidence": "exec(`INSERT INTO ${T('receipts')} (memo) VALUES ('coffee'), ('lunch')`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 928,
+      "evidence": "exec(`INSERT INTO ${T('tabs')} (label) VALUES ('one'), ('two')`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 930,
+      "evidence": "exec(`UPDATE ${T('tabs')} SET tip = 5 WHERE label = 'two'`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 992,
+      "evidence": "exec(`INSERT INTO ${T('inbox')} (subject, label) VALUES ('a', 'work'), ('b', 'ho",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 996,
+      "evidence": "exec(`UPDATE ${T('inbox')} SET label = 'urgent' WHERE subject = 'a'`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 997,
+      "evidence": "exec(`INSERT INTO ${T('inbox')} (subject, label) VALUES ('d', 'later')`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 1000,
+      "evidence": "exec(`INSERT INTO ${T('gauges')} (label, level) VALUES ('north', 1), ('south', 2",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 1003,
+      "evidence": "exec(`INSERT INTO ${T('gauges')} (label, level) VALUES ('east', 3)`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 1004,
+      "evidence": "exec(`UPDATE ${T('gauges')} SET level = 20 WHERE label = 'south'`)",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 1044,
+      "evidence": "exec(`INSERT INTO ${T('catalogue')} (title, shelf) VALUES ('Dune', 'B2'), ('Emma",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "backenly-65bcd6904319104dbbf8c542b3fda18003a452a1/tests/integration/change-classes-executor.spec.ts",
+      "line": 1088,
+      "evidence": "exec( `INSERT INTO ${T('ledger_lines')} (amount, memo, region) SELECT (g % 997):",
+      "file_sha256": "77a9f5bd0d7e0bbd2db02415a93ec5837c986aa6d022da8f987edf03d64b5b3a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "abc123.r2.cloudflarestorage.com",
+    "accounts.google.com",
+    "agents.md",
+    "amplitude.com",
+    "api.backenly.com",
+    "api.dev.runwayml.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.paddle.com",
+    "api.replicate.com",
+    "api.resend.com",
+    "api.sendgrid.com",
+    "api.stability.ai",
+    "api.stripe.com",
+    "app.example.com",
+    "app.posthog.com",
+    "app.supademo.com",
+    "appwrite.io",
+    "aws.amazon.com",
+    "backenly.com",
+    "buy.paddle.com",
+    "calendly.com",
+    "cdn.discordapp.com",
+    "cdn.jsdelivr.net",
+    "cdn.paddle.com",
+    "cdn.yourdomain.com",
+    "challenges.cloudflare.com",
+    "console.anthropic.com",
+    "console.cloud.google.com",
+    "dashboard.stripe.com",
+    "developers.facebook.com",
+    "discord.com",
+    "discord.gg",
+    "docs.backenly.io",
+    "docs.convex.dev",
+    "docs.github.com",
+    "docs.insforge.dev",
+    "dotenvx.com",
+    "eslint.org",
+    "evil.com",
+    "evil.example",
+    "example.com",
+    "feross.org",
+    "firebase.google.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "graph.facebook.com",
+    "gsap.com",
+    "help.github.com",
+    "img.shields.io",
+    "insforge.dev",
+    "js.sentry-cdn.com",
+    "ko-fi.com",
+    "modelcontextprotocol.io",
+    "neon.com",
+    "oauth2.googleapis.com",
+    "openai.com",
+    "opencollective.com",
+    "opensource.org",
+    "paulmillr.com",
+    "paypal.me",
+    "platform.openai.com",
+    "polar.sh",
+    "policies.google.com",
+    "pub-abc123.r2.dev",
+    "pub-xxxxx.r2.dev",
+    "public.profitwell.com",
+    "registry.npmjs.org",
+    "replit.com",
+    "resend.com",
+    "runtime.internal",
+    "s3.amazonaws.com",
+    "s3.us-east-1.amazonaws.com",
+    "sandbox-api.paddle.com",
+    "sandbox-buy.paddle.com",
+    "sandbox-cdn.paddle.com",
+    "schema.org",
+    "semver.org",
+    "sentry.io",
+    "static.modelcontextprotocol.io",
+    "stripe.com",
+    "supabase.com",
+    "tidelift.com",
+    "www.apache.org",
+    "www.backenly.com",
+    "www.cloudflare.com",
+    "www.facebook.com",
+    "www.googleapis.com",
+    "www.linkedin.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.producthunt.com",
+    "www.rfc-editor.org",
+    "www.w3.org",
+    "x.com",
+    "xyz.supabase.co",
+    "your-app.vercel.app",
+    "your-minio-server.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
