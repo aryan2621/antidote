@@ -1,0 +1,77 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Merp4/dexicon",
+    "version": "05046417349449cad8bfb5c0613eef749cb57430",
+    "download": "https://codeload.github.com/Merp4/dexicon/tar.gz/05046417349449cad8bfb5c0613eef749cb57430"
+  },
+  "archive_sha256": "d6c9929eaddbc486d2ba98101ce25ea9c79cc22a9a6748ad01a58108b49f4007",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "dexicon-05046417349449cad8bfb5c0613eef749cb57430/.env.example",
+      "line": 181,
+      "evidence": "<secret>",
+      "file_sha256": "56bef9426cc796f1600e55d5b836ab49f490135750eb7e7147539535b912ef2d"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "dexicon-05046417349449cad8bfb5c0613eef749cb57430/docs/10-security-secrets.md",
+      "line": 52,
+      "evidence": "<secret>",
+      "file_sha256": "583b485ad8cd7231cc958ca6826ad500a0051ae18df1f2f181b44479a79d0e5f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dexicon-05046417349449cad8bfb5c0613eef749cb57430/skills/dexicon-search/SKILL.md",
+      "line": 161,
+      "evidence": "p=0.98 Write it as UTF-8 text (a UTF-16 or UTF-32 byte order mark is also read), with l",
+      "file_sha256": "307d27631a444ae864b57345e572381d4b1458489b1548c043cc252cc5774d4e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "127.0.0.1",
+    "ai.google.dev",
+    "api.openai.com",
+    "creativecommons.org",
+    "dexicon.test",
+    "dotenvx.com",
+    "example.invalid",
+    "example.test",
+    "ghcr.io",
+    "github.com",
+    "host.docker.internal",
+    "huggingface.co",
+    "img.shields.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "mri-production.cts-mrp.eu",
+    "opencollective.com",
+    "paulmillr.com",
+    "polar.sh",
+    "purl.org",
+    "registry.npmjs.org",
+    "schemas.openxmlformats.org",
+    "semver.org",
+    "tidelift.com",
+    "ui.shadcn.com",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.daisy.org",
+    "www.idpf.org",
+    "www.w3.org",
+    "your-resource.openai.azure.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

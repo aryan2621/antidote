@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@arii/boomtick-mcp",
+    "version": "0.7.0",
+    "download": null
+  },
+  "archive_sha256": "fc225ae9be5b5ffb01ca9360ea31f7129e5eee93fb45bd93549a9d0a0d53067d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/.mcp/schemas/jules_create_session.json",
+      "line": 7,
+      "evidence": "p=0.99 The instructions for Jules.",
+      "file_sha256": "1bdb9dedcb00546c4be54c6e919d39bd5a3e1f57c78d162cd8baf3c17c9ab591"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/.mcp/schemas/jules.create_session.json",
+      "line": 7,
+      "evidence": "p=0.99 The instructions for Jules.",
+      "file_sha256": "666dc721e0ec574ca7db79ae5ee0efcad39de813ade6755a6612cf9ab0c0d352"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "auth.boomtick.dev",
+    "github.com",
+    "jules.googleapis.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

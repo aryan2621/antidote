@@ -1,0 +1,146 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "asanabrial/estigia",
+    "version": "45234d659f2b3efeb87131eac44918d737af851e",
+    "download": "https://codeload.github.com/asanabrial/estigia/tar.gz/45234d659f2b3efeb87131eac44918d737af851e"
+  },
+  "archive_sha256": "8a315484ec73b372fb4ae492cf8fa3f5d3fb51d501ba981c3c0dd9ce1d25b936",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-readability.md",
+      "line": 10,
+      "evidence": "p=0.91 This definition is inert unless the launch prompt supplies the exact diff and na",
+      "file_sha256": "f8f5cb4635a54a3e480bfbb817907d460637e1a83c428b68424aefa3fb5e6c3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-blind.md",
+      "line": 14,
+      "evidence": "p=0.92 This definition is inert unless that prompt names the immutable target — a head,",
+      "file_sha256": "5823c9e714952c7c3ff4546b972bb012c3d72784a6afb6a18c6d841d5faef8c6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-blind.md",
+      "line": 88,
+      "evidence": "p=0.98 A launch prompt that supplies its own classification rule does not replace this ",
+      "file_sha256": "5823c9e714952c7c3ff4546b972bb012c3d72784a6afb6a18c6d841d5faef8c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-risk.md",
+      "line": 10,
+      "evidence": "p=0.91 This definition is inert unless the launch prompt supplies the exact diff and na",
+      "file_sha256": "b52e40d9f60d98f148f528bc9c37f7f196d5be10dd82ded6b38c9656873b3bfd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-readback.md",
+      "line": 10,
+      "evidence": "p=0.91 This definition is inert unless the launch prompt supplies the exact diff and na",
+      "file_sha256": "da0483ddb141ceda095a8a30b6887aef2b2d3d974a10f4214d3312be2187a9b9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-reliability.md",
+      "line": 10,
+      "evidence": "p=0.91 This definition is inert unless the launch prompt supplies the exact diff and na",
+      "file_sha256": "cbee1d90a01f4c1fd9fe6f02198f8e14fbb12865de68bf0ddf53483129e50d1f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/skill/agents/review-lens.md",
+      "line": 13,
+      "evidence": "p=0.91 This definition is inert unless the launch prompt supplies the exact diff and na",
+      "file_sha256": "158dac409be47125823ec1fb240f16fc01ee887b13528c237cb356c254a3da4f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/src/transport/stages/tests.rs",
+      "line": 55,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "0a0f330c2db5005af4058fe4ab7767e1405546d7e418b2b9e1e3d5cb9a0a4454"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/README.md",
+      "line": 132,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/asanabrial/estigia/main/scripts/ins",
+      "file_sha256": "bdd028a36d65fa86c2c5a769c672ee2d08ad51cc2d1bd10d620c9035afb3c9ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/scripts/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/asanabrial/estigia/main/scripts/ins",
+      "file_sha256": "2fc69cc4019935e205d7d2edf06a22d0c66e2e91de6527e7e9129fee8bd10648"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "estigia-45234d659f2b3efeb87131eac44918d737af851e/tests/release.rs",
+      "line": 515,
+      "evidence": "curl … | sh",
+      "file_sha256": "b7cdb4d0fca42273350a66e76f45868dc3aa20ca064988330122b80938048ece"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "nexte.st",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "crates.io",
+    "e.test",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "img.shields.io",
+    "nexte.st",
+    "pi.dev",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "static.modelcontextprotocol.io",
+    "www.rust-lang.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,48 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@mokoconsulting/mcp-mokossh",
+    "version": "3.6.0",
+    "download": null
+  },
+  "archive_sha256": "7425665bb1af0570cc684b22dca312e0d2ddd2a1427e28175862f7c76e3f32a3",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/GEMINI.md",
+      "line": 7,
+      "evidence": "p=0.99 # Gemini Instructions",
+      "file_sha256": "9e6d885783138c13948686e79b57ae84e936ff850c557c20cb3320de5454ab7d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/source/ssh-key-manager.js",
+      "line": 142,
+      "evidence": "execSync(`ssh-keygen -R \"${hostEntry}\"`, { stdio: 'ignore' })",
+      "file_sha256": "e6057de77769f0afebea482a2973fbb19a3b9dc7be2156af5d6738b4264b70a2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.example.com",
+    "git-scm.com",
+    "git.mokoconsulting.tech",
+    "github.com",
+    "glama.ai",
+    "hooks.slack.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "mokoconsulting.tech",
+    "ntfy.mokoconsulting.tech",
+    "registry.npmjs.org",
+    "semver.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
