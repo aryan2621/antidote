@@ -1,0 +1,47 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "trissino-ai/steve-mcp",
+    "version": "945c95560386f632bd27362e2a9b2838b668f49c",
+    "download": "https://codeload.github.com/trissino-ai/steve-mcp/tar.gz/945c95560386f632bd27362e2a9b2838b668f49c"
+  },
+  "archive_sha256": "54e89d14281f7a86a0b29208ec64d861e0142e29ec1ed4f17a157aa50f87416e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "steve-mcp-945c95560386f632bd27362e2a9b2838b668f49c/.well-known/mcp/server-card.json",
+      "line": 1255,
+      "evidence": "p=0.95 What regenerating this card would replace, and what state it is in.\\u{a}\\u{a}Call this B",
+      "file_sha256": "7ce093b8f804927d33b4678ad2f979d640ccb8c737c6a073180adc1c3e88bf83"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "steve-mcp-945c95560386f632bd27362e2a9b2838b668f49c/.well-known/mcp/server-card.json",
+      "line": 1281,
+      "evidence": "p=0.98 Replace the instructions saved on a battle card and start a fresh generation on ",
+      "file_sha256": "7ce093b8f804927d33b4678ad2f979d640ccb8c737c6a073180adc1c3e88bf83"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "app.hiresteve.ai",
+    "fonts.googleapis.com",
+    "github.com",
+    "help.github.com",
+    "help.openai.com",
+    "hiresteve.ai",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "ui.shadcn.com",
+    "www.hiresteve.ai",
+    "www.klue.com",
+    "www.linkedin.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,84 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "smartmemory/stratum",
+    "version": "3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22",
+    "download": "https://codeload.github.com/smartmemory/stratum/tar.gz/3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22"
+  },
+  "archive_sha256": "1720f5852b436babe9d98264ac312b53954db94bab53389286080245bfe0585f",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "stratum-3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22/app/server/vision-server.js",
+      "line": 426,
+      "evidence": "app.post('/api/agent/spawn', requireSensitiveToken, (req, res) => { const { prom",
+      "file_sha256": "25c1155ee5d75680aaeca689865c62d0e84523e821ba871de80b6319ead5bbc6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-F-TYPOSQUAT",
+      "summary": "Name is one or two characters off popular package `playwright-mcp`. Check you meant this one.",
+      "path": "stratum-3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22/app/.mcp.json",
+      "line": null,
+      "evidence": "npm:@playwright/mcp vs playwright-mcp",
+      "file_sha256": "9f7d5e61651394fd2545d8a1f0f926cf030a11cde94fba534231df6ffa08bcfe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "stratum-3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22/app/docs/journal/2026-02-11-session-2-websocket-bugs.md",
+      "line": 19,
+      "evidence": "curl | sh",
+      "file_sha256": "147e7553f49795fb6e0977693774b5347f1db69d4b831a4764b42fb159ce657b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "stratum-3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22/ts/tests/judge/codex_judged.test.ts",
+      "line": 31,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b25219be0f9b1781c3bd708ca3d06a974716a0e43cdf25e7e2d6753a24163939"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "stratum-3ea330b5f5c3c1a5ced5fd785eb25d67360a2c22/docs/app/journal/2026-02-11-session-2-websocket-bugs.md",
+      "line": 19,
+      "evidence": "curl | sh",
+      "file_sha256": "147e7553f49795fb6e0977693774b5347f1db69d4b831a4764b42fb159ce657b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.test",
+    "chatgpt.com",
+    "code.claude.com",
+    "devin.ai",
+    "escepine.vercel.app",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "learn.chatgpt.com",
+    "memory.example",
+    "memory.test",
+    "mikemason.ca",
+    "openai.com",
+    "opentelemetry.io",
+    "platform.openai.com",
+    "pypi.org",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "venturebeat.com",
+    "www-cdn.anthropic.com",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

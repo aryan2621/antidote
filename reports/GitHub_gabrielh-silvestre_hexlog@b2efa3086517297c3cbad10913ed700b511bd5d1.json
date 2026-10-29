@@ -1,0 +1,81 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "gabrielh-silvestre/hexlog",
+    "version": "b2efa3086517297c3cbad10913ed700b511bd5d1",
+    "download": "https://codeload.github.com/gabrielh-silvestre/hexlog/tar.gz/b2efa3086517297c3cbad10913ed700b511bd5d1"
+  },
+  "archive_sha256": "7cf51f3334b3b99b015259fd8c50fcdc77004f7e1e8458f986bfe86f0e48c936",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "hexlog-b2efa3086517297c3cbad10913ed700b511bd5d1/scripts/escape-controls.ts",
+      "line": 7,
+      "evidence": "\\u{202a}",
+      "file_sha256": "8103560ec0996923158248ee9144ef26d192d207d1f3b4d67fd1e63c39f92d78"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "hexlog-b2efa3086517297c3cbad10913ed700b511bd5d1/skills/hexlog-setup/references/owner-seat-recipe-agy.template.md",
+      "line": 11,
+      "evidence": "p=0.99 `agy` has no allowlist of tools and none of the deny rules of the hexlog install",
+      "file_sha256": "a948e1a6a09dacbc32f890175f16206e5ea1dc3049b39124818dcb68b0987908"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "nodejs.org, x.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "about.codecov.io",
+    "code.claude.com",
+    "commitlint.js.org",
+    "deepsource.com",
+    "docs.github.com",
+    "docs.npmjs.com",
+    "docs.sonarsource.com",
+    "eslint.org",
+    "event-driven-io.github.io",
+    "example.com",
+    "fast-check.dev",
+    "feross.org",
+    "github.com",
+    "jestjs.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "ko-fi.com",
+    "nodejs.org",
+    "opencollective.com",
+    "pypi.org",
+    "qlty.sh",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "semgrep.dev",
+    "semver.org",
+    "tidelift.com",
+    "typescript-eslint.io",
+    "www.codacy.com",
+    "www.decisionlog.ai",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.sonarsource.com",
+    "www.typescriptlang.org",
+    "x.dev",
+    "x.test",
+    "zod.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

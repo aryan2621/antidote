@@ -1,0 +1,667 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "oaslananka/kicad-mcp-pro",
+    "version": "c04ab7bfd881518cd9a3bdc16b0387045d53cb7c",
+    "download": "https://codeload.github.com/oaslananka/kicad-mcp-pro/tar.gz/c04ab7bfd881518cd9a3bdc16b0387045d53cb7c"
+  },
+  "archive_sha256": "753889be450670371b1553463a4f59a4d0428b9efc9c2e288653740c6b69e83e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/integrations/claude-code/install.mjs",
+      "line": 12,
+      "evidence": "execSync(`claude mcp add --transport stdio --scope ${scope} kicad -- uvx kicad-m",
+      "file_sha256": "705b1020b36243392b0dfb48c47a023509b4434d5f169098b5e2a7fa2383bc6b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/integrations/AGENTS.md",
+      "line": 3,
+      "evidence": "p=0.97 These instructions apply to `integrations/**` and supplement the repository root",
+      "file_sha256": "64139439224441fd9c0ead02024cbd5130d978e29f6106a89c578bf3ac3ce255"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 726,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 762,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 834,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1008,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1278,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1782,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2250,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2412,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2418,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2424,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2442,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2448,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "2a4748317c0ab859659e2c017f63f65b619c6dffd4de51c15334c9970d3970f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 239,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 726,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 762,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 834,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1008,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 654,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1278,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1782,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2250,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2412,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2418,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2424,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2442,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2448,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "0b57b9068cc886bd9a2bd3b5d8cc58d85298398b94a69f546ed2d87e9dfc39d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/src/lib.rs",
+      "line": 258,
+      "evidence": "curl -fsSL https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "702a86d7d22abf92c938d2bab70f0e587a1457eabce1af596716592c82094057"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/src-tauri/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.92 # Tauri Desktop Instructions",
+      "file_sha256": "df07cdcfe4f42103fb9314f5750758f2d19f142db908ca1b45d5724cf9a916a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "kicad-mcp-pro-c04ab7bfd881518cd9a3bdc16b0387045d53cb7c/docs/agents/troubleshooting.md",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "7c6a4110331abbbc58bb6ee3efbc8687a91449d22e7179166e8d3735be97c92d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "anthropic.com, api.scorecard.dev, app.example.com, apps.extensions.modelcontextprotocol.io, blog.modelcontextprotocol.io, cline.bot, code.vscode.dev, codecov.io, continue.dev, developers.openai.com, docs.codecov.com, docs.cursor.com, docs.github.com, doi.org, downloads.kicad.org, kicad-downloads.s3.cern.ch, launchpad.net, mcp.example.com, pepy.tech, ppa.launchpadcontent.net, securityscorecards.dev, static.pepy.tech, tasks.extensions.modelcontextprotocol.io, windsurf.com, www.bestpractices.dev, www.npmjs.com, zed.dev, zenodo.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "anthropic.com",
+    "api.digikey.com",
+    "api.github.com",
+    "api.mouser.com",
+    "api.nexar.com",
+    "api.openai.com",
+    "api.scorecard.dev",
+    "app.example.com",
+    "apps.extensions.modelcontextprotocol.io",
+    "aquasecurity.github.io",
+    "astral.sh",
+    "auth.kicad.example.com",
+    "blog.modelcontextprotocol.io",
+    "clau.de",
+    "claude.ai",
+    "cline.bot",
+    "cloud.google.com",
+    "code.visualstudio.com",
+    "code.vscode.dev",
+    "codecov.io",
+    "community.chocolatey.org",
+    "continue.dev",
+    "coverage.codacy.com",
+    "cursor.sh",
+    "cyclonedx.org",
+    "dev-docs.kicad.org",
+    "developers.openai.com",
+    "docs.anthropic.com",
+    "docs.asciinema.org",
+    "docs.astral.sh",
+    "docs.codecov.com",
+    "docs.cursor.com",
+    "docs.github.com",
+    "docs.kicad.org",
+    "docs.pypi.org",
+    "docs.renovatebot.com",
+    "docs.rs",
+    "docs.sonarsource.com",
+    "docs.zizmor.sh",
+    "doi.org",
+    "dotenvx.com",
+    "downloads.kicad.org",
+    "files.pythonhosted.org",
+    "geminicli.com",
+    "github.com",
+    "gitlab.com",
+    "go.kicad.org",
+    "google.github.io",
+    "identity.nexar.com",
+    "img.shields.io",
+    "integrate.api.nvidia.com",
+    "jlcpcb.com",
+    "jlcsearch.tscircuit.com",
+    "json-schema.org",
+    "keepachangelog.com",
+    "kicad-downloads.s3.cern.ch",
+    "launchpad.net",
+    "mcp.example.com",
+    "mcp.inspect.ai",
+    "mcp.kicad.example.com",
+    "mirrors.mit.edu",
+    "modelcontextprotocol.io",
+    "mydomain.dev",
+    "nodejs.org",
+    "nvd.nist.gov",
+    "oaslananka.github.io",
+    "opencode.ai",
+    "opencollective.com",
+    "osv.dev",
+    "peps.python.org",
+    "pepy.tech",
+    "platform.openai.com",
+    "ppa.launchpadcontent.net",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "rustsec.org",
+    "schemas.android.com",
+    "securityscorecards.dev",
+    "semver.org",
+    "slsa.dev",
+    "static.modelcontextprotocol.io",
+    "static.pepy.tech",
+    "static.rust-lang.org",
+    "tasks.extensions.modelcontextprotocol.io",
+    "test.pypi.org",
+    "token.actions.githubusercontent.com",
+    "update.code.visualstudio.com",
+    "uploads.github.com",
+    "urlpattern.spec.whatwg.org",
+    "windsurf.com",
+    "www.bestpractices.dev",
+    "www.buymeacoffee.com",
+    "www.kicad.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "zed.dev",
+    "zenodo.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

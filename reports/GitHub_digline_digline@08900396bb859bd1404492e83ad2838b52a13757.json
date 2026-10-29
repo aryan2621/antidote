@@ -1,0 +1,119 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "digline/digline",
+    "version": "08900396bb859bd1404492e83ad2838b52a13757",
+    "download": "https://codeload.github.com/digline/digline/tar.gz/08900396bb859bd1404492e83ad2838b52a13757"
+  },
+  "archive_sha256": "97f3ea91b492704202b19482fc055d0f4377106d13d0354730f6953d12edfafb",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_view.py",
+      "line": 730,
+      "evidence": "\\u{202e}",
+      "file_sha256": "6ef77df7ae7e267d62ce210c42ca8482a4731b77a675de74ff1cf6a4a30f6a46"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_declared_numbers.py",
+      "line": 50,
+      "evidence": "\\u{202e}",
+      "file_sha256": "23d80b3c11c6c531b1b7f3b03b4f841998913cf30b2d6eaa3c79492b114ac995"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_docker.py",
+      "line": 463,
+      "evidence": "(ROOT / \"docker\" / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "6d3bf83ecb8ee145db7e4abb20c0e89d1313be179dcc844ad4ad969fb1d24a9a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_declared_judge_samples.py",
+      "line": 27,
+      "evidence": "\\u{202e}",
+      "file_sha256": "a9b2a610781e5f90b4efd9c75be02fe7abff2be96957744ec2669fbf64c85666"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_invisible_text.py",
+      "line": 76,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "cee404a17371494f4fa98fd7dc54421921edb805aea7b875aaae57ef2bf41d72"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_declared_version.py",
+      "line": 51,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2730c44f62b5392638eaa4f93d031a052d8c39a9dd77e270a5d3c1a435068040"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-08900396bb859bd1404492e83ad2838b52a13757/tests/test_declared_flags.py",
+      "line": 45,
+      "evidence": "\\u{202e}",
+      "file_sha256": "7a0b78da3364b26fde8a9650ec4a26e43b8c7721a77dde266e9da1ad0768767e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.aggregator.example",
+    "api.github.com",
+    "api.scorecard.dev",
+    "aws.amazon.com",
+    "digline.dev",
+    "elsewhere.example",
+    "evil.com",
+    "evil.example",
+    "files.pythonhosted.org",
+    "ghcr.io",
+    "github.com",
+    "gw.example",
+    "gw.example.invalid",
+    "gw.internal.acme.example",
+    "gw.invalid",
+    "img.shields.io",
+    "llm-gateway.internal.example",
+    "llm-gw.internal.acme-bank.it",
+    "llm.acme-bank.internal",
+    "maven.apache.org",
+    "modelcontextprotocol.io",
+    "my-resource.openai.azure.com",
+    "openai.com",
+    "openrouter.ai",
+    "osv.dev",
+    "pypi.org",
+    "pypistats.org",
+    "registry.modelcontextprotocol.io",
+    "scorecard.dev",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "static.pepy.tech",
+    "test.pypi.org",
+    "www.anthropic.com",
+    "www.apache.org",
+    "www.bestpractices.dev",
+    "www.contributor-covenant.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

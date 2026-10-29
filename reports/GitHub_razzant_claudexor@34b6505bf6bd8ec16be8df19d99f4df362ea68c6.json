@@ -1,0 +1,366 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "razzant/claudexor",
+    "version": "34b6505bf6bd8ec16be8df19d99f4df362ea68c6",
+    "download": "https://codeload.github.com/razzant/claudexor/tar.gz/34b6505bf6bd8ec16be8df19d99f4df362ea68c6"
+  },
+  "archive_sha256": "9406b0841ca802f09c1b27e7a61d614d5f5d4caa92a1cffa6dd497e208f70872",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlRunStartRequest.schema.json",
+      "line": 14,
+      "evidence": "p=0.99 System-level instructions layered onto every task-producing lane; delivered nati",
+      "file_sha256": "8bbab980ba0f355da6b5eb5ebaf0652ff45bdd669ff146bbb608a10b9014325e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/DeferredMessageDetail.schema.json",
+      "line": 192,
+      "evidence": "p=0.99 System-level instructions layered onto every task-producing lane; delivered nati",
+      "file_sha256": "ee00c6f67f6009807fb544f3ea198629fc117b1655bd86bccdf6da5ff73f3128"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/RunFailure.schema.json",
+      "line": 15,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "c2f3f11a79072d47fe2aa43aa962582379f5ddca3bc2ed642a179d6569083ad9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/AgentCapabilityCatalog.schema.json",
+      "line": 73,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "83ce027e93370ca3d68c3ccc9301025808cf9e80da7132de1fb73458df48c28a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ContextPack.schema.json",
+      "line": 152,
+      "evidence": "p=0.98 Instruction strings passed alongside the files.",
+      "file_sha256": "c64aa3f0e9b20b702101680834cfb412a7615c58e19cfe07bb1541ed2501e8e4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlRunAgainDraft.schema.json",
+      "line": 22,
+      "evidence": "p=0.99 System-level instructions layered onto every task-producing lane; delivered nati",
+      "file_sha256": "62f9b3a0db4e0f2d1a551a6286cf46c9be9f2152199933e12df0f35f08272cc9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlHarnessListResponse.schema.json",
+      "line": 376,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "7c0326e3788fd4a9cf4c816a3d6ea2592148ff1252e5696358adfb7175cad486"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/HarnessManifest.schema.json",
+      "line": 353,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "e8ef88a974a780727cd6413dffa04476b3bf98add644257f2fd24d762433686e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlThreadTurnRequest.schema.json",
+      "line": 14,
+      "evidence": "p=0.99 System-level instructions layered onto every task-producing lane; delivered nati",
+      "file_sha256": "c3c664d7c9b75ebf4665c50b5bc15e2cd76a19f820076c9d3602103d018fc1e7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/McpRunHandleResult.schema.json",
+      "line": 1041,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "dfb0973a55dde7c026cf4dc52ba217f68a54b15f7e1fc307c99685108de2a58d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/RunTelemetry.schema.json",
+      "line": 189,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "9d9f215d7d16d5b82f3cddad941d4e0788c39bb43f4c836f51e8a3c1211a934d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlRunDetail.schema.json",
+      "line": 716,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "10129e3157a188ac3896832a3632fa5af232578159499f6ab17250f11d3e550e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/McpRunToolResult.schema.json",
+      "line": 1035,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "10b83401cf9e8b6bb8f37714befc7dddf701fac6173c6922ec372b48f9b0458d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/McpAccountsToolResult.schema.json",
+      "line": 934,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "27730d1d4265bd2c910879e7d29f925fe4463d7b41fb577aa173b3963d54b075"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/HarnessEvent.schema.json",
+      "line": 15,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "e2973e22baf4721906b744a4147cd209422cf809d186e33f6e1b183d3556ab18"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlHarnessMaintenanceOperation.schema.json",
+      "line": 121,
+      "evidence": "p=0.96 The harness now resolves this program.",
+      "file_sha256": "c26c039643a908aa89ef7521cdfbde41c79eb0a5e3f703562ea00b0506d139f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlCredentialProfilesResourcesResponse.schema.json",
+      "line": 748,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "85935f5ff0d7506da7a85c763dbf04c78a9de8ddc91094fd7c660089b14bc8a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlRunSummary.schema.json",
+      "line": 526,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "6abe93062fe26a650452e749b295dc254e98f8294f515edea09f388906582767"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/HarnessStatusDto.schema.json",
+      "line": 371,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "9648913f2bf2a234fafe2fbfe727900c60fcc211a6593ff0a6927045392c9b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlCredentialProfilesSnapshotResponse.schema.json",
+      "line": 748,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "6ece3891d5de754a11b9d7edb53c3408548dde3a869e4a499ed4762b26b0254c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ThreadHistoryPage.schema.json",
+      "line": 1481,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "3058ec6ce4e3251636449b2ca2a38be6cdf6d461a50975005ad6e8d5625653ec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlCredentialProfilesQueryResponse.schema.json",
+      "line": 769,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "82dfffe1a13927669a8a1bf4ae99d9fb592f3278aad444ce88d847d7b6c7bb01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/schema/generated/ControlRunListResponse.schema.json",
+      "line": 531,
+      "evidence": "p=0.91 All text input items in one native turn; separate instructions are excluded.",
+      "file_sha256": "8fe34e76af8178ddb22a91d88f47fe5623add2d5a53d61f8d0c3b4b05d2e9547"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/cli/src/harness-install-recipes.ts",
+      "line": 111,
+      "evidence": "curl -fsSL <this url> | bash",
+      "file_sha256": "b1d53ad06f75b3f5b66d7569ddb30629a69538668f4be728f8848c32774b7b35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/packages/cli/src/harness-installer.test.ts",
+      "line": 133,
+      "evidence": "curl ... | bash",
+      "file_sha256": "13c844bc5b8a81004aa10193452efc13f0287bfc4ff980521c1529cd8af410d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/benchmarks/terminal_bench/claudexor_agent.py",
+      "line": 214,
+      "evidence": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash",
+      "file_sha256": "fbf69d1b68615377e13fbd587f23493c1d5fa4b79696a2eb71eb958f9fffbb88"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/scripts/smoke-remote-runtime-ssh.sh",
+      "line": 96,
+      "evidence": "curl --fail --silent --show-error \"${headers[@]}\" \\ -H 'Content-Type: applicatio",
+      "file_sha256": "393e09df6e4d1612eb0d1a52a031d5755a7ff05104e92acc99ada5db03b19712"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/scripts/smoke-remote-runtime-ssh.sh",
+      "line": 107,
+      "evidence": "curl --fail --silent --show-error \"${headers[@]}\" \\ --get --data-urlencode 'path",
+      "file_sha256": "393e09df6e4d1612eb0d1a52a031d5755a7ff05104e92acc99ada5db03b19712"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/scripts/smoke-remote-runtime-ssh.sh",
+      "line": 122,
+      "evidence": "curl --fail --silent --show-error \"${headers[@]}\" \\ -H 'Content-Type: applicatio",
+      "file_sha256": "393e09df6e4d1612eb0d1a52a031d5755a7ff05104e92acc99ada5db03b19712"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "claudexor-34b6505bf6bd8ec16be8df19d99f4df362ea68c6/CHANGELOG.md",
+      "line": 1309,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "6069f5b15529b1c13d5922d8164e27c37497818679f843ab76e1691825b54188"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "npm-mirror.invalid, npm.example.com, registry.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "accounts.google.com",
+    "antigravity.google",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.npmjs.org",
+    "api.openai.com",
+    "auth.openai.com",
+    "auth.x.ai",
+    "chatgpt.com",
+    "ci.example.org",
+    "claude.ai",
+    "claudexor.ai",
+    "code.claude.com",
+    "crates.io",
+    "cursor.com",
+    "developers.openai.com",
+    "docs.cursor.com",
+    "docs.example.com",
+    "docs.github.com",
+    "docs.x.ai",
+    "download.swift.org",
+    "engine.invalid",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "foundry.invalid",
+    "github.com",
+    "history.invalid",
+    "img.shields.io",
+    "in-toto.io",
+    "json-schema.org",
+    "json.schemastore.org",
+    "learn.chatgpt.com",
+    "nodejs.org",
+    "npm-mirror.invalid",
+    "npm.example.com",
+    "opencode.ai",
+    "openrouter.ai",
+    "ouroboros-agent.ai",
+    "override.invalid",
+    "platform.claude.com",
+    "proxy.example",
+    "proxy.test",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "razzant.github.io",
+    "redirect.invalid",
+    "registry.example.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "runtime.test",
+    "schema.org",
+    "slsa.dev",
+    "sqlite.org",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "task-group.invalid",
+    "turbo.build",
+    "unit.test",
+    "unpkg.com",
+    "wait-many.invalid",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

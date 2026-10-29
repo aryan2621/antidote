@@ -1,0 +1,39 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "orla-cli",
+    "version": "0.3.0",
+    "download": null
+  },
+  "archive_sha256": "fdadeea938ad970f3a664fc20d0d754c63bd72f8c7b28963d747696f97c721c8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/orla-categorize/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.99 Everything the tools return arrives wrapped in a `notice` that says the content ",
+      "file_sha256": "6cf323ddb71fe05965e48a529752a52e8bce884e431f9cd30e943c692bd75fd2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/orla-counterparty-check/SKILL.md",
+      "line": 68,
+      "evidence": "p=0.96 ## Reading the answers without overselling them",
+      "file_sha256": "e2acc3b1dd15985b579904f92c56d861b0b4348390f4a7697697b61f89e358cf"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "app.orla.finance",
+    "github.com",
+    "orla.finance"
+  ],
+  "install_script": false,
+  "score": "high"
+}
