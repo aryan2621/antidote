@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "PyPI",
+    "name": "nauro",
+    "version": "1.23.0",
+    "download": null
+  },
+  "archive_sha256": "72e0393d99a94d3a1e3a01846707366a76a7f30e76e621af5533e1851b6fc146",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nauro-1.23.0/src/nauro/agents/nauro-reviewer.md",
+      "line": 39,
+      "evidence": "p=0.93 - Meaningfully impacts accuracy, performance, security, or maintainability - Dis",
+      "file_sha256": "27dbb89c1935f6aac81ee79857ad0f2c200db3bb2c329eabd6b013474b3d3560"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nauro-1.23.0/src/nauro/agents/nauro-tech-lead.md",
+      "line": 85,
+      "evidence": "p=0.96 You SURFACE without a store write:",
+      "file_sha256": "2d848c8c913ae19c72a9a6a8ac43e85d17f04014847317db6e498612baf27ef8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nauro-1.23.0/PKG-INFO",
+      "line": 65,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "4fac298cf561c5fb2d98727d06447756e5a894a4f2ca52f9a7d6f917e5c21065"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nauro-1.23.0/README.md",
+      "line": 26,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "22a13159a5463c460087444ea81c7a0df1af6aa37bb859f2abe8b7b41952bb77"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "cursor.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "github.com",
+    "mcp.nauro.ai",
+    "nauro.ai",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

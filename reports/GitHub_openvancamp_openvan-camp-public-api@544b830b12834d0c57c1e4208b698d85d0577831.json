@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "openvancamp/openvan-camp-public-api",
+    "version": "544b830b12834d0c57c1e4208b698d85d0577831",
+    "download": "https://codeload.github.com/openvancamp/openvan-camp-public-api/tar.gz/544b830b12834d0c57c1e4208b698d85d0577831"
+  },
+  "archive_sha256": "b2ca407e93aa1ebad3495d66201c70180ce8a0a0eedab92ba2468cde18062b9e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "openvan-camp-public-api-544b830b12834d0c57c1e4208b698d85d0577831/examples/all-endpoints.sh",
+      "line": 11,
+      "evidence": "curl -s \"$API/api/fuel/prices\" | python3 -m json.tool",
+      "file_sha256": "f31b6d23b18cd1d24c21907f628f0f2d34753ff7d891b81e2e11076a36653bd5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agent-plugins.org",
+    "api.github.com",
+    "chatgpt.com",
+    "claude.ai",
+    "code.claude.com",
+    "creativecommons.org",
+    "cyfuel.cybush.uk",
+    "esm.sh",
+    "firms.modaps.eosdis.nasa.gov",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "mcp.openvan.camp",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "opendatacommons.org",
+    "openvan.camp",
+    "paulmillr.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "wsrv.nl",
+    "www.campermagazine.nl",
+    "www.certificat-air.gouv.fr",
+    "www.contributor-covenant.org",
+    "www.gov.pl",
+    "www.mfa.gov.tr",
+    "www.npmjs.com",
+    "www.openstreetmap.org",
+    "www.pulsemcp.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

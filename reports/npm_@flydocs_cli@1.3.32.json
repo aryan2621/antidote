@@ -1,0 +1,74 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@flydocs/cli",
+    "version": "1.3.32",
+    "download": null
+  },
+  "archive_sha256": "ea46971f904ddfc212b57719a80f67ff0390824474e94fc09a1e734e94eb0a27",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "package/template/.claude/commands/onboard.md",
+      "line": 188,
+      "evidence": "Do NOT tell the user",
+      "file_sha256": "4e075a49bcc274eb9e6b6edfc23306310a17416cf42745af93e55d962bff11bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/cli.js",
+      "line": 455,
+      "evidence": "execSync(`npm view ${packageName} version --prefer-online`, { timeout: 5e3, enco",
+      "file_sha256": "f9d72be7e48ed4e4e8bdf788ab80c3d0df5fca1f41654ac6319e469e72a307c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/cli.js",
+      "line": 480,
+      "evidence": "execSync(`npm install -g ${packageName}@${version}`, { stdio: \"inherit\", timeout",
+      "file_sha256": "f9d72be7e48ed4e4e8bdf788ab80c3d0df5fca1f41654ac6319e469e72a307c3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "anysphere.cursor-deeplink",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.linear.app",
+    "app.flydocs.ai",
+    "arxiv.org",
+    "bitbucket.org",
+    "clerk.flydocs.ai",
+    "cloud.google.com",
+    "cursor.com",
+    "discord.com",
+    "flydocs.ai",
+    "git-scm.com",
+    "github.com",
+    "gitlab.com",
+    "id.atlassian.com",
+    "keepachangelog.com",
+    "linear.app",
+    "mcp.flydocs.ai",
+    "nodejs.org",
+    "openai.com",
+    "python.org",
+    "registry.npmjs.org",
+    "semver.org",
+    "skills.sh",
+    "us.i.posthog.com",
+    "www.anthropic.com",
+    "www.flydocs.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}
