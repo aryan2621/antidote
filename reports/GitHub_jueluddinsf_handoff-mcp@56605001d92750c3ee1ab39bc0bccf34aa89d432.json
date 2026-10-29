@@ -1,0 +1,35 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jueluddinsf/handoff-mcp",
+    "version": "56605001d92750c3ee1ab39bc0bccf34aa89d432",
+    "download": "https://codeload.github.com/jueluddinsf/handoff-mcp/tar.gz/56605001d92750c3ee1ab39bc0bccf34aa89d432"
+  },
+  "archive_sha256": "53337c2011e1a035afa054eb4c1f81ac24e1f69a8e4a7bc59bb484980f99a3a4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "handoff-mcp-56605001d92750c3ee1ab39bc0bccf34aa89d432/examples/agent_to_agent.sh",
+      "line": 5,
+      "evidence": "curl -s -X POST \"$BASE/v1/files/$FILE_ID/grants\" -H \"authorization: Bearer $AGEN",
+      "file_sha256": "3091a3cd3e64c73733f2cd58c0722ad0c05d03b51d970fefa80af72d652103d8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "glama.ai",
+    "hand-off.space",
+    "json-schema.org",
+    "raw.githubusercontent.com",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

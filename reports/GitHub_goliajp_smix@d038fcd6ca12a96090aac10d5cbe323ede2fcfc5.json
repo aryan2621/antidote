@@ -1,0 +1,157 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "goliajp/smix",
+    "version": "d038fcd6ca12a96090aac10d5cbe323ede2fcfc5",
+    "download": "https://codeload.github.com/goliajp/smix/tar.gz/d038fcd6ca12a96090aac10d5cbe323ede2fcfc5"
+  },
+  "archive_sha256": "42a786fe7a8cef435a2210907246bb67d244f53957231ff198a838fc53b58cb9",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/crates/smix-adb/src/binary.rs",
+      "line": 177,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "1e66b1feecc63460ad79c47923327b1cdc22001dcacded0bac8f40a687ab1def"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v2.12-c5-federation-cli-e2e.sh",
+      "line": 58,
+      "evidence": "cat \"$HOME/.ssh/id_ed25519.pub\"",
+      "file_sha256": "a4964c973aae49c01e5294a8bb987cb7ad53027f556b0cace4972dcea94c7a16"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v12.0-c1-a-keyboard-on-its-way-in-e2e.sh",
+      "line": 74,
+      "evidence": "curl -s -m 30 -H \"App-Bundle-Id: $APPID\" \"http://127.0.0.1:$PORT/tree\" | python3",
+      "file_sha256": "b7275be3df45927a4ca04b6c58c4d385015d43fc26624b37240175f4ab9396e8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v12.0-c1-a-keyboard-on-its-way-in-e2e.sh",
+      "line": 86,
+      "evidence": "curl -s -m 30 -H \"App-Bundle-Id: $APPID\" \"http://127.0.0.1:$PORT/tree\" \\ | pytho",
+      "file_sha256": "b7275be3df45927a4ca04b6c58c4d385015d43fc26624b37240175f4ab9396e8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v11.0-c2-a-failure-says-whose-screen-e2e.sh",
+      "line": 143,
+      "evidence": "curl -s -m 5 \"http://localhost:$PORT/windows\" | python3 -c 'import json,sys d=js",
+      "file_sha256": "59c11ce86297ce84bd0d1c2ac7affb6d9311961760867b3cc23cb8b5e7169dfa"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v2.12-c4-federation-two-node-e2e.sh",
+      "line": 57,
+      "evidence": "cat \"$HOME/.ssh/id_ed25519.pub\"",
+      "file_sha256": "968e0d3088874bffef943a53a4a4b9e41aab59ca946c148d8e6a6f726d7f144c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v11.0-c9p-a-tap-lands-in-either-landscape-e2e.sh",
+      "line": 74,
+      "evidence": "curl -s -m 15 \"http://127.0.0.1:$PORT/tree\" | python3 -c ' import json, sys d = ",
+      "file_sha256": "528bd811342a71d6b4e47b72f49dcc62bc0c052d2ddbef57ec5ea6a858358bce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v15.1-c7-a-target-gone-before-the-touch-e2e.sh",
+      "line": 95,
+      "evidence": "curl -s -m 5 -H \"App-Bundle-Id: $APPID\" \"http://localhost:$PORT/probe/tree?app=$",
+      "file_sha256": "6fc0cb55859a505cbd14840ddde37c7a9d399f1e5b2965575747ecf62f532e56"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v10.2-c6-back-answers-the-outcome-e2e.sh",
+      "line": 141,
+      "evidence": "curl -s -m 30 \"http://localhost:$PORT/tree\" | python3 -c 'import json,sys,re t=j",
+      "file_sha256": "d3dd19102138d943a3238e8fe358e35bc39807448df22f4211292cfeb475bbba"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v2.14-c2-android-clear-e2e.sh",
+      "line": 78,
+      "evidence": "curl -s --max-time 30 \"$R/tree\" | python3 -c ' import json, sys def walk(n): if ",
+      "file_sha256": "88b80b4023cd5aeb84759b9e5bd5ea21532992b22c003da35ef3c93724be2efe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v11.0-c9h-focus-after-enter-e2e.sh",
+      "line": 81,
+      "evidence": "curl -s \"http://127.0.0.1:$PORT/tree\" | python3 -c ' import json, sys d = json.l",
+      "file_sha256": "e0c296b2bd8a8859e48e4fce4cc23b87a912792d843bcee89366586efec88b30"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "smix-d038fcd6ca12a96090aac10d5cbe323ede2fcfc5/scripts/dev/v14.2-c2-a-row-off-screen-e2e.sh",
+      "line": 143,
+      "evidence": "curl -s -X POST \"http://127.0.0.1:$IOS_PORT/find\" -H 'content-type: application/",
+      "file_sha256": "9719a8903a5c30a1918d871638ec818470ecc91ef578031df854f3b25018df2d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "cdn.golia.jp",
+    "central.sonatype.com",
+    "crates.io",
+    "docs.rs",
+    "docs.smix.dev",
+    "embarkstudios.github.io",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "foo.bar",
+    "github.com",
+    "img.shields.io",
+    "index.crates.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "maestro.mobile.dev",
+    "mozilla.github.io",
+    "npmjs.com",
+    "null.smixprobe",
+    "opensource.org",
+    "registry.npmjs.org",
+    "repo1.maven.org",
+    "schemas.android.com",
+    "semver.org",
+    "services.gradle.org",
+    "smix.golia.jp",
+    "stackoverflow.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

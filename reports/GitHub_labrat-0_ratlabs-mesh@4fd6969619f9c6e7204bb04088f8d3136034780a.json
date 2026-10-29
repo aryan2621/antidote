@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "labrat-0/ratlabs-mesh",
+    "version": "4fd6969619f9c6e7204bb04088f8d3136034780a",
+    "download": "https://codeload.github.com/labrat-0/ratlabs-mesh/tar.gz/4fd6969619f9c6e7204bb04088f8d3136034780a"
+  },
+  "archive_sha256": "ac2446676a15b4b64827ef49a861afcc6c06e50dd2fd459081c0f3ae9ff49a15",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ratlabs-mesh-4fd6969619f9c6e7204bb04088f8d3136034780a/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/labrat-0/ratlabs-mesh/main/install.",
+      "file_sha256": "c10420e9b4de7d18af8543398652626600de2795dcb7248dbb23e76fbf1cc9c9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ratlabs-mesh-4fd6969619f9c6e7204bb04088f8d3136034780a/install.sh",
+      "line": 62,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "c10420e9b4de7d18af8543398652626600de2795dcb7248dbb23e76fbf1cc9c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ratlabs-mesh-4fd6969619f9c6e7204bb04088f8d3136034780a/README.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/labrat-0/ratlabs-mesh/main/install.",
+      "file_sha256": "af176e54994d31d2b9f784de804445ea038d2008c70f5b4cc2d88964791b7f5c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ratlabs-mesh-4fd6969619f9c6e7204bb04088f8d3136034780a/docs/INSTALL-FOR-AGENTS.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/labrat-0/ratlabs-mesh/main/install.",
+      "file_sha256": "a0a921f3a45cb8eb423dc9c7112862d38b69b686b6d513248c2167ac9ff64945"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ambientcg.com",
+    "api.meshy.ai",
+    "api.poly.pizza",
+    "api.polyhaven.com",
+    "api.sketchfab.com",
+    "cdn.polyhaven.com",
+    "discourse.threejs.org",
+    "docs.astral.sh",
+    "download.pytorch.org",
+    "fal.ai",
+    "github.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "my-cnd-server.com",
+    "opengameart.org",
+    "poly.pizza",
+    "polyhaven.com",
+    "pypi.org",
+    "queue.fal.run",
+    "ratlabs.tech",
+    "raw.githubusercontent.com",
+    "rest.alpha.fal.ai",
+    "threejs.org",
+    "www.blender.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,118 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sriinnu/tokmeter",
+    "version": "cdc6d331e7cd9f7fb2885b23d63a99383b802cdc",
+    "download": "https://codeload.github.com/sriinnu/tokmeter/tar.gz/cdc6d331e7cd9f7fb2885b23d63a99383b802cdc"
+  },
+  "archive_sha256": "e5fc88fa16d18557fc3ce9d0350e1aac9b89d8bd34bea93707c0fe541759cc6c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/core/src/display-safety.test.ts",
+      "line": 8,
+      "evidence": "\\u{202e}",
+      "file_sha256": "cedaaa3086766eb144d7d5faaed712a4ba1c6647c0b4eeff40c56859d92579de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/core/src/antigravity-live.test.ts",
+      "line": 191,
+      "evidence": "\\u{202e}",
+      "file_sha256": "d478d9f9bed35882163ed76e8d4f769bf9e52f1a730045472addae6e3ea17df2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/mcp/src/statusline-view.test.ts",
+      "line": 248,
+      "evidence": "\\u{202e}",
+      "file_sha256": "18418681bbf6a5cf0659745dc0b509802281e65669a8c284085fbc92799a203a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/macos-bar/generate-sparkle-keys.sh",
+      "line": 73,
+      "evidence": "security find-generic-password -a \"ed25519\" -s \"${SECURITY_LABEL}\" -w",
+      "file_sha256": "652d684b5505a843722a7c3c87df88f895c93ca3806e70324267176790a27829"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/cli/src/cron.ts",
+      "line": 164,
+      "evidence": "execSync(`launchctl bootout gui/$(id -u)/${LABEL}`, { stdio: \"ignore\" })",
+      "file_sha256": "da2a76d650a104532e419c62c85ad73b14b7b73b8f7223b0b6538e4d5b3ee59b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/cli/src/cron.ts",
+      "line": 184,
+      "evidence": "execSync(`launchctl bootout gui/$(id -u)/${LABEL}`, { stdio: \"ignore\" })",
+      "file_sha256": "da2a76d650a104532e419c62c85ad73b14b7b73b8f7223b0b6538e4d5b3ee59b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "tokmeter-cdc6d331e7cd9f7fb2885b23d63a99383b802cdc/packages/cli/src/cron.ts",
+      "line": 203,
+      "evidence": "execSync(`launchctl print gui/$(id -u)/${LABEL} 2>&1 || true`, { encoding: \"utf8",
+      "file_sha256": "da2a76d650a104532e419c62c85ad73b14b7b73b8f7223b0b6538e4d5b3ee59b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "127.0.0.1.evil.com",
+    "appleid.apple.com",
+    "biomejs.dev",
+    "bun.sh",
+    "buymeacoffee.com",
+    "developer.apple.com",
+    "docs.github.com",
+    "evil.com",
+    "evil.example",
+    "example.invalid",
+    "example.test",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "keepachangelog.com",
+    "localhost.evil.com",
+    "mozilla.org",
+    "nodejs.org",
+    "opencode.ai",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "semver.org",
+    "slsa.dev",
+    "sparkle-project.org",
+    "static.modelcontextprotocol.io",
+    "tokmeter.srinivas.dev",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.gnu.org",
+    "www.mozilla.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}
