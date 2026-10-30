@@ -1,0 +1,723 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "soca-projects/socadb-desktop",
+    "version": "504289fd6e51950d60910fc736ee8112c46ec580",
+    "download": "https://codeload.github.com/soca-projects/socadb-desktop/tar.gz/504289fd6e51950d60910fc736ee8112c46ec580"
+  },
+  "archive_sha256": "3dec82b5c8ed806f33d1b81f64fbd35269a9120e3453c2e1c9d2faa6a341282c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src/types/chat.ts",
+      "line": 61,
+      "evidence": "curl -fsSL https://claude.ai/install.sh | bash",
+      "file_sha256": "ddc03ffa4f860f2be7a9233dbd045297fcc94d13f008284152053c6a91a57bd9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2520,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2556,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2628,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2802,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3072,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3582,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4056,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4218,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4224,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4230,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4248,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4254,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 6732,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "01324a9dc6743f4e34fe17084e3ea0db137c5d88a5cc5b304cfee39c10fc8421"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2520,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2556,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2628,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2802,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2448,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3072,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3582,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4056,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4218,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4224,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4230,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4248,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4254,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "socadb-desktop-504289fd6e51950d60910fc736ee8112c46ec580/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 6732,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "24726634b9b59acfedf12c3e6eefc92f54319c853bd3134b5b559ed8fc9f9192"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.openai.com",
+    "claude.ai",
+    "console.anthropic.com",
+    "docs.renovatebot.com",
+    "github.com",
+    "json-schema.org",
+    "keepachangelog.com",
+    "learn.chatgpt.com",
+    "myapi.service.com",
+    "mydomain.dev",
+    "platform.claude.com",
+    "platform.openai.com",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "semver.org",
+    "socadb.com",
+    "urlpattern.spec.whatwg.org",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "remote-agents",
+    "version": "0.1.42",
+    "download": null
+  },
+  "archive_sha256": "3a90690431f0d90802e3d098de76f1fe3b8f36d0441d0c3846146d93f8bb72ac",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 118,
+      "evidence": "<secret>",
+      "file_sha256": "66340f5f8b24350d5a3155781ef2f51322504a3e9d280bc902aaf3f5b93f0da6"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "id": "AGT-F-INSTALL",
+      "summary": "Runs code at install time",
+      "path": null,
+      "line": null,
+      "evidence": "postinstall: node install.js",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "github.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "relay.claude-code.ink"
+  ],
+  "install_script": true,
+  "score": "critical"
+}

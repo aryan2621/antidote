@@ -1,0 +1,2827 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Looted/kibi",
+    "version": "b9c9f5575cb683c12514d81c5b8ab224330ef5c9",
+    "download": "https://codeload.github.com/Looted/kibi/tar.gz/b9c9f5575cb683c12514d81c5b8ab224330ef5c9"
+  },
+  "archive_sha256": "6f70b679e17c00511908bd3e39e2c506dc5632806953dbd01d60d081d249f5cf",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/opencode/src/scheduler.ts",
+      "line": 406,
+      "evidence": "exec( `kibi check --rules ${rulesArg} --format json`, { cwd: worktree }, (error,",
+      "file_sha256": "d79651b4cf2925b8cab8402eb4d36a24c94bcb9120fae1cdbe24a36cb80440ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/opencode/tests/work-context-resolver-remaining.coverage.test.ts",
+      "line": 23,
+      "evidence": "execSync(`git ${command}`, { cwd, encoding: \"utf8\", env: { ...process.env, GIT_T",
+      "file_sha256": "64113786166dbef8d287f072ee716c44cba7b55a723c341241d2d6db01396f9a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/opencode/tests/work-context-resolver.test.ts",
+      "line": 27,
+      "evidence": "execSync(`git ${command}`, { cwd, encoding: \"utf8\", env: { ...process.env, GIT_T",
+      "file_sha256": "22958162eb18cc720c3ebd77c7489144f6ba078a93ab87766f81f1c9191b7643"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/vscode/tests/tree-provider.coverage.test.ts",
+      "line": 85,
+      "evidence": "execSync(`git init -b ${branch}`, { cwd: root, stdio: \"ignore\" })",
+      "file_sha256": "8dd031feb11ef300ec7b87d65b6b9f6356e73991bf188183195c4e3eb8a5cd41"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/core/schema/rule-registry.json",
+      "line": 443,
+      "evidence": "p=0.93 A current requirement or ADR that supersedes another must explain why under a 'W",
+      "file_sha256": "ad05fc9b67155737148bc80de0b895343253c0e53fa631d57e0adce18f258412"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 25,
+      "evidence": "p=0.92 If you are retrying this exact task because a previous tool call failed or retur",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/fixtures/contracts/tools-list.diagnostic.json",
+      "line": 43,
+      "evidence": "p=0.91 A brief, 1-2 sentence internal thought explaining exactly why you are calling th",
+      "file_sha256": "0839e5f134162e353d424f8f41c90ad09c2eacbd5332448a5e39724094b1e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 530,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tempRoot, stdio: \"ignore\", })",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 641,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tempRoot, stdio: \"ignore\", })",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 1078,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tempRoot, stdio: \"ignore\", })",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 1089,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tempRoot, stdio: \"ignore\", })",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 1182,
+      "evidence": "execSync(`node ${kibiBin} init`, { cwd: repoDir, env: isolatedMcpSandboxEnv(), }",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/mcp/tests/server.test.ts",
+      "line": 1259,
+      "evidence": "execSync(`node ${kibiBin} init --no-hooks`, { cwd: tempRoot, stdio: \"ignore\", })",
+      "file_sha256": "b0b0a26256e72264a17f2e832005fade1540bc212f22902e3beb367fd43c05ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/zcode/tests/install-artifact.test.ts",
+      "line": 116,
+      "evidence": "execSync(`npm pack --pack-destination ${JSON.stringify(packDestination)}`, { cwd",
+      "file_sha256": "0aaacfb06ec014f260fd51891e566bafd4d9e5da61e910f394a557a3cb57433e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/zcode/tests/install-artifact.test.ts",
+      "line": 129,
+      "evidence": "execSync( `tar -tzf ${JSON.stringify(path.join(packDestination, tarball as strin",
+      "file_sha256": "0aaacfb06ec014f260fd51891e566bafd4d9e5da61e910f394a557a3cb57433e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 38,
+      "evidence": "execSync(`bun ${kibiBin} engine stop`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 51,
+      "evidence": "execSync(`mkdir -p '${source}' && printf source > '${source}/kb.rdf'`)",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 54,
+      "evidence": "execSync(`bun ${kibiBin} branch ensure`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 82,
+      "evidence": "execSync(`mkdir -p '${legacy}'`)",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 86,
+      "evidence": "execSync( `bun ${kibiBin} branch migrate --from feature/auth --to feature/auth`,",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 95,
+      "evidence": "execSync( `bun ${kibiBin} branch migrate --from feature/auth --to feature/auth -",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 113,
+      "evidence": "execSync(`mkdir -p '${legacy}'`)",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 142,
+      "evidence": "execSync(`mkdir -p '${legacyMain}'`)",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 176,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 177,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 181,
+      "evidence": "execSync(`bun ${kibiBin} branch recover`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 187,
+      "evidence": "execSync(`bun ${kibiBin} branch recover --apply`, { cwd: tmpDir, encoding: \"utf8",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 193,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 211,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 216,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 229,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 246,
+      "evidence": "execSync(`bun ${kibiBin} branch recover`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/branch.test.ts",
+      "line": 253,
+      "evidence": "execSync(`bun ${kibiBin} branch recover --apply`, { cwd: tmpDir, encoding: \"utf8",
+      "file_sha256": "bc665ba9e23c808e4b166ee51c3f0a97b6dddc9c95e4fb43775e51acc7d35450"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 29,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 34,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 45,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 50,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 62,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", stdio: \"pipe",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 87,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", stdio: \"pipe",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 117,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", stdio: \"pipe",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 140,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", stdio: \"pipe",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 159,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 164,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 174,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 179,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 189,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 194,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 204,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", stdio: \"pipe",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 218,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/doctor.test.ts",
+      "line": 223,
+      "evidence": "execSync(`bun ${kibiBin} doctor`, { cwd: tmpDir, encoding: \"utf-8\", })",
+      "file_sha256": "8d7f3f9c3ef0681189ee5f0741e2d78f2af54358ebbe4df09442f9e5f8d4d9cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 150,
+      "evidence": "execSync( `bun ${kibiCli} usage-metrics --format json --limit 2`, { cwd: tmpDir,",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 258,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --limit 1`, { cwd: tmpDir, encoding: \"utf",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 277,
+      "evidence": "execSync( `bun ${kibiCli} usage-metrics --format json --require-acceptance`, { c",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 286,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --limit 0`, { cwd: tmpDir, encoding: \"utf",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 295,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --limit -5`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 309,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --format json`, { cwd: noLogFileDir, enco",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 326,
+      "evidence": "execSync( `bun ${kibiCli} usage-metrics --format json --limit 10`, { cwd: emptyD",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 352,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --format json`, { cwd: badJsonDir, encodi",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 374,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --format json`, { cwd: nonObjDir, encodin",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 386,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --limit abc`, { cwd: tmpDir, encoding: \"u",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 401,
+      "evidence": "execSync(`bun ${kibiCli} usage-metrics --format json`, { cwd: numDir, encoding: ",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/usage-metrics.test.ts",
+      "line": 418,
+      "evidence": "execSync( `bun ${kibiCli} usage-metrics --format json --limit 10`, { cwd: blankD",
+      "file_sha256": "9ee52f5d559a4377bba31dfd38b741e4d1ff7f77e0ec66b1fd27b21110f98f15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 20,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 104,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 114,
+      "evidence": "execSync( `bun ${kibiBin} search \"latent discovery token\" --format json`, { cwd:",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 132,
+      "evidence": "execSync(`bun ${kibiBin} search \"${query}\" --format json`, { cwd: tmpDir, encodi",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 155,
+      "evidence": "execSync(`bun ${kibiBin} search \"${query}\" --format json`, { cwd: tmpDir, encodi",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/search.test.ts",
+      "line": 178,
+      "evidence": "execSync(`bun ${kibiBin} search --input -`, { cwd: tmpDir, encoding: \"utf8\", inp",
+      "file_sha256": "4b19369dc25d9fe2c75a949a92c16156c2b3a3d562052e840810513ce7ce3b78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/symbol-coordinate-repair.test.ts",
+      "line": 69,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "13d5736c157fe1bfbe768d715698dc704cf4aff6d3fa6f144cb0db0460a9b562"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/gaps.test.ts",
+      "line": 20,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "3b3c5a6ad8299f469dbd283be6db56fca07d9ecbc7b2ab4a837297d61c7a57ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/gaps.test.ts",
+      "line": 39,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "3b3c5a6ad8299f469dbd283be6db56fca07d9ecbc7b2ab4a837297d61c7a57ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/gaps.test.ts",
+      "line": 49,
+      "evidence": "execSync( `bun ${kibiBin} gaps req --missing-rel specified_by --format json`, { ",
+      "file_sha256": "3b3c5a6ad8299f469dbd283be6db56fca07d9ecbc7b2ab4a837297d61c7a57ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/gaps.test.ts",
+      "line": 72,
+      "evidence": "execSync(`bun ${kibiBin} gaps ${args}`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "3b3c5a6ad8299f469dbd283be6db56fca07d9ecbc7b2ab4a837297d61c7a57ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/gaps.test.ts",
+      "line": 76,
+      "evidence": "execSync(`bun ${kibiBin} find-gaps ${args}`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "3b3c5a6ad8299f469dbd283be6db56fca07d9ecbc7b2ab4a837297d61c7a57ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 66,
+      "evidence": "execSync(`node ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 170,
+      "evidence": "execSync(`node ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 185,
+      "evidence": "execSync(`node ${kibiBin} query req --format json`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 208,
+      "evidence": "execSync(`node ${kibiBin} query fact --format json`, { cwd: tmpDir, encoding: \"u",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 222,
+      "evidence": "execSync(`node ${kibiBin} query req --format json`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 236,
+      "evidence": "execSync( `node ${kibiBin} query req --id ${targetId} --format json`, { cwd: tmp",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 256,
+      "evidence": "execSync( `node ${kibiBin} query req --tag auth --format json`, { cwd: tmpDir, e",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 277,
+      "evidence": "execSync(`node ${kibiBin} query req --format json`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 292,
+      "evidence": "execSync( `node ${kibiBin} query --relationships ${entityWithLinks.id} --format ",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 324,
+      "evidence": "execSync( `node ${kibiBin} query --relationships REQ-NOT-PRESENT --format json`,",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 329,
+      "evidence": "execSync(`node ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\"",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 346,
+      "evidence": "execSync(`node ${kibiBin} query req --format table`, { cwd: tmpDir, encoding: \"u",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 368,
+      "evidence": "execSync( `node ${kibiBin} query req --tag nonexistent_tag_xyz --format json`, {",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 387,
+      "evidence": "execSync(`node ${kibiBin} query invalid_type`, { cwd: tmpDir, encoding: \"utf8\", ",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 424,
+      "evidence": "execSync(`node ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 442,
+      "evidence": "execSync(`node ${kibiBin} query req --format json`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 464,
+      "evidence": "execSync( `node ${kibiBin} query req --tag nonexistent_tag_xyz --format table`, ",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 480,
+      "evidence": "execSync(`node ${kibiBin} query req --format json`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 491,
+      "evidence": "execSync( `node ${kibiBin} query req --limit 1 --format json`, { cwd: tmpDir, en",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/query.test.ts",
+      "line": 508,
+      "evidence": "execSync( `node ${kibiBin} query --source src/features/feature.ts --format json`",
+      "file_sha256": "c880c66f115748eadf483a9c60be4e8550a03e06bca0ad3aedd006ca075d2ab0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/graph.test.ts",
+      "line": 20,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "61e0dcf892a76154f529f0a7992a70f27909d0f8dda96efc4bfcc06a67038f23"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/graph.test.ts",
+      "line": 54,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "61e0dcf892a76154f529f0a7992a70f27909d0f8dda96efc4bfcc06a67038f23"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/graph.test.ts",
+      "line": 64,
+      "evidence": "execSync( `bun ${kibiBin} graph --from REQ-001 --relationships specified_by --de",
+      "file_sha256": "61e0dcf892a76154f529f0a7992a70f27909d0f8dda96efc4bfcc06a67038f23"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-stale-manifest.test.ts",
+      "line": 62,
+      "evidence": "execSync(`git commit -m \"${message}\" --no-verify`, { cwd, stdio: \"pipe\", })",
+      "file_sha256": "90a93b679686d43181400641bd5593fc23ec42d3872b8e47dfc521a430df1ab7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-stale-manifest.test.ts",
+      "line": 69,
+      "evidence": "execSync( `bun ${kibiBin} sync${args.length > 0 ? ` ${args.join(\" \")}` : \"\"}`, {",
+      "file_sha256": "90a93b679686d43181400641bd5593fc23ec42d3872b8e47dfc521a430df1ab7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-stale-manifest.test.ts",
+      "line": 200,
+      "evidence": "execSync(`KB_PATH=.kb/branches/main bun ${kibiBin} init`, { cwd: tmpDir, stdio: ",
+      "file_sha256": "90a93b679686d43181400641bd5593fc23ec42d3872b8e47dfc521a430df1ab7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 198,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 284,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 653,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 662,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 678,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 723,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 774,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 801,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 834,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 837,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 844,
+      "evidence": "execSync( `bun ${kibiBin} query symbol --id SYM-DELTA-TWO --format json`, { cwd:",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 864,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1054,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", stdio: \"pipe\", ",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1080,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1088,
+      "evidence": "execSync(`bun ${kibiBin} query req --id req1 --format json`, { cwd: tmpDir, enco",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1100,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1106,
+      "evidence": "execSync(`bun ${kibiBin} query req --id req1 --format json`, { cwd: tmpDir, enco",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1117,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", stdio: \"pipe\", ",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1137,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", stdio: \"pipe\", ",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1145,
+      "evidence": "execSync(`bun ${kibiBin} branch ensure`, { cwd: tmpDir, encoding: \"utf8\", stdio:",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1156,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1221,
+      "evidence": "execSync(`bun ${kibiBin} query --relationships SYM-SHARD-EXECUTABLE`, { cwd: tmp",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1247,
+      "evidence": "execSync(`bun ${kibiBin} query --relationships SYM-SHARD-EXECUTABLE`, { cwd: tmp",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1316,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1329,
+      "evidence": "execSync( `bun ${kibiBin} query req --id req-linked --format json`, { cwd: tmpDi",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1351,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1391,
+      "evidence": "execSync(`bun ${kibiBin} sync --validate-only`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1420,
+      "evidence": "execSync(`bun ${kibiBin} sync --validate-only`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1465,
+      "evidence": "execSync(`bun ${kibiBin} sync --validate-only`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1511,
+      "evidence": "execSync(`bun ${kibiBin} sync --validate-only`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1571,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1574,
+      "evidence": "execSync( `bun ${kibiBin} query fact --id FACT-SESSION-TIMEOUT-30 --format json`",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1622,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1625,
+      "evidence": "execSync( `bun ${kibiBin} query fact --id FACT-RATE-LIMIT --format json`, { cwd:",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1669,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1672,
+      "evidence": "execSync( `bun ${kibiBin} query fact --id FACT-USER-TYPE --format json`, { cwd: ",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1761,
+      "evidence": "execSync( `bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, enc",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/sync.test.ts",
+      "line": 1772,
+      "evidence": "execSync( `bun ${kibiBin} query symbol --id SYM-start-server --format json`, { c",
+      "file_sha256": "e0128ab76eb1acd209544b1caedf3a790553c53f6c8b74f2cffdb65f07e374e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 25,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 83,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 93,
+      "evidence": "execSync(`bun ${kibiBin} coverage --by req --format json`, { cwd: tmpDir, encodi",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 243,
+      "evidence": "execSync( `bun ${kibiBin} coverage --by req --include-migration-preview`, { cwd:",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 255,
+      "evidence": "execSync(`bun ${kibiBin} coverage --by req`, { cwd: tmpDir, encoding: \"utf8\", ti",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/coverage.test.ts",
+      "line": 269,
+      "evidence": "execSync(`bun ${kibiBin} coverage --help`, { cwd: tmpDir, encoding: \"utf8\", time",
+      "file_sha256": "ee11c6642c5acaba552fff5d63a4625601015176f7ba0560dc514476b8a57d29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 21,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 40,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 56,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: initDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 58,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: initDir, encoding: \"utf8\"",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 88,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: missingDir, encoding: \"ut",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 127,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 149,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: freshDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 188,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: freshDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 190,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: freshDir, encoding: \"utf8",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 213,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: noOpDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 225,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: noOpDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 229,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: noOpDir, encoding: \"utf8\", })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 235,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: noOpDir, encoding: \"utf8\"",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 257,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: readmeDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 297,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: readmeDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 299,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: readmeDir, encoding: \"utf",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 322,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: notesDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 337,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: notesDir, stdio: \"pipe\" })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 339,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: notesDir, encoding: \"utf8",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 366,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 382,
+      "evidence": "execSync(`bun ${kibiBin} status --format json`, { cwd: tmpDir, encoding: \"utf8\",",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/status.test.ts",
+      "line": 396,
+      "evidence": "execSync(`bun ${kibiBin} status`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "696f1016d8cf81d209b86542d4c82e562d7857b93c263d554362e51a4be548ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/migrate-first-commit.test.ts",
+      "line": 35,
+      "evidence": "execSync(`git ${command}`, { cwd, stdio: \"pipe\" })",
+      "file_sha256": "240bacd1c1e446cc99c66d44bfebf4841ff70d87c23470684f2d924be52994aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/derived-symbol-coordinates.test.ts",
+      "line": 35,
+      "evidence": "execSync(`git ${command}`, { cwd, stdio: \"pipe\", encoding: \"utf8\", })",
+      "file_sha256": "2670e6633a1a3463178f31765d037a234e4806867c37f9c261dd6ce02d161407"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 99,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 470,
+      "evidence": "execSync(`git add -- ${paths.join(\" \")}`, { cwd: root, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 484,
+      "evidence": "execSync(`KB_PATH=.kb/branches/main bun ${kibiBin} init`, { cwd: tmpDir, stdio: ",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 517,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 535,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 559,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 599,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 624,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 644,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 685,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 711,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 750,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 814,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 878,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 961,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 964,
+      "evidence": "execSync(`bun ${kibiBin} check`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1030,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1041,
+      "evidence": "execSync(`bun ${kibiBin} check`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1099,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1166,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1217,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1296,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1448,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1505,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1546,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1590,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1863,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1898,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1938,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 1979,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2036,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2148,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2267,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2352,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2446,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2478,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2595,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2642,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2684,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2721,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2801,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2901,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 2990,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3419,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3498,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3579,
+      "evidence": "execSync(`bun ${kibiBin} sync --refresh-symbol-coordinates`, { cwd: tmpDir, stdi",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3659,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3715,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3772,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check.test.ts",
+      "line": 3814,
+      "evidence": "execSync(`bun ${kibiBin} sync`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "ef22dcfbff8dcf127889054b8b79cb13a4da96f8b522e921564820f473bb8e35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-staged-enforcement.test.ts",
+      "line": 62,
+      "evidence": "execSync(`git commit -m \"${message}\" --no-verify`, { cwd, stdio: \"pipe\", })",
+      "file_sha256": "cc7c22ddbad6ed9f39d281b51c97a43a9ccb3a3c7c952cab397b71766946efb2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-staged-enforcement.test.ts",
+      "line": 69,
+      "evidence": "execSync( `bun ${kibiBin} sync${args.length > 0 ? ` ${args.join(\" \")}` : \"\"}`, {",
+      "file_sha256": "cc7c22ddbad6ed9f39d281b51c97a43a9ccb3a3c7c952cab397b71766946efb2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/check-staged-enforcement.test.ts",
+      "line": 507,
+      "evidence": "execSync(`KB_PATH=.kb/branches/main bun ${kibiBin} init`, { cwd: tmpDir, stdio: ",
+      "file_sha256": "cc7c22ddbad6ed9f39d281b51c97a43a9ccb3a3c7c952cab397b71766946efb2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/release.test.ts",
+      "line": 27,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "d6ddbf14e5a79eb374910e3e7061070e313b4f5deaba4ecbe9ac1b7c6cfb32b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 30,
+      "evidence": "execSync(`bun ${kibiBin} engine stop`, { cwd: tmpDir, stdio: \"ignore\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 48,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 71,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 87,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 104,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 134,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 142,
+      "evidence": "execSync(`bun ${kibiBin} migrate --yes`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 158,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 178,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 197,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, encoding: \"utf8\", stdio: \"pipe\", ",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 210,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, encoding: \"utf8\", stdi",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 237,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 258,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, encoding: \"utf8\", stdi",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 283,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 294,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, encoding: \"utf8\", stdi",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 306,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 324,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, encoding: \"utf8\", stdi",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 343,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 349,
+      "evidence": "execSync( `printf '%s\\\\n' '{}' | bun ${kibiBin} plan-bootstrap --input -`, { cwd",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 377,
+      "evidence": "execSync(`bun ${kibiBin} apply-plan --input ${approvedInput}`, { cwd: tmpDir, en",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 386,
+      "evidence": "execSync(`printf '%s\\\\n' '{}' | bun ${kibiBin} check --input -`, { cwd: tmpDir, ",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 392,
+      "evidence": "execSync(`printf '%s\\\\n' '{}' | bun ${kibiBin} status --input -`, { cwd: tmpDir,",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 412,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 435,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 454,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 479,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"pipe\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 488,
+      "evidence": "execSync(`bun ${kibiBin} init --no-hooks`, { cwd: tmpDir, env: isolatedCliSandbo",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 507,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, encoding: \"utf8\", stdio: \"pipe\", ",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 518,
+      "evidence": "execSync(`bun ${kibiBin} init --help`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 529,
+      "evidence": "execSync(`bun ${kibiBin} init --badge-only`, { cwd: tmpDir, encoding: \"utf8\", st",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 544,
+      "evidence": "execSync(`bun ${kibiBin} init --print-hook ${hook}`, { cwd: tmpDir, encoding: \"u",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 552,
+      "evidence": "execSync(`bun ${kibiBin} init --help`, { cwd: tmpDir, encoding: \"utf8\", })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 594,
+      "evidence": "execSync(`sh ${hookPath}`, { cwd: tmpDir, encoding: \"utf8\", env, })",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 606,
+      "evidence": "execSync(`sh ${hookPath}`, { cwd: tmpDir, encoding: \"utf8\", env: { ...env, FAIL_",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/commands/init.test.ts",
+      "line": 651,
+      "evidence": "execSync(`bun ${kibiBin} init --github --no-hooks`, { cwd: tmpDir, encoding: \"ut",
+      "file_sha256": "c2aeb5d422626a09d526cff5bc2b0ae0c6ef14885d4d3ef80ff0d73c32e06cbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/traceability/staged-symbols-manifest.test.ts",
+      "line": 37,
+      "evidence": "execSync(`git commit -m \"${message}\"`, { cwd, stdio: \"pipe\" })",
+      "file_sha256": "7c08c344d756127e8f040a9a5c345a3f9365e32b3a27f54be9036bf0b9ecf837"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/traceability/staged-symbols-manifest.test.ts",
+      "line": 597,
+      "evidence": "execSync(`git add -- '${sourcePath}'`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "7c08c344d756127e8f040a9a5c345a3f9365e32b3a27f54be9036bf0b9ecf837"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/hooks.test.ts",
+      "line": 16,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\" })",
+      "file_sha256": "6eb1b3d5c95c524ed9fd36af57b25a82ca80a02830ada58026956589ce60bb22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/hooks.test.ts",
+      "line": 80,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: appDir, stdio: \"pipe\" })",
+      "file_sha256": "6eb1b3d5c95c524ed9fd36af57b25a82ca80a02830ada58026956589ce60bb22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/hooks.test.ts",
+      "line": 138,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\" })",
+      "file_sha256": "6eb1b3d5c95c524ed9fd36af57b25a82ca80a02830ada58026956589ce60bb22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/hooks.test.ts",
+      "line": 158,
+      "evidence": "execSync(`bun ${kibiBin} init`, { cwd: tmpDir, stdio: \"inherit\" })",
+      "file_sha256": "6eb1b3d5c95c524ed9fd36af57b25a82ca80a02830ada58026956589ce60bb22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver-coverage.test.ts",
+      "line": 44,
+      "evidence": "execSync(`git init -b ${branch}`, { cwd: root })",
+      "file_sha256": "c11e7ac698a78078047cf724f4c540d5a7ea36aff5cdf1c0afbe7324bc180eb0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver.test.ts",
+      "line": 158,
+      "evidence": "execSync(`git checkout ${commitHash}`, { cwd: tmpDir })",
+      "file_sha256": "76331b2d539f2c60e009668d60e3a78a428898df3bdca82076ba4f0d53eb8599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver.test.ts",
+      "line": 369,
+      "evidence": "execSync(`git checkout ${commitHash}`, { cwd: tmpDir })",
+      "file_sha256": "76331b2d539f2c60e009668d60e3a78a428898df3bdca82076ba4f0d53eb8599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver.test.ts",
+      "line": 457,
+      "evidence": "execSync(`git checkout ${head}`, { cwd: tmpDir, stdio: \"pipe\" })",
+      "file_sha256": "76331b2d539f2c60e009668d60e3a78a428898df3bdca82076ba4f0d53eb8599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver.test.ts",
+      "line": 472,
+      "evidence": "execSync( `git fetch --depth 1 file://${source} +refs/heads/main:refs/remotes/or",
+      "file_sha256": "76331b2d539f2c60e009668d60e3a78a428898df3bdca82076ba4f0d53eb8599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/packages/cli/tests/utils/branch-resolver.test.ts",
+      "line": 476,
+      "evidence": "execSync(`git checkout --detach ${head}`, { cwd: ci, stdio: \"pipe\" })",
+      "file_sha256": "76331b2d539f2c60e009668d60e3a78a428898df3bdca82076ba4f0d53eb8599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/.cursor/install.sh",
+      "line": 57,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "2f1399d1a5a336a3c5bfa17dbee1c45aab51b1f823e747aa3e9c4f70c31deef7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/.cursor/install.sh",
+      "line": 57,
+      "evidence": "curl -fsSL https://bun.sh/install | bash -s \"bun-v${BUN_VERSION}\"",
+      "file_sha256": "2f1399d1a5a336a3c5bfa17dbee1c45aab51b1f823e747aa3e9c4f70c31deef7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/docker/test-runner.Dockerfile",
+      "line": 18,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_24.x | bash",
+      "file_sha256": "39d6ed43f79b67a6c82060494fd866a5b99a5e80918d0a11bdd296e6e8ba8d72"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/scripts/run-release-state.ts",
+      "line": 81,
+      "evidence": "execSync(`npm view ${pkgName}@${version} version`, { encoding: \"utf8\", stdio: \"p",
+      "file_sha256": "0116ff0894282608a1993f52fc8ae113a388f1783d7a55ebc948e256fb8d2d94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "kibi-b9c9f5575cb683c12514d81c5b8ab224330ef5c9/tools/skillopt/tests/test_contracts.py",
+      "line": 71,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "6e453636d56cce1e73071380f8f654a736faaad0b4223962146e4cda24173edf"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "huggingface.co, pre-commit.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "academy.recforge.com",
+    "acme.github.io",
+    "agent-plugins.org",
+    "archive.ubuntu.com",
+    "astral.sh",
+    "azure.archive.ubuntu.com",
+    "bun.sh",
+    "ci.example",
+    "cloud.umami.is",
+    "codecov.io",
+    "cursor.com",
+    "deb.nodesource.com",
+    "developers.openai.com",
+    "docs.github.com",
+    "eu.i.posthog.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "files.pythonhosted.org",
+    "flathub.org",
+    "fsf.org",
+    "git.example.com",
+    "github.com",
+    "github.example.com",
+    "gitlab.com",
+    "glama.ai",
+    "huggingface.co",
+    "img.shields.io",
+    "img.test",
+    "jira.example",
+    "json-schema.org",
+    "json.schemastore.org",
+    "kb.plt",
+    "keyserver.ubuntu.com",
+    "kibi.dev",
+    "looted.github.io",
+    "modelcontextprotocol.io",
+    "opencode.ai",
+    "owner.github.io",
+    "ppa.launchpadcontent.net",
+    "pre-commit.com",
+    "provider.invalid",
+    "pypi.org",
+    "query.wikidata.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "staff.fnwi.uva.nl",
+    "static.modelcontextprotocol.io",
+    "swi-prolog.discourse.group",
+    "tracker.example",
+    "umami.is",
+    "unpkg.com",
+    "wiki.example",
+    "www.apache.org",
+    "www.geeksforgeeks.org",
+    "www.github.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.swi-prolog.org",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

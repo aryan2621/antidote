@@ -1,0 +1,169 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "josegarridodigio/sluice",
+    "version": "f9b1dbe1f90332db4a281c057bc7772a91fc3f3f",
+    "download": "https://codeload.github.com/josegarridodigio/sluice/tar.gz/f9b1dbe1f90332db4a281c057bc7772a91fc3f3f"
+  },
+  "archive_sha256": "614a5baa222038732c11ae8e7768df31cf76e873d059ac9c2b02fcc389419fba",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/README.md",
+      "line": 74,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "c2194da9f09befaf4861c76601514c601ca6ebf3506c1c921c12f920b7c669bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/CLAUDE.md",
+      "line": 1,
+      "evidence": "p=0.94 # Sluice: instructions for coding agents working on this repository",
+      "file_sha256": "e7456fe1ad6262c3a74f42182f9f74af85a70a8f69afb8e34d7a47e7d9bb3572"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/kb/sluice/plan/zero-config-plan.md",
+      "line": 381,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "99baf33b4659ebcbd3ea159b2a8c25b1c4918341c8db23ca97bbc55bfddc33bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/kb/sluice/changes/final-report.md",
+      "line": 122,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "f3790e362675384c2c6dc85233fe2e01fc54c10f187d4a9d7e563b9e4b25120c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/kb/sluice/changes/packaging.md",
+      "line": 84,
+      "evidence": "curl | sh",
+      "file_sha256": "97e091d5cb5426ec034dd5f707ee8e338a9e2a347902d2bb69c15d3f63af8d52"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/docs/agents.md",
+      "line": 36,
+      "evidence": "curl -fsSL .../scripts/install.sh | sh",
+      "file_sha256": "1e6fceb01f72a4b550ad39d01e061fdfc0078225998164c854ab1c0783fdb224"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "8cd1425c4a6de92d38f28bfbc60d96b850b2f443e8fe2a4a8cf225b8be8a63a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/scripts/ci/container-test.sh",
+      "line": 43,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |\\u{a}    sh",
+      "file_sha256": "4d9ceee0bfa590b3d047729a1b1e0271f4111ec16ce586d384a4042f897c2e3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/scripts/ci/container-test.sh",
+      "line": 43,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profil",
+      "file_sha256": "4d9ceee0bfa590b3d047729a1b1e0271f4111ec16ce586d384a4042f897c2e3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/plugin/hooks/session-start.sh",
+      "line": 21,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "7e2402dfa29b3b4a07295bc44047812a0018a30b4e82deb17a0dd509369850b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/plugin/README.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "44ca647d25e0eaef747dfa5ffefccbb45a73666d5bd79c5b84af67e2c277d603"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sluice-f9b1dbe1f90332db4a281c057bc7772a91fc3f3f/plugin/skills/sluice/SKILL.md",
+      "line": 153,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/josegarridodigio/sluice/main/script",
+      "file_sha256": "8d3067fe5105e4495205b33ac40da4c5666abef8f5895a16b88b35010d96f21b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "bazel.build",
+    "bors.tech",
+    "bugs.archlinux.org",
+    "circleci.com",
+    "cli.github.com",
+    "code.claude.com",
+    "direnv.net",
+    "docs.gitea.com",
+    "docs.github.com",
+    "docs.gitlab.com",
+    "docs.kernel.org",
+    "docs.mergify.com",
+    "docs.rs",
+    "docs.travis-ci.com",
+    "example.com",
+    "example.invalid",
+    "ghe.example.com",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "learn.microsoft.com",
+    "lists.ubuntu.com",
+    "lkml.iu.edu",
+    "manpages.debian.org",
+    "mirrors.edge.kernel.org",
+    "plugins.jenkins.io",
+    "pre-commit.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "repology.org",
+    "semver.org",
+    "sh.rustup.rs",
+    "slurm.schedmd.com",
+    "stackharbor.com",
+    "stall.invalid",
+    "www.cse.huji.ac.il",
+    "www.fedoraproject.org",
+    "www.freedesktop.org",
+    "www.pagure.io",
+    "www.phoronix.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

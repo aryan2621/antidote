@@ -1,0 +1,90 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "andregrunert-ctrl/german-b2b-data-suite",
+    "version": "2742a9ab96de0c1d408a19e2f1f09fc0e9ff46c2",
+    "download": "https://codeload.github.com/andregrunert-ctrl/german-b2b-data-suite/tar.gz/2742a9ab96de0c1d408a19e2f1f09fc0e9ff46c2"
+  },
+  "archive_sha256": "0fe1eb77e61cd06bb3d33f946ff80291bb66f2e615ac1a4e1018db746c7c2f2f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "german-b2b-data-suite-2742a9ab96de0c1d408a19e2f1f09fc0e9ff46c2/rapidapi/00_unified_german_b2b_suite_openapi.json",
+      "line": 877,
+      "evidence": "p=0.98 Die Stadt Freiburg im Breisgau beabsichtigt eine integrierte Software-as-a-Servi",
+      "file_sha256": "ae7ae98a46611380e540618e0603d394b22def99431b08a7841b4ee59f50f094"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "german-b2b-data-suite-2742a9ab96de0c1d408a19e2f1f09fc0e9ff46c2/rapidapi/04_tenders_openapi.json",
+      "line": 146,
+      "evidence": "p=0.98 Die Stadt Freiburg im Breisgau beabsichtigt eine integrierte Software-as-a-Servi",
+      "file_sha256": "a74f5c890386b1893a42b700d72cdb3eef619d28c1b696af852cdcd731bc4244"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "german-b2b-data-suite-2742a9ab96de0c1d408a19e2f1f09fc0e9ff46c2/samples/04_public_tenders_sample.json",
+      "line": 19,
+      "evidence": "p=0.98 Die Stadt Freiburg im Breisgau beabsichtigt eine integrierte Software-as-a-Servi",
+      "file_sha256": "5949cf9a18d360f53063374f819cdba61ee36bb3e7298e06f8370194c22d4689"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "e-rechnung-cloud.de, glama.ai, openapi-provisioning.p.rapidapi.com, platform.p.rapidapi.com, rapidapi.com, raw.githubusercontent.com, smithery.ai, www.npmjs.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.apify.com",
+    "apify.com",
+    "bieterzugang.deutsche-evergabe.de",
+    "console.apify.com",
+    "e-rechnung-cloud.de",
+    "evergabe.bundesverkehrsverwaltung.de",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "instagram.com",
+    "json.schemastore.org",
+    "mcp.apify.com",
+    "modelcontextprotocol.io",
+    "openapi-provisioning.p.rapidapi.com",
+    "platform.p.rapidapi.com",
+    "rapidapi.com",
+    "raw.githubusercontent.com",
+    "smithery.ai",
+    "twitter.com",
+    "vergabe.autobahn.de",
+    "www.biontech.com",
+    "www.deepl.com",
+    "www.elektro-bleumortier.de",
+    "www.evergabe-online.de",
+    "www.facebook.com",
+    "www.gelbeseiten.de",
+    "www.instagram.com",
+    "www.karl-greiner-gmbh.de",
+    "www.liebhart-tv.de",
+    "www.linkedin.com",
+    "www.npmjs.com",
+    "www.service.bund.de",
+    "www.tpnetworks.de",
+    "www.youtube.com",
+    "www.zvg-portal.de",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "heidrickla/ha-agent-memory",
+    "version": "93c2514c5847ffcacf043d141f3a117b67773a2c",
+    "download": "https://codeload.github.com/heidrickla/ha-agent-memory/tar.gz/93c2514c5847ffcacf043d141f3a117b67773a2c"
+  },
+  "archive_sha256": "95e1307b01006a4cc7ada0483e8ebf7364315e74f986da096d1761b2134e041d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "ha-agent-memory-93c2514c5847ffcacf043d141f3a117b67773a2c/tests/run_image.sh",
+      "line": 55,
+      "evidence": "curl -fsS \"http://127.0.0.1:$port/health\" | python3 -c 'import json,sys; print(j",
+      "file_sha256": "344a32bec42ac5e84467beb283766ea2385d35bdddf744c561e57d8d67eecbe4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.2",
+    "192.0.2.20",
+    "cache.invalid",
+    "example.invalid",
+    "forge.example",
+    "github.com",
+    "ha.example",
+    "host.lan",
+    "my.home-assistant.io",
+    "router.example",
+    "v1.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

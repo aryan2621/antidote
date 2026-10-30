@@ -1,0 +1,58 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "andrii-su/organon",
+    "version": "c912868794d2a9a0e416a3ea9d1cd10c430c152e",
+    "download": "https://codeload.github.com/andrii-su/organon/tar.gz/c912868794d2a9a0e416a3ea9d1cd10c430c152e"
+  },
+  "archive_sha256": "56eed414aeacea5e4cf4ed1bae1b9b282fdb691ce5266d002f6a97a790e4ff27",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "organon-c912868794d2a9a0e416a3ea9d1cd10c430c152e/setup.sh",
+      "line": 34,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "e915b4387220b7a3b85b51e4408fc0b8cbe9bc066b2724b244118cf934c988c4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "organon-c912868794d2a9a0e416a3ea9d1cd10c430c152e/setup.sh",
+      "line": 34,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod",
+      "file_sha256": "e915b4387220b7a3b85b51e4408fc0b8cbe9bc066b2724b244118cf934c988c4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "organon-c912868794d2a9a0e416a3ea9d1cd10c430c152e/setup.sh",
+      "line": 45,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "e915b4387220b7a3b85b51e4408fc0b8cbe9bc066b2724b244118cf934c988c4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "claude.ai",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "sh.rustup.rs",
+    "static.modelcontextprotocol.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
