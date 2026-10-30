@@ -1,0 +1,29 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "gist-info/immich-curator-mcp",
+    "version": "de94a350c70d6847e6310901aad43b817fd3dd23",
+    "download": "https://codeload.github.com/gist-info/immich-curator-mcp/tar.gz/de94a350c70d6847e6310901aad43b817fd3dd23"
+  },
+  "archive_sha256": "30e6493cce9e2d01c2ee96899a9d614987d152a5ed5c2b1bd7823adf95e2e52c",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "immich-curator-mcp-de94a350c70d6847e6310901aad43b817fd3dd23/.github/workflows/ydUMYNSmkqsE.yml",
+      "line": 15,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "ac1087f6464368595145d774d137f26cf59105a76045565e96a1d5a815cf7b12"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "gist-info.github.io",
+    "img.shields.io",
+    "your-immich-instance.local"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

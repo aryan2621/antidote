@@ -1,0 +1,568 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "axiomantic/spellbook",
+    "version": "79194d25c01e6542c4b9ba1f90fbc21b04016123",
+    "download": "https://codeload.github.com/axiomantic/spellbook/tar.gz/79194d25c01e6542c4b9ba1f90fbc21b04016123"
+  },
+  "archive_sha256": "5e182a38dde6c84866854a1dd93ad1e85b736025881a3e6c7478bdb4c803cdf3",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/ie-template.md",
+      "line": 137,
+      "evidence": "p=0.99 <FINAL_EMPHASIS> Instruction quality determines output quality. Every engineered",
+      "file_sha256": "b36d7151cfea07543821b8a9576ae86bd5a7c7c9ba7b48074230848d98066e7f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/crystallize.md",
+      "line": 9,
+      "evidence": "p=0.97 Improve and compress instructions into high-density prompts that preserve ALL ca",
+      "file_sha256": "dccdc2d36d0d43fcf166dcb5bd31427e295cd72f5878dee0855ce68febf36ea8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/estimate-scope.md",
+      "line": 15,
+      "evidence": "p=0.91 <analysis> Before dispatching: What does the card actually say versus imply? Whi",
+      "file_sha256": "a9e096f3a20b91bde7d361e27991e4e96d939b1ad912136e5a1554fba571c6da"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/sharpen-improve.md",
+      "line": 9,
+      "evidence": "p=0.99 <ROLE> Instruction Editor with surgical precision. You clarify without changing ",
+      "file_sha256": "a56b71ba1e28c090a6951a0b45cd5b93d65d13ca68242ae1a486cee9f2363a03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/develop-configure.md",
+      "line": 1025,
+      "evidence": "p=0.92 <CRITICAL> ALL subagents MUST invoke skills explicitly using the Skill tool. Do ",
+      "file_sha256": "863ef9e2108d1c0353d0a522c222fb56f5f6de1ab5f38456ef486cde7a50ef80"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/crystallize-verify.md",
+      "line": 39,
+      "evidence": "p=0.96 Read the original document. Extract every behavioral instruction.",
+      "file_sha256": "20c75f6dedf0ce816d11be1ba4976c069c67a7cf7c6dc5650ae9ee6ad8f51f78"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/sharpen-audit.md",
+      "line": 35,
+      "evidence": "p=0.99 1. Read the full prompt/instructions 2. Identify the prompt type: - Subagent pro",
+      "file_sha256": "5c017bfec9c809a3dab32e7e2818189771cd423186f8fb93b606116fd63e7b60"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/scientific-debugging/scientific-debugging.md",
+      "line": 36,
+      "evidence": "p=0.96 Repeat: You MUST use this exact template. No variations. No \"improvements\". No c",
+      "file_sha256": "81c6e47e40b155e163594c3ea0a06d2784d0488e02bf95de22c12b4f2f5fcfde"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/commands/write-readme.md",
+      "line": 13,
+      "evidence": "p=0.92 <ROLE> README Writer. Your reputation depends on READMEs that make developers in",
+      "file_sha256": "6b2a573e1c408e6b1609cccd38551cf76c5ca2c637b88019b164f66fecd8d64a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/bootstrap.sh",
+      "line": 6,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/axiomantic/spellbook/main/bootstrap",
+      "file_sha256": "f49c9b8c62736c8d4c1de0887bcbd4ed9cbd02eaf7b0564300833e8c699cdbdf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/agents/justice-resolver.md",
+      "line": 21,
+      "evidence": "p=0.97 ## Instruction-Engineering Directives",
+      "file_sha256": "791dc50f206082dd7a23a31fecc2c5a614856b2e6f5d3d9486308bc240ddff15"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/agents/justice-resolver.md",
+      "line": 23,
+      "evidence": "p=0.98 <CRITICAL> Both the implementer and reviewer invested effort and thought. Dismis",
+      "file_sha256": "791dc50f206082dd7a23a31fecc2c5a614856b2e6f5d3d9486308bc240ddff15"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/agents/hierophant-distiller.md",
+      "line": 24,
+      "evidence": "p=0.98 <CRITICAL> Future developers will read your doctrine without the context you hav",
+      "file_sha256": "814f13030108eab8f9052a14b5c0e9bddde79627426e7e8d6aa436444230bd77"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/agents/lovers-integrator.md",
+      "line": 24,
+      "evidence": "p=0.97 ## Instruction-Engineering Directives",
+      "file_sha256": "2e30e6a3a85886e25bb577250385e4ce717a8abaa309eda53c42de6bcbeb3468"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/agents/emperor-governor.md",
+      "line": 25,
+      "evidence": "p=0.97 ## Instruction-Engineering Directives",
+      "file_sha256": "f712e0668cd8048e06d3612e9123e7336a26ab1465071b5c114a49810192d40c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/hooks/opencode-plugin.ts",
+      "line": 32,
+      "evidence": "execSync(`${cmd}${args}`, { input: payload, encoding: 'utf-8', timeout: 5000, en",
+      "file_sha256": "bffb8a29318c3439332b58018c34c1cb98e2621faf994e2d173f17a0d1242767"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/install.py",
+      "line": 244,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8f69efcbcb139b15e4368209b236f28802b2da98b134d6fa25605826bb0fa3d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/spellbook/daemon/service.py",
+      "line": 55,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "a3f2b737700f915fec1f2b06794172752a0dcff00ef746834e7e032a253cfa40"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/extensions/gemini/GEMINI.md",
+      "line": 17,
+      "evidence": "p=0.92 ## Spellbook Instructions",
+      "file_sha256": "721cf449a768a4faa5e7c0243ba6d4ddf9a6cc5bff038d1285b4edea13d5fa3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/README.md",
+      "line": 83,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/axiomantic/spellbook/main/bootstrap",
+      "file_sha256": "f0cec0a647735f99945530bb630f493bf7e271cb4c6d6ffefbd2fc7ca0706276"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/rules/94-stated-action.md",
+      "line": 38,
+      "evidence": "p=0.93 **An announcement reads identically whether or not the work happened.** \"Dispatc",
+      "file_sha256": "036ac3217181977b4848fb95865b598eb7e29289e17c805a6cce7f649dc46113"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/rules/92-core-philosophy.md",
+      "line": 86,
+      "evidence": "p=0.91 This is the population-side twin of the conditions rule: a result without its co",
+      "file_sha256": "6763965a42d7472ffc697fe368bd2e351833dc37e90ff4a5ac5fe86a340415e6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/reference/contributing.md",
+      "line": 14,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "14c78dfa7e1b969c312cec3988a2d22a58229b9ca0ca3a48bd8b406a3ad93a87"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/commands/sharpen-improve.md",
+      "line": 46,
+      "evidence": "p=1.00 Before I can sharpen this prompt, I need answers to:",
+      "file_sha256": "4174dee28c7edc516857ee2fe52f4d1f06bc3688446e8dcf301624dd231b833b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/commands/sharpen-improve.md",
+      "line": 54,
+      "evidence": "p=0.96 Please answer these, or say \"use your best judgment\" for any you want me to infe",
+      "file_sha256": "4174dee28c7edc516857ee2fe52f4d1f06bc3688446e8dcf301624dd231b833b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/commands/sharpen-audit.md",
+      "line": 150,
+      "evidence": "p=0.92 [PASS]: No CRITICAL or HIGH findings. LOW-only findings may also yield PASS if a",
+      "file_sha256": "1795703c36ec7ebe049631523db842ad499e409cee069b17fb74d085eb026a3a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/commands/fractal-think-work.md",
+      "line": 139,
+      "evidence": "p=0.97 4. **Apply the Adaptive Primitive.** Ask: > \"Given everything in this graph and ",
+      "file_sha256": "7b4d23e66289a19c7fae31d419774d97de73eb6c6fbbdd16a077e2e07374c4db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/commands/audit-mirage-analyze.md",
+      "line": 176,
+      "evidence": "p=0.96 result = command()  # Return code ignored",
+      "file_sha256": "611d8e8933f48fc39f31b1f33d593616ee934e09d7753249594fb5b75074d6b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/getting-started/installation.md",
+      "line": 6,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/axiomantic/spellbook/main/bootstrap",
+      "file_sha256": "6cbbb9e7b2de2bf18b2425167550c46f18f7f845d34ff4d45ac9b7d778aa7f68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/index.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/axiomantic/spellbook/main/bootstrap",
+      "file_sha256": "88b46ec618e1ed439048eeba531fb057e5fe50df28a33812e50b1b69fcd29b23"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/skills/sharpening-prompts.md",
+      "line": 5,
+      "evidence": "p=1.00 > Use when reviewing LLM prompts, skill instructions, subagent prompts, or any t",
+      "file_sha256": "c44976681e029edec11d98f5826e7fbad80feadb76efeca77265b9aac4db8516"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/skills/optimizing-instructions.md",
+      "line": 1,
+      "evidence": "p=0.92 # optimizing-instructions",
+      "file_sha256": "b203549dc17a0743eaab14856582ed8398fceff4ebea146309235243756019db"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/skills/instruction-engineering.md",
+      "line": 1,
+      "evidence": "p=0.96 # instruction-engineering",
+      "file_sha256": "214ad3faf5e1067e51fb429e967434e51c5e0537a427880bdb196023040bdcf1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/skills/instruction-engineering.md",
+      "line": 5,
+      "evidence": "p=1.00 > Use when crafting, improving, or reviewing prompts, system prompts, skill inst",
+      "file_sha256": "214ad3faf5e1067e51fb429e967434e51c5e0537a427880bdb196023040bdcf1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/skills/emotional-stakes.md",
+      "line": 5,
+      "evidence": "p=1.00 > Use when writing subagent prompts, skill instructions, or any text where accur",
+      "file_sha256": "f1e54d72dcc322201b66429f40e014d2cb66a019bea5f0484041573c26835bd8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/docs/windows-support-report.md",
+      "line": 81,
+      "evidence": "curl ... | sh",
+      "file_sha256": "255138fbaaee57bb739404b5733be6ccb2575c08317b5bf31903c20a56878d8f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/tests/docker/test_bootstrap.py",
+      "line": 30,
+      "evidence": "curl | bash",
+      "file_sha256": "e65f5ca3bbd144d8b8c574d9340ef152526051b9207cd9bc8007a4740ed1df4c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/instruction-engineering/SKILL.md",
+      "line": 3,
+      "evidence": "p=1.00 Use when crafting, improving, or reviewing prompts, system prompts, skill instru",
+      "file_sha256": "de8c8cf33c68cd09f03b0249ab1c22c3ec296f37a91a6f06b1ae1dc1762f439d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/instruction-engineering/SKILL.md",
+      "line": 7,
+      "evidence": "p=0.97 # Instruction Engineering",
+      "file_sha256": "de8c8cf33c68cd09f03b0249ab1c22c3ec296f37a91a6f06b1ae1dc1762f439d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/instruction-engineering/SKILL.md",
+      "line": 17,
+      "evidence": "p=0.94 2. **Emotional Stimuli Work**: [EmotionPrompt](https://arxiv.org/abs/2307.11760)",
+      "file_sha256": "de8c8cf33c68cd09f03b0249ab1c22c3ec296f37a91a6f06b1ae1dc1762f439d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/instruction-engineering/SKILL.md",
+      "line": 163,
+      "evidence": "p=0.92 <reflection> Before finalizing any engineered prompt, verify: persona has stakes",
+      "file_sha256": "de8c8cf33c68cd09f03b0249ab1c22c3ec296f37a91a6f06b1ae1dc1762f439d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/instruction-engineering/SKILL.md",
+      "line": 167,
+      "evidence": "p=0.98 <FINAL_EMPHASIS> You are an Instruction Engineering Expert. The most effective p",
+      "file_sha256": "de8c8cf33c68cd09f03b0249ab1c22c3ec296f37a91a6f06b1ae1dc1762f439d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/sharpening-prompts/SKILL.md",
+      "line": 19,
+      "evidence": "p=0.91 Ask this for every statement: if an LLM reads this with no additional context, w",
+      "file_sha256": "e75d293702c9deddb8d7bb97f410d2266bf1395f6e683485d263d1944d740236"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/optimizing-instructions/SKILL.md",
+      "line": 7,
+      "evidence": "p=0.97 # Instruction Optimizer",
+      "file_sha256": "fba99ee6f2b8bf4e3fd4adba9e378eb634041a5e3cc20d9357d2ab0b2009b310"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/using-skills/SKILL.md",
+      "line": 105,
+      "evidence": "p=0.98 ## User Instructions",
+      "file_sha256": "1900a2dd8139668a048f09775a4fd0436152e55f585ccbb18c3a5f4ad287335b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/using-skills/SKILL.md",
+      "line": 107,
+      "evidence": "p=0.95 Instructions specify WHAT to do, not HOW to do it. \"Add X\" or \"Fix Y\" does not b",
+      "file_sha256": "1900a2dd8139668a048f09775a4fd0436152e55f585ccbb18c3a5f4ad287335b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/writing-skills/anthropic-best-practices.md",
+      "line": 921,
+      "evidence": "p=0.95 The diagram above shows how executable scripts work alongside instruction files.",
+      "file_sha256": "3e8b909316d7ff2084f04947e85d4fd1691c9ceb02105542139fe2e3a0e26c26"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/resolving-merge-conflicts/SKILL.md",
+      "line": 166,
+      "evidence": "p=0.93 Accidental `--theirs` without command: 1. Ask binary question about complex code",
+      "file_sha256": "0109bb3054d44480fd1bbca911297afbf6827ae8ce72df13825fadfdda2aedc0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/isolated-testing/SKILL.md",
+      "line": 75,
+      "evidence": "p=0.98 <CRITICAL> Before running ANYTHING, write out the COMPLETE test that proves or d",
+      "file_sha256": "b42fab97b8f390533a1f4b127ab7139077c3330d304608fd1806f532bb8aa310"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/autonomous-mode/SKILL.md",
+      "line": 97,
+      "evidence": "p=0.98 ## What This Does NOT Guarantee",
+      "file_sha256": "9f06dced1498746786636ad9caf0c76dfce5ca6d6723d548abe56f1fadcf1e95"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/fractal-thinking/SKILL.md",
+      "line": 124,
+      "evidence": "p=0.98 > \"Given everything in this graph snapshot, and given this specific node, > what",
+      "file_sha256": "7f1a9003a475f95ee10358f838cf7e4a14ab19146768deea4d3aed520730bdfd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "spellbook-79194d25c01e6542c4b9ba1f90fbc21b04016123/skills/emotional-stakes/SKILL.md",
+      "line": 3,
+      "evidence": "p=1.00 Use when writing subagent prompts, skill instructions, or any text where accurac",
+      "file_sha256": "58b2b9f8d089743cc1b2997313e9fc716e8274e3b6fba632a01ed010d06ab7d6"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "127.0.0.1.evil.com",
+    "aclanthology.org",
+    "agentskills.io",
+    "api.example.com",
+    "api.github.com",
+    "arxiv.org",
+    "astral.sh",
+    "aws.amazon.com",
+    "axiomantic.github.io",
+    "book.getfoundry.sh",
+    "cheatsheetseries.owasp.org",
+    "cli.github.com",
+    "cloud.google.com",
+    "code.claude.com",
+    "cwe.mitre.org",
+    "deepmind.google",
+    "developer.hashicorp.com",
+    "developer.mozilla.org",
+    "developer.sketch.com",
+    "developers.asana.com",
+    "developers.openai.com",
+    "diataxis.fr",
+    "doc.rust-lang.org",
+    "docs.anthropic.com",
+    "docs.astral.sh",
+    "docs.datadoghq.com",
+    "docs.docker.com",
+    "docs.python.org",
+    "docs.sentry.io",
+    "doi.org",
+    "esm.sh",
+    "evil.com",
+    "example.com",
+    "example.invalid",
+    "forge.laravel.com",
+    "git-scm.com",
+    "github.com",
+    "gitlab.com",
+    "gofastmcp.com",
+    "goose-docs.ai",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "json-schema.org",
+    "keepachangelog.com",
+    "kubernetes.io",
+    "learn.microsoft.com",
+    "localhost.evil.com",
+    "mcp.example.com",
+    "mermaid.live",
+    "mintcdn.com",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "nvd.nist.gov",
+    "opencode.ai",
+    "opencollective.com",
+    "owasp.org",
+    "pages.nist.gov",
+    "platform.claude.com",
+    "platform.openai.com",
+    "playwright.dev",
+    "python.org",
+    "raw.githubusercontent.com",
+    "redis.io",
+    "registry.npmjs.org",
+    "schemas.microsoft.com",
+    "semver.org",
+    "simonwillison.net",
+    "stripe.com",
+    "stryker-mutator.io",
+    "tidelift.com",
+    "tools.ietf.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.cs.cmu.edu",
+    "www.ijcai.org",
+    "www.lesswrong.com",
+    "www.mongodb.com",
+    "www.postgresql.org",
+    "www.python.org",
+    "www.sqlite.org",
+    "www.starlette.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

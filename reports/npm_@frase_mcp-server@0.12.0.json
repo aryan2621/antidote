@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@frase/mcp-server",
+    "version": "0.12.0",
+    "download": null
+  },
+  "archive_sha256": "44d23b6b159b52f7a31ce7c53dfff4f43874b8441ef7781d544724e2881bd01f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/cli/init.js",
+      "line": 110,
+      "evidence": "execSync(`claude mcp add frase -e FRASE_API_KEY=${apiKey} -- npx -y @frase/mcp-s",
+      "file_sha256": "d403a68637ebaa2df0c535915a32970f41f87996e1b88cf52e2ae9f2713d5c92"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "high",
+      "id": "AGT-F-TYPOSQUAT",
+      "summary": "Name is within 2 edits of popular package `@qase/mcp-server`",
+      "path": null,
+      "line": null,
+      "evidence": null,
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "claude.ai",
+    "docs.frase.io",
+    "frase.io",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "next.frase.io",
+    "opensource.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "www.frase.io",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
