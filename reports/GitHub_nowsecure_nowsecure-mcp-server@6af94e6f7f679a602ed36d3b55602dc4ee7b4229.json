@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "nowsecure/nowsecure-mcp-server",
+    "version": "6af94e6f7f679a602ed36d3b55602dc4ee7b4229",
+    "download": "https://codeload.github.com/nowsecure/nowsecure-mcp-server/tar.gz/6af94e6f7f679a602ed36d3b55602dc4ee7b4229"
+  },
+  "archive_sha256": "2327a14a08ab4552d8d5449727f1d8bc50fb023d7f33f8333abd65e95fb99d37",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "nowsecure-mcp-server-6af94e6f7f679a602ed36d3b55602dc4ee7b4229/.goreleaser.yaml",
+      "line": 68,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "0a78d3eab20f8d2cd4c4eeb575316d3a5c20216caa7232135883d5296ef9a491"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "nowsecure-mcp-server-6af94e6f7f679a602ed36d3b55602dc4ee7b4229/README.md",
+      "line": 380,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "95c9b75140ba4e58407745631202d66096b3a3748fbcb0c22186b8dcd55e4c55"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "api.invalid",
+    "api.nowsecure.com",
+    "app.nowsecure.com",
+    "cursor.com",
+    "cwe.example",
+    "developers.openai.com",
+    "env.example.com",
+    "example.com",
+    "flag.example.com",
+    "gdpr.example",
+    "github.com",
+    "id.evil.example",
+    "id.nowsecure.com",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "mari.nowsecure.com",
+    "mcp.example.test",
+    "mcp.nowsecure.example",
+    "owasp.org",
+    "some-other-api.example",
+    "support.nowsecure.com",
+    "vscode.dev",
+    "www.nowsecure.com",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

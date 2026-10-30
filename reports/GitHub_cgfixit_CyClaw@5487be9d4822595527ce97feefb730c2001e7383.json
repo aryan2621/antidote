@@ -1,0 +1,792 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "cgfixit/CyClaw",
+    "version": "5487be9d4822595527ce97feefb730c2001e7383",
+    "download": "https://codeload.github.com/cgfixit/CyClaw/tar.gz/5487be9d4822595527ce97feefb730c2001e7383"
+  },
+  "archive_sha256": "85fc98666620ba6e20ef8557c0eb969132f922b5023529c0527749e8d0513b2d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/macos/setup-from-clone.sh",
+      "line": 62,
+      "evidence": "curl | sh",
+      "file_sha256": "2a684defed6570f87346c863d37c39565e2731733cb5c30a2896db90c9fa2994"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/macos/setup-from-clone.sh",
+      "line": 528,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "2a684defed6570f87346c863d37c39565e2731733cb5c30a2896db90c9fa2994"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/guardrails/verify_install.py",
+      "line": 35,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e6f12740a6417fc6491fe54570750122faff611c5cc37f2180aa60538d3a2ad5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/guardrails/selftest.py",
+      "line": 66,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5bf00360eee1f4ed23d2ba64d9a72f75ee1606fcfa323847f67d251199f0537a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/guardrails/rails.py",
+      "line": 72,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "27c562aa0e993799303a21b89988075106339277d982e1f53bcfc651d1708725"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/setup-guide.md",
+      "line": 219,
+      "evidence": "curl | sh",
+      "file_sha256": "878aa943fafb4dc3c950efb0bbe17ece96222343642ffccd38ef598f245fc0f0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/sync/runner.py",
+      "line": 76,
+      "evidence": "curl https://rclone.org/install.sh | sudo bash",
+      "file_sha256": "6b2802befa504971b2105aeb923a598cb5f7d035adfcdc6e45456a6fff6f9a17"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/README.md",
+      "line": 334,
+      "evidence": "find-generic-password",
+      "file_sha256": "1c369fc3d0a9b62dc0de8de87ac089ce20b668cf01b27399513c8ebb5eaba502"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/injection-redteam/probes.yaml",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "66f54a35ac6be753bcc58107e35eef965135d4b123b3f1dd079fb9e6998faf74"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/invariant-guard/check_invariants.py",
+      "line": 74,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "95f0b2f8521913e7740f0e6d5aaf936aebc8d29bbd4ddd9564bc3c488e4dd4b3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/CyClaw-Sandbox/macos-smoke.sh",
+      "line": 154,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "599f259d54b908f6362ce46394b8b01969da6f8285427afb0f65522a86bb64a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/CyClaw-Sandbox/windows-smoke.ps1",
+      "line": 66,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "572a3c4566139765fd164ad362c3d80e3c8b0e02107482ed71851cd05222688c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/CyClaw-Sandbox/smoke.sh",
+      "line": 132,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "db69697180424779899e35243b371e7011930de69a66bd31044007e6d7b889b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/CyClaw-Sandbox/local_audit.py",
+      "line": 358,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "06642a34b8d96785069206cd4ced5d8f5b25c2222a47ee6ff11dd592eb5403f0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/CyClaw-Sandbox/verify.sh",
+      "line": 223,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a2783e640394c076432498fe1fdd6f855463900c3c38589e85bea28103a70773"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/add-comment/SKILL.md",
+      "line": 9,
+      "evidence": "p=0.94 **Persona:** You are the friendly senior engineer who annotates a codebase the w",
+      "file_sha256": "632c58f6da37b23be4b3547815a603b413ea92aa8b520956e9b4443fefd78efe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/cyclaw-gotchas/driver.sh",
+      "line": 149,
+      "evidence": "curl -s --max-time 5 \"$BASE/health\" | python3 -c \"import json,sys; d=json.load(s",
+      "file_sha256": "801cbce3dfcd3053d52c79c268c192837759e92c6d9e65e246df6eb01ccac2d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/otel-hardening/check_otel.py",
+      "line": 1188,
+      "evidence": "curl\", \"macos/setup-from-clone.sh\", (\"curl -fsSL https://ollama.com/install.sh |",
+      "file_sha256": "e35bbe0439f15a6c6f3997d2db67f5369ceda19802f751324af9d48f53efccf9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/logging-refactor/SKILL.md",
+      "line": 142,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e3c380a84a11a452943edead16e91a91fe07c82913a98421c117bde0fdddbd5c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.claude/skills/verification-specialist/SKILL.md",
+      "line": 70,
+      "evidence": "p=0.93 Test suite output provides context, not proof. The author of the implementation ",
+      "file_sha256": "cb2388eb86b24723c7c5cf5d9e839fcc9795a913db25520069250e12bca543b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/memory/selftest.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "854cb39b5f1c63d2daf8d967d6fe7050cc24111544db2e6b3b8c78c80bc5d703"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/! How-To-Guides/Dropbox_Sync_Guide.md",
+      "line": 28,
+      "evidence": "curl https://rclone.org/install.sh | sudo bash",
+      "file_sha256": "dd259723f66331492fd083f22e04453aec4406c26788836f6212011142be18ee"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/! How-To-Guides/OLLAMA_SETUP.md",
+      "line": 16,
+      "evidence": "curl \\| sh",
+      "file_sha256": "8c52611978be650833bb7b212c8689610dc373145ef818eb5eb6fc884e497c4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/SANDBOX_RUNTIME_VERIFICATION_2026-06-21.md",
+      "line": 26,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7472ccde1c63b49c863f0cd5f6a6756c7e38fb9d847e865b264145ed96f23745"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/Local_Sandbox_Complete_Audit_2026-06-25.md",
+      "line": 147,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ec89f4439453c04a9442012ff26c0086ea087d6a2e768f484e1e99de5fa77b84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/2026-07-26-security-scan.md",
+      "line": 323,
+      "evidence": "curl | bash",
+      "file_sha256": "0259ca2a218bdbc7f0b0fe00b0bd0d73e7dc00c0599798d638be9ea203df3ad2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/2026-08-21-sandbox-runtime-verification-report.md",
+      "line": 141,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2cf41f733f314f0a584de1e2acbe2ccd6db4dd655d22110c439fa6e4cdb12463"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/Main_Branch_Audit_And_Review_2026-07-21.md",
+      "line": 82,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "467dc3d28b0a04d1eb70d1cf5927319160923939525f53c2045789a3efb94255"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/2026-07-09-full-review-findings.md",
+      "line": 107,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e65ef600d13c7b63be1f885a779f4fa77eb061ce2e3a5cdcd6e65f025c9c56b7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/audits/2026-07-08-due-diligence-invariants.md",
+      "line": 59,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "875016c6e64b89093c5db67a57db23f281f52723492cf6ddc6ebe878502c337a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/memories/Local_Sandbox_Complete_Audit_2026-06-30.md",
+      "line": 206,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "71dbd44084731de039f686c83df3f1c5e4c24dddb735b0c0dfef17c1df980535"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/NeMo/phase2_implementation_plan.md",
+      "line": 222,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5b5475b9a478d16390c232b1d2d8d170d951aca6e219cc6854061a8828b9a207"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/docs/SYNC_README.md",
+      "line": 59,
+      "evidence": "curl https://rclone.org/install.sh | sudo bash",
+      "file_sha256": "bc9c652e0f51e8b1c302bba70f686844b41e22a238807b4f5c9168113c399621"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/scripts/cyclaw-eval-dogfood.py",
+      "line": 28,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ba00bb486862d08b45981b9f89ea13b7afe1eaf54401315b4893153fcdd76d28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_trash_plist.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "30af6fca628e9be897bb1c1b3c6ac68c13ef185791447fc855a24ab67cc4bd5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_sanitizer.py",
+      "line": 20,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e7f1f30136d2e27b90fadc68b43135d642a1b696a0eccc748b8079c4f563914b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/conftest.py",
+      "line": 193,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4bef5b6d52e2069a050df9d31ff6776904732b1e33515f4b793f06c0cb6d4cc5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_due_diligence_invariants.py",
+      "line": 416,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7f5285019b353d66e396886f1a4ebec67cae17dce6dcb27d387beae14a0af994"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_personality.py",
+      "line": 360,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4614eaffaa2b6987c9a809bc7c2f13f88495a14aa8c0b47370dbfd350d0e5898"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_trash_integrity.py",
+      "line": 49,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4f549d258b45929d6e1bea6ad71a1e47affc8688c5e8b2bccb4471aa0687008b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_trash_task.py",
+      "line": 25,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ca69b91509b40399e51ba3131f9fc1bba07d47ae9153356b7d171d2285d7d3e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/nemo_runtime/test_gateway_acceptance.py",
+      "line": 188,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ca35e330641749b77fbfecce1029884deed876c1a9b245cc69a8f84e44940074"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/nemo_runtime/test_enabled_check.py",
+      "line": 111,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "eda90bd07c86464e6900c9f30e304c5ed7de32715579ace547869e2049d740ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/nemo_runtime/test_nemo_runtime.py",
+      "line": 68,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3df77dcbb10c80236f65da51d24d85b2db5b743d2220c2dca2cfd013c3235d61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_writer.py",
+      "line": 38,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ee35ccfb7c08d5cec6edb5849fa5f564da292271cdec53685fa5375576866d5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/fixtures/graph_outcomes.jsonl",
+      "line": 17,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b6dd5f48f4e6662bb044cdfa1bf66fbbd454370e8ae314df07158d61f7e4387e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/fixtures/groundedness/corpus/sable_bridge.md",
+      "line": 7,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "22f54630ef65cdaf7bddbd12e53269630ef02e8ea4b95540e9521a7684e67fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_guardrails_shared_scanner.py",
+      "line": 65,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "7b6f3942f55b41fc87677663e89946d0164c097c001c06ce159d251f3a7a72ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_retrieval_metrics.py",
+      "line": 71,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1b0d4d37dd095d14f09bcb498589cd10f8a411a1ad35d79fb341f28c2ccb5186"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_memory_routes.py",
+      "line": 40,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "38d81b153b9e844052035c7f06875d93ac9fe907d98daf807788300abee5dc5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_mcp_server.py",
+      "line": 345,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9362930921b8319888f52fea0dded76948474028e377e5ef5da929c6d2ebe976"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_cli.py",
+      "line": 31,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7e56fb418d8ec8b14e1e3193ef940a5d804e8480d53f20048f70deef764d732e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_memory_store.py",
+      "line": 52,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f97700481b80aa6bb9baaa661beb6b8073e9dbdeb0f9c54bb59552aa0cf011cb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_guardrail_bridge.py",
+      "line": 85,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ffd6b4e3119a00584bc30a276abab34b65d50bfa3c461bb29875bc09ae2b0ed9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_client.py",
+      "line": 35,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6aa0611d6bb8d64c19515e4c167d94a16c1838a7d10a39b02d4f01824d274b4a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/native_e2e_hosted.py",
+      "line": 70,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2f44e29d3fa451012244575a39749715222c1f446f568fa5b6429bff2e65000b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_guardrails_rails.py",
+      "line": 65,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f886511fa26b3bf7845135b24b1c2118db691c9e59e10aa5023d7e7d39e7484f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_selftest.py",
+      "line": 27,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "01bab97fc246d23eb7da49709c02b81f735daef69016b0b87fa49a486a2a01a4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_fsconnect_indexer.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4a09fea27da842bfd2db01fce76bb237f278c568bb94b17dc9e7ffdc611d274c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_memory_metadata_prompt_isolation.py",
+      "line": 138,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "317b0ee8b4dc424415c98d92c2760e9d819e1e7692d77363675cdb8efadb62ca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_opentweet_runner.py",
+      "line": 36,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "91d754573aa5a7a22efb500f0e41a477df3bed87f7a40d5d9058ba8533d237be"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_security.py",
+      "line": 42,
+      "evidence": "(repo_root / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "822716eb9026b86058e3967f1a4e2ab2c0dc0b0cbc1257e2049423df2cc90db9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_security.py",
+      "line": 85,
+      "evidence": "(repo_root / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "822716eb9026b86058e3967f1a4e2ab2c0dc0b0cbc1257e2049423df2cc90db9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_security.py",
+      "line": 120,
+      "evidence": "(repo_root / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "822716eb9026b86058e3967f1a4e2ab2c0dc0b0cbc1257e2049423df2cc90db9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_graph.py",
+      "line": 1195,
+      "evidence": "Ignore all prior instructions",
+      "file_sha256": "518085a90f0b2965df0c204ab1cc4129d6a4a872c121bd86fad8dbf294db35fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_gate.py",
+      "line": 727,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2ce0b070636eb214d1d0e79a5eaeed6ee986a2ea2fd24e27219e1ed4bb206a22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_guardrails_integration.py",
+      "line": 48,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "232a5487cfc1109f7fc2e1adbe28cad3f714805364d45820700bc319d2314ffc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tests/test_setup_from_clone.py",
+      "line": 256,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "1d72e0c4cab566b832312a9d96ef2acfafe61f22054fdcb731e4b9b4a4300ce4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.github/workflows/ci.yml",
+      "line": 208,
+      "evidence": "curl|bash",
+      "file_sha256": "9bda87ed7746fab955dfbd7573363091a25b84df33aeb17838526655e372e88f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.agents/skills/cyclaw-sandbox-test/scripts/run_sandbox_test.py",
+      "line": 369,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "449aa54bbf3c1d25220939ed8c81a5fdc2fed72a97eefba1549e59cf3cdcf810"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.agents/skills/cyclaw-sandbox/macos-smoke.sh",
+      "line": 154,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "95ff2447d9ac6c16cad4b66c0f315e2e91294f499703c4715fa7c2d23c3ac695"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.agents/skills/cyclaw-sandbox/windows-smoke.ps1",
+      "line": 66,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a9b37c088c90357874daa0ad747e2d60809f07bac3c87a6092cbb13be8dfec73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.agents/skills/cyclaw-sandbox/smoke.sh",
+      "line": 131,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3ea1a71a4686844ca3d7b3af59f5b95dee10cb83b558128e3687ac785c34be28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/.agents/skills/cyclaw-sandbox/verify.sh",
+      "line": 221,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ee0f91b18b174cb77e5577e592166c443130934cc56594ee1256c7c023dbacf0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "CyClaw-5487be9d4822595527ce97feefb730c2001e7383/tools/lora_finetune/cyclaw_training.json",
+      "line": 730,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5ecec720d1f1c4bfc762cc6e3496e0a74634275790d605311cb2079871c7de6c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.telegram.org",
+    "api.x.ai",
+    "archive.mith.umd.edu",
+    "arxiv.org",
+    "bettermarketing.pub",
+    "blogs.oregonstate.edu",
+    "cgfixit.com",
+    "cli.github.com",
+    "comunicacionyhombre.com",
+    "dejournals.org",
+    "dev.to",
+    "developers.openai.com",
+    "discuss.ai.google.dev",
+    "docs.brew.sh",
+    "docs.ollama.com",
+    "docs.pytest.org",
+    "docs.smith.langchain.com",
+    "docs.trychroma.com",
+    "download.pytorch.org",
+    "en.wikipedia.org",
+    "events.telemetry.data.nvidia.com",
+    "evil.example",
+    "falco.org",
+    "fortune.com",
+    "github.com",
+    "hf.co",
+    "hiddenlayer.com",
+    "huggingface.co",
+    "ic4ml.org",
+    "ieeexplore.ieee.org",
+    "ijesa.vsrp.co.uk",
+    "ijil.uinkhas.ac.id",
+    "ijournalse.org",
+    "img.shields.io",
+    "johnkoetsier.com",
+    "journalism.university",
+    "journals.sagepub.com",
+    "journals.spu.ac.ke",
+    "json.schemastore.org",
+    "lawliberty.org",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "lmstudio.ai",
+    "mail.journals.abuad.edu.ng",
+    "mapuc.substack.com",
+    "marshalmcluhangutenberg.home.blog",
+    "mcluhan.substack.com",
+    "mcluhangalaxy.wordpress.com",
+    "mediatheoryjournal.org",
+    "medium.com",
+    "mmg-1.com",
+    "noemalab.eu",
+    "ollama.com",
+    "omlx.ai",
+    "opentelemetry.io",
+    "opentools.ai",
+    "opentweet.io",
+    "owenkelly.net",
+    "pip.pypa.io",
+    "platform.claude.com",
+    "pmc.ncbi.nlm.nih.gov",
+    "policyoptions.irpp.org",
+    "pypi.org",
+    "qwen.readthedocs.io",
+    "r2cdn.perplexity.ai",
+    "raw.githubusercontent.com",
+    "rclone.org",
+    "regionallens.com",
+    "runninginaforest.wordpress.com",
+    "saspublishers.com",
+    "sites.psu.edu",
+    "synopsis.kubg.edu.ua",
+    "tech.co",
+    "techcrunch.com",
+    "transmissioninmotion.sites.uu.nl",
+    "www.aimspress.com",
+    "www.angelfire.com",
+    "www.anthropic.com",
+    "www.apple.com",
+    "www.cbsnews.com",
+    "www.historyofinformation.com",
+    "www.historytoday.com",
+    "www.humanetech.com",
+    "www.law.georgetown.edu",
+    "www.library.illinois.edu",
+    "www.linkedin.com",
+    "www.livinginternet.com",
+    "www.mdpi.com",
+    "www.nature.com",
+    "www.ndtv.com",
+    "www.nytimes.com",
+    "www.python.org",
+    "www.reddit.com",
+    "www.rollingstone.com",
+    "www.sciencedirect.com",
+    "www.statworx.com",
+    "www.youtube.com",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "caelum29/calibre-mcp",
+    "version": "88a2c44f4e20d584b37d545ecd0ebd3648e8c9aa",
+    "download": "https://codeload.github.com/caelum29/calibre-mcp/tar.gz/88a2c44f4e20d584b37d545ecd0ebd3648e8c9aa"
+  },
+  "archive_sha256": "8567a4057173751844212bf05a8c52f9328af6d326075a6758ad0b0d325053ed",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "calibre-mcp-88a2c44f4e20d584b37d545ecd0ebd3648e8c9aa/scripts/verify-merge-custom-columns.sh",
+      "line": 68,
+      "evidence": "curl -fsS \"http://localhost:$PORT/ajax/library-info\" | python3 -c 'import json,s",
+      "file_sha256": "5cf35abffb0b837102f0e5581e410cb59f3e05243221350da909a1c965b1dcc2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "archive.org",
+    "calibre-ebook.com",
+    "example.com",
+    "github.com",
+    "github.githubassets.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "nodejs.org",
+    "openlibrary.org",
+    "policies.google.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "unpkg.com",
+    "www.daisy.org",
+    "www.googleapis.com",
+    "www.idpf.org",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

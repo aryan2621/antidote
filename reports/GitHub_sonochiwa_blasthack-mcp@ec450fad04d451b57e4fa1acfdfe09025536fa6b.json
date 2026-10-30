@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sonochiwa/blasthack-mcp",
+    "version": "ec450fad04d451b57e4fa1acfdfe09025536fa6b",
+    "download": "https://codeload.github.com/sonochiwa/blasthack-mcp/tar.gz/ec450fad04d451b57e4fa1acfdfe09025536fa6b"
+  },
+  "archive_sha256": "ce3cdbf064f184a0e92bcd4d14c71302dd7175656ccc62a18ddd0c63f681e358",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "blasthack-mcp-ec450fad04d451b57e4fa1acfdfe09025536fa6b/internal/analyzer/analyzer_test.go",
+      "line": 12,
+      "evidence": "Login Data",
+      "file_sha256": "db3b3e275eba7face067f7f264f6a631f670333d2ac182e423a10655cce2d0fb"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "blasthack-mcp-ec450fad04d451b57e4fa1acfdfe09025536fa6b/internal/analyzer/rules.go",
+      "line": 135,
+      "evidence": "Login Data",
+      "file_sha256": "456317237a632871933d7046d576a32531b6251cb83ac44c934a5278fead3c74"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "discord.com",
+    "github.com",
+    "www.blast.hk"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

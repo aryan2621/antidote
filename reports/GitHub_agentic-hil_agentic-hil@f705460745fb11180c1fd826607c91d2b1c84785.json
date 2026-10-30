@@ -1,0 +1,225 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "agentic-hil/agentic-hil",
+    "version": "f705460745fb11180c1fd826607c91d2b1c84785",
+    "download": "https://codeload.github.com/agentic-hil/agentic-hil/tar.gz/f705460745fb11180c1fd826607c91d2b1c84785"
+  },
+  "archive_sha256": "cf3798fb3d506e1ee474f12f2dca93cf6e3a11381cac9705922a35c3785d1c3c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/install.sh",
+      "line": 67,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "06db1fa457b1d89bbd644d4a1b5bbc92bdefc9129f75031e763727749e3504a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/src/agentic_hil/knowledge.py",
+      "line": 823,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "0b11d674a6f6066245086128ef4a03342ad62d66d025739a222f88fda243a0a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/src/agentic_hil/skills/agentic-hil/SKILL.md",
+      "line": 78,
+      "evidence": "p=0.95 A failed call and quarantined hardware are two different refusals, and the resul",
+      "file_sha256": "cd73a516a714c6da9c453d3346fbc59554bebe4d06998ce56e7249d93dc64e33"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/TROUBLESHOOTING.md",
+      "line": 33,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "5c3cfed8576f76dae5901a27d288defe775ac2cede58844f5eea4497326efc39"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/evals/tls_proxy/container/entrypoint.sh",
+      "line": 337,
+      "evidence": "curl -LsSf %s | sh",
+      "file_sha256": "84c0de38559dd08d161af9a42b4ce108ac0e7ea332be90a2095401ae3c3da7de"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/evals/tls_proxy/container/entrypoint.sh",
+      "line": 338,
+      "evidence": "curl -LsSf \"$INSTALLER_URL\" | sh",
+      "file_sha256": "84c0de38559dd08d161af9a42b4ce108ac0e7ea332be90a2095401ae3c3da7de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/evals/tls_proxy/README.md",
+      "line": 78,
+      "evidence": "curl -LsSf https://github.com/agentic-hil/agentic-hil/releases/latest/download/i",
+      "file_sha256": "90dab696db9b7f3e6f5c0c17aa2e397b21a86f22dbd1ed8246dc454648ddec3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/plugins/agentic-hil/skills/agentic-hil/SKILL.md",
+      "line": 78,
+      "evidence": "p=0.95 A failed call and quarantined hardware are two different refusals, and the resul",
+      "file_sha256": "4772f505f23a9136a8ac91aa44c7be045ebeec3f5e818fad23901cc9928be02f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/README.md",
+      "line": 24,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "8b9d6b7cfda4332acb2b0c1bca07effa834b53eab3a74dc2575a42eb1f170e2c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/llms.txt",
+      "line": 5,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "a5f13dc04281d59dfbd49522281af0e5c1c72de2a25bbf78d5f1c5daef4eb8fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/docs/use-cases/develop-on-your-board.md",
+      "line": 109,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "9f4f0030873f53c335a0a6fe7834de971f073a26857c0e65001f1638a277beaa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/docs/installation.md",
+      "line": 14,
+      "evidence": "curl -LsSf https://agentic-hil.github.io/install.sh | sh",
+      "file_sha256": "8f623905b6767b228e45c4e3ad3d67c2dcfb4964f7f481c1409378c23ff6f0ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/AI_AGENT_QUICKSTART.md",
+      "line": 36,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3850cd3032ce94e44a73dd33dd2432bab5d515efeee6ac13cb53ee64704325f2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/CHANGELOG.md",
+      "line": 681,
+      "evidence": "curl -LsSf https://github.com/agentic-hil/agentic-hil/releases/latest/download/i",
+      "file_sha256": "29db079b41db8acfe326bb0b730ffeed9a245049c28220dc5c0a1f4c79dc7f5d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/tests/test_tls_proxy_eval.py",
+      "line": 266,
+      "evidence": "curl -LsSf \\\"$INSTALLER_URL\\\" | sh",
+      "file_sha256": "41ae7e5a666ab22729c17b682e9d8fb6e284577521c1d2e781cc0982c37dc954"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/tests/test_tls_proxy_eval.py",
+      "line": 319,
+      "evidence": "(REPOSITORY_ROOT / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "41ae7e5a666ab22729c17b682e9d8fb6e284577521c1d2e781cc0982c37dc954"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/tests/test_tls_proxy_eval.py",
+      "line": 341,
+      "evidence": "(REPOSITORY_ROOT / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "41ae7e5a666ab22729c17b682e9d8fb6e284577521c1d2e781cc0982c37dc954"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/tests/test_bench_in_container.py",
+      "line": 348,
+      "evidence": "shutil.copyfile(IGNORE_FILE, bench / \"Dockerfile.dockerignore\")",
+      "file_sha256": "bd5cc8d0523642bcef25a52a5fae3083df93a89caf73e303fb03cff0b11616bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentic-hil-f705460745fb11180c1fd826607c91d2b1c84785/tests/test_ci_examples.py",
+      "line": 587,
+      "evidence": "curl -LsSf https://example.invalid/install.sh | sh",
+      "file_sha256": "46874ce0e488b1ccdfe76890a609a81b86caa2ae1e4faafc97c71d351a15ebce"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentic-hil.github.io",
+    "agentic-hil.local",
+    "agentic-hil.readthedocs.io",
+    "api.github.com",
+    "astral.sh",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "desktop.docker.com",
+    "developers.google.com",
+    "docs.espressif.com",
+    "docs.github.com",
+    "docs.readthedocs.com",
+    "example.invalid",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "libusb.info",
+    "modelcontextprotocol.io",
+    "opencode.ai",
+    "openocd.org",
+    "packages.example.internal",
+    "pyocd.io",
+    "pypi.example",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "release-assets.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.jetbrains.com",
+    "www.st.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
