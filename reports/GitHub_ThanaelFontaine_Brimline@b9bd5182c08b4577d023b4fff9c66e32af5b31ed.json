@@ -1,0 +1,175 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThanaelFontaine/Brimline",
+    "version": "b9bd5182c08b4577d023b4fff9c66e32af5b31ed",
+    "download": "https://codeload.github.com/ThanaelFontaine/Brimline/tar.gz/b9bd5182c08b4577d023b4fff9c66e32af5b31ed"
+  },
+  "archive_sha256": "f9a375885eb1024dfc230280fc05b9c43d44354dc4e6595c6a1bbfb3a9d6d10d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/README.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "197e3268c3036d317d55283df85bc9e994b3a6e880f74541fc2cf009048cf54a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/README.fr.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "1707e46c98a5ee40b792ef830e74ea4db9508e114e43ce8a6687d00497d2baab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/docs/releases/v0.2.1.md",
+      "line": 8,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "e0192828362fad9b1aca87978c3d0e944a65bd0ad441dc57912e47548a90d850"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/docs/faq.md",
+      "line": 76,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "7edbec11c2dd7e1a060d12b5a58acc66ce278cd82ce60c63e138847f764aa258"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/docs/install.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "a7288d148191f5336e49796848a129df04ca04e410cafe728fb76da1402b73ff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/scripts/build_app.sh",
+      "line": 86,
+      "evidence": "security find-generic-password -s brimline-signing-keychain -w",
+      "file_sha256": "85ff29e0c53c7b42a6c8b52fb43183d9ef73d42c182000930036d8190663fcf5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/CHANGELOG.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://brimline.thanaelfontaine.eu/install.sh | sh",
+      "file_sha256": "dba9c767c1ecc910dac512e6060ab181529dd0d73ca4d43f8d13589885dc2b1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/Fixtures/antigravity-usage-model-line.txt",
+      "line": 3,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "1a1269447f3faa0ef70b5b4e20ee2a5b1863965b1592f005fa8894165a554049"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/Fixtures/grok-billing-hostile.json",
+      "line": 6,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "66828fc6ae1e1cb8d191546964f971c676c95c8e89f6c871d26be6a9cb5efa55"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/Fixtures/antigravity-usage-hostile.txt",
+      "line": 2,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "cbe98ae68d8fa032ed1b53fade40580ce16ae147dc61b11ce0c8a35867bd3708"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/Fixtures/chatgpt-usage-hostile.json",
+      "line": 22,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "797f4a465f413afd6aee229c3396182ca6bddd436aa0320d79ebf752dad13f4d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/ProviderTextTests.swift",
+      "line": 21,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4a7df8f77bb3082887cb9b4fedeee10f5a3cda9135629be51a7cccdb18b66979"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Brimline-b9bd5182c08b4577d023b4fff9c66e32af5b31ed/tests/BrimlineCoreTests/Providers/AntigravityEndToEndTests.swift",
+      "line": 73,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "479f28825d252b7c6b7e444eaff0de95fe768e9251ff81069d099da2e940dacf"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "acme.okta.com",
+    "antigravity.google",
+    "api.anthropic.com",
+    "auth.x.ai",
+    "auth.x.ai.evil.example",
+    "auth.x.aix",
+    "brimline.thanaelfontaine.eu",
+    "chatgpt.com",
+    "cli-chat-proxy.grok.com",
+    "code.claude.com",
+    "cursor.com",
+    "developers.google.com",
+    "developers.openai.com",
+    "discord.com",
+    "discordapp.com",
+    "dmgbuild.readthedocs.io",
+    "docs.x.ai",
+    "e.org",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "example.test.evil.test",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "learn.chatgpt.com",
+    "modelcontextprotocol.io",
+    "other.test",
+    "polyformproject.org",
+    "proxy.invalid",
+    "semver.org",
+    "support.apple.com",
+    "support.claude.com",
+    "support.google.com",
+    "thanaelfontaine.eu",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.cursor.com",
+    "www.w3.org",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

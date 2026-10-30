@@ -1,0 +1,31 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@brainervirus/workit-mcp",
+    "version": "8.46.2",
+    "download": null
+  },
+  "archive_sha256": "c34d7a7ea2a3869c0cd999361b5d0e19ab08248c670e2fc34a60da4a3b125275",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "package/dist/index.js",
+      "line": 17615,
+      "evidence": "fs4.readFileSync(path4.join(home, \".ssh\", \"config\"), \"utf8\")",
+      "file_sha256": "1d0e41ab0f8740053a2615bc2c0b5a4e7398f419f375bca0e7d53ab8fa917e1f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "json-schema.org",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

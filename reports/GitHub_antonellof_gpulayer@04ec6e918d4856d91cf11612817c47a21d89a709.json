@@ -1,0 +1,114 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "antonellof/gpulayer",
+    "version": "04ec6e918d4856d91cf11612817c47a21d89a709",
+    "download": "https://codeload.github.com/antonellof/gpulayer/tar.gz/04ec6e918d4856d91cf11612817c47a21d89a709"
+  },
+  "archive_sha256": "f7a5e3caf52b18257d68c5e0db0a9f1e41e9d480e48fd2643de76e7685fcbd67",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/benchmarks/cloud/gcp.sh",
+      "line": 80,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3b7c9f7ae9612cd264900dd20305ca0da747f73ec7f47d2a11e7b53ae28b2027"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/antonellof/gpulayer/main/install.sh",
+      "file_sha256": "d97ced781a89baa93a9846b02564fe422231414b796c7267b108cf554d45e26a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/README.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/antonellof/gpulayer/main/install.sh",
+      "file_sha256": "6693976ac0ae25e47c4cc375cd9cf3bd17160e5c0cf067a286c7c32ac99d1f36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/docs/get-started/installation.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/antonellof/gpulayer/main/install.sh",
+      "file_sha256": "b599952a029a3c5adef9492c6e9f74cc4c46670f840bc4a350f10ef0ff269b5e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/docs/decisions/ADR-0017-distribution-and-installation.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/antonellof/gpulayer/main/install.sh",
+      "file_sha256": "df178d39319f5a42c568fc11b58751c9d05524185bb682e0adb7dcedba6e4562"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/docs/decisions/README.md",
+      "line": 35,
+      "evidence": "curl ... install.sh | sh",
+      "file_sha256": "d92eb431756a6559ca8b9d9fd005266c329c3518d45da9d588561d39924ae8a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/scripts/validate_gpu.sh",
+      "line": 23,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "2b9db0fcd75a9c466450b0e284c3d86eda35af086cb080e3e999aa0c9d7cc80f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "gpulayer-04ec6e918d4856d91cf11612817c47a21d89a709/scripts/validate_gpu.sh",
+      "line": 23,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "2b9db0fcd75a9c466450b0e284c3d86eda35af086cb080e3e999aa0c9d7cc80f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.56",
+    "astral.sh",
+    "cp.example",
+    "cp.internal",
+    "docs.astral.sh",
+    "download.pytorch.org",
+    "eslint.org",
+    "feross.org",
+    "github.com",
+    "metadata.google.internal",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "paulmillr.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "semver.org",
+    "tidelift.com",
+    "www.apache.org",
+    "www.googletagmanager.com",
+    "www.gpulayer.dev",
+    "www.patreon.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

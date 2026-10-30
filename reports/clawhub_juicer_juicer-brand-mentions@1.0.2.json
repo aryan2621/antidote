@@ -1,0 +1,39 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "juicer/juicer-brand-mentions",
+    "version": "1.0.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=juicer-brand-mentions&ownerHandle=juicer&version=1.0.2"
+  },
+  "archive_sha256": "fcde5672a1d02a0d423bf7dcaff314cf70896b1c08b522f34ad5bd6b44afaf5d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 54,
+      "evidence": "p=0.97 X mentions can come back as older popular posts rather than the newest ones. If ",
+      "file_sha256": "2151a5c5de031aa2c4ea55160029005a7bacf60938905a899bb20b566c4af4ea"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "clawhub.ai",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "clawhub.ai",
+    "developers.juicer.io",
+    "www.juicer.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

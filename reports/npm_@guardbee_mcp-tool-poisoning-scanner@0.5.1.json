@@ -1,0 +1,51 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-tool-poisoning-scanner",
+    "version": "0.5.1",
+    "download": null
+  },
+  "archive_sha256": "62a020a32a78d909277b1c4613c3c2b82df3d25bef1d5fa0c93c83db9ed4e0ae",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 87,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "68919bd7384e4bdfbed92f7cdc8022447e415ba9337fff03a7e6fda47d503c4c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 34,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "68919bd7384e4bdfbed92f7cdc8022447e415ba9337fff03a7e6fda47d503c4c"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "img.shields.io, www.npmjs.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "github.com",
+    "guardbee.ai",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "raw.githubusercontent.com",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

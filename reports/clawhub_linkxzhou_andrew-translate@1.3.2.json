@@ -1,0 +1,39 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "linkxzhou/andrew-translate",
+    "version": "1.3.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=andrew-translate&ownerHandle=linkxzhou&version=1.3.2"
+  },
+  "archive_sha256": "89306ebace859f3d40fcd76324eecf87a89dcaa3ab8a3ab554a9a15bcbd5507e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evals/evals.json",
+      "line": 54,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "1172793986399c7850bb582ce46897be6ef62cb23c4955244afea1e0bbac1904"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evals/evals.json",
+      "line": 54,
+      "evidence": "p=1.00 Translate the following customer review into Chinese:\\u{a}\\u{a}\"The battery life is grea",
+      "file_sha256": "1172793986399c7850bb582ce46897be6ef62cb23c4955244afea1e0bbac1904"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "example.com",
+    "github.com",
+    "skillhub.cn"
+  ],
+  "install_script": false,
+  "score": "high"
+}

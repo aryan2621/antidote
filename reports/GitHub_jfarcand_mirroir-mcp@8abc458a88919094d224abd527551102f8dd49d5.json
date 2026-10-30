@@ -1,0 +1,117 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jfarcand/mirroir-mcp",
+    "version": "8abc458a88919094d224abd527551102f8dd49d5",
+    "download": "https://codeload.github.com/jfarcand/mirroir-mcp/tar.gz/8abc458a88919094d224abd527551102f8dd49d5"
+  },
+  "archive_sha256": "851fdc7e97eefa75de683ceb3686eee244dbac927c39592055dd58f66188049c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/runner/docs/judge-profiles.md",
+      "line": 150,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "13088eb482cb58bfc35dc1694c744dcef4540983e58cb341f9d8e121008bad85"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/website/public/get-mirroir.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://mirroir.dev/get-mirroir.sh | bash",
+      "file_sha256": "a4259e19a4e51fb057ffdc208618da1325892c5f98affc7cf2013360a7f06dde"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/npm/install.js",
+      "line": 51,
+      "evidence": "execSync(`tar xzf \"${tmpFile}\" -C \"${binDir}\"`, { stdio: \"inherit\" })",
+      "file_sha256": "596f49f2dc6c9d3c28ae0eb28ef8fbe854b4ad7099a212f85cbff89ee4650eaf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/scripts/ci/mcp-schema-2026-07-28.json",
+      "line": 1065,
+      "evidence": "p=0.90 The name of the prompt or prompt template.",
+      "file_sha256": "ef70b61f99b6d2e5e3b46863822eab08dff6a45bedc7a08914e0e5b133f40203"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/.github/workflows/runner.yml",
+      "line": 392,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "60948b6d393642ee7a433a11b2fab4ac9f3f8495e4718e008c3842b0e690eb00"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/.github/workflows/runner.yml",
+      "line": 404,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "60948b6d393642ee7a433a11b2fab4ac9f3f8495e4718e008c3842b0e690eb00"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-8abc458a88919094d224abd527551102f8dd49d5/get-mirroir.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://mirroir.dev/get-mirroir.sh | bash",
+      "file_sha256": "a4259e19a4e51fb057ffdc208618da1325892c5f98affc7cf2013360a7f06dde"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.237",
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.openai.com",
+    "attacker.test",
+    "datatracker.ietf.org",
+    "developer.apple.com",
+    "discord.gg",
+    "discussions.apple.com",
+    "docs.github.com",
+    "docs.ultralytics.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.test",
+    "gist.github.com",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json-schema.org",
+    "mirroir.dev",
+    "ollama.com",
+    "opencollective.com",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "self-hosted.test",
+    "static.cloudflareinsights.com",
+    "static.modelcontextprotocol.io",
+    "support.apple.com",
+    "tap.mirroir.dev",
+    "tidelift.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

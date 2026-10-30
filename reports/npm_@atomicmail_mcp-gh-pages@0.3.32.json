@@ -1,0 +1,33 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@atomicmail/mcp-gh-pages",
+    "version": "0.3.32",
+    "download": null
+  },
+  "archive_sha256": "c814924cc6ed9d2f0727a8f3f7b040cac9a5e0c6a6ed907bf528dfb4172831f4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/shared/skill/manifest.json",
+      "line": 34,
+      "evidence": "p=0.97 Use {{CLI_HERMES_BLUEPRINT}} jmap_request --ops-file list_inbox.json to fetch my",
+      "file_sha256": "b23e272528eeff9e37caba8c734931896e388c7bbea4be06d801cfc78876aacb"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.atomicmail.ai",
+    "atomicmail.ai",
+    "auth.atomicmail.ai",
+    "eu.posthog.com",
+    "github.com",
+    "mcp.atomicmail.ai",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

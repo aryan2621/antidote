@@ -1,0 +1,112 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "dbt-labs/dbt-mcp",
+    "version": "b7d2860ad80fddd54daa61a7abfc8c8bc685c198",
+    "download": "https://codeload.github.com/dbt-labs/dbt-mcp/tar.gz/b7d2860ad80fddd54daa61a7abfc8c8bc685c198"
+  },
+  "archive_sha256": "05d212fb34b2c4331bed00137fda3f0b2fcf5a79c7bf53697b7ebd6e17aa1aa4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/src/dbt_mcp/prompts/discovery/get_model_parents.md",
+      "line": 8,
+      "evidence": "p=0.97 This is specifically for retrieving model parents from the production manifest. ",
+      "file_sha256": "c7fb8296e66465a823183cd7dd8a6331af36646ce5fb61577d3ef1724294d55a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/src/dbt_mcp/prompts/discovery/get_model_children.md",
+      "line": 6,
+      "evidence": "p=0.97 This is specifically for retrieving model children from the production manifest.",
+      "file_sha256": "5b3fedbce0c8f5cfdefafb80b631d57e33590af4c122fe185b0d62c467749884"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/src/dbt_mcp/prompts/dbt_cli/args/sql_query.md",
+      "line": 1,
+      "evidence": "p=0.90 This is the SQL query to run against the data platform. Do not add a limit to th",
+      "file_sha256": "58eeed8189bcead1287d3d15fd2f2bfebf5076cce3f7fac1fa7fddd0280900b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/src/dbt_mcp/prompts/dbt_cli/get_lineage_dev.md",
+      "line": 6,
+      "evidence": "p=0.94 This tool ONLY pulls from the local development manifest. For production lineage",
+      "file_sha256": "38b21c0c07721d28c902ddf6cf0bb42a6b95d3b2425c5dc0b6c62d7f51159215"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "aaef47ac21376705f8c020bd981e089c391099a9097ed4ef4b542c61dc208af9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "dbt-mcp-b7d2860ad80fddd54daa61a7abfc8c8bc685c198/.github/workflows/run-checks-pr.yaml",
+      "line": 78,
+      "evidence": "curl -fsSL https://d2lang.com/install.sh | sh",
+      "file_sha256": "cd5a3da2469f41844f769a05275f4f9ed37885ec8dcddc77cb334d9b237ceb18"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ab123.us1.dbt.com",
+    "ai-sdk.dev",
+    "aistudio.google.com",
+    "auth.example.com",
+    "changie.dev",
+    "cloud-ui.cdn.getdbt.com",
+    "cloud.getdbt.com",
+    "d2lang.com",
+    "dbt-cloud-app.dbt-cloud.svc.cluster.local",
+    "dbt.example.com",
+    "di041.metadata.us1.dbt.com",
+    "docs.astral.sh",
+    "docs.getdbt.com",
+    "docs.getdbt.com.evil.com",
+    "docs.github.com",
+    "eslint.org",
+    "eu1.cloud.getdbt.com",
+    "evil.com",
+    "example.com",
+    "example.test",
+    "example1.com",
+    "example2.com",
+    "files.pythonhosted.org",
+    "github.com",
+    "keepachangelog.com",
+    "metadata.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "schemas.getdbt.com",
+    "semantic-layer.example.com",
+    "semver.org",
+    "taskfile.dev",
+    "us1.dbt.com",
+    "vite.dev",
+    "vu491.us1.dbt.com",
+    "www.apache.org",
+    "www.bestpractices.dev",
+    "www.getdbt.com",
+    "www.w3.org",
+    "your-mcp-server.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

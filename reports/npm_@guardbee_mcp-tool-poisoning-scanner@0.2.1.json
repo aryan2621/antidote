@@ -1,0 +1,86 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-tool-poisoning-scanner",
+    "version": "0.2.1",
+    "download": null
+  },
+  "archive_sha256": "0bcbc3ab17b2bcac4fdf2374cda7f18c9eea8cedf9c51ddcdc751027d820f564",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/patterns.js",
+      "line": 14,
+      "evidence": "disregard prior instructions",
+      "file_sha256": "d9e908315223ac789e30b16af6c55f5de8e69d69db24c2d91dc7accc381206d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/__tests__/scanner.test.js",
+      "line": 37,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1d95ec894503730b55f8246e154ef0219c53247dbffddfa7ad090172b85fcfbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/TR.md",
+      "line": 82,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c74e8f5233db77d89a39c669596907dfc491b16e9cddabf8fcb99efa7720baec"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/TR.md",
+      "line": 30,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "c74e8f5233db77d89a39c669596907dfc491b16e9cddabf8fcb99efa7720baec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 82,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6ea356114498bebff5de73dea79e39209b695474becdab01ce9e5a95978f2e39"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 30,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "6ea356114498bebff5de73dea79e39209b695474becdab01ce9e5a95978f2e39"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.weather.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.weather.com",
+    "github.com",
+    "guardbee.ai",
+    "invariantlabs.ai",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
