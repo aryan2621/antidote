@@ -1,0 +1,95 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "emeraldleaf/okl",
+    "version": "1def82c69c68dc5104eb427085d43d1c7c6773b3",
+    "download": "https://codeload.github.com/emeraldleaf/okl/tar.gz/1def82c69c68dc5104eb427085d43d1c7c6773b3"
+  },
+  "archive_sha256": "ca4b386c7d43b455e182763fdd676ad19d75c78bf97654a7b04b0abac2ab8b9e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "okl-1def82c69c68dc5104eb427085d43d1c7c6773b3/src/okl/scaffold/claude/commands/record.md",
+      "line": 8,
+      "evidence": "p=0.96 The person wants to keep something so the next session does not relearn it. They",
+      "file_sha256": "44d0f5dbc65b7a0daa6c207940747a9d1149a0f81601f9f6d88a6a0c52cc1f57"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "okl-1def82c69c68dc5104eb427085d43d1c7c6773b3/CLAUDE.md",
+      "line": 1,
+      "evidence": "p=0.99 # okl — repo instructions",
+      "file_sha256": "5c85b86499249e79ab57218b4642c20647d99cf8222e9cf8a5eff6d09517ea90"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "okl-1def82c69c68dc5104eb427085d43d1c7c6773b3/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.99 # okl — repo instructions",
+      "file_sha256": "5c85b86499249e79ab57218b4642c20647d99cf8222e9cf8a5eff6d09517ea90"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "okl-1def82c69c68dc5104eb427085d43d1c7c6773b3/.claude/commands/record.md",
+      "line": 8,
+      "evidence": "p=0.96 The person wants to keep something so the next session does not relearn it. They",
+      "file_sha256": "44d0f5dbc65b7a0daa6c207940747a9d1149a0f81601f9f6d88a6a0c52cc1f57"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "platform.claude.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "arxiv.org",
+    "code.claude.com",
+    "cursor.com",
+    "docs.github.com",
+    "docs.packmind.com",
+    "docs.sonarsource.com",
+    "emeraldleaf.dev",
+    "example.com",
+    "files.pythonhosted.org",
+    "forum.cursor.com",
+    "github.blog",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json.schemastore.org",
+    "lucide.dev",
+    "okl.internal",
+    "okl.invalid",
+    "okl.myorg.dev",
+    "okl.test",
+    "platform.claude.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "service.invalid",
+    "static.modelcontextprotocol.io",
+    "store.example",
+    "vercel.com",
+    "www.anthropic.com",
+    "www.contributor-covenant.org",
+    "www.trychroma.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

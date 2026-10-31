@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ardss/kynoptic",
+    "version": "dd47c087b3575f22d7df244182c5943433899f48",
+    "download": "https://codeload.github.com/ardss/kynoptic/tar.gz/dd47c087b3575f22d7df244182c5943433899f48"
+  },
+  "archive_sha256": "10ab254414caaf0bd529c6a9da90cedd94d21fd0cd305978ad5b100f4d87f35a",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "kynoptic-dd47c087b3575f22d7df244182c5943433899f48/scripts/e2e.sh",
+      "line": 38,
+      "evidence": "curl -s --noproxy '*' --max-time 8 \"$BASE/api/summary\" | python -c \" import json",
+      "file_sha256": "266fd57b19b593b018325d3eed28ec8c4282a5698e0a59b06ad3400a30b1bb70"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "kynoptic-dd47c087b3575f22d7df244182c5943433899f48/scripts/e2e.sh",
+      "line": 46,
+      "evidence": "curl -s --noproxy '*' --max-time 8 \"$BASE/api/insights\" | python -c \" import jso",
+      "file_sha256": "266fd57b19b593b018325d3eed28ec8c4282a5698e0a59b06ad3400a30b1bb70"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "kynoptic-dd47c087b3575f22d7df244182c5943433899f48/scripts/e2e.sh",
+      "line": 122,
+      "evidence": "curl -s --noproxy '*' --max-time 8 \"$BASE/api/input?days=7\" | python -c \" import",
+      "file_sha256": "266fd57b19b593b018325d3eed28ec8c4282a5698e0a59b06ad3400a30b1bb70"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "a.io",
+    "ex.io",
+    "example.com",
+    "example.invalid",
+    "formsubmit.co",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "kynoptic.com",
+    "semver.org",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.w3.org",
+    "x.io",
+    "zoom.us"
+  ],
+  "install_script": false,
+  "score": "high"
+}

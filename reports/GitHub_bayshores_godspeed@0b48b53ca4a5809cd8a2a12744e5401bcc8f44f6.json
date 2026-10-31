@@ -1,0 +1,91 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "bayshores/godspeed",
+    "version": "0b48b53ca4a5809cd8a2a12744e5401bcc8f44f6",
+    "download": "https://codeload.github.com/bayshores/godspeed/tar.gz/0b48b53ca4a5809cd8a2a12744e5401bcc8f44f6"
+  },
+  "archive_sha256": "231a689ad2166fa929fb44f3f36023972e8194ef7de581d45e18c63a9a26c4f5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "godspeed-0b48b53ca4a5809cd8a2a12744e5401bcc8f44f6/tests/render-halley.test.tsx",
+      "line": 180,
+      "evidence": "\\u{202e}",
+      "file_sha256": "1b69439c566a3fe44a500732fe9e044456a91bb1a42aff7472291a90326f9413"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "godspeed-0b48b53ca4a5809cd8a2a12744e5401bcc8f44f6/integrations/skills/godspeed/references/data-format.md",
+      "line": 106,
+      "evidence": "p=0.99 This is an illustrative fragment, not a valid complete question fixture. Tool ar",
+      "file_sha256": "9717860615b75fa84c96c4b03d41143b71685c365c40190ae0a4e6177d86b933"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "attacker.example, blog.modelcontextprotocol.io, claude.com, developers.openai.com, modelcontextprotocol.io, ts.sdk.modelcontextprotocol.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "arxiv.org",
+    "attacker.example",
+    "blog.modelcontextprotocol.io",
+    "britannica.com",
+    "claude.com",
+    "developers.openai.com",
+    "devguide.python.org",
+    "docs.python.org",
+    "dotenvx.com",
+    "eslint.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "feross.org",
+    "fsf.org",
+    "github.com",
+    "huggingface.co",
+    "iep.utm.edu",
+    "katex-security.invalid",
+    "learnatgodspeed.com",
+    "modelcontextprotocol.io",
+    "nasa.gov",
+    "opencollective.com",
+    "paulmillr.com",
+    "paypal.me",
+    "peps.python.org",
+    "polar.sh",
+    "r.jina.ai",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "thirdparty.invalid",
+    "tidelift.com",
+    "ts.sdk.modelcontextprotocol.io",
+    "ui.shadcn.com",
+    "unpkg.com",
+    "untrusted.invalid",
+    "www.apple.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.python.org",
+    "www.sigmajs.org",
+    "www.w3.org",
+    "x.example",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

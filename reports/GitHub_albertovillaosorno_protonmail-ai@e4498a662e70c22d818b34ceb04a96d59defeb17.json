@@ -1,0 +1,59 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "albertovillaosorno/protonmail-ai",
+    "version": "e4498a662e70c22d818b34ceb04a96d59defeb17",
+    "download": "https://codeload.github.com/albertovillaosorno/protonmail-ai/tar.gz/e4498a662e70c22d818b34ceb04a96d59defeb17"
+  },
+  "archive_sha256": "3f74ecf5a50bf16da2288ae3bfdd8da6160aad76a4a55f58fbeb440648724c83",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-e4498a662e70c22d818b34ceb04a96d59defeb17/docs/todo/open/web-ui-adapter.mdc",
+      "line": 116,
+      "evidence": "p=0.93 - Red-first synthetic message-list and detail responses accepted Unicode nonchar",
+      "file_sha256": "474dd2f58d2f3a0d04180dc6b260de692f7b6f34132bcfa170e3c3f8765fc06d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-e4498a662e70c22d818b34ceb04a96d59defeb17/docs/todo/open/interactive-auth-and-session.mdc",
+      "line": 199,
+      "evidence": "p=0.96 - Completed-fork account IDs now also refuse Unicode noncharacters, which previo",
+      "file_sha256": "657c793bf1cef6a14122c8d1ee0c37484466df1944cd231d37104191433ab504"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "evil.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "account.proton.me",
+    "crates.io",
+    "evil.example",
+    "example.test",
+    "fsf.org",
+    "github.com",
+    "lookalike.example.test",
+    "mail.evil.test",
+    "mail.proton.me",
+    "mail.proton.me.evil.example",
+    "mail.proton.me.evil.test",
+    "proton.me",
+    "protonmail.ch",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

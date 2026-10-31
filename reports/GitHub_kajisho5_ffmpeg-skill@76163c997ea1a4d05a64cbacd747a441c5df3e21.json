@@ -1,0 +1,59 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kajisho5/ffmpeg-skill",
+    "version": "76163c997ea1a4d05a64cbacd747a441c5df3e21",
+    "download": "https://codeload.github.com/kajisho5/ffmpeg-skill/tar.gz/76163c997ea1a4d05a64cbacd747a441c5df3e21"
+  },
+  "archive_sha256": "5bbc374a54b27816bca30a7997ccfa73063b7886be946189d1d0e9966ed68876",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ffmpeg-skill-76163c997ea1a4d05a64cbacd747a441c5df3e21/.claude/skills/destructive-operations/SKILL.md",
+      "line": 73,
+      "evidence": "p=0.97 The guard needs to answer \"is every tracked path inside the directory this comma",
+      "file_sha256": "06decc8e6d2580632255d1562ca79b50ab597afb32beec2d84e28371f07fc29d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1, snyk.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "archive.org",
+    "docs.anthropic.com",
+    "docs.npmjs.com",
+    "doi.org",
+    "download.blender.org",
+    "example.com",
+    "ffmpeg.org",
+    "github.com",
+    "img.photographyblog.com",
+    "img.shields.io",
+    "johnvansickle.com",
+    "kajisho5.github.io",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "snyk.io",
+    "storage.googleapis.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.rtings.com",
+    "www.w3.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

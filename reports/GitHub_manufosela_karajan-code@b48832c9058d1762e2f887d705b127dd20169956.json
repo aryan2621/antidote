@@ -1,0 +1,964 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "manufosela/karajan-code",
+    "version": "b48832c9058d1762e2f887d705b127dd20169956",
+    "download": "https://codeload.github.com/manufosela/karajan-code/tar.gz/b48832c9058d1762e2f887d705b127dd20169956"
+  },
+  "archive_sha256": "03f6861008ba189962022f7fd070227d685e0d1b3cbe8320c59a5c476e29d93f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/rtk-install.test.js",
+      "line": 8,
+      "evidence": "curl -fsSL https://example.com/install.sh | sh",
+      "file_sha256": "0bc1c32cece06e72b57d9b74744145aee5cf129c8d12f3833b5a698748e95e6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/roles/audit-security-only.test.js",
+      "line": 16,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "8b6eb698af2860758f090684644eb8ddf2df4e914ad532d67feb20e22d494e89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/review/pr-security.test.js",
+      "line": 44,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "916483cd27db70ab46d07adfd71ce36d0273a3353d35ff866b7328e8466ccc4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/injection-guard.test.js",
+      "line": 20,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b8f0a4eb007fe6cf210f6181ee8d9bfb9ada064131c3d9c666aa4391ad38ce6f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 521,
+      "evidence": "execSync(`git worktree add --detach ${lane}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 529,
+      "evidence": "execSync(`git worktree remove --force ${lane}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 585,
+      "evidence": "execSync(`git worktree add --detach ${inTree}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 605,
+      "evidence": "execSync(`git worktree remove --force ${inTree}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 815,
+      "evidence": "execSync(`git worktree add --detach ${lane2}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-hooks.test.js",
+      "line": 819,
+      "evidence": "execSync(`git worktree remove --force ${lane2}`, { cwd: dir })",
+      "file_sha256": "70b11aefc17545cbe69e4f7a99415089813d05de51610b5f80ba90abf944ae96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-discard-guard.test.js",
+      "line": 119,
+      "evidence": "execSync(`git add \"${name}\" && git commit -q -m add`, { cwd: dir, env: { ...proc",
+      "file_sha256": "071dc1fe40611c6b2094063b97b43c26fef2c9bbe2572e3ca4cbc71e77b37eb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/harden/sentinel-bootstrap.test.js",
+      "line": 21,
+      "evidence": "execSync(`git -c user.email=t@t -c user.name=t ${args}`, { cwd: dir })",
+      "file_sha256": "3b92e8984388408eacc2f130eab053e9e931dc10062beacd3cb0d4ce900e3002"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/e2e/helpers/tmp-project.js",
+      "line": 26,
+      "evidence": "execSync(`git -C \"${projectDir}\" init -q -b main`)",
+      "file_sha256": "191aaf5fa9d4ae50ddbc60b06a67cc98f3facbdbf940adde242dd2f775611233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/e2e/helpers/tmp-project.js",
+      "line": 28,
+      "evidence": "execSync(`git -C \"${projectDir}\" config user.email \"e2e@test.local\"`)",
+      "file_sha256": "191aaf5fa9d4ae50ddbc60b06a67cc98f3facbdbf940adde242dd2f775611233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/e2e/helpers/tmp-project.js",
+      "line": 29,
+      "evidence": "execSync(`git -C \"${projectDir}\" config user.name \"e2e\"`)",
+      "file_sha256": "191aaf5fa9d4ae50ddbc60b06a67cc98f3facbdbf940adde242dd2f775611233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/e2e/helpers/tmp-project.js",
+      "line": 35,
+      "evidence": "execSync(`git -C \"${projectDir}\" add SPEC.md`)",
+      "file_sha256": "191aaf5fa9d4ae50ddbc60b06a67cc98f3facbdbf940adde242dd2f775611233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/e2e/helpers/tmp-project.js",
+      "line": 36,
+      "evidence": "execSync(`git -C \"${projectDir}\" commit -q -m \"chore: initial spec\"`)",
+      "file_sha256": "191aaf5fa9d4ae50ddbc60b06a67cc98f3facbdbf940adde242dd2f775611233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 81,
+      "evidence": "execSync(`git -C \"${tmp}\" init -q`)",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 88,
+      "evidence": "execSync(`git -C \"${tmp}\" remote add origin git@github.com:manufosela/weather-da",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 93,
+      "evidence": "execSync(`git -C \"${tmp}\" remote add origin https://github.com/manufosela/weathe",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 131,
+      "evidence": "execSync(`git -C \"${tmp}\" init -q`)",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 132,
+      "evidence": "execSync(`git -C \"${tmp}\" remote add origin git@github.com:foo/from-git.git`)",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 137,
+      "evidence": "execSync(`git -C \"${tmp}\" init -q`)",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/derive-project-name-from-cwd.test.js",
+      "line": 138,
+      "evidence": "execSync(`git -C \"${tmp}\" remote add origin git@github.com:foo/from-git.git`)",
+      "file_sha256": "7f49e3ce95ed4a449589fcaf6cf6aeb9e084bf60218bd3c87eee554d0a32d31b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/commands/install-tools.test.js",
+      "line": 155,
+      "evidence": "curl|sh",
+      "file_sha256": "b59f4f86d232afbca60f11ab2c8efb25dfa1e9d8d2c93c7d9b83ce0379ae70c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/audit/injection-findings.test.js",
+      "line": 39,
+      "evidence": "\\u{202e}",
+      "file_sha256": "47a4299ba11f24ae8cda76a78101f5cc27f53ae334a68932290b74130e2727a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/tests/audit/injection-findings.test.js",
+      "line": 29,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "47a4299ba11f24ae8cda76a78101f5cc27f53ae334a68932290b74130e2727a0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/templates/atril/commands/kj-sql-analysis.md",
+      "line": 14,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "1e82860e1f414c9eeb43ab466cc702712d8aca5ff16d98923976145f98c181dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/templates/atril/commands/kj-data-report.md",
+      "line": 14,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "9c34114ecfc453722b608bc67f4a85afed080372f922cf2232787d91ab873d6b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/templates/atril/commands/kj-csv-transform.md",
+      "line": 14,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "c0b69edbad8526fe8ee27cfb445be99780584aa39005056dd239af519bcaaa03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/utils/update-check.js",
+      "line": 88,
+      "evidence": "curl -fsSL ${INSTALL_SH_URL} | sh",
+      "file_sha256": "a5435192015982f15a79ea17eb3566ba89fb25720bfaaf95d7ae3c05b1738b38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/utils/pending-user-action.js",
+      "line": 45,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "b8ea1192ff97460aa253ccacfa0849cb5755631769a81e918bc7c151bd55810a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/utils/os-detect.js",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/instal",
+      "file_sha256": "19675321e3f3b3cbbcf1cdf25867d61beffe627b876200308a1c4feb5444227b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/utils/docker-install.js",
+      "line": 7,
+      "evidence": "curl | sh",
+      "file_sha256": "f4d34c5a5025659425e07aa37f3cb3b31823b0bccf6d65bb3d054c7d68e2e5e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/review/reviewer-fallback.js",
+      "line": 37,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "e239bc3d09c077c08bb0ecf7e51de48d63f1cf9f14b01f72ad561ad405c2533a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/harden/sentinel/sentinel-lib.mjs",
+      "line": 39,
+      "evidence": "execSync(\"git \" + args, { cwd, stdio: [\"ignore\", \"pipe\", \"ignore\"] })",
+      "file_sha256": "2ce00b44a6189c88af001894debd573303d26bdea779aab8e43f4a960e66573f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/harden/sentinel/sentinel-lib.mjs",
+      "line": 188,
+      "evidence": "execSync(\"git status --porcelain -- \" + files.join(\" \"), { cwd: top, stdio: [\"ig",
+      "file_sha256": "2ce00b44a6189c88af001894debd573303d26bdea779aab8e43f4a960e66573f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/src/commands/install-tools.js",
+      "line": 256,
+      "evidence": "curl | sh",
+      "file_sha256": "b5df651c69c40bcf1e50884b3ba8b8773a09cc6745ee561d763399e844efb302"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/scripts/install-kj.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/manufosela/karajan-code/main/script",
+      "file_sha256": "e340480abb8cd3d7a7f6c6fbfcf3bba6d1a2606a5ee7769b87143640c9d18f94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/scripts/install-binary.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "f4d08ca5fba1fe6c8e46234a9cc60cb199545cdf93a48d0dbd835e49d0889dff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/scripts/install-binary.sh",
+      "line": 161,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "f4d08ca5fba1fe6c8e46234a9cc60cb199545cdf93a48d0dbd835e49d0889dff"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/watch/.claude/commands/kj-sql-analysis.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "2832bfa9a17cfc199637a554c0e230699c8840c4563b17a9b1776329f4893b16"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/watch/.claude/commands/kj-data-report.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "0c7a0dc510f4a57c58f7f941c694837e13443828cdb4882a32279cdcfa8bd02c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/watch/.claude/commands/kj-csv-transform.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "f92daefabb9aed738d592a54b6e39ebc5b97ef9344c9edd5b2fa2c4670bd27e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/rag/scripts/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://rag.karajancode.com/install.sh | sh",
+      "file_sha256": "ce7c67ff627dfa06df3a7db981727440c39ad0aedb17b606173457a61115df11"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/rag/docs/prompts/start.md",
+      "line": 47,
+      "evidence": "p=0.92 Run `karajan-rag doctor`. Report to the user: what got installed or indexed, any",
+      "file_sha256": "20cc17bdb6849011aaeacbb40900c53de40743c0bd6f12177bfbf803b29cef5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/rag/docs/prompts/install-machine.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://rag.karajancode.com/install.sh | sh",
+      "file_sha256": "b6c0bf78bc6de15aa9356f0b36069355f278433242b01bf33e1f997c3f47ecc5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/rag/README.md",
+      "line": 78,
+      "evidence": "curl -fsSL https://rag.karajancode.com/install.sh | sh",
+      "file_sha256": "867f6c70b831ce82fc7bd01742d4c90d2d529a322b783db96b0c051bb944fb5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/tests/unit/test_services/test_ingestion.py",
+      "line": 331,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "271917f8bfac073ab9d51e61f058d71625ed8a0622761139480381739c41b47e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/tests/unit/test_security/test_scan_record.py",
+      "line": 39,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "04ddaab828d2e1a60b2f29468a43adc63869caae86d8898d7b9ed9975fd2a008"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/tests/unit/test_security/test_injection_scan.py",
+      "line": 52,
+      "evidence": "\\u{202e}",
+      "file_sha256": "3c70137ee1b0f798cf3f33789a773fe2ab8cf5cec929fd49c19f16b9d6e6dec6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/tests/unit/test_security/test_injection_scan.py",
+      "line": 31,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "3c70137ee1b0f798cf3f33789a773fe2ab8cf5cec929fd49c19f16b9d6e6dec6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/tests/smoke/fake_source.py",
+      "line": 42,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b32b7d01cd375422d20aa244b926ee19698212e60f0f9a4b763981e260c0d9f4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/app/security/injection_scan.py",
+      "line": 11,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "57dbf33a4caf1eb33795c3cd60bf1e3d023972dce2f69265523e8c2b63c69569"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/backend/app/corpus/documents.py",
+      "line": 39,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "b16701a8e8947304b7083cf06a66327b7245a6f3656f465f784139211ce835bf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/.claude/commands/kj-sql-analysis.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "2832bfa9a17cfc199637a554c0e230699c8840c4563b17a9b1776329f4893b16"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/.claude/commands/kj-data-report.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "0c7a0dc510f4a57c58f7f941c694837e13443828cdb4882a32279cdcfa8bd02c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/radar/.claude/commands/kj-csv-transform.md",
+      "line": 9,
+      "evidence": "p=0.97 ## Coder instructions",
+      "file_sha256": "f92daefabb9aed738d592a54b6e39ebc5b97ef9344c9edd5b2fa2c4670bd27e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 47,
+      "evidence": "execSync(`git -C \"${tmpProject}\" init -q`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 48,
+      "evidence": "execSync(`git -C \"${tmpProject}\" config user.email t@t.t`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 49,
+      "evidence": "execSync(`git -C \"${tmpProject}\" config user.name Tester`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 51,
+      "evidence": "execSync(`git -C \"${tmpProject}\" add -A`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 52,
+      "evidence": "execSync(`git -C \"${tmpProject}\" commit -q -m init`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 67,
+      "evidence": "execSync(`git -C \"${tmpProject}\" init -q`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 68,
+      "evidence": "execSync(`git -C \"${tmpProject}\" remote add origin git@github.com:test/repo.git`",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 77,
+      "evidence": "execSync(`git -C \"${tmpProject}\" init -q`, { stdio: 'ignore' })",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 78,
+      "evidence": "execSync(`git -C \"${tmpProject}\" remote add aaa-import /tmp/kj-preflight-gone-${",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 79,
+      "evidence": "execSync(`git -C \"${tmpProject}\" remote add origin git@github.com:test/repo.git`",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 80,
+      "evidence": "execSync(`git -C \"${tmpProject}\" remote add mirror ${tmpProject}`, { stdio: 'ign",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/tests/preflight.test.js",
+      "line": 81,
+      "evidence": "execSync(`git -C \"${tmpProject}\" remote add rel ../kj-preflight-gone-relative`, ",
+      "file_sha256": "0c220fede140237d549f5074d6296884cb0f51d9aeb79c8c3c8458fb34ca2a5b"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/packages/hu-board/src/routes/api.js",
+      "line": 1190,
+      "evidence": "router.post('/board/restart', (_req, res) => { // Tests / programmatic callers c",
+      "file_sha256": "d162d2190d382ef644d83e769399d00fc3b5a527376ea9a352ee46498c33b418"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/prompts/spec.md",
+      "line": 3,
+      "evidence": "p=0.99 You do not need a formal document. Answering this gives Karajan enough to plan w",
+      "file_sha256": "7ad5694b831f91a69f858454e2267e23506762fbadc3eacdee0a865c42224157"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/prompts/install-machine.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "ca4b2fb86b688622720c30b5736029dcf33f9a1b47df1cbd80e2223bb30d201a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/README.v3.md",
+      "line": 151,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/manufosela/karajan-code/main/script",
+      "file_sha256": "8d818051d8e4a5b1d9d379fa241e04e8905322c275774fe26f7da83833b3a381"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/README.v3.md",
+      "line": 164,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "8d818051d8e4a5b1d9d379fa241e04e8905322c275774fe26f7da83833b3a381"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/README.v3.es.md",
+      "line": 82,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/manufosela/karajan-code/main/script",
+      "file_sha256": "8fc3a2e0cfc5d4ea338c235a2878a5dc421062ddc9f28945d60a3bc6967145ac"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/docs/README.es.md",
+      "line": 47,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "1280fac96ade3ef8dec1c06150e12231c2865c5b236ba50414675c2265a735c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/public-rag/index.html",
+      "line": 466,
+      "evidence": "curl -fsSL https://rag.karajancode.com/install.sh | sh",
+      "file_sha256": "65a666a8ef98db6a8900f9774ce4ea88bbcd4d630b16a119a1cb566e301758ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/v4/install.mdx",
+      "line": 10,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "de315342d7a0f1974638480807603574c268808ef0906d61d074e6f4332006be"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/guides/pipeline.md",
+      "line": 48,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "27fe9429b974d18ba2509400b5a92b537d4582db3acf54a6ab86f8331c48c765"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/getting-started/installation.md",
+      "line": 43,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "09889107932bc11fd740f6e602f563a7a748ecc75520df8949e0fd8cfe5818a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/examples/howto/rust.mdx",
+      "line": 131,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "447fad439d34040377994814e80eec1b68422951f5814711171ef8b5b6fb2766"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/v4/install.mdx",
+      "line": 10,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "44eb2d529729d08f893439e6623b0d99b8b9df8c2c52829e6255b6d7ea966d0e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/guides/pipeline.md",
+      "line": 48,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5f51bfc30159c6e21b7a75ca2be90b4dbe72954d7d738e92d6b087ab52c6acd0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/getting-started/installation.md",
+      "line": 43,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "6065a886ac85f68ea6fcaabc6cf9de8aa5f183b9d13e903b0806de8dcae8487e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/examples/howto/rust.mdx",
+      "line": 131,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "997cd4bda379d7ac319e1ac3820ab597af83f6e63725250b0bf05eb9c57b9578"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/architecture/history.md",
+      "line": 693,
+      "evidence": "curl | sh",
+      "file_sha256": "a78ac3761943e00f22a2f41888ce7dc1bd0313aa58e5c63323c11a80fed34e6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/es/architecture/history.md",
+      "line": 663,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a78ac3761943e00f22a2f41888ce7dc1bd0313aa58e5c63323c11a80fed34e6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/architecture/history.md",
+      "line": 694,
+      "evidence": "curl | sh",
+      "file_sha256": "51e8d05638af6e5ce770e43d8215262bec1399319292bfc89f31e5a53d7c374f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/apps/landing/docs/src/content/docs/architecture/history.md",
+      "line": 664,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "51e8d05638af6e5ce770e43d8215262bec1399319292bfc89f31e5a53d7c374f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/README.md",
+      "line": 78,
+      "evidence": "curl -fsSL https://karajancode.com/install.sh | sh",
+      "file_sha256": "7db367b7fa8bbc0609177967a9a1fe406121a1562d4d692900927326de145275"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/CHANGELOG.md",
+      "line": 1257,
+      "evidence": "curl -fsSL karajancode.com/install.sh | sh",
+      "file_sha256": "de63825ff969e3a6c11baebaa5a8e7a57d4f2fd2232395a8233c4cc24cb88ee2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "karajan-code-b48832c9058d1762e2f887d705b127dd20169956/CHANGELOG.md",
+      "line": 4235,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "de63825ff969e3a6c11baebaa5a8e7a57d4f2fd2232395a8233c4cc24cb88ee2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "aistudio.google.com, atlas-code-xyz.a.run.app, chatgpt.com, cli.github.com, console.anthropic.com, deb.nodesource.com, docs.example, docs.npmjs.com, env.example.test, evilgithub.com, firestore.googleapis.com, get.docker.com, git-scm.com, github.com.evil, gitlab.com, google.github.io, host.docker.internal, karajan-code.web.app, mcp.linear.app, mock.example, pg.example.test, platform.openai.com, r.example, raw.githubusercontent.com, semgrep.dev, sonar.example.com, sonar.external, sonar.internal, sonar.team.example, sonar.test, sonarcloud.io, vitest.dev, www.docker.com, x.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "adaptivecards.io",
+    "ai.google.dev",
+    "aider.chat",
+    "aistudio.google.com",
+    "antigravity.google",
+    "api.anthropic.com",
+    "api.crossref.org",
+    "api.example.com",
+    "api.github.com",
+    "api.mistral.ai",
+    "api.mock.test",
+    "api.openai.com",
+    "api.semanticscholar.org",
+    "api.test",
+    "arxiv.org",
+    "atlas-code-xyz.a.run.app",
+    "caido.example.com",
+    "chat.example.com",
+    "chatgpt.com",
+    "cli.github.com",
+    "clinicaltrials.gov",
+    "cloud.google.com",
+    "console.anthropic.com",
+    "custom.example.com",
+    "deb.nodesource.com",
+    "default.example.com",
+    "developers.openai.com",
+    "docs.anthropic.com",
+    "docs.docker.com",
+    "docs.example",
+    "docs.github.com",
+    "docs.npmjs.com",
+    "docs.sonarsource.com",
+    "doi.org",
+    "env.example.test",
+    "eslint.org",
+    "eutils.ncbi.nlm.nih.gov",
+    "evilgithub.com",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "export.arxiv.org",
+    "files.pythonhosted.org",
+    "firestore.googleapis.com",
+    "front.test",
+    "fsf.org",
+    "gateway.local",
+    "get.docker.com",
+    "git-scm.com",
+    "github.com",
+    "github.com.evil",
+    "gitlab.com",
+    "google.github.io",
+    "hooks.example.com",
+    "host.docker.internal",
+    "img.shields.io",
+    "karajan-code.web.app",
+    "karajancode.com",
+    "keepachangelog.com",
+    "link.springer.com",
+    "mcp.linear.app",
+    "mock.example",
+    "nodejs.org",
+    "ollama.com",
+    "ollama.local",
+    "opencode.ai",
+    "orcid.org",
+    "pg.example.test",
+    "platform.openai.com",
+    "pnpm.io",
+    "pubmed.ncbi.nlm.nih.gov",
+    "pypi.org",
+    "r.example",
+    "rag.karajancode.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "run.googleapis.com",
+    "semgrep.dev",
+    "semver.org",
+    "smoke.invalid",
+    "sonar.example.com",
+    "sonar.external",
+    "sonar.internal",
+    "sonar.team.example",
+    "sonar.test",
+    "sonarcloud.io",
+    "test.openai.azure.com",
+    "vitest.dev",
+    "vivo.example.com",
+    "watch.karajancode.com",
+    "www.ajodo.org",
+    "www.docker.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.semanticscholar.org",
+    "www.w3.org",
+    "x.dev",
+    "your.openai.azure.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

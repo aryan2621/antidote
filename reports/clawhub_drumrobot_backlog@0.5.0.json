@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "drumrobot/backlog",
+    "version": "0.5.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=backlog&ownerHandle=drumrobot&version=0.5.0"
+  },
+  "archive_sha256": "0b53d1e78dce690f38aea1f1dd78bb13fa56adcd5c7ab60361aa477df8f67f42",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "scripts/plane_update_entity.py",
+      "line": 232,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "e43326e18343b985db15e7b79ac7a816ba1688c219aa366fc358a159b81116a6"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "scripts/plane_create_issue.py",
+      "line": 648,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "2854fb4659cb78be02dea1171b28c07de091a3c25eec5907abcafb3e3176304c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "scripts/plane_create_entity.py",
+      "line": 611,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "8703ead19dcba55e9fd756559a0f7809ed54f4028c436bbba0d668bfb07c5353"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "evil.example",
+    "github.com",
+    "keepachangelog.com",
+    "plane.dgs.ai.kr",
+    "plane.es6.kr",
+    "plane.example.com",
+    "semver.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

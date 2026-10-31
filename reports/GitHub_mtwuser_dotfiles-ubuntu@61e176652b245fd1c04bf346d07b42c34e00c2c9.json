@@ -1,0 +1,57 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "mtwuser/dotfiles-ubuntu",
+    "version": "61e176652b245fd1c04bf346d07b42c34e00c2c9",
+    "download": "https://codeload.github.com/mtwuser/dotfiles-ubuntu/tar.gz/61e176652b245fd1c04bf346d07b42c34e00c2c9"
+  },
+  "archive_sha256": "7bdb02f4108d985bb50cd12419dcbf07683f6c66fee9c345b6702cfef76a391d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "dotfiles-ubuntu-61e176652b245fd1c04bf346d07b42c34e00c2c9/bootstrap.sh",
+      "line": 172,
+      "evidence": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash",
+      "file_sha256": "4c7eef4a7e89cbe4e862450bd51a63cc7b589d758fd9d19856d523bbf4cada84"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "dotfiles-ubuntu-61e176652b245fd1c04bf346d07b42c34e00c2c9/bootstrap.sh",
+      "line": 172,
+      "evidence": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash",
+      "file_sha256": "4c7eef4a7e89cbe4e862450bd51a63cc7b589d758fd9d19856d523bbf4cada84"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "antigravity.google",
+    "cloud.google.com",
+    "discord.com",
+    "dl.google.com",
+    "download.docker.com",
+    "example.com",
+    "extensions.gnome.org",
+    "firmaelectronica.gob.es",
+    "github.com",
+    "img.shields.io",
+    "jules.google",
+    "keepachangelog.com",
+    "notebooklm.google",
+    "packages.cloud.google.com",
+    "proton.me",
+    "raw.githubusercontent.com",
+    "repo.protonvpn.com",
+    "semver.org",
+    "ubuntu.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.gnu.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

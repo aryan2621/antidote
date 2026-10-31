@@ -1,0 +1,1288 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Tenney95/AI-Canvas-tauri",
+    "version": "733281eb795a3abf1e2392ee21de7bec11593c80",
+    "download": "https://codeload.github.com/Tenney95/AI-Canvas-tauri/tar.gz/733281eb795a3abf1e2392ee21de7bec11593c80"
+  },
+  "archive_sha256": "c27caed937b7efc0d03b446db12d403ec52daad768682918a38786d1bfb5db23",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/tests/services/chat/resourceImportTools.test.ts",
+      "line": 192,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "16463c10cad10587f0073221c6f63fa8c322e68a4218ad6072ed9d6112d54aa1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2604,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2640,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2712,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2886,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 3156,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 3660,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4128,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4290,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4296,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4302,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4320,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 4326,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/windows-schema.json",
+      "line": 6306,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2514,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2586,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2514,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2622,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2694,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2868,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2514,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3138,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3642,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4110,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4272,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4278,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4284,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4302,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4308,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 6288,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "8655188f108fa193189e6b46e7bc0ba99180d9e6631f281f6169c75f33477ae5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2063,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2604,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2640,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2712,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2886,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2532,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3156,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3660,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4128,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4290,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4296,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4302,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4320,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4326,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1199,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1211,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1379,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1421,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1883,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1889,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 6306,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "7d71d582afe6c064077fd606a206aba587afe6fca6e1c94c7cc6ce5287d3649b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 The name for this allowed shell command configuration.\\u{a}\\u{a}This name will be used i",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "26586f3fbf9882ae1f5d8509ac9f3488defbfd5a92c3c591b2e690e9c517d09d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "AI-Canvas-tauri-733281eb795a3abf1e2392ee21de7bec11593c80/doc/打包与发版流程.md",
+      "line": 46,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "061006f29ee1a97ec928c078f34b6fef12e135a94aa464da8febdd01144be264"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "192.168.1.2, 192.168.1.20, a.mp4, a.png, ailingg.store, api.apimart.ai, api.foo.com, api.paipu.net, ark.example, asset.localhost.example.com, assets.example, attacker.invalid, audio.wav, cdn.example.com, cdn.test, character.png, copied.png, crop.png, current.example, custom.example, default.test, evil.example.com, evil.test, example.invalid, example.org, example.test, excess.mp4, expired.example, external.example, first.mp4, first.png, frame.png, gateway.example, generated.mp4, grsai.example, image-a.png, image.png, input.example, input.test, large.mp4, last.png, legacy.example, media.test, moved.png, new.png, next.mp4, ns.adobe.com, old.png, original.png, out.mp4, poster.png, private.example, private.example.com, private.vendor.test, ref.png, relay.example, relay.example.com, remote.example, replacement.mp4, result.mp4, rh-upload.test, runninghub.ai, runninghub.example, second.mp4, storage.example.com, t.mp4, third.mp4, upload.example, video.example, video.mp4, www.runninghub, www.runninghub.ai.evil.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.2",
+    "192.168.1.20",
+    "a.mp4",
+    "a.png",
+    "ailingg.store",
+    "api.apib.ai",
+    "api.apimart.ai",
+    "api.example",
+    "api.foo.com",
+    "api.grsai.com",
+    "api.paipu.net",
+    "api.x.ai",
+    "ark.cn-beijing.volces.com",
+    "ark.example",
+    "asset.localhost",
+    "asset.localhost.example.com",
+    "assets.example",
+    "attacker.invalid",
+    "audio.wav",
+    "autodl.art",
+    "cccapi.cn",
+    "cdn.example",
+    "cdn.example.com",
+    "cdn.test",
+    "character.png",
+    "copied.png",
+    "crop.png",
+    "current.example",
+    "custom.example",
+    "default.test",
+    "evil.example.com",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "excess.mp4",
+    "expired.example",
+    "external.example",
+    "first.mp4",
+    "first.png",
+    "frame.png",
+    "gateway.example",
+    "generated.mp4",
+    "generativelanguage.googleapis.com",
+    "grsai.dakka.com.cn",
+    "grsai.example",
+    "grsaiapi.com",
+    "gw.example.com",
+    "image-a.png",
+    "image.png",
+    "input.example",
+    "input.test",
+    "large.mp4",
+    "last.png",
+    "legacy.example",
+    "libapi.cc",
+    "media.test",
+    "moved.png",
+    "new.png",
+    "next.mp4",
+    "ns.adobe.com",
+    "old.png",
+    "original.png",
+    "other.example",
+    "other.example.com",
+    "out.mp4",
+    "poster.png",
+    "private.example",
+    "private.example.com",
+    "private.vendor.test",
+    "ref.png",
+    "relay.example",
+    "relay.example.com",
+    "relayonapi.com",
+    "remote.example",
+    "replacement.mp4",
+    "result.mp4",
+    "rh-upload.test",
+    "runninghub.ai",
+    "runninghub.example",
+    "s3.example.com",
+    "second.mp4",
+    "sora2u.com",
+    "storage.example.com",
+    "t.mp4",
+    "third.mp4",
+    "toapis.cn",
+    "toapis.com",
+    "uguu.se",
+    "upload.example",
+    "video.example",
+    "video.mp4",
+    "vite.dev",
+    "www.runninghub",
+    "www.runninghub.ai",
+    "www.runninghub.ai.evil.test",
+    "www.runninghub.cn",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

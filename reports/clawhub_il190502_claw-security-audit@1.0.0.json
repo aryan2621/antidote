@@ -1,0 +1,46 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "il190502/claw-security-audit",
+    "version": "1.0.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=claw-security-audit&ownerHandle=il190502&version=1.0.0"
+  },
+  "archive_sha256": "9591653db193cc9ff9de9e5c6d3ae7c7b5a88162d9c9abf9981c8801ac714361",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "README.md",
+      "line": 54,
+      "evidence": "curl \\| sh",
+      "file_sha256": "9eea8cf1ca7f6029b82b73a898b1cf56d11d84b0bc9782045f54fb5ec1e704e0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CHANGELOG.md",
+      "line": 21,
+      "evidence": "curl | sh",
+      "file_sha256": "89b456cfa31db2bc93cc02fff52742218446a23b6238b1bd9050e36b605205e0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "audit.py",
+      "line": 492,
+      "evidence": "id_rsa",
+      "file_sha256": "e34b75190e1f32cd73f7d3da10a765233d08044c605fd3c14687bc1132c0d300"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "json-schema.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
