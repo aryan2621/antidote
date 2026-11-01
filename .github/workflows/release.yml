@@ -8,6 +8,7 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu }
@@ -27,21 +28,24 @@ jobs:
           ANTIDOTE_FEED_PUBKEY: ${{ vars.ANTIDOTE_FEED_PUBKEY }}
         run: |
           export ANTIDOTE_CORPUS_VERSION=$(git log -1 --format=%ct -- corpus)
-          cargo build --release --locked -p antidote --target ${{ matrix.target }}
+          cargo build --release --locked -p antidote -p antidote-ops --target ${{ matrix.target }}
       - name: Package
         shell: bash
         run: |
-          cd target/${{ matrix.target }}/release
-          bin=antidote; [ -f antidote.exe ] && bin=antidote.exe
-          tar czf ../../../antidote-${{ matrix.target }}.tar.gz $bin
-          cd ../../..
-          f=antidote-${{ matrix.target }}.tar.gz
-          (command -v sha256sum >/dev/null && sha256sum $f || shasum -a 256 $f) | cut -d' ' -f1 > $f.sha256
+          for pair in antidote:antidote antidote-ops:antidote-ops; do
+            name=${pair%%:*}
+            f=$name-${{ matrix.target }}.tar.gz
+            bin=$name; [ -f target/${{ matrix.target }}/release/$name.exe ] && bin=$name.exe
+            tar czf $f -C target/${{ matrix.target }}/release $bin
+            (command -v sha256sum >/dev/null && sha256sum $f || shasum -a 256 $f) | cut -d' ' -f1 > $f.sha256
+          done
       - uses: softprops/action-gh-release@v2
         with:
           files: |
             antidote-${{ matrix.target }}.tar.gz
             antidote-${{ matrix.target }}.tar.gz.sha256
+            antidote-ops-${{ matrix.target }}.tar.gz
+            antidote-ops-${{ matrix.target }}.tar.gz.sha256
   desktop:
     strategy:
       fail-fast: false

@@ -7,7 +7,7 @@ Antidote answers one question: **is this agent tool safe to install?** It is an 
 | Piece | Where |
 |---|---|
 | Website (database, per-package pages, submit form) | <https://aryan2621.github.io/antidote/> |
-| CLI `antidote`, prebuilt for macOS (Apple silicon, Intel), Linux (x86-64, ARM64), Windows | [GitHub Releases](https://github.com/aryan2621/antidote/releases/latest), each with a `.sha256` file |
+| CLI `antidote` (and the maintainer tool `antidote-ops`), prebuilt for macOS (Apple silicon, Intel), Linux (x86-64, ARM64), Windows | [GitHub Releases](https://github.com/aryan2621/antidote/releases/latest), each with a `.sha256` file |
 | Desktop app | Same release: macOS, Windows (`.msi`, `-setup.exe`), Linux (`.AppImage`, `.deb`, `.rpm`) |
 | GitHub Action | `aryan2621/antidote@v0` |
 | GitLab CI template, pre-commit hook | `ci/gitlab/antidote.gitlab-ci.yml`, `.pre-commit-hooks.yaml` |
