@@ -25,6 +25,7 @@ jobs:
         working-directory: apps/desktop
         run: pnpm install --frozen-lockfile && pnpm build
       - run: cargo build --locked
+      - run: cargo test --locked --workspace
   web:
     runs-on: ubuntu-latest
     steps:

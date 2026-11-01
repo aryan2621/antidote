@@ -2,6 +2,19 @@
 
 Antidote answers one question: **is this agent tool safe to install?** It is an open database of malicious and vulnerable AI agent artifacts (MCP servers, skills, tool descriptions, prompts, packages), plus an offline scanner that checks what you have against it.
 
+## What is published
+
+| Piece | Where |
+|---|---|
+| Website (database, per-package pages, submit form) | <https://aryan2621.github.io/antidote/> |
+| CLI `antidote`, prebuilt for macOS (Apple silicon, Intel), Linux (x86-64, ARM64), Windows | [GitHub Releases](https://github.com/aryan2621/antidote/releases/latest), each with a `.sha256` file |
+| Desktop app | Same release: macOS, Windows (`.msi`, `-setup.exe`), Linux (`.AppImage`, `.deb`, `.rpm`) |
+| GitHub Action | `aryan2621/antidote@v0` |
+| GitLab CI template, pre-commit hook | `ci/gitlab/antidote.gitlab-ci.yml`, `.pre-commit-hooks.yaml` |
+| Signed corpus feed and OSV bundle | `/feed/feed.json`, `/feed/all.zip` on the website, each with a `.minisig` |
+| API server image | `ghcr.io/aryan2621/antidote-api` |
+| Open data | `corpus/entries/` (CC-BY-4.0), schema in `schema/` |
+
 Pick the way that suits you:
 
 | I want to… | Use |
@@ -43,18 +56,21 @@ Open <https://aryan2621.github.io/antidote/> (or run it locally: `cd web && npm 
 
 ## 2. The command line
 
-Install it from the repo:
+Download the archive for your system from the [latest release](https://github.com/aryan2621/antidote/releases/latest), check it, and put `antidote` on your PATH:
 
 ```bash
-cargo install --path crates/antidote-cli
+t=aarch64-apple-darwin   # or x86_64-apple-darwin, x86_64-unknown-linux-gnu, aarch64-unknown-linux-gnu, x86_64-pc-windows-msvc
+curl -fsSLO https://github.com/aryan2621/antidote/releases/latest/download/antidote-$t.tar.gz
+curl -fsSLO https://github.com/aryan2621/antidote/releases/latest/download/antidote-$t.tar.gz.sha256
+shasum -a 256 -c antidote-$t.tar.gz.sha256 && tar xzf antidote-$t.tar.gz
 ```
 
-Tagged releases also attach prebuilt binaries.
+Or build from source: `cargo install --path crates/antidote-cli`.
 
 ### Scan
 
 ```bash
-antidote scan                           # auto-discover Claude Code, Cursor, OpenClaw and Claude Desktop config
+antidote scan                           # auto-discover your agent setup (clients listed below)
 antidote scan ./skills/my-skill         # a folder or a single file
 antidote scan --mcp ~/.cursor/mcp.json  # check the packages an MCP config launches
 ```
@@ -84,6 +100,8 @@ What gets checked:
 | Classifier | A small offline model scores text meant for an agent (skill files, `CLAUDE.md`, `AGENTS.md`, `*.mdc`, `description` fields) for prompt-injection phrasing. `--no-classifier` turns it off. |
 
 Every finding carries a suggested fix. No AI model decides whether something is safe.
+
+A bare `antidote scan` looks for skills, commands and rules for Claude Code, OpenClaw and Cursor, and MCP server configs for Claude Code, Claude Desktop, Cursor, OpenClaw, Gemini CLI, Windsurf and the current project's `.mcp.json`. The MCP parser also understands VS Code's `servers` and Zed's `context_servers` blocks, so pass those files with `--mcp`. Codex's TOML config is not supported yet.
 
 ### Options and exit codes
 
@@ -180,12 +198,12 @@ pnpm install
 pnpm tauri dev
 ```
 
-Tagged releases also attach installers for macOS, Linux and Windows. They are unsigned until signing secrets are set, so your OS may show a warning on first open.
+Or install a prebuilt app from the [latest release](https://github.com/aryan2621/antidote/releases/latest): macOS (`.dmg`), Windows (`.msi` or `-setup.exe`), Linux (`.AppImage`, `.deb` or `.rpm`). The installers are not code-signed yet, so your OS may show a warning on first open. A scan of a large home folder takes a few seconds on the release build.
 
 - **Scan my agent setup** finds Claude Code, Cursor, OpenClaw and Claude Desktop configs and scans them.
 - **Scan a folder…** scans any folder you pick.
 - **Check package** takes a coordinate such as `npm:mcp-remote@0.1.15`. Press `/` to jump to the field.
-- **Update feed** downloads the latest verified corpus. The header shows how many entries you have and the corpus version.
+- **Update feed** downloads the latest verified corpus. The header shows how many entries you have and the database version.
 - **Results** show a banner with the worst signal and one instruction, then every finding worst first, with where it matched, the evidence and the fix.
 
 Everything runs on your machine. Nothing is uploaded.
@@ -242,7 +260,25 @@ curl 'localhost:8080/v1/check/npm/mcp-remote?version=0.1.15'
 
 It serves the feed, single entries, package checks (the same JSON as `antidote check`), README badges at `/badge/{npm|pypi}/{name}.svg`, and the opt-in stats.
 
-## 6. Contributing and reporting
+## 6. How the project runs itself
+
+These GitHub workflows keep the data and releases current. You only need this if you maintain a fork.
+
+| Workflow | When | What it does |
+|---|---|---|
+| `ci` | every push and pull request | Builds and tests on Linux, macOS and Windows, and builds the website |
+| `pages` | every push to `master` | Publishes the website and the signed feed |
+| `release` | a `v*` tag | Builds the CLI for 5 targets, the desktop installers, and the Docker image |
+| `crawl` | hourly | Crawls registries, analyses new versions and opens triage issues (35 minute budget; unfinished work resumes next hour) |
+| `seed` | weekly | Imports new OSV advisories for MCP packages and opens a pull request |
+| `triage` | issue comments | Maintainer commands `/confirm`, `/reject`, `/detonate` (owners, members and collaborators only) |
+| `detonate` | a `detonate` label or `/detonate` | Runs a flagged package in a sandbox with a sinkholing proxy |
+
+Repository settings: the variable `ANTIDOTE_FEED_PUBKEY` and the secret `MINISIGN_SECRET_KEY` sign the feed. Without them the feed is published unsigned and clients reject it. The Apple signing secrets are optional.
+
+To retrain the offline classifier: `cd ml && ./run.sh` (add `bg` to run it detached and log to `train.log`).
+
+## 7. Contributing and reporting
 
 - Found something malicious or vulnerable? Use the website's Submit page, `antidote report`, or open a GitHub issue. Link public evidence, defang domains (`evil[.]example`) and never paste live payloads.
 - For a vulnerability in someone's software, tell the author first. Entries are published after a fix or 90 days (30 if it is being exploited).
@@ -259,4 +295,4 @@ It serves the feed, single entries, package checks (the same JSON as `antidote c
 | `guard` blocks a tool you trust | Its definition changed since it was pinned. Review the change, then `antidote guard --name <name> --reset`. |
 | Too many classifier hits on prompt-like docs | The classifier scores text written for agents, so security documents can score high. Use `--no-classifier` for that run, or `--fail-on high`. |
 | Colour codes appear in a log file | Set `NO_COLOR=1`, or use `--format json`. |
-| Desktop installer will not open | Release installers are unsigned. Use your OS's "open anyway" option, or build from source. |
+| Desktop installer will not open | Release installers are not code-signed. Use your OS's "open anyway" option, or build from source. |
