@@ -147,7 +147,7 @@ Governance, triage targets, disputes and disclosure: [GOVERNANCE.md](GOVERNANCE.
 There is no hosted instance. Anyone who wants the API runs it themselves from the image that each tagged release publishes:
 
 ```bash
-docker run -p 8080:8080 -v antidote:/data ghcr.io/aryan2621/antidote-api   # built-in corpus (when published)
+docker run -p 8080:8080 -v antidote:/data ghcr.io/aryan2621/antidote-api   # built-in corpus
 curl localhost:8080/v1/check/npm/mcp-remote?version=0.1.15
 ```
 

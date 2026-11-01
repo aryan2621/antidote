@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}   # repo search + commit lookups
           SMITHERY_API_KEY: ${{ secrets.SMITHERY_API_KEY }}   # Smithery is skipped while unset
-        run: ./target/release/antidote-ops run --state state/state.json --out out --allowlist corpus/allowlist.json
+        run: ./target/release/antidote-ops run --state state/state.json --out out --allowlist corpus/allowlist.json --max-minutes 35
       - name: Open triage issues
         env:
           GH_TOKEN: ${{ github.token }}

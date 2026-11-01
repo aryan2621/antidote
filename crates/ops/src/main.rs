@@ -60,6 +60,9 @@ enum Cmd {
         /// Max items analyzed per source per run
         #[arg(long, default_value_t = 200)]
         limit: usize,
+        /// Stop analyzing after this many minutes and save progress (0 = no limit)
+        #[arg(long, default_value_t = 0)]
+        max_minutes: u64,
     },
     /// Analyze one package, e.g. `npm:mcp-remote@0.1.16`, `pypi:mcp@1.23.0`, `clawhub:steipete/sonoscli@1.0.0`,
     /// `github:owner/repo@main` (branch, tag or sha), `smithery:namespace/server@latest`
@@ -145,8 +148,10 @@ fn main() -> Result<()> {
                 println!("{}", serde_json::to_string(&i)?);
             }
         }
-        Cmd::Run { state, out, allowlist, threshold, limit } => {
+        Cmd::Run { state, out, allowlist, threshold, limit, max_minutes } => {
             let mut st = State::load(&state)?;
+            let deadline = (max_minutes > 0).then(|| std::time::Instant::now() + std::time::Duration::from_secs(max_minutes * 60));
+            let old_cursors = st.cursors.clone();
             let corpus = antidote_core::corpus::load()?;
             let allow = analyze::load_allowlist(&allowlist);
             fs::create_dir_all(out.join("reports"))?;
@@ -161,7 +166,14 @@ fn main() -> Result<()> {
             }
             let mut done = BTreeSet::new();
             let (mut analyzed, mut flagged) = (0, 0);
+            let mut out_of_time = false;
             for item in items {
+                if deadline.is_some_and(|d| std::time::Instant::now() >= d) {
+                    // keep the old cursors so the next run lists the unanalyzed items again; analyzed ones are in `seen`
+                    st.cursors = old_cursors.clone();
+                    out_of_time = true;
+                    break;
+                }
                 if !st.is_new(&item.key(), &item.version) || !done.insert((item.key(), item.version.clone())) {
                     continue;
                 }
@@ -186,7 +198,7 @@ fn main() -> Result<()> {
             }
             // cursors and seen are saved together, at the end: a crashed run is simply redone
             st.save(&state)?;
-            eprintln!("analyzed {analyzed}, flagged {flagged}");
+            eprintln!("analyzed {analyzed}, flagged {flagged}{}", if out_of_time { " (time budget reached; rest next run)" } else { "" });
         }
         Cmd::Analyze { spec, state } => {
             let (eco, rest) = spec.split_once(':').context("expected <ecosystem>:<name>@<version>")?;
