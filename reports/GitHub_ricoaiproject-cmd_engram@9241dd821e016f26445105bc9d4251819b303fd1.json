@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ricoaiproject-cmd/engram",
+    "version": "9241dd821e016f26445105bc9d4251819b303fd1",
+    "download": "https://codeload.github.com/ricoaiproject-cmd/engram/tar.gz/9241dd821e016f26445105bc9d4251819b303fd1"
+  },
+  "archive_sha256": "a4f5f28d21f638a3ce8c1768644f85b8662d78ed73ee767c40df164d1b1253a3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "engram-9241dd821e016f26445105bc9d4251819b303fd1/install.sh",
+      "line": 3,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/ricoaiproject-cmd/engram/main/insta",
+      "file_sha256": "d3027b59e612f8eb0fcb6cc104772a93cb69abf9675a0d88d7b010773bfe4682"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "engram-9241dd821e016f26445105bc9d4251819b303fd1/install.sh",
+      "line": 24,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d3027b59e612f8eb0fcb6cc104772a93cb69abf9675a0d88d7b010773bfe4682"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "engram-9241dd821e016f26445105bc9d4251819b303fd1/README.md",
+      "line": 23,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/ricoaiproject-cmd/engram/main/insta",
+      "file_sha256": "eb5e2073d7c75da5ff201d686ee05385d223c6f1de31041c972b27a76620af6f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "docs.astral.sh",
+    "download.pytorch.org",
+    "example.org",
+    "files.pythonhosted.org",
+    "git-scm.com",
+    "github.com",
+    "mail.google.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "schemas.microsoft.com",
+    "www.googleapis.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
