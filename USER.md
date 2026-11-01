@@ -216,7 +216,19 @@ antidote wrap ~/.cursor/mcp.json          # prints the rewritten config
 antidote wrap ~/.cursor/mcp.json --write  # edits it in place, keeping mcp.json.bak
 ```
 
-Rewrites each stdio server in a config (`mcpServers`, VS Code's `servers`, Zed's `context_servers`) to run as `antidote guard --name <server> -- <original command>`. Remote (URL) servers and ones already wrapped are left alone. 
+Rewrites each stdio server in a config (`mcpServers`, VS Code's `servers`, Zed's `context_servers`) to run as `antidote guard --name <server> -- <original command>`. Remote (URL) servers and ones already wrapped are left alone. This suits any gateway or client whose server list uses `command` and `args`. To undo, restore the `.bak` file.
+
+### Intercept: Docker MCP Gateway
+
+Docker's MCP Gateway can run a program before or after every tool call, passing the request or the result as JSON on stdin (see the gateway's [interceptor docs](https://github.com/docker/mcp-gateway/tree/main/examples/interceptors)). `antidote intercept` is that program. It scans every string in the message and, on a high or critical finding such as hidden instructions in a tool result, replaces it with an error result. Clean messages pass untouched.
+
+```bash
+docker mcp gateway run \
+  --interceptor "before:exec:antidote intercept" \
+  --interceptor "after:exec:antidote intercept"
+```
+
+Add `--warn-only` to log what would be blocked without blocking. Unreadable input is passed through, never blocked. Tested against the documented stdin and stdout contract, not yet against a live Docker gateway.
 
 ## 4. In your editor
 
