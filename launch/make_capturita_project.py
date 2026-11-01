@@ -7,9 +7,9 @@ import json, pathlib, random, string, datetime, shutil
 
 ROOT = pathlib.Path.home() / "Movies" / "Capturita"
 KIT = dict(  # the app's "hazard placard" look: cool off-white ground, ink text, DANGER red as the accent
-    id="antidote2", name="Antidote placard",
+    id="antidote3", name="Antidote placard",
     colors=dict(bg="#eceeed", surface="#ffffff", text="#0b0b0c", muted="#41454a", accent="#e4202c"),
-    fonts=dict(display="bricolage", body="inter"), background="gradient")  # Barlow Condensed is not bundled in Capturita
+    fonts=dict(display="barlow-condensed", body="barlow"), background="gradient")  # needs a Capturita build with the Barlow fonts
 
 def s(scene, props, duration):
     return dict(kind="scene", id="".join(random.choices(string.ascii_lowercase + string.digits, k=8)), scene=scene,
@@ -94,7 +94,7 @@ kits = json.loads(kits_file.read_text()) if kits_file.exists() else []
 if kits_file.exists():
     shutil.copy(kits_file, kits_file.with_suffix(".json.antidote-bak"))
 kits_file.parent.mkdir(exist_ok=True)
-kits_file.write_text(json.dumps([k for k in kits if k.get("id") not in ("antidote1", KIT["id"])] + [KIT], indent=2))
+kits_file.write_text(json.dumps([k for k in kits if k.get("id") not in ("antidote1", "antidote2", KIT["id"])] + [KIT], indent=2))
 
 (d / "images").mkdir()
 for f in (HERE / "shots").glob("*.png"):
