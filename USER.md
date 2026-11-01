@@ -9,6 +9,7 @@ Antidote answers one question: **is this agent tool safe to install?** It is an 
 | Website (database, per-package pages, submit form) | <https://aryan2621.github.io/antidote/> |
 | CLI `antidote` (and the maintainer tool `antidote-ops`), prebuilt for macOS (Apple silicon, Intel), Linux (x86-64, ARM64), Windows | [GitHub Releases](https://github.com/aryan2621/antidote/releases/latest), each with a `.sha256` file |
 | Desktop app | Same release: macOS, Windows (`.msi`, `-setup.exe`), Linux (`.AppImage`, `.deb`, `.rpm`) |
+| VS Code extension (also loads in Cursor and Windsurf) | `antidote-<version>.vsix` on the release |
 | GitHub Action | `aryan2621/antidote@v0` |
 | GitLab CI template, pre-commit hook | `ci/gitlab/antidote.gitlab-ci.yml`, `.pre-commit-hooks.yaml` |
 | Signed corpus feed and OSV bundle | `/feed/feed.json`, `/feed/all.zip` on the website, each with a `.minisig` |
@@ -21,7 +22,7 @@ Pick the way that suits you:
 |---|---|
 | Look up one name before I install it | the [website](#1-the-website) or `antidote check` |
 | Scan my own agent setup or a folder | `antidote scan` or the [desktop app](#3-the-desktop-app) |
-| Block bad changes in a repo | the [GitHub Action, GitLab template or pre-commit hook](#4-in-ci) |
+| Block bad changes in a repo | the [GitHub Action, GitLab template or pre-commit hook](#5-in-ci) |
 | Protect a live MCP server | [`antidote guard`](#guard-filter-a-live-mcp-server) |
 | Report something I found | [`antidote report`](#report-a-suspicious-thing) or the site's Submit page |
 
@@ -208,7 +209,25 @@ Or install a prebuilt app from the [latest release](https://github.com/aryan2621
 
 Everything runs on your machine. Nothing is uploaded.
 
-## 4. In CI
+### Wrap: put every MCP server behind guard
+
+```bash
+antidote wrap ~/.cursor/mcp.json          # prints the rewritten config
+antidote wrap ~/.cursor/mcp.json --write  # edits it in place, keeping mcp.json.bak
+```
+
+Rewrites each stdio server in a config (`mcpServers`, VS Code's `servers`, Zed's `context_servers`) to run as `antidote guard --name <server> -- <original command>`. Remote (URL) servers and ones already wrapped are left alone. This works with any gateway or client whose server list uses a `command` and `args`. To undo, restore the `.bak` file.
+
+## 4. In your editor
+
+Install the `.vsix` from the [latest release](https://github.com/aryan2621/antidote/releases/latest) (VS Code: Extensions → … → Install from VSIX; Cursor and Windsurf accept it too).
+
+- It scans the open folder on startup and when an MCP config, `SKILL.md`, `CLAUDE.md`, `AGENTS.md` or Cursor rule is saved. Findings appear in the Problems panel with DANGER, WARNING or CAUTION, the fix, and a link to the database entry.
+- The status bar shows the worst signal and a count. Click it to re-scan.
+- **Antidote: Scan my agent setup** checks the configs your agents already use. **Antidote: Update database** fetches the latest signed corpus.
+- On first use it downloads the matching `antidote` binary from the release and checks its SHA-256. Set `antidote.path` to use your own.
+
+## 5. In CI
 
 **GitHub Action**
 
@@ -243,7 +262,7 @@ Findings appear in the merge request's Code Quality widget. Override `ANTIDOTE_P
   hooks: [{ id: antidote }]
 ```
 
-## 5. Using the data
+## 6. Using the data
 
 The corpus is open data, OSV-compatible JSON in `corpus/entries/`.
 
@@ -260,7 +279,7 @@ curl 'localhost:8080/v1/check/npm/mcp-remote?version=0.1.15'
 
 It serves the feed, single entries, package checks (the same JSON as `antidote check`), README badges at `/badge/{npm|pypi}/{name}.svg`, and the opt-in stats.
 
-## 6. How the project runs itself
+## 7. How the project runs itself
 
 These GitHub workflows keep the data and releases current. You only need this if you maintain a fork.
 
@@ -268,7 +287,7 @@ These GitHub workflows keep the data and releases current. You only need this if
 |---|---|---|
 | `ci` | every push and pull request | Builds and tests on Linux, macOS and Windows, and builds the website |
 | `pages` | every push to `master` | Publishes the website and the signed feed |
-| `release` | a `v*` tag | Builds the CLI for 5 targets, the desktop installers, and the Docker image |
+| `release` | a `v*` tag | Builds the CLI for 5 targets, the desktop installers, the VS Code extension, and the Docker image |
 | `crawl` | hourly | Crawls registries, analyses new versions and opens triage issues (35 minute budget; unfinished work resumes next hour) |
 | `seed` | weekly | Imports new OSV advisories for MCP packages and opens a pull request |
 | `triage` | issue comments | Maintainer commands `/confirm`, `/reject`, `/detonate` (owners, members and collaborators only) |
@@ -278,7 +297,7 @@ Repository settings: the variable `ANTIDOTE_FEED_PUBKEY` and the secret `MINISIG
 
 To retrain the offline classifier: `cd ml && ./run.sh` (add `bg` to run it detached and log to `train.log`).
 
-## 7. Contributing and reporting
+## 8. Contributing and reporting
 
 - Found something malicious or vulnerable? Use the website's Submit page, `antidote report`, or open a GitHub issue. Link public evidence, defang domains (`evil[.]example`) and never paste live payloads.
 - For a vulnerability in someone's software, tell the author first. Entries are published after a fix or 90 days (30 if it is being exploited).

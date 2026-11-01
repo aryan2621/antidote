@@ -168,3 +168,57 @@ fn descriptions(t: &Value) -> Vec<String> {
     walk(&json!({"description": t["description"], "s": t["inputSchema"]}), &mut out);
     out
 }
+
+/// Rewrite every stdio server in an MCP config (`mcpServers`, `servers` or `context_servers`, at any depth)
+/// so it runs behind `antidote guard`. Servers without a `command` (remote URLs) and ones already wrapped
+/// are left alone. Returns how many were wrapped.
+pub fn wrap_config(cfg: &mut Value) -> usize {
+    let mut n = 0;
+    match cfg {
+        Value::Object(map) => {
+            for (k, child) in map.iter_mut() {
+                if matches!(k.as_str(), "mcpServers" | "servers" | "context_servers") {
+                    for (name, def) in child.as_object_mut().into_iter().flatten() {
+                        n += wrap_server(name, def) as usize;
+                    }
+                } else {
+                    n += wrap_config(child);
+                }
+            }
+        }
+        Value::Array(a) => a.iter_mut().for_each(|c| n += wrap_config(c)),
+        _ => {}
+    }
+    n
+}
+
+fn wrap_server(name: &str, def: &mut Value) -> bool {
+    let Some(cmd) = def.get("command").and_then(Value::as_str).map(str::to_owned) else { return false };
+    if cmd.rsplit(['/', '\\']).next().is_some_and(|b| b == "antidote" || b == "antidote.exe") {
+        return false;
+    }
+    let mut args = vec![json!("guard"), json!("--name"), json!(name), json!("--"), json!(cmd)];
+    args.extend(def.get("args").and_then(Value::as_array).cloned().unwrap_or_default());
+    def["command"] = json!("antidote");
+    def["args"] = Value::Array(args);
+    true
+}
+
+#[cfg(test)]
+mod wrap_tests {
+    use super::*;
+
+    #[test]
+    fn wraps_stdio_servers_once_and_skips_remote_ones() {
+        let mut cfg = json!({ "mcpServers": {
+            "gh": { "command": "npx", "args": ["-y", "@x/server"], "env": { "T": "1" } },
+            "remote": { "url": "https://example.com/mcp" },
+            "done": { "command": "antidote", "args": ["guard", "--name", "done", "--", "npx"] }
+        }});
+        assert_eq!(wrap_config(&mut cfg), 1);
+        assert_eq!(cfg["mcpServers"]["gh"]["command"], "antidote");
+        assert_eq!(cfg["mcpServers"]["gh"]["args"], json!(["guard", "--name", "gh", "--", "npx", "-y", "@x/server"]));
+        assert_eq!(cfg["mcpServers"]["gh"]["env"]["T"], "1");
+        assert_eq!(wrap_config(&mut cfg), 0);
+    }
+}

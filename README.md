@@ -189,12 +189,10 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
 
 ## Not yet built
 
-- Editor extensions and MCP-gateway plugins for other gateways
+- Gateway-specific plugins (`antidote wrap` already puts any `command`-style server list behind guard)
 - A hosted API, so there's no default stats endpoint and no public badges yet
 - Reporter sign-in (GitHub OAuth) and gated raw-sample storage
 - The CNA application and registry partnerships, which are paperwork rather than code
-
-See `../product-specs/antidote.md`.
 
 ## License
 

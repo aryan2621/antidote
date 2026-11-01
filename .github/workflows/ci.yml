@@ -44,3 +44,11 @@ jobs:
         with: { context: ., file: crates/api/Dockerfile, push: false, cache-from: type=gha, cache-to: "type=gha,mode=max" }
       - uses: docker/build-push-action@v6
         with: { context: detonate, file: detonate/infra.Dockerfile, push: false }
+  vscode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm test && npm run package
+        working-directory: apps/vscode

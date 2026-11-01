@@ -68,6 +68,13 @@ enum Cmd {
         #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
         cmd: Vec<String>,
     },
+    /// Rewrite an MCP config (Claude, Cursor, VS Code, Windsurf, or a gateway's server list) so every stdio
+    /// server runs behind `antidote guard`. Prints the result; `--write` edits the file and keeps a `.bak`.
+    Wrap {
+        file: PathBuf,
+        #[arg(long)]
+        write: bool,
+    },
     /// Start each MCP server from your configs (in a Docker/Podman container by default), read its live
     /// tools, and flag poisoned descriptions or tools that changed since last time (rug pulls)
     Inspect {
@@ -249,6 +256,19 @@ fn run() -> Result<bool> {
                 return Ok(false);
             }
             std::process::exit(guard::run(c, &name, &dir, warn_only, &cmd)?);
+        }
+        Cmd::Wrap { file, write } => {
+            let mut cfg: Value = serde_json::from_slice(&std::fs::read(&file)?).map_err(|e| anyhow::anyhow!("{} is not valid JSON: {e}", file.display()))?;
+            let n = guard::wrap_config(&mut cfg);
+            let out = serde_json::to_string_pretty(&cfg)? + "\n";
+            if write && n > 0 {
+                std::fs::copy(&file, file.with_extension("json.bak"))?;
+                std::fs::write(&file, out)?;
+            } else if !write {
+                print!("{out}");
+            }
+            eprintln!("{n} server(s) now run behind antidote guard{}.", if write && n > 0 { "; original saved as .json.bak" } else { "" });
+            return Ok(false);
         }
         Cmd::Update { url } => {
             let v = feed::update(&url, c.version)?;

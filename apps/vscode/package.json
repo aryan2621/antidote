@@ -1,0 +1,33 @@
+{
+  "name": "antidote",
+  "displayName": "Antidote: agent security",
+  "description": "Checks your MCP configs, agent skills and prompts against the Antidote database of malicious and vulnerable AI agent artifacts.",
+  "version": "0.1.0",
+  "publisher": "aryan2621",
+  "license": "Apache-2.0",
+  "repository": { "type": "git", "url": "https://github.com/aryan2621/antidote" },
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Linters", "Other"],
+  "keywords": ["mcp", "security", "ai agents", "skills", "prompt injection"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "antidote.scanWorkspace", "title": "Antidote: Scan workspace" },
+      { "command": "antidote.scanSetup", "title": "Antidote: Scan my agent setup (Claude, Cursor, Gemini…)" },
+      { "command": "antidote.update", "title": "Antidote: Update database" }
+    ],
+    "configuration": {
+      "title": "Antidote",
+      "properties": {
+        "antidote.path": { "type": "string", "default": "", "description": "Path to the antidote binary. Empty: use one on PATH, or download the release build." },
+        "antidote.scanOnSave": { "type": "boolean", "default": true, "description": "Re-scan the workspace when an MCP config, skill or prompt file is saved." },
+        "antidote.noClassifier": { "type": "boolean", "default": false, "description": "Skip the offline prompt-injection classifier (faster, fewer findings on prose)." }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test test/lib.test.js",
+    "package": "npx --yes @vscode/vsce package --no-dependencies"
+  }
+}

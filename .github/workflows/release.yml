@@ -105,6 +105,27 @@ jobs:
           args: --target ${{ matrix.target }}
           tagName: ${{ github.ref_name }}
           releaseName: Antidote ${{ github.ref_name }}
+  vscode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Package the extension at the tag's version
+        working-directory: apps/vscode
+        run: |
+          npm version --no-git-tag-version "${GITHUB_REF_NAME#v}"
+          npm test && npm run package
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: apps/vscode/*.vsix
+      # Marketplace publishing is optional until a publisher account exists (secret VSCE_PAT).
+      - name: Publish to the Marketplace (only when configured)
+        if: env.VSCE_PAT != ''
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        working-directory: apps/vscode
+        run: npx --yes @vscode/vsce publish --packagePath *.vsix --no-dependencies
   docker:
     runs-on: ubuntu-latest
     steps:
