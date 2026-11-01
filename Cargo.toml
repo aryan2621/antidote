@@ -1,3 +1,7 @@
 [workspace]
 members = ["crates/core", "crates/antidote-cli", "crates/ops", "crates/api", "apps/desktop/src-tauri"]
 resolver = "3"
+
+# Scans (YARA, tree-sitter) are unusably slow unoptimised: a bare scan took 105 s in debug.
+[profile.dev]
+opt-level = 3

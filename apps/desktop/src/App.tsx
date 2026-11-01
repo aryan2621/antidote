@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
+import { openUrl } from "@tauri-apps/plugin-opener";
 import { Logo } from "./Logo";
-import { Mark, severityMark } from "./Mark";
+import { SEVERITIES, Signal, severityKind, type Severity } from "./Signal";
 
 type Finding = {
-  severity: "critical" | "high" | "medium" | "low";
+  severity: Severity;
   id: string;
   summary: string;
   path: string;
@@ -17,6 +18,19 @@ type Finding = {
 type Info = { version: number; entries: number };
 
 const DB_URL = "https://aryan2621.github.io/antidote/";
+const bySeverity = (a: Finding, b: Finding) => SEVERITIES.indexOf(a.severity) - SEVERITIES.indexOf(b.severity);
+const IMPERATIVE: Record<Severity, string> = {
+  critical: "Do not install or run this.",
+  high: "Do not install or run this.",
+  medium: "Review it before you install.",
+  low: "Read the notes, then decide.",
+};
+// "2 critical · 1 high": counts per severity, worst first, so the verdict is readable before the list
+const tally = (fs: Finding[]) =>
+  SEVERITIES.map((s) => [s, fs.filter((f) => f.severity === s).length] as const)
+    .filter(([, n]) => n)
+    .map(([s, n]) => `${n} ${s}`)
+    .join(" · ");
 
 export default function App() {
   const [info, setInfo] = useState<Info | null>(null);
@@ -26,8 +40,21 @@ export default function App() {
   const [scanned, setScanned] = useState<string[]>([]);
   const [findings, setFindings] = useState<Finding[] | null>(null);
   const [pkg, setPkg] = useState("");
+  const pkgRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => void invoke<Info>("info").then(setInfo), []);
+
+  // keyboard first: "/" jumps to the package field
+  useEffect(() => {
+    const onKey = (ev: KeyboardEvent) => {
+      if (ev.key === "/" && !/^(input|textarea)$/i.test((ev.target as HTMLElement).tagName)) {
+        ev.preventDefault();
+        pkgRef.current?.focus();
+      }
+    };
+    addEventListener("keydown", onKey);
+    return () => removeEventListener("keydown", onKey);
+  }, []);
 
   const run = async (label: string, f: () => Promise<void>) => {
     setBusy(label);
@@ -45,7 +72,7 @@ export default function App() {
   const scan = (trees: string[], configs: string[]) =>
     run("Scanning…", async () => {
       setScanned([...trees, ...configs]);
-      setFindings(await invoke<Finding[]>("scan", { trees, configs }));
+      setFindings((await invoke<Finding[]>("scan", { trees, configs })).sort(bySeverity));
     });
 
   const scanSetup = () =>
@@ -67,7 +94,7 @@ export default function App() {
     e.preventDefault();
     run("Checking…", async () => {
       setScanned([pkg.trim()]);
-      setFindings(await invoke<Finding[]>("check", { package: pkg }));
+      setFindings((await invoke<Finding[]>("check", { package: pkg })).sort(bySeverity));
     });
   };
 
@@ -90,7 +117,7 @@ export default function App() {
             {info && (
               <span>
                 <strong>{info.entries}</strong> entries ·{" "}
-                {info.version ? <>corpus <strong>{info.version}</strong></> : "built-in corpus"}
+                {info.version ? <>database v<strong>{info.version}</strong></> : "built-in corpus"}
               </span>
             )}
             <button type="button" className="btn btn-cover" disabled={!!busy} onClick={update}>
@@ -123,6 +150,7 @@ export default function App() {
           <div className="check-row">
               <input
                 id="pkg"
+                ref={pkgRef}
                 required
                 placeholder="npm:mcp-remote@0.1.15 or pypi:name==1.0"
                 value={pkg}
@@ -137,11 +165,12 @@ export default function App() {
         {busy && (
           <p role="status" className="status">
             {busy}
+            <span className="busy-bar" aria-hidden="true" />
           </p>
         )}
         {error && (
           <p role="alert" className="status status-error">
-            {error}
+            <strong>That did not finish.</strong> {error}
           </p>
         )}
         {note && (
@@ -150,8 +179,14 @@ export default function App() {
           </p>
         )}
 
+        {!findings && !busy && !error && !note && (
+          <p className="hint">
+            "Scan my agent setup" looks for Claude Code, Cursor, OpenClaw and Claude Desktop configs on this machine.
+          </p>
+        )}
+
         {findings && !busy && (
-          <section aria-labelledby="results-heading">
+          <section aria-label="Results">
             <details className="details">
               <summary>
                 Checked {scanned.length} location{scanned.length === 1 ? "" : "s"}
@@ -164,34 +199,45 @@ export default function App() {
             </details>
 
             {findings.length === 0 ? (
-              <p className="status-ok" role="status">
-                No known threats found in what was scanned. That is not a guarantee of safety — only that nothing in the
-                corpus matched.
-              </p>
+              <div className="verdict clear" role="status">
+                <div className="band">No match</div>
+                <p className="detail">
+                  No known threats found in what was scanned. That is not a guarantee of safety, only that nothing in the corpus matched.
+                </p>
+              </div>
             ) : (
               <>
-                <h2 id="results-heading" className="sc-label results-heading">
-                  {findings.length} finding{findings.length === 1 ? "" : "s"}
+                <div className={`verdict ${severityKind(findings[0].severity)}`}>
+                  <div className="band">
+                    <Signal kind={severityKind(findings[0].severity)} />
+                    <span className="what">{tally(findings)}</span>
+                  </div>
+                  <p className="imperative">{IMPERATIVE[findings[0].severity]}</p>
+                </div>
+                <h2 className="sc-label results-heading">
+                  {findings.length} finding{findings.length === 1 ? "" : "s"}, worst first
                 </h2>
                 <ul className="plates">
                   {findings.map((f, i) => (
-                    <li key={`${f.id}-${i}`} className={`plate sev-${f.severity}`}>
-                      <div className="plate-head">
-                        <Mark kind={severityMark(f.severity)} label={f.severity} />
-                        <span className="plate-id">{f.id}</span>
+                    <li key={`${f.id}-${i}`} className={`plate ${severityKind(f.severity)}`}>
+                      <div className="tab">
+                        <Signal kind={severityKind(f.severity)} />
+                        <span className="sev">{f.severity}</span>
                       </div>
-                      <p className="plate-summary">{f.summary}</p>
-                      <p className="plate-path">
-                        {f.path}
-                        {f.line ? `:${f.line}` : ""}
-                        {f.context ? ` (${f.context})` : ""}
-                      </p>
-                      {f.evidence && <pre className="plate-evidence">{f.evidence}</pre>}
-                      {f.fix && (
-                        <p className="plate-fix">
-                          <strong>Fix:</strong> {f.fix}
+                      <div className="plate-body">
+                        <p className="plate-summary">{f.summary}</p>
+                        <p className="plate-path">
+                          <span className="plate-id">{f.id}</span> {f.path}
+                          {f.line ? `:${f.line}` : ""}
+                          {f.context ? ` (${f.context})` : ""}
                         </p>
-                      )}
+                        {f.evidence && <pre className="plate-evidence">{f.evidence}</pre>}
+                        {f.fix && (
+                          <p className="plate-fix">
+                            <strong>Fix:</strong> {f.fix}
+                          </p>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -203,7 +249,13 @@ export default function App() {
 
       <footer className="foot">
         Browse the open database at{" "}
-        <a href={DB_URL} target="_blank" rel="noreferrer">
+        <a
+          href={DB_URL}
+          onClick={(e) => {
+            e.preventDefault();
+            openUrl(DB_URL);
+          }}
+        >
           aryan2621.github.io/antidote
         </a>
         . Data CC-BY-4.0 · code Apache-2.0.

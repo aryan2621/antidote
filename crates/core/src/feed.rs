@@ -159,3 +159,20 @@ pub fn update(url: &str, current: u64) -> Result<u64> {
     let sig = String::from_utf8(get(&format!("{url}.minisig"))?).context("signature not utf-8")?;
     install(PUBLIC_KEY, &data, &sig, current, &cache_dir())
 }
+
+#[cfg(test)]
+mod tests {
+    const PK: &str = "RWTttJoqmwJP/06j2vT82brLqzq6R5nMq/Tz9619lboF+AaQJ8aoUBeo";
+
+    #[test]
+    fn rejects_a_build_without_a_key() {
+        assert!(super::verify("", b"{}", "x").is_err());
+    }
+
+    #[test]
+    fn rejects_a_bad_signature_before_parsing() {
+        let Err(e) = super::verify(PK, b"{}", "untrusted comment: x\nnot-a-signature\n") else { panic!("accepted") };
+        let err = e.to_string();
+        assert!(err.contains("signature"), "{err}");
+    }
+}

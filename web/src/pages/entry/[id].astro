@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Mark from '../../components/Mark.astro';
+import Signal from '../../components/Signal.astro';
 import {
   entries, classification, isIncident, packageHref, entryHref, versionText, badgeMarkdown, frameworkRefs,
   lookalikeOf, verificationText, artifactType, REPO, href, type Entry,
@@ -14,7 +14,11 @@ const { e } = Astro.props as { e: Entry };
 const db = e.database_specific ?? {};
 const cls = classification(e);
 const incident = isIncident(e);
-const paragraphs = (s?: string) => (s ?? '').split(/\n{2,}/).filter(Boolean);
+// OSV imports carry a "do not edit below" marker and unrendered "## " headings; drop both.
+const paragraphs = (s?: string) =>
+  (s ?? '').replace(/^-{2,}\s*_-=.*?=-_\s*$/gm, '').replace(/^#{1,6}\s+/gm, '').split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+// A run-in "1. … 2. …" block becomes list items.
+const steps = (p: string) => (/^1\.\s/.test(p) ? p.split(/\s(?=\d+\.\s)/).map((x) => x.replace(/^\d+\.\s*/, '')) : null);
 const refs: string[] = (e.references ?? []).map((r: any) => (typeof r === 'string' ? r : r.url));
 const host = (u: string) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 const ind = db.indicators ?? {};
@@ -36,20 +40,25 @@ const verdictSentence: Record<string, string> = {
   <nav class="crumb" aria-label="Breadcrumb"><a href={href('/')}>Database</a> <span aria-hidden="true">/</span> <span class="mono">{e.id}</span></nav>
 
   <article class="sheet">
-    <header class={`head ${cls}`}>
-      <div class="meta">
-        <span class="plate-no mono">Plate {e.id.replace('AGT-', '')}</span>
-        <Mark kind={cls} />
-        {incident ? null : db.verification && <span class="ver">{verificationText[db.verification] ?? db.verification}</span>}
+    <header class={`vplate ${cls}`}>
+      <div class="vband">
+        <Signal kind={cls} />
+        <p class="facts">
+          <span>{cls}</span>
+          {incident ? null : db.verification && <span>{verificationText[db.verification] ?? db.verification}</span>}
+          <span class="mono">{e.id}</span>
+        </p>
       </div>
-      <h1>{e.summary}</h1>
-      <p class="verdict column">{verdictSentence[cls]}</p>
-      {(e.aliases ?? []).length > 0 && <p class="aliases mono">{(e.aliases ?? []).join('  ·  ')}</p>}
+      <div class="vbody">
+        <h1>{e.summary}</h1>
+        <p class="imperative">{verdictSentence[cls]}</p>
+        {(e.aliases ?? []).length > 0 && <p class="aliases mono">{(e.aliases ?? []).join('  ·  ')}</p>}
+      </div>
     </header>
 
     {e.withdrawn && <p class="callout"><strong>Withdrawn on {e.withdrawn.slice(0, 10)}.</strong> This entry was retracted and no longer matches in <code>antidote scan</code>.</p>}
 
-    <div class="prose column">{paragraphs(e.details).map((p) => <p>{p}</p>)}</div>
+    <div class="prose column">{paragraphs(e.details).map((p) => steps(p) ? <ol>{steps(p)!.map((x) => <li>{x}</li>)}</ol> : <p>{p}</p>)}</div>
 
     {incident ? (
       <>
@@ -70,7 +79,7 @@ const verdictSentence: Record<string, string> = {
         )}
         {e.related_entries?.length > 0 && (
           <>
-            <h2>Related plates</h2>
+            <h2>Related entries</h2>
             <ul class="stops">
               {e.related_entries.map((id: string) => <li><a class="mono" href={entryHref(id)}>{id}</a>{related(id) && <span class="muted"> — {related(id)!.summary}</span>}</li>)}
             </ul>
@@ -136,29 +145,25 @@ const verdictSentence: Record<string, string> = {
 </Base>
 
 <style>
-  .crumb { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2); margin-bottom: 1.5rem; }
-  .crumb a { color: var(--ink-2); }
-  .head { padding-bottom: 1.5rem; border-bottom: 2px solid var(--ink); }
-  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.25rem; margin-bottom: 0.9rem; }
-  .plate-no { color: var(--ink-2); font-size: 0.85rem; }
-  .ver { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.03em; color: var(--ink-2); }
-  .head h1 { max-width: 24ch; font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.6rem); line-height: 1.12; }
-  .verdict { margin: 1rem 0 0; font-size: 1.15rem; color: var(--ink); }
-  .aliases { margin: 0.75rem 0 0; color: var(--ink-2); }
-  .callout { margin: 1.5rem 0 0; padding: 0.9rem 1rem; background: var(--wash-incident); border: 1px solid var(--rule-strong); border-radius: var(--r); max-width: var(--measure); }
-  .prose { margin-top: 1.75rem; }
-  .prose p { margin-bottom: 1rem; }
+  .sheet { display: block; }
+  .vband .facts { margin: 0; }
+  .vbody h1 { max-width: 26ch; font: 700 clamp(1.9rem, 1.2rem + 2.6vw, 3rem)/1.08 var(--sans); text-transform: none; letter-spacing: -0.01em; }
+  .aliases { margin: 0.9rem 0 0; color: var(--ink-2); }
+  .callout { margin: 1.5rem 0 0; padding: 0.9rem 1rem; background: var(--wash-incident); border: 2px solid var(--ink); max-width: var(--measure); }
+  .prose { margin-top: 2rem; }
+  .prose p { margin-bottom: 1rem; overflow-wrap: anywhere; }
+  .prose ol { margin: 0 0 1rem; padding-left: 1.4rem; overflow-wrap: anywhere; }
   .stack { display: grid; gap: 0.2rem; }
   .stack span, .stack a { overflow-wrap: anywhere; }
   .stops { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; max-width: var(--measure); }
-  .stops li::marker { color: var(--ink-2); }
-  .pair .spec { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule-strong); border-radius: var(--r); background: var(--plate); margin-bottom: 0.75rem; max-width: 46rem; }
+  .stops li::marker { color: var(--ink); }
+  .pair .spec { display: grid; grid-template-columns: 1fr 1fr; border: var(--bw) solid var(--ink); background: var(--plate); margin-bottom: 0.75rem; max-width: 46rem; }
   .side { display: grid; gap: 0.25rem; padding: 0.9rem 1rem; min-width: 0; }
-  .side .sc { font-size: 0.85rem; color: var(--ink-2); }
-  .side code { font-size: 1.05rem; font-weight: 600; }
-  .side.bad { border-right: 1px solid var(--rule-strong); }
+  .side .sc { font-size: 0.95rem; color: var(--ink-2); }
+  .side code { font-size: 1.1rem; font-weight: 700; }
+  .side.bad { border-right: var(--bw) solid var(--ink); background: var(--wash-malicious); }
   .side.bad code { color: var(--malicious); }
   .side.good code { color: var(--verified); }
-  @media (max-width: 560px) { .pair .spec { grid-template-columns: 1fr; } .side.bad { border-right: 0; border-bottom: 1px solid var(--rule-strong); } }
+  @media (max-width: 560px) { .pair .spec { grid-template-columns: 1fr; } .side.bad { border-right: 0; border-bottom: var(--bw) solid var(--ink); } }
   .fix { margin-top: 3rem; }
 </style>

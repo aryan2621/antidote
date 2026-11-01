@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import Mark from '../../../components/Mark.astro';
+import Signal from '../../../components/Signal.astro';
 import CodeBlock from '../../../components/CodeBlock.astro';
 import { packages, classification, entryHref, versionText, badgeMarkdown, lookalikeOf, href } from '../../../lib/entries';
 
@@ -26,25 +26,29 @@ const n = p.entries.length;
 <Base title={`Is ${p.name} safe? Antidote`} description={`${n} Antidote entr${n === 1 ? 'y' : 'ies'} for ${label}`} current="database">
   <nav class="crumb" aria-label="Breadcrumb"><a href={href('/')}>Database</a> <span aria-hidden="true">/</span> <span class="mono">{label}</span></nav>
 
-  <header class={`verdict-card ${verdict}`}>
-    <p class="q sc">Is this safe?</p>
-    <h1><code>{p.name}</code></h1>
-    <p class="answer"><Mark kind={verdict} label={headline[verdict]} /></p>
-    <p class="column">
-      {n} entr{n === 1 ? 'y' : 'ies'} in the database for {p.ecosystem}. Check the affected versions against yours, or run
-      <code>antidote check {p.ecosystem.toLowerCase()}:{p.name}@&lt;version&gt;</code>.
-      Absence from the database is never a safety verdict.
-    </p>
-    {real && <p class="column imitates">The name is close to the popular package <code>{real}</code>. Make sure you meant this one.</p>}
+  <header class={`vplate ${verdict}`}>
+    <div class="vband">
+      <Signal kind={verdict} />
+      <p class="facts"><span>{headline[verdict]}</span><span>{n} entr{n === 1 ? 'y' : 'ies'}</span><span>{p.ecosystem}</span></p>
+    </div>
+    <div class="vbody">
+      <h1><code>{p.name}</code></h1>
+      <p class="column lede">
+        Check the affected versions against yours, or run{' '}
+        <code>antidote check {p.ecosystem.toLowerCase()}:{p.name}@&lt;version&gt;</code>.
+        Absence from the database is never a safety verdict.
+      </p>
+      {real && <p class="column imitates">The name is close to the popular package <code>{real}</code>. Make sure you meant this one.</p>}
+    </div>
   </header>
 
-  <h2>Plates</h2>
-  <ol class="plates">
+  <h2>Entries</h2>
+  <ol class="rows">
     {p.entries.map((e: any) => (
-      <li class="plate">
-        <a class="no mono" href={entryHref(e.id)}>{e.id.replace('AGT-', '')}</a>
+      <li class="row">
+        <a class="tab" href={entryHref(e.id)} aria-label={`${e.id}, ${classification(e)}`}><Signal kind={classification(e)} /></a>
         <div class="body">
-          <Mark kind={classification(e)} />
+          <p class="meta mono"><a href={entryHref(e.id)}>{e.id}</a></p>
           <h3><a href={entryHref(e.id)}>{e.summary}</a></h3>
           <p class="muted">Affected: {e.affected.filter((a: any) => a.package.name === p.name && a.package.ecosystem === p.ecosystem).map(versionText).join('; ')}</p>
         </div>
@@ -62,21 +66,18 @@ const n = p.entries.length;
 </Base>
 
 <style>
-  .crumb { font: 500 0.95rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2); margin-bottom: 1.5rem; }
-  .crumb a { color: var(--ink-2); }
-  .verdict-card { padding: 1.5rem 0 1.75rem; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
-  .q { margin: 0 0 0.4rem; color: var(--ink-2); font-size: 1rem; }
-  .verdict-card h1 code { font-family: var(--mono); font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem); letter-spacing: -0.01em; font-weight: 700; overflow-wrap: anywhere; }
-  .answer { margin: 1rem 0 0.75rem; }
-  .answer :global(.mark) { font-size: 1.15rem; }
-  .imitates { color: var(--malicious); font-weight: 500; }
-  .plates { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
-  .plate { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
-  .no { color: var(--ink-2); text-decoration: none; font-size: 0.82rem; padding-top: 0.2rem; }
+  .vbody h1 code { font-family: var(--mono); font-size: clamp(1.6rem, 1rem + 3vw, 3rem); letter-spacing: -0.01em; font-weight: 700; overflow-wrap: anywhere; text-transform: none; }
+  .lede { margin: 1.1rem 0 0; font-size: 1.15rem; }
+  .imitates { margin: 0.9rem 0 0; color: var(--malicious); font-weight: 700; }
+  .rows { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule-strong); }
+  .row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+  .tab { text-decoration: none; justify-self: start; align-self: start; }
   .body { display: grid; gap: 0.3rem; min-width: 0; }
-  .body h3 { font: 700 1.15rem/1.3 var(--sans); margin: 0; max-width: 62ch; }
+  .body h3 { font: 700 1.3rem/1.25 var(--sans); margin: 0; max-width: 62ch; }
   .body h3 a { color: var(--ink); text-decoration: none; }
-  .body h3 a:hover { text-decoration: underline; }
+  .body h3 a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
   .body p { margin: 0; }
-  @media (max-width: 560px) { .plate { grid-template-columns: 1fr; gap: 0.2rem; } }
+  .meta { font-size: 0.82rem; }
+  .meta a { color: var(--ink-2); text-decoration: none; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; gap: 0.4rem; } }
 </style>

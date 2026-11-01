@@ -84,6 +84,7 @@ pub fn run() {
     let c = corpus::load().expect("built-in corpus is invalid");
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_opener::init())
         .manage(App(RwLock::new(Arc::new(c))))
         .invoke_handler(tauri::generate_handler![info, targets, scan, check, update])
         .run(tauri::generate_context!())

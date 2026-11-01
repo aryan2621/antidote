@@ -268,27 +268,32 @@ fn run() -> Result<bool> {
         Format::Sarif => println!("{}", serde_json::to_string_pretty(&sarif(&findings))?),
         Format::Codequality => println!("{}", serde_json::to_string_pretty(&codequality(&findings))?),
         Format::Text if findings.is_empty() => {
-            println!("No known threats found ({} entries, corpus version {}).", c.entries.len(), c.version)
+            println!("No known threats found ({} entries, corpus version {}). That is not a guarantee of safety.", c.entries.len(), c.version)
         }
         Format::Text => {
             for f in &findings {
                 let line = f.line.map(|l| format!(":{l}")).unwrap_or_default();
                 let ctx = f.context.as_ref().map(|c| format!(" ({c})")).unwrap_or_default();
-                println!("[{}] {} {}\n    at {}{line}{ctx}", f.severity.to_uppercase(), f.id, f.summary, f.path);
+                println!("{} {:<8} {}\n  {}\n  at {}{line}{ctx}", signal(f.severity), f.severity, f.id, f.summary, f.path);
                 if let Some(e) = &f.evidence {
-                    println!("    evidence: {e}");
+                    println!("  evidence: {e}");
                 }
                 if let Some(x) = &f.fix {
-                    println!("    fix: {x}");
+                    println!("  fix:      {x}");
                 }
                 if let Some(u) = feed::entry_url(&f.id) {
-                    println!("    see: {u}");
+                    println!("  see:      {u}");
                 }
                 if let Some(x) = &f.explanation {
-                    println!("    LLM: {x}");
+                    println!("  LLM:      {x}");
                 }
+                println!();
             }
-            println!("\n{} finding(s).", findings.len());
+            let tally: Vec<String> = ["critical", "high", "medium", "low"]
+                .iter()
+                .filter_map(|s| Some(format!("{} {s}", findings.iter().filter(|f| f.severity == *s).count())).filter(|t| !t.starts_with("0 ")))
+                .collect();
+            println!("{} finding(s): {}. {}", findings.len(), tally.join(" · "), imperative(findings[0].severity));
         }
     }
     let threshold = match cli.fail_on {
@@ -324,6 +329,27 @@ fn codequality(findings: &[Finding]) -> Value {
         })
         .collect();
     Value::Array(v)
+}
+
+/// Signal field for a severity, mirroring the website and desktop app: shape + word, never colour alone.
+/// Colour only on a terminal and when NO_COLOR is unset.
+fn signal(severity: &str) -> String {
+    use std::io::IsTerminal;
+    let (word, shape, sgr) = match severity {
+        "critical" | "high" => ("DANGER ", "●", "97;41"),
+        "medium" => ("WARNING", "◆", "30;48;5;208"),
+        _ => ("CAUTION", "▲", "30;43"),
+    };
+    let tag = format!(" {shape} {word} ");
+    if std::io::stdout().is_terminal() && std::env::var_os("NO_COLOR").is_none() { format!("\x1b[{sgr};1m{tag}\x1b[0m") } else { format!("[{tag}]") }
+}
+
+fn imperative(worst: &str) -> &'static str {
+    match worst {
+        "critical" | "high" => "Do not install or run this.",
+        "medium" => "Review it before you install.",
+        _ => "Read the notes, then decide.",
+    }
 }
 
 fn sarif(findings: &[Finding]) -> Value {

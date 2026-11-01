@@ -21,11 +21,24 @@ pub fn targets() -> (Vec<PathBuf>, Vec<PathBuf>) {
         home.join(".claude.json"),
         home.join(".cursor/mcp.json"),
         home.join(".openclaw/openclaw.json"),
+        home.join(".gemini/settings.json"),
+        home.join(".codeium/windsurf/mcp_config.json"),
+        home.join(".config/zed/settings.json"),
         // ~/Library/Application Support, ~/.config or %APPDATA%
         dirs::config_dir().unwrap_or_default().join("Claude/claude_desktop_config.json"),
         cwd.join(".mcp.json"),
         cwd.join(".cursor/mcp.json"),
+        cwd.join(".vscode/mcp.json"),
     ];
     let keep = |v: &[PathBuf]| v.iter().filter(|p| p.exists()).cloned().collect();
     (keep(&trees), keep(&configs))
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn only_existing_paths_are_returned() {
+        let (trees, configs) = super::targets();
+        assert!(trees.iter().chain(&configs).all(|p| p.exists()));
+    }
 }

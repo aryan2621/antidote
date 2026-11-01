@@ -13,16 +13,16 @@ const { code, label } = Astro.props;
 
 <style>
   .code { margin: 0 0 1.25rem; }
-  figcaption { font-size: 0.85rem; color: var(--ink-2); margin-bottom: 0.35rem; }
-  .box { position: relative; background: var(--plate); border: 1px solid var(--rule); border-radius: var(--r); }
-  pre { margin: 0; padding: 0.85rem 4.75rem 0.85rem 1rem; overflow-x: auto; font-size: 0.95rem; line-height: 1.55; }
-  pre code { font-size: 0.86rem; overflow-wrap: normal; white-space: pre; }
+  figcaption { font-size: 1.05rem; color: var(--ink-2); margin-bottom: 0.4rem; }
+  .box { position: relative; background: var(--plate); border: var(--bw) solid var(--ink); border-radius: var(--r); }
+  pre { margin: 0; padding: 0.9rem 5.5rem 0.9rem 1rem; overflow-x: auto; font-size: 0.95rem; line-height: 1.55; }
+  pre code { font-size: 0.88rem; overflow-wrap: normal; white-space: pre; }
   .copy {
-    position: absolute; top: 0.45rem; right: 0.45rem; min-height: 32px; padding: 0 0.7rem;
-    font: 700 0.8rem/1 var(--sc); letter-spacing: 0.04em; color: var(--ink-2);
-    background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r); cursor: pointer;
+    position: absolute; top: 0.5rem; right: 0.5rem; min-height: 34px; padding: 0 0.8rem;
+    font: 800 1rem/1 var(--sc); letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+    background: var(--ink); border: 2px solid var(--ink); border-radius: var(--r); cursor: pointer;
   }
-  .copy:hover { color: var(--ink); border-color: var(--rule-strong); }
+  .copy:hover { background: var(--caution); color: #0b0b0c; }
 </style>
 
 <script>

@@ -107,3 +107,6 @@ export function frameworkRefs(techniques: string[] = []): { id: string; title: s
   }
   return [...refs.values()];
 }
+
+/** ANSI-style signal word for each verdict; the word is shown with the drawn shape, never colour alone. */
+export const signalWord: Record<string, string> = { malicious: 'Danger', vulnerable: 'Warning', suspicious: 'Caution', incident: 'Notice', withdrawn: 'Withdrawn' };

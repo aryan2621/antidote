@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Mark from '../components/Mark.astro';
+import Signal from '../components/Signal.astro';
 import Bars from '../components/Bars.astro';
 import { entries, classification, artifactType } from '../lib/entries';
 
@@ -27,7 +27,7 @@ const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ??
 
   <h2>By verdict</h2>
   <ul class="verdicts">
-    {byClass.map(([k, n]) => <li><Mark kind={k} /> <span class="mono">{n}</span> <span class="muted">({pct(n)}%)</span></li>)}
+    {byClass.map(([k, n]) => <li class={k}><span class="n">{n}</span><Signal kind={k} /><span class="muted">{pct(n)}% of live entries</span></li>)}
   </ul>
 
   <h2>By kind of artifact</h2>
@@ -48,8 +48,9 @@ const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ??
 </Base>
 
 <style>
-  .lede { margin: 0.9rem 0 0; font-size: 1.15rem; color: var(--ink-2); }
-  .verdicts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
-  .verdicts li { display: inline-flex; align-items: baseline; gap: 0.5rem; }
-  .verdicts :global(.mark) { font-size: 1rem; }
+  h1 { max-width: none; }
+  .lede { margin: 1.1rem 0 0; font-size: 1.25rem; color: var(--ink-2); }
+  .verdicts { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 12px; }
+  .verdicts li { display: grid; gap: 0.4rem; justify-items: start; padding: 0.9rem 1rem; border: var(--bw) solid var(--ink); background: var(--plate); }
+  .verdicts .n { font: 800 3.4rem/0.9 var(--sc); }
 </style>

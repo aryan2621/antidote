@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import Mark from '../components/Mark.astro';
-import { entries, classification, artifactType, entryHref, packageHref } from '../lib/entries';
+import Signal from '../components/Signal.astro';
+import { entries, signalWord, classification, artifactType, entryHref, packageHref } from '../lib/entries';
 
 const live = entries.filter((e) => !e.withdrawn);
 const index = entries
@@ -26,7 +26,7 @@ const count = (f: (e: (typeof index)[number]) => string[]) => {
   for (const e of index) for (const k of new Set(f(e))) m.set(k, (m.get(k) ?? 0) + 1);
   return [...m].sort((a, b) => b[1] - a[1]);
 };
-const classes = ['malicious', 'vulnerable', 'suspicious', 'incident'].map((k) => [k, index.filter((e) => e.cls === k).length] as const).filter(([, n]) => n);
+const classes = ['malicious', 'vulnerable', 'suspicious', 'incident'].map((k) => [k, index.filter((e) => e.cls === k).length] as const);
 const types = count((e) => [e.type]);
 const ecos = count((e) => e.pkgs.map((p) => p.eco));
 const label = (t: string) => t.replaceAll('_', ' ');
@@ -35,20 +35,29 @@ const label = (t: string) => t.replaceAll('_', ' ');
   <section class="key" aria-labelledby="h">
     <h1 id="h">Is this agent tool safe?</h1>
     <p class="lede column">
-      A field guide to the lookalikes: {live.length} skills, MCP servers, packages and incidents that were reported malicious or vulnerable, each with the marks that identify it.
+      {live.length} skills, MCP servers, packages and incidents reported malicious or vulnerable. Look one up before you install it.
     </p>
     <form role="search" id="search" class="search" onsubmit="return false">
       <label for="q" class="sc">Look up a package, skill, CVE or keyword</label>
-      <input id="q" type="search" placeholder="mcp-remote" autocomplete="off" spellcheck="false" />
+      <div class="field">
+        <input id="q" type="search" placeholder="mcp-remote" autocomplete="off" spellcheck="false" aria-keyshortcuts="/" />
+        <kbd aria-hidden="true">/</kbd>
+      </div>
     </form>
 
+    <div id="verdict" class="verdict" role="status" aria-live="polite" hidden></div>
+
+    <div class="placards" role="group" aria-label="Filter by verdict">
+      {classes.map(([k, n]) => (
+        <button type="button" class={`placard ${k}`} data-facet="cls" data-value={k} aria-pressed="false" disabled={n === 0}>
+          <span class="n">{n}</span>
+          <Signal kind={k} />
+          <span class="cls">{k}</span>
+        </button>
+      ))}
+    </div>
+
     <div class="couplets" role="group" aria-label="Narrow by">
-      <div class="couplet">
-        <span class="sc">Verdict</span>
-        <div class="chips">
-          {classes.map(([k, n]) => <button type="button" class="chip" data-facet="cls" data-value={k} aria-pressed="false"><Mark kind={k} label={k} /><span class="n">{n}</span></button>)}
-        </div>
-      </div>
       <div class="couplet">
         <span class="sc">Kind</span>
         <div class="chips">
@@ -66,13 +75,19 @@ const label = (t: string) => t.replaceAll('_', ' ');
 
   <p id="status" class="status" role="status" aria-live="polite"></p>
 
-  <ol class="plates" id="results">
+  <ol class="rows" id="results">
     {index.map((e) => (
-      <li class={`plate ${e.cls}`} data-entry>
-        <a class="no mono" href={e.url} aria-label={`${e.id}, ${e.cls}`}>{e.id.replace('AGT-', '')}</a>
+      <li class={`row ${e.cls}`} data-entry>
+        <a class="tab" tabindex="-1" href={e.url} aria-label={`${e.id}, ${signalWord[e.cls]}, ${e.cls}`}>
+          <Signal kind={e.cls} />
+          <span class="cls">{e.cls}</span>
+        </a>
         <div class="body">
-          <Mark kind={e.cls} />
           <h2><a href={e.url}>{e.summary}</a></h2>
+          <p class="meta mono">
+            <a class="no" tabindex="-1" href={e.url}>{e.id}</a>
+            {e.published && <span>{e.published}</span>}
+          </p>
           {e.pkgs.length > 0 && (
             <p class="pkgs mono">
               {e.pkgs.slice(0, 4).map((p) => <a href={p.url}>{p.label}</a>)}
@@ -88,77 +103,162 @@ const label = (t: string) => t.replaceAll('_', ' ');
 
 <style>
   .key { padding-bottom: 0.5rem; }
-  .lede { margin: 0.9rem 0 1.75rem; font-size: 1.2rem; color: var(--ink-2); }
-  .search { display: grid; gap: 0.4rem; max-width: 46rem; }
-  .search label { font-size: 0.95rem; color: var(--ink-2); }
+  h1 { max-width: 14ch; }
+  .lede { margin: 1.1rem 0 2rem; font-size: 1.3rem; color: var(--ink-2); }
+  .search { display: grid; gap: 0.5rem; max-width: 52rem; }
+  .search label { font-size: 1.1rem; color: var(--ink); }
+  .field { position: relative; }
   .search input {
-    width: 100%; min-height: 56px; padding: 0.7rem 1rem; font: 500 1.25rem/1.2 var(--mono);
-    color: var(--ink); background: var(--plate); border: 2px solid var(--ink); border-radius: var(--r);
+    width: 100%; min-height: 72px; padding: 0.8rem 4rem 0.8rem 1.1rem; font: 600 1.6rem/1.2 var(--mono);
+    color: var(--ink); background: var(--plate); border: var(--bw) solid var(--ink); border-radius: var(--r); appearance: none;
   }
-  .search input::placeholder { color: var(--rule-strong); }
-  .search input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-  .couplets { display: grid; gap: 0.35rem; margin-top: 1.5rem; max-width: 60rem; }
-  .couplet { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; align-items: start; padding-block: 0.45rem; border-top: 1px solid var(--rule); }
-  .couplet > .sc { font-size: 0.9rem; color: var(--ink-2); padding-top: 0.55rem; }
+  .search input::placeholder { color: var(--ink-2); }
+  .search input:focus-visible { outline: 4px solid var(--caution); outline-offset: 0; box-shadow: 0 0 0 4px var(--ink); }
+  .field kbd { position: absolute; right: 1rem; top: 50%; translate: 0 -50%; min-width: 2rem; padding: 0.2rem 0.5rem; text-align: center; font: 700 1.1rem/1 var(--mono); color: var(--ink-2); border: 2px solid var(--rule-strong); border-radius: var(--r); background: var(--paper); }
+  .search input:not(:placeholder-shown) ~ kbd { display: none; }
+
+  /* verdict placards: live filters, biggest numbers on the page */
+  .placards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 2.25rem; }
+  .placard { --f: var(--ink); --fi: var(--paper); display: grid; gap: 0.35rem; justify-items: start; padding: 0.9rem 1rem 0.8rem; text-align: left; color: var(--fi); background: var(--f); border: var(--bw) solid var(--ink); border-radius: var(--r); cursor: pointer; font: inherit; }
+  .placard .n { font: 800 3.4rem/0.9 var(--sc); letter-spacing: 0.01em; }
+  .placard :global(.signal) { padding: 0; background: transparent; font-size: 1.2rem; }
+  .placard .cls { font: 600 0.95rem/1 var(--sc); letter-spacing: 0.1em; text-transform: uppercase; }
+  .placard.malicious { --f: var(--danger); --fi: var(--danger-ink); }
+  .placard.vulnerable { --f: var(--warning); --fi: var(--warning-ink); }
+  .placard.suspicious { --f: var(--caution); --fi: var(--caution-ink); }
+  .placard.incident { --f: var(--notice); --fi: var(--notice-ink); }
+  .placard:hover:not(:disabled) { translate: 0 -2px; outline: 3px solid var(--ink); outline-offset: 2px; }
+  .placard[aria-pressed='true'] { box-shadow: inset 0 0 0 4px var(--plate), inset 0 0 0 7px var(--ink); }
+  .placard[aria-pressed='true'] .cls::after { content: ' · Filtering'; }
+  .placard:disabled { background: var(--plate); color: var(--ink-2); border-color: var(--rule-strong); cursor: default; }
+  @media (max-width: 720px) { .placards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .placard .n { font-size: 2.8rem; } }
+
+  .couplets { display: grid; gap: 0; margin-top: 1.75rem; }
+  .couplet { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; align-items: start; padding-block: 0.6rem; border-top: 1px solid var(--rule-strong); }
+  .couplet > .sc { font-size: 1.05rem; color: var(--ink-2); padding-top: 0.7rem; }
   .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .chip {
-    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 0.85rem; font: 500 0.98rem/1 var(--sans);
-    color: var(--ink); background: var(--plate); border: 1px solid var(--rule-strong); border-radius: var(--r); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.55rem; min-height: 44px; padding: 0 0.9rem; font: 700 1.05rem/1 var(--sc); letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink); background: var(--plate); border: 2px solid var(--ink); border-radius: var(--r); cursor: pointer;
   }
-  .chip :global(.mark) { font-size: 0.95rem; }
-  .chip .n { font: 500 0.82rem/1 var(--mono); color: var(--ink-2); }
-  .chip:hover { border-color: var(--ink); }
-  .chip[aria-pressed='true'] { background: var(--moss); border-color: var(--moss); color: var(--moss-ink); }
-  .chip[aria-pressed='true'] .n { color: var(--moss-2); }
-  .chip[aria-pressed='true'] :global(.mark) { color: var(--moss-ink); }
+  .chip .n { font: 500 0.85rem/1 var(--mono); color: var(--ink-2); letter-spacing: 0; }
+  .chip:hover { background: var(--caution); color: #0b0b0c; }
+  .chip:hover .n { color: #0b0b0c; }
+  .chip[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+  .chip[aria-pressed='true'] .n { color: var(--paper); }
   @media (max-width: 560px) { .couplet { grid-template-columns: 1fr; gap: 0; } .couplet > .sc { padding-top: 0.2rem; } }
 
-  .status { min-height: 1.6rem; margin: 1.5rem 0 0.5rem; color: var(--ink-2); max-width: var(--measure); }
+  .status { min-height: 1.6rem; margin: 1.75rem 0 0.5rem; color: var(--ink-2); max-width: var(--measure); }
   .status strong { color: var(--ink); }
 
-  .plates { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
-  .plate { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--rule); }
-  .plate[hidden] { display: none; }
-  .no { align-self: start; padding-top: 0.2rem; color: var(--ink-2); text-decoration: none; font-size: 0.82rem; }
-  .no:hover { text-decoration: underline; }
-  .body { display: grid; gap: 0.3rem; min-width: 0; }
-  .body h2 { font: 700 1.2rem/1.3 var(--sans); letter-spacing: 0; margin: 0; max-width: 62ch; text-wrap: pretty; }
+  /* rows: a signal tab on the left ranks severity before the text is read */
+  .rows { list-style: none; padding: 0; margin: 0; border-top: var(--bw) solid var(--ink); }
+  .row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--rule-strong); }
+  .row[hidden] { display: none; }
+  .tab { display: grid; gap: 0.35rem; align-content: start; justify-items: start; text-decoration: none; color: var(--ink-2); }
+  .tab .cls { font: 600 0.95rem/1 var(--sc); letter-spacing: 0.1em; text-transform: uppercase; }
+  .tab:hover :global(.signal) { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .body { display: grid; gap: 0.35rem; min-width: 0; }
+  .body h2 { font: 700 1.4rem/1.2 var(--sans); letter-spacing: 0; text-transform: none; margin: 0; padding: 0; border: 0; max-width: 62ch; text-wrap: pretty; }
   .body h2 a { color: var(--ink); text-decoration: none; }
-  .body h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
-  .pkgs { display: flex; flex-wrap: wrap; gap: 0.1rem 0.9rem; margin: 0; font-size: 0.82rem; }
-  .pkgs a { color: var(--ink-2); }
-  @media (max-width: 560px) { .plate { grid-template-columns: 1fr; gap: 0.2rem; } .no { padding-top: 0; } }
+  .body h2 a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.1rem 1rem; margin: 0; font-size: 0.82rem; color: var(--ink-2); }
+  .meta a { color: var(--ink-2); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .pkgs { display: flex; flex-wrap: wrap; gap: 0.1rem 0.9rem; margin: 0; font-size: 0.85rem; }
+  .pkgs a { color: var(--fern); }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; gap: 0.5rem; } .tab { display: flex; align-items: center; gap: 0.75rem; } }
 </style>
 
 <script>
-  type Row = { id: string; summary: string; cls: string; type: string; aliases: string[]; pkgs: { eco: string; label: string }[] };
+  type Row = { id: string; summary: string; cls: string; type: string; aliases: string[]; url: string; pkgs: { eco: string; label: string; url: string }[] };
   const index: Row[] = JSON.parse(document.getElementById('index')!.textContent!);
   const input = document.getElementById('q') as HTMLInputElement;
   const items = [...document.querySelectorAll<HTMLLIElement>('[data-entry]')];
   const status = document.getElementById('status')!;
-  const chips = [...document.querySelectorAll<HTMLButtonElement>('.chip')];
+  const verdict = document.getElementById('verdict')!;
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-facet]')];
   const hay = index.map((e) => [e.id, e.summary, e.cls, e.type, ...e.aliases, ...e.pkgs.map((p) => p.label)].join(' ').toLowerCase());
   const on: Record<string, Set<string>> = { cls: new Set(), type: new Set(), eco: new Set() };
+  const worst = ['malicious', 'vulnerable', 'suspicious', 'incident'];
+  const word: Record<string, string> = { malicious: 'Danger', vulnerable: 'Warning', suspicious: 'Caution', incident: 'Notice' };
+  const imperative: Record<string, string> = {
+    malicious: 'Do not install it.',
+    vulnerable: 'Check your version against the affected range.',
+    suspicious: 'Review it before installing.',
+    incident: 'Read the report.',
+  };
+  const shape: Record<string, string> = {
+    malicious: '<circle cx="6" cy="6" r="5.5" fill="currentColor"/>',
+    vulnerable: '<path d="M6 .4 11.6 6 6 11.6 .4 6Z" fill="currentColor"/>',
+    suspicious: '<path d="M6 .8 11.6 11.2H.4Z" fill="currentColor"/>',
+    incident: '<rect x="1" y="1" width="10" height="10" fill="currentColor"/>',
+  };
+
+  const el = (tag: string, cls = '', text = '') => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  };
+
+  // The plate: worst verdict among the matches, its imperative, and a link to the evidence.
+  function showVerdict(raw: string, matches: Row[]) {
+    verdict.replaceChildren();
+    if (!raw) return void (verdict.hidden = true);
+    verdict.hidden = false;
+    const detail = el('div', 'detail');
+    if (!matches.length) {
+      verdict.className = 'verdict unlisted';
+      const band = el('div', 'band');
+      band.append(el('span', '', 'Not listed'));
+      detail.append(el('p', 'imperative', 'Not a safety verdict.'));
+      const p = el('p');
+      const strong = el('strong', '', `"${raw}" is not in the database.`);
+      p.append(strong, ' That only means nobody has reported it yet. Check its name against the real package, and run ');
+      p.append(el('code', '', 'antidote check'), ' before you install.');
+      detail.append(p);
+      verdict.append(band, detail);
+      return;
+    }
+    const kind = worst.find((k) => matches.some((m) => m.cls === k))!;
+    const hit = matches.filter((m) => m.cls === kind);
+    verdict.className = `verdict ${kind}`;
+    const band = el('div', 'band');
+    band.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 12 12" aria-hidden="true">${shape[kind]}</svg>`);
+    band.append(el('span', '', word[kind]), el('span', 'what', `${kind} · ${matches.length} match${matches.length === 1 ? '' : 'es'}`));
+    detail.append(el('p', 'imperative', imperative[kind]));
+    const p = el('p');
+    p.append(`Worst match for "${raw}": `);
+    const a = el('a', '', hit[0].summary);
+    a.setAttribute('href', hit[0].url);
+    p.append(a);
+    detail.append(p);
+    verdict.append(band, detail);
+  }
 
   function render() {
     const raw = input.value.trim();
     const terms = raw.toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
+    const matches: Row[] = [];
     items.forEach((li, i) => {
       const e = index[i];
+      const textOk = terms.every((t) => hay[i].includes(t));
       const ok =
-        terms.every((t) => hay[i].includes(t)) &&
+        textOk &&
         (!on.cls.size || on.cls.has(e.cls)) &&
         (!on.type.size || on.type.has(e.type)) &&
         (!on.eco.size || e.pkgs.some((p) => on.eco.has(p.eco)));
       li.hidden = !ok;
-      if (ok) shown++;
+      if (ok) { shown++; matches.push(e); }
     });
     const filtered = raw || on.cls.size || on.type.size || on.eco.size;
+    const facets = on.cls.size || on.type.size || on.eco.size;
+    showVerdict(raw && !facets ? raw : '', matches);
+    status.setAttribute('aria-live', raw && !facets ? 'off' : 'polite');
     if (!filtered) status.textContent = '';
     else if (shown) status.textContent = `${shown} matching entr${shown === 1 ? 'y' : 'ies'}.`;
-    else if (raw && !on.cls.size && !on.type.size && !on.eco.size)
-      status.innerHTML = `<strong>"${raw.replace(/[<&]/g, '')}" is not in the database.</strong> That is not a safety verdict: it only means nobody has reported it yet. Check its name against the real package, and run <code>antidote check</code> before you install.`;
     else status.textContent = 'Nothing matches these filters.';
     const url = new URL(location.href);
     raw ? url.searchParams.set('q', raw) : url.searchParams.delete('q');
@@ -171,9 +271,16 @@ const label = (t: string) => t.replaceAll('_', ' ');
       const v = c.dataset.value!;
       set.has(v) ? set.delete(v) : set.add(v);
       c.setAttribute('aria-pressed', String(set.has(v)));
+      document.querySelectorAll<HTMLButtonElement>('.placard').forEach((p) => p.setAttribute('aria-pressed', String(on.cls.has(p.dataset.value!))));
       render();
     });
   }
+  // keyboard first: "/" jumps to the lookup, Escape clears it
+  addEventListener('keydown', (ev) => {
+    const typing = /^(input|textarea|select)$/i.test((ev.target as HTMLElement).tagName);
+    if (ev.key === '/' && !typing && !ev.metaKey && !ev.ctrlKey) { ev.preventDefault(); input.focus(); input.select(); }
+    else if (ev.key === 'Escape' && ev.target === input) { input.value = ''; render(); }
+  });
   input.value = new URLSearchParams(location.search).get('q') ?? '';
   input.addEventListener('input', render);
   render();

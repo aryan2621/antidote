@@ -5,8 +5,8 @@ export function Logo({ size = 28 }: { size?: number }) {
       <path
         d="M27 33 46 17h10"
         fill="none"
-        stroke="var(--moss-2)"
-        strokeWidth="4"
+        stroke="var(--caution)"
+        strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

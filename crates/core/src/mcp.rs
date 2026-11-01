@@ -58,13 +58,13 @@ pub fn package_refs(cfg: &Value) -> Vec<(String, PkgRef)> {
     servers(cfg).into_iter().filter_map(|(name, def)| Some((name, server_ref(def)?))).collect()
 }
 
-/// (name, definition) of every server in any `mcpServers` block, at any depth.
+/// (name, definition) of every server in any `mcpServers` block (VS Code: `servers`, Zed: `context_servers`), at any depth.
 pub fn servers(cfg: &Value) -> Vec<(String, &Value)> {
     fn walk<'a>(v: &'a Value, out: &mut Vec<(String, &'a Value)>) {
         match v {
             Value::Object(map) => {
                 for (k, child) in map {
-                    if k == "mcpServers" {
+                    if matches!(k.as_str(), "mcpServers" | "servers" | "context_servers") {
                         out.extend(child.as_object().into_iter().flatten().map(|(n, d)| (n.clone(), d)));
                     } else {
                         walk(child, out);
@@ -201,4 +201,19 @@ fn cmp_ver(a: &str, b: &str) -> std::cmp::Ordering {
         }
     }
     std::cmp::Ordering::Equal
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn finds_servers_in_every_client_format() {
+        for key in ["mcpServers", "servers", "context_servers"] {
+            let cfg: Value = serde_json::json!({ key: { "gh": { "command": "npx", "args": ["-y", "mcp-remote@0.1.15"] } } });
+            let refs = package_refs(&cfg);
+            assert_eq!(refs.len(), 1, "{key}");
+            assert_eq!(refs[0].0, "gh");
+        }
+    }
 }

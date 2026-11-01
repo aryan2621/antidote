@@ -4,6 +4,8 @@ An open database of malicious and vulnerable AI agent artifacts (skills, MCP ser
 
 > Working name. Status: phases 0–4 built, plus most of phase 5: corpus, scanner, signed feed, CI integrations, website, crawlers, detonation, classifier, live MCP inspection, API and the Burrow integration. Repo: [github.com/aryan2621/antidote](https://github.com/aryan2621/antidote); site: [aryan2621.github.io/antidote](https://aryan2621.github.io/antidote).
 
+How to use every part of it: [USER.md](USER.md).
+
 ## Scanner
 
 ```bash
