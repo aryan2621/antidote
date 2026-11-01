@@ -6,10 +6,10 @@ Needs a Capturita build with Studio (Pro) enabled."""
 import json, pathlib, random, string, datetime, shutil
 
 ROOT = pathlib.Path.home() / "Movies" / "Capturita"
-KIT = dict(  # "hazard placard": the website's palette, with the caution yellow as the accent
-    id="antidote1", name="Antidote placard",
-    colors=dict(bg="#0b0b0c", surface="#171718", text="#f1f1ed", muted="#a9adb0", accent="#ffd400"),
-    fonts=dict(display="space-grotesk", body="inter"), background="grain")
+KIT = dict(  # the app's "hazard placard" look: cool off-white ground, ink text, DANGER red as the accent
+    id="antidote2", name="Antidote placard",
+    colors=dict(bg="#eceeed", surface="#ffffff", text="#0b0b0c", muted="#41454a", accent="#e4202c"),
+    fonts=dict(display="bricolage", body="inter"), background="gradient")  # Barlow Condensed is not bundled in Capturita
 
 def s(scene, props, duration):
     return dict(kind="scene", id="".join(random.choices(string.ascii_lowercase + string.digits, k=8)), scene=scene,
@@ -91,11 +91,10 @@ d.mkdir(parents=True)
 # the brand kit is app-wide; add it once, keeping a backup of the file
 kits_file = ROOT / "Brand" / "kits.json"
 kits = json.loads(kits_file.read_text()) if kits_file.exists() else []
-if not any(k.get("id") == KIT["id"] for k in kits):
-    if kits_file.exists():
-        shutil.copy(kits_file, kits_file.with_suffix(".json.antidote-bak"))
-    kits_file.parent.mkdir(exist_ok=True)
-    kits_file.write_text(json.dumps(kits + [KIT], indent=2))
+if kits_file.exists():
+    shutil.copy(kits_file, kits_file.with_suffix(".json.antidote-bak"))
+kits_file.parent.mkdir(exist_ok=True)
+kits_file.write_text(json.dumps([k for k in kits if k.get("id") not in ("antidote1", KIT["id"])] + [KIT], indent=2))
 
 (d / "images").mkdir()
 for f in (HERE / "shots").glob("*.png"):
