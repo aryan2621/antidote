@@ -1,5 +1,6 @@
 mod guard;
 mod incident;
+mod intercept;
 mod inspect;
 mod report;
 mod stats;
@@ -67,6 +68,13 @@ enum Cmd {
         pins_dir: Option<PathBuf>,
         #[arg(trailing_var_arg = true, allow_hyphen_values = true)]
         cmd: Vec<String>,
+    },
+    /// Interceptor for Docker's MCP Gateway: `--interceptor "after:exec:antidote intercept"`. Reads the tool
+    /// call or result as JSON on stdin and replaces it with an error if it holds a high or critical finding.
+    Intercept {
+        /// Log what would be blocked but let everything through
+        #[arg(long)]
+        warn_only: bool,
     },
     /// Rewrite an MCP config (Claude, Cursor, VS Code, Windsurf, or a gateway's server list) so every stdio
     /// server runs behind `antidote guard`. Prints the result; `--write` edits the file and keeps a `.bak`.
@@ -256,6 +264,10 @@ fn run() -> Result<bool> {
                 return Ok(false);
             }
             std::process::exit(guard::run(c, &name, &dir, warn_only, &cmd)?);
+        }
+        Cmd::Intercept { warn_only } => {
+            intercept::run(c, warn_only)?;
+            return Ok(false);
         }
         Cmd::Wrap { file, write } => {
             let mut cfg: Value = serde_json::from_slice(&std::fs::read(&file)?).map_err(|e| anyhow::anyhow!("{} is not valid JSON: {e}", file.display()))?;

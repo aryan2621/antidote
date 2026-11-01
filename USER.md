@@ -216,7 +216,7 @@ antidote wrap ~/.cursor/mcp.json          # prints the rewritten config
 antidote wrap ~/.cursor/mcp.json --write  # edits it in place, keeping mcp.json.bak
 ```
 
-Rewrites each stdio server in a config (`mcpServers`, VS Code's `servers`, Zed's `context_servers`) to run as `antidote guard --name <server> -- <original command>`. Remote (URL) servers and ones already wrapped are left alone. This works with any gateway or client whose server list uses a `command` and `args`. To undo, restore the `.bak` file.
+Rewrites each stdio server in a config (`mcpServers`, VS Code's `servers`, Zed's `context_servers`) to run as `antidote guard --name <server> -- <original command>`. Remote (URL) servers and ones already wrapped are left alone. 
 
 ## 4. In your editor
 
