@@ -1,0 +1,87 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "sigedev01-bit/siluzan-tso",
+    "version": "1.1.63",
+    "download": "https://clawhub.ai/api/v1/download?slug=siluzan-tso&ownerHandle=sigedev01-bit&version=1.1.63"
+  },
+  "archive_sha256": "8cf22132fb6c5320cf9b2ea38b85a92d2d1ed173d47d235d18afb6d82e94973e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash",
+      "file_sha256": "609477257053a6a7547567c84a51c6e00cad9f7c40feb7a8ca7e6c0578dca351"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "609477257053a6a7547567c84a51c6e00cad9f7c40feb7a8ca7e6c0578dca351"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 75,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "609477257053a6a7547567c84a51c6e00cad9f7c40feb7a8ca7e6c0578dca351"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "clawhub.ai",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "a.com",
+    "ads.tiktok.com",
+    "agent-ci.mysiluzan.com",
+    "agent.mysiluzan.com",
+    "agentskills.io",
+    "cdn.tailwindcss.com",
+    "cdnjs.cloudflare.com",
+    "clawhub.ai",
+    "competitor.com",
+    "cursor.com",
+    "deb.nodesource.com",
+    "developer.work.weixin.qq.com",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "googleapi.mysiluzan.com",
+    "install-node.vercel.app",
+    "json-schema.org",
+    "nodejs.org",
+    "open.feishu.cn",
+    "registry.npmmirror.com",
+    "rpm.nodesource.com",
+    "schemas.openxmlformats.org",
+    "staticpn.siluzan.com",
+    "tso-api.siluzan.com",
+    "www-ci.siluzan.com",
+    "www.brand-a.com",
+    "www.example.com",
+    "www.hy-steelpipe.com",
+    "www.siluzan.com",
+    "www.youtube.com",
+    "your-crm.example.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}
