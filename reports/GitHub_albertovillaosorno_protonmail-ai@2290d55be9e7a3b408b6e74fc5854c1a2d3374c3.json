@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "albertovillaosorno/protonmail-ai",
+    "version": "2290d55be9e7a3b408b6e74fc5854c1a2d3374c3",
+    "download": "https://codeload.github.com/albertovillaosorno/protonmail-ai/tar.gz/2290d55be9e7a3b408b6e74fc5854c1a2d3374c3"
+  },
+  "archive_sha256": "439a3cd9267ca031e12863e99c3b23aa5e65c156c8a9992fb586a99aba55ffd4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-2290d55be9e7a3b408b6e74fc5854c1a2d3374c3/docs/todo/open/interactive-auth-and-session.mdc",
+      "line": 211,
+      "evidence": "p=0.96 - Completed-fork account IDs now also refuse Unicode noncharacters, which previo",
+      "file_sha256": "81582a596d93d7ffd6c7062bd7be649c20a42f3ac2807443310734064841c9c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-2290d55be9e7a3b408b6e74fc5854c1a2d3374c3/docs/todo/open/web-ui-adapter.mdc",
+      "line": 434,
+      "evidence": "p=0.93 - Red-first synthetic message-list and detail responses accepted Unicode nonchar",
+      "file_sha256": "219cd56351fc2caed20c27f4f62d824854372eea8a1361a8a6f0cf0aafac4ba0"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "assets.example.test, chromedevtools.github.io, evil.invalid, example.invalid, foreign.invalid, invalid.test, mail.proton.me.evil.invalid, proton.me.evil.invalid, www.iana.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "account.proton.me",
+    "assets.example.test",
+    "chromedevtools.github.io",
+    "crates.io",
+    "evil.example",
+    "evil.invalid",
+    "example.invalid",
+    "example.test",
+    "foreign.invalid",
+    "fsf.org",
+    "github.com",
+    "invalid.test",
+    "lookalike.example.test",
+    "mail.evil.test",
+    "mail.proton.me",
+    "mail.proton.me.evil.example",
+    "mail.proton.me.evil.invalid",
+    "mail.proton.me.evil.test",
+    "proton.me",
+    "proton.me.evil.invalid",
+    "protonmail.ch",
+    "raw.githubusercontent.com",
+    "www.iana.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

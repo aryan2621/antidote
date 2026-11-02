@@ -1,0 +1,32 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "citrolabs/ego-browser",
+    "version": "2.1.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=ego-browser&ownerHandle=citrolabs&version=2.1.0"
+  },
+  "archive_sha256": "4e82c892e06dca11a1357a993e87f5f494fc2f8a035e4966adaf8acdeffff4a6",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "scripts/install.sh",
+      "line": 72,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "0dcfb371dc37c61fb61cf31747d9c97f72f5b071147815857734d2096db9d2a3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "cdn.ego.app",
+    "clawhub.ai",
+    "github.com",
+    "lite.ego.app",
+    "www.google.com",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

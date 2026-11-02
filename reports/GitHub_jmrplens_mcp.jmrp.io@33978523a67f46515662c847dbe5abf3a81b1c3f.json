@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jmrplens/mcp.jmrp.io",
+    "version": "33978523a67f46515662c847dbe5abf3a81b1c3f",
+    "download": "https://codeload.github.com/jmrplens/mcp.jmrp.io/tar.gz/33978523a67f46515662c847dbe5abf3a81b1c3f"
+  },
+  "archive_sha256": "8b84bfa4f3fe754a9aed9db5eb26d6a565d8157cb1191fdb96232530b4cf43e1",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp.jmrp.io-33978523a67f46515662c847dbe5abf3a81b1c3f/src/data/cards/libgen.json",
+      "line": 303,
+      "evidence": "p=0.92 ignored here: this deployment always returns the direct download URL as a link a",
+      "file_sha256": "0fd1cbfb10778247797aed10097c5049cfa4c0c5b82a3fc7db85a43d8c951401"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp.jmrp.io-33978523a67f46515662c847dbe5abf3a81b1c3f/src/data/cards/libgen.json",
+      "line": 943,
+      "evidence": "p=0.97 max characters this call",
+      "file_sha256": "0fd1cbfb10778247797aed10097c5049cfa4c0c5b82a3fc7db85a43d8c951401"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.cloudflare.com",
+    "api.indexnow.org",
+    "cloudflareinsights.com",
+    "contentsignals.org",
+    "creativecommons.org",
+    "cspell.org",
+    "docs.gitlab.com",
+    "docs.jmrp.io",
+    "evil.example",
+    "github.com",
+    "gitlab.com",
+    "gitlab.example.com",
+    "glama.ai",
+    "jmrp.io",
+    "libgen.vg",
+    "lobehub.com",
+    "mcp.jmrp.io",
+    "mcpservers.org",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "raw.githubusercontent.com",
+    "schema.org",
+    "sonarcloud.io",
+    "ssl.bing.com",
+    "static.cloudflareinsights.com",
+    "static.modelcontextprotocol.io",
+    "verifymcp.io",
+    "www.rfc-editor.org",
+    "www.w3.org",
+    "www.wikidata.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

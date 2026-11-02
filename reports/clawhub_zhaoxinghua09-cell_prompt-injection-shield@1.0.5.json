@@ -1,0 +1,46 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "zhaoxinghua09-cell/prompt-injection-shield",
+    "version": "1.0.5",
+    "download": "https://clawhub.ai/api/v1/download?slug=prompt-injection-shield&ownerHandle=zhaoxinghua09-cell&version=1.0.5"
+  },
+  "archive_sha256": "89d2dc36dcd814bc3aafa34058be01a51e9c644c89e089c51805bc4a53e569bb",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "README.md",
+      "line": 11,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6f4f64e95889e3ab8088da6d7a2def62746800336b0b1096514d1d874b20f013"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "SKILL.md",
+      "line": 52,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c334318b4ab7ecc35a4c4e62523208daa46a6b1eae16a340be48a8d409972e0e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 51,
+      "evidence": "p=0.99 1. Before data ingestion: when web pages, emails, tool returns, or uploaded docu",
+      "file_sha256": "c334318b4ab7ecc35a4c4e62523208daa46a6b1eae16a340be48a8d409972e0e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "github.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
