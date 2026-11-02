@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0228",
+  "modified": "2026-07-21T03:56:47.773607213Z",
+  "published": "2026-06-19T21:42:32Z",
+  "aliases": [
+    "GHSA-mxjx-28vx-xjjj",
+    "CVE-2026-58482"
+  ],
+  "summary": "Network-AI: ApprovalInbox HTTP server has no authentication — anyone can approve pending agent actions ",
+  "details": "## Summary\n\n`network-ai`'s `ApprovalInbox` (`lib/approval-inbox.ts`) is a shipped, exported, documented feature — *\"a web-accessible approval queue with REST API … and SSE streaming\"* (SECURITY.md). It is the network surface of the **human-in-the-loop Approval Gate**, which `ApprovalGate` uses to require explicit human approval for *\"high-risk operations (writes, shell commands, budget spend)\"* (SECURITY.md). The HTTP server it exposes has **no authentication of any kind** and sets **`Access-Control-Allow-Origin: *`** on every route, including the state-changing `POST /approvals/:id/approve` and `/deny`.\n\nAs a result, any party who can send an HTTP request to the inbox port — a co-located process, a container/SSRF on the same host, a remote client when the operator binds a non-loopback address, **or any website the operator visits in a browser (via the wildcard CORS)** — can **enumerate pending approvals and approve them**, defeating the entire human-in-the-loop control and causing the gated high-risk action (e.g. a shell command the agent was holding for review) to execute without consent.\n\nThis is the same vulnerability class the maintainer has already fixed twice on the MCP server (GHSA-fj4g-2p96-q6m3 missing auth; GHSA-j3vx-cx2r-pvg8 empty default secret) — the auxiliary `ApprovalInbox` server never received that hardening.\n\n- **Affected:** `network-ai <= 5.11.0` (current latest), `lib/approval-inbox.ts` — `httpHandler()` / `routeRequest()` / `startServer()`. `ApprovalInbox` is public API (exported from `index.ts:1126`).\n- **CWE:** [CWE-862](https://cwe.mitre.org/data/definitions/862.html) (Missing Authorization) + [CWE-352](https://cwe.mitre.org/data/definitions/352.html) (Cross-Site Request Forgery, via wildcard CORS).\n- **CVSS v3.1 (proposed):**\n  - Drive-by CSRF against the default `127.0.0.1` deployment: `AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:N` = **5.9 Medium**.\n  - Direct request when the operator binds a non-loopback address (or local/SSRF reach): `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N` = **8.1 High**.\n\n## Details\n\n### No authentication on the request pipeline (`lib/approval-inbox.ts`)\n\n`httpHandler()` sets a wildcard CORS policy and routes every request straight to `routeRequest()` with **no auth check**:\n\n```js\n// lib/approval-inbox.ts:250-275\nhttpHandler() {\n  return (req, res) => {\n    ...\n    res.setHeader('Access-Control-Allow-Origin', '*');          // 256  <-- wildcard CORS\n    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');\n    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');\n    if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }   // preflight OK for any origin\n    ...\n    this.routeRequest(req, res, subPath, url);                  // 273  <-- no token / secret / origin gate\n  };\n}\n```\n\n`routeRequest()` exposes list + approve/deny with no credential check (default `pathPrefix` = `/approvals`):\n\n```js\n// lib/approval-inbox.ts:369-405\nrouteRequest(req, res, subPath, url) {\n  if (subPath === '/' && req.method === 'GET') {                       // GET /approvals/  -> enumerate pending ids\n    this.sendJson(res, 200, this.list(status)); return;\n  }\n  ...\n  const approveMatch = subPath.match(/^\\/([a-f0-9]+)\\/approve$/);      // POST /approvals/:id/approve\n  if (approveMatch && req.method === 'POST') {\n    this.readBody(req).then((body) => {\n      const approvedBy = typeof body.approvedBy === 'string' ? body.approvedBy : 'anonymous';  // defaults to 'anonymous'\n      const entry = this.approve(approveMatch[1], approvedBy, reason);  // resolves the gate -> action proceeds\n      ...\n    });\n  }\n}\n```\n\n`approve()` resolves the pending promise that `ApprovalGate` is awaiting, so the gated action proceeds:\n\n```js\n// lib/approval-inbox.ts:172-183 / 327-339\napprove(id, approvedBy, reason) {\n  ...\n  return this.resolve(id, 'approved', { approved: true, approvedBy, reason });  // promise -> {approved:true}\n}\n```\n\n`startServer()` binds the handler (default `127.0.0.1`, bu\n\nImported from OSV GHSA-mxjx-28vx-xjjj.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-mxjx-28vx-xjjj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-mxjx-28vx-xjjj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Jovancoding/Network-AI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "network-ai"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.12.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

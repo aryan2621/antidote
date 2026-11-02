@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0234",
+  "modified": "2026-08-05T14:37:12.213245727Z",
+  "published": "2026-08-05T13:56:26Z",
+  "aliases": [
+    "MAL-2026-12789"
+  ],
+  "summary": "Malicious code in fa-mcp-sdk (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (62142cbcb6da6a6c078dd91a92cc28d8cfa30a9f4fc901ab2cdbc4cfd6540abb)\nThe package includes cli-template/update.cjs, an update helper that combines several install/update-time capabilities: it imports child_process, https, fs, and os; reads os.hostname() and other system identifiers; issues https.request POST calls to a remote endpoint; performs filesystem existence checks; and calls spawn('/bin/bash',...) to execute shell commands. The composition — host identifier collection, arbitrary shell execution via /bin/bash, and outbound HTTPS POST inside a self-updater — provides a mechanism to run remote-directed commands on machines that install or run this package. Additional files under dist/core/ (agent-tester/services/TesterMcpClientService.js, web/server-http.js) exercise ping/HTTP GET/POST patterns consistent with host reachability probing and outbound command/data flow.\n\n\nImported from OSV MAL-2026-12789.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-12789"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/fa-mcp-sdk/v/0.12.72"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "fa-mcp-sdk"
+      },
+      "versions": [
+        "0.12.72"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

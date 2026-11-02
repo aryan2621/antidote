@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0236",
+  "modified": "2026-07-08T23:01:52.995845371Z",
+  "published": "2026-06-05T00:53:43Z",
+  "aliases": [
+    "MAL-2026-5223",
+    "GHSA-3wmg-66hp-xhv9"
+  ],
+  "summary": "Malicious code in autotel-mcp (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (f2bbb2ac2e6e954090b85e740a9a10a8267429800107690dfbde310c0b3d9fc7)\nPattern-based matches fired on the strings 'ping' and 'POST' co-occurring in the package's bundled output (dist/index.cjs, dist/index.js, dist/server.cjs, dist/server.js) and in src/backends/collector/receiver.ts. The package advertises itself as an MCP (Model Context Protocol) server with a telemetry/collector backend, where 'ping' likely refers to OpenTelemetry/health-check semantics and POST refers to receiver endpoints — not a hardcoded exfiltration channel. No attacker-controlled domain, credential read, lifecycle hook, or environment scraping was observed. Routing to human review because traced-code corroboration of intent was not available and the keyword co-occurrence alone is insufficient to confirm or rule out malicious behavior in the bundled output.\n\n## Source: ghsa-malware (9437d9a4154fd87a4ce99716b267b0a16d3277af57cf02dc7462e6ad149c9d68)\nAny computer that has this package installed or running should be considered fully compromised. All secrets and keys stored on that computer should be rotated immediately from a different computer. The package should be removed, but as full control of the computer may have been given to an outside entity, there is no guarantee that removing the package will remove all malicious software resulting from installing it.\n\n## Source: google-open-source-security (a6c7977dbc054cdb7fe56da0d2fbd26e2a6fed695deb4263ccbf4adfedd86acb)\nThe Miasma malware is a self-propagating worm that spreads across the npm registry by abusing weaponized `binding.gyp` files to achieve execution during package installation, bypassing security tools that only inspect package lifecycle scripts. Upon execution, the malware attempts to exfiltrate credentials and OIDC tokens for various cloud and registry services, and propagates by compromising other packages managed by the stolen accounts or committing backdoor files to GitHub repositories.\n\n\nImported from OSV MAL-2026-5223.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-5223"
+    },
+    {
+      "type": "ARTICLE",
+      "url": "https://www.endorlabs.com/learn/malicious-payload-in-ai-sdk-ollama-npm-package"
+    },
+    {
+      "type": "ARTICLE",
+      "url": "https://www.stepsecurity.io/blog/binding-gyp-npm-supply-chain-attack-spreads-like-worm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-3wmg-66hp-xhv9"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/24.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/23.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/14.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/5.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/13.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/18.0.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/autotel-mcp/v/3.0.1"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "autotel-mcp"
+      },
+      "versions": [
+        "0.1.14",
+        "10.0.1",
+        "11.0.1",
+        "13.0.1",
+        "14.0.1",
+        "15.0.2",
+        "16.0.1",
+        "17.0.2",
+        "18.0.1",
+        "19.0.1",
+        "2.0.1",
+        "20.0.1",
+        "21.1.1",
+        "22.0.1",
+        "23.0.1",
+        "24.0.1",
+        "25.0.1",
+        "26.0.2",
+        "27.0.1",
+        "28.0.3",
+        "29.0.1",
+        "3.0.1",
+        "4.0.1",
+        "5.0.1",
+        "6.0.1",
+        "7.0.1",
+        "8.0.1",
+        "9.0.1"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}
