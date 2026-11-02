@@ -1,0 +1,85 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ricardoquesada/regenerator2000",
+    "version": "f5ec3fb2af346a4b286b5aec5d39211f9dc9f156",
+    "download": "https://codeload.github.com/ricardoquesada/regenerator2000/tar.gz/f5ec3fb2af346a4b286b5aec5d39211f9dc9f156"
+  },
+  "archive_sha256": "70d6add0061db21db6b6734c926ca1a8fd3628b9c822835c21a3d449f48a0cd0",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "regenerator2000-f5ec3fb2af346a4b286b5aec5d39211f9dc9f156/.agent/agents/r2000_cbm_principal_swe.md",
+      "line": 162,
+      "evidence": "p=0.91 *   **Self-Modifying Code (SMC) Operand Patching:** *   Writes to `instruction_a",
+      "file_sha256": "8e9f314fd73e23a1ebcc6ab040c19f47e4a17f6e14462d585ca57ce043fd892c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "regenerator2000-f5ec3fb2af346a4b286b5aec5d39211f9dc9f156/.agent/skills/r2000-analyze-routine/SKILL.md",
+      "line": 27,
+      "evidence": "p=0.97 ## 3. Read the Instructions",
+      "file_sha256": "30eb0f6212b66578bd0e681b262e4df94fd1139450c49f48d097bb0e23a63757"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "codebase64.net, www.sizecoding.org, www.zimmers.net",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "alacritty.org",
+    "api.github.com",
+    "archive.org",
+    "cc65.github.io",
+    "codebase64.net",
+    "crates.io",
+    "csdb.dk",
+    "discord.gg",
+    "en.wikipedia.org",
+    "ghostty.org",
+    "github.com",
+    "iancoog.altervista.org",
+    "img.shields.io",
+    "iterm2.com",
+    "jimbo.itch.io",
+    "keepachangelog.com",
+    "lowcarb.itch.io",
+    "modelcontextprotocol.io",
+    "plus4world.powweb.com",
+    "regenerator2000.readthedocs.io",
+    "retro.moe",
+    "rustup.rs",
+    "semver.org",
+    "simonomi.dev",
+    "sourceforge.net",
+    "sw.kovidgoyal.net",
+    "tass64.sourceforge.net",
+    "theweb.dk",
+    "vice-emu.sourceforge.io",
+    "wezfurlong.org",
+    "wiki.gnome.org",
+    "www.apache.org",
+    "www.c64-wiki.com",
+    "www.kickassembler.com",
+    "www.pagetable.com",
+    "www.sizecoding.org",
+    "www.theweb.dk",
+    "www.youtube.com",
+    "www.zimmers.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

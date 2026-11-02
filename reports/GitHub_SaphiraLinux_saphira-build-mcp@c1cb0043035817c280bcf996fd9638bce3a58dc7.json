@@ -1,0 +1,40 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "SaphiraLinux/saphira-build-mcp",
+    "version": "c1cb0043035817c280bcf996fd9638bce3a58dc7",
+    "download": "https://codeload.github.com/SaphiraLinux/saphira-build-mcp/tar.gz/c1cb0043035817c280bcf996fd9638bce3a58dc7"
+  },
+  "archive_sha256": "6396f520747517f0397ef3149f8afeec636d5bf5d62b03b81a996e8ec4c74c87",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "saphira-build-mcp-c1cb0043035817c280bcf996fd9638bce3a58dc7/docs/smoke.sh",
+      "line": 123,
+      "evidence": "curl -s localhost:8479/health | python3 -c \"import json,sys; print(json.load(sys",
+      "file_sha256": "de3f68bb882eba6a86ae109fb277061b528cd404938499595f1c5fa6b0f25ebd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "saphira-build-mcp-c1cb0043035817c280bcf996fd9638bce3a58dc7/docs/smoke.sh",
+      "line": 124,
+      "evidence": "curl -s localhost:8479/list | python3 -c \"import json,sys; print(len(json.load(s",
+      "file_sha256": "de3f68bb882eba6a86ae109fb277061b528cd404938499595f1c5fa6b0f25ebd"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "saphira.vm2.uk",
+    "shampoo.op2.uk",
+    "www.akadata.co.uk",
+    "www.sqlite.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

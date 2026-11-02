@@ -1,0 +1,82 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "imjustprism/borer",
+    "version": "02e8b4824c182870b60d3c5f03ac15cbfc906d75",
+    "download": "https://codeload.github.com/imjustprism/borer/tar.gz/02e8b4824c182870b60d3c5f03ac15cbfc906d75"
+  },
+  "archive_sha256": "723e09bb6d4b935ee6a4161504cb1344fa1a0e594830cd07326385e6c96b618f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "borer-02e8b4824c182870b60d3c5f03ac15cbfc906d75/plugins/borer/hooks/ensure.sh",
+      "line": 86,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3bada51051c25ed9052b6c2e3e3e19166e0582494811768f7f3c138623f8c6da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "borer-02e8b4824c182870b60d3c5f03ac15cbfc906d75/README.md",
+      "line": 133,
+      "evidence": "curl -fsSL https://borer.lol/install | sh",
+      "file_sha256": "88072ad6707f748dfd9c5b26f981839c44ee1eb74a362115a09411603ba59dce"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "pypi.org, www.npmjs.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.5",
+    "100.64.0.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "172.16.1.1",
+    "192.168.1.1",
+    "8.8.8.8",
+    "b64.example.net",
+    "borer.lol",
+    "c2.example.test",
+    "c2.host",
+    "crates.io",
+    "editorconfig.org",
+    "evil.example.com",
+    "evil.test",
+    "example.com",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "host.example.com",
+    "img.shields.io",
+    "msdl.microsoft.com",
+    "ocsp.digicert.com",
+    "pypi.org",
+    "rhai.rs",
+    "roll1.test",
+    "schemas.microsoft.com",
+    "symbols.example",
+    "tdqs.dev",
+    "www.apache.org",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.io",
+    "x3.test",
+    "xor1.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

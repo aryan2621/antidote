@@ -1,0 +1,47 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "arheanja-ops/mac-toolkit",
+    "version": "d39cfb410731faf16b40c4fd11a819ea8df5eb83",
+    "download": "https://codeload.github.com/arheanja-ops/mac-toolkit/tar.gz/d39cfb410731faf16b40c4fd11a819ea8df5eb83"
+  },
+  "archive_sha256": "0461d268beda9bd492bdd2d2a587c28cc587a1438fdb4ad6d9a94850e13ff6ce",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mac-toolkit-d39cfb410731faf16b40c4fd11a819ea8df5eb83/docs/MCP_CLIENTS.md",
+      "line": 186,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "48082a0c075363682b97fccec7ea8771d9a6db5a05686cc80946adee944f4c02"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mac-toolkit-d39cfb410731faf16b40c4fd11a819ea8df5eb83/docs/MCP_SETUP.md",
+      "line": 312,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "c675c79190241c5c60c2da960e4061c1b9479ff6a176b712451070ddde560fa3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.groq.com",
+    "awslabs.github.io",
+    "ba-pr.awsapps.com",
+    "console.groq.com",
+    "github.com",
+    "goreleaser.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "pkg.go.dev",
+    "semver.org",
+    "www.apple.com",
+    "www.conventionalcommits.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

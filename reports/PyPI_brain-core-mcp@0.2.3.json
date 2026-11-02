@@ -1,0 +1,126 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "brain-core-mcp",
+    "version": "0.2.3",
+    "download": null
+  },
+  "archive_sha256": "81df85b184661a2cb73b09ef91941941d9da992c8c4835aa1bd7f458c1eb1a6d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "faff7b48f12eaa0cba23b4ee7ad225b78a4e5d4ffa4543424bd68f4830216e7e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "brain_core_mcp-0.2.3/install.sh",
+      "line": 53,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "faff7b48f12eaa0cba23b4ee7ad225b78a4e5d4ffa4543424bd68f4830216e7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/src/brain_core/installer.py",
+      "line": 148,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "4ce02fdb35d0f61f5c9b82b0edb6400642e40afddeea8108fc86abb1bfc8799c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/src/brain_core/templates/agent/.claude/rules/05-system.md",
+      "line": 16,
+      "evidence": "curl | sh",
+      "file_sha256": "7dfe6d0d8679aa5004d946049680ada238eab019fbfb8af557170bed0fe5bd4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/PKG-INFO",
+      "line": 69,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "76d175c62e591a58dd404c89ec23691e60761c1547fb905da2693bcb4e7ce471"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/README.md",
+      "line": 27,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "eb2b79902537ac546c8d653655dedd1f868cab0549d94bcb0a5b899b4c058ccc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/docs/launch/SHOW_HN.md",
+      "line": 14,
+      "evidence": "curl … | bash",
+      "file_sha256": "231f31c4d6465ae18150ab043e0556d161fde5caa6fce7e65ed6ce2e297ce487"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/CHANGELOG.md",
+      "line": 20,
+      "evidence": "curl … | sudo bash",
+      "file_sha256": "1bbb6e177912e3e6ce3883eceb0133184eaf263fbcb53192fd31c880c4655937"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.2.3/tests/unit/test_hook.py",
+      "line": 32,
+      "evidence": "curl -fsSL https://x/i.sh | bash",
+      "file_sha256": "931af43db27909f507387602990011bcffcb74796dddbaf01662458e57a243c6"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 1 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-01T22:39:10.975696Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example",
+    "api.github.com",
+    "astral.sh",
+    "b.example",
+    "c.example",
+    "example.com",
+    "example.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "nodejs.org",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "www.w3.org",
+    "x.example",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

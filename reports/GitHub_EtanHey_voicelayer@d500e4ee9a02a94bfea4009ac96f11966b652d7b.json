@@ -1,0 +1,120 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "EtanHey/voicelayer",
+    "version": "d500e4ee9a02a94bfea4009ac96f11966b652d7b",
+    "download": "https://codeload.github.com/EtanHey/voicelayer/tar.gz/d500e4ee9a02a94bfea4009ac96f11966b652d7b"
+  },
+  "archive_sha256": "89d212362c00af361ed49af13e8ee1e6d339b0b5afeeb3db99d01cc8476e750a",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "voicelayer-d500e4ee9a02a94bfea4009ac96f11966b652d7b/src/__tests__/install-voicebar-autostart-script.test.ts",
+      "line": 165,
+      "evidence": "xattr -d -r com.apple.quarantine",
+      "file_sha256": "634f6a9032c9299cde6dde0eb0821239fc5017cf8bbbf8ec085ac43b95825311"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "voicelayer-d500e4ee9a02a94bfea4009ac96f11966b652d7b/AGENTS.md",
+      "line": 3,
+      "evidence": "p=0.99 VoiceLayer is how I talk to my agents and how they talk back. I've been dictatin",
+      "file_sha256": "db4fb07452b5be7b7a69db67f2566fad032850e69b7b50059ad80c34168f104c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "voicelayer-d500e4ee9a02a94bfea4009ac96f11966b652d7b/docs/getting-started/prerequisites.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "dc530f84a39bf0103db15223549e539b8ff937eb16a20e2276822f65a8c18e5d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "voicelayer-d500e4ee9a02a94bfea4009ac96f11966b652d7b/docs/getting-started/quickstart.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "74124ebfc2a3055966360df91981e7c5d72f26cb26e4da81c4b5c49c9afc18b3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "voicelayer-d500e4ee9a02a94bfea4009ac96f11966b652d7b/scripts/install-voicebar-autostart.sh",
+      "line": 174,
+      "evidence": "xattr -d -r com.apple.quarantine",
+      "file_sha256": "7a008bde347f22d1aae8048dbe661f6cb3bfd3c003ec725ed53fd74fa69c2134"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "example.invalid, formatting.invalid, synthetic.invalid, x.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "brainlayer.etanheyman.com",
+    "bun.sh",
+    "cmuxlayer.etanheyman.com",
+    "developer.apple.com",
+    "docs.anthropic.com",
+    "etanheyman.com",
+    "evil.example",
+    "evil.tld",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "formatting.invalid",
+    "github.com",
+    "help.github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "mysudra.co.il",
+    "nextjs.org",
+    "npmjs.com",
+    "openapi.vercel.sh",
+    "opencollective.com",
+    "platform-api.wisprflow.ai",
+    "pypi.org",
+    "registry.npmjs.org",
+    "semver.org",
+    "sox.sourceforge.net",
+    "spec.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "synthetic.invalid",
+    "tidelift.com",
+    "vercel.com",
+    "voicelayer.etanheyman.com",
+    "wisprflow.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.com",
+    "x.dev",
+    "x.io",
+    "youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

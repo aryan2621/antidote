@@ -1,0 +1,34 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "southline-tech/botmemory",
+    "version": "e399f4d1c45a0d5e28d3eba6ae69496f8ba0bdc3",
+    "download": "https://codeload.github.com/southline-tech/botmemory/tar.gz/e399f4d1c45a0d5e28d3eba6ae69496f8ba0bdc3"
+  },
+  "archive_sha256": "4d7cf881167c71abec364b907d3d92495f62e69c24180babbc136cdd970221b6",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "botmemory-e399f4d1c45a0d5e28d3eba6ae69496f8ba0bdc3/scripts/setup_box.sh",
+      "line": 57,
+      "evidence": "curl -fsSL 'https://go.dev/dl/?mode=json&include=all' | python3 -c 'import sys,j",
+      "file_sha256": "b1dd852f0b703680942aa0210767fead67b5fb8d244d5546adb531af266932c7"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "developercertificate.org",
+    "evil.example",
+    "github.com",
+    "go.dev",
+    "www.apache.org",
+    "www.googleapis.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
