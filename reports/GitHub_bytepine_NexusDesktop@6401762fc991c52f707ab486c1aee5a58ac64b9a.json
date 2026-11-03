@@ -1,0 +1,36 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "bytepine/NexusDesktop",
+    "version": "6401762fc991c52f707ab486c1aee5a58ac64b9a",
+    "download": "https://codeload.github.com/bytepine/NexusDesktop/tar.gz/6401762fc991c52f707ab486c1aee5a58ac64b9a"
+  },
+  "archive_sha256": "fd5c41b200575b4d076c56c8a3eec59e9278d25986bb6248e85752cd51792b47",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "NexusDesktop-6401762fc991c52f707ab486c1aee5a58ac64b9a/internal/ui/updater_darwin.go",
+      "line": 64,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "73acbc553857598c00fdaa0f43c87b0a77e1b51ea7928b7e0ff90c92cc93802f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "developers.openai.com",
+    "example.test",
+    "github.com",
+    "go.dev",
+    "jrsoftware.org",
+    "keepachangelog.com",
+    "www.apple.com",
+    "www.python.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

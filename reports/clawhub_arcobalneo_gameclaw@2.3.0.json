@@ -1,0 +1,42 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "arcobalneo/gameclaw",
+    "version": "2.3.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=gameclaw&ownerHandle=arcobalneo&version=2.3.0"
+  },
+  "archive_sha256": "4a3f6409586e48b7939f91d12eecf6ee3c9ef247ec39ee4409da6462a29b96f2",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "SKILL.md",
+      "line": 323,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "461b71a1644a4d12596ded0c9b7a45c5bb83ec828a08c767cc0fb7160902dc84"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "raw.githubusercontent.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "clawhub.ai",
+    "ghfast.top",
+    "github.com",
+    "raw.githubusercontent.com",
+    "raw.hellogithub.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

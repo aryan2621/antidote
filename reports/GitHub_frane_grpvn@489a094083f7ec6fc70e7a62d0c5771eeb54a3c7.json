@@ -1,0 +1,83 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "frane/grpvn",
+    "version": "489a094083f7ec6fc70e7a62d0c5771eeb54a3c7",
+    "download": "https://codeload.github.com/frane/grpvn/tar.gz/489a094083f7ec6fc70e7a62d0c5771eeb54a3c7"
+  },
+  "archive_sha256": "9bd241bbfcf6702c963ed5b8ea997703b651fb472c805a708a02e2a81c3e105e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grpvn-489a094083f7ec6fc70e7a62d0c5771eeb54a3c7/install.sh",
+      "line": 3,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/frane/grpvn/main/install.sh | sh",
+      "file_sha256": "301ae088d96040384eb1558fc4dfb10d96ea5ba63e0cff414b18bc9f0e83dc5c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grpvn-489a094083f7ec6fc70e7a62d0c5771eeb54a3c7/GEMINI.md",
+      "line": 1,
+      "evidence": "p=0.99 # grpvn technical instructions",
+      "file_sha256": "fa80b9e1ec65618b80b4063732b1f2028d1915977cc27f7c2fd8269f306547c4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grpvn-489a094083f7ec6fc70e7a62d0c5771eeb54a3c7/README.md",
+      "line": 28,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/frane/grpvn/main/install.sh | sh",
+      "file_sha256": "4d15cb348a00826ccdeefb79e03e84880c998f87caa1f279005f1a5674e368de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grpvn-489a094083f7ec6fc70e7a62d0c5771eeb54a3c7/npm/README.md",
+      "line": 32,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/frane/grpvn/main/install.sh | sh",
+      "file_sha256": "21f34ed41c319a4e523779b54c089f6875adda63cdf6b54e45526e1d1d717a6f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grpvn-489a094083f7ec6fc70e7a62d0c5771eeb54a3c7/plugin/GEMINI.md",
+      "line": 1,
+      "evidence": "p=0.99 # grpvn technical instructions",
+      "file_sha256": "fa80b9e1ec65618b80b4063732b1f2028d1915977cc27f7c2fd8269f306547c4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "antigravity.google",
+    "api.chatgpt.com",
+    "api.github.com",
+    "api.openai.com",
+    "chat.example.com",
+    "chatgpt.com",
+    "code.claude.com",
+    "community.example.com",
+    "developers.openai.com",
+    "docs.x.ai",
+    "github.com",
+    "grpvn.offbyte.com",
+    "img.shields.io",
+    "learn.chatgpt.com",
+    "opencode.ai",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "support.claude.com",
+    "test.example",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

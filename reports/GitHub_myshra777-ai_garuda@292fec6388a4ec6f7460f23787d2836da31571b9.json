@@ -1,0 +1,147 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "myshra777-ai/garuda",
+    "version": "292fec6388a4ec6f7460f23787d2836da31571b9",
+    "download": "https://codeload.github.com/myshra777-ai/garuda/tar.gz/292fec6388a4ec6f7460f23787d2836da31571b9"
+  },
+  "archive_sha256": "cc00cb8da491e9d86f22692cbe394a34211496f8874ec55a2bce3d74fb90388a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/install.sh",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "6ecc00c49e94da7f6c41123e78ade3a653d9d04dfba6ee656033ecb9b53a178d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/README.md",
+      "line": 80,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "011999823e8310d16044e51325452d9b01bac397e39e024d7785a3187d234bba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/PLAYBOOK.md",
+      "line": 71,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "274d59ad43cd4608cd3e88375f761179a36b5af277d1952323379ce0d4598bf4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/INSTALL.md",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "b31ca41e10edf44fe44849dbe08ef10f863acdc27d91670284e6f6dccbfb91b5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/INSTALL.md",
+      "line": 109,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "b31ca41e10edf44fe44849dbe08ef10f863acdc27d91670284e6f6dccbfb91b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/docs/WALKTHROUGH.md",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "62db7315ee0fa47ad7b7681d65f5e47966707770580b3862952565d55c2de932"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/docs/history/RELEASE_NOTES_v1.9.9.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "27cc7254733ecb05b932290697ae1b17f256fa7d5a574d95177792be0bca3233"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/RELEASE_NOTES.md",
+      "line": 38,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/myshra777-ai/garuda/main/install.sh",
+      "file_sha256": "d07a9c8e436d59743b4297f14f34a837a7e000a0d147e8e739e05ebda0ba3bba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/vscode-extension/out/extension.js",
+      "line": 95,
+      "evidence": "cp.exec(`${execPath} analyze . --workspace uuid-ws -s`, { cwd: vscode.workspace.",
+      "file_sha256": "4fae3e6efd9d497f4d3fd80f571d6319a006796fc2df78121b4a46579cb9c392"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "garuda-292fec6388a4ec6f7460f23787d2836da31571b9/vscode-extension/src/extension.ts",
+      "line": 77,
+      "evidence": "cp.exec(`${execPath} analyze . --workspace uuid-ws -s`, { cwd: vscode.workspace.",
+      "file_sha256": "2540ab30a96d563ef244cd1f91f570d123ccb873b5546b1343ffb7398a7acbcb"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "aka.ms",
+    "api.deepmap.com",
+    "api.deepseek.com",
+    "api.garuda.dev",
+    "api.openai.com",
+    "api.telegram.org",
+    "cdn.jsdelivr.net",
+    "cloud.google.com",
+    "codeium.com",
+    "cyberscoop.com",
+    "d3js.org",
+    "datatracker.ietf.org",
+    "docs.anthropic.com",
+    "docs.garuda.dev",
+    "generativelanguage.googleapis.com",
+    "get.enterprisedb.com",
+    "github.com",
+    "glama.ai",
+    "go.dev",
+    "hooks.slack.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "openai.com",
+    "opensource.org",
+    "opentelemetry.io",
+    "pkg.go.dev",
+    "raw.githubusercontent.com",
+    "repo1.maven.org",
+    "schema.org",
+    "schemas.microsoft.com",
+    "simonwillison.net",
+    "slack.com",
+    "smithery.ai",
+    "stackoverflow.blog",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.cursor.com",
+    "www.postgresql.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

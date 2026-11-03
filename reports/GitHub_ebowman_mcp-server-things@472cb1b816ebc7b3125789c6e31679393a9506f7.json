@@ -1,0 +1,67 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ebowman/mcp-server-things",
+    "version": "472cb1b816ebc7b3125789c6e31679393a9506f7",
+    "download": "https://codeload.github.com/ebowman/mcp-server-things/tar.gz/472cb1b816ebc7b3125789c6e31679393a9506f7"
+  },
+  "archive_sha256": "1a6030fc7fbf95939aec625d58a55f8e899ce981bc4df3448c7e22a00722715e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-server-things-472cb1b816ebc7b3125789c6e31679393a9506f7/.beads/README.md",
+      "line": 64,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/instal",
+      "file_sha256": "4f3ffddade7bfce0eb5227154a62e9a10074a91a0f9dcc2511922cbd437e1fe9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mcp-server-things-472cb1b816ebc7b3125789c6e31679393a9506f7/.beads/issues.jsonl",
+      "line": 16,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "8cf23a89d0d95572582e91fef2f1b5094bb0c3bae97c3d4972746104af0705ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-server-things-472cb1b816ebc7b3125789c6e31679393a9506f7/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "2ce107adb5c58e76a8e2b87de071cf6cbf1fa85531ac213ce382b9c38caa56f8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mcp-server-things-472cb1b816ebc7b3125789c6e31679393a9506f7/docs/MACOS_PERMISSIONS.md",
+      "line": 61,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5dc231373dfacf2e7f1677f1ed6c0569b5cf589a8424f199d499b6c0d69c8b26"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "culturedcode.com",
+    "docs.astral.sh",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

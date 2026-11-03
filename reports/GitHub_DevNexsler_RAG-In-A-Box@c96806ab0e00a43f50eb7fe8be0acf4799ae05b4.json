@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "DevNexsler/RAG-In-A-Box",
+    "version": "c96806ab0e00a43f50eb7fe8be0acf4799ae05b4",
+    "download": "https://codeload.github.com/DevNexsler/RAG-In-A-Box/tar.gz/c96806ab0e00a43f50eb7fe8be0acf4799ae05b4"
+  },
+  "archive_sha256": "359cfba920729e8050cf0383200285560f00e9f374840935267322f39e657e0b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "RAG-In-A-Box-c96806ab0e00a43f50eb7fe8be0acf4799ae05b4/tests/test_deployment_config.py",
+      "line": 198,
+      "evidence": "Path(\".dockerignore\").read_text()",
+      "file_sha256": "8ed3acdd9bc89467e79e1b0db9ddf3cd8b9ee6927790baf4b2186c36c780d1ae"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "RAG-In-A-Box-c96806ab0e00a43f50eb7fe8be0acf4799ae05b4/tests/test_deployment_config.py",
+      "line": 230,
+      "evidence": "Path(\".dockerignore\").read_text()",
+      "file_sha256": "8ed3acdd9bc89467e79e1b0db9ddf3cd8b9ee6927790baf4b2186c36c780d1ae"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.68.70",
+    "192.168.68.87",
+    "api.deepinfra.com",
+    "assets.example",
+    "audio.example",
+    "developer.mozilla.org",
+    "example.com",
+    "example.test",
+    "github.com",
+    "host.docker.internal",
+    "images.example",
+    "litellm.example",
+    "litellm.local",
+    "litellm.test",
+    "ollama.test",
+    "openrouter.ai",
+    "openrouter.example",
+    "permits.example",
+    "polyformproject.org",
+    "private-hook.example",
+    "provider.example",
+    "provider.invalid",
+    "purl.org",
+    "social.example",
+    "tracker.example",
+    "tracking.example.com",
+    "vision.invalid",
+    "www.idpf.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
