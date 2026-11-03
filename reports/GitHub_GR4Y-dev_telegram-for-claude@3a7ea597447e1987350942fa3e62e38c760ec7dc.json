@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GR4Y-dev/telegram-for-claude",
+    "version": "3a7ea597447e1987350942fa3e62e38c760ec7dc",
+    "download": "https://codeload.github.com/GR4Y-dev/telegram-for-claude/tar.gz/3a7ea597447e1987350942fa3e62e38c760ec7dc"
+  },
+  "archive_sha256": "b088443697c8c835e51505081140f4fc69d60cb39ef884d5b9fedb0ac1ca0ace",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-for-claude-3a7ea597447e1987350942fa3e62e38c760ec7dc/telegram-caller/setup.sh",
+      "line": 28,
+      "evidence": "curl -fsSL https://claude.ai/install.sh | bash",
+      "file_sha256": "b3ad753466ed5733a922e6ae3a47f8b7afe7582f9d7cf9a9c2155730ed9155e0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-for-claude-3a7ea597447e1987350942fa3e62e38c760ec7dc/telegram-connector/setup.sh",
+      "line": 12,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "f11c7eccf52f235ef73ce2713e4e8472a8ddb5e873c22f6af66c3a2983af9f33"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "telegram-for-claude-3a7ea597447e1987350942fa3e62e38c760ec7dc/telegram-connector/setup.sh",
+      "line": 12,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "f11c7eccf52f235ef73ce2713e4e8472a8ddb5e873c22f6af66c3a2983af9f33"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-for-claude-3a7ea597447e1987350942fa3e62e38c760ec7dc/README.md",
+      "line": 143,
+      "evidence": "curl -fsSL https://claude.ai/install.sh | bash",
+      "file_sha256": "72635d9a60dd6ac879f1735fa85644709156e5774ac081798a54e1f28b89b920"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "api.groq.com",
+    "api.open-meteo.com",
+    "api.openai.com",
+    "claude.ai",
+    "developers.cloudflare.com",
+    "example.test",
+    "geocoding-api.open-meteo.com",
+    "get.docker.com",
+    "github.com",
+    "img.shields.io",
+    "my.telegram.org",
+    "pillow.readthedocs.io",
+    "www.google.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

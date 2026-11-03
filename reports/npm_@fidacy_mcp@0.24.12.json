@@ -1,0 +1,43 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@fidacy/mcp",
+    "version": "0.24.12",
+    "download": null
+  },
+  "archive_sha256": "e6b5586663b0b8ccd40828631a4d6b0221b67e5c58fa7e72d8ec3dbbb0cd11d8",
+  "findings": [],
+  "flags": [
+    {
+      "severity": "high",
+      "id": "AGT-F-INSTALL-ADDED",
+      "summary": "Install script added in this version (previous version had none)",
+      "path": null,
+      "line": null,
+      "evidence": "postinstall: node -e \"try{require('fs').accessSync('dist/postinstall.js')}catch{process.exit(0)};import('./dist/postinstall.js')\" || exit 0",
+      "file_sha256": null
+    },
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "x.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.fidacy.com",
+    "app.fidacy.com",
+    "fidacy.com",
+    "github.com",
+    "img.shields.io",
+    "www.apache.org",
+    "www.npmjs.com",
+    "x.com"
+  ],
+  "install_script": true,
+  "score": "high"
+}

@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@atomicmail/mcp",
+    "version": "0.3.33",
+    "download": null
+  },
+  "archive_sha256": "710ea8f38d11df94fb283fcdbaf98b716c627c977501a463c3331760f9ec94ee",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/shared/skill/manifest.json",
+      "line": 34,
+      "evidence": "p=0.97 Use {{CLI_HERMES_BLUEPRINT}} jmap_request --ops-file list_inbox.json to fetch my",
+      "file_sha256": "f7f7f9e8e58e21053cbb13f18a6dd0c95c8260cf6c5299d8e931352e02261384"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "google.com, meet.google.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.atomicmail.ai",
+    "atomicmail.ai",
+    "auth.atomicmail.ai",
+    "eu.posthog.com",
+    "github.com",
+    "google.com",
+    "mcp.atomicmail.ai",
+    "meet.google.com",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

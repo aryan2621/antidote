@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Okle42/cool42",
+    "version": "bfc5b5ffc7db8ac9080aafc11b15deb3322636f8",
+    "download": "https://codeload.github.com/Okle42/cool42/tar.gz/bfc5b5ffc7db8ac9080aafc11b15deb3322636f8"
+  },
+  "archive_sha256": "4b01dec937682d53a01c48ed8dc93011f08a3bd342c6953135083f6ac0d45aeb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "cool42-bfc5b5ffc7db8ac9080aafc11b15deb3322636f8/scripts/install-from-release.sh",
+      "line": 211,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "928fbb43bbf2611245fc43afaa1d1dfe4c82d0729efcb6b6573889874126c62c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cool42-bfc5b5ffc7db8ac9080aafc11b15deb3322636f8/scripts/install-mcp.sh",
+      "line": 6,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "aae4937f396f47ebe3878aeaa04e2bb953b55af08a7b30100e2676201be8e139"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "docs.astral.sh",
+    "forums.macrumors.com",
+    "github.com",
+    "img.shields.io",
+    "mcpmarket.com",
+    "pypi.org",
+    "static.modelcontextprotocol.io",
+    "support.apple.com",
+    "theenterprisemac.com",
+    "www.apple.com",
+    "www.electronics-cooling.com",
+    "www.longwellfans.com",
+    "www.tomshardware.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

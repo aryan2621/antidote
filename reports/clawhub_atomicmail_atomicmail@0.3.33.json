@@ -1,0 +1,34 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "atomicmail/atomicmail",
+    "version": "0.3.33",
+    "download": "https://clawhub.ai/api/v1/download?slug=atomicmail&ownerHandle=atomicmail&version=0.3.33"
+  },
+  "archive_sha256": "1746fb414248286d7ff5ac8838a39e1c82c74e95b35baf540a17bc59a9322835",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lib/shared/skill/manifest.json",
+      "line": 34,
+      "evidence": "p=0.97 Use {{CLI_HERMES_BLUEPRINT}} jmap_request --ops-file list_inbox.json to fetch my",
+      "file_sha256": "f7f7f9e8e58e21053cbb13f18a6dd0c95c8260cf6c5299d8e931352e02261384"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.atomicmail.ai",
+    "atomicmail.ai",
+    "auth.atomicmail.ai",
+    "clawhub.ai",
+    "github.com",
+    "google.com",
+    "meet.google.com",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

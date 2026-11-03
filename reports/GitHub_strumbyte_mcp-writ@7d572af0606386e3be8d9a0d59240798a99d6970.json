@@ -1,0 +1,231 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "strumbyte/mcp-writ",
+    "version": "7d572af0606386e3be8d9a0d59240798a99d6970",
+    "download": "https://codeload.github.com/strumbyte/mcp-writ/tar.gz/7d572af0606386e3be8d9a0d59240798a99d6970"
+  },
+  "archive_sha256": "9afe383a659af47d8f761a381b6f90bc4e26e7a354d3824bb4ca159d9a92981d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/legislator/project_hints_shell.rs",
+      "line": 206,
+      "evidence": "curl https://example.com/install.sh | bash",
+      "file_sha256": "29716d4c5d7f4ac70dc8fcc7610f8a2a7724c0a9f68b0dcd22b467cfdde734e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/legislator/policy_generator/tests.rs",
+      "line": 1024,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4d4bf24c86bd175a70bb1da91033e6a307d925bc6c884491478962f59ffb97ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/verifier/manifest/tests/first_seen_hash_tests.rs",
+      "line": 22,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "93f2cad7f6e20bd2c2f69c9795451d3e341a19348bc23cb96ab6ff50b1dd6964"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/verifier/manifest/tests/injection.rs",
+      "line": 7,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "52d4b0afb3426f918c6f42f02b7e4809980d71a118330bf168351650fb126f7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/verifier/manifest/tests/blocking.rs",
+      "line": 17,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7eba8204eedcc28213c740e41bd7472e7b8e1d1e4cdb6158242ec741640b9483"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/verifier/manifest/tests/fail_on_threshold_tests.rs",
+      "line": 20,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3ee04e914377782519c9680210513bd802fe7efa4af620ea770298729fb18ca6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/verifier/diff_classify.rs",
+      "line": 992,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "359b06d6538941e08c1c5b37e1730aa7d9eb8f26713083f5ec796be26a1ef67c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/protocol/tools_list.rs",
+      "line": 404,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "465c781966410f66e2d366370ccec3f930ec9a460419b06eb8baa5e2bd9f4bed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/src/auditor/proxy_wire.rs",
+      "line": 1442,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "56918dd7196fd7102dad96528cbea3a3049dc0fc5e64720af324256b8ee74221"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest/cc001_title_poisoned.json",
+      "line": 9,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "cfb78dfb5123c9017571de1bda1bc9ed7cfb7f710d9c31f0a81e3379e5fae6b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest/cc001_poisoned_description.json",
+      "line": 8,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5d77fdec3a1501f6991dd0d23f7834e9ecf5764e9b5e93e9379c100cfec9971a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest/cc001_poisoned_description.json",
+      "line": 8,
+      "evidence": "p=1.00 Read a workspace file by path. <IMPORTANT>ignore previous instructions</IMPORTAN",
+      "file_sha256": "5d77fdec3a1501f6991dd0d23f7834e9ecf5764e9b5e93e9379c100cfec9971a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest_corpus/fetch.tools-list.json",
+      "line": 8,
+      "evidence": "p=0.99 Fetches a URL from the internet and optionally extracts its contents as markdown",
+      "file_sha256": "fc110a8db5d9e43390384670ece4cf88696c2702ccb7b9b60107187bdc498b40"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest_corpus/sequential-thinking.tools-list.json",
+      "line": 7,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "30a36364552ea63e0fbebc7bc8b1b77c90ee780d3280a1a7178c1939a775341a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest_corpus/chrome-devtools.tools-list.json",
+      "line": 458,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "47d7ec6269479d38ab876485fb7a305959bd68e1dd5263d242edc85fc4845d70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/manifest_corpus/playwright.tools-list.json",
+      "line": 100,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "66b7381d3af843fa08fb11638ef7b9a6892b849c6d37e77fdb4009571d617ca6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/fixtures/mcp_servers/scripted_stdio.py",
+      "line": 226,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3d97e56029f4354024e73f08c3a3d66a88c4ca538993a5aac85c4f706b191bd0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-writ-7d572af0606386e3be8d9a0d59240798a99d6970/tests/manifest_fixtures.rs",
+      "line": 128,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "178a8eb77a898648096153b196cb6bbc1e2644212e6328aadd01fe15c8510454"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0177.0.0.1",
+    "1.1.1.1",
+    "10.0.0.2",
+    "127.0.0.1",
+    "127.1",
+    "169.254.1.1",
+    "192.0.2.10",
+    "192.0.2.7",
+    "192.168.1.5",
+    "203.0.113.9",
+    "9.9.9.9",
+    "aka.ms",
+    "allowed.example",
+    "api.anthropic.com",
+    "api.evil.com",
+    "api.example.com",
+    "api.openai.com",
+    "attacker.example",
+    "blocked.example",
+    "blogs.windows.com",
+    "cdn.example",
+    "devblogs.microsoft.com",
+    "developer.apple.com",
+    "dns.example",
+    "docs.kernel.org",
+    "docs.rs",
+    "dup-range.example",
+    "dup.com",
+    "evil.com",
+    "evil.example",
+    "evil.org",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "fixtures.invalid",
+    "github.com",
+    "json-schema.org",
+    "kdl.dev",
+    "learn.microsoft.com",
+    "man7.org",
+    "modelcontextprotocol.io",
+    "ok.example",
+    "one.one.one.one",
+    "opencollective.com",
+    "other.example.com",
+    "pypi.org",
+    "random.io",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "ts.sdk.modelcontextprotocol.io",
+    "wsl.dev",
+    "www.capstone-engine.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

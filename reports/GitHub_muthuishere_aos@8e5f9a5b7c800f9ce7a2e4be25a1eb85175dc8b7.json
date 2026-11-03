@@ -1,0 +1,165 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "muthuishere/aos",
+    "version": "8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7",
+    "download": "https://codeload.github.com/muthuishere/aos/tar.gz/8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7"
+  },
+  "archive_sha256": "4c2ec0d58351a2cb816770727d495228dd0e01949ee48286acc8cba54719a438",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/quickstart.mdx",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "1481f306a0d9d45dd3c988877f4e738111df47dc20a4099a0ec664e747ef7251"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/scenarios/agents/headless-linux.mdx",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "db1abcfe7d9b1bac81dabac81288484acf5f01e6c07f96d41bbbd88495a0b328"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/what-it-is-not.mdx",
+      "line": 52,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "7d9395dfc602a98d4adb9ddebc578c47268620f2c4a17602a46e49709504d50f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/agent-skill.mdx",
+      "line": 49,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "27c9287f47888c7833be359948cd7f7df1d8421e374dba242f50234746ad1629"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/install.mdx",
+      "line": 12,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "0472dc2bddee3273fbcd37fe7c3684a3fe5032eee5f992457296727dfa3e2558"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/content/docs/host.mdx",
+      "line": 24,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "aaaedc85549be3b45625fbe2cf684a15443eba0b547bf7ba98790dd03db3e3a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/site/src/pages/index.astro",
+      "line": 9,
+      "evidence": "curl -fsSL ${raw}/install.sh | sh",
+      "file_sha256": "a01743fd25bb08bcd5067564ba36c4d3f78f4282e9007b18b9f4da08a0b4e2ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/internal/skill/assets/aos/SKILL.md",
+      "line": 191,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "5270601a7609311ed57c11273606d8e768f0c25dc8bb599edda780ddbbfcecf0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/internal/skill/assets/aos/SKILL.md",
+      "line": 150,
+      "evidence": "p=0.96 ## Things that will bite you",
+      "file_sha256": "5270601a7609311ed57c11273606d8e768f0c25dc8bb599edda780ddbbfcecf0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "26cb1caedf8616442add3785f7ac71c5a4e35913568ec9a70bbbf78e001525dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/install.sh",
+      "line": 87,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "26cb1caedf8616442add3785f7ac71c5a4e35913568ec9a70bbbf78e001525dd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/README.md",
+      "line": 66,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "7c2a98a5cda80487e809e379fe909d2deb9576269202d290a57228c3126ecfeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "aos-8e5f9a5b7c800f9ce7a2e4be25a1eb85175dc8b7/npm/lib/install.js",
+      "line": 18,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/muthuishere/aos/main/install.sh | s",
+      "file_sha256": "ecbac0041f77e0d90d7d4081140b7606139ccfdcf902c2e649a53203e010a13d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.24",
+    "a.example",
+    "api.github.com",
+    "app.slack.com",
+    "b.example",
+    "c.example",
+    "chat.example",
+    "chatforest.com",
+    "claude.ai",
+    "evil.example",
+    "example.com",
+    "github.com",
+    "learn.omacom.io",
+    "mail.google.com",
+    "meet.google.com",
+    "mirror.example",
+    "muthuishere.github.io",
+    "omarchy.org",
+    "opencollective.com",
+    "patreon.com",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "simpleicons.org",
+    "tidelift.com",
+    "www.apple.com",
+    "www.i18next.com",
+    "www.iana.org",
+    "www.locize.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
