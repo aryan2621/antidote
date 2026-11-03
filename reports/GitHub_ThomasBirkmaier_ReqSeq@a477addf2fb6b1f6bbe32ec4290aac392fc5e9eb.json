@@ -1,0 +1,82 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb"
+  },
+  "archive_sha256": "502909bb0c4f0587626dd6dd3aa973a8c87b0119506e7cff31f516923026750d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb/packages/core/src/generated/contracts.json",
+      "line": 4579,
+      "evidence": "p=0.91 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "2240838522a0f17d23d3be6c1cfed8f3f3edcaf1975fb5c00792207b9092ff0e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb/schemas/commands/element.bulkUpdate.json",
+      "line": 48,
+      "evidence": "p=0.91 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "5ef20fba4d44cc2a422877523dc22c81d8047d421501f69d1e8e99fb7cc1b239"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb/schemas/generated/openapi.json",
+      "line": 3243,
+      "evidence": "p=0.91 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "02354285275314eaa22cfaa5070e7d30528adc8c2580cfd46dcbcfd416c586e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb/schemas/generated/mcp-tools.json",
+      "line": 4008,
+      "evidence": "p=0.91 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "00afc913f321c83c427f1b3ceeb945632ab22611b643a963066ef80ec2191c59"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-a477addf2fb6b1f6bbe32ec4290aac392fc5e9eb/docs/guide/how-to/install-reqseq.md",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "6b4840570f04a8aa5a634658fb82507db5f383fea1e714dce00b8daa305e90ee"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "a.b",
+    "api.github.com",
+    "c.d",
+    "ci.example.com",
+    "e.org",
+    "example.com",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "reqseq.dev",
+    "thomasbirkmaier.github.io",
+    "www.npmjs.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

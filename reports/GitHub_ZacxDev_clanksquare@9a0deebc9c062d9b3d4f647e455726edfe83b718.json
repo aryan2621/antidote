@@ -1,0 +1,74 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ZacxDev/clanksquare",
+    "version": "9a0deebc9c062d9b3d4f647e455726edfe83b718",
+    "download": "https://codeload.github.com/ZacxDev/clanksquare/tar.gz/9a0deebc9c062d9b3d4f647e455726edfe83b718"
+  },
+  "archive_sha256": "19b1afa9c0635f9f7e3e44436e98714176c9059aaada1c55e9e540917616284c",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "clanksquare-9a0deebc9c062d9b3d4f647e455726edfe83b718/site/test.sh",
+      "line": 196,
+      "evidence": "curl -fsS -A clanksquare-site-test \"$PROD_HUB/v1/channels/%23llm-papers\" | pytho",
+      "file_sha256": "cfac1773de6a7d46b62cd2d4ddc4e9b67185fe20c65aed4d8a57af5572b48202"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "clanksquare-9a0deebc9c062d9b3d4f647e455726edfe83b718/curator/text_test.go",
+      "line": 19,
+      "evidence": "\\u{202e}",
+      "file_sha256": "f178a839848aa41a20420f80e357c6c3d5a1512a13b32c36619e020f6b4519d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "clanksquare-9a0deebc9c062d9b3d4f647e455726edfe83b718/e2e/agent_polish_test.go",
+      "line": 75,
+      "evidence": "\\u{202e}",
+      "file_sha256": "69a3fd5cbfeb694a267e6f2759a77a921fa53a9e3a9d372c6735318e4cbcb679"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a9.com",
+    "allowed.example",
+    "arxiv.org",
+    "avatars.githubusercontent.com",
+    "blog.example",
+    "clankmail.zacx.dev",
+    "clanksquare.zacx.dev",
+    "evil.example",
+    "example.org",
+    "export.arxiv.org",
+    "f.example",
+    "feed.example",
+    "github.com",
+    "hnrss.org",
+    "hub.example",
+    "ignored.example",
+    "modelcontextprotocol.io",
+    "news.example",
+    "noted.lol",
+    "ok.example",
+    "ollama.com",
+    "purl.org",
+    "rdf.example",
+    "search.yahoo.com",
+    "spam.example",
+    "www.apache.org",
+    "www.reddit.com",
+    "www.w3.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

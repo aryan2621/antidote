@@ -1,0 +1,57 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "albertovillaosorno/protonmail-ai",
+    "version": "46f5d53c24ead8d88a64da707beebbca098cd872",
+    "download": "https://codeload.github.com/albertovillaosorno/protonmail-ai/tar.gz/46f5d53c24ead8d88a64da707beebbca098cd872"
+  },
+  "archive_sha256": "99d63c7c97af347cc2d7628a6c7ab13d3e7a4dc328f6c4134e1745b6ea665798",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-46f5d53c24ead8d88a64da707beebbca098cd872/docs/todo/open/interactive-auth-and-session.mdc",
+      "line": 278,
+      "evidence": "p=0.96 - Completed-fork account IDs now also refuse Unicode noncharacters, which previo",
+      "file_sha256": "9b653e67154ac9fc158dd86c9db6efec098cf3846ed51fe53d1101e65e084766"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "protonmail-ai-46f5d53c24ead8d88a64da707beebbca098cd872/docs/todo/open/web-ui-adapter.mdc",
+      "line": 497,
+      "evidence": "p=0.93 - Red-first synthetic message-list and detail responses accepted Unicode nonchar",
+      "file_sha256": "efff69018c8418923520a5dc55af04d16b33749d544a378bceb054728c86f71f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "account.proton.me",
+    "assets.example.test",
+    "chromedevtools.github.io",
+    "crates.io",
+    "evil.example",
+    "evil.invalid",
+    "example.invalid",
+    "example.test",
+    "foreign.invalid",
+    "github.com",
+    "invalid.test",
+    "lookalike.example.test",
+    "mail.evil.test",
+    "mail.proton.me",
+    "mail.proton.me.evil.example",
+    "mail.proton.me.evil.invalid",
+    "mail.proton.me.evil.test",
+    "proton.me",
+    "proton.me.evil.invalid",
+    "protonmail.ch",
+    "raw.githubusercontent.com",
+    "www.iana.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

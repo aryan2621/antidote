@@ -1,0 +1,53 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@bimatrix-aud-platform/aud_mcp_server",
+    "version": "1.1.88",
+    "download": null
+  },
+  "archive_sha256": "8fc794188df013c1765031f6a20cf24db4f601dd6a43005159d5b3e5c75c9bab",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/index.js",
+      "line": 2231,
+      "evidence": "execSync(`tsc -p \"${tsconfigPath}\"`, { cwd: reportPath, stdio: \"pipe\", timeout: ",
+      "file_sha256": "1600cf8a1c5a13482fa41e414929fdaf452c707a3aba3427aa9f8519e63e0ee2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/knowledge/manifest.json",
+      "line": 4003,
+      "evidence": "p=0.97 보고서 스크립트가 도구 왕복 없이 AI Chat 코파일럿에게 정보를 주는 채널 3종. setInstructions → 요청 파라미터 report",
+      "file_sha256": "7906b4d5d91845ec0e1eedfaebe65e272508862a389eb848b8469f88ebb11c79"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.0.50",
+    "192.168.0.96",
+    "192.168.12.27",
+    "api.example.com",
+    "api.openai.com",
+    "audp.bimatrix.co.kr",
+    "cdn.example.com",
+    "cdn.jsdelivr.net",
+    "example.com",
+    "files.example.com",
+    "gpi.example.com",
+    "json-schema.org",
+    "sample.example.com",
+    "server.com",
+    "www.bimatrix.co.kr",
+    "www.w3.org",
+    "x.png"
+  ],
+  "install_script": false,
+  "score": "high"
+}

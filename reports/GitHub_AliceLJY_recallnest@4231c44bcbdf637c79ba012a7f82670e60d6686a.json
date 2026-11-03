@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AliceLJY/recallnest",
+    "version": "4231c44bcbdf637c79ba012a7f82670e60d6686a",
+    "download": "https://codeload.github.com/AliceLJY/recallnest/tar.gz/4231c44bcbdf637c79ba012a7f82670e60d6686a"
+  },
+  "archive_sha256": "0adcdb3ce374101059ebf3b4050dbae9d8a1c5891a94d291c8cea9110e3771cb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "recallnest-4231c44bcbdf637c79ba012a7f82670e60d6686a/src/__tests__/pull-from-macbook-sync-only.test.ts",
+      "line": 405,
+      "evidence": "readFileSync(harness.sshLog, \"utf8\")",
+      "file_sha256": "8ad7d5f0f136ffad80347045c25a24e098feac96a4c3826b58dfcb4ab11ee9b3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "recallnest-4231c44bcbdf637c79ba012a7f82670e60d6686a/bin/recallnest.mjs",
+      "line": 32,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "e1ec8330266e41eacde14b198b792c775a61b9f5a8cad6a4de6b887431a3867b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "aliceljy.github.io",
+    "antigravity.google",
+    "api.jina.ai",
+    "arxiv.org",
+    "attacker.example",
+    "bun.sh",
+    "cdn.plot.ly",
+    "claude.ai",
+    "d3js.org",
+    "dashscope.aliyuncs.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.invalid",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jina.ai",
+    "json-schema.org",
+    "lancedb.com",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "plato.stanford.edu",
+    "prod.example.com",
+    "registry.npmjs.org",
+    "www.apple.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

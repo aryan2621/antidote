@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sumitnyayadhish/claude-repo-radar",
+    "version": "2e9a834f533aafa60c30260da56e8c9c94b7eb5c",
+    "download": "https://codeload.github.com/sumitnyayadhish/claude-repo-radar/tar.gz/2e9a834f533aafa60c30260da56e8c9c94b7eb5c"
+  },
+  "archive_sha256": "b37b83b3a2c5e7f59af0b784fd7eb67b4abe6ad8a2bee3d93276f31949ec7da4",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claude-repo-radar-2e9a834f533aafa60c30260da56e8c9c94b7eb5c/README.md",
+      "line": 82,
+      "evidence": "curl | sh",
+      "file_sha256": "ab1388d4e361a6d6635f78229930b96fa942c05b45aa96c06b29aeaaa3640406"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "claude-repo-radar-2e9a834f533aafa60c30260da56e8c9c94b7eb5c/scripts/lib/security.mjs",
+      "line": 26,
+      "evidence": "~/.ssh",
+      "file_sha256": "ef8aae80170ef1bbe59223aca1c4c2099cecde6330af6c808d01ae4b148dc89d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claude-repo-radar-2e9a834f533aafa60c30260da56e8c9c94b7eb5c/scripts/suggest.mjs",
+      "line": 84,
+      "evidence": "curl|bash",
+      "file_sha256": "5dffdd321aee68bc3f4614dad9da8c9482da58434021424b70279b6204befd6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claude-repo-radar-2e9a834f533aafa60c30260da56e8c9c94b7eb5c/skills/repo-radar/SKILL.md",
+      "line": 39,
+      "evidence": "curl … | sh",
+      "file_sha256": "68a0c93b15267e3aca7d77e971cde820ea01c95a49955c9aa9dbcecad4f9ea96"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "discord.com",
+    "discord.gg",
+    "gerrit.googlesource.com",
+    "github.com",
+    "img.shields.io",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
