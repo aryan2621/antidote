@@ -1,0 +1,145 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GhostPawJS/telegram",
+    "version": "588c2f9a3630523100f06e17a0330742a3827833",
+    "download": "https://codeload.github.com/GhostPawJS/telegram/tar.gz/588c2f9a3630523100f06e17a0330742a3827833"
+  },
+  "archive_sha256": "6dc77b6aa15b7e2657999435d3f4c0132a3978952c22dbc7f78f3f5499f07696",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "ed3052c6ca77b7fbdd7e55bb463c18bd6d182d0ea858bc9fab89b4e7146ae406"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/src/surfaces/skill_markdown.ts",
+      "line": 51,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "8defdf8ec07ee97619c7144f8e3cf7cab89c0299e449081687be61abb04c9755"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/src/surface/telegram_skill_short.ts",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "0c0a2398785f55542ca2f4eb018ba656ff050338166b12747e3d5c8540f48672"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/README.md",
+      "line": 168,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "035c281834307625fe67db18883fc50aeddf5c15a5e54d4eb60524a476d1595c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/README.md",
+      "line": 275,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "035c281834307625fe67db18883fc50aeddf5c15a5e54d4eb60524a476d1595c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "e45d31d119245764e276c79cf29bcd8a1413448ac61ce176f85da4882a35d54b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/.github/workflows/install-check.yml",
+      "line": 38,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "983344b867185c00cf1e4582e4d991cdce1e15ff1620ce057472dae06a3e0ed5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/skills/telegram/references/manage-telegram-conversations.md",
+      "line": 24,
+      "evidence": "p=0.98 - Do not delete or edit messages without an explicit user instruction - Do not a",
+      "file_sha256": "b187d1408d1a48a4b62c95475a172e69d6b546a2c3c89a24b7a1f936a8512e9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/skills/telegram/references/moderate-chat-effectively.md",
+      "line": 27,
+      "evidence": "p=0.92 - Do not ban users based on a single borderline message - Do not restrict admini",
+      "file_sha256": "03687860de7ac534f8593107d34d40260bd4941b3c8e507a491879a1a4109c3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "telegram-588c2f9a3630523100f06e17a0330742a3827833/skills/telegram/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/telegram/main/install.sh",
+      "file_sha256": "04412e56791864a0b9e338337aad3dc751724499f88a0836187fca7513bad8ab"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1, 8.8.8.8, internal.test, public.test, secure.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "8.8.8.8",
+    "agent-plugins.org",
+    "anonyfox.com",
+    "api.github.com",
+    "api.telegram.org",
+    "app.example.com",
+    "aquaproj.github.io",
+    "biomejs.dev",
+    "cli.github.com",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "internal.test",
+    "local.test",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "public.test",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "secure.test",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "telegram.ghostpaw.dev",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

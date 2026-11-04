@@ -1,0 +1,109 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GhostPawJS/email",
+    "version": "ea1f462d37097aaaf7f32eea82fef86c072f12aa",
+    "download": "https://codeload.github.com/GhostPawJS/email/tar.gz/ea1f462d37097aaaf7f32eea82fef86c072f12aa"
+  },
+  "archive_sha256": "46a8ded523aa416ac62fd548de658f43b49c95aef9cc2cc9d62c8f573135d07a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "ddd4e10301375c96c60ce03968aee256b1eea83b2836ad4b2b31bcd59659c6a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/src/surfaces/skill_markdown.ts",
+      "line": 51,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "a4e6613015da35733eb094441ba52d1aafc6ae68cebfc13437e60c45e634e50d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/src/surface/email_skill_short.ts",
+      "line": 7,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "3f004a5a980e800a05fb95e9493f410170a55e7481e315fda6104777354b360e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/README.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "e0c772dde8f0188ab05fca49cd6b387a3e36f55c77f3ab5c625db4a886161354"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/README.md",
+      "line": 279,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "e0c772dde8f0188ab05fca49cd6b387a3e36f55c77f3ab5c625db4a886161354"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "b48f13f27ac6a3e75f708fa383fe11b90b88ef1762a1e00369546a1dc423d68a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/.github/workflows/install-check.yml",
+      "line": 38,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "0af037a9ac9fc1daa48359f5a7d251b7a5b3a17a68eac3b9fd092b37fc6db8c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "email-ea1f462d37097aaaf7f32eea82fef86c072f12aa/skills/email/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/email/main/install.sh | ",
+      "file_sha256": "b48f13f27ac6a3e75f708fa383fe11b90b88ef1762a1e00369546a1dc423d68a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "anonyfox.com",
+    "api.github.com",
+    "aquaproj.github.io",
+    "biomejs.dev",
+    "cli.github.com",
+    "email.ghostpaw.dev",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "keepachangelog.com",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

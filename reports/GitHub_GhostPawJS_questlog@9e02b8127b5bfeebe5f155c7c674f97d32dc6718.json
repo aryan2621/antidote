@@ -1,0 +1,153 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GhostPawJS/questlog",
+    "version": "9e02b8127b5bfeebe5f155c7c674f97d32dc6718",
+    "download": "https://codeload.github.com/GhostPawJS/questlog/tar.gz/9e02b8127b5bfeebe5f155c7c674f97d32dc6718"
+  },
+  "archive_sha256": "dacf09a685fed3256b93bda5c621a876ecad61256de8e6c811fa2d34e314b571",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "b38108987337ba712a5e87d6f5d0674ba63ffd23592fbf47f706679f501787c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/src/surface/questlog_skill_spec.ts",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "eafb67b1b1e67bf77ae6a28ddd0d87f9ed3481aff219bde3ff4db18c3fed7acb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/README.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "bcb8818883dda69d815de61ae71fbb4ea929614396072cc85542f6885355d5d8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/README.md",
+      "line": 256,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "bcb8818883dda69d815de61ae71fbb4ea929614396072cc85542f6885355d5d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "d0383cc944a3044347a1b29fe19355971633cd149910ad115b6d4b6e4b14a256"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/SKILL.md",
+      "line": 92,
+      "evidence": "p=0.95 Not for: Do not use this when you already know the exact item id and want its fu",
+      "file_sha256": "d0383cc944a3044347a1b29fe19355971633cd149910ad115b6d4b6e4b14a256"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/.github/workflows/install-check.yml",
+      "line": 38,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "f0f3edadf02333c88566b1639f552fd0e266f5ac925c0d7ccdaa8cde01b15eb4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/skills/questlog/references/recover-from-modeling-mistakes.md",
+      "line": 17,
+      "evidence": "p=0.90 Outcome handling: - Treat `success` as confirmation that the smallest honest cor",
+      "file_sha256": "742c3defa8c527dc14768c0dec538e6d81da875d8334c8ed6552f5e75e934ff6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/skills/questlog/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/questlog/main/install.sh",
+      "file_sha256": "d0383cc944a3044347a1b29fe19355971633cd149910ad115b6d4b6e4b14a256"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "questlog-9e02b8127b5bfeebe5f155c7c674f97d32dc6718/skills/questlog/SKILL.md",
+      "line": 92,
+      "evidence": "p=0.95 Not for: Do not use this when you already know the exact item id and want its fu",
+      "file_sha256": "d0383cc944a3044347a1b29fe19355971633cd149910ad115b6d4b6e4b14a256"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agent-plugins.org",
+    "agentskills.io",
+    "akiflow.com",
+    "anonyfox.com",
+    "api.github.com",
+    "aquaproj.github.io",
+    "arxiv.org",
+    "basecamp.com",
+    "biomejs.dev",
+    "cli.github.com",
+    "doi.org",
+    "en.wikipedia.org",
+    "example.com",
+    "example.org",
+    "fonts.googleapis.com",
+    "ghostpaw.dev",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "lab.anonyfox.com",
+    "netpsychology.org",
+    "nodejs.org",
+    "opencollective.com",
+    "paperlessmovement.com",
+    "paulmillr.com",
+    "psycnet.apa.org",
+    "questlog.ghostpaw.dev",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "static.cloudflareinsights.com",
+    "static.modelcontextprotocol.io",
+    "tools.ietf.org",
+    "users.wfu.edu",
+    "vercel.com",
+    "wimonder.dev",
+    "www.codegenes.net",
+    "www.gamedeveloper.com",
+    "www.microsoft.com",
+    "www.nature.com",
+    "www.nirandfar.com",
+    "www.npmjs.com",
+    "www.readless.app",
+    "www.w3.org",
+    "zylos.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

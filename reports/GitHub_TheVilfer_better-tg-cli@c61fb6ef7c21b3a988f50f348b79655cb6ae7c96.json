@@ -1,0 +1,88 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "TheVilfer/better-tg-cli",
+    "version": "c61fb6ef7c21b3a988f50f348b79655cb6ae7c96",
+    "download": "https://codeload.github.com/TheVilfer/better-tg-cli/tar.gz/c61fb6ef7c21b3a988f50f348b79655cb6ae7c96"
+  },
+  "archive_sha256": "60cf50ab6051ffc866dd3b425b8aa88e542c73d00eed947866483df1dfa7438a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "better-tg-cli-c61fb6ef7c21b3a988f50f348b79655cb6ae7c96/install.sh",
+      "line": 3,
+      "evidence": "curl -sSfL <raw url>/install.sh | sh",
+      "file_sha256": "dedbdaa0142fd730d886414aca6282e74658450af65e877cc2fcd39b9e5fc83f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "better-tg-cli-c61fb6ef7c21b3a988f50f348b79655cb6ae7c96/README.es.md",
+      "line": 91,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "ac0f2b993e7303d11992ef8c53a7a50274a3ac905dd7366ddb63b6d7f3aab5c5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "better-tg-cli-c61fb6ef7c21b3a988f50f348b79655cb6ae7c96/README.md",
+      "line": 89,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "b1da8a182c1fd1c1384e1a636a5a628496db2f40b76a6c8d3a56ffe896220d9c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "better-tg-cli-c61fb6ef7c21b3a988f50f348b79655cb6ae7c96/README.ru.md",
+      "line": 88,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "32fcbf40a1bb2ab5aee81fe7b4ecd7429f474504240193ba1634b9ffd2a94b06"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "about.signpath.io",
+    "b.test",
+    "better-tg-cli.com",
+    "broker.test",
+    "bun.sh",
+    "challenges.cloudflare.com",
+    "core.telegram.org",
+    "cursor.com",
+    "evil.example",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "fragment.com",
+    "github.com",
+    "img.shields.io",
+    "insiders.vscode.dev",
+    "my.telegram.org",
+    "opencollective.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "scoop.sh",
+    "signpath.org",
+    "site.test",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "tg-cli-broker.login-c2d.workers.dev",
+    "tidelift.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.ai",
+    "x.io",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

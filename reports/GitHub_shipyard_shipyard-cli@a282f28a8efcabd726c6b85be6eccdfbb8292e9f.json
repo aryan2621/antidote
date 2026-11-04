@@ -1,0 +1,85 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "shipyard/shipyard-cli",
+    "version": "a282f28a8efcabd726c6b85be6eccdfbb8292e9f",
+    "download": "https://codeload.github.com/shipyard/shipyard-cli/tar.gz/a282f28a8efcabd726c6b85be6eccdfbb8292e9f"
+  },
+  "archive_sha256": "d9987932155fd4d907c48b1d2242ae03d1a890a22c3f13f2e2504a24ad36fdb3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "shipyard-cli-a282f28a8efcabd726c6b85be6eccdfbb8292e9f/README.md",
+      "line": 11,
+      "evidence": "curl https://www.shipyard.sh/install.sh | bash",
+      "file_sha256": "746d469797ac676a07ecbad99c735768a5edb208eb817ecb257429f92540096d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "shipyard-cli-a282f28a8efcabd726c6b85be6eccdfbb8292e9f/pkg/mcp/prompts/verify_loop.md",
+      "line": 51,
+      "evidence": "p=0.96 **Do not proceed until all four pass**, and do not repeat the preflight for ever",
+      "file_sha256": "7f2a01d0359c815ffd9a2b56eede19e3eb513a6e8966ab51cdce1ab3668d0a01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "shipyard-cli-a282f28a8efcabd726c6b85be6eccdfbb8292e9f/scripts/install-test.sh",
+      "line": 103,
+      "evidence": "curl | bash",
+      "file_sha256": "dacccf1ca230a3a9fc9bca4c5f2e2739dfdae816bdd889762511431b2d0cf624"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "shipyard-cli-a282f28a8efcabd726c6b85be6eccdfbb8292e9f/.github/workflows/tests.yaml",
+      "line": 89,
+      "evidence": "curl | bash",
+      "file_sha256": "40549b056dd764550c407143424a80c1970abe05626c6e8376b50159f786d2b8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "123abc.dev.maxsokolovsky.shipyard.host",
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "app.example.com",
+    "cli.github.com",
+    "core.invalid",
+    "dev.example.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "github.com",
+    "github.com.evil.example",
+    "gitlab.com",
+    "join.slack.com",
+    "mcp.example.com",
+    "mcp.example.test",
+    "mcp.qa.shipyard.build",
+    "mcp.shipyard.build",
+    "modelcontextprotocol.io",
+    "prod.example.com",
+    "qa.shipyard.build",
+    "shipyard.build",
+    "shipyard.example.internal",
+    "shipyard.example.test",
+    "test.shipyard.build",
+    "web.example.com",
+    "web.test.shipyard.build",
+    "werzer.shipyard.build",
+    "www.apache.org",
+    "www.shipyard.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}
