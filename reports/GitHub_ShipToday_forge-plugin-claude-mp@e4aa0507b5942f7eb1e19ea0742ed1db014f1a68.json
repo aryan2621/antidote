@@ -1,0 +1,66 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ShipToday/forge-plugin-claude-mp",
+    "version": "e4aa0507b5942f7eb1e19ea0742ed1db014f1a68",
+    "download": "https://codeload.github.com/ShipToday/forge-plugin-claude-mp/tar.gz/e4aa0507b5942f7eb1e19ea0742ed1db014f1a68"
+  },
+  "archive_sha256": "fb94609a18ac6e814dfb061e00a899423917571ca31cf89e582f39358159b5c5",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-claude-mp-e4aa0507b5942f7eb1e19ea0742ed1db014f1a68/plugins/forge-shiptoday/skills/forge-workflow/SKILL.md",
+      "line": 1173,
+      "evidence": "p=0.96 If the filtered list is empty (\"you don't have any overrides in your org or team",
+      "file_sha256": "d2d1ee0cb3ebf18b3e433428e7e5e999bbb1576264f38abe4a515f43ff00e1ef"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-claude-mp-e4aa0507b5942f7eb1e19ea0742ed1db014f1a68/plugins/forge-shiptoday/skills/forge-autopilot/SKILL.md",
+      "line": 166,
+      "evidence": "p=0.99 A keyword in an earlier message does not carry over to a new request: judge each",
+      "file_sha256": "b23a9c2ff3cefd4d8b1f7c202a49e3e8ba7d10695ee80b8d197d91c9f8a97f22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-claude-mp-e4aa0507b5942f7eb1e19ea0742ed1db014f1a68/plugins/forge-shiptoday/skills/forge-autopilot/SKILL.md",
+      "line": 608,
+      "evidence": "p=0.93 Follow the instructions in the Model Routing block returned by Forge:",
+      "file_sha256": "b23a9c2ff3cefd4d8b1f7c202a49e3e8ba7d10695ee80b8d197d91c9f8a97f22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-claude-mp-e4aa0507b5942f7eb1e19ea0742ed1db014f1a68/plugins/forge-shiptoday/skills/forge-autopilot/SKILL.md",
+      "line": 645,
+      "evidence": "p=0.94 If you already match the recommended tier, execute the instructions directly — n",
+      "file_sha256": "b23a9c2ff3cefd4d8b1f7c202a49e3e8ba7d10695ee80b8d197d91c9f8a97f22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-claude-mp-e4aa0507b5942f7eb1e19ea0742ed1db014f1a68/plugins/forge-shiptoday/skills/forge-autopilot/SKILL.md",
+      "line": 818,
+      "evidence": "p=0.91 - \"Write a function that...\" / \"refactor this component\" / \"add a test for...\" -",
+      "file_sha256": "b23a9c2ff3cefd4d8b1f7c202a49e3e8ba7d10695ee80b8d197d91c9f8a97f22"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "code.claude.com",
+    "github.com",
+    "shiptoday.ai",
+    "teams.shiptoday.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

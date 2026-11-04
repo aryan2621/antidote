@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "deep-agentic-core-mcp",
+    "version": "0.6.2",
+    "download": null
+  },
+  "archive_sha256": "8b97b367302c1d23ecf54bcffd2f3ff2b915e1e30b0e227927f1e2b4c91c0716",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "deep_agentic_core_mcp-0.6.2/scripts/build_container.py",
+      "line": 48,
+      "evidence": "shutil.copy2(repo / \"deploy/docker/.dockerignore\", root / \".dockerignore\")",
+      "file_sha256": "5bf8a2f7b1ab9026e977809b815953fe184f456efcd31eb8d9da247ff7ec86db"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "deep_agentic_core_mcp-0.6.2/tests/test_hosted_image.py",
+      "line": 120,
+      "evidence": "(DOCKER / \"Dockerfile.dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "d2ecde8df88c2b5d45183fa47bcdd4a456c659dee38dfee9e6fec6824dda5393"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "alice.example",
+    "attacker.example",
+    "bob.example",
+    "client.example.com",
+    "dashboard.render.com",
+    "deepagentlabs.github.io",
+    "deepagentlabs.io",
+    "discord.gg",
+    "docs.aws.amazon.com",
+    "evil.example",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "github.com",
+    "internal-alb.example.com",
+    "json-schema.org",
+    "mcp.deepagentlabs.io",
+    "mcp.example",
+    "mcp.example.com",
+    "previous.cloudfront.net",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "render.com",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "test.pypi.org",
+    "tower.example",
+    "untrusted.example",
+    "www.instagram.com",
+    "www.linkedin.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

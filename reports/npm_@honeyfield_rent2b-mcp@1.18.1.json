@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@honeyfield/rent2b-mcp",
+    "version": "1.18.1",
+    "download": null
+  },
+  "archive_sha256": "29ff564e63257500cf4953e4185e6083252687431a64168c2e428a461db8d277",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/dist/overrides/tool-overrides.json",
+      "line": 5,
+      "evidence": "p=0.95 List all rental items in the organization. Supports pagination with page and lim",
+      "file_sha256": "7aa646ad34dba9aff727fa0648ee0f1da6751563dba7e9242204beaab12e6659"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/generated/tools.json",
+      "line": 772,
+      "evidence": "p=0.95 List all rental items in the organization. Supports pagination with page and lim",
+      "file_sha256": "79ee9989dbc4ca8499c08d0ca2ae411e1e63c46b6b9942142b7adb7ebbe26ae1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/generated/tools.json",
+      "line": 5270,
+      "evidence": "p=1.00 Additional notes or special instructions",
+      "file_sha256": "79ee9989dbc4ca8499c08d0ca2ae411e1e63c46b6b9942142b7adb7ebbe26ae1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/generated/tools.json",
+      "line": 5270,
+      "evidence": "p=1.00 Additional notes or special instructions",
+      "file_sha256": "79ee9989dbc4ca8499c08d0ca2ae411e1e63c46b6b9942142b7adb7ebbe26ae1"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "claude.ai",
+    "github.com",
+    "json-schema.org",
+    "mcp.honeyfield.at",
+    "rent2b-api.azurewebsites.net",
+    "rent2b.net",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

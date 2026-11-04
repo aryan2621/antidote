@@ -1,0 +1,48 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "CSOAI-ORG/gspc-board",
+    "version": "34c2dd1e3313d71e2ff39dea8f6d7c82abde1b0d",
+    "download": "https://codeload.github.com/CSOAI-ORG/gspc-board/tar.gz/34c2dd1e3313d71e2ff39dea8f6d7c82abde1b0d"
+  },
+  "archive_sha256": "dc031eebb8c302638da00cd265b4e691c3e2901d6c6c5032fd70d75763ca75a2",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "gspc-board-34c2dd1e3313d71e2ff39dea8f6d7c82abde1b0d/check-board.sh",
+      "line": 6,
+      "evidence": "curl -fsS https://councilof.ai/api/gspc | python3 -c ' import json,sys d=json.lo",
+      "file_sha256": "b470e050887b29044726a6ab1423a1ffb5cea436711abbba6187154bd533ff4d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "gspc-board-34c2dd1e3313d71e2ff39dea8f6d7c82abde1b0d/check-board.sh",
+      "line": 21,
+      "evidence": "curl -fsS https://councilof.ai/root.json | python3 -c ' import hashlib,json,sys ",
+      "file_sha256": "b470e050887b29044726a6ab1423a1ffb5cea436711abbba6187154bd533ff4d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.deepseek.com",
+    "api.x.ai",
+    "councilof.ai",
+    "creativecommons.org",
+    "csoai-gspc-board.static.hf.space",
+    "csoai.org",
+    "doi.org",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "huggingface.co",
+    "pypi.org",
+    "www.kaggle.com",
+    "xrpl.fi"
+  ],
+  "install_script": false,
+  "score": "high"
+}

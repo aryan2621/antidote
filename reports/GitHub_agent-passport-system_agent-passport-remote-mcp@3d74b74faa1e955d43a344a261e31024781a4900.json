@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "agent-passport-system/agent-passport-remote-mcp",
+    "version": "3d74b74faa1e955d43a344a261e31024781a4900",
+    "download": "https://codeload.github.com/agent-passport-system/agent-passport-remote-mcp/tar.gz/3d74b74faa1e955d43a344a261e31024781a4900"
+  },
+  "archive_sha256": "ba5be79d6110c3733b5d8b0282fab1519d43564b86c0949a89cdc74871ddd7c5",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "agent-passport-remote-mcp-3d74b74faa1e955d43a344a261e31024781a4900/src/remote.ts",
+      "line": 399,
+      "evidence": "app.post('/mcp', authMiddleware, async (req, res) => { recordStatelessRequest() ",
+      "file_sha256": "04d7432ed700fc853072680688baf073b748fb4e79ec7332caac801023622a04"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "aeoess.com",
+    "api.aeoess.com",
+    "api.github.com",
+    "dash.cloudflare.com",
+    "doi.org",
+    "gateway.aeoess.com",
+    "github.com",
+    "glama.ai",
+    "mcp.aeoess.com",
+    "opencollective.com",
+    "railway.app",
+    "registry.npmjs.org",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

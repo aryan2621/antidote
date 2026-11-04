@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@imenam/mcp-github",
+    "version": "1.1.59",
+    "download": null
+  },
+  "archive_sha256": "60b74c219cd50f2887f051e8dc8465bd74fc156fd3edb06006120c3ef2b9b921",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/config-server.js",
+      "line": 121,
+      "evidence": "app.post(\"/api/delete-working-dir\", async (req, res) => { logToFile(\"[GUI] POST ",
+      "file_sha256": "de3b5de0aa7e84b2ef75da3b39c32c7959c325d3d593b312b3581663a3c838c1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/config-server.js",
+      "line": 320,
+      "evidence": "app.post(\"/api/config\", async (req, res) => { logToFile(\"[GUI] POST /api/config ",
+      "file_sha256": "de3b5de0aa7e84b2ef75da3b39c32c7959c325d3d593b312b3581663a3c838c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/utils/git.js",
+      "line": 77,
+      "evidence": "execSync(`chown -R ${owner} \"${repoPath}\"`)",
+      "file_sha256": "1f9e439cd41d69775696566fd97f63c9f691bc46043d576f6b7cc92e6221acc4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/dist/utils/git.js",
+      "line": 78,
+      "evidence": "execSync(`chmod -R g+rwX \"${repoPath}\"`)",
+      "file_sha256": "1f9e439cd41d69775696566fd97f63c9f691bc46043d576f6b7cc92e6221acc4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "attacker.example",
+    "gateway.example.com",
+    "github.com",
+    "github.local",
+    "proxy.lan",
+    "proxy.local",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "yonatangross/tower",
+    "version": "0fa2fd56d832a5a3b1821f4dff1062226939f0b4",
+    "download": "https://codeload.github.com/yonatangross/tower/tar.gz/0fa2fd56d832a5a3b1821f4dff1062226939f0b4"
+  },
+  "archive_sha256": "4efca6ce05261547b7fa2c03cae8ddee27cd4b926be3da2a888a1af0718f3f28",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "tower-0fa2fd56d832a5a3b1821f4dff1062226939f0b4/docs/playbooks/troubleshooting.md",
+      "line": 19,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "2dbaf294995a25389fe00d27f0038481b16c916701d27df2c7a75d6cf7ec3a48"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.anthropic.com",
+    "api.openai.com",
+    "api2.cursor.sh",
+    "app.devin.ai",
+    "chatgpt.com",
+    "cursor.com",
+    "docs.renovatebot.com",
+    "github.com",
+    "modelcontextprotocol.io",
+    "openrouter.ai",
+    "www.apple.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,109 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "LeeSwallow/stickypane",
+    "version": "f6f2fa39e0003a3b6822e5c6838031d0acb95b16",
+    "download": "https://codeload.github.com/LeeSwallow/stickypane/tar.gz/f6f2fa39e0003a3b6822e5c6838031d0acb95b16"
+  },
+  "archive_sha256": "4d22373d181b7e7b353e27c15d79740bdfde20014a9af1f84b4d86ae653ea56f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "stickypane-f6f2fa39e0003a3b6822e5c6838031d0acb95b16/README.ko.md",
+      "line": 412,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5bdf8db1a9571968fbd7a414c4c4e6b0e47c458cc46fdd511d0d8834bf7bb38a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "stickypane-f6f2fa39e0003a3b6822e5c6838031d0acb95b16/README.md",
+      "line": 429,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "9af920a3e83a0e75c1d1146024633d23d667c88f0dc1abf9ede19c64faef24d0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "stickypane-f6f2fa39e0003a3b6822e5c6838031d0acb95b16/docs/install.md",
+      "line": 55,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3a284182114cd4bb070574e7ab5cc4773db4f6bc7e58feefb0bf5645126d592a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "stickypane-f6f2fa39e0003a3b6822e5c6838031d0acb95b16/plugin/skills/talking-in-chat/SKILL.md",
+      "line": 3,
+      "evidence": "p=0.99 Use when the user wants to talk with you on the board instead of in this chat, w",
+      "file_sha256": "9f4ef6ad8fe811e34bd42f0685836830ebfbf633cb5ec7aaa9eb8a1aed3a86bc"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "sqlite.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example",
+    "arc42.org",
+    "c4model.com",
+    "cdn.simpleicons.org",
+    "cognitect.com",
+    "evil.example",
+    "example.com",
+    "excalidraw.com",
+    "fontsource.org",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "goreportcard.com",
+    "httpbin.org",
+    "img.shields.io",
+    "katex.org",
+    "keepachangelog.com",
+    "mermaid.js.org",
+    "nfpm.goreleaser.com",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "plus.excalidraw.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "roughjs.com",
+    "scripts.sil.org",
+    "shiki.style",
+    "sqlite.org",
+    "svelte.dev",
+    "tauri.app",
+    "tidelift.com",
+    "unifiedjs.com",
+    "v3.wails.io",
+    "vitejs.dev",
+    "wails.io",
+    "wails.localhost",
+    "ws.postman-echo.com",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.electronjs.org",
+    "www.jetbrains.com",
+    "www.w3.org",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

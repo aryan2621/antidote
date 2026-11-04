@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ShipToday/forge-plugin-codex",
+    "version": "34ea5e6ddb1b9c77f84f835b9b066bab807a2356",
+    "download": "https://codeload.github.com/ShipToday/forge-plugin-codex/tar.gz/34ea5e6ddb1b9c77f84f835b9b066bab807a2356"
+  },
+  "archive_sha256": "980de73f81dfb89b23067c373b78d6395941cd27a9c7aee741cad4f4952eb9cb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-codex-34ea5e6ddb1b9c77f84f835b9b066bab807a2356/plugins/forge/skills/forge-workflow/SKILL.md",
+      "line": 1102,
+      "evidence": "p=0.96 If the filtered list is empty (\"you don't have any overrides in your org or team",
+      "file_sha256": "8d2b94c63715cd9be7fc2df4e294132e3fe6548fea8e232731c7385183c25f11"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-codex-34ea5e6ddb1b9c77f84f835b9b066bab807a2356/plugins/forge/skills/forge-autopilot/SKILL.md",
+      "line": 164,
+      "evidence": "p=0.99 A keyword in an earlier message does not carry over to a new request: judge each",
+      "file_sha256": "f4c97eea6c8204aedef643ba5b808180021ab08933750c8f9325f3f30b414436"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-codex-34ea5e6ddb1b9c77f84f835b9b066bab807a2356/plugins/forge/skills/forge-autopilot/SKILL.md",
+      "line": 672,
+      "evidence": "p=0.93 Follow the instructions in the Model Routing block returned by Forge:",
+      "file_sha256": "f4c97eea6c8204aedef643ba5b808180021ab08933750c8f9325f3f30b414436"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-codex-34ea5e6ddb1b9c77f84f835b9b066bab807a2356/plugins/forge/skills/forge-autopilot/SKILL.md",
+      "line": 709,
+      "evidence": "p=0.94 If you already match the recommended tier, execute the instructions directly — n",
+      "file_sha256": "f4c97eea6c8204aedef643ba5b808180021ab08933750c8f9325f3f30b414436"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "forge-plugin-codex-34ea5e6ddb1b9c77f84f835b9b066bab807a2356/plugins/forge/skills/forge-autopilot/SKILL.md",
+      "line": 881,
+      "evidence": "p=0.91 - \"Write a function that...\" / \"refactor this component\" / \"add a test for...\" -",
+      "file_sha256": "f4c97eea6c8204aedef643ba5b808180021ab08933750c8f9325f3f30b414436"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "shiptoday.ai",
+    "teams.shiptoday.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

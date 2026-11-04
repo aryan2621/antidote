@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "wgjsg/agilex-docs-mcp",
+    "version": "18061bcf2f86bd5f3cc69f4d22c84cd7da790eee",
+    "download": "https://codeload.github.com/wgjsg/agilex-docs-mcp/tar.gz/18061bcf2f86bd5f3cc69f4d22c84cd7da790eee"
+  },
+  "archive_sha256": "e7cfe42f6fca494f0d8065efb77274df3b067067763f6257cd1b9387f6f4f266",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "agilex-docs-mcp-18061bcf2f86bd5f3cc69f4d22c84cd7da790eee/scripts/smoke-test.sh",
+      "line": 17,
+      "evidence": "curl -sS --max-time 30 -X POST \"$EP\" \\ -H 'Content-Type: application/json' \\ -H ",
+      "file_sha256": "6cd7261826f5aa683e22ffdc16f0c34d94892d7c11c0030a14703aa5e1ea0b32"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "anysphere.cursor-deeplink",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "kb.agilex.ai",
+    "modelcontextprotocol.io",
+    "modelscope.cn",
+    "registry.modelcontextprotocol.io",
+    "service.agilex.ai",
+    "static.modelcontextprotocol.io",
+    "www.agilex.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}
