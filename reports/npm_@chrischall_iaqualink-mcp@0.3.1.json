@@ -1,0 +1,46 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@chrischall/iaqualink-mcp",
+    "version": "0.3.1",
+    "download": null
+  },
+  "archive_sha256": "de55d1ed0687e63f7c4a29efc431b0d9c7abba4dd6d028aeb35adfbd1ff211e6",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "package/skills/iaqualink-curl/references/iaqualink.sh",
+      "line": 27,
+      "evidence": "security find-generic-password -s iaqualink",
+      "file_sha256": "9c573d6161ea808fdb526d9ecc151519c2ff50c268cbc0b9a2c067c02cace18f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "package/skills/iaqualink-curl/references/iaqualink.sh",
+      "line": 32,
+      "evidence": "security find-generic-password -s iaqualink -w",
+      "file_sha256": "9c573d6161ea808fdb526d9ecc151519c2ff50c268cbc0b9a2c067c02cace18f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "anthropic.com",
+    "github.com",
+    "json-schema.org",
+    "p-api.iaqualink.net",
+    "prm.iaqualink.net",
+    "prod.zodiac-io.com",
+    "pypi.org",
+    "r-api.iaqualink.net",
+    "raw.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "www.anthropic.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

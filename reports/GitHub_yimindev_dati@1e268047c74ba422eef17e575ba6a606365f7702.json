@@ -1,0 +1,58 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "yimindev/dati",
+    "version": "1e268047c74ba422eef17e575ba6a606365f7702",
+    "download": "https://codeload.github.com/yimindev/dati/tar.gz/1e268047c74ba422eef17e575ba6a606365f7702"
+  },
+  "archive_sha256": "70d2ac3ec6aca6c8431bb01ae67c39f1fd5d1d169e26396e47a3116b393bae3e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "dati-1e268047c74ba422eef17e575ba6a606365f7702/.agents/skills/e2e-tester/scripts/api-key-verify.sh",
+      "line": 24,
+      "evidence": "curl -s -X POST $BASE/v1/auth/login -H \"Content-Type: application/json\" \\ -d \"{\\",
+      "file_sha256": "81beadbce5ba994473b07a200499def11e932c83650b0a59e428d53bedb8a2b0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "dati-1e268047c74ba422eef17e575ba6a606365f7702/.agents/skills/e2e-tester/scripts/api-key-verify.sh",
+      "line": 112,
+      "evidence": "curl -s $BASE/v1/auth/api-keys -H \"Authorization: Bearer $JWT\" | python3 -c \" im",
+      "file_sha256": "81beadbce5ba994473b07a200499def11e932c83650b0a59e428d53bedb8a2b0"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "agentskills.io",
+    "attacker.internal",
+    "ch.example.com",
+    "dati-demo.zhangyimin.me",
+    "dati.example.com",
+    "dati.yimindev.cn",
+    "db.internal",
+    "dev.to",
+    "evil.example.com",
+    "github.com",
+    "linux.do",
+    "maven.apache.org",
+    "mcp.example.com",
+    "modelcontextprotocol.io",
+    "pg.internal",
+    "sodipodi.sourceforge.net",
+    "trusted.example.com",
+    "vite.dev",
+    "www.apache.org",
+    "www.inkscape.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

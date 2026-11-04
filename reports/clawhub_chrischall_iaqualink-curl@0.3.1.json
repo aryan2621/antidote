@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "chrischall/iaqualink-curl",
+    "version": "0.3.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=iaqualink-curl&ownerHandle=chrischall&version=0.3.1"
+  },
+  "archive_sha256": "9bf02e8d2d1c5e8ff11b6384332ec7235938d81b1e0546afad6c47f79a3fd1c5",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "references/iaqualink.sh",
+      "line": 27,
+      "evidence": "security find-generic-password -s iaqualink",
+      "file_sha256": "9c573d6161ea808fdb526d9ecc151519c2ff50c268cbc0b9a2c067c02cace18f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "references/iaqualink.sh",
+      "line": 32,
+      "evidence": "security find-generic-password -s iaqualink -w",
+      "file_sha256": "9c573d6161ea808fdb526d9ecc151519c2ff50c268cbc0b9a2c067c02cace18f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "prod.zodiac-io.com",
+    "r-api.iaqualink.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

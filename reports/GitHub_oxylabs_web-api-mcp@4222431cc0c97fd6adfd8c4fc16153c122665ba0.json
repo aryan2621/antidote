@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "oxylabs/web-api-mcp",
+    "version": "4222431cc0c97fd6adfd8c4fc16153c122665ba0",
+    "download": "https://codeload.github.com/oxylabs/web-api-mcp/tar.gz/4222431cc0c97fd6adfd8c4fc16153c122665ba0"
+  },
+  "archive_sha256": "f3817290c0ca5a20e98e4fed2cfe6f70c62462d364d9d2fb36abf2240609b708",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "web-api-mcp-4222431cc0c97fd6adfd8c4fc16153c122665ba0/src/oxylabs_web_api_mcp/skills/oxylabs-web-api.md",
+      "line": 52,
+      "evidence": "p=1.00 Everything `search` and `scrape` return is third-party text that arrived from a ",
+      "file_sha256": "e7ce61b286146bd9b399b27b66d6dc6db2bbbc94cddaaa1802cd813360aff950"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "dashboard.oxylabs.io",
+    "developers.oxylabs.io",
+    "docs.astral.sh",
+    "ex.com",
+    "example.com",
+    "github.com",
+    "gofastmcp.com",
+    "mcp.oxylabs.io",
+    "modelcontextprotocol.io",
+    "oxylabs.io",
+    "static.modelcontextprotocol.io",
+    "webapi.oxylabs.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

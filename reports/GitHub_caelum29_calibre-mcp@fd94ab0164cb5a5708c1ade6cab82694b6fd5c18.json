@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "caelum29/calibre-mcp",
+    "version": "fd94ab0164cb5a5708c1ade6cab82694b6fd5c18",
+    "download": "https://codeload.github.com/caelum29/calibre-mcp/tar.gz/fd94ab0164cb5a5708c1ade6cab82694b6fd5c18"
+  },
+  "archive_sha256": "028898868be8d13ba3560dbe3c04a9357a2fd8baddf878fabf15a76ff6916180",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "calibre-mcp-fd94ab0164cb5a5708c1ade6cab82694b6fd5c18/scripts/verify-merge-custom-columns.sh",
+      "line": 68,
+      "evidence": "curl -fsS \"http://localhost:$PORT/ajax/library-info\" | python3 -c 'import json,s",
+      "file_sha256": "5cf35abffb0b837102f0e5581e410cb59f3e05243221350da909a1c965b1dcc2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "cs.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "archive.org",
+    "calibre-ebook.com",
+    "cs.test",
+    "example.com",
+    "github.com",
+    "github.githubassets.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "nodejs.org",
+    "openlibrary.org",
+    "policies.google.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "unpkg.com",
+    "www.daisy.org",
+    "www.googleapis.com",
+    "www.idpf.org",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

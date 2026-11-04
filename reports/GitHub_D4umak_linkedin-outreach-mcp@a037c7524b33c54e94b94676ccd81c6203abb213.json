@@ -1,0 +1,78 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "D4umak/linkedin-outreach-mcp",
+    "version": "a037c7524b33c54e94b94676ccd81c6203abb213",
+    "download": "https://codeload.github.com/D4umak/linkedin-outreach-mcp/tar.gz/a037c7524b33c54e94b94676ccd81c6203abb213"
+  },
+  "archive_sha256": "6908e487bc70d5ddb58260b9f1a880f345f632334b4b84a5c8f606fff11b3fa2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "linkedin-outreach-mcp-a037c7524b33c54e94b94676ccd81c6203abb213/src/heylead/ai/untrusted.py",
+      "line": 56,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "be49492a84f17f36d7cc25c1036a2e6f33069f9a5f53e4e8b037619294cc38d8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "linkedin-outreach-mcp-a037c7524b33c54e94b94676ccd81c6203abb213/plugins/heylead/skills/pause-or-stop/SKILL.md",
+      "line": 8,
+      "evidence": "p=1.00 Match the scope to what the user said, and say what will stop before calling any",
+      "file_sha256": "dd34446bb486b473ac1ee9b0973a259653bec24c3c1d5080811479375ac3de0c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "linkedin-outreach-mcp-a037c7524b33c54e94b94676ccd81c6203abb213/README.md",
+      "line": 286,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "16a4732fae64010d7c28b1f129040fb182d2a676496a353f4f43edffd43748ae"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "acme.com",
+    "agent-plugins.org",
+    "aistudio.google.com",
+    "anysphere.cursor-deeplink",
+    "api.anthropic.com",
+    "api.firecrawl.dev",
+    "api.hubapi.com",
+    "api.openai.com",
+    "apixx.unipile.com",
+    "astral.sh",
+    "cal.com",
+    "calendly.com",
+    "clawhub.ai",
+    "cursor.com",
+    "developers.hubspot.com",
+    "docs.anthropic.com",
+    "docs.astral.sh",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "glama.ai",
+    "google.serper.dev",
+    "heylead.dev",
+    "news.google.com",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "serper.dev",
+    "smithery.ai",
+    "sphotonix.com",
+    "static.modelcontextprotocol.io",
+    "www.apple.com",
+    "www.linkedi",
+    "www.linkedin.com",
+    "www.unipile.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
