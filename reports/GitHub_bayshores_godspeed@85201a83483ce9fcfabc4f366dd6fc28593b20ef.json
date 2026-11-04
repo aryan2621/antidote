@@ -1,0 +1,102 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "bayshores/godspeed",
+    "version": "85201a83483ce9fcfabc4f366dd6fc28593b20ef",
+    "download": "https://codeload.github.com/bayshores/godspeed/tar.gz/85201a83483ce9fcfabc4f366dd6fc28593b20ef"
+  },
+  "archive_sha256": "5faab030c646846e7ac698dd0d78d1f054447df2025506c23e41cd9ac76a1982",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "godspeed-85201a83483ce9fcfabc4f366dd6fc28593b20ef/integrations/skills/godspeed/references/data-format.md",
+      "line": 107,
+      "evidence": "p=0.99 This is an illustrative fragment, not a valid complete question fixture. Tool ar",
+      "file_sha256": "7bd0baed020b3fdafc93448debd97c72468e913ade48fd1afb1fa3bb47d65d50"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "godspeed-85201a83483ce9fcfabc4f366dd6fc28593b20ef/src/agent/prompts/shared/20-question-tools.md",
+      "line": 32,
+      "evidence": "p=0.91 Ask, then end your turn — his answer determines the next. He may ask you somethi",
+      "file_sha256": "f134ac5fc788e0dc59b7ec8bd5974d49d257a513d1f36a4af4c49e1bd1df8104"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "godspeed-85201a83483ce9fcfabc4f366dd6fc28593b20ef/tests/render-halley.test.tsx",
+      "line": 371,
+      "evidence": "\\u{202e}",
+      "file_sha256": "ae9825ce7c5fa22e18786b1fd249d38400403e34233c51e4bf2eb784147e38f2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "example.edu, nodejs.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "arxiv.org",
+    "attacker.example",
+    "blog.modelcontextprotocol.io",
+    "britannica.com",
+    "claude.com",
+    "developers.openai.com",
+    "devguide.python.org",
+    "docs.python.org",
+    "dotenvx.com",
+    "eslint.org",
+    "evil.example",
+    "example.com",
+    "example.edu",
+    "example.invalid",
+    "feross.org",
+    "fsf.org",
+    "github.com",
+    "huggingface.co",
+    "iep.utm.edu",
+    "katex-security.invalid",
+    "learnatgodspeed.com",
+    "modelcontextprotocol.io",
+    "nasa.gov",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "paypal.me",
+    "peps.python.org",
+    "polar.sh",
+    "r.jina.ai",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "thirdparty.invalid",
+    "tidelift.com",
+    "ts.sdk.modelcontextprotocol.io",
+    "ui.shadcn.com",
+    "unpkg.com",
+    "untrusted.invalid",
+    "www.apple.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.python.org",
+    "www.sigmajs.org",
+    "www.w3.org",
+    "x.example",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

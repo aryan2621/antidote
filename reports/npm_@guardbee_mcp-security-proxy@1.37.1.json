@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-security-proxy",
+    "version": "1.37.1",
+    "download": null
+  },
+  "archive_sha256": "8efbaa7f7189b637e9c30569645d29543d0461c6307db55bffd60cadfac54e45",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 153,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4aa7d9ee0dab3ea10fbebc2e9a25de8817cdd4f2d646083e6dcd8b716baadb80"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 153,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "4aa7d9ee0dab3ea10fbebc2e9a25de8817cdd4f2d646083e6dcd8b716baadb80"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "a2a-protocol.org, api.anthropic.com, api.githubcopilot.com, api.openai.com, billing-agent.internal, dc.acme.com, files.internal.example, gateway.example, guardbee.acme.internal, guardbee.github.io, json.schemastore.org, login.acme.com, login.microsoftonline.com, otel-collector.example.com, pypi.org, registry.npmjs.org, research-agent.internal, sso.example, www.apache.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a2a-protocol.org",
+    "api.anthropic.com",
+    "api.githubcopilot.com",
+    "api.openai.com",
+    "app.guardbee.ai",
+    "billing-agent.internal",
+    "dc.acme.com",
+    "files.internal.example",
+    "gateway.example",
+    "github.com",
+    "guardbee.acme.internal",
+    "guardbee.ai",
+    "guardbee.github.io",
+    "img.shields.io",
+    "json.schemastore.org",
+    "login.acme.com",
+    "login.microsoftonline.com",
+    "mcp.linear.app",
+    "otel-collector.example.com",
+    "pypi.org",
+    "registry.npmjs.org",
+    "research-agent.internal",
+    "sso.example",
+    "www.apache.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
