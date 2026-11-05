@@ -1,0 +1,59 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Tommkruix/archprint",
+    "version": "71cc6d3348a5a959fcb06d2f027ceed22f13ee30",
+    "download": "https://codeload.github.com/Tommkruix/archprint/tar.gz/71cc6d3348a5a959fcb06d2f027ceed22f13ee30"
+  },
+  "archive_sha256": "cb227ca4f7860e81a014dd190fda76df708d424a2319977cd7494a4eae63b4b8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "archprint-71cc6d3348a5a959fcb06d2f027ceed22f13ee30/tests/deploy/isolation.test.ts",
+      "line": 148,
+      "evidence": "readFileSync(path.join(deployDir, 'gcloud'), 'utf8')",
+      "file_sha256": "2eefecf26c387974bdff2fdea22f9a1c2282e154c3caea714df1e926d14b168e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "archprint-71cc6d3348a5a959fcb06d2f027ceed22f13ee30/tests/deploy/isolation.test.ts",
+      "line": 257,
+      "evidence": "readFileSync(path.join(deployDir, '.gcloudignore'), 'utf8')",
+      "file_sha256": "2eefecf26c387974bdff2fdea22f9a1c2282e154c3caea714df1e926d14b168e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "bitbucket.org",
+    "docs.github.com",
+    "eslint.org",
+    "evil.com",
+    "github.com",
+    "github.com.evil.com",
+    "gitlab.com",
+    "glama.ai",
+    "img.shields.io",
+    "ko-fi.com",
+    "mcpservers.org",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "stackblitz.com",
+    "static.modelcontextprotocol.io",
+    "tidelift.com",
+    "tommkruix.github.io",
+    "unpkg.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

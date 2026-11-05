@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Hondarer/host-shell-mcp",
+    "version": "a6907b898b70fd3aac77b7c20743a52de4772c69",
+    "download": "https://codeload.github.com/Hondarer/host-shell-mcp/tar.gz/a6907b898b70fd3aac77b7c20743a52de4772c69"
+  },
+  "archive_sha256": "3ddced916ca455445becd5504fe307d1647e7a18ad6dacb845133e64fbafa89a",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "host-shell-mcp-a6907b898b70fd3aac77b7c20743a52de4772c69/docs/prompts/past/261105-wsl-connection-validation.md",
+      "line": 19,
+      "evidence": "base64 -d \\| sh",
+      "file_sha256": "239f3ecf6575a923092c4e8bd47b64e8d33f375cb28b95c5311d078f10d2334d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.github.com, code.claude.com, code.visualstudio.com, docs.github.com, hondarer-soft.com, learn.chatgpt.com, learn.microsoft.com, main.vscode-cdn.net, update.code.visualstudio.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.1.2.3",
+    "127.0.0.1",
+    "allowed.example",
+    "api.github.com",
+    "api.internal",
+    "changed.example",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "denied.example",
+    "docs.github.com",
+    "encoding.spec.whatwg.org",
+    "example.com",
+    "github.com",
+    "go.dev",
+    "hondarer-soft.com",
+    "intranet.internal.example",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "main.vscode-cdn.net",
+    "open-vsx.org",
+    "proxy.example",
+    "public.example",
+    "secret-destination.example",
+    "secure-proxy.example",
+    "update.code.visualstudio.com",
+    "x.internal.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

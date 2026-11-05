@@ -1,0 +1,100 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Troy2727/voxwell",
+    "version": "829fcab49c3fa01290401457fb7051a5e24a07a7",
+    "download": "https://codeload.github.com/Troy2727/voxwell/tar.gz/829fcab49c3fa01290401457fb7051a5e24a07a7"
+  },
+  "archive_sha256": "fb89b1a24acf79fff44eb216006c8ea1a3a635de8f5d725bae80c58d4241aa03",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "voxwell-829fcab49c3fa01290401457fb7051a5e24a07a7/README.md",
+      "line": 228,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Troy2727/voxwell/main/install.sh | ",
+      "file_sha256": "1beb475c36f30992d920cc083097e9c091a7c48c63a0fabed823cfea1d4980e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "voxwell-829fcab49c3fa01290401457fb7051a5e24a07a7/install.sh",
+      "line": 3,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Troy2727/voxwell/main/install.sh | ",
+      "file_sha256": "23ef9875287859fc9624a9b926d86be1964d4461babf7fd32551f9b5af0ac373"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "voxwell-829fcab49c3fa01290401457fb7051a5e24a07a7/install.sh",
+      "line": 28,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "23ef9875287859fc9624a9b926d86be1964d4461babf7fd32551f9b5af0ac373"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "astral.sh, cdn.jsdelivr.net, git-scm.com, raw.githubusercontent.com, schemas.openxmlformats.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "astral.sh",
+    "calls.example.trycloudflare.com",
+    "cdn.jsdelivr.net",
+    "codeload.github.com",
+    "dl.fbaipublicfiles.com",
+    "docs.astral.sh",
+    "download-r2.pytorch.org",
+    "download.pytorch.org",
+    "evil.example",
+    "example.com",
+    "fastapi.tiangolo.com",
+    "ffmpeg.org",
+    "files.pythonhosted.org",
+    "git-scm.com",
+    "github.com",
+    "huggingface.co",
+    "insecure.example.com",
+    "modelscope.cn",
+    "mycompany.com",
+    "nodejs.org",
+    "opencollective.com",
+    "polar.sh",
+    "purl.org",
+    "pypi.org",
+    "pytorch.org",
+    "raw.githubusercontent.com",
+    "react.dev",
+    "registry.npmjs.org",
+    "schemas.openxmlformats.org",
+    "stability.ai",
+    "storage.googleapis.com",
+    "supabase.com",
+    "tailwindcss.com",
+    "tidelift.com",
+    "ui.shadcn.com",
+    "vercel.com",
+    "vite.dev",
+    "voxwell.vercel.app",
+    "voxwell.vercel.app.evil.example",
+    "www.electronjs.org",
+    "www.idpf.org",
+    "www.python.org",
+    "www.typescriptlang.org",
+    "www.w3.org",
+    "your-name.trycloudflare.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
