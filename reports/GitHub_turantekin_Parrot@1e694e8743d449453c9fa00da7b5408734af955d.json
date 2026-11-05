@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "turantekin/Parrot",
+    "version": "1e694e8743d449453c9fa00da7b5408734af955d",
+    "download": "https://codeload.github.com/turantekin/Parrot/tar.gz/1e694e8743d449453c9fa00da7b5408734af955d"
+  },
+  "archive_sha256": "2ebc5f70acb169780ee94c13ada8439b3f3f1874f4260456fc9c7c5e55525335",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "Parrot-1e694e8743d449453c9fa00da7b5408734af955d/scripts/publish.sh",
+      "line": 144,
+      "evidence": "security find-generic-password -s parrot-site-deploy-hook -w",
+      "file_sha256": "9470bf0379913c21f306cd4e42a2a7f9a66702d09ee3a617ae4d556686ff184b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "account.apple.com",
+    "acme.com",
+    "acme.zoom.us",
+    "anysphere.cursor-deeplink",
+    "api.anthropic.com",
+    "api.deepgram.com",
+    "api.groq.com",
+    "api.typesafe.ai",
+    "buymeacoffee.com",
+    "claude.ai",
+    "claude.com",
+    "console.anthropic.com",
+    "docs.google.com",
+    "example.com",
+    "fsf.org",
+    "github.com",
+    "hooks.zapier.com",
+    "img.shields.io",
+    "linktr.ee",
+    "ollama.com",
+    "openparrot.app",
+    "openrouter.ai",
+    "people.xiph.org",
+    "scripts.sil.org",
+    "sparkle-project.org",
+    "static.modelcontextprotocol.io",
+    "turantekin.github.io",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.gnu.org",
+    "www.xiph.org",
+    "x.com",
+    "zoom.us"
+  ],
+  "install_script": false,
+  "score": "high"
+}

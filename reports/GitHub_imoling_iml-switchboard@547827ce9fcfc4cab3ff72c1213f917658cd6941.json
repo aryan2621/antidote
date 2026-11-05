@@ -1,0 +1,93 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "imoling/iml-switchboard",
+    "version": "547827ce9fcfc4cab3ff72c1213f917658cd6941",
+    "download": "https://codeload.github.com/imoling/iml-switchboard/tar.gz/547827ce9fcfc4cab3ff72c1213f917658cd6941"
+  },
+  "archive_sha256": "a095b13270c257bb77a8cd9617c47990702d68b16d92b4cab5656986a6e97a8a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iml-switchboard-547827ce9fcfc4cab3ff72c1213f917658cd6941/README.md",
+      "line": 125,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/imoling/iml-switchboard/main/script",
+      "file_sha256": "96e5b8c07481a8305cbdbe2e9952d07d7065110c9329888583bf613dce997da5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iml-switchboard-547827ce9fcfc4cab3ff72c1213f917658cd6941/README.en.md",
+      "line": 127,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/imoling/iml-switchboard/main/script",
+      "file_sha256": "33f899b035da0d9781a226a89d44d720121f7a428550c282bd905a00435108bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iml-switchboard-547827ce9fcfc4cab3ff72c1213f917658cd6941/docs/releases/v0.6.1.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/imoling/iml-switchboard/main/script",
+      "file_sha256": "5b95c615f3298177dc34ee3b55624b5d3e42e0037e3160968968bf637fc7b69e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "iml-switchboard-547827ce9fcfc4cab3ff72c1213f917658cd6941/scripts/install-mac.sh",
+      "line": 86,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "3b7668aa56b040597a64bb424cb804f3f57310029481275c2cae7c9bde636528"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.8",
+    "127.0.0.1",
+    "a.example",
+    "api.302.ai",
+    "api.agnes-ai.cn",
+    "api.anthropic.com",
+    "api.deepseek.com",
+    "api.github.com",
+    "api.minimaxi.com",
+    "api.moonshot.cn",
+    "api.typesafe.ai",
+    "ark.cn-beijing.volces.com",
+    "b.example",
+    "bailian.console.aliyun.com",
+    "chatgpt.com",
+    "code.claude.com",
+    "console.volcengine.com",
+    "dashscope.aliyuncs.com",
+    "example.com",
+    "geminicli.com",
+    "gitee.com",
+    "github.com",
+    "img.shields.io",
+    "one.example",
+    "one.iflytek.com",
+    "open.bigmodel.cn",
+    "opencollective.com",
+    "openrouter.ai",
+    "platform.deepseek.com",
+    "platform.minimaxi.com",
+    "platform.moonshot.cn",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.tauri.app",
+    "tauri.localhost",
+    "tidelift.com",
+    "www.agnes-ai.cn",
+    "www.apple.com",
+    "www.w3.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

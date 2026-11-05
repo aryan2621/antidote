@@ -1,0 +1,130 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@itentialopensource/adapter-ciena_mcp",
+    "version": "1.0.13",
+    "download": null
+  },
+  "archive_sha256": "61fbc287d7d9a62a1a96383398477db8045baaf9290b5a1b9f6703f4b2657157",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/adapterBase.js",
+      "line": 45,
+      "evidence": "execSync(`rm -rf ${__dirname}/node modules`, { encoding: 'utf-8' })",
+      "file_sha256": "a75d91cdb5a9399fda3fb00a57a7db012fd57808b1f96540ffa25ad847ec441b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/adapterBase.js",
+      "line": 46,
+      "evidence": "execSync(`rm -rf ${__dirname}/package-lock.json`, { encoding: 'utf-8' })",
+      "file_sha256": "a75d91cdb5a9399fda3fb00a57a7db012fd57808b1f96540ffa25ad847ec441b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1114,
+      "evidence": "p=0.97 return failure or ignore failure",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1114,
+      "evidence": "p=0.97 return failure or ignore failure",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1368,
+      "evidence": "p=0.99 return failure or ignore isAlive",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1464,
+      "evidence": "p=0.99 return failure or ignore getConfig",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1464,
+      "evidence": "p=0.99 return failure or ignore getCount",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/propertiesSchema.json",
+      "line": 1114,
+      "evidence": "p=0.97 return failure or ignore failure",
+      "file_sha256": "29edfa37ba0374bc89eab863d2d616fdf951b50b2603d8d015ec5d28cca6d317"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/entities/Roles/schema.json",
+      "line": 89,
+      "evidence": "p=0.91 Ignore partitions field and enable all active available partitions",
+      "file_sha256": "4d4f2d2bdcc9bb5fef27f02dd8495285e6fe87eae9637a18e5befe15cf636eb9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/utils/modify.js",
+      "line": 30,
+      "evidence": "execSync(`mkdir adapter_modifications/archive/${archiveName}`)",
+      "file_sha256": "243af3d8e72fdc790b1def7cd17a004ccfe2548fa4a253271221ae2047c1d8b9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "id": "AGT-F-INSTALL",
+      "summary": "Runs code at install time",
+      "path": null,
+      "line": null,
+      "evidence": "preinstall: node utils/setup.js",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "adapters.itential.io",
+    "cluster0.xxxxx.mongodb.net",
+    "contributor-covenant.org",
+    "docs.itential.com",
+    "gitlab.com",
+    "itential.atlassian.net",
+    "json-schema.org",
+    "my.ciena.com",
+    "registry.npmjs.org",
+    "www.apache.org",
+    "www.ciena.com",
+    "www.itential.com",
+    "www.npmjs.com"
+  ],
+  "install_script": true,
+  "score": "high"
+}

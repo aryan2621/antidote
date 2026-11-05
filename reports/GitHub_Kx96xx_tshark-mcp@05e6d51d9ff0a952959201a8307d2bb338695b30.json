@@ -1,0 +1,82 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Kx96xx/tshark-mcp",
+    "version": "05e6d51d9ff0a952959201a8307d2bb338695b30",
+    "download": "https://codeload.github.com/Kx96xx/tshark-mcp/tar.gz/05e6d51d9ff0a952959201a8307d2bb338695b30"
+  },
+  "archive_sha256": "a4b9de0eb9f711b279009ba0b505db46f02c78b183fa2e221b3d6e6e123031db",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tshark-mcp-05e6d51d9ff0a952959201a8307d2bb338695b30/src/tshark_mcp/untrusted.py",
+      "line": 65,
+      "evidence": "\\u{202e}",
+      "file_sha256": "9d7544ad077a5dad7479d111fff78513486140ae790f81cefb046ffdcc9592a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "tshark-mcp-05e6d51d9ff0a952959201a8307d2bb338695b30/tests/test_untrusted_text.py",
+      "line": 15,
+      "evidence": "\\u{202e}",
+      "file_sha256": "b1e5186dbad6a8893ec2423e871eec86fb70ec14fd58606f14aa417e1bbc93b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "tshark-mcp-05e6d51d9ff0a952959201a8307d2bb338695b30/tests/test_untrusted_text.py",
+      "line": 14,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b1e5186dbad6a8893ec2423e871eec86fb70ec14fd58606f14aa417e1bbc93b5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "tshark-mcp-05e6d51d9ff0a952959201a8307d2bb338695b30/tests/test_docker.py",
+      "line": 49,
+      "evidence": "(ROOT / \".dockerignore\").read_text()",
+      "file_sha256": "be6ee5db5bb62b5ce68c349228dc91bbfd7faacc864175484d8e7e714f4c2400"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "tshark-mcp-05e6d51d9ff0a952959201a8307d2bb338695b30/tests/test_capture_metadata.py",
+      "line": 29,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "fe7301d8dfd2eda53cdbba0e4d215aaf51688cb010f91e68436c92d057240f04"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.example.com",
+    "api.nuget.org",
+    "docker.io",
+    "docs.astral.sh",
+    "example.com",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "mcp-fs.example.com",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "pypistats.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "semver.org",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

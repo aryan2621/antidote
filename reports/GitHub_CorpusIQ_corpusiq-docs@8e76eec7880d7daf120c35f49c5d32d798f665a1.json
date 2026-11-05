@@ -1,0 +1,1153 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "CorpusIQ/corpusiq-docs",
+    "version": "8e76eec7880d7daf120c35f49c5d32d798f665a1",
+    "download": "https://codeload.github.com/CorpusIQ/corpusiq-docs/tar.gz/8e76eec7880d7daf120c35f49c5d32d798f665a1"
+  },
+  "archive_sha256": "43e1c9c21525e3576db7879f6723176c0955dec0add43d9ed3e555adf0f55c55",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/install.sh",
+      "line": 3,
+      "evidence": "curl -sL https://corpusiq.io/install | bash",
+      "file_sha256": "33e6e7a43f91e1bd318ef14b93ba7e14433495bb862081197bc1bf47b75e7d10"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/data/pending_review.json",
+      "line": 3161,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/KleirRampage45/hermdeck/main/script",
+      "file_sha256": "2605a58fd22ec56c92c3554c7ec17d599552fdf7c58773843f015707d643e7fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/data/pending_review.json",
+      "line": 85789,
+      "evidence": "p=0.96 This is just my personal hacks to Hermes Agent, don't use this unless you are fo",
+      "file_sha256": "2605a58fd22ec56c92c3554c7ec17d599552fdf7c58773843f015707d643e7fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/datris-platform-mcp/index.md",
+      "line": 52,
+      "evidence": "curl -fsSL https://get.datris.ai/install.sh | sh",
+      "file_sha256": "a362bc936e781263f75f0f7e1af53bd894724600a268e48dbf4d9e3184b2e2d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/app-store-connect-mcp/index.md",
+      "line": 20,
+      "evidence": "curl -fsSL .../releases/latest/download/install.sh | sh",
+      "file_sha256": "7370392bf6294d8d1b3051d68fea403e6229e39207a1ea84d31da27de048e892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/recued-mcp/index.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://recued.com/install.sh | sh",
+      "file_sha256": "733a80af3bd5c9bb9a9f663f049c535f388472f153bed0aa6973f1430ea10d54"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/loops-mcp/index.md",
+      "line": 51,
+      "evidence": "curl -fsSL https://install.loops.so/wizard | sh",
+      "file_sha256": "1dd3dc0064c33a614e436e6fedec641be9b4f14794f909eac1c93f36cd62e76b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/ruzora-mcp/index.md",
+      "line": 41,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6b229962dbeb8ed1c30a25be54b5add5f4c2a57cb33fdd4b37e913f7d186485f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/codicil-mcp/index.md",
+      "line": 37,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "9581a32fb57d5a2ffd187ab7392e5745dd15528fbf37668317fed3cac264c1db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/5dive-mcp/index.md",
+      "line": 48,
+      "evidence": "curl https://install.5dive.ai | sudo bash",
+      "file_sha256": "1397dde164135745fa9405c1359fd49f8ab182ac37ab1ca8dad213e5a7cabc97"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/aihawk-mcp/index.md",
+      "line": 32,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "2e6f7f4b67cef0064330dc3fb70568f6dbb47a610d83c2c910fe7f0211f8fd93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/datadog-mcp/index.md",
+      "line": 49,
+      "evidence": "curl -fsSL https://coterm.datadoghq.com/mcp-cli/install.sh | sh",
+      "file_sha256": "6ecb6ad19f46d3f354d7a9859c36ce6ab4f8f67aec0eea75ebf648eedb44d51a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/dropcue-mcp/index.md",
+      "line": 23,
+      "evidence": "curl -fsSL https://dropcue.app/kit/install.sh | bash",
+      "file_sha256": "95fac5239cf22486a1cb40cc9fd71da78211c7ab8ec6748ad625cfa617e79467"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/mcp/servers/external/sequel-mcp/index.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://sequel.sh/install | sh",
+      "file_sha256": "91b5aff2c8e77d8637b2ae1802fa6968d41c73d33e64ce4823de474ce8ee4333"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/README.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "3008f94bf8caef48327f9d5dd6a01b126b0c53ce6161c59161001a2604470f36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/best-practices/local-coding-agent.md",
+      "line": 45,
+      "evidence": "curl -fsSL https://opencode.ai/install | bash",
+      "file_sha256": "36b552b9397e4aaf4354061cdf8c0531a3ac66dbabbce2c46bc484b4aab1c919"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.3/index.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri",
+      "file_sha256": "25aa2cf1937d24006f7310c3eebcbac5d85ce600b4dda6574411f9e5269a2798"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.3/index.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "1c7f8ceb871715a840c4da936186f95f4012a6a860110de6dce7710543158234"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.4/index.md",
+      "line": 41,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "56bd8f97f1e658f7a6af555edb0264f9afdaaf7a45979b1082ae5c10fde02867"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.1/index.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "9187a3982d717f5f5a38972aafed622cf12a1b4032cf7abee6fd60022923fc8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.5/index.md",
+      "line": 38,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "f8b640a497c53e2433f2f356e14a3a674f2d325eb191ebc312841b809b6bb0bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.1/index.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "acc0fdf9973a615ecc3013351ed914824720fe79687719de8a851ac2186a6e6f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.2/index.md",
+      "line": 37,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "40279b26030b67bf4c1754f3dded0da42b10fda653e8640d7e1a4691625a2f00"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.6/index.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri",
+      "file_sha256": "75a257b140d0b94e6769b3d7b314083c64ee0c581e412973a9b318887b1211fa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.5/index.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri",
+      "file_sha256": "c571c3327e32390ebcf22158aa6135925544ecc0a20a370eddeef00f218991b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.0/index.md",
+      "line": 183,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "1667c0ff66e915cdeb2bffecc08b38ed890961fe583cc251e6830493b3a35c49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.4/index.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri",
+      "file_sha256": "639a7b1dd44d75f35cbaace97b5486cdb05e81452034fd70355c60efc5d629f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.21.0/index.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "409a6ec95e493225d63d41f78b52a7f9c8706efefc5ed78112c07aa0588e0a56"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.20.2/index.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri",
+      "file_sha256": "0940c2ba170cecf3999a8a40e847537576c8cbc73d93c67e5da21a9b9c7495fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/changelog/v0.19.1/index.md",
+      "line": 41,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "b4b9784e7487873e3b55ae83d08cf9e1b6b2ffacb1ba89250732e98377228aff"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/raspberry-pi.md",
+      "line": 63,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "9bc4ed41e5ce5e182f5e8dd66c20737711057c2c910637cc8bfe53a901960e6a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/gaming-pc.md",
+      "line": 53,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "c23bd11ab42193bb55e711f456a3b3eee6497168ce716c796d13e05f4eef80be"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/mac-mini-standalone.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "b41baf8e2b88b9bae3cea78b8c5a46185185e8e5a9867fd4d012f8be0c9975d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/cloud-vps.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "575150a3fa87d512c6c56992241a93a211b632e634989a067718caf7ce52dd47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/index.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "61c7638699dee2ef4a3a3e6babdad210ea1fa7ef789268cb88fc7861d8758c3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/setup/windows-wsl.md",
+      "line": 89,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "8976563a53d0ecb80798dbfb81a4251a327b6f9e1f913737890869b0bc479124"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/scripts/install-agent-stack.sh",
+      "line": 73,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "c9ac3d816f43d0367010510931a3724c17862256738cfbbe284e89a0c58fda04"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/scripts/install-agent-stack.sh",
+      "line": 73,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "c9ac3d816f43d0367010510931a3724c17862256738cfbbe284e89a0c58fda04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/scripts/index.md",
+      "line": 36,
+      "evidence": "curl -sL https://raw.githubusercontent.com/CorpusIQ/corpusiq-docs/main/hermes/sc",
+      "file_sha256": "ca062820779d2479d80548261aeea4ab29c54aca05f9ac3f17959c84fc53049b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/notebooklm-py-setup.md",
+      "line": 105,
+      "evidence": "curl-to-bash installer shipped by this repository, but the README does offer `cu",
+      "file_sha256": "8fde6c129553a07e36e2330d605565df1108650191f70f36c265a996efc6efef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/hermes-workspace-ai-agent-ui-setup.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/outsourc-e/hermes-workspace/main/in",
+      "file_sha256": "51b94b8700b874384bd8b3d22c48b6e1199509488cf53ca78b0dccc065896473"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/aaron-marketing-skills-setup.md",
+      "line": 219,
+      "evidence": "p=0.94 The warnings are worth taking literally rather than dismissing. Snyk returns a w",
+      "file_sha256": "37a0b47a70f976188f1bb2ee34a0ea1ba61a91be73125635a06fbdc79e1f3ed4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/deepagents-setup.md",
+      "line": 44,
+      "evidence": "curl -LsSf https://langch.in/dcode | bash",
+      "file_sha256": "02586e24ea87da54e3ed0a051fc802b8ef0735c7e93169125dd4d381df14bdcf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/antigravity-manager-setup.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/lbjlaq/Antigravity-Manager/v4.1.30/",
+      "file_sha256": "5f110e13d5c09de72ecefd9cd8ec271e0d5c91ba98dae67b1a22791808baeac8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/antigravity-manager-setup.md",
+      "line": 123,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5f110e13d5c09de72ecefd9cd8ec271e0d5c91ba98dae67b1a22791808baeac8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/vue-ecosystem-skills-setup.md",
+      "line": 143,
+      "evidence": "p=0.91 The risk that remains is instruction-level, and it is the same risk as any skill",
+      "file_sha256": "6664fcf9ba18f892df3dec067e70e5e148f94ac53b72ebe78128839a39b48cec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/composiohq-composio-setup.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://composio.dev/install | sh",
+      "file_sha256": "8233237311f30f08df13c4e71f914a03f0faf73c3f4183932089f06114b123f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/geo-seo-claude-setup.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zubair-trabzada/geo-seo-claude/main",
+      "file_sha256": "8460be7d8bd5c70b6602070a2e697cfb78194482c528fc36a247930ec0f1b3c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/scrapecreators-social-research-setup.md",
+      "line": 112,
+      "evidence": "ignore your previous instructions",
+      "file_sha256": "43f9f54e7b4b120da9d56c3ca7a18a70000ff2d5e4e90a2699535184a39bdd65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/indexion-skills-setup.md",
+      "line": 25,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/trkbt10/indexion/main/install.sh | ",
+      "file_sha256": "715b1f5695f4cad4da96149fae39134778c41780aec96963e18fc7160be123bd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/indexion-skills-setup.md",
+      "line": 34,
+      "evidence": "p=0.98 The README also notes that some skills need commands newer than an older install",
+      "file_sha256": "715b1f5695f4cad4da96149fae39134778c41780aec96963e18fc7160be123bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/pdf-converter-mineru-setup.md",
+      "line": 113,
+      "evidence": "p=0.95 One listing was sampled and two of the three auditors fail it: Gen Agent Trust H",
+      "file_sha256": "71631a1a4b7115f555ac05ea10b6ed4ae9dbf5f4542d166ab8c4a6330ddb8f90"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/hermes-browser-extension-setup/index.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "6719c7e353389f515101b28d5885bce5ff3b15466d695ccf9e48ad20426d124d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/jeo-skills-setup.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/akillness/jeo-skills/main/install.s",
+      "file_sha256": "752d4cf13a237f05664cee0ce66a46173fe22b31db673f35f443742b8ed07dbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/opencode-workflows-setup.md",
+      "line": 115,
+      "evidence": "p=0.96 Read two before installing the rest, because they set up everything else:",
+      "file_sha256": "b25f90104b22e17f4e21e0107bb31f59d824370d0bb612edc7ca356c79ed948f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/llamaparse-agent-skills-setup.md",
+      "line": 130,
+      "evidence": "p=0.94 The one warning in the sample sits on `llamacloud-index` under Snyk. Read that `",
+      "file_sha256": "4b61da4e95ac9290551f9b8885c4334e23c0ebcccb3c5c47d423cf2d63720fd5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/news-aggregator-skill-setup.md",
+      "line": 125,
+      "evidence": "p=0.93 The prompt surface is the other consideration. `--deep` pulls arbitrary page tex",
+      "file_sha256": "18d4779480665b4cf7ff64aea1aa5db80699242cbdc6fae1a71ef9cac0deeddf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/ponytail-skills-setup.md",
+      "line": 103,
+      "evidence": "p=0.97 After installing, the first run should prove the mode is active rather than assu",
+      "file_sha256": "19fce96aae28f481832dc7d6dd9ca2c1513c9234ec51c78f40dd54b5b240b986"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/qodex-ai-agent-skills-setup.md",
+      "line": 62,
+      "evidence": "p=0.97 Nothing in the repository mentions Hermes. The instructions are Markdown, so the",
+      "file_sha256": "d7f718acc3ae771c2589f860aee7afc35dc918a54421fefeb82811120f083905"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/cnife-audit-hermes-agent-skills-setup.md",
+      "line": 67,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "c4c4f04ba0792f4196d30824b6937a8719313560852d84293f031c9469dc5a4a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/hermex-iphone-app-setup.md",
+      "line": 100,
+      "evidence": "curl -fsSL https://tailscale.com/install.sh | sh",
+      "file_sha256": "8e74037b2b8034a9f9755b3e2afdee63f2612857a8f8ed62eead3bd122562253"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/appwrite-skills-setup.md",
+      "line": 35,
+      "evidence": "p=0.98 Browse the full list without installing anything:",
+      "file_sha256": "2a83b4f62a3b90dc9c400d59350681c9c5d339d4f42c36125d78d5982db69369"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/reddit-research-skills-setup.md",
+      "line": 128,
+      "evidence": "p=0.97 Snyk returns Warn on all three sampled listings while Gen Agent Trust Hub and So",
+      "file_sha256": "9275dcf20bc717d319597de9d2ef6312af6fcb7720ac9e9ebd03e9ead407f919"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/inference-sh-skills-setup.md",
+      "line": 30,
+      "evidence": "curl -sL https://inference.sh/install | bash",
+      "file_sha256": "700dcac80f79600c91e87748f01fef869d9b21d3873009358811c9835e29dfbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/openclaw-skill-vetter-setup.md",
+      "line": 101,
+      "evidence": "curl | bash",
+      "file_sha256": "05a894deb17bc6cda8fc0dc74eef164030348fbe0ec002bc8c01b1bd3557cc64"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/noizai-skills-setup.md",
+      "line": 84,
+      "evidence": "p=0.96 The character work is the differentiator. Plain TTS reads a sentence; a comfort ",
+      "file_sha256": "b78241b83ee16579a5639f3d9e2dbb09e5d7fa9c588014e30e8d5ced376c80c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/transitions-dev-setup.md",
+      "line": 116,
+      "evidence": "curl | bash",
+      "file_sha256": "dbf7c37bcbc88c1e112db0df72528460c0ab5f77b58567198f3423e6a07b2f19"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/awesome-finance-skills-setup.md",
+      "line": 122,
+      "evidence": "p=0.98 The larger risk in this pack is what flows back in. News headlines and article b",
+      "file_sha256": "f0f437b686e708121b98861866f44deed7aa9757dc28dc4aa3688009cc2db093"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/google-skills-setup.md",
+      "line": 127,
+      "evidence": "curl https://sdk.cloud.google.com | bash",
+      "file_sha256": "1f441c26e374a57e32c1e047769d1e04ba1a1871ee418fed3926e3b55e3114c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/jaganpro-sf-skills-setup.md",
+      "line": 42,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/Jaganpro/sf-skills/main/tools/instal",
+      "file_sha256": "be6d890f3de9bad8d224028feee87a4f372db0198b85dfbf0c7a5a3789c4f299"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/clickhouse-agent-skills-setup.md",
+      "line": 41,
+      "evidence": "curl -fsSL https://clickhouse.com/cli | sh",
+      "file_sha256": "0703bc96e64ef6a9552eee317ee4b95d12600eefa4232e5ab6fb772bbf6f0e53"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/coralogix-cx-cli-setup.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://get.coralogix.dev/cli | sh",
+      "file_sha256": "13484cd47a1cb6e3d5b7ad803f64a7e061ffd4096229ef67fbfc9d5743c7f8a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/heygen-skills-setup.md",
+      "line": 45,
+      "evidence": "curl -fsSL https://static.heygen.ai/cli/install.sh | bash",
+      "file_sha256": "376c9ed45e6a82d13dfd834af00c6328d578d0ea2b61e6b1daa35f49f2a74afb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/heygen-skills-setup.md",
+      "line": 127,
+      "evidence": "p=0.94 The install path deserves its own note. The README asks you to paste a prompt th",
+      "file_sha256": "376c9ed45e6a82d13dfd834af00c6328d578d0ea2b61e6b1daa35f49f2a74afb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/claude-mem-setup.md",
+      "line": 42,
+      "evidence": "curl -fsSL https://install.cmem.ai/openclaw.sh | bash",
+      "file_sha256": "f5e963776b1b1cd281217cc9e744a4dcaf3531288936ac03a0f02dde6af149ad"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/cc-blender-skill-setup.md",
+      "line": 41,
+      "evidence": "p=0.97 The README's Quick Install section is behind an anchor this pack's excerpt does ",
+      "file_sha256": "109c5ce909140399f3febf59e6e503c7ffd2db3790275a79c678f2a62d939d14"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/cc-blender-skill-setup.md",
+      "line": 127,
+      "evidence": "p=0.96 All five sampled listings are Pass on all three auditors, and the sample covers ",
+      "file_sha256": "109c5ce909140399f3febf59e6e503c7ffd2db3790275a79c678f2a62d939d14"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/elestio-skill-setup.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/elestio/elestio-skill/main/scripts/",
+      "file_sha256": "2ab73cdd3db056777d8332bd35dcf3fa378d26a9041fc29a9277dce33f58a057"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/aso-skills-setup.md",
+      "line": 103,
+      "evidence": "p=0.98 App store copy is a hard-constraint writing job, and hard constraints are where ",
+      "file_sha256": "ddf3a8e6c2e244fea9d104fd8095317d1c52cd53b9483ae11418f827f5ee565d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/juliusbrussee-skills-setup.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.",
+      "file_sha256": "2466520b511c0d88715f2fecd606a15a16fc6f1e41c9ba8128a442f983f823d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/tavily-research-setup.md",
+      "line": 25,
+      "evidence": "curl -fsSL https://cli.tavily.com/install.sh | bash",
+      "file_sha256": "00f685dddfd071de55e61fe360e772a981c342638b5e0ab49e824c14caa1b895"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/dynatrace-for-ai-setup.md",
+      "line": 124,
+      "evidence": "p=0.97 The one Warn is inherent to the domain rather than to a defect. Snyk scores `dt-",
+      "file_sha256": "96b8f4e006d7e3de82da118bf017e3da1e8cc75a3290164a2362cd4636c0783c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/gbrain-agent-operations-setup.md",
+      "line": 53,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "4cb1224ac624fdfaa94643190ca1ae1252522975d6dd5505fba618ca9f858918"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/railway-agent-skills-setup.md",
+      "line": 54,
+      "evidence": "curl -fsSL agents.railway.com | sh",
+      "file_sha256": "1e695f26328f2006f2b415fc2e9adba46d346d490f8b7493e6bf6a1674306f05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/agent-toolkit-setup.md",
+      "line": 150,
+      "evidence": "p=0.93 Practical rules. Read the helper scripts of anything that shells out before you ",
+      "file_sha256": "6e03493fe78037ec6a670061fa145d94197b18007247b3587cabd9be3dcd77bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/rea-setup.md",
+      "line": 115,
+      "evidence": "p=0.94 That last point is the one to act on. A skill that reads arbitrary binaries and ",
+      "file_sha256": "4060a6b63a0c09c5e3454f0f816b15f923f34be4fb30a52bce15b749f376426e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/jwynia-agent-skills-setup.md",
+      "line": 45,
+      "evidence": "p=0.95 Installing everything is also a documented one-liner:",
+      "file_sha256": "44556df24cf1e61d503fe0e5c2e4cd041227ba356bd22ffabeefe58d2c2e08a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/awesome-ecommerce-skills-setup.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://get.tessl.io | sh",
+      "file_sha256": "99d6c909827c7ea6097da8c9c45842423e531420397ced6fd1e8566d16af0a9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/incidentio-cli-setup.md",
+      "line": 140,
+      "evidence": "curl | bash",
+      "file_sha256": "2d9e0a938bf3a020d4aca873fe3d0416dec9fb43840d366388430ad55da0862d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/incidentio-cli-setup.md",
+      "line": 49,
+      "evidence": "p=0.93 The README also says you can skip the build entirely with `bun run src/cli.ts <c",
+      "file_sha256": "2d9e0a938bf3a020d4aca873fe3d0416dec9fb43840d366388430ad55da0862d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/skills-gallery-setup.md",
+      "line": 68,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/uthumany/Skills-Gallery/master/scri",
+      "file_sha256": "f66e7418c8acf372d7104f276cbb6a2fda757c35e4bc3fc673dfeae45037c082"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/hyva-ai-tools-setup.md",
+      "line": 54,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hyva-themes/hyva-ai-tools/refs/head",
+      "file_sha256": "8e38ad9b87b33019425093ee7d8dbf9e608047c45891c8c5f738943da54c9ce3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/hyva-ai-tools-setup.md",
+      "line": 103,
+      "evidence": "p=0.92 List what the installer can see before installing anything:",
+      "file_sha256": "8e38ad9b87b33019425093ee7d8dbf9e608047c45891c8c5f738943da54c9ce3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/jupyter-live-kernel-setup.md",
+      "line": 54,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "135d9c2f2cbfc245f5e929e33d663226324292d6068391d45008b7e2b3ac5b68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/tavily-search-setup.md",
+      "line": 25,
+      "evidence": "curl -fsSL https://cli.tavily.com/install.sh | bash",
+      "file_sha256": "608bda5ac5057d9a7b8b935af1813390e9412125a34c773989f233e6632245a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/longbridge-skills-setup.md",
+      "line": 145,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/longbridge/skills/main/scripts/upda",
+      "file_sha256": "28555d1821693152ec900939bb9068bb83149e681b195b40324c489cdaa5ca52"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/runpod-plugins-official-setup.md",
+      "line": 30,
+      "evidence": "curl -sSL https://cli.runpod.net | bash",
+      "file_sha256": "86f21bd0946688a668d01ac7de5aa13b0998ce2fe08459b73cf502d9bdcc639b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/openclaw-android-setup/index.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/AidanPark/openclaw-android/main/set",
+      "file_sha256": "30cb38d90caa0a9f5b5ef37a14457737cd248a62ef90bc90eb064bf5903d15b7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/ast-grep-agent-skill-setup.md",
+      "line": 24,
+      "evidence": "p=0.90 The prerequisite does most of the work. The skill teaches rule authoring, not th",
+      "file_sha256": "332971a7a16f00889420949a780cf16e2be095f29163bc9c74c603d8fcd780a9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/oh-my-claudecode-setup.md",
+      "line": 84,
+      "evidence": "p=1.00 Treat the plugin install instructions as Claude Code specific. In Hermes you are",
+      "file_sha256": "58c001f9f9c8ba9e346d9d9e09ec498a93cee5883d9cda41fab0f0810f1fa93a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/guard-skills-setup.md",
+      "line": 47,
+      "evidence": "p=0.94 The README also documents an agent-specific form and a global install:",
+      "file_sha256": "a246ec595a8723064c4d74859f088ac8b15873c1f623fbaf89353147beae3228"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/modelstudio-cli-setup.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://bailian.aliyun.com/cli/install.sh | bash",
+      "file_sha256": "c0640af4d2acbf75fc86777b53df5c12f636a51134c40f3b913bfd22c4dab916"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/upstash-context7-setup.md",
+      "line": 128,
+      "evidence": "p=0.97 The risk class here is not code execution, it is what the skill puts into the mo",
+      "file_sha256": "a89c64560772c80312ab9f1e23016195be6079cd7ae5481ce0827757f3ab9407"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/ai-native-camp-skills-setup.md",
+      "line": 38,
+      "evidence": "curl -fsSL https://claude.ai/install.sh | bash",
+      "file_sha256": "5569b43d3ca68509676aed9ac3697a97300524ae28503d4a9f72e126b1270198"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/understand-anything-setup.md",
+      "line": 36,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/",
+      "file_sha256": "63538a287a8a8c05f56f69fbdc6ba92789c196a3c517b7c36a19198e0313dda5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/bmad-method-setup.md",
+      "line": 168,
+      "evidence": "p=0.92 The setup reference widens the agent's authority in two ways worth knowing about",
+      "file_sha256": "a6134da3689f9e986fe07da5c510148ebd5bf3bb96bf47810bb178acc171be3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/text-to-cad-skills-setup.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://texttocad.dev/install.sh | sh",
+      "file_sha256": "416761bd201d64707a01bc291719e39cf7137eb016b75b862fa58fd707e1d567"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/catalog/qdrant-skills-setup.md",
+      "line": 156,
+      "evidence": "p=0.91 One more, specific to the advisor: it instructs the agent to fetch `skills.qdran",
+      "file_sha256": "7896863617c0df65280a8d37f5b066ce61c6d2ffd3f14b4d041fba5a37b75040"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/marketplace/new-oct26-2026-skills/index.md",
+      "line": 86,
+      "evidence": "p=0.97 Beta tier. Every sampled listing passes all three auditors and the skills are pr",
+      "file_sha256": "fa3cf6727053816caca777e3cad2ee51159d3cbb3eecdad8629f7158de704924"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/marketplace/new-july2-2026/index.md",
+      "line": 72,
+      "evidence": "curl | bash",
+      "file_sha256": "26c96ffed717e8eaf27376f5a5a4465c242bc6b459900fee0b6bc9855b0fb839"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/skills/marketplace/new-july26-2026-update2/index.md",
+      "line": 54,
+      "evidence": "curl -fsSL agents.railway.com | sh",
+      "file_sha256": "46f67e8d01fd18e017211fc563031d0ea07ed0dc5310735f1931348fad6a7ae4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/hermes/guides/vetting-an-mcp-server.md",
+      "line": 121,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "32d429b5f9d45b7f021ff778a5bd853ab73e6fc2776c2f59a73150719c6f76a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/scripts/deploy_docs.py",
+      "line": 653,
+      "evidence": "subprocess.run(f\"git worktree add -f {wt} gh-pages\", shell=True, cwd=REPO_DIR, c",
+      "file_sha256": "1889ba054b324ead5d396e955e95362cca4dba173680b3f001cfc55df80e4863"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "corpusiq-docs-8e76eec7880d7daf120c35f49c5d32d798f665a1/scripts/find-new-repos.sh",
+      "line": 14,
+      "evidence": "curl -s \"https://api.github.com/search/repositories?q=$query&sort=updated&per_pa",
+      "file_sha256": "9ffa184b038483b39ffc19bc68e5a9110bb25155e1bc3982a50d060ac6bbba53"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.github.com, api.provecart.com, api.xplenty.com, check.hanria.ai, docs.corpusiq.io, exitvalue.ai, fundingos.consultincllc.workers.dev, mcp.etfiq.com, nmos.net, tools.mcp.smartretry.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "aayatai.com",
+    "actualyze.ai",
+    "agencyagents.app",
+    "agentskills.io",
+    "api.alphasophia.com",
+    "api.envoapi.com",
+    "api.github.com",
+    "api.invoiceparserpro.com",
+    "api.provecart.com",
+    "api.ship24.com",
+    "api.smat.chat",
+    "api.snitchfeed.com",
+    "api.sunlicense.com",
+    "api.xplenty.com",
+    "app.realtypad.ai",
+    "app.rebbel.io",
+    "apps.extensions.modelcontextprotocol.io",
+    "awardcast.ai",
+    "blog.modelcontextprotocol.io",
+    "cello.mygentic.ai",
+    "check.hanria.ai",
+    "contextpill.com",
+    "corpusiq.github.io",
+    "corpusiq.io",
+    "costsegsmart.com",
+    "cronitor.io",
+    "deed.page",
+    "developers.googleblog.com",
+    "discord.gg",
+    "docs.corpusiq.io",
+    "docs.envoapi.com",
+    "emplusx.com",
+    "encited.com",
+    "exchange-production-9123.up.railway.app",
+    "exitvalue.ai",
+    "fakto.app",
+    "firmy.ai",
+    "fundingos.consultincllc.workers.dev",
+    "git.thanosapollo.org",
+    "github.com",
+    "govgazette.com",
+    "headless.dataddo.com",
+    "hermes-agent.nousresearch.com",
+    "hr.lintelly.com",
+    "img.shields.io",
+    "instant.expert",
+    "json-schema.org",
+    "kvasir.legal",
+    "localcan.com",
+    "marketeyeslive.com",
+    "mcp.agilehero.io",
+    "mcp.etfiq.com",
+    "mcp.greencalculus.com",
+    "mcp.gridar.app",
+    "mcp.honcho.dev",
+    "mcp.host-tracker.com",
+    "mcp.justdomain.ai",
+    "mcp.localcan.com",
+    "mcp.monitorbankrates.com",
+    "mcp.so",
+    "mcp.sourcey.com",
+    "mcp.transcodely.com",
+    "mcp.venunite.com",
+    "mcp.x1wealth.com",
+    "mcp2.corpusiq.io",
+    "mcpservers.org",
+    "mentionagent.ai",
+    "mikr.us",
+    "misakanet.org",
+    "modelcontextprotocol.io",
+    "modelglass-api.vercel.app",
+    "nmos.net",
+    "nousresearch.com",
+    "openrouter.ai",
+    "pan.quark.cn",
+    "raw.githubusercontent.com",
+    "realtypad.ai",
+    "rentseek.ing",
+    "secondhandmcp.com",
+    "shifts.stratumics.com",
+    "simonwillison.net",
+    "skills.sh",
+    "sourcey.com",
+    "tektolo.com",
+    "tools.mcp.smartretry.com",
+    "twitter.com",
+    "unrealugc.com",
+    "velarion-scraper-production.up.railway.app",
+    "versum.suverse.io",
+    "www.agentctxsync.com",
+    "www.corpusiq.io",
+    "www.kulicadvisory.com",
+    "www.linkedin.com",
+    "www.reddit.com",
+    "www.restosignals.com",
+    "www.scalekit.com",
+    "www.sitemaps.org",
+    "x.com",
+    "your-instance.collibra.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

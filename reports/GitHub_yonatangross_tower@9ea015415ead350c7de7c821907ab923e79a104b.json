@@ -1,0 +1,58 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "yonatangross/tower",
+    "version": "9ea015415ead350c7de7c821907ab923e79a104b",
+    "download": "https://codeload.github.com/yonatangross/tower/tar.gz/9ea015415ead350c7de7c821907ab923e79a104b"
+  },
+  "archive_sha256": "b4c800069e32e6497af04ae23addda13a0cbc42055f31ed8dd3fb577af7e2da8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "tower-9ea015415ead350c7de7c821907ab923e79a104b/AGENTS.md",
+      "line": 84,
+      "evidence": "never show the Keychain dialog; only the user",
+      "file_sha256": "05331a85a4592c971d435bc0776b5230209db67546a11a2e886e693d89a7e8ec"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "tower-9ea015415ead350c7de7c821907ab923e79a104b/docs/playbooks/troubleshooting.md",
+      "line": 21,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "1db6848b198c4352c524a0f9f6aef031e003329859929e404faaf7f9fbfdbb28"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "raw.githubusercontent.com, www.w3.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.anthropic.com",
+    "api.openai.com",
+    "api2.cursor.sh",
+    "app.devin.ai",
+    "chatgpt.com",
+    "cursor.com",
+    "docs.renovatebot.com",
+    "github.com",
+    "modelcontextprotocol.io",
+    "openrouter.ai",
+    "raw.githubusercontent.com",
+    "www.apple.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

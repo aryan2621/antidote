@@ -1,0 +1,64 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kajisho5/ffmpeg-skill",
+    "version": "1ce2c186bf1dba96132d87274eee46df4f537e0e",
+    "download": "https://codeload.github.com/kajisho5/ffmpeg-skill/tar.gz/1ce2c186bf1dba96132d87274eee46df4f537e0e"
+  },
+  "archive_sha256": "36e304129acad56fd88f9eeb63813343f08b22179f9cf211f340522116b55b6d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ffmpeg-skill-1ce2c186bf1dba96132d87274eee46df4f537e0e/.claude/skills/destructive-operations/SKILL.md",
+      "line": 73,
+      "evidence": "p=0.97 The guard needs to answer \"is every tracked path inside the directory this comma",
+      "file_sha256": "06decc8e6d2580632255d1562ca79b50ab597afb32beec2d84e28371f07fc29d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "fonts.googleapis.com, fonts.gstatic.com, opensource.org, schema.org, unpkg.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "archive.org",
+    "docs.anthropic.com",
+    "docs.npmjs.com",
+    "doi.org",
+    "download.blender.org",
+    "example.com",
+    "ffmpeg.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.photographyblog.com",
+    "img.shields.io",
+    "johnvansickle.com",
+    "kajisho5.github.io",
+    "opensource.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "snyk.io",
+    "storage.googleapis.com",
+    "unpkg.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.rtings.com",
+    "www.w3.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

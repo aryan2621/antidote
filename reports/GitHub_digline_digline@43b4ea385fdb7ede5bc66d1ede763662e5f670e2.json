@@ -1,0 +1,157 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "digline/digline",
+    "version": "43b4ea385fdb7ede5bc66d1ede763662e5f670e2",
+    "download": "https://codeload.github.com/digline/digline/tar.gz/43b4ea385fdb7ede5bc66d1ede763662e5f670e2"
+  },
+  "archive_sha256": "cc42d14fc7edad598d2df875e92fb359db8af6788cbf0a53556e8ff792091a1b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/plugins/digline/skills/proposing-a-suite/SKILL.md",
+      "line": 31,
+      "evidence": "p=0.93 Before choosing anything, find out what the application answers and what a perso",
+      "file_sha256": "33b5f935bae0219a61e8440cda566b36a8c39ad016577b2b1f2eb18cfc25b0f8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/.claude/skills/proposing-a-suite/SKILL.md",
+      "line": 31,
+      "evidence": "p=0.93 Before choosing anything, find out what the application answers and what a perso",
+      "file_sha256": "33b5f935bae0219a61e8440cda566b36a8c39ad016577b2b1f2eb18cfc25b0f8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_view.py",
+      "line": 747,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2dd221ef9bd77b4018d4664db9e88598ce8c6f8b4476bfa55c90ef740a0b8c8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_declared_numbers.py",
+      "line": 50,
+      "evidence": "\\u{202e}",
+      "file_sha256": "23d80b3c11c6c531b1b7f3b03b4f841998913cf30b2d6eaa3c79492b114ac995"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_docker.py",
+      "line": 538,
+      "evidence": "(ROOT / \"docker\" / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "d6c985d8c2c665a66e363246156baaa69bbc2c4224617861ab6f58486eea28de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_declared_judge_samples.py",
+      "line": 27,
+      "evidence": "\\u{202e}",
+      "file_sha256": "a9b2a610781e5f90b4efd9c75be02fe7abff2be96957744ec2669fbf64c85666"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_invisible_text.py",
+      "line": 76,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "cee404a17371494f4fa98fd7dc54421921edb805aea7b875aaae57ef2bf41d72"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_declared_version.py",
+      "line": 51,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2730c44f62b5392638eaa4f93d031a052d8c39a9dd77e270a5d3c1a435068040"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "digline-43b4ea385fdb7ede5bc66d1ede763662e5f670e2/tests/test_declared_flags.py",
+      "line": 45,
+      "evidence": "\\u{202e}",
+      "file_sha256": "7a0b78da3364b26fde8a9650ec4a26e43b8c7721a77dde266e9da1ad0768767e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.anthropic.com, api.openai.com, bedrock-runtime.eu-central-1.amazonaws.com, bedrock-runtime.us-west-2.amazonaws.com, example.com, example.test, generativelanguage.googleapis.com, registry.npmjs.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.aggregator.example",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.scorecard.dev",
+    "aws.amazon.com",
+    "bedrock-runtime.eu-central-1.amazonaws.com",
+    "bedrock-runtime.us-west-2.amazonaws.com",
+    "digline.dev",
+    "elsewhere.example",
+    "evil.com",
+    "evil.example",
+    "example.com",
+    "example.org",
+    "example.test",
+    "files.pythonhosted.org",
+    "generativelanguage.googleapis.com",
+    "ghcr.io",
+    "github.com",
+    "gw.example",
+    "gw.example.invalid",
+    "gw.internal.acme.example",
+    "gw.invalid",
+    "img.shields.io",
+    "llm-gateway.internal.example",
+    "llm-gw.internal.acme-bank.it",
+    "llm.acme-bank.internal",
+    "maven.apache.org",
+    "modelcontextprotocol.io",
+    "my-resource.openai.azure.com",
+    "openai.com",
+    "openai.test",
+    "openrouter.ai",
+    "osv.dev",
+    "pypi.org",
+    "pypistats.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "scorecard.dev",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "static.pepy.tech",
+    "test.pypi.org",
+    "www.anthropic.com",
+    "www.apache.org",
+    "www.bestpractices.dev",
+    "www.contributor-covenant.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
