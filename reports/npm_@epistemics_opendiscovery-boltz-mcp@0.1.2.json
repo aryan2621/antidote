@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@epistemics/opendiscovery-boltz-mcp",
+    "version": "0.1.2",
+    "download": null
+  },
+  "archive_sha256": "7994e6aaef7e46232ebbc6a5d9a24b787edd02b2c077cc43842218155fbac234",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/guidance/skills/boltz-protein-design/references/target-exploration.md",
+      "line": 268,
+      "evidence": "p=0.97 If every config lands weak, say so honestly — but don't unilaterally call the ta",
+      "file_sha256": "c9c486d19ff7cfd4d59f3ae862de067c1aad4c8ddb5f96aaede0b5f3ee5612a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/guidance/skills/boltz-cli-setup/references/sandbox.md",
+      "line": 24,
+      "evidence": "curl -fsSL https://install.boltz.bio/boltz-api/install.sh | sh",
+      "file_sha256": "5817a9528777c81bd0fd9b275a08d66d08d609eb91100d648556fc9c0946bd65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/guidance/references/boltz-cli-setup/sandbox.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://install.boltz.bio/boltz-api/install.sh | sh",
+      "file_sha256": "c4d2e6aeb26d5373c4db5540ff55940b5a06774536c5c76c4a02d748769f6ad2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.boltz.bio, example.com, files.rcsb.org",
+      "file_sha256": null
+    },
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-05T01:28:27.067Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.boltz.bio",
+    "example.com",
+    "files.rcsb.org",
+    "github.com",
+    "install.boltz.bio",
+    "json-schema.org",
+    "raw.githubusercontent.com",
+    "sindresorhus.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
