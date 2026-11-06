@@ -47,6 +47,8 @@ pub struct Rule {
     lang: Lang,
     query: Query,
     hit: u32,
+    /// `; in_tests: keep` — don't lower severity in test/fixture/example files
+    keep_in_tests: bool,
 }
 
 /// `name` is the file stem, e.g. `AGT-T-0001.js`; JS rules also run on TypeScript.
@@ -68,17 +70,18 @@ pub fn compile(name: &str, src: &str) -> Result<Vec<Rule>> {
         _ => "medium",
     };
     let description = header("description").unwrap_or_default();
+    let keep_in_tests = header("in_tests").as_deref() == Some("keep");
     langs
         .iter()
         .map(|&lang| {
             let query = Query::new(&lang.language(), src).with_context(|| format!("compiling rules/{name}.scm for {lang:?}"))?;
             let hit = query.capture_index_for_name("hit").with_context(|| format!("rules/{name}.scm has no @hit capture"))?;
-            Ok(Rule { id: id.clone(), severity, description: description.clone(), lang, query, hit })
+            Ok(Rule { id: id.clone(), severity, description: description.clone(), lang, query, hit, keep_in_tests })
         })
         .collect()
 }
 
-pub fn scan(rules: &[Rule], lang: Lang, src: &[u8], path: &str, out: &mut Vec<Finding>) {
+pub fn scan(rules: &[Rule], lang: Lang, src: &[u8], path: &str, class: Option<&str>, out: &mut Vec<Finding>) {
     let mut rules = rules.iter().filter(|r| r.lang == lang).peekable();
     if rules.peek().is_none() {
         return;
@@ -99,13 +102,14 @@ pub fn scan(rules: &[Rule], lang: Lang, src: &[u8], path: &str, out: &mut Vec<Fi
                 continue;
             }
             let text = String::from_utf8_lossy(&src[c.node.byte_range()]);
+            let (severity, context) = crate::scan::demote(r.severity, class.filter(|_| !r.keep_in_tests));
             out.push(Finding {
-                severity: r.severity,
+                severity,
                 id: r.id.clone(),
                 summary: r.description.clone(),
                 path: path.to_string(),
                 line: Some(line),
-                context: None,
+                context,
                 evidence: Some(text.split_whitespace().collect::<Vec<_>>().join(" ").chars().take(80).collect()),
                 explanation: None,
                 fix: Some("Review this code before you run this package".into()),

@@ -27,7 +27,7 @@ The crawler opens one issue per package, and new versions are added as comments.
 | Command | What happens |
 |---|---|
 | `/confirm malicious\|vulnerable\|suspicious <summary>` | Opens a PR that adds it to the database. |
-| `/reject <reason>` | Opens a PR that marks it a false alarm for that exact version, so it isn't raised again. |
+| `/reject <reason>` | Opens a PR that marks it a false alarm for every version of the package (per rule and file), so it isn't raised again. |
 | `/detonate` | Runs it in a sandbox and reports back. |
 
 Merging the PR those commands open closes the issue. To dismiss one without a PR, close it as "not planned". The commands use the report in the issue body, which is the first version seen. Later versions are listed in comments.

@@ -48,8 +48,17 @@ pub struct AllowRule {
     pub version: String,
     /// rule / flag id
     pub id: String,
+    /// only this file; absent = any file (older entries)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub path: Option<String>,
     #[serde(default)]
     pub reason: String,
+}
+
+impl AllowRule {
+    pub fn covers(&self, key: &str, version: &str, h: &Hit) -> bool {
+        self.key == key && (self.version == "*" || self.version == version) && self.id == h.id && self.path.as_ref().map_or(true, |p| h.path.as_ref() == Some(p))
+    }
 }
 
 pub fn load_allowlist(path: &Path) -> Vec<AllowRule> {
@@ -181,6 +190,16 @@ impl Report {
     pub fn flagged(&self, threshold: &str) -> bool {
         self.score != "none" && rank(&self.score) <= rank(threshold)
     }
+
+    /// Worth a public issue: critical, or high with a second signal (known-bad match, typosquat, install script
+    /// added). A package a maintainer already rejected needs critical. Everything else stays in the crawler report.
+    pub fn publishable(&self, allow: &[AllowRule]) -> bool {
+        let rejected = allow.iter().any(|a| a.key == self.item.key());
+        let corroborated = self.findings.iter().chain(&self.flags).any(|h| {
+            matches!(h.id.as_str(), "AGT-F-TYPOSQUAT" | "AGT-F-INSTALL-ADDED") || !h.id.starts_with("AGT-R-") && !h.id.starts_with("AGT-T-") && !h.id.starts_with("AGT-C-") && !h.id.starts_with("AGT-F-")
+        });
+        self.score == "critical" || (self.score == "high" && corroborated && !rejected)
+    }
 }
 
 fn hit(severity: &str, id: &str, summary: &str) -> Hit {
@@ -235,11 +254,9 @@ pub fn analyze_dir(c: &Corpus, item: &Item, dir: &Path, state: &State, allow: &[
         flags.push(hit("high", "AGT-F-TYPOSQUAT", &format!("Name is within 2 edits of popular package `{target}`")));
     }
 
-    let allowed = |id: &str| {
-        allow.iter().any(|a| a.key == item.key() && (a.version == "*" || a.version == item.version) && a.id == id)
-    };
-    let findings: Vec<Hit> = findings.into_iter().filter(|h| !allowed(&h.id)).collect();
-    let flags: Vec<Hit> = flags.into_iter().filter(|h| !allowed(&h.id)).collect();
+    let allowed = |h: &Hit| allow.iter().any(|a| a.covers(&item.key(), &item.version, h));
+    let findings: Vec<Hit> = findings.into_iter().filter(|h| !allowed(h)).collect();
+    let flags: Vec<Hit> = flags.into_iter().filter(|h| !allowed(h)).collect();
     let score = worst(&findings, &flags);
 
     Report { item: item.clone(), archive_sha256: None, findings, flags, domains, install_script, score }
@@ -255,11 +272,10 @@ fn add_tool_hits(c: &Corpus, r: &mut Report, allow: &[AllowRule]) {
     for t in r.item.tools.iter().flatten() {
         scan::scan_text(c, &format!("tool:{}", t.name), &t.description, &mut raw);
     }
-    let allowed = |id: &str| allow.iter().any(|a| a.key == r.item.key() && (a.version == "*" || a.version == r.item.version) && a.id == id);
     let hits: Vec<Hit> = raw
         .into_iter()
-        .filter(|f| !allowed(&f.id))
         .map(|f| Hit { severity: f.severity.into(), id: f.id, summary: f.summary, path: Some(f.path), line: None, evidence: f.evidence, file_sha256: None })
+        .filter(|h| !allow.iter().any(|a| a.covers(&r.item.key(), &r.item.version, h)))
         .collect();
     r.findings.extend(hits);
     r.score = worst(&r.findings, &r.flags);
@@ -295,4 +311,37 @@ fn domains(dir: &Path) -> Vec<String> {
         }
     }
     out.into_iter().collect()
+}
+
+#[cfg(test)]
+mod publish_tests {
+    use super::*;
+
+    fn report(hits: &[(&str, &str)]) -> Report {
+        let item: Item = serde_json::from_value(serde_json::json!({"ecosystem":"npm","name":"p","version":"1.0.0","source":"t"})).unwrap();
+        let findings: Vec<Hit> = hits.iter().map(|(s, id)| hit(s, id, "x")).collect();
+        let score = worst(&findings, &[]);
+        Report { item, archive_sha256: None, findings, flags: vec![], domains: vec![], install_script: false, score }
+    }
+
+    #[test]
+    fn bar_for_public_issues() {
+        assert!(!report(&[("high", "AGT-T-0002")]).publishable(&[]));
+        assert!(report(&[("high", "AGT-T-0002"), ("high", "AGT-F-TYPOSQUAT")]).publishable(&[]));
+        assert!(report(&[("critical", "AGT-R-0101")]).publishable(&[]));
+    }
+
+    #[test]
+    fn rejected_package_needs_critical() {
+        let rule = |p: Option<&str>| AllowRule { key: "npm:p".into(), version: "*".into(), id: "AGT-T-0002".into(), path: p.map(Into::into), reason: String::new() };
+        let r = report(&[("high", "AGT-T-0002"), ("high", "AGT-F-TYPOSQUAT")]);
+        assert!(!r.publishable(&[rule(None)]));
+        assert!(report(&[("critical", "AGT-R-0101")]).publishable(&[rule(None)]));
+        // pathless old entries cover any file; a path-scoped one covers only that file
+        let mut h = hit("high", "AGT-T-0002", "x");
+        h.path = Some("a.js".into());
+        assert!(rule(None).covers("npm:p", "9", &h));
+        assert!(rule(Some("a.js")).covers("npm:p", "9", &h));
+        assert!(!rule(Some("b.js")).covers("npm:p", "9", &h));
+    }
 }

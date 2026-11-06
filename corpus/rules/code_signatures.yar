@@ -20,7 +20,8 @@ rule credential_exfiltration {
         $n6 = "pipedream.net"
         $n7 = "requestbin"
     condition:
-        any of ($c*) and any of ($n*)
+        // a credential string and a network sink within 2 KB of each other, not just somewhere in the file
+        for any of ($c*) : ( for any i in (1..#) : ( any of ($n*) in (@[i] - 2048 .. @[i] + 2048) ) )
 }
 
 rule pipe_to_shell {

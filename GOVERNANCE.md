@@ -18,7 +18,7 @@ Every report moves `reported → verified | disputed | rejected`:
 
 - **Verified** means a public source, a reproducible sample or a detonation report, checked by a maintainer other than the reporter.
 - **Reported** entries are public but labelled "not yet verified".
-- Rejected reports are allowlisted for that exact version (`/reject`), so the crawler doesn't raise them again.
+- Rejected reports are allowlisted for every version of that package, per rule and file (`/reject`), so the crawler doesn't raise them again.
 
 ## If you disagree with an entry
 

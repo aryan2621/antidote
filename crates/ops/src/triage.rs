@@ -13,7 +13,7 @@ use antidote_core::corpus::{next_id, today};
 use crate::analyze::{AllowRule, Report};
 
 pub fn issue_title(r: &Report) -> String {
-    format!("[triage] {}@{} ({})", r.item.key(), r.item.version, r.score)
+    format!("[triage] {}@{}", r.item.key(), r.item.version)
 }
 
 /// Defang URLs and neutralize anything that could break out of a code span or ping someone.
@@ -23,7 +23,7 @@ fn safe(s: &str) -> String {
 }
 
 pub fn issue_body(r: &Report, report_path: &str) -> String {
-    let mut b = String::new();
+    let mut b = String::from("> Automated finding, unreviewed. It may be a false positive.\n\n");
     b.push_str(&format!("**Package:** `{}` `{}`  \n**Source:** {}  \n**Score:** {}\n", safe(&r.item.key()), safe(&r.item.version), r.item.source, r.score));
     if let Some(h) = &r.archive_sha256 {
         b.push_str(&format!("**Archive sha256:** `{h}`\n"));
@@ -128,7 +128,7 @@ pub fn draft_entry(r: &Report, classification: &str, summary: &str, issue_url: &
     Ok(path)
 }
 
-/// Add every rule/flag id of a report to the allowlist for that exact version.
+/// Allow every rule/flag of a report, per rule and file, for all versions of the package.
 pub fn allow(r: &Report, reason: &str, allowlist: &Path) -> Result<usize> {
     let mut list: Vec<AllowRule> = match fs::read(allowlist) {
         Ok(b) => serde_json::from_slice(&b).context("allowlist is not valid JSON")?,
@@ -136,8 +136,8 @@ pub fn allow(r: &Report, reason: &str, allowlist: &Path) -> Result<usize> {
     };
     let before = list.len();
     for h in r.findings.iter().chain(&r.flags) {
-        let rule = AllowRule { key: r.item.key(), version: r.item.version.clone(), id: h.id.clone(), reason: reason.into() };
-        if !list.iter().any(|a| a.key == rule.key && a.version == rule.version && a.id == rule.id) {
+        let rule = AllowRule { key: r.item.key(), version: "*".into(), id: h.id.clone(), path: h.path.clone(), reason: reason.into() };
+        if !list.iter().any(|a| a.key == rule.key && a.version == rule.version && a.id == rule.id && a.path == rule.path) {
             list.push(rule);
         }
     }

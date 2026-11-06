@@ -1,5 +1,6 @@
 mod analyze;
 mod crawl;
+mod decisions;
 mod detonate;
 mod extract;
 mod http;
@@ -57,6 +58,9 @@ enum Cmd {
         /// Open an issue at or above this severity
         #[arg(long, default_value = "high")]
         threshold: String,
+        /// Max new triage issues per run; flagged items past it are retried next run
+        #[arg(long, default_value_t = 10)]
+        max_issues: usize,
         /// Max items analyzed per source per run
         #[arg(long, default_value_t = 200)]
         limit: usize,
@@ -114,7 +118,14 @@ enum Cmd {
         #[arg(long, default_value_t = 1000)]
         max: usize,
     },
-    /// Allowlist a rejected report's rule hits for that exact version
+    /// Confirmed vs rejected counts per rule, from closed triage issues (`gh issue list --state closed --label triage --limit 1000 --json number,body`) and the corpus
+    RuleStats {
+        #[arg(long)]
+        issues: PathBuf,
+        #[arg(long, default_value = "corpus")]
+        corpus: PathBuf,
+    },
+    /// Allowlist a rejected report's rule hits for every version of the package, per file
     Allow {
         #[arg(long)]
         report: PathBuf,
@@ -148,7 +159,7 @@ fn main() -> Result<()> {
                 println!("{}", serde_json::to_string(&i)?);
             }
         }
-        Cmd::Run { state, out, allowlist, threshold, limit, max_minutes } => {
+        Cmd::Run { state, out, allowlist, threshold, max_issues, limit, max_minutes } => {
             let mut st = State::load(&state)?;
             let deadline = (max_minutes > 0).then(|| std::time::Instant::now() + std::time::Duration::from_secs(max_minutes * 60));
             let old_cursors = st.cursors.clone();
@@ -165,7 +176,7 @@ fn main() -> Result<()> {
                 }
             }
             let mut done = BTreeSet::new();
-            let (mut analyzed, mut flagged) = (0, 0);
+            let (mut analyzed, mut flagged, mut queued) = (0, 0, 0);
             let mut out_of_time = false;
             for item in items {
                 if deadline.is_some_and(|d| std::time::Instant::now() >= d) {
@@ -185,6 +196,11 @@ fn main() -> Result<()> {
                         continue;
                     }
                 };
+                // over the cap: leave it unseen so the next run picks it up again
+                if r.flagged(&threshold) && r.publishable(&allow) && queued >= max_issues {
+                    eprintln!("issue cap reached; {}@{} retried next run", item.key(), item.version);
+                    continue;
+                }
                 analyzed += 1;
                 st.seen.insert(item.key(), r.seen());
                 if r.flagged(&threshold) {
@@ -192,8 +208,11 @@ fn main() -> Result<()> {
                     let stem = file_stem(&r);
                     let report_path = format!("reports/{stem}.json");
                     fs::write(out.join(&report_path), serde_json::to_vec_pretty(&r)?)?;
-                    let issue = format!("{}\n{}", triage::issue_title(&r), triage::issue_body(&r, &report_path));
-                    fs::write(out.join("issues").join(format!("{stem}.md")), issue)?;
+                    if r.publishable(&allow) {
+                        queued += 1;
+                        let issue = format!("{}\n{}", triage::issue_title(&r), triage::issue_body(&r, &report_path));
+                        fs::write(out.join("issues").join(format!("{stem}.md")), issue)?;
+                    }
                 }
             }
             // cursors and seen are saved together, at the end: a crashed run is simply redone
@@ -258,6 +277,14 @@ fn main() -> Result<()> {
             fs::write(dir.join("report.json"), serde_json::to_vec_pretty(&d)?)?;
             fs::write(dir.join("comment.md"), detonate::comment(&d))?;
             eprintln!("detonation score: {}", d.score);
+        }
+        Cmd::RuleStats { issues, corpus } => {
+            let mut rows: Vec<_> = decisions::rule_stats(&serde_json::from_slice(&fs::read(&issues)?)?, &corpus)?.into_iter().collect();
+            rows.sort_by_key(|(_, (c, r))| std::cmp::Reverse(r * 100 / (c + r).max(1)));
+            println!("{:<14} {:>9} {:>8}", "rule", "confirmed", "rejected");
+            for (id, (c, r)) in rows {
+                println!("{id:<14} {c:>9} {r:>8}");
+            }
         }
         Cmd::Allow { report, reason, allowlist } => {
             let r: Report = serde_json::from_slice(&fs::read(&report)?)?;

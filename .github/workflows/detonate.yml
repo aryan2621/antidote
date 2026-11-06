@@ -30,7 +30,7 @@ jobs:
           ISSUE: ${{ github.event.issue.number || inputs.issue }}
         run: |
           title=$(gh issue view "$ISSUE" --json title --jq .title)
-          spec=$(printf '%s' "$title" | sed -nE 's/^\[triage\] (npm|PyPI):(.+)@([^@ ]+) \(.*$/\1 \2 \3/p')
+          spec=$(printf '%s' "$title" | sed -nE 's/^\[triage\] (npm|PyPI):(.+)@([^@ ]+)( \(.*)?$/\1 \2 \3/p')
           [ -n "$spec" ] || { echo "::error::issue is not an npm/PyPI triage issue"; exit 1; }
           read -r eco name ver <<<"$spec"
           stem=$(printf '%s' "$eco:$name" | tr -c 'A-Za-z0-9@._-' '_')
