@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Scorpio-meow/Breeze-ASR",
+    "version": "4ad0d699f52e197d1788afc2fb625d9e5ae3f6f2",
+    "download": "https://codeload.github.com/Scorpio-meow/Breeze-ASR/tar.gz/4ad0d699f52e197d1788afc2fb625d9e5ae3f6f2"
+  },
+  "archive_sha256": "f64dc2e097ee1f695e7290dfe9d4e95a5a75c25122dd97a265fdeb205ad3bb4e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Breeze-ASR-4ad0d699f52e197d1788afc2fb625d9e5ae3f6f2/scripts/install.sh",
+      "line": 26,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b45eec64bf3c94b38a113d5f7fad2eef052d4ee8f1b479b790b7ecbfca82ee89"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "Breeze-ASR-4ad0d699f52e197d1788afc2fb625d9e5ae3f6f2/scripts/install.sh",
+      "line": 26,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b45eec64bf3c94b38a113d5f7fad2eef052d4ee8f1b479b790b7ecbfca82ee89"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.10",
+    "asr.example",
+    "astral.sh",
+    "attacker.example",
+    "breeze.example.ts.net",
+    "creativecommons.org",
+    "docs.astral.sh",
+    "docs.github.com",
+    "download-r2.pytorch.org",
+    "download.pytorch.org",
+    "fastapi.tiangolo.com",
+    "files.pythonhosted.org",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "keepachangelog.com",
+    "m8ven.ai",
+    "modelcontextprotocol.io",
+    "modelscope.cn",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "schemas.openxmlformats.org",
+    "semver.org",
+    "tailscale.com",
+    "www.contributor-covenant.org",
+    "www.deque.com",
+    "www.openslr.org",
+    "www.python.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,60 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "zhaoxinghua09-cell/skill-admission-gate",
+    "version": "1.0.8",
+    "download": "https://clawhub.ai/api/v1/download?slug=skill-admission-gate&ownerHandle=zhaoxinghua09-cell&version=1.0.8"
+  },
+  "archive_sha256": "0a60611d0903db7045537501fb7f138d1209880bd770f05c6cc9bb632fc2cad5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 137,
+      "evidence": "curl|sh",
+      "file_sha256": "45bc1debcdef55abbc6c31daf84aaab9469cfefb3a72f1fa2ace87b170e6fc7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "SKILL.md",
+      "line": 141,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "45bc1debcdef55abbc6c31daf84aaab9469cfefb3a72f1fa2ace87b170e6fc7a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "SKILL.md",
+      "line": 141,
+      "evidence": "do not tell the user",
+      "file_sha256": "45bc1debcdef55abbc6c31daf84aaab9469cfefb3a72f1fa2ace87b170e6fc7a"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "doi.org, zhaoxinghua09-cell.github.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.example.com",
+    "clawhub.ai",
+    "doi.org",
+    "github.com",
+    "img.shields.io",
+    "zhaoxinghua09-cell.github.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

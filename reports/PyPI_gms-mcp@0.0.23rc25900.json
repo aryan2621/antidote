@@ -1,0 +1,35 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "gms-mcp",
+    "version": "0.0.23rc25900",
+    "download": null
+  },
+  "archive_sha256": "6a425528d800e394f124e7f6fc7dba31743fae2f43e750bbb3247879d44f3178",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "gms_mcp-0.0.23rc25900/src/gms_helpers/runner_process.py",
+      "line": 46,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "fece30cead05687e6609335bc0f3c600b20f494921d0566135b3648adf58f571"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "github.com",
+    "gms-mcp-telemetry.ampersandgamestudios.com",
+    "img.shields.io",
+    "manual.gamemaker.io",
+    "pipx.pypa.io",
+    "pypi.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
