@@ -176,11 +176,13 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
   2. extracts it safely (path escapes abort, links are skipped, size is capped);
   3. scans it with the YARA and tree-sitter rules (and listed tool descriptions with the YARA rules and classifier), and checks install scripts, new domains, typosquat names and package age (`AGT-F-NEW-PACKAGE`, first published under 7 days ago).
 
-  Anything at `high` or above opens an issue labelled `triage`. Crawl state and reports live on the `crawl-state` branch.
+  Anything at `high` or above opens an issue labelled `triage`, one per package. A later version of a package that already has an open issue is added to it as a comment; a package whose issue is closed stays quiet. Crawl state and reports live on the `crawl-state` branch.
 - **`triage.yml`** acts on comments from repo owners, members and collaborators:
   - `/confirm malicious|vulnerable|suspicious <summary>` opens a PR with a drafted `corpus/entries/AGT-*.json`;
   - `/reject <reason>` opens a PR that adds the report's hits to `corpus/allowlist.json`;
   - `/detonate` starts a detonation.
+
+  **Closing a triage issue.** Comment `/confirm` or `/reject`; the PR it opens says `Closes #N`, so merging that PR closes the issue. To dismiss one without a PR (a known false positive you don't want allowlisted), close it by hand as "not planned". The package then stays quiet. The commands act on the report in the issue body, which is the first version seen; a package with several versions lists the later ones in comments.
 
   PRs opened with `GITHUB_TOKEN` don't trigger CI. Close and reopen the PR, or swap the token for a GitHub App token.
 - **`detonate.yml`** installs the package inside gVisor. The container has no route out except a proxy that forwards only registry traffic and sinkholes everything else. The run then starts the package as an MCP server and lists its tools. It reports blocked egress, DNS lookups, writes to sensitive paths, poisoned live tool descriptions, and tool changes since the last detonation (rug-pulls). Auto-detonating high or critical crawler findings is off unless the repo variable `ANTIDOTE_AUTO_DETONATE=true` is set. Running suspected malware on GitHub-hosted runners is a grey area under GitHub's terms, so move this to your own disposable host before using it at volume.
