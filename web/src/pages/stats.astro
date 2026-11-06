@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Signal from '../components/Signal.astro';
 import Bars from '../components/Bars.astro';
+import Trend from '../components/Trend.astro';
 import { entries, classification, artifactType } from '../lib/entries';
 
 const live = entries.filter((e) => !e.withdrawn);
@@ -17,6 +18,20 @@ const byClass = tally(live.map(classification)).sort((a, b) => b[1] - a[1]);
 const byKind = tally(live.map((e) => artifactType(e).replaceAll('_', ' '))).sort((a, b) => b[1] - a[1]);
 const byEco = tally(live.flatMap((e) => [...new Set((e.affected ?? []).map((a: any) => a.package.ecosystem as string))])).sort((a, b) => b[1] - a[1]);
 const byMonth = tally(live.map((e) => (e.published ?? e.date ?? '').slice(0, 7)).filter(Boolean)).sort((a, b) => a[0].localeCompare(b[0]));
+const trendSeries = [
+  { key: 'malicious', label: 'Danger', color: 'var(--malicious)' },
+  { key: 'vulnerable', label: 'Warning', color: 'var(--vulnerable)', dash: '6 3' },
+  { key: 'suspicious', label: 'Caution', color: 'var(--suspicious)', dash: '2 3' },
+  { key: 'incident', label: 'Notice', color: 'var(--incident)', dash: '8 3 2 3' },
+];
+// cumulative per month, per verdict; entries without a date are left out
+const trendRows = (() => {
+  const run: Record<string, number> = {};
+  return byMonth.map(([month]) => {
+    for (const e of live.filter((e) => (e.published ?? e.date ?? '').slice(0, 7) === month)) run[classification(e)] = (run[classification(e)] ?? 0) + 1;
+    return { month, counts: { ...run } };
+  });
+})();
 const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ?? [])).sort((a, b) => b[1] - a[1]);
 ---
 <Base title="Stats: Antidote" description="How many entries the Antidote database holds, how many are verified, and what kinds." current="stats">
@@ -35,6 +50,9 @@ const byTechnique = tally(live.flatMap((e) => e.database_specific?.techniques ??
 
   <h2>By ecosystem</h2>
   <Bars rows={byEco} caption="Live entries by ecosystem" />
+
+  <h2>Trend</h2>
+  <Trend rows={trendRows} series={trendSeries} caption="Cumulative live entries by verdict, by month" />
 
   <h2>Published per month</h2>
   <Bars rows={byMonth} mono caption="Live entries published per month" />

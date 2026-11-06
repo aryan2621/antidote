@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Logo } from "./Logo";
+import { Trend, type TrendPoint } from "./Trend";
 import { SEVERITIES, Signal, severityKind, type Severity } from "./Signal";
 
 type Finding = {
@@ -40,9 +41,13 @@ export default function App() {
   const [scanned, setScanned] = useState<string[]>([]);
   const [findings, setFindings] = useState<Finding[] | null>(null);
   const [pkg, setPkg] = useState("");
+  const [view, setView] = useState<"scan" | "trends">("scan");
+  const [trend, setTrend] = useState<TrendPoint[]>([]);
   const pkgRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => void invoke<Info>("info").then(setInfo), []);
+  // re-read after "Update feed" swaps the corpus
+  useEffect(() => void invoke<TrendPoint[]>("trend").then(setTrend), [info?.version]);
 
   // keyboard first: "/" jumps to the package field
   useEffect(() => {
@@ -128,6 +133,18 @@ export default function App() {
       </header>
 
       <main className="main">
+        <div className="view-tabs" role="group" aria-label="View">
+          <button type="button" className="btn btn-quiet" aria-pressed={view === "scan"} onClick={() => setView("scan")}>Scan</button>
+          <button type="button" className="btn btn-quiet" aria-pressed={view === "trends"} onClick={() => setView("trends")}>Trends</button>
+        </div>
+        {view === "trends" ? (
+          <>
+            <h1>Database trend</h1>
+            <p className="lede">Confirmed entries in this database, cumulative by month.</p>
+            <Trend points={trend} />
+          </>
+        ) : (
+        <>
         <h1>Check before you install</h1>
         <p className="lede">
           Scan your agent setup or a folder, or look up a package coordinate. Everything runs on this machine; nothing is
@@ -244,6 +261,8 @@ export default function App() {
               </>
             )}
           </section>
+        )}
+        </>
         )}
       </main>
 

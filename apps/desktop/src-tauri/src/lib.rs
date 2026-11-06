@@ -31,6 +31,11 @@ fn info(app: State<App>) -> Value {
     json!({ "version": c.version, "entries": c.entries.len() })
 }
 
+#[tauri::command]
+fn trend(app: State<App>) -> Vec<corpus::TrendPoint> {
+    corpus(&app).trend()
+}
+
 /// Folders and MCP configs a bare `antidote scan` would check on this machine.
 #[tauri::command]
 fn targets() -> Value {
@@ -86,7 +91,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
         .manage(App(RwLock::new(Arc::new(c))))
-        .invoke_handler(tauri::generate_handler![info, targets, scan, check, update])
+        .invoke_handler(tauri::generate_handler![info, targets, scan, check, update, trend])
         .run(tauri::generate_context!())
         .expect("error while running Antidote");
 }

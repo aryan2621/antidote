@@ -35,9 +35,17 @@ jobs:
           for f in out/issues/*.md; do
             [ -e "$f" ] || continue
             title=$(head -1 "$f"); key=${title% (*}
-            n=$(gh issue list --state all --search "\"${key#\[triage\] }\" in:title" --json number --jq length)
-            [ "$n" = 0 ] || continue
             sev=${title##*\(}; sev=${sev%)}
+            # One issue per package: later versions become comments; a closed issue (confirmed/rejected) stays quiet.
+            pkg=${key%@*}
+            found=$(gh issue list --state all --limit 100 --search "\"${pkg#\[triage\] }\" in:title" --json number,title,state \
+              --jq "[.[] | select(.title | startswith(\"$pkg@\"))]")
+            if [ "$(jq length <<<"$found")" != 0 ]; then
+              same=$(jq --arg k "$key (" '[.[] | select(.title | startswith($k))] | length' <<<"$found")
+              open=$(jq -r '[.[] | select(.state == "OPEN")][0].number // empty' <<<"$found")
+              [ "$same" = 0 ] && [ -n "$open" ] && { printf '**New version %s** (%s)\n\n' "${key##*@}" "$sev"; tail -n +2 "$f"; } | gh issue comment "$open" --body-file -
+              continue
+            fi
             gh label create "sev:$sev" 2>/dev/null || true
             url=$(tail -n +2 "$f" | gh issue create --title "$title" --body-file - --label triage --label "sev:$sev")
             case "$AUTO_DETONATE:$sev:$key" in

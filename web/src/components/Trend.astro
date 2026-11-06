@@ -1,0 +1,41 @@
+---
+// Cumulative entries per month as lines, drawn as inline SVG at build time. The final value of each
+// line is printed in the legend, and dash patterns differ, so the chart never relies on colour alone.
+interface Props { rows: { month: string; counts: Record<string, number> }[]; series: { key: string; label: string; color: string; dash?: string }[]; caption: string }
+const { rows, series, caption } = Astro.props;
+const W = 600, H = 220, PAD = 8;
+const max = Math.max(1, ...rows.flatMap((r) => series.map((s) => r.counts[s.key] ?? 0)));
+const x = (i: number) => PAD + (i * (W - 2 * PAD)) / Math.max(1, rows.length - 1);
+const y = (v: number) => H - PAD - (v * (H - 2 * PAD)) / max;
+const last = rows[rows.length - 1];
+---
+{rows.length < 2 ? <p class="muted">Not enough dated entries yet to draw a trend.</p> : (
+  <figure class="trend">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={caption}>
+      <line x1={PAD} x2={W - PAD} y1={H - PAD} y2={H - PAD} stroke="var(--rule)" />
+      {series.map((s) => (
+        <polyline fill="none" stroke={s.color} stroke-width="2.5" stroke-dasharray={s.dash} points={rows.map((r, i) => `${x(i)},${y(r.counts[s.key] ?? 0)}`).join(' ')} />
+      ))}
+    </svg>
+    <figcaption>
+      <span class="mono">{rows[0].month}</span>
+      <ul>
+        {series.map((s) => (
+          <li>
+            <svg viewBox="0 0 24 6" aria-hidden="true"><line x1="0" x2="24" y1="3" y2="3" stroke={s.color} stroke-width="2.5" stroke-dasharray={s.dash} /></svg>
+            {s.label} <strong class="mono">{last.counts[s.key] ?? 0}</strong>
+          </li>
+        ))}
+      </ul>
+      <span class="mono">{last.month}</span>
+    </figcaption>
+  </figure>
+)}
+
+<style>
+  .trend { margin: 0; max-width: 46rem; }
+  .trend > svg { width: 100%; height: auto; display: block; background: var(--plate); border: var(--bw) solid var(--ink); }
+  figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; margin-top: 0.5rem; font-size: 0.85rem; }
+  ul { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 0; padding: 0; font: 600 1.05rem/1 var(--sc); letter-spacing: 0.06em; text-transform: uppercase; }
+  li svg { width: 24px; height: 6px; margin-right: 6px; vertical-align: middle; }
+</style>
