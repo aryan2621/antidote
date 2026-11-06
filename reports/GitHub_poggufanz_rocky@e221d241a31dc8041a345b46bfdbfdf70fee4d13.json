@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "poggufanz/rocky",
+    "version": "e221d241a31dc8041a345b46bfdbfdf70fee4d13",
+    "download": "https://codeload.github.com/poggufanz/rocky/tar.gz/e221d241a31dc8041a345b46bfdbfdf70fee4d13"
+  },
+  "archive_sha256": "c17f422c7585e879325c266f99bab4255bac3d11613a9d020dd28910dcc188c9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rocky-e221d241a31dc8041a345b46bfdbfdf70fee4d13/docs/reference.md",
+      "line": 344,
+      "evidence": "curl | bash",
+      "file_sha256": "ec61cc9fe5a11d3c625e8eeb46af06795f7a5540674829054926fcb7f4dc5dde"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "rocky-e221d241a31dc8041a345b46bfdbfdf70fee4d13/docs/agents/INSTALL.md",
+      "line": 310,
+      "evidence": "p=0.99 Where the harness allows it, the same hook may also rewrite arguments before exe",
+      "file_sha256": "0e52a292e730ee10f0ad8fb35dc7e26902d8b737a12c1e4d9b9d614a82a4635b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.openai.com",
+    "api.typesafe.ai",
+    "evil.example",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "fixture.invalid",
+    "github.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "models.dev",
+    "npm.corp.example",
+    "opencode.ai",
+    "openrouter.ai",
+    "outside.example",
+    "pmc.ncbi.nlm.nih.gov",
+    "pubmed.ncbi.nlm.nih.gov",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "stackoverflow.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

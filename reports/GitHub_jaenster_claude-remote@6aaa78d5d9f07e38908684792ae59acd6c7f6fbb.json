@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jaenster/claude-remote",
+    "version": "6aaa78d5d9f07e38908684792ae59acd6c7f6fbb",
+    "download": "https://codeload.github.com/jaenster/claude-remote/tar.gz/6aaa78d5d9f07e38908684792ae59acd6c7f6fbb"
+  },
+  "archive_sha256": "6f284d109cd83623697527aba995620b61564fab516088319acf453e0b5f96b2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "claude-remote-6aaa78d5d9f07e38908684792ae59acd6c7f6fbb/Dockerfile",
+      "line": 22,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "ad1ca5f7838551cd8ba46d17a1193f5ce5aa3c57f50f1399399ffe282e209cfd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "claude-remote-6aaa78d5d9f07e38908684792ae59acd6c7f6fbb/entrypoint.sh",
+      "line": 13,
+      "evidence": "cp \"$GIT_SIGNING_KEY_PATH\" ~/.ssh/git_signing",
+      "file_sha256": "96e2e7e5f9d6ad7a89c37cec3d912db7d15e486b31ef1daec423d489c68a50cf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "claude-remote-6aaa78d5d9f07e38908684792ae59acd6c7f6fbb/entrypoint.sh",
+      "line": 14,
+      "evidence": "cp \"$GIT_SIGNING_PUBKEY_PATH\" ~/.ssh/git_signing.pub",
+      "file_sha256": "96e2e7e5f9d6ad7a89c37cec3d912db7d15e486b31ef1daec423d489c68a50cf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "claude-remote-6aaa78d5d9f07e38908684792ae59acd6c7f6fbb/entrypoint.sh",
+      "line": 24,
+      "evidence": "cat ~/.ssh/git_signing.pub",
+      "file_sha256": "96e2e7e5f9d6ad7a89c37cec3d912db7d15e486b31ef1daec423d489c68a50cf"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "claude.ai",
+    "cli.github.com",
+    "deb.nodesource.com",
+    "downloads.1password.com",
+    "github.com",
+    "id.example.com",
+    "mcp.example.com",
+    "pkgs.tailscale.com",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

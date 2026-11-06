@@ -1,0 +1,55 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "xonta-customs-mcp",
+    "version": "0.2.1",
+    "download": null
+  },
+  "archive_sha256": "3a8a37b7adc57522a4c3353ed4b531aad96e0d35d9d6ec54b78a9c844329d4ac",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "xonta_customs_mcp-0.2.1/scripts/deploy_vps.sh",
+      "line": 53,
+      "evidence": "curl -s http://127.0.0.1:8765/.well-known/mcp/server-card.json | python3 -c \"imp",
+      "file_sha256": "aa0680687864f2dcc216b3451b5ab2cc79d05b2ed52fa1e53bd23b0dea60b9c2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-06T08:02:47.419616Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.5",
+    "127.0.0.1",
+    "169.254.169.254",
+    "base.garant.ru",
+    "example.org",
+    "github.com",
+    "glama.ai",
+    "mcp.xonta.ru",
+    "ppt.ru",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "www.alta.ru",
+    "www.cbr.ru",
+    "www.ifcg.ru",
+    "www.tks.ru",
+    "www.tws.by",
+    "xonta.ru"
+  ],
+  "install_script": false,
+  "score": "high"
+}

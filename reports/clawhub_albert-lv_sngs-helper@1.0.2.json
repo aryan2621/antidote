@@ -1,0 +1,47 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "albert-lv/sngs-helper",
+    "version": "1.0.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=sngs-helper&ownerHandle=albert-lv&version=1.0.2"
+  },
+  "archive_sha256": "1db5ed026ae9bce8a90384b23d3f54ad7002957cedd09a5f45eb8448221ca016",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://binary-releases.oss-cn-hangzhou.aliyuncs.com/sngs/latest/inst",
+      "file_sha256": "2e3125c444930124871aa430a3425ae4d92f1cad87820ad964a93bd79f343977"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "SKILL.md",
+      "line": 60,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "2e3125c444930124871aa430a3425ae4d92f1cad87820ad964a93bd79f343977"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "binary-releases.oss-cn-hangzhou.aliyuncs.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "binary-releases.oss-cn-hangzhou.aliyuncs.com",
+    "clawhub.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}
