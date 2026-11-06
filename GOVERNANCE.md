@@ -1,56 +1,39 @@
 # Governance
 
-Antidote is a neutral, community-run database. No vendor owns the data, and anyone may use it under its licence.
+Antidote is run by the community. No company owns the data, and anyone can use it.
 
-## Maintainers
+## Who decides
 
-Maintainers are the repository's owners, members and collaborators with write access. They triage reports, merge entries and rules, and sign feed releases. New maintainers are proposed in an issue by an existing maintainer and added once no other maintainer objects within 7 days. A maintainer who has been inactive for 6 months is moved to emeritus.
+Maintainers are the repository's owners, members and collaborators with write access. They review reports, merge entries and rules, and sign feed releases. New maintainers are proposed in an issue by an existing maintainer and added once no other maintainer objects within 7 days. Decisions are made by agreement in issues and PRs. If maintainers disagree, the majority of active maintainers decides. A maintainer who has been inactive for 6 months becomes emeritus.
 
-Decisions are made by lazy consensus in issues and PRs. If maintainers disagree, the majority of active maintainers decides.
-
-## Triage
+## How a report is handled
 
 Every report moves `reported → verified | disputed | rejected`:
 
-| Step | Target |
+| Step | Time |
 |---|---|
-| First response to a report | 3 business days |
-| `verified` or `rejected` | 14 days |
-| Malicious artifact still live on a registry | same day, and report it to the registry too |
+| First reply | 3 business days |
+| Decision (verified or rejected) | 14 days |
+| Malware still live on a registry | same day, and we tell the registry too |
 
-- **`verified`** needs a public source, a reproducible sample or a detonation report, and is checked by a maintainer other than the reporter.
-- **`reported`** entries are published, clearly labelled as not yet independently verified.
+- **Verified** means a public source, a reproducible sample or a detonation report, checked by a maintainer other than the reporter.
+- **Reported** entries are public but labelled "not yet verified".
 - Rejected reports are allowlisted for that exact version (`/reject`), so the crawler doesn't raise them again.
 
-## Disputes and takedowns
+## If you disagree with an entry
 
-Publishers and authors can contest an entry by opening an issue titled `Dispute: <entry id>`, or privately through a GitHub Security Advisory.
+Package authors can contest an entry by opening an issue titled `Dispute: <entry id>`, or privately through a GitHub Security Advisory.
 
-1. While the dispute is reviewed, the entry is marked `disputed`. It is not removed.
-2. A maintainer who didn't verify the entry reviews the evidence, within 14 days.
-3. The outcome is one of: the entry is corrected, it is withdrawn (`withdrawn` set, kept for history), or it stands. The reason is recorded in the issue.
+1. The entry is marked `disputed`, not removed.
+2. A maintainer who didn't verify it reviews the evidence within 14 days.
+3. It is corrected, withdrawn (`withdrawn` is set and it is kept for history) or left as is. The reason is recorded in the issue.
 
-Every dispute and its outcome stays public, as the review log. Entries describe behaviour and indicators from evidence. They use "suspicious" when intent is unclear, and never call a person malicious.
+Every dispute and its outcome stays public. Entries describe behaviour and indicators from evidence. They say "suspicious" when intent is unclear, and never call a person malicious.
 
-## Responsible disclosure
+## Bugs vs malware
 
-For **vulnerable** items (bugs, not malice), the author is told privately first. The entry is published after the fix ships or 90 days pass, whichever is first. This can be shortened to 30 days if the bug is being exploited. **Malicious** items are published immediately.
+For bugs (not malice), the author is told privately first. The entry goes public after the fix ships or after 90 days, whichever comes first (30 days if the bug is being exploited). Malware is published immediately. Vulnerabilities in Antidote itself: see [SECURITY.md](SECURITY.md).
 
-Vulnerabilities in Antidote itself: see [SECURITY.md](SECURITY.md).
+## Samples and licences
 
-## Samples
-
-Public entries hold hashes, indicators and defanged excerpts only. Raw samples are never committed. Live payloads and working exploits are not published.
-
-## Licences
-
-- Code: Apache-2.0 ([LICENSE](LICENSE)).
-- Data in `corpus/` and `schema/`: CC-BY-4.0 ([LICENSE-DATA](LICENSE-DATA)). Credit "Antidote contributors".
-
-## Recognition
-
-Reporters are credited in the entry's `reporter` field unless they ask not to be.
-
-## Later
-
-- Apply to become a CVE Numbering Authority (CNA) for agent artifacts.
+Entries hold hashes, indicators and defanged excerpts only. Raw samples are never committed, and live payloads and working exploits are not published. Code is Apache-2.0 ([LICENSE](LICENSE)). Data in `corpus/` and `schema/` is CC-BY-4.0 ([LICENSE-DATA](LICENSE-DATA)): credit "Antidote contributors". Reporters are credited in the entry's `reporter` field unless they ask not to be.

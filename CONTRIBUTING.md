@@ -1,43 +1,33 @@
 # Contributing
 
-## Report a malicious or vulnerable agent artifact
+## Report a bad package, skill or MCP server
 
-Open a PR that adds `corpus/entries/AGT-YYYY-NNNN.json` (next free number), or open an issue with:
+Open an issue or a PR (add `corpus/entries/AGT-YYYY-NNNN.json`, next free number) with:
 
-- **What:** ecosystem (`clawhub`, `mcp-registry`, `smithery`, `claude-skill`, `cursor-rule`, `npm`, `PyPI`, `GitHub`), name, affected versions
-- **Classification:** `malicious` (intentional), `vulnerable` (bug), or `suspicious`
-- **Evidence:** links to public reports, advisories or CVE/GHSA IDs; sha256 of files if you have them
-- **Behavior:** what it does, described in plain words. Do **not** paste live payloads. Defang domains (`evil[.]example`).
+- **What it is:** where it's published (`clawhub`, `mcp-registry`, `smithery`, `claude-skill`, `cursor-rule`, `npm`, `PyPI`, `GitHub`), its name and the affected versions.
+- **Why it's bad:** `malicious` (on purpose), `vulnerable` (a bug) or `suspicious` (unclear).
+- **Proof:** links to reports or advisories (CVE/GHSA), or file hashes (sha256).
+- **What it does,** in plain words. Never paste live attack code, and write domains like `evil[.]example`.
 
-For *vulnerable* (not malicious) items, notify the author first and allow 30–90 days before the entry goes public.
+For plain bugs (not malware), tell the author first and give them 30 to 90 days before it goes public.
 
 ## Add a detection rule
 
-1. Add a rule to `corpus/rules/*.yar` with `meta: id = "AGT-R-NNNN"`, `severity` (`low|medium|high|critical`), and `description`.
-2. Run `antidote scan` on a defanged sample to confirm it fires, and on normal text to confirm it doesn't.
-
-## Triage issues (Antidote maintainers)
-
-The hourly crawler opens one `[triage] <package>` issue per package that scores `high` or `critical`. A later version of that package is added to the same issue as a comment; if the issue is closed, that package stays quiet.
-
-Comment on the issue (owners, members and collaborators only):
-
-| Command | What happens |
-|---|---|
-| `/confirm malicious\|vulnerable\|suspicious <summary>` | Opens a PR that adds a corpus entry. Merging it closes the issue. |
-| `/reject <reason>` | Opens a PR that allowlists the report's hits for that exact version. Merging it closes the issue. |
-| `/detonate` | Runs the package in the sandbox and reports back. |
-
-To dismiss an issue without a PR (a false positive you don't want allowlisted), close it by hand as "not planned".
-
-The commands act on the report in the issue body, which is the first version seen. Later versions are listed in comments.
+1. Add a rule in `corpus/rules/*.yar` with `meta: id = "AGT-R-NNNN"`, a `severity` (`low|medium|high|critical`) and a `description`.
+2. Run `antidote scan` on a safe sample that should trigger it, and on normal text that shouldn't.
 
 ## If your package was flagged
 
-Triage issues are public and name the package, but the crawler does not notify its author. If you own a package that has a `[triage]` issue and you think it is a false positive:
+Our crawler opens a public `[triage]` issue for packages that look risky. It does not notify you, and a triage issue is a machine guess, not a verdict. If yours is a false alarm, comment on the issue or open an issue titled `Dispute: <issue number>`. For anything you'd rather not post publicly, use a private GitHub Security Advisory. A maintainer replies within 3 business days ([GOVERNANCE.md](GOVERNANCE.md#how-a-report-is-handled)) and clears it if you're right.
 
-1. Comment on the issue explaining why, or open an issue titled `Dispute: <issue number>`. For anything you'd rather not post publicly, use a private GitHub Security Advisory.
-2. A maintainer replies within 3 business days ([GOVERNANCE.md](GOVERNANCE.md#triage)).
-3. If it is a false positive, a maintainer runs `/reject` and the reason is recorded in the issue. That version is allowlisted and the crawler won't raise it again.
+## For maintainers: triage issues
 
-A triage issue is an unreviewed machine finding, not a verdict, and it is not published in the database. A package is only marked malicious or vulnerable after a maintainer confirms it, and disputes follow [GOVERNANCE.md](GOVERNANCE.md#disputes-and-takedowns).
+The crawler opens one issue per package, and new versions are added as comments. If the issue is closed, that package stays quiet. On an issue, comment (owners, members and collaborators only):
+
+| Command | What happens |
+|---|---|
+| `/confirm malicious\|vulnerable\|suspicious <summary>` | Opens a PR that adds it to the database. |
+| `/reject <reason>` | Opens a PR that marks it a false alarm for that exact version, so it isn't raised again. |
+| `/detonate` | Runs it in a sandbox and reports back. |
+
+Merging the PR those commands open closes the issue. To dismiss one without a PR, close it as "not planned". The commands use the report in the issue body, which is the first version seen. Later versions are listed in comments.
