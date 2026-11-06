@@ -182,7 +182,7 @@ With `--feed`, the signature is checked at start. The file is re-checked every m
   - `/reject <reason>` opens a PR that adds the report's hits to `corpus/allowlist.json`;
   - `/detonate` starts a detonation.
 
-  **Closing a triage issue.** Comment `/confirm` or `/reject`; the PR it opens says `Closes #N`, so merging that PR closes the issue. To dismiss one without a PR (a known false positive you don't want allowlisted), close it by hand as "not planned". The package then stays quiet. The commands act on the report in the issue body, which is the first version seen; a package with several versions lists the later ones in comments.
+  How to close a triage issue: [CONTRIBUTING.md](CONTRIBUTING.md#triage-issues-maintainers).
 
   PRs opened with `GITHUB_TOKEN` don't trigger CI. Close and reopen the PR, or swap the token for a GitHub App token.
 - **`detonate.yml`** installs the package inside gVisor. The container has no route out except a proxy that forwards only registry traffic and sinkholes everything else. The run then starts the package as an MCP server and lists its tools. It reports blocked egress, DNS lookups, writes to sensitive paths, poisoned live tool descriptions, and tool changes since the last detonation (rug-pulls). Auto-detonating high or critical crawler findings is off unless the repo variable `ANTIDOTE_AUTO_DETONATE=true` is set. Running suspected malware on GitHub-hosted runners is a grey area under GitHub's terms, so move this to your own disposable host before using it at volume.
