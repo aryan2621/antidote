@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huaweicloudskill/huawei-cloud-skill-audit",
+    "version": "1.0.10",
+    "download": "https://clawhub.ai/api/v1/download?slug=huawei-cloud-skill-audit&ownerHandle=huaweicloudskill&version=1.0.10"
+  },
+  "archive_sha256": "42de4384e3209ee1c3964b40a8b7071b408de6e9560c1a3682153f429ab0b5bf",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install_cli.sh",
+      "line": 18,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c \"import sys,json;d=json.load(sys.stdin);pl='li",
+      "file_sha256": "0304533231aa24389f2ac571f6e2057a954d552db294f8c17b419525128fa9f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/skill_audit.py",
+      "line": 190,
+      "evidence": "curl|sh",
+      "file_sha256": "54dc19e3c61a1d294fa1c38419bdaa69ef87888069223daa2e0c4522d0937dcf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/checks/runtime_security_rules.json",
+      "line": 549,
+      "evidence": "wget|bash",
+      "file_sha256": "0a923d33044c08551ecb5d8d321a8fae2013354c3f09eb120e23ff49884dd008"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "scripts/checks/skillspector_rules.json",
+      "line": 945,
+      "evidence": "p=0.98 Instruction Override",
+      "file_sha256": "1cc3a526908508b39718cdacc64d7b1f93982b017ef190abba7beacddf0dca97"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "gh-proxy.com",
+    "gh.ddlc.top",
+    "gitcode.com",
+    "github.com",
+    "gitleaks.io",
+    "obs-skills-repository.obs.cn-north-4.myhuaweicloud.com",
+    "opengw.clouddeveloper.club",
+    "skillsapi.developer.myhuaweicloud.com",
+    "support.huaweicloud.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

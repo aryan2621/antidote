@@ -1,0 +1,131 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ClementG91/MCP-FlowSentinel",
+    "version": "8626cecbd7fb8ddb37005623667d2962fec3da5e",
+    "download": "https://codeload.github.com/ClementG91/MCP-FlowSentinel/tar.gz/8626cecbd7fb8ddb37005623667d2962fec3da5e"
+  },
+  "archive_sha256": "3fca2c7b388a34213817ce3155b95df04cdc8fca24a7a3c30eeed65cc8ae9cd6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/build-macos.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ClementG91/MCP-FlowSentinel/main/in",
+      "file_sha256": "d98e22e7f00fdde6968f09d74c912857995f2b5ca37fc14e981c9a6af602ce71"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/build-linux.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ClementG91/MCP-FlowSentinel/main/in",
+      "file_sha256": "cc32210aac99933e2baa15b368d2c21ce89b455a65550276ead8abad2774be26"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/README.md",
+      "line": 88,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ClementG91/MCP-FlowSentinel/main/in",
+      "file_sha256": "b033f11b16423db51811a7cff86207ff6d1e2b279e2622c1830e94e37cc26c17"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ClementG91/MCP-FlowSentinel/main/in",
+      "file_sha256": "7154e558f18ce0524720cca943bb0475b1be861213a003a3064ce6a4b2d1c317"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/docs/architecture.md",
+      "line": 78,
+      "evidence": "curl\\|sh",
+      "file_sha256": "a4a928fbb89cef6f4a1167ef6b5818a1a49271205c9e0de22516a42e949e9fa7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/docs/architecture.md",
+      "line": 78,
+      "evidence": "base64 -d`, `curl\\|sh",
+      "file_sha256": "a4a928fbb89cef6f4a1167ef6b5818a1a49271205c9e0de22516a42e949e9fa7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/internal/aggregate/aggregate_test.go",
+      "line": 167,
+      "evidence": "base64  -d < /tmp/payload | bash",
+      "file_sha256": "b0eaead5c1bfecf457b9157065f30559300872f58d06068e7fa55dd04c814ee4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MCP-FlowSentinel-8626cecbd7fb8ddb37005623667d2962fec3da5e/.github/workflows/release.yml",
+      "line": 238,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ClementG91/MCP-FlowSentinel/main/in",
+      "file_sha256": "5193b4c7766badf88c66f5750b147615bf61ebe308a99c880824fd818e9eaa98"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "accounts.google.com",
+    "actions.github.io",
+    "api.github.com",
+    "api.scorecard.dev",
+    "attack.mitre.org",
+    "brew.sh",
+    "c2.evil.org",
+    "claude.ai",
+    "cli.github.com",
+    "custom.example.com",
+    "dev.maxmind.com",
+    "developers.openai.com",
+    "evil.example.com",
+    "example.com",
+    "feeds.example.com",
+    "feodotracker.abuse.ch",
+    "github.com",
+    "go.dev",
+    "hooks.example.com",
+    "hooks.slack.com",
+    "img.shields.io",
+    "in-toto.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "malware.example.com",
+    "malware.org",
+    "modelcontextprotocol.io",
+    "npcap.com",
+    "raw.githubusercontent.com",
+    "rules.emergingthreats.net",
+    "scorecard.dev",
+    "semver.org",
+    "slsa.dev",
+    "sslbl.abuse.ch",
+    "threatfox.abuse.ch",
+    "token.actions.githubusercontent.com",
+    "urlhaus.abuse.ch",
+    "www.bestpractices.dev",
+    "www.contributor-covenant.org",
+    "www.virustotal.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

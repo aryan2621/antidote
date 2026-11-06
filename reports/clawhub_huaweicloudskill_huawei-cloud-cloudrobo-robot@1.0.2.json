@@ -1,0 +1,38 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huaweicloudskill/huawei-cloud-cloudrobo-robot",
+    "version": "1.0.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=huawei-cloud-cloudrobo-robot&ownerHandle=huaweicloudskill&version=1.0.2"
+  },
+  "archive_sha256": "7cf0f70d902057088b8588d3126d3f6e8907d3af0fdb71c4d124f301fd3bcb9b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install_cli.sh",
+      "line": 12,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "997fa4a302e387ff1239854e650cdf2fa5c600fb098763ae84182a1762a396e5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/ensure_cli.sh",
+      "line": 16,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "303bd3c02eaa393c6c9ebcec78be8aed265eeb220f5e3de0fa9c894ace792e36"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "obs-skills-repository.obs.cn-north-4.myhuaweicloud.com",
+    "skillsapi.developer.myhuaweicloud.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

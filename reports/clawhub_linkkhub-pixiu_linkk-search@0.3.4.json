@@ -1,0 +1,40 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "linkkhub-pixiu/linkk-search",
+    "version": "0.3.4",
+    "download": "https://clawhub.ai/api/v1/download?slug=linkk-search&ownerHandle=linkkhub-pixiu&version=0.3.4"
+  },
+  "archive_sha256": "b66873d02e0b137f27ae3bc78baeb12b6630038a549e7186a3443aa1300b6d6e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/sxp-check-update.sh",
+      "line": 10,
+      "evidence": "curl -s -m 15 \"$BASE/api/pack/manifest\" | python3 -c 'import sys,json;print(json",
+      "file_sha256": "44cb3df7e3b03e1839f277c3b3a3e39c76c2c2d8b889eab2f050f5817c5950c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/deploy.sh",
+      "line": 18,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "3ce0c3ec85b7fbe6e48177f4620b0f841bf784d47351638801ba6466d2cd6700"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.x",
+    "clawhub.ai",
+    "get.docker.com",
+    "linkkhub.top"
+  ],
+  "install_script": false,
+  "score": "high"
+}

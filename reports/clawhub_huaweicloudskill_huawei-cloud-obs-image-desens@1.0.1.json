@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huaweicloudskill/huawei-cloud-obs-image-desens",
+    "version": "1.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=huawei-cloud-obs-image-desens&ownerHandle=huaweicloudskill&version=1.0.1"
+  },
+  "archive_sha256": "63c6c9c14964c12052ac72906baa85fd3338496346886ed620e375c9b3e3cb32",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install_cli.sh",
+      "line": 12,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "997fa4a302e387ff1239854e650cdf2fa5c600fb098763ae84182a1762a396e5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/ensure_cli.sh",
+      "line": 16,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "303bd3c02eaa393c6c9ebcec78be8aed265eeb220f5e3de0fa9c894ace792e36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/cli-installation-guide.md",
+      "line": 5,
+      "evidence": "curl -sSL https://cn-north-4-hcs-cloud-cdn.obs.cn-north-4.myhuaweicloud.com/inst",
+      "file_sha256": "9edac1ed1d52cceb058745265bfccc7b4523f3703fae4dd02d727e544a343008"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "cn-north-4-hcs-cloud-cdn.obs.cn-north-4.myhuaweicloud.com",
+    "obs-skills-repository.obs.cn-north-4.myhuaweicloud.com",
+    "obs.cn-north-4.myhuaweicloud.com",
+    "skillsapi.developer.myhuaweicloud.com",
+    "support.huaweicloud.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

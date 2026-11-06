@@ -1,0 +1,125 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AgentBigBrain/Tedd",
+    "version": "add894300d81245c6ded6b1853a405fe4d96ee5f",
+    "download": "https://codeload.github.com/AgentBigBrain/Tedd/tar.gz/add894300d81245c6ded6b1853a405fe4d96ee5f"
+  },
+  "archive_sha256": "0323455a5fe1ac0f26d599e985dd4257512b214d7ef4e8592671ecb96ef8f68b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/SKILL.md",
+      "line": 12,
+      "evidence": "p=0.96 ## Instruction precedence",
+      "file_sha256": "b23c0575287f20b6b503714a9f765aebb0d0cb04b2a042499b2e25000f9b7747"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/SKILL.md",
+      "line": 16,
+      "evidence": "p=1.00 This precedence is between skills. System and developer instructions, explicit u",
+      "file_sha256": "b23c0575287f20b6b503714a9f765aebb0d0cb04b2a042499b2e25000f9b7747"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/references/support-troubleshooting.md",
+      "line": 34,
+      "evidence": "p=0.97 1. Acknowledge a relevant reply promptly when deeper investigation will take tim",
+      "file_sha256": "c02100fc9347e325cf0c51d989424bdaa5e7647f5e1c36fc225556440089dfd6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/references/stakeholder-communication.md",
+      "line": 68,
+      "evidence": "p=0.99 These intents can coexist in one message or burst. “No new actionable work” does",
+      "file_sha256": "893c0ea84c01e178715fee977501c69be2d8edd444f401979ac2c948c7aa6393"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/references/stakeholder-communication.md",
+      "line": 76,
+      "evidence": "p=0.99 1. Acknowledge the message promptly instead of waiting for the full investigatio",
+      "file_sha256": "893c0ea84c01e178715fee977501c69be2d8edd444f401979ac2c948c7aa6393"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/plugins/tedd/skills/tedd/references/source-viewing-and-maintenance.md",
+      "line": 213,
+      "evidence": "p=0.94 None of these operations authorizes an unrelated graph repair, broader collectio",
+      "file_sha256": "da6e68f628a0f50d4d51cc3c42075085d96af16b7a9516b5b93acdef7d20d6b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/.agents/skills/python-development/references/tooling.md",
+      "line": 30,
+      "evidence": "curl | sh",
+      "file_sha256": "02045881379a8ec9512500483a5ce1481943bc7ce3c02283c59271d88b8a91d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/.agents/skills/python-development/references/tooling-pkg-reviewed-dependencies.md",
+      "line": 57,
+      "evidence": "curl | sh",
+      "file_sha256": "3624d9cdd8dffd4267125ec0f0d0ff49daada1015cd409626e467821a279103f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Tedd-add894300d81245c6ded6b1853a405fe4d96ee5f/.agents/skills/python-development/references/testing.md",
+      "line": 135,
+      "evidence": "p=0.97 Do not globally ignore all deprecation warnings. Treat owned-code warnings as er",
+      "file_sha256": "cf9774e94beb680055cb789010f3f25a26d5504b7725fc26ea85bc7a2f7fb1d5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "accounts.google.com",
+    "acct.blob.core.windows.net",
+    "agent-plugins.org",
+    "chromewebstore.google.com",
+    "code.claude.com",
+    "deepwiki.com",
+    "developers.google.com",
+    "docs.google.com",
+    "docs.google.com.evil.example",
+    "drive.google.com",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "github.com",
+    "img.shields.io",
+    "learn.chatgpt.com",
+    "nas.internal",
+    "oauth2.googleapis.com",
+    "openoffice.org",
+    "schemas.openxmlformats.org",
+    "storage.googleapis.test",
+    "untrusted.example",
+    "www.apache.org",
+    "www.apple.com",
+    "www.googleapis.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

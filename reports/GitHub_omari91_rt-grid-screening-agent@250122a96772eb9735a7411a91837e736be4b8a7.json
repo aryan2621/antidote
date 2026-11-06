@@ -1,0 +1,54 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "omari91/rt-grid-screening-agent",
+    "version": "250122a96772eb9735a7411a91837e736be4b8a7",
+    "download": "https://codeload.github.com/omari91/rt-grid-screening-agent/tar.gz/250122a96772eb9735a7411a91837e736be4b8a7"
+  },
+  "archive_sha256": "196db91e49aade98d151902e8ccb7fa9a3d07c35cad0faf43b8543de3ad5bd08",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "rt-grid-screening-agent-250122a96772eb9735a7411a91837e736be4b8a7/SKILL.md",
+      "line": 12,
+      "evidence": "p=0.97 ## Usage Instructions",
+      "file_sha256": "6a669ce1ee054abc3cd88fafd22048188f4f165eb39be5d3256659a1184afac2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "rt-grid-screening-agent-250122a96772eb9735a7411a91837e736be4b8a7/tests/test_agent_and_api.py",
+      "line": 141,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "4cde99eeee6279fe0f0950ea95c82e9cba933a673686226041542a3188246766"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.openai.com",
+    "cdn.tailwindcss.com",
+    "cliffordomari.com",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "m8ven.ai",
+    "omari91-web.vercel.app",
+    "pypi.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.cliffordomari.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

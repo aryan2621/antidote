@@ -1,0 +1,44 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "tenequm/skills-best-practices",
+    "version": "0.9.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=skills-best-practices&ownerHandle=tenequm&version=0.9.1"
+  },
+  "archive_sha256": "3960988d10e2d3eaeb1b787e4735c32bf4eee4ca0d509108425ec07ac74051aa",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 329,
+      "evidence": "p=0.97 Create evaluations **before** writing extensive instructions - this proves the s",
+      "file_sha256": "b68eb28bde50cd7f406779b89758c11cfb9d2f931343b63bb8746d298aa03b1a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/clawhub-publishing.md",
+      "line": 29,
+      "evidence": "curl | bash",
+      "file_sha256": "76a05f793a25820b54c53a6b1c3a5bcff54bdd0fb17705ebd8136bd5af517de3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "claude.com",
+    "clawhub.ai",
+    "code.claude.com",
+    "github.com",
+    "keepachangelog.com",
+    "platform.claude.com",
+    "resources.anthropic.com",
+    "semver.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

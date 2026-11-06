@@ -1,0 +1,95 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@getedge/mcp",
+    "version": "0.6.52",
+    "download": null
+  },
+  "archive_sha256": "2e48589dc9d13e52ebd627737c2436a661c7b4f5f9f98b64807f47712ac85499",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/edge/SKILL.md",
+      "line": 386,
+      "evidence": "p=0.95 Installed skills are not read or sent unless you opt in. With a Pro key, the fir",
+      "file_sha256": "0bc289fcd1d4238bf540296b7c4ed39d530f827cf6f0591f3d4075bb3d8e6133"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/src/local-scan.js",
+      "line": 88,
+      "evidence": ".aws/credentials",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/src/local-scan.js",
+      "line": 166,
+      "evidence": "\\u{202a}",
+      "file_sha256": "fd4ea9235eba18a1bfea33915ae7053896fbd16112aef442d6a3d9ee5266a0e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/dist/src/local-skills.js",
+      "line": 55,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "6b85fe322171484dd664422ab078b8413ab85d5142ba91bf67c7ee03af5deb99"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/bundle/chunk-PXHWKEDH.js",
+      "line": 18015,
+      "evidence": ".aws/credentials",
+      "file_sha256": "578b074ef27cd585dab69d2365cc918e8db671a5762c8c912d0cb083dcb923c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "package/dist/bundle/chunk-PXHWKEDH.js",
+      "line": 18128,
+      "evidence": "\\u{202a}",
+      "file_sha256": "578b074ef27cd585dab69d2365cc918e8db671a5762c8c912d0cb083dcb923c7"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "chatgpt.com",
+    "code.claude.com",
+    "cursor.com",
+    "developers.openai.com",
+    "example.com",
+    "getedge.cc",
+    "gist.github.com",
+    "github.com",
+    "huggingface.co",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "mathiasbynens.be",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "route.getedge.cc",
+    "skills.sh",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

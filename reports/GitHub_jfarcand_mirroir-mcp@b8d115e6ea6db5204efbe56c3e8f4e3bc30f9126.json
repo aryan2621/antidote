@@ -1,0 +1,143 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jfarcand/mirroir-mcp",
+    "version": "b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126",
+    "download": "https://codeload.github.com/jfarcand/mirroir-mcp/tar.gz/b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126"
+  },
+  "archive_sha256": "58da1da0ac4c7081c56f1ddcb67d5f8e20fb6e20e4876bf3809c4b8b6ec614c9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/runner/docs/judge-profiles.md",
+      "line": 153,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "79b202e34d991930e1eff0e84366c648d19eace6e25e8464f3421ccc8730f1e7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/get-mirroir.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://mirroir.dev/get-mirroir.sh | bash",
+      "file_sha256": "a4259e19a4e51fb057ffdc208618da1325892c5f98affc7cf2013360a7f06dde"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/npm/install-cmd.js",
+      "line": 148,
+      "evidence": "execSync(`\"${nativeBin}\" skill --install`, { stdio: \"inherit\" })",
+      "file_sha256": "9ec71d7db6ae57d98dabb0ea3811ce3487c5a003e05983f90ca224f90c802df8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/npm/install.js",
+      "line": 51,
+      "evidence": "execSync(`tar xzf \"${tmpFile}\" -C \"${binDir}\"`, { stdio: \"inherit\" })",
+      "file_sha256": "b496b4ac97808a42581df65199bfa60f1a5fcbead8041aac9be9321df289dc34"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/scripts/ci/mcp-schema-2026-07-28.json",
+      "line": 1065,
+      "evidence": "p=0.90 The name of the prompt or prompt template.",
+      "file_sha256": "ef70b61f99b6d2e5e3b46863822eab08dff6a45bedc7a08914e0e5b133f40203"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/website/public/get-mirroir.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://mirroir.dev/get-mirroir.sh | bash",
+      "file_sha256": "a4259e19a4e51fb057ffdc208618da1325892c5f98affc7cf2013360a7f06dde"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/.github/workflows/runner.yml",
+      "line": 419,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "0c8a36612980d99fac3fe78cf2eb8b2c357999372d006fc54252948e35d25fb7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "mirroir-mcp-b8d115e6ea6db5204efbe56c3e8f4e3bc30f9126/.github/workflows/runner.yml",
+      "line": 431,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "0c8a36612980d99fac3fe78cf2eb8b2c357999372d006fc54252948e35d25fb7"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "anthropic.com, clawhub.ai, docs.claude.com, docs.openclaw.ai, maestro.dev, schema.org, x.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.237",
+    "127.0.0.1",
+    "anthropic.com",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.openai.com",
+    "attacker.test",
+    "clawhub.ai",
+    "datatracker.ietf.org",
+    "developer.apple.com",
+    "discord.gg",
+    "discussions.apple.com",
+    "docs.claude.com",
+    "docs.github.com",
+    "docs.openclaw.ai",
+    "docs.ultralytics.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.test",
+    "gist.github.com",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json-schema.org",
+    "maestro.dev",
+    "mirroir.dev",
+    "ollama.com",
+    "opencollective.com",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "self-hosted.test",
+    "static.cloudflareinsights.com",
+    "static.modelcontextprotocol.io",
+    "support.apple.com",
+    "tap.mirroir.dev",
+    "tidelift.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

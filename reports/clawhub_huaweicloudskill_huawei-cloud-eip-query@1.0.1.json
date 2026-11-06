@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huaweicloudskill/huawei-cloud-eip-query",
+    "version": "1.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=huawei-cloud-eip-query&ownerHandle=huaweicloudskill&version=1.0.1"
+  },
+  "archive_sha256": "010c03d631ebebf0d5a4a6fe7c82320d5450cfa1c90478bd02a019d81726404e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install_cli.sh",
+      "line": 12,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "997fa4a302e387ff1239854e650cdf2fa5c600fb098763ae84182a1762a396e5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/ensure_cli.sh",
+      "line": 16,
+      "evidence": "curl -s \"${API_URL}\" | python3 -c 'import sys,json;print(json.load(sys.stdin)[\"v",
+      "file_sha256": "303bd3c02eaa393c6c9ebcec78be8aed265eeb220f5e3de0fa9c894ace792e36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/cli-installation-guide.md",
+      "line": 14,
+      "evidence": "curl -sSL https://hwcloudcli.obs.cn-north-1.myhuaweicloud.com/cli/latest/hcloud_",
+      "file_sha256": "b2a3e4be1d92ef4da5c40cc453b253f7f5ca0192ca3c6351d4db5cdfdc7f8f39"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "console.huaweicloud.com",
+    "hwcloudcli.obs.cn-north-1.myhuaweicloud.com",
+    "obs-skills-repository.obs.cn-north-4.myhuaweicloud.com",
+    "skillsapi.developer.myhuaweicloud.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
