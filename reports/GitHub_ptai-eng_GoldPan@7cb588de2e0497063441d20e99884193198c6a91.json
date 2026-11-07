@@ -1,0 +1,123 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ptai-eng/GoldPan",
+    "version": "7cb588de2e0497063441d20e99884193198c6a91",
+    "download": "https://codeload.github.com/ptai-eng/GoldPan/tar.gz/7cb588de2e0497063441d20e99884193198c6a91"
+  },
+  "archive_sha256": "ed9ce54c62b1f1be6376447496ea27a8ffb2701ae3cf8960142d5771e13ec3d0",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/THREAT_MODEL.md",
+      "line": 25,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4a1d0fce81d82a6456412db2b491ded901975527547678a4759ba455c74d6a11"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/run_tests.py",
+      "line": 727,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "646dc0d0b3b1c16d28b2466b5214a44dadc8fc39d5c49cada957706e0b900a33"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/tests/test_scan.py",
+      "line": 32,
+      "evidence": "Ignore all previous rules",
+      "file_sha256": "6e0713534b44f887c8530bdcb3344e4e564ee8f5c67bd55ce555cf1260670e65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/goldpan/bench/runner.py",
+      "line": 286,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "54cbe437d3664dca773560bae0afde97bf2c4dc821028d2abdd1377b136274ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/goldpan/bench/datasets/track_a_firewall.json",
+      "line": 10,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "63223031148ecd6dd8200686cfbb3cf5f3969abc28de2c050075b950a027d5dc"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/goldpan/bench/datasets/track_c_repo.json",
+      "line": 30,
+      "evidence": "\\u{e0001}",
+      "file_sha256": "f5c79007d116eb4fec6a37a2cfa5476d1bbf6d484d651d06b5627e7d3032d703"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/goldpan/bench/datasets/track_c_repo.json",
+      "line": 20,
+      "evidence": "\\u{202e}",
+      "file_sha256": "f5c79007d116eb4fec6a37a2cfa5476d1bbf6d484d651d06b5627e7d3032d703"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "GoldPan-7cb588de2e0497063441d20e99884193198c6a91/backend/goldpan/bench/datasets/track_c_repo.json",
+      "line": 10,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f5c79007d116eb4fec6a37a2cfa5476d1bbf6d484d651d06b5627e7d3032d703"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "169.254.169.254",
+    "arxiv.org",
+    "attacker-exfil.org",
+    "attacker-logger.evil",
+    "attacker.org",
+    "calibre-ebook.com",
+    "eslint.org",
+    "evil-server.net",
+    "evil.example",
+    "evil.org",
+    "example.com",
+    "fastapi.tiangolo.com",
+    "feross.org",
+    "fonts.googleapis.com",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "help.github.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "nextjs.org",
+    "opencollective.com",
+    "picsum.photos",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schemas.openxmlformats.org",
+    "tidelift.com",
+    "vercel.com",
+    "www.patreon.com",
+    "www.python.org",
+    "www.soundhelix.com",
+    "www.trychroma.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

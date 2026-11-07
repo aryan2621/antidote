@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@gopher.security/gopher-mcp-js",
+    "version": "0.1.42-1",
+    "download": null
+  },
+  "archive_sha256": "73899d3533e1cbaa6f69c3db369090d0663acae85ce42f9f422352720637fd3a",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/README.md",
+      "line": 300,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "57e68264511f297e6471106307064ca589b652a2335b156d9f04219ca91e4e8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/scripts/download-native.js",
+      "line": 185,
+      "evidence": "execSync(`tar -xzf \"${archivePath}\" -C \"${destDir}\"`, { stdio: 'inherit' })",
+      "file_sha256": "1bfc19faa9c6ebf55544883b13f05f43175d0102370cc8a040f12edd1f1db808"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/scripts/download-native.js",
+      "line": 188,
+      "evidence": "execSync(`unzip -o \"${archivePath}\" -d \"${destDir}\"`, { stdio: 'inherit' })",
+      "file_sha256": "1bfc19faa9c6ebf55544883b13f05f43175d0102370cc8a040f12edd1f1db808"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "id": "AGT-F-INSTALL",
+      "summary": "Runs code at install time",
+      "path": null,
+      "line": null,
+      "evidence": "preinstall: node scripts/check-node-version.js; postinstall: node scripts/download-native.js || true",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api-test.gopher.security",
+    "api.gopher.security",
+    "deb.nodesource.com",
+    "github.com",
+    "gopher.security",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "www.apache.org",
+    "www.npmjs.com"
+  ],
+  "install_script": true,
+  "score": "high"
+}

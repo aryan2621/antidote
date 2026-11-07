@@ -1,0 +1,162 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "antonellof/gpulayer",
+    "version": "6c09c740d4651623431cab2f7a5bb8040f698798",
+    "download": "https://codeload.github.com/antonellof/gpulayer/tar.gz/6c09c740d4651623431cab2f7a5bb8040f698798"
+  },
+  "archive_sha256": "1f9bb29efbebb5812f369c1e5331e9b5c5662d09cc710fc5f3b9bf48204c8fa2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/CHANGELOG.md",
+      "line": 273,
+      "evidence": "curl -fsSL https://gpulayer.dev/install.sh | sh",
+      "file_sha256": "c799493155da5d9807e2ffb5b2fb4b033c65c1d06fdbe6134684ad4337331f72"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/benchmarks/cloud/aws-boot.sh",
+      "line": 15,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "1dd336520178f527b273dc062d023ff23a3ab3566e28017aeda5957c395e9608"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/benchmarks/cloud/gcp.sh",
+      "line": 81,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3aeeb82123e148fb6d132ec976c1cbf96a9c01adc06a65f433718e74b9ba1cf7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/README.md",
+      "line": 57,
+      "evidence": "curl -fsSL https://gpulayer.dev/install.sh \\| sh",
+      "file_sha256": "ff10f6f8291abeaf643fec228385c5337884153c3858be3b03964c88833cc764"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/site/src/app/page.tsx",
+      "line": 444,
+      "evidence": "curl -fsSL https://gpulayer.dev/install.sh | sh",
+      "file_sha256": "f6a882725d2e834a0474fb7b1f5e4fdab91f7a0ef7e14292f3bcd5e521a8bacf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://gpulayer.dev/install.sh | sh",
+      "file_sha256": "09371ef7ef940f54326723ad45ef3ae56cee18f554a2b52ad25651cda3d2b945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/scripts/validate_gpu.sh",
+      "line": 23,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8004a2162accc7bb86498c4d02c700c4c309335d53d81760dd61f1b7d10a2096"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/scripts/validate_gpu.sh",
+      "line": 23,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8004a2162accc7bb86498c4d02c700c4c309335d53d81760dd61f1b7d10a2096"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/docs/decisions/ADR-0017-distribution-and-installation.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/antonellof/gpulayer/main/install.sh",
+      "file_sha256": "026dc5c886f9516a0457e46b58d272681eebd4a6069e865b5932cb86869e2f9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/docs/decisions/README.md",
+      "line": 35,
+      "evidence": "curl ... install.sh | sh",
+      "file_sha256": "e51368951fb9a67bc3675aaec4aa35360d16bb486c62715e441e9c8ff1760dc3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gpulayer-6c09c740d4651623431cab2f7a5bb8040f698798/docs/get-started/installation.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://gpulayer.dev/install.sh | sh",
+      "file_sha256": "9365d82879cc273fc69be2f44ec1f25a381a04171b838e96114f10862e9b29ff"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "10.0.0.2, 10.0.0.5, checkip.amazonaws.com, compute.googleapis.com, console.vast.ai, example.invalid, filesystem-spec.readthedocs.io, gpulayer.dev, gpulayer.example.com, lightning.ai, www.googleapis.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.2",
+    "10.0.0.5",
+    "127.0.0.1",
+    "192.168.1.56",
+    "astral.sh",
+    "checkip.amazonaws.com",
+    "compute.googleapis.com",
+    "console.vast.ai",
+    "cp.example",
+    "cp.internal",
+    "docs.astral.sh",
+    "download.pytorch.org",
+    "eslint.org",
+    "example.invalid",
+    "feross.org",
+    "filesystem-spec.readthedocs.io",
+    "github.com",
+    "gpulayer.dev",
+    "gpulayer.example.com",
+    "lightning.ai",
+    "metadata.google.internal",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "paulmillr.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "semver.org",
+    "tidelift.com",
+    "www.apache.org",
+    "www.googleapis.com",
+    "www.googletagmanager.com",
+    "www.gpulayer.dev",
+    "www.patreon.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
