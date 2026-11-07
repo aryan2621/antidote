@@ -1,0 +1,69 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jackhric/decky-toolkit",
+    "version": "fb0b631828975871c86e825b619aa3d98f25b542",
+    "download": "https://codeload.github.com/jackhric/decky-toolkit/tar.gz/fb0b631828975871c86e825b619aa3d98f25b542"
+  },
+  "archive_sha256": "2a8fb606cf652729d3319fe5fe7c0ae323619eebae978e1fe07ce1bc908fae70",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "decky-toolkit-fb0b631828975871c86e825b619aa3d98f25b542/extension/README.md",
+      "line": 158,
+      "evidence": "<secret>",
+      "file_sha256": "714fbfb67f7f56cdbb08649de2472d52c0f3c88f2e07c3fa1c6e6f5d06dc89d2"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "decky-toolkit-fb0b631828975871c86e825b619aa3d98f25b542/extension/scripts/smoke/screen.mjs",
+      "line": 54,
+      "evidence": "<secret>",
+      "file_sha256": "f582a6934d2999bf25e9fee144f8ecaaf8cb6b2e6ae6ceead2ec40c9050a4772"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "decky-toolkit-fb0b631828975871c86e825b619aa3d98f25b542/docs/research/mcp-tool-survey.md",
+      "line": 346,
+      "evidence": "curl | sh",
+      "file_sha256": "04b9d5826541e5b3aa30c9c3033c32ef07692f173fc7e1cfea8fb8cedc2ba26a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.70.18",
+    "10.1.2.3",
+    "127.0.0.1",
+    "claude.com",
+    "code.visualstudio.com",
+    "docs.astral.sh",
+    "docs.kernel.org",
+    "evil.example",
+    "github.com",
+    "img.shields.io",
+    "jackhric.com",
+    "jackhric.github.io",
+    "marketplace.visualstudio.com",
+    "open-vsx.org",
+    "raw.githubusercontent.com",
+    "schema.org",
+    "standardschema.dev",
+    "starwind.dev",
+    "update.code.visualstudio.com",
+    "vscodium.com",
+    "webmachinelearning.github.io",
+    "wiki.deckbrew.xyz",
+    "www.npmjs.com",
+    "www.w3.org",
+    "zod.dev"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
