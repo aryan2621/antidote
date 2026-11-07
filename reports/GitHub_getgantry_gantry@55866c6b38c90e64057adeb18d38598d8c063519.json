@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "getgantry/gantry",
+    "version": "55866c6b38c90e64057adeb18d38598d8c063519",
+    "download": "https://codeload.github.com/getgantry/gantry/tar.gz/55866c6b38c90e64057adeb18d38598d8c063519"
+  },
+  "archive_sha256": "5c57cac89fa16aa8c31e5fe6b40884bee3eaed864229fe5c36183365a7560028",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "gantry-55866c6b38c90e64057adeb18d38598d8c063519/README.md",
+      "line": 242,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "1846fb741daa0dacee7e356a1d8d1e2dbeea62a0c549fa6eb96befdd245c513e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "192.168.64.5, api.test, box.lan, kubernetes.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "1.2.3.4",
+    "127.0.0.1",
+    "192.168.64.3",
+    "192.168.64.5",
+    "api.test",
+    "box.lan",
+    "box.local",
+    "brew.sh",
+    "developers.cloudflare.com",
+    "example.com",
+    "getgantry.github.io",
+    "ghcr.io",
+    "github.com",
+    "img.shields.io",
+    "index.docker.io",
+    "keepachangelog.com",
+    "kubernetes.io",
+    "modelcontextprotocol.io",
+    "random-words-here.trycloudflare.com",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "x.trycloudflare.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

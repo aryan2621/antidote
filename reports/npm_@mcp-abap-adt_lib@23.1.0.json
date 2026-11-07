@@ -1,0 +1,99 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@mcp-abap-adt/lib",
+    "version": "23.1.0",
+    "download": null
+  },
+  "archive_sha256": "be6a0d0852b91a1c284e945ec28eef9319a55d49bdaa477d40532036aae8e3be",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/CHANGELOG.md",
+      "line": 240,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "149afaafa784bf3a71f1360b81c14d2becaa66f520ead79b9379956f8c872797"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/docs/user-guide/CLIENT_CONFIGURATION.md",
+      "line": 255,
+      "evidence": "<system>",
+      "file_sha256": "1997abf876921844eb44b0ef256ee1dde9be13b74abb2d68c61d4430bc88645e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/docs/installation/platforms/INSTALL_LINUX.md",
+      "line": 26,
+      "evidence": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash",
+      "file_sha256": "4857e63b3ad18a762a55fe71257faf28abf093025a94a70bb7efabb51a47b4f4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/docs/installation/PORTABLE.md",
+      "line": 139,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "54a45cd6f9ede6128faec2950c25229e885488a52acc66a93ef2072d5721df6a"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "abap.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "11b69711-9bcb-491b-b504-a9ba7e4b7e97.abap-web.us10.hana.ondemand.com",
+    "127.0.0.1",
+    "7ab63f61-d9c7-4bcf-9057-beead39881c1.abap-web.us10.hana.ondemand.com",
+    "abap.example.com",
+    "app.example.com",
+    "batch.invalid",
+    "deb.nodesource.com",
+    "dev.sap.company.example",
+    "git-scm.com",
+    "github.com",
+    "glama.ai",
+    "help.sap.com",
+    "keepachangelog.com",
+    "nodejs.org",
+    "packages.microsoft.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "rpm.nodesource.com",
+    "sap.company.example",
+    "semver.org",
+    "stand-with-ukraine.pp.ua",
+    "static.modelcontextprotocol.io",
+    "support.sap.com",
+    "system.example",
+    "www.apache.org",
+    "www.npmjs.com",
+    "www.sap.com",
+    "www.w3.org",
+    "your-onprem-system.example",
+    "your-onpremise-system.com",
+    "your-sap-system.com",
+    "your-sap-system.example",
+    "your-sap-url.com",
+    "your-sap-url.example",
+    "your-uaa-url.com",
+    "your-uaa.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
