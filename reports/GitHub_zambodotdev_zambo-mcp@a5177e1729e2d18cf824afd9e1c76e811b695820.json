@@ -1,0 +1,57 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zambodotdev/zambo-mcp",
+    "version": "a5177e1729e2d18cf824afd9e1c76e811b695820",
+    "download": "https://codeload.github.com/zambodotdev/zambo-mcp/tar.gz/a5177e1729e2d18cf824afd9e1c76e811b695820"
+  },
+  "archive_sha256": "e55c5fc0efc00d928df6286ca7cb140b4d9d6710f539210fb52c7db23cde421b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "zambo-mcp-a5177e1729e2d18cf824afd9e1c76e811b695820/tools.json",
+      "line": 380,
+      "evidence": "p=0.97 Generate a QR code for any URL, text, phone number, WiFi credentials, contact in",
+      "file_sha256": "daedd1f6d57d62c3c53a8fe7e8781da6b78a539bf635abd3797e1d8dfb106cc9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "anysphere.cursor-deeplink, dev.to, doi.org, huggingface.co, img.shields.io, rambozambodotdev.gitlab.io, vscode.dev, www.tokenpost.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "anysphere.cursor-deeplink",
+    "datatracker.ietf.org",
+    "dev.to",
+    "doi.org",
+    "example.com",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "huggingface.co",
+    "img.shields.io",
+    "rambozambodotdev.gitlab.io",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "vscode.dev",
+    "www.contributor-covenant.org",
+    "www.tokenpost.com",
+    "www.w3.org",
+    "x.com",
+    "zambo.dev",
+    "zambodotdev.github.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

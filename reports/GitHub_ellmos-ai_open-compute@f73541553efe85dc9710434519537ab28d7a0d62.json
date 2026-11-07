@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ellmos-ai/open-compute",
+    "version": "f73541553efe85dc9710434519537ab28d7a0d62",
+    "download": "https://codeload.github.com/ellmos-ai/open-compute/tar.gz/f73541553efe85dc9710434519537ab28d7a0d62"
+  },
+  "archive_sha256": "f5c58d3ffa42d58858d42e612bc49ec42ea8a7c040898617c75016d970eb1615",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "open-compute-f73541553efe85dc9710434519537ab28d7a0d62/tests/test_cooperative.py",
+      "line": 380,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "ab798de8041862e3c46e43b9c54e0def777877d4625167016c75b6305756a28d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "open-compute-f73541553efe85dc9710434519537ab28d7a0d62/skills/open-compute-work-together/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.99 1. **SICHTFENSTER** (Mini-Chat-Overlay, `note_observation`): Der Mensch sieht IN",
+      "file_sha256": "74a00ec67f34a90ab462790d9f1c0fb8bc594db7fd2f9816a7c1e9ea53ae65e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "open-compute-f73541553efe85dc9710434519537ab28d7a0d62/skills/open-compute-clipboard-companion/SKILL.md",
+      "line": 37,
+      "evidence": "p=0.94 1. Den Rollenvertrag kurz bestätigen und `signal_show(mode=\"observe\")` mit begre",
+      "file_sha256": "e8ddfb386ebbb1d27a5193269b84f7995e85db11818f00bc10a508d1b871e163"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "attacker.example",
+    "docs.python.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "keepachangelog.com",
+    "learn.microsoft.com",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "semver.org",
+    "www.apache.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
