@@ -1,0 +1,75 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "63f174882b34a48045f5d457ea02ba15baf1de25",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/63f174882b34a48045f5d457ea02ba15baf1de25"
+  },
+  "archive_sha256": "932573eb28a8990a7cab4f2867b854125a9fdc4d66c1c9a29b77e1bf993ed1f5",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-63f174882b34a48045f5d457ea02ba15baf1de25/docs/guide/how-to/install-reqseq.md",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "02ca7e013a2dcc2f1330ee81d27171439e607aea7446f0159447e2c5a707681f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-63f174882b34a48045f5d457ea02ba15baf1de25/schemas/generated/mcp-tools.json",
+      "line": 4879,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "36a0ca757366e488360a0d58bf10ca8877382262f6eb401e98202294b5946868"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-63f174882b34a48045f5d457ea02ba15baf1de25/schemas/generated/openapi.json",
+      "line": 3940,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "9825db64df4bbffa859aa9862faf43d9355a24d213bb5ff79f2f1572035e645b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-63f174882b34a48045f5d457ea02ba15baf1de25/packages/core/src/generated/contracts.json",
+      "line": 5494,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "059bff2c42dbb21c3d321a2c70ef4d16e40bbe072c9779eef8c177646bf41b78"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "a.b",
+    "api.github.com",
+    "c.d",
+    "ci.example.com",
+    "e.org",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mcp.context7.com",
+    "reqseq.dev",
+    "thomasbirkmaier.github.io",
+    "www.npmjs.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

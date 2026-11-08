@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "530653327/exphub",
+    "version": "51aacbe75f5d0cb9c788d73c1d72f9dc99f0a9dc",
+    "download": "https://codeload.github.com/530653327/exphub/tar.gz/51aacbe75f5d0cb9c788d73c1d72f9dc99f0a9dc"
+  },
+  "archive_sha256": "b1b1f7b415bd29b6a10cc5408c333c7b19882d0b1bef38f246b8625c62ae8cd0",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "exphub-51aacbe75f5d0cb9c788d73c1d72f9dc99f0a9dc/tools/refresh_df_snapshot.py",
+      "line": 164,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "089bcf020446068a2c1b6305e35c8ca19b14a19dc1899d8604af891091c27d23"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "cdn.jsdelivr.net",
+    "cloudim.club",
+    "developer.apple.com",
+    "gitee.com",
+    "github.com",
+    "maven.apache.org",
+    "repo.maven.apache.org",
+    "www.apache.org",
+    "www.thymeleaf.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

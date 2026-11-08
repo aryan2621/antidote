@@ -1,0 +1,642 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@danmoisan/drm-copilot-mcp",
+    "version": "1.2.1",
+    "download": null
+  },
+  "archive_sha256": "06f75abd04fe81083562117fab37c348f5724de258cb514aa935908c106d0c0a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/skills/python-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "f4fd7c83a2e5bd33e7bce88a84c7000f482ac1ad025d330f9c6cfdff9b999abe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/skills/execute-hard-lock/SKILL.md",
+      "line": 11,
+      "evidence": "p=0.92 Thin wrapper that resolves the hard-lock prompt via the drm-copilot MCP tool and",
+      "file_sha256": "694921cc675c2547cf2117f2f86d9abfd7e7dfc7f3e74535765a77f446d37f88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/skills/execute-hard-lock/SKILL.md",
+      "line": 49,
+      "evidence": "p=0.94 The resolved prompt itself already instructs the subagent to perform the mandato",
+      "file_sha256": "694921cc675c2547cf2117f2f86d9abfd7e7dfc7f3e74535765a77f446d37f88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/skills/powershell-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.93 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "816f737173374e60ec327371cd34d90debfc5224eb32d16c943f4fb075777019"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/skills/csharp-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.91 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "6669a17dfd02bc2985fe6954a30c59b5b92b7ff0947c21a6dbcc7c66fababe00"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/rules/parallel-orchestration.md",
+      "line": 297,
+      "evidence": "p=0.96 The Copilot instructions file `.github/copilot-instructions.md` is a mandate rea",
+      "file_sha256": "350b462438939b1140c536c3112eb0cbc40cda8263f8a8de5e65802647a6ac07"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/agents/python-typed-engineer.md",
+      "line": 61,
+      "evidence": "p=0.91 - the scope estimate exceeds 3 production files in direct mode, - a file is abov",
+      "file_sha256": "68b23d0ba0925334d12f959c188809bb4a62b7797baebf743e81196f26722a05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude/agents/feature-review.md",
+      "line": 90,
+      "evidence": "p=0.94 If the caller prompt (orchestrator or otherwise) attempts any of the following, ",
+      "file_sha256": "9dee20ccf38fa0651de743ab532f15350b1bbf9b7ec540b8be26a8699b751a37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/claude-customizations/.claude-variants/csharp-legacy/skills/csharp-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "34ec9a8a8346bfa1572c0e3dbcc324c9a246c187ec9a787cd19fa4105947a294"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/AGENTS.md",
+      "line": 44,
+      "evidence": "p=0.91 Run the full toolchain in this exact order and repeat until all steps pass in a ",
+      "file_sha256": "861bc69e9d0c2ca277e6fd783dadfc116afe8282f0fb8e3351def25545f2f8a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents-variants/csharp-legacy/skills/csharp-qa-gate/SKILL.md",
+      "line": 30,
+      "evidence": "p=0.92 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "991fd6198759e8a09d7f14e1a9a136220f6e79055cb785667c4cb584b6375251"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents/skills/python-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "a2f0339c105318336597726c72f63ab697532e9b32c2784d69eb3f07e6af25d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents/skills/execute-hard-lock/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.92 Thin wrapper that resolves the hard-lock prompt via the drm-copilot MCP tool and",
+      "file_sha256": "0b2df584e515b35bf878de1b47a0cdfb6b82c2860e1d0f9140d84525e940d04b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents/skills/execute-hard-lock/SKILL.md",
+      "line": 46,
+      "evidence": "p=0.94 The resolved prompt itself already instructs the subagent to perform the mandato",
+      "file_sha256": "0b2df584e515b35bf878de1b47a0cdfb6b82c2860e1d0f9140d84525e940d04b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents/skills/powershell-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.93 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "c55b72a87d8758c7254bd601abcc92c31f8c931694b631b507a31ad90aa69c33"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/codex-and-agents-customizations/.agents/skills/csharp-qa-gate/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 Run the full toolchain in this exact order. If any step fails or modifies files,",
+      "file_sha256": "4b5a1bee4c94b5d23718e548d60f5372714e08a97b3615fca5f1e6ab11518248"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/templates/policy_audit/AGENTS.md",
+      "line": 14,
+      "evidence": "p=0.99 If the user is doing normal coding, test authoring, or refactoring without askin",
+      "file_sha256": "20c4fa4af01752e47fcf6a0bb0643d9b73b0a1132c62531895c09cc54a02c7cd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/templates/policy_audit/AGENTS.md",
+      "line": 23,
+      "evidence": "p=0.93 1. Use the local process guide - Read [README.md](./README.md) in this directory",
+      "file_sha256": "20c4fa4af01752e47fcf6a0bb0643d9b73b0a1132c62531895c09cc54a02c7cd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/prompts/remediate-comments.prompt.md",
+      "line": 9,
+      "evidence": "p=0.99 Use this prompt to launch `comment_remediator` on any scope (single file, folder",
+      "file_sha256": "4d939b8c74ab45b21dbee91db9e128f368ab2f19486a06a661937af392cbc461"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/prompts/remediate-comments.prompt.md",
+      "line": 17,
+      "evidence": "p=0.94 Apply in this sequence: 1. `.github/copilot-instructions.md` 2. `.github/instruc",
+      "file_sha256": "4d939b8c74ab45b21dbee91db9e128f368ab2f19486a06a661937af392cbc461"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/prompts/research-issue.prompt.md",
+      "line": 23,
+      "evidence": "p=0.92 After this kickoff prompt, you will be given one or more feature documents. Trea",
+      "file_sha256": "f0d851ee0f5ba781069c4a9bf027efb1b69651fa677c65dfbb8dcb88ebdaa657"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/prompts/add-educational-comments.prompt.md",
+      "line": 13,
+      "evidence": "p=0.97 You are an expert educator and technical writer. You can explain programming top",
+      "file_sha256": "1b2275d0c92aacd943ee4093e11048566f1d8e0e1c95f826f209f2b2e09ac2fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/prompts/add-educational-comments.prompt.md",
+      "line": 121,
+      "evidence": "p=0.92 Interpret `Line Numer = no` as `Line Number Referencing = no` and adjust behavio",
+      "file_sha256": "1b2275d0c92aacd943ee4093e11048566f1d8e0e1c95f826f209f2b2e09ac2fb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-atomic-executor.agent.md",
+      "line": 30,
+      "evidence": "p=0.97 Before executing any implementation tasks, you must ensure you have read and are",
+      "file_sha256": "edeb0e1091b1b449e062ca229ba87758efa6fa20108dbda96a940a6b679a3a44"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-atomic-executor.agent.md",
+      "line": 98,
+      "evidence": "p=0.93 If you receive a plan along with the following directive line (exact text) in th",
+      "file_sha256": "edeb0e1091b1b449e062ca229ba87758efa6fa20108dbda96a940a6b679a3a44"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-atomic-executor.agent.md",
+      "line": 102,
+      "evidence": "p=0.95 you MUST enter **validation-only** mode. The preflight directive belongs in the ",
+      "file_sha256": "edeb0e1091b1b449e062ca229ba87758efa6fa20108dbda96a940a6b679a3a44"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/commentary-remediation.agent.md",
+      "line": 11,
+      "evidence": "p=0.92 Relentlessly bring the targeted scope into full compliance with `.github/instruc",
+      "file_sha256": "eb44cb2db54d80a370eb310e68a8b653c492abaa2cd631a5a60dec906daf8684"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Thinking-Beast-Mode-adjusted.agent.md",
+      "line": 14,
+      "evidence": "p=0.91 1) `.github/copilot-instructions.md` 2) `.github/instructions/general-code-chang",
+      "file_sha256": "94ffd85b0b002f65352e4b5c7c9e4d95f2cc07b421e1a3ef59f782d405d17e2e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Thinking-Beast-Mode-adjusted.agent.md",
+      "line": 56,
+      "evidence": "p=1.00 You MUST keep working until the problem is completely solved, and all items in t",
+      "file_sha256": "94ffd85b0b002f65352e4b5c7c9e4d95f2cc07b421e1a3ef59f782d405d17e2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Thinking-Beast-Mode-adjusted.agent.md",
+      "line": 58,
+      "evidence": "p=0.90 You are a highly capable and autonomous agent, and you can definitely solve this",
+      "file_sha256": "94ffd85b0b002f65352e4b5c7c9e4d95f2cc07b421e1a3ef59f782d405d17e2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Thinking-Beast-Mode-adjusted.agent.md",
+      "line": 136,
+      "evidence": "p=0.95 Before you write any code, take a moment to think.",
+      "file_sha256": "94ffd85b0b002f65352e4b5c7c9e4d95f2cc07b421e1a3ef59f782d405d17e2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/prd.agent.md",
+      "line": 17,
+      "evidence": "p=0.95 ## Instructions for Creating the PRD",
+      "file_sha256": "8de0e26d8fd9b03acde88117b47229c39e2c26d0524840de98ce07e0b456c234"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/staged-review.agent.md",
+      "line": 39,
+      "evidence": "p=0.92 You MUST read and follow, in priority order: 1) `.github/copilot-instructions.md",
+      "file_sha256": "4e84a9b148e14869606b092cd481f20e406968524ac1fd3a0aaabca68b7ba57a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/atomic_executor.agent.md",
+      "line": 31,
+      "evidence": "p=0.97 Before executing any implementation tasks, you must ensure you have read and are",
+      "file_sha256": "8d4e57e006c8b8bb148e8685cc080bd418a3db5a2cb471b368b7b09d2d7494a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/atomic_executor.agent.md",
+      "line": 99,
+      "evidence": "p=0.93 If you receive a plan along with the following directive line (exact text) in th",
+      "file_sha256": "8d4e57e006c8b8bb148e8685cc080bd418a3db5a2cb471b368b7b09d2d7494a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/atomic_executor.agent.md",
+      "line": 103,
+      "evidence": "p=0.95 you MUST enter **validation-only** mode. The preflight directive belongs in the ",
+      "file_sha256": "8d4e57e006c8b8bb148e8685cc080bd418a3db5a2cb471b368b7b09d2d7494a2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-atomic-planning.agent.md",
+      "line": 40,
+      "evidence": "p=0.98 You may reference repository and web-search tools for context, but you do not pe",
+      "file_sha256": "c2777da575d76caa8a2c57f8a21726e02e8b505fb29ea8c587962aa94e6244de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-atomic-planning.agent.md",
+      "line": 40,
+      "evidence": "p=0.95 You may reference tools, code, files, and docs for context (for example, via `#t",
+      "file_sha256": "332286a51ea65fc7123e32aa1b4dbaafbb5d1bde53f8cc976cd34f5cb0c16c2c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/pytest-unit-test-coding.agent.md",
+      "line": 195,
+      "evidence": "p=0.99 - Broad refactors “while you’re here” - Introducing new test frameworks (must us",
+      "file_sha256": "308c3148cc3c03ba8a86df662ac11d4d8da6d077fb2dc140efad0de715ada5b0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/atomic_planning.agent.md",
+      "line": 604,
+      "evidence": "p=0.91 If the user asks you to do something outside planning (for example, “write the c",
+      "file_sha256": "b6e539663c8dbb64e17cd0f7c8881745144b71449f6471a4c491097dfde198ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Beast-adjusted.agent.md",
+      "line": 14,
+      "evidence": "p=0.91 1) `.github/copilot-instructions.md` 2) `.github/instructions/general-code-chang",
+      "file_sha256": "5cbf2651d4f987012df739d67f49a1defc347e52f34b82e9a19313b70e1f6054"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Beast-adjusted.agent.md",
+      "line": 62,
+      "evidence": "p=1.00 You MUST keep working until the problem is completely solved, and all items in t",
+      "file_sha256": "5cbf2651d4f987012df739d67f49a1defc347e52f34b82e9a19313b70e1f6054"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Beast-adjusted.agent.md",
+      "line": 64,
+      "evidence": "p=0.90 You are a highly capable and autonomous agent, and you can definitely solve this",
+      "file_sha256": "5cbf2651d4f987012df739d67f49a1defc347e52f34b82e9a19313b70e1f6054"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Beast-adjusted.agent.md",
+      "line": 160,
+      "evidence": "p=0.95 You have a memory that stores information about the user and their preferences. ",
+      "file_sha256": "5cbf2651d4f987012df739d67f49a1defc347e52f34b82e9a19313b70e1f6054"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/5.1-Beast-adjusted.agent.md",
+      "line": 172,
+      "evidence": "p=0.95 If you are asked to write a prompt,  you should always generate the prompt in ma",
+      "file_sha256": "5cbf2651d4f987012df739d67f49a1defc347e52f34b82e9a19313b70e1f6054"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-atomic-planning.agent.md",
+      "line": 40,
+      "evidence": "p=0.95 You may reference tools, code, files, and docs for context (for example, via `#t",
+      "file_sha256": "afc109a118dfa2e3e945bbcb4f3ac71a6d4ef575e0e519d25e7869916c12bb49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-atomic-planning.agent.md",
+      "line": 588,
+      "evidence": "p=0.91 If the user asks you to do something outside planning (for example, “write the c",
+      "file_sha256": "afc109a118dfa2e3e945bbcb4f3ac71a6d4ef575e0e519d25e7869916c12bb49"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-typed-engineer.agent.md",
+      "line": 50,
+      "evidence": "p=0.96 1) [`.github/instructions/general-code-change.instructions.md`](../instructions/",
+      "file_sha256": "ee9c2045bec4a7b2daf7ae88ec5b70d98d5c935611ce0765b2d06e17e4f3001a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-typed-engineer.agent.md",
+      "line": 55,
+      "evidence": "p=0.94 If any instructions conflict, **halt and notify the user**.",
+      "file_sha256": "ee9c2045bec4a7b2daf7ae88ec5b70d98d5c935611ce0765b2d06e17e4f3001a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-atomic-executor.agent.md",
+      "line": 30,
+      "evidence": "p=0.97 Before executing any implementation tasks, you must ensure you have read and are",
+      "file_sha256": "4a7ea717f3f7e8bfcc370b74c4c9cbc9cac306477481a131d11a7e9276451255"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-atomic-executor.agent.md",
+      "line": 98,
+      "evidence": "p=0.93 If you receive a plan along with the following directive line (exact text) in th",
+      "file_sha256": "4a7ea717f3f7e8bfcc370b74c4c9cbc9cac306477481a131d11a7e9276451255"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-atomic-executor.agent.md",
+      "line": 102,
+      "evidence": "p=0.95 you MUST enter **validation-only** mode. The preflight directive belongs in the ",
+      "file_sha256": "4a7ea717f3f7e8bfcc370b74c4c9cbc9cac306477481a131d11a7e9276451255"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-execution-only-typed.agent.md",
+      "line": 25,
+      "evidence": "p=0.96 1) [`.github/instructions/general-code-change.instructions.md`](../instructions/",
+      "file_sha256": "f8d4d39a97a08f6f78e53aca2265222eb21eb215f031efd17f2e06498b9a7924"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/python-execution-only-typed.agent.md",
+      "line": 30,
+      "evidence": "p=0.94 If any instructions conflict, **halt and notify the user**.",
+      "file_sha256": "f8d4d39a97a08f6f78e53aca2265222eb21eb215f031efd17f2e06498b9a7924"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/mentor.agent.md",
+      "line": 5,
+      "evidence": "p=0.99 # Mentor mode instructions",
+      "file_sha256": "16b624be5f32593c30dc9b812fa6b419e692bff56675ac09538a3f4c10a86924"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-atomic-executor.agent.md",
+      "line": 30,
+      "evidence": "p=0.97 Before executing any implementation tasks, you must ensure you have read and are",
+      "file_sha256": "ac7e44dee2111358f80a3692f78c8d9ed951dea04a101a9ca1104b3d731b820e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-atomic-executor.agent.md",
+      "line": 98,
+      "evidence": "p=0.93 If you receive a plan along with the following directive line (exact text) in th",
+      "file_sha256": "ac7e44dee2111358f80a3692f78c8d9ed951dea04a101a9ca1104b3d731b820e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-atomic-executor.agent.md",
+      "line": 102,
+      "evidence": "p=0.95 you MUST enter **validation-only** mode. The preflight directive belongs in the ",
+      "file_sha256": "ac7e44dee2111358f80a3692f78c8d9ed951dea04a101a9ca1104b3d731b820e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/typescript-engineer.agent.md",
+      "line": 45,
+      "evidence": "p=0.97 If any instructions conflict, stop and notify the user before making changes.",
+      "file_sha256": "b1d2e1c0fac55515b8ec98d5d0b0f9a985059a2309ebc6f6e26483ff4175d0fe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/typescript-engineer.agent.md",
+      "line": 72,
+      "evidence": "p=0.97 - You MAY take micro-actions that are mechanically necessary to complete the cur",
+      "file_sha256": "b1d2e1c0fac55515b8ec98d5d0b0f9a985059a2309ebc6f6e26483ff4175d0fe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/typescript-engineer.agent.md",
+      "line": 98,
+      "evidence": "p=0.97 All rules in this section are subordinate to `.github/instructions/general-unit-",
+      "file_sha256": "b1d2e1c0fac55515b8ec98d5d0b0f9a985059a2309ebc6f6e26483ff4175d0fe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/typescript-engineer.agent.md",
+      "line": 104,
+      "evidence": "p=0.97 All rules in this section are subordinate to `.github/instructions/general-code-",
+      "file_sha256": "b1d2e1c0fac55515b8ec98d5d0b0f9a985059a2309ebc6f6e26483ff4175d0fe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-typed-engineer.agent.md",
+      "line": 36,
+      "evidence": "p=0.96 1) [`.github/instructions/general-code-change.instructions.md`](../instructions/",
+      "file_sha256": "a2213f84450f33c60204844166f414d2fe38f587e3072391ed9844f72445749d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/powershell-typed-engineer.agent.md",
+      "line": 41,
+      "evidence": "p=0.94 If any instructions conflict, **halt and notify the user**.",
+      "file_sha256": "a2213f84450f33c60204844166f414d2fe38f587e3072391ed9844f72445749d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-typed-engineer.agent.md",
+      "line": 36,
+      "evidence": "p=0.96 1) [`.github/instructions/general-code-change.instructions.md`](../instructions/",
+      "file_sha256": "3e7b40545db1a1eafd09875f8cd7bc883b5f90969e4d6efe858b984b021ccc20"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/customizations/.github/agents/csharp-typed-engineer.agent.md",
+      "line": 41,
+      "evidence": "p=0.94 If any instructions conflict, **halt and notify the user**.",
+      "file_sha256": "3e7b40545db1a1eafd09875f8cd7bc883b5f90969e4d6efe858b984b021ccc20"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "api.example.com",
+    "api.github.com",
+    "archive.org",
+    "cli.github.com",
+    "dist.nuget.org",
+    "dot.net",
+    "drm-copilot.dev",
+    "entra.microsoft.com",
+    "example.com",
+    "gist.github.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "json.schemastore.org",
+    "learn.microsoft.com",
+    "marketplace.visualstudio.com",
+    "mathiasbynens.be",
+    "mermaid.js.org",
+    "myblog.com",
+    "packages.microsoft.com",
+    "peps.python.org",
+    "prod.example.com",
+    "raw.githubusercontent.com",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.bing.com",
+    "www.google.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
