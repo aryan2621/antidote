@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@fabiannabi/blueprint-mcp",
+    "version": "0.1.1",
+    "download": null
+  },
+  "archive_sha256": "613fa07886feee12849c1b0d48b368787fd4c0e15c6ee634aeb1d6f4deeba187",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/SECURITY.md",
+      "line": 27,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "061d47acb89ae23aa7557269607d2d405f373ce413066e88c7be9a864744b167"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/SECURITY.md",
+      "line": 27,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "061d47acb89ae23aa7557269607d2d405f373ce413066e88c7be9a864744b167"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-08T06:37:43.574Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "docs.zizmor.sh",
+    "fabiannabi.github.io",
+    "github.com",
+    "modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

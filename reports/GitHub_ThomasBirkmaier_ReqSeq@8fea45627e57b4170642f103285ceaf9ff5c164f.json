@@ -1,0 +1,85 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "8fea45627e57b4170642f103285ceaf9ff5c164f",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/8fea45627e57b4170642f103285ceaf9ff5c164f"
+  },
+  "archive_sha256": "2a9a7c4ce7972e6810d51517e5e81247a47a3fd4b665ea9213cf9140f6570187",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-8fea45627e57b4170642f103285ceaf9ff5c164f/docs/guide/how-to/install-reqseq.md",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "6b4840570f04a8aa5a634658fb82507db5f383fea1e714dce00b8daa305e90ee"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-8fea45627e57b4170642f103285ceaf9ff5c164f/schemas/generated/mcp-tools.json",
+      "line": 4865,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "dc05c236d60afa5424b4feaa5925c1a2c3aafc1af93c4d428e977d60c699b915"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-8fea45627e57b4170642f103285ceaf9ff5c164f/schemas/generated/openapi.json",
+      "line": 3926,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "baa3534b2db3192b1668b2fe9e037cbb61f42b96a5123a5dfead783d71a8c113"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-8fea45627e57b4170642f103285ceaf9ff5c164f/packages/core/src/generated/contracts.json",
+      "line": 5480,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "77300c939f66adbe36f789b7c4e1d5948370d9da9dd89d169fc3454c39ecdcc1"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "example.invalid",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "a.b",
+    "api.github.com",
+    "c.d",
+    "ci.example.com",
+    "e.org",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mcp.context7.com",
+    "reqseq.dev",
+    "thomasbirkmaier.github.io",
+    "www.npmjs.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

