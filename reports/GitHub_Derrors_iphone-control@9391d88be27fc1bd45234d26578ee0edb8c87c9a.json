@@ -1,0 +1,105 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Derrors/iphone-control",
+    "version": "9391d88be27fc1bd45234d26578ee0edb8c87c9a",
+    "download": "https://codeload.github.com/Derrors/iphone-control/tar.gz/9391d88be27fc1bd45234d26578ee0edb8c87c9a"
+  },
+  "archive_sha256": "80102d1accf246a5e7aae61e1c43f43f52f95c7f6d2c0d8de4a6344a2e0fd969",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-9391d88be27fc1bd45234d26578ee0edb8c87c9a/docs/dev/macos-verification.md",
+      "line": 54,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "e98e95d935121725b0df96d547bcea15365ce4e9f85363bb9debc2b9f814e1b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-9391d88be27fc1bd45234d26578ee0edb8c87c9a/website/deploy/macos.md",
+      "line": 53,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "c6b1d5c41a5705a68cdf5dd0e6b4bfd9b8b5bbccef1fd884164d60f3c8399da5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "iphone-control-9391d88be27fc1bd45234d26578ee0edb8c87c9a/website/deploy/macos.md",
+      "line": 41,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "c6b1d5c41a5705a68cdf5dd0e6b4bfd9b8b5bbccef1fd884164d60f3c8399da5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iphone-control-9391d88be27fc1bd45234d26578ee0edb8c87c9a/website/en/deploy/macos.md",
+      "line": 53,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "bcad7279766c120eac45fefb71df22b79151e693f94e8fc54de5c91ba6780da9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "iphone-control-9391d88be27fc1bd45234d26578ee0edb8c87c9a/website/en/deploy/macos.md",
+      "line": 41,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "bcad7279766c120eac45fefb71df22b79151e693f94e8fc54de5c91ba6780da9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "m8ven.ai",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "ani.example.com",
+    "ani.f1sh.me",
+    "api.apple-cloudkit.com",
+    "api.day.app",
+    "api.telegram.org",
+    "appstoreconnect.apple.com",
+    "crates.io",
+    "derrors.github.io",
+    "developer.apple.com",
+    "developerservices2.apple.com",
+    "docs.rs",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "gregoryszorc.com",
+    "gsa.apple.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "m8ven.ai",
+    "mac-ani.jkcoxson.com",
+    "modelcontextprotocol.io",
+    "mozilla.org",
+    "opensource.apple.com",
+    "raw.githubusercontent.com",
+    "rustup.rs",
+    "semver.org",
+    "sh.rustup.rs",
+    "timestamp.apple.com",
+    "vitepress.dev",
+    "ws.codesign.gregoryszorc.com",
+    "www.apple.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

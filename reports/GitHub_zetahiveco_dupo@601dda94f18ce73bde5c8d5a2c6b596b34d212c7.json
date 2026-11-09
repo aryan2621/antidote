@@ -1,0 +1,712 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zetahiveco/dupo",
+    "version": "601dda94f18ce73bde5c8d5a2c6b596b34d212c7",
+    "download": "https://codeload.github.com/zetahiveco/dupo/tar.gz/601dda94f18ce73bde5c8d5a2c6b596b34d212c7"
+  },
+  "archive_sha256": "ccc4db01e1be75f66c82a33d8dddaf36084fe3bd411dbaeeed8e1832ce3fecc4",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/README.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://getdupo.vercel.app/install.sh | sh",
+      "file_sha256": "bd05af32d9842a36cb6f5fd7255056f80bb45092145b4b5aaf1cb1249b8e89d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/website/index.html",
+      "line": 283,
+      "evidence": "curl -fsSL https://getdupo.vercel.app/install.sh | sh",
+      "file_sha256": "b68af1dd3c687d379bb3c8a4860980bbac8d7bd4b1f166590823d16f4bf62139"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/website/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://getdupo.vercel.app/install.sh | sh",
+      "file_sha256": "fbba428d6f5e07b2c6fb8702bdb6f5d1fbfcf7268852577a79bf362043b6ebf3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2352,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2388,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2460,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2634,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2904,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3414,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 3888,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4050,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4056,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4062,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4080,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 4086,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all write related commands without any pre-configured accessible pa",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1,
+      "evidence": "p=0.99 This enables all file write related commands without any pre-configured accessib",
+      "file_sha256": "12d21388a7dcb178f6e37a9dd7cff36faef1458e9d6e06de651da159a1fd8838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2352,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2388,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2460,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2634,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2280,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2904,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3414,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 3888,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4050,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4056,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4062,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4080,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 4086,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1223,
+      "evidence": "p=0.96 Enables the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1235,
+      "evidence": "p=0.91 Enables the write_text_file command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1397,
+      "evidence": "p=0.92 Denies the write command without any pre-configured scope.",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1415,
+      "evidence": "p=0.96 This enables all read related commands without any pre-configured accessible pat",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "dupo-601dda94f18ce73bde5c8d5a2c6b596b34d212c7/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1433,
+      "evidence": "p=0.95 This enables all index or metadata related commands without any pre-configured a",
+      "file_sha256": "cd016d85f0a507bd4ad8c0994ddd3f8658faa6490906e5789c31884d1f57de5a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "c2pa.org",
+    "dupo.vercel.app",
+    "getdupo.vercel.app",
+    "github.com",
+    "json-schema.org",
+    "modelcontextprotocol.io",
+    "mydomain.dev",
+    "nodejs.org",
+    "opencollective.com",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "schema.tauri.app",
+    "schemas.openxmlformats.org",
+    "tidelift.com",
+    "urlpattern.spec.whatwg.org",
+    "v2.tauri.app",
+    "www.patreon.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
