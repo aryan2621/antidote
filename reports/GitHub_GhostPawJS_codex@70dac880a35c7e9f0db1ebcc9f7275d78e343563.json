@@ -1,0 +1,163 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GhostPawJS/codex",
+    "version": "70dac880a35c7e9f0db1ebcc9f7275d78e343563",
+    "download": "https://codeload.github.com/GhostPawJS/codex/tar.gz/70dac880a35c7e9f0db1ebcc9f7275d78e343563"
+  },
+  "archive_sha256": "4e01c6bd5e92590326f1ce207efd0580dc13d6272dcaa08e8c4cb31357aae155",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/src/surface/codex_skill_spec.ts",
+      "line": 21,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "6368928329dbd4e7f730e612bf0b353719cbc6d4f174aef40307a8d9d4c71924"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "81b98fc249abdc73c93707312c3418fb3d08ddc870f2b2ad616ac98e1ce78c70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/SKILL.md",
+      "line": 166,
+      "evidence": "p=0.91 WARNING: Hard-deletes the whole lineage (the belief and all its predecessors/suc",
+      "file_sha256": "81b98fc249abdc73c93707312c3418fb3d08ddc870f2b2ad616ac98e1ce78c70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/llms-install.md",
+      "line": 27,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh \\|",
+      "file_sha256": "c1d7fa5e173e8f25a1de33799fce4434891a57e9c0f6674b644dbd2a96da1bc9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/README.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "bcd6d92685ff3db10b410d548dae349181617301d6cce718761b3414b4393056"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/README.md",
+      "line": 140,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "bcd6d92685ff3db10b410d548dae349181617301d6cce718761b3414b4393056"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/skills/codex/SKILL.md",
+      "line": 15,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "81b98fc249abdc73c93707312c3418fb3d08ddc870f2b2ad616ac98e1ce78c70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/skills/codex/SKILL.md",
+      "line": 166,
+      "evidence": "p=0.91 WARNING: Hard-deletes the whole lineage (the belief and all its predecessors/suc",
+      "file_sha256": "81b98fc249abdc73c93707312c3418fb3d08ddc870f2b2ad616ac98e1ce78c70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/skills/codex/references/review-flags-batch.md",
+      "line": 38,
+      "evidence": "p=0.91 Pitfalls: - Do not confirm every flagged belief automatically just to clear the ",
+      "file_sha256": "3cc7de9f036ef7dda6aeec0fbe654a1c33d933ea769dceb2f1f11a24e53666e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "e82d6dd4b04d05e2841e3b81d250eabc2488f9c906874499c168941674b02c01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/.github/workflows/install-check.yml",
+      "line": 38,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GhostPawJS/codex/main/install.sh | ",
+      "file_sha256": "78a398923b0478ebb26669b331e6e7a13bdc821e3e8bbd8379e267bc2539097b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "codex-70dac880a35c7e9f0db1ebcc9f7275d78e343563/mcpb/manifest.json",
+      "line": 96,
+      "evidence": "p=0.91 WARNING: Hard-deletes the whole lineage (the belief and all its predecessors/suc",
+      "file_sha256": "79ce2f1dee365f21b7a3e5700a2a638c3765cc2dc1171281860785e538f51fbe"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "aiagentslisting.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "agent-plugins.org",
+    "agentskills.io",
+    "aiagentslisting.com",
+    "anonyfox.com",
+    "api.github.com",
+    "aquaproj.github.io",
+    "biomejs.dev",
+    "cli.github.com",
+    "codex.ghostpaw.dev",
+    "example.com",
+    "fonts.googleapis.com",
+    "ghostpaw.dev",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "keepachangelog.com",
+    "lab.anonyfox.com",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "semver.org",
+    "static.cloudflareinsights.com",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

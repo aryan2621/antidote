@@ -1,0 +1,70 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "renzactus/wacrawl-mcp",
+    "version": "2041c85f560219170334eabd786df57b0b41c833",
+    "download": "https://codeload.github.com/renzactus/wacrawl-mcp/tar.gz/2041c85f560219170334eabd786df57b0b41c833"
+  },
+  "archive_sha256": "ddce44f6bf562e335cbf25c92f74d53b07b2ed25c7dd0421cc66d254a367fb55",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "wacrawl-mcp-2041c85f560219170334eabd786df57b0b41c833/README.md",
+      "line": 107,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/renzactus/wacrawl-mcp/master/instal",
+      "file_sha256": "32fff9089b22e279505218e9cf0d302510deadcd4ba9a7173bb968cd3fb6874e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "wacrawl-mcp-2041c85f560219170334eabd786df57b0b41c833/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/renzactus/wacrawl-mcp/master/instal",
+      "file_sha256": "43ba2818940c612c698efa4a3faf46cec8f83bc8c882c86a73712f724addf37a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "wacrawl-mcp-2041c85f560219170334eabd786df57b0b41c833/setup-whisper.sh",
+      "line": 36,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "87f4eda2252fedd46af740a6c423bcb37d1792ed1efb586d436e2721c8750c40"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "wacrawl-mcp-2041c85f560219170334eabd786df57b0b41c833/setup-whisper.sh",
+      "line": 39,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "87f4eda2252fedd46af740a6c423bcb37d1792ed1efb586d436e2721c8750c40"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "wacrawl-mcp-2041c85f560219170334eabd786df57b0b41c833/TECHNICAL-NOTES.md",
+      "line": 65,
+      "evidence": "curl … \\| bash",
+      "file_sha256": "a2113fab45481f71efac3f6ac6cfce7e885a2d9a30bc5b8df1c0433e7a374133"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "claude.ai",
+    "github.com",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "raw.githubusercontent.com",
+    "www.apple.com",
+    "www.whatsapp.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

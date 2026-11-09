@@ -1,0 +1,100 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "pandadad0214/panda-federation-tools",
+    "version": "54d27de487e3a83ed71f8500f86715ca866ae02e",
+    "download": "https://codeload.github.com/pandadad0214/panda-federation-tools/tar.gz/54d27de487e3a83ed71f8500f86715ca866ae02e"
+  },
+  "archive_sha256": "eed476534a86f1181aa072eaea0b26a6076b6d9f2bffc713e4f046cb711328b6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "panda-federation-tools-54d27de487e3a83ed71f8500f86715ca866ae02e/llms-install.md",
+      "line": 6,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3724bae41061ca6796167c0375eb8002bd63dbede4b3518998e279f76f82debd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "panda-federation-tools-54d27de487e3a83ed71f8500f86715ca866ae02e/README.md",
+      "line": 25,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "aa6190e195c63024d295b270770af664a25d5ef96906525d985c38b683d09f65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "panda-federation-tools-54d27de487e3a83ed71f8500f86715ca866ae02e/scripts/install.sh",
+      "line": 7,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "707f11c2cb4a58015c808c295ed8b22f8af60976c958c09d83bef2a181958587"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "panda-federation-tools-54d27de487e3a83ed71f8500f86715ca866ae02e/scripts/install.sh",
+      "line": 7,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "707f11c2cb4a58015c808c295ed8b22f8af60976c958c09d83bef2a181958587"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "launchmcp.co, pandadad0214.github.io, your-site.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "acme.com",
+    "agensi.io",
+    "api.apify.com",
+    "apify.com",
+    "astral.sh",
+    "boards.greenhouse.io",
+    "competitor.com",
+    "console.apify.com",
+    "docs.apify.com",
+    "docs.astral.sh",
+    "doi.org",
+    "en.wikipedia.org",
+    "example.com",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jobs.ashbyhq.com",
+    "jobs.lever.co",
+    "keepachangelog.com",
+    "launchmcp.co",
+    "llmstxt.org",
+    "m8ven.ai",
+    "mcp.apify.com",
+    "pandadad0214--panda-research-mcp.apify.actor",
+    "pandadad0214.github.io",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "trust.apify.com",
+    "www.agensi.io",
+    "www.bls.gov",
+    "www.example.com",
+    "www.fishmanhaygood.com",
+    "www.fiverr.com",
+    "your-site.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

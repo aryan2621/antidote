@@ -1,0 +1,108 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "munhq/codeindex",
+    "version": "32900da1a45a4b8ce54fc8176da1b22554cae2e6",
+    "download": "https://codeload.github.com/munhq/codeindex/tar.gz/32900da1a45a4b8ce54fc8176da1b22554cae2e6"
+  },
+  "archive_sha256": "25ef0a009b115ba4d8947f4810fcedea902ad734d2567fa2d4ca0b6623f96e53",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/plugin/test_platform.sh",
+      "line": 150,
+      "evidence": "curl … | bash",
+      "file_sha256": "3f6885912429d9de619178373faa2d2ff3da16c2c10f6d9a0fc6d54c4697d916"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/plugin/hooks/session-brief.sh",
+      "line": 73,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/munhq/codeindex/main/install.sh | s",
+      "file_sha256": "9bd3550c20543088b2d15cb583b79decad9dbc909639c4ea0883ce6ebdcefc57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/README.md",
+      "line": 58,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/munhq/codeindex/main/install.sh | s",
+      "file_sha256": "ceecfe76dbd50e412723f85908013ebd566617cc0dbc903e72edf5fffdff135a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/README.md",
+      "line": 279,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "ceecfe76dbd50e412723f85908013ebd566617cc0dbc903e72edf5fffdff135a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/npm/README.md",
+      "line": 65,
+      "evidence": "curl \\| bash",
+      "file_sha256": "8802292b468fbb663ae5c9bdc783626299754d4acedda5d713e738cce62f4979"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/install.sh",
+      "line": 2,
+      "evidence": "curl … | bash",
+      "file_sha256": "b7a5b062f8cbd32b2ad7b0334b7d0f61b8658dc570423ee9e6ab5d597199309d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/llms.txt",
+      "line": 29,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/munhq/codeindex/main/install.sh | s",
+      "file_sha256": "ce7898f1fb5888cdacf6e15ac1634eed7e784c584065c717f9a6c0abf60de344"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "codeindex-32900da1a45a4b8ce54fc8176da1b22554cae2e6/llms.txt",
+      "line": 60,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "ce7898f1fb5888cdacf6e15ac1634eed7e784c584065c717f9a6c0abf60de344"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "anthropic.com",
+    "anysphere.cursor-deeplink",
+    "api.smithery.ai",
+    "desk.munhq.com",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "unpkg.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "ziglang.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
