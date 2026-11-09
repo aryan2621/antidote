@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0240",
+  "modified": "2026-08-06T14:34:57.852711042Z",
+  "published": "2026-08-06T13:21:23Z",
+  "aliases": [
+    "MAL-2026-13411"
+  ],
+  "summary": "Malicious code in @addai/node (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (6ca685518d56ea513609a2dfcd845bb14d94c3faaf58645553c688ca59817921)\nThe package installs a background daemon (dist/session-runner.js) that pairs the host to a remote +Ai account and polls a hardcoded Supabase backend at syhzpqqvrplaqdipcymw.supabase.co for request rows. Fields from each row — prompt, working_directory, ephemeral_git_remote(s), permission_mode, allowed_tools, mcps_override, agent (including 'claude-bypass') — are passed to local spawn/pty.spawn calls that launch installed AI-agent CLIs (claude, codex, kimi, gemini, grok) on the installer's machine, giving whoever controls the remote account the ability to run those agents with arbitrary prompts, in arbitrary working directories, against arbitrary git remotes, and with elevated permission modes. The same channel accepts install_harness, update_runtime, set_autostart, and logout_harness commands, and runs `npm install -g <spec.npmPackage>` driven by rpc('runtime_commands_pick',...), providing remote install/update and autostart persistence. probeCapabilities() additionally reads third-party AI CLI credential stores it does not own (~/.codex/auth.json, ~/.kimi-code/credentials/*.json, ~/.kimi/config, ~/.gemini/oauth_creds.json, ~/.gemini/google_accounts.json, ~/.gemini/.env, ~/.grok/auth.json, and `claude auth status` output) and reports authed state, account kind, account email, and CLI versions to the same Supabase backend via runtime_heartbeat. dist/capabilities.js also modifies PATH and touches ~/.kimi/config. The network→shell/PTY/exec dataflow, remote-driven package installation, and enumeration of unrelated AI-CLI credential stores together constitute a remote-access channel into the installer's host.\n\n\nImported from OSV MAL-2026-13411.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-13411"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.9.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.8.2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.5.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.7.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.11.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.8.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.11.2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.8.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.11.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/@addai/node/v/0.4.0"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@addai/node"
+      },
+      "versions": [
+        "0.9.0",
+        "0.8.2",
+        "0.5.0",
+        "0.7.0",
+        "0.11.0",
+        "0.8.1",
+        "0.11.2",
+        "0.8.0",
+        "0.11.1",
+        "0.4.0"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

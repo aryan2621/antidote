@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0237",
+  "modified": "2026-09-17T03:56:01.860448613Z",
+  "published": "2026-06-19T22:10:39Z",
+  "aliases": [
+    "GHSA-g2gw-q38m-vjfc",
+    "CVE-2026-58201"
+  ],
+  "summary": "@merill/lokka: Lokka: Azure Resource Manager URL path validation issue",
+  "details": "Lokka versions prior to 2.1.2 constructed Azure Resource Manager request URLs using direct string concatenation with user-controlled path input. Specially crafted path values could alter URL authority parsing and cause Azure Resource Manager bearer tokens to be sent to an unintended host. Version 2.1.2 fixes the issue by validating Azure paths before token acquisition and constructing Azure Resource Manager URLs with the standard URL API while preserving the expected management.azure.com host.\n\nReported by 정해창 <haechang__@naver.com>\n\nImported from OSV GHSA-g2gw-q38m-vjfc.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-g2gw-q38m-vjfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/merill/lokka/security/advisories/GHSA-g2gw-q38m-vjfc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/merill/lokka"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@merill/lokka"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.1.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}
