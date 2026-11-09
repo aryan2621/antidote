@@ -1,0 +1,318 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "PyPI",
+    "name": "skilltotal",
+    "version": "0.99.0",
+    "download": null
+  },
+  "archive_sha256": "0532a008f4bee7e3ff5d88ab9d6c218b0d73c29e6065b4de96fb8fefcda7dca0",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal.egg-info/PKG-INFO",
+      "line": 136,
+      "evidence": "curl … \\| bash",
+      "file_sha256": "a88d337b5f501df50669ae57553e193d92181e79d0a65a6f94bd332c1b74d16b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/skilltotal.egg-info/PKG-INFO",
+      "line": 144,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a88d337b5f501df50669ae57553e193d92181e79d0a65a6f94bd332c1b74d16b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/PKG-INFO",
+      "line": 136,
+      "evidence": "curl … \\| bash",
+      "file_sha256": "a88d337b5f501df50669ae57553e193d92181e79d0a65a6f94bd332c1b74d16b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/PKG-INFO",
+      "line": 144,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a88d337b5f501df50669ae57553e193d92181e79d0a65a6f94bd332c1b74d16b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/README.md",
+      "line": 93,
+      "evidence": "curl … \\| bash",
+      "file_sha256": "3e101d28f59a1639a391dc57d46fd4ea7b206f2c537cb04746c8eb0fcbd03e78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/README.md",
+      "line": 101,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3e101d28f59a1639a391dc57d46fd4ea7b206f2c537cb04746c8eb0fcbd03e78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/agent_hook.py",
+      "line": 163,
+      "evidence": "curl ... | bash",
+      "file_sha256": "31c77c520fea2f8145c5283e8db736d69f6c303177db0f0da7a3b31a87bfd73b"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/agent_hook.py",
+      "line": 244,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "31c77c520fea2f8145c5283e8db736d69f6c303177db0f0da7a3b31a87bfd73b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/base.py",
+      "line": 121,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "66db7d2e317c87794f7b692bd9bce362a520f92772363f4c2c3376aaf66d4db0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/shell_evasion.py",
+      "line": 345,
+      "evidence": "curl -LsSf https://host/install.sh | sh",
+      "file_sha256": "de6bc30bed02e81372d7b3c40e5db6c4f3fd30092ed166bf9976f8e11e00cd17"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/install_scripts.py",
+      "line": 94,
+      "evidence": "curl … | sh",
+      "file_sha256": "a4a7a9b2b16cf2db87c356b804d6f1ec8712e0f4a54a7268dfd6c5c379284637"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/install_scripts.py",
+      "line": 94,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "a4a7a9b2b16cf2db87c356b804d6f1ec8712e0f4a54a7268dfd6c5c379284637"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/pth_exec.py",
+      "line": 8,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "918a9945ea0e5108ab8393d9c04b0f7b086d8e67bcf48fd5316a9b4574e4d4a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/mcp.py",
+      "line": 116,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d1af6283100d31660c0e72404ec290a4bff26f58951518a1db8e407477753d63"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/mcp.py",
+      "line": 81,
+      "evidence": "<secret>",
+      "file_sha256": "d1af6283100d31660c0e72404ec290a4bff26f58951518a1db8e407477753d63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/shell_script.py",
+      "line": 5,
+      "evidence": "curl … | sh",
+      "file_sha256": "ced388f1d132cb40234ffbf7ba3e1ebe7a3e67fbd8b73561bcdb73fea7aa19d0"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/shell_script.py",
+      "line": 4,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "ced388f1d132cb40234ffbf7ba3e1ebe7a3e67fbd8b73561bcdb73fea7aa19d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/python_ast.py",
+      "line": 218,
+      "evidence": "curl … | bash",
+      "file_sha256": "74d06f1091927149dfddfe89c5f66d4eba963fbbff4086d686a886a91bb95c2d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/postex.py",
+      "line": 330,
+      "evidence": "curl ... | sh",
+      "file_sha256": "82c927e53f69fd615aa5672746dbcbc0b33556a332811c0543259feeed1fc32c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/postex.py",
+      "line": 466,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "82c927e53f69fd615aa5672746dbcbc0b33556a332811c0543259feeed1fc32c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/obfuscation.py",
+      "line": 791,
+      "evidence": "exec(b64decode(",
+      "file_sha256": "dd5cf21bba56e4b30bdd7ec2d68c6fa26f3dfc00948fdecf3b5a46bfc7980605"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/agent_config.py",
+      "line": 1345,
+      "evidence": "curl … | bash",
+      "file_sha256": "02fc5a2a3ec129aa8974cf618415c1acf30db1629a0e308a683ddc7435248b56"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/agent_config.py",
+      "line": 1306,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "02fc5a2a3ec129aa8974cf618415c1acf30db1629a0e308a683ddc7435248b56"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/prompt_surface.py",
+      "line": 216,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f5c2fe5b0842d1df473be33e3dcc27c546c3c2ef2c42c7e295a8bcb942c30d89"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/prompt_surface.py",
+      "line": 198,
+      "evidence": "do not tell the user",
+      "file_sha256": "f5c2fe5b0842d1df473be33e3dcc27c546c3c2ef2c42c7e295a8bcb942c30d89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/skill_fetch_exec.py",
+      "line": 6,
+      "evidence": "curl -fsSL https://host/x.sh | bash",
+      "file_sha256": "6b72238120d0406eb8957b9adecbf4b23cc9e9a127bedd39187deb3b40bbe635"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/skill_fetch_exec.py",
+      "line": 11,
+      "evidence": "without mentioning it to the user",
+      "file_sha256": "6b72238120d0406eb8957b9adecbf4b23cc9e9a127bedd39187deb3b40bbe635"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/scanners/shell_exec.py",
+      "line": 158,
+      "evidence": "curl ... | bash",
+      "file_sha256": "ef22e32060fa34c034ee8e2d0ed92140353d683d3dd76a1b00f9c0a26eebf846"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/file_index.py",
+      "line": 1105,
+      "evidence": "curl … | sh",
+      "file_sha256": "9e2f4d3a7abe4d26435947c1589d762417c890c1dc31cd0390c178f60c93b412"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skilltotal-0.99.0/skilltotal/file_index.py",
+      "line": 2196,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9e2f4d3a7abe4d26435947c1589d762417c890c1dc31cd0390c178f60c93b412"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skilltotal-0.99.0/skilltotal/engine.py",
+      "line": 1882,
+      "evidence": "curl … | bash",
+      "file_sha256": "14bb57cb6c94823f2cc1366eb71ce0f92ddcf5b71bc406e002b25d3461a24bb2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "api.osv.dev",
+    "api.scorecard.dev",
+    "astral.sh",
+    "evil.example",
+    "github.com",
+    "img.shields.io",
+    "json.schemastore.org",
+    "marketplace.visualstudio.com",
+    "mcp.example.com",
+    "open-vsx.org",
+    "osv.dev",
+    "owasp.org",
+    "pypi.org",
+    "pypi.python.org",
+    "raw.githubusercontent.com",
+    "registry.example",
+    "registry.npmjs.org",
+    "registry.yarnpkg.com",
+    "scorecard.dev",
+    "www.apache.org",
+    "www.skilltotal.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
