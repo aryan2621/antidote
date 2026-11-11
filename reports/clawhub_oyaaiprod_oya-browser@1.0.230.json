@@ -1,0 +1,40 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "oyaaiprod/oya-browser",
+    "version": "1.0.230",
+    "download": "https://clawhub.ai/api/v1/download?slug=oya-browser&ownerHandle=oyaaiprod&version=1.0.230"
+  },
+  "archive_sha256": "11bd2cb8b01f36ab666fc5b87bd02c166e6c6a17bd2378757e73a667c8de75a2",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 65,
+      "evidence": "p=0.99 **Native dialogs.** An `alert()` or `beforeunload` is answered for you and its t",
+      "file_sha256": "69c93d9a610c886850a507a21ed534d9519040f82acd185f132dac313fd64b16"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "clawhub.ai",
+    "example.com",
+    "oyabrowser.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

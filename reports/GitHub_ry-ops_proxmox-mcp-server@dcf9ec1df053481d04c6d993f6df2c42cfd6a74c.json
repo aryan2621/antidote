@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ry-ops/proxmox-mcp-server",
+    "version": "dcf9ec1df053481d04c6d993f6df2c42cfd6a74c",
+    "download": "https://codeload.github.com/ry-ops/proxmox-mcp-server/tar.gz/dcf9ec1df053481d04c6d993f6df2c42cfd6a74c"
+  },
+  "archive_sha256": "7c0a0813961dd3671af2fb4f7e842f61cd49cd6b8ed744e7349680b0a897ec97",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-dcf9ec1df053481d04c6d993f6df2c42cfd6a74c/setup.sh",
+      "line": 92,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d5c5976c03a7bc35564271f71daf8b57509a10003190bb23b7922d1430c08651"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "proxmox-mcp-server-dcf9ec1df053481d04c6d993f6df2c42cfd6a74c/setup.sh",
+      "line": 92,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d5c5976c03a7bc35564271f71daf8b57509a10003190bb23b7922d1430c08651"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-dcf9ec1df053481d04c6d993f6df2c42cfd6a74c/QUICKSTART.md",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "5bb2df242447f8f041bd48057d05fb78ac68e1b80d2bf3fa5503374f02b18524"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-dcf9ec1df053481d04c6d993f6df2c42cfd6a74c/README.md",
+      "line": 180,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3fbe85a327aca9c2d4794eb4e4e62a66433ae90cb0a17ab3e6437db440820e07"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.5",
+    "127.0.0.1",
+    "192.168.1.100",
+    "astral.sh",
+    "files.pythonhosted.org",
+    "forum.proxmox.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "pdm.proxmox.com",
+    "pdm.test",
+    "pve-mcp.lan",
+    "pve.proxmox.com",
+    "pve.test",
+    "pypi.org",
+    "semver.org",
+    "www.python.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

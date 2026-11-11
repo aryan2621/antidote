@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kajisho5/ffmpeg-skill",
+    "version": "6e42a79247909659b3d80833120b272fb5e46aba",
+    "download": "https://codeload.github.com/kajisho5/ffmpeg-skill/tar.gz/6e42a79247909659b3d80833120b272fb5e46aba"
+  },
+  "archive_sha256": "709801e0f311b9286b4dfbfe1d87a49c8225475b7849cf5ef778b9b8f7e5ed36",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ffmpeg-skill-6e42a79247909659b3d80833120b272fb5e46aba/.claude/skills/destructive-operations/SKILL.md",
+      "line": 73,
+      "evidence": "p=0.97 The guard needs to answer \"is every tracked path inside the directory this comma",
+      "file_sha256": "06decc8e6d2580632255d1562ca79b50ab597afb32beec2d84e28371f07fc29d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ffmpeg-skill-6e42a79247909659b3d80833120b272fb5e46aba/tests/test_contract.py",
+      "line": 6591,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "482ac6b9b51163e7003578a28b2c68ea059421b479bb8e08b4f7fe04ef28ceee"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "archive.org",
+    "docs.anthropic.com",
+    "docs.npmjs.com",
+    "doi.org",
+    "download.blender.org",
+    "example.com",
+    "ffmpeg.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.photographyblog.com",
+    "img.shields.io",
+    "johnvansickle.com",
+    "kajisho5.github.io",
+    "opensource.org",
+    "registry.npmjs.org",
+    "schema.org",
+    "snyk.io",
+    "storage.googleapis.com",
+    "unpkg.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.rtings.com",
+    "www.w3.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
