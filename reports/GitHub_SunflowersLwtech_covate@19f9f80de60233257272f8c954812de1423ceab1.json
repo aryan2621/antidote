@@ -1,0 +1,129 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "SunflowersLwtech/covate",
+    "version": "19f9f80de60233257272f8c954812de1423ceab1",
+    "download": "https://codeload.github.com/SunflowersLwtech/covate/tar.gz/19f9f80de60233257272f8c954812de1423ceab1"
+  },
+  "archive_sha256": "4da2538a9a38627555d3eeededaa807508613b4445c2b5baf1366560875fe6df",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/README.md",
+      "line": 191,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "dfe52d3ea1159bb16f29d9b2bd266e72a99fa425527ca61f9205967de945bb96"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/scripts/update.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "269f17a319b0bcd2301bbe911d3b463dd0eefc1f34cad77c15802e0398b420b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "3b4af2ef8b5da0b25883cf6351dae7a4ef8811d9a5428ccf4e4936f2bc93dca7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/scripts/install.sh",
+      "line": 112,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "3b4af2ef8b5da0b25883cf6351dae7a4ef8811d9a5428ccf4e4936f2bc93dca7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/scripts/install.sh",
+      "line": 146,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3b4af2ef8b5da0b25883cf6351dae7a4ef8811d9a5428ccf4e4936f2bc93dca7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/README_zh-CN.md",
+      "line": 147,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "009a87d92a858378a03fc033b4011fa692613b0f6f88f27bd7e4e9e1c469faa7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/README_zh-TW.md",
+      "line": 147,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "38d3f05b1926c63f22e9da01dbb3a0e1275d55b407182242a23acb3232b0cfe3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "covate-19f9f80de60233257272f8c954812de1423ceab1/CONTRIBUTING.md",
+      "line": 58,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "7b9d0d4e94eccb8699d024ed369d732d3911bd6195aea72f6f503bbcd79797b2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "arxiv.org",
+    "astral.sh",
+    "avatars.example",
+    "covate-platform.vercel.app",
+    "covate.org",
+    "cwe.mitre.org",
+    "deepwiki.com",
+    "developer.mozilla.org",
+    "docs.astral.sh",
+    "docs.conda.io",
+    "docs.github.com",
+    "docs.python.org",
+    "dora.dev",
+    "duocodetech.com",
+    "fluentdojo.com",
+    "foldrender.dev",
+    "git-scm.com",
+    "github.com",
+    "glama.ai",
+    "google.github.io",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "opensource.org",
+    "owasp.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "survey.stackoverflow.co",
+    "tidelift.com",
+    "widget.agenticcs.net",
+    "www.conventionalcommits.org",
+    "www.python.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,54 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "creativeuncommons/ZeroMCP",
+    "version": "9a1769a9a9d660a05b49586b7378108051783ba4",
+    "download": "https://codeload.github.com/creativeuncommons/ZeroMCP/tar.gz/9a1769a9a9d660a05b49586b7378108051783ba4"
+  },
+  "archive_sha256": "86c1586adc6112c33cafb57f377d7f77e8b086ab62d4f2af506d187e1a7f9193",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ZeroMCP-9a1769a9a9d660a05b49586b7378108051783ba4/USAGE.md",
+      "line": 739,
+      "evidence": "curl https://wasmtime.dev/install.sh | bash",
+      "file_sha256": "d1cfb9c45def7d4d8143ccd6eb53cec4c5b36cc740c87fdc853539d235096883"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ZeroMCP-9a1769a9a9d660a05b49586b7378108051783ba4/USAGE.md",
+      "line": 119,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "d1cfb9c45def7d4d8143ccd6eb53cec4c5b36cc740c87fdc853539d235096883"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ZeroMCP-9a1769a9a9d660a05b49586b7378108051783ba4/.github/workflows/release.yml",
+      "line": 171,
+      "evidence": "curl https://wasmtime.dev/install.sh -sSf | bash",
+      "file_sha256": "ca5390e2e3f66435795febd1b7e2ad745e19783fd0785ab65425b5c5d51bcb01"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "code.visualstudio.com",
+    "docs.cursor.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "semver.org",
+    "spec.modelcontextprotocol.io",
+    "wasmtime.dev",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

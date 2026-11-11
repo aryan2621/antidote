@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@agentisend/mcp-server",
+    "version": "0.1.5",
+    "download": null
+  },
+  "archive_sha256": "48546d86f03abe39258fbcf77b64706da7845c78950ef47fd872c4b1e064dc23",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/catalogue.json",
+      "line": 1980,
+      "evidence": "p=0.91 What the real send would answer.",
+      "file_sha256": "3683b6ac4a00be10f90ccba1e4d9c764da60f0cf78c7c231c77fa882c60f4296"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/catalogue.json",
+      "line": 5717,
+      "evidence": "p=0.99 The code you were refused with.",
+      "file_sha256": "3683b6ac4a00be10f90ccba1e4d9c764da60f0cf78c7c231c77fa882c60f4296"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "console.agentisend.com, json-schema.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "agentisend.com",
+    "api.agentisend.com",
+    "console.agentisend.com",
+    "github.com",
+    "json-schema.org",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

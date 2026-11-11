@@ -1,0 +1,324 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "toprakahmetaydogmus/TZeroAlgorithm",
+    "version": "6aab17e0feb6640cd9cda72c952ba07e192a4f7c",
+    "download": "https://codeload.github.com/toprakahmetaydogmus/TZeroAlgorithm/tar.gz/6aab17e0feb6640cd9cda72c952ba07e192a4f7c"
+  },
+  "archive_sha256": "d4e732270628f948f634b33492478963f6f6e847a6568147044f4543bb01bae8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/README.zh.md",
+      "line": 57,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/toprakahmetaydogmus/TZeroAlgorithm/",
+      "file_sha256": "b1fd50dee8af211ea128d0a3806c08850e243c1aba3d9ee6d53cf2e24938a00f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tests/test_packaging_sync.py",
+      "line": 68,
+      "evidence": "(ROOT_DIR / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "e8a67f76f1bf45307dd0e838fe9a43b8a42016ae2d0f478885b1abefe9d34069"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/README.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/toprakahmetaydogmus/TZeroAlgorithm/",
+      "file_sha256": "d9ff7f2eaea42cb6c65bd5650ce6fd52238ec5ae8067da5733a6a30843eb57e9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_pc_fixer.py",
+      "line": 2521,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_pc_fixer.py",
+      "line": 9772,
+      "evidence": "subprocess.run( f'netstat -ano -p tcp | findstr \":{port} \"', shell=True, capture",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_pc_fixer.py",
+      "line": 9786,
+      "evidence": "subprocess.run( f'tasklist /FI \"PID eq {pid}\" /FO CSV /NH', shell=True, capture_",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_pc_fixer.py",
+      "line": 9800,
+      "evidence": "subprocess.run( f\"lsof -ti:{port}\", shell=True, capture_output=True, text=True, ",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_pc_fixer.py",
+      "line": 9810,
+      "evidence": "subprocess.run( f\"ps -p {pid} -o comm=\", shell=True, capture_output=True, text=T",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 97,
+      "evidence": "subprocess.run( f'netstat -ano -p tcp | findstr \":{port} \"', shell=True, capture",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 111,
+      "evidence": "subprocess.run( f'tasklist /FI \"PID eq {pid}\" /FO CSV /NH', shell=True, capture_",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 125,
+      "evidence": "subprocess.run( f\"lsof -ti:{port}\", shell=True, capture_output=True, text=True, ",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 135,
+      "evidence": "subprocess.run( f\"ps -p {pid} -o comm=\", shell=True, capture_output=True, text=T",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/installers/npm/src/tzero/tzero_fixer/system_repair_recipes.py",
+      "line": 185,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "2bc91cdd5b02e8d6c54166d08f61fb27bb00622b6926af757f61b737e76243d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/assets/tzero_pc_fixer_banner.svg",
+      "line": 120,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/toprakahmetaydogmus/tzero-pc-fixer/",
+      "file_sha256": "81e7b9b1aae835f73d94460b2914c50b452bf70ac2812bd4efa8ebd350067ee3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/README.ja.md",
+      "line": 57,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/toprakahmetaydogmus/TZeroAlgorithm/",
+      "file_sha256": "20738c6f4591d8c371ee2e57665e0aca43b18fdcccdd335f33daaece0cfc5a3e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_pc_fixer.py",
+      "line": 2521,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_pc_fixer.py",
+      "line": 9772,
+      "evidence": "subprocess.run( f'netstat -ano -p tcp | findstr \":{port} \"', shell=True, capture",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_pc_fixer.py",
+      "line": 9786,
+      "evidence": "subprocess.run( f'tasklist /FI \"PID eq {pid}\" /FO CSV /NH', shell=True, capture_",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_pc_fixer.py",
+      "line": 9800,
+      "evidence": "subprocess.run( f\"lsof -ti:{port}\", shell=True, capture_output=True, text=True, ",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_pc_fixer.py",
+      "line": 9810,
+      "evidence": "subprocess.run( f\"ps -p {pid} -o comm=\", shell=True, capture_output=True, text=T",
+      "file_sha256": "69b6b1d7583e71312a6cb73234acee1e8f62383ffbe531194f73cff38cad6892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 97,
+      "evidence": "subprocess.run( f'netstat -ano -p tcp | findstr \":{port} \"', shell=True, capture",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 111,
+      "evidence": "subprocess.run( f'tasklist /FI \"PID eq {pid}\" /FO CSV /NH', shell=True, capture_",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 125,
+      "evidence": "subprocess.run( f\"lsof -ti:{port}\", shell=True, capture_output=True, text=True, ",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_fixer/hardware_and_disk_doctor.py",
+      "line": 135,
+      "evidence": "subprocess.run( f\"ps -p {pid} -o comm=\", shell=True, capture_output=True, text=T",
+      "file_sha256": "2257386284036430b4f709659a3a5f0f7e256f18e88db7ac04acd0d8c72eee04"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/tzero/tzero_fixer/system_repair_recipes.py",
+      "line": 185,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "2bc91cdd5b02e8d6c54166d08f61fb27bb00622b6926af757f61b737e76243d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "TZeroAlgorithm-6aab17e0feb6640cd9cda72c952ba07e192a4f7c/README.tr.md",
+      "line": 51,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/toprakahmetaydogmus/TZeroAlgorithm/",
+      "file_sha256": "f72802b690ae6b1d392ea5e0f0f9b7ef4fad3cdf3a2dafc4e584bcd2d0557030"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.gateway.internal, api.github.com, attacker.example.com, evil.example.com, example.com, json.schemastore.org, m8ven.ai, socket.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "aka.ms",
+    "antigravity.google.com",
+    "api.anthropic.com",
+    "api.gateway.com",
+    "api.gateway.internal",
+    "api.github.com",
+    "api.openai.com",
+    "api.service.com",
+    "api.star-history.com",
+    "app.example.com",
+    "attacker.example.com",
+    "build.nvidia.com",
+    "cdnjs.cloudflare.com",
+    "codespaces.new",
+    "colab.research.google.com",
+    "dev.to",
+    "discord.gg",
+    "dotenvx.com",
+    "editorconfig.org",
+    "eslint.org",
+    "evil.example.com",
+    "example.com",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "glama.ai",
+    "hopp.bio",
+    "huggingface.co",
+    "img.shields.io",
+    "integrate.api.nvidia.com",
+    "json.schemastore.org",
+    "linkedin.com",
+    "m8ven.ai",
+    "marketplace.visualstudio.com",
+    "news.ycombinator.com",
+    "open-vsx.org",
+    "opencollective.com",
+    "openrouter.ai",
+    "opensource.org",
+    "patreon.com",
+    "producthunt.com",
+    "pypi.org",
+    "python.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "remotion.dev",
+    "smithery.ai",
+    "socket.dev",
+    "star-history.com",
+    "static.modelcontextprotocol.io",
+    "superdesign.dev",
+    "tdqs.dev",
+    "text.pollinations.ai",
+    "tidelift.com",
+    "tzero-benchmark.vercel.app",
+    "tzero-indol.vercel.app",
+    "www.npmjs.com",
+    "www.python.org",
+    "www.remotion.dev",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

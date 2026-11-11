@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Zierax/fl-studio-mcp",
+    "version": "57a7d4ef7ae55287d465bdef12364d0bee0f41fd",
+    "download": "https://codeload.github.com/Zierax/fl-studio-mcp/tar.gz/57a7d4ef7ae55287d465bdef12364d0bee0f41fd"
+  },
+  "archive_sha256": "80e04d37a584f4a372ea5e65aeb271fe09d598fd187f09cc54502ed884f67d92",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fl-studio-mcp-57a7d4ef7ae55287d465bdef12364d0bee0f41fd/install.sh",
+      "line": 35,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8cbc4f3c637e0255da73dc693d9fad57bd47d2e150efdbfdadf221ed9eefee3d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "fl-studio-mcp-57a7d4ef7ae55287d465bdef12364d0bee0f41fd/install.sh",
+      "line": 35,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "8cbc4f3c637e0255da73dc693d9fad57bd47d2e150efdbfdadf221ed9eefee3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "fl-studio-mcp-57a7d4ef7ae55287d465bdef12364d0bee0f41fd/scripts/install_mcp_for_claude.sh",
+      "line": 31,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b69e69d843155ae59c7daea09668117428980ef051eba782c46ed9a3c2706f43"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "files.pythonhosted.org",
+    "github.com",
+    "mcpmarket.com",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "www.image-line.com",
+    "www.tobias-erichsen.de"
+  ],
+  "install_script": false,
+  "score": "high"
+}
