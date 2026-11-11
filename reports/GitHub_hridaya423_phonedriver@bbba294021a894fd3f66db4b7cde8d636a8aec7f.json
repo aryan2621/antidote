@@ -1,0 +1,143 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "hridaya423/phonedriver",
+    "version": "bbba294021a894fd3f66db4b7cde8d636a8aec7f",
+    "download": "https://codeload.github.com/hridaya423/phonedriver/tar.gz/bbba294021a894fd3f66db4b7cde8d636a8aec7f"
+  },
+  "archive_sha256": "18fe37d232f2d04647edc30058ddcbfa38dc24c92d17cce5beaee87f5a2346ae",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/SKILL.md",
+      "line": 74,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ab58d95a0053c5d760b10322790652f15e45be2d23ec4fc7e02d6c6c0598a29a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/SKILL.md",
+      "line": 55,
+      "evidence": "p=0.91 Unlocking the phone, a USB debugging prompt, a biometric prompt and a trust-this",
+      "file_sha256": "ab58d95a0053c5d760b10322790652f15e45be2d23ec4fc7e02d6c6c0598a29a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/SKILL.md",
+      "line": 69,
+      "evidence": "p=0.99 - The user's own passwords, codes and payment details go in only when the user g",
+      "file_sha256": "ab58d95a0053c5d760b10322790652f15e45be2d23ec4fc7e02d6c6c0598a29a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/crates/core/src/inject.rs",
+      "line": 164,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2786b17b18e7e0279db11e895fd149510befec36c896cb4448a30ac6e4efe346"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/crates/core/src/render.rs",
+      "line": 1120,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "bdbaa598cc8420e51dda8ab44bfc819561e704ca316d093f28a0b352cf77a163"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/progress.md",
+      "line": 819,
+      "evidence": "\\u{202a}",
+      "file_sha256": "0dca8ef8f5446a64b86183d97d0657480fc228f82562da1f4ce8687685560d7b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/progress.md",
+      "line": 315,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0dca8ef8f5446a64b86183d97d0657480fc228f82562da1f4ce8687685560d7b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/site/content/docs/install.md",
+      "line": 36,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf {{REPO}}/releases/latest/download/phonedri",
+      "file_sha256": "2ca6b3fadacff13e31c9593731ce392c2dd4982cbec3ce5492a8c2da9df04209"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/docs/reference.md",
+      "line": 20,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hridaya423/phonedriver/",
+      "file_sha256": "1dcae229176e90ac2265d1decb6bd21200ceb6811b4703eddfc2258314a52aa8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-bbba294021a894fd3f66db4b7cde8d636a8aec7f/.github/workflows/release.yml",
+      "line": 67,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/re",
+      "file_sha256": "97d38104725ac5603ce6ce2e8f5a5504d8f5b2a64fb949decf3e8fcc5185deca"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "android.googlesource.com",
+    "api.github.com",
+    "api.indexnow.org",
+    "apilevels.com",
+    "axodotdev.github.io",
+    "com.android.contacts",
+    "cursor.com",
+    "design.how",
+    "dl.google.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.net",
+    "example.org",
+    "fsf.org",
+    "github.com",
+    "httpbin.org",
+    "img.shields.io",
+    "insiders.vscode.dev",
+    "openfontlicense.org",
+    "phonedriver.dev",
+    "phonedriver.vercel.app",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "schemas.android.com",
+    "scripts.sil.org",
+    "services.gradle.org",
+    "sh.rustup.rs",
+    "static.modelcontextprotocol.io",
+    "tailscale.com",
+    "www.apache.org",
+    "www.dominos.co.uk",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
