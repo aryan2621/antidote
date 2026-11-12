@@ -1,0 +1,44 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "jarek-janas/rest-client-for-atlassian-dc",
+    "version": "2494c19dcf109b10a1b71f4a4c556268bccab512",
+    "download": "https://codeload.github.com/jarek-janas/rest-client-for-atlassian-dc/tar.gz/2494c19dcf109b10a1b71f4a4c556268bccab512"
+  },
+  "archive_sha256": "2e6223869ebd2023e7b8d80d556a6158aa920f23a592085dda4c8c90ff6dabd0",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "rest-client-for-atlassian-dc-2494c19dcf109b10a1b71f4a4c556268bccab512/rest-client-for-atlassian-dc/SKILL.md",
+      "line": 295,
+      "evidence": "p=0.91 The wrapper fails with the exact, secure command to store the token. Pass that c",
+      "file_sha256": "61ffeb3ca9b4903bae5171257e05623692dbb1ee783d126dde788f9e78f3421b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "rest-client-for-atlassian-dc-2494c19dcf109b10a1b71f4a4c556268bccab512/rest-client-for-atlassian-dc/scripts/credstore.sh",
+      "line": 45,
+      "evidence": "security find-generic-password -s \"$_atl_svc\" -a \"$_atl_key\" -w",
+      "file_sha256": "174d9a9666e36101901adb9097d7022da22be06a1c8e1f14cf034213f13e27e3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "acme.atlassian.net",
+    "bitbucket.example.com",
+    "bitbucket.org",
+    "confluence.example.com",
+    "evil.example.net",
+    "github.com",
+    "jira.example.com",
+    "jira.example.net",
+    "jira.notatlassian.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

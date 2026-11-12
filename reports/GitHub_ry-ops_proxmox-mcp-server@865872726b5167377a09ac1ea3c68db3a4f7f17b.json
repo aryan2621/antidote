@@ -1,0 +1,90 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ry-ops/proxmox-mcp-server",
+    "version": "865872726b5167377a09ac1ea3c68db3a4f7f17b",
+    "download": "https://codeload.github.com/ry-ops/proxmox-mcp-server/tar.gz/865872726b5167377a09ac1ea3c68db3a4f7f17b"
+  },
+  "archive_sha256": "dc8efea4c615c0ff0dcc1034aeb9d70dd89ac61b9ddb269985bc48de7c4fcf4d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-865872726b5167377a09ac1ea3c68db3a4f7f17b/setup.sh",
+      "line": 92,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d5c5976c03a7bc35564271f71daf8b57509a10003190bb23b7922d1430c08651"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "proxmox-mcp-server-865872726b5167377a09ac1ea3c68db3a4f7f17b/setup.sh",
+      "line": 92,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d5c5976c03a7bc35564271f71daf8b57509a10003190bb23b7922d1430c08651"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-865872726b5167377a09ac1ea3c68db3a4f7f17b/QUICKSTART.md",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "5bb2df242447f8f041bd48057d05fb78ac68e1b80d2bf3fa5503374f02b18524"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "proxmox-mcp-server-865872726b5167377a09ac1ea3c68db3a4f7f17b/README.md",
+      "line": 180,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "26c5276d6395e85b76e47910dd1d98f5d7bdd3837b8b4b49ce383e59a1b803ef"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "10.0.0.77, cloud-images.ubuntu.com, cloud.debian.org, download.proxmox.com, enterprise.proxmox.com, fedorapeople.org, kali.download, schemas.microsoft.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.5",
+    "10.0.0.77",
+    "127.0.0.1",
+    "192.168.1.100",
+    "astral.sh",
+    "cloud-images.ubuntu.com",
+    "cloud.debian.org",
+    "download.proxmox.com",
+    "enterprise.proxmox.com",
+    "fedorapeople.org",
+    "files.pythonhosted.org",
+    "forum.proxmox.com",
+    "github.com",
+    "img.shields.io",
+    "kali.download",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "pdm.proxmox.com",
+    "pdm.test",
+    "pve-mcp.lan",
+    "pve.proxmox.com",
+    "pve.test",
+    "pypi.org",
+    "schemas.microsoft.com",
+    "semver.org",
+    "www.python.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

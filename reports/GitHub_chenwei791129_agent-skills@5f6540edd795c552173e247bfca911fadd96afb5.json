@@ -1,0 +1,121 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "chenwei791129/agent-skills",
+    "version": "5f6540edd795c552173e247bfca911fadd96afb5",
+    "download": "https://codeload.github.com/chenwei791129/agent-skills/tar.gz/5f6540edd795c552173e247bfca911fadd96afb5"
+  },
+  "archive_sha256": "98fd951f0d51771147567f6696f46174bd38b226b0618659e684753ae0ce17d1",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.97 # Project Instructions",
+      "file_sha256": "34b922f6b163ba711e957073a5de6f664153c1510882f930dec69b9b24f9ecab"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/pre-goal/SKILL.md",
+      "line": 16,
+      "evidence": "p=0.99 The task the user brings is necessarily vague (\"make it better\", \"make it pretti",
+      "file_sha256": "83f12e9215414796c7262954919d28864865d9ec93a99d3eba2b304b3bd6f204"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/powershell-style-guide/references/style-guide.md",
+      "line": 93,
+      "evidence": "p=0.95 Continuation lines may indent more than one level or align with the previous lin",
+      "file_sha256": "2a95b302a1a0c5ea85cc3004d7732cac99456acc15714d0d12988127f15e90fb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/styling/SKILL.md",
+      "line": 30,
+      "evidence": "p=0.97 This principle applies to all elements where the styling doesn't conflict with t",
+      "file_sha256": "fb69be502b99e166eeca818a24af7e8daf232bb29966703bc2228d990abaa7bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/malware-repo-analysis/SKILL.md",
+      "line": 267,
+      "evidence": "curl ... | bash",
+      "file_sha256": "34a9694f3c8789ba1103ad1ba83f9595d2a30fb4b07762ebac21727a793bad3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/gws-gmail/evals/newsletter_digest.txt",
+      "line": 22,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "333cdb9be69988e25066ba82189e670c8eed2662139f6194e86404d8f52a6e88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/buffett-investment-strategy/references/business-analysis.md",
+      "line": 59,
+      "evidence": "p=0.92 > \"The best business is one that gives you more and more money every year withou",
+      "file_sha256": "bf0f2777a9fe10ab6d797eaa65b58ad234de28e7eee1d7d351d8ddb2e9b67510"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/buffett-investment-strategy/references/key-quotes.md",
+      "line": 11,
+      "evidence": "p=0.93 > \"The best business is one that gives you more and more money every year withou",
+      "file_sha256": "b4e55e5cad8a82ef8e8fcb856ae22d7e4d276692f3ba74504adfd92214e29c73"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-5f6540edd795c552173e247bfca911fadd96afb5/skills/buffett-investment-strategy/references/risk-management.md",
+      "line": 35,
+      "evidence": "p=0.98 > \"In our view, however, derivatives are financial weapons of mass destruction, ",
+      "file_sha256": "d27c8cf9ebff90b2487dd302b64a9aa6416bab59b649f7e849232df1e0ad0353"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.finmindtrade.com",
+    "api.github.com",
+    "app.reimburse.digital",
+    "arxiv.org",
+    "claude.com",
+    "cli.github.com",
+    "docs.astral.sh",
+    "docs.gitlab.com",
+    "finmindtrade.com",
+    "fonts.googleapis.com",
+    "github.com",
+    "gitlab.domain.com",
+    "go.dev",
+    "gobyexample.com",
+    "google.github.io",
+    "grafana.example.com",
+    "hooks.slack.com",
+    "index.ndc.gov.tw",
+    "www.facebook.com",
+    "www.itlife.com.tw",
+    "www.npmjs.com",
+    "www.shellcheck.net",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

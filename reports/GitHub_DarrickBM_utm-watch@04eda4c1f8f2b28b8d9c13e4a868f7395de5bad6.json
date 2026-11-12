@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "DarrickBM/utm-watch",
+    "version": "04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6",
+    "download": "https://codeload.github.com/DarrickBM/utm-watch/tar.gz/04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6"
+  },
+  "archive_sha256": "fcc0e5d000473aff430d96a4f35007f7c14059ba0c323043bf9f3041172fb61c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "utm-watch-04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6/README.md",
+      "line": 33,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/DarrickBM/utm-watch/main/install.sh",
+      "file_sha256": "eac03fc1295ead51df8e4f431a83e94ab626c0627a4331cfc3b12e2efe06df93"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "utm-watch-04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6/README.md",
+      "line": 41,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "eac03fc1295ead51df8e4f431a83e94ab626c0627a4331cfc3b12e2efe06df93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "utm-watch-04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/DarrickBM/utm-watch/main/install.sh",
+      "file_sha256": "db78bd61d30b2cba3ceb02852116424085b9cf290512b12d492c2089593b9fa4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "utm-watch-04eda4c1f8f2b28b8d9c13e4a868f7395de5bad6/install.sh",
+      "line": 46,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "db78bd61d30b2cba3ceb02852116424085b9cf290512b12d492c2089593b9fa4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "betterstack.com",
+    "dev.to",
+    "developer.apple.com",
+    "example.com",
+    "github.com",
+    "hub.example.ts.net",
+    "hub.test",
+    "login.tailscale.com",
+    "mac.getutm.app",
+    "mini-1.local",
+    "mini.local",
+    "raw.githubusercontent.com",
+    "utmwatch.diag",
+    "www.apple.com",
+    "www.github.com",
+    "www.levminer.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

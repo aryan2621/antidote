@@ -1,0 +1,82 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "p2p2sp/viber",
+    "version": "255fcbd646261719bc9ee4c70cac0291dd9533b0",
+    "download": "https://codeload.github.com/p2p2sp/viber/tar.gz/255fcbd646261719bc9ee4c70cac0291dd9533b0"
+  },
+  "archive_sha256": "e3671eaf57c406997c8afc8295dd68c5f86a455d5b1c0450e8170663338ecce8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "viber-255fcbd646261719bc9ee4c70cac0291dd9533b0/viber/skills/idea-validator/references/council/01-customer.md",
+      "line": 3,
+      "evidence": "p=0.92 You are the person this product is meant for. You are not a founder, not an inve",
+      "file_sha256": "9e214d60ae1146406f99f018af800f45e6cee34856cfdbe033ff3e956b9eb7e0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "viber-255fcbd646261719bc9ee4c70cac0291dd9533b0/viber/skills/skill-designer/references/opus-5-5.md",
+      "line": 12,
+      "evidence": "p=0.98 ## Instruction following",
+      "file_sha256": "a86a3515494394db9da67d098a099fc03a0a44951eb4d5acbab3f703b48646cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "viber-255fcbd646261719bc9ee4c70cac0291dd9533b0/viber/skills/skill-designer/references/opus-5-5.md",
+      "line": 24,
+      "evidence": "p=0.96 - Unattended loops end with a text-only turn: announcing a next step without tak",
+      "file_sha256": "a86a3515494394db9da67d098a099fc03a0a44951eb4d5acbab3f703b48646cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "viber-255fcbd646261719bc9ee4c70cac0291dd9533b0/viber/skills/skill-designer/references/haiku-5-5.md",
+      "line": 12,
+      "evidence": "p=0.94 - With a long system prompt at `low` it stops early and hands the task back; `me",
+      "file_sha256": "b75f2eef1570360210a89fe0406436f83f705b2d7fef4fab845ba70a38a6b778"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "viber-255fcbd646261719bc9ee4c70cac0291dd9533b0/viber/agents/test-runner.md",
+      "line": 16,
+      "evidence": "p=0.93 The prompt's first line is the report path: where this run writes its report, a ",
+      "file_sha256": "4ca6a276fe7a531b2af07642957ba8f4b4fe69a6410eeee6066647737b1d93ce"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "cdn.example.com",
+    "cli.github.com",
+    "example.com",
+    "example.invalid",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "ghe.example.com",
+    "github.com",
+    "github.example.com",
+    "help.github.com",
+    "intellij-support.jetbrains.com",
+    "json.schemastore.org",
+    "nextjs.org",
+    "nodejs.org",
+    "prometheus.io",
+    "signoz.io",
+    "staging.example.internal",
+    "www.toptal.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
