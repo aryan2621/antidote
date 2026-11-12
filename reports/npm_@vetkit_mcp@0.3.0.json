@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@vetkit/mcp",
+    "version": "0.3.0",
+    "download": null
+  },
+  "archive_sha256": "ec8cb3f9488867d79f49a9546fa16beb7922804b8001f6d25c170ac1420fa481",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/bin.js",
+      "line": 3376,
+      "evidence": ".aws/credentials",
+      "file_sha256": "43239471e4450470fc72c704e80277cd8c28697e4b35066e5ff4d5c566909f27"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "acme.ghe.com, ghe.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "acme.ghe.com",
+    "api.vetkit.dev",
+    "app.vetkit.dev",
+    "bitbucket.org",
+    "cwe.mitre.org",
+    "genai.owasp.org",
+    "ghe.example.com",
+    "github.com",
+    "gitlab.com",
+    "json-schema.org",
+    "modelcontextprotocol.io",
+    "owasp.org",
+    "vetkit.dev",
+    "www.github.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

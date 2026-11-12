@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "onadit",
+    "version": "1.0.22",
+    "download": null
+  },
+  "archive_sha256": "7786782987e2796bb7753e853446676d3478879eeb0619f63b9d8a680cc8d720",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/README.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://onadit.com/install | bash",
+      "file_sha256": "ced6c939ee41431ce63ba63eda9a6cfc5a08b03faaad2e1766c923dfc3d55058"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/src/diagnostics/install-layout.js",
+      "line": 51,
+      "evidence": "curl -fsSL https://onadit.com/install | bash",
+      "file_sha256": "e6e2662a548903e00f0e122ef4a6c95a52bc5c3356b546cf5549c10781f51ccc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/src/diagnostics/install-layout.d.ts",
+      "line": 38,
+      "evidence": "curl -fsSL https://onadit.com/install | bash",
+      "file_sha256": "5c5364fffc24697847b12c882bcc1ee6e5ea3df6a7a5301ad6052fd848e49d10"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/src/server/routes/context.js",
+      "line": 43,
+      "evidence": "server.post(\"/context/pack\", async (request, reply) => { // Asked per request: a",
+      "file_sha256": "3810539b6e04dac0d09da171ca73e52fbecf9eb5cb6617e52c3cd3c4b9c272c5"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "id": "AGT-F-INSTALL",
+      "summary": "Runs code at install time",
+      "path": null,
+      "line": null,
+      "evidence": "postinstall: node -e \"const e=process.env;if(e.RIFT_SKIP_POSTINSTALL_MENUBAR==='1'||(e.RIFT_POSTINSTALL_MENUBAR!=='1'&&e.npm_config_global!=='true'&&e.npm_config_location!=='global'))process.exit(0);import('./dist/src/cli/postinstall-menubar.js').catch(() => {})\"",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "ai.mongodb.com",
+    "api.github.com",
+    "api.notion.com",
+    "api.voyageai.com",
+    "claude.com",
+    "developer.chrome.com",
+    "docs.voyageai.com",
+    "github.com",
+    "man7.org",
+    "nodejs.org",
+    "onadit.com",
+    "registry.npmjs.org",
+    "rift-relay.clem-rog.workers.dev",
+    "swiftbar.app",
+    "www.apple.com"
+  ],
+  "install_script": true,
+  "score": "critical"
+}
