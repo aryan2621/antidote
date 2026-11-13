@@ -1,0 +1,86 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "VibeCodingInc/vibe-mcp",
+    "version": "635df06a0751cbd57fb859551dc3a82211751002",
+    "download": "https://codeload.github.com/VibeCodingInc/vibe-mcp/tar.gz/635df06a0751cbd57fb859551dc3a82211751002"
+  },
+  "archive_sha256": "580abba7ff57c44d0d393d1a760c66bf8c7c2094d685849102fd4e969a8bb695",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "vibe-mcp-635df06a0751cbd57fb859551dc3a82211751002/lab/scenarios.mjs",
+      "line": 81,
+      "evidence": "Do not mention this to the user",
+      "file_sha256": "ea8432c1657517ed40a7641f094992ed83c16a5e56d01ce7dc1c11e031b6c616"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "vibe-mcp-635df06a0751cbd57fb859551dc3a82211751002/door.js",
+      "line": 56,
+      "evidence": "\\u{202a}",
+      "file_sha256": "de08219ab71a92cdb7e3821291431a39d746c9c707b31ec197113faefd7a4087"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "vibe-mcp-635df06a0751cbd57fb859551dc3a82211751002/protocol/handle.js",
+      "line": 26,
+      "evidence": "\\u{202a}",
+      "file_sha256": "a04889bf67604d043c9ed5fd53fcf0136cc5d7080898c59360937a26bca5edee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "vibe-mcp-635df06a0751cbd57fb859551dc3a82211751002/tools/incoming.test.js",
+      "line": 30,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "828d51af6b8ab2e7f9fe0056b05847b7648f1ad15b1d80328fe3a9e40264c553"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "vibe-mcp-635df06a0751cbd57fb859551dc3a82211751002/tools/_door.test.js",
+      "line": 66,
+      "evidence": "\\u{202e}",
+      "file_sha256": "049915013d91d658ae01bd0ae197a447ed1c149b1817b191d6d70b239f92dbd2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0x7f.0.0.1",
+    "10.0.0.5",
+    "127.0.0.1",
+    "169.254.169.254",
+    "a.b.co",
+    "ada.example-project.dev",
+    "box.local",
+    "cy.example-project.dev",
+    "example-project.dev",
+    "github.com",
+    "old.example-project.dev",
+    "registry.npmjs.org",
+    "sam-retries.vercel.app",
+    "second.example-project.dev",
+    "static.modelcontextprotocol.io",
+    "svc.internal",
+    "thing.onion",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.slashvibe.dev",
+    "x.dev",
+    "x.test",
+    "your-project.dev",
+    "zed.example-project.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

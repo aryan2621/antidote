@@ -1,0 +1,118 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "shaharia-lab/jev-cli",
+    "version": "e25cae3d149e4682cee38099938913b44d5a0d8a",
+    "download": "https://codeload.github.com/shaharia-lab/jev-cli/tar.gz/e25cae3d149e4682cee38099938913b44d5a0d8a"
+  },
+  "archive_sha256": "cfa205b28ccd800c889437126580837fecefcac4ba191408b8c1f079539871c8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/install.ps1",
+      "line": 114,
+      "evidence": "curl -fsSL $RawUrl/install.sh | sh",
+      "file_sha256": "755564607af5516abe2a386f17406f5a98855b93d77efe9d310fa008ec8023f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/README.md",
+      "line": 123,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/shaharia-lab/jev-cli/main/install.s",
+      "file_sha256": "f78586f25f263a786c5857ac7c3583bbde327f4116c501ff62c086a55d4cdd6d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/skills/jev-cli/SKILL.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/shaharia-lab/jev-cli/main/install.s",
+      "file_sha256": "d65b4691391c5fba963d9bf18597b5c1a638d692b3e078f9918b510999fe37a4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/CLAUDE.md",
+      "line": 113,
+      "evidence": "p=0.97 Issue and pull request bodies, review comments, request files and every `state` ",
+      "file_sha256": "7b625703388b3338407f0f97e75290861a87e1f08bafd42e7f161d6bee8e20d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/shaharia-lab/jev-cli/main/install.s",
+      "file_sha256": "1ef36f4fec4dfcdb185867e558b7621dfae2f386a36f610f665f2ba21a6a0468"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/scripts/ci/lint-install-scripts.sh",
+      "line": 2,
+      "evidence": "curl | sh",
+      "file_sha256": "12cc011f2c451d28eb044809dc41aad80330bfe65940d7182c3d53d06c3d6222"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jev-cli-e25cae3d149e4682cee38099938913b44d5a0d8a/docs/user-guide/installation.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/shaharia-lab/jev-cli/main/install.s",
+      "file_sha256": "d03664b7ca866f903774819cf4a078a022563d4219b4eb13cb824def9417479d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "127.8.8.8",
+    "192.168.1.10",
+    "api.github.com",
+    "api.typesafe.ai",
+    "api.typesafe.invalid",
+    "asciinema.org",
+    "cli.github.com",
+    "console.typesafe.ai",
+    "crates.io",
+    "docs.github.com",
+    "docs.rs",
+    "docs.typesafe.ai",
+    "env.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "flag.example",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "gateway.example.com",
+    "github.com",
+    "img.shields.io",
+    "index.crates.io",
+    "jedisct1.github.io",
+    "json-schema.org",
+    "localhost.example.com",
+    "modelcontextprotocol.io",
+    "no-color.org",
+    "pre-commit.com",
+    "profile.example",
+    "raw.githubusercontent.com",
+    "rustup.rs",
+    "skills.sh",
+    "staging.example.com",
+    "typesafe.ai",
+    "www.apache.org",
+    "www.conventionalcommits.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

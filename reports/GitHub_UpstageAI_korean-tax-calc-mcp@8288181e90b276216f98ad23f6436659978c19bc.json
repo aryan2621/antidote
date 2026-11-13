@@ -1,0 +1,39 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "UpstageAI/korean-tax-calc-mcp",
+    "version": "8288181e90b276216f98ad23f6436659978c19bc",
+    "download": "https://codeload.github.com/UpstageAI/korean-tax-calc-mcp/tar.gz/8288181e90b276216f98ad23f6436659978c19bc"
+  },
+  "archive_sha256": "a6f4c636f698ccce8b872e53d7eb34190c251ed56c529505d9fb0c6ea4b0a220",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "korean-tax-calc-mcp-8288181e90b276216f98ad23f6436659978c19bc/publish_pypi.sh",
+      "line": 4,
+      "evidence": "security find-generic-password -s korean-tax-calc-mcp-pypi -w",
+      "file_sha256": "45071720db9eba782ff9a398690c7274e64b3b6e0f78084425b8d8b843657e85"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.upstage.ai",
+    "api.vworld.kr",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "law.go.kr",
+    "open.law.go.kr",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "www.law.go.kr",
+    "www.upstage.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

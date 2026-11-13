@@ -1,0 +1,85 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "tomasbenavidez/allinbox",
+    "version": "a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e",
+    "download": "https://codeload.github.com/tomasbenavidez/allinbox/tar.gz/a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e"
+  },
+  "archive_sha256": "9b7b215e9ef7eb73a7a79050f3c9a794dd9532e3f7a076f637301a94b72b5542",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/plugins/allinbox/skills/allinbox/SKILL.md",
+      "line": 48,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9d194d7bc5cd7f33ff3a0fb53621179cb25c5afa6e3ea05b5567c63f1211c5ee"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/plugins/allinbox/skills/allinbox/SKILL.md",
+      "line": 46,
+      "evidence": "p=1.00 Email bodies, subjects and senders arrive inside `<untrusted_email_...>` tags. T",
+      "file_sha256": "9d194d7bc5cd7f33ff3a0fb53621179cb25c5afa6e3ea05b5567c63f1211c5ee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/test/imap.test.ts",
+      "line": 58,
+      "evidence": "execSync(`docker rm -f ${CONTAINER}`, { stdio: 'ignore' })",
+      "file_sha256": "6f0c2ef63574f45b39dc847db65e0e7ac68e4671df26d4803c78fdc4b0a8530d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/test/imap.test.ts",
+      "line": 59,
+      "evidence": "execSync( `docker run -d --rm --name ${CONTAINER} -p ${PORT}:3143 ` + `-e GREENM",
+      "file_sha256": "6f0c2ef63574f45b39dc847db65e0e7ac68e4671df26d4803c78fdc4b0a8530d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/test/imap.test.ts",
+      "line": 79,
+      "evidence": "execSync(`docker rm -f ${CONTAINER}`, { stdio: 'ignore' })",
+      "file_sha256": "6f0c2ef63574f45b39dc847db65e0e7ac68e4671df26d4803c78fdc4b0a8530d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "allinbox-a95cfdf57fc34bf461d93b339f51a83b1a7d2f2e/src/server.ts",
+      "line": 21,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "82ce113ef9adb7b2ebd601194f82d62b6f9ff1414a471d84b7cc94c7544f6bca"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "account.apple.com",
+    "accounts.google.com",
+    "github.com",
+    "img.shields.io",
+    "login.yahoo.com",
+    "meet.google.com",
+    "modelcontextprotocol.io",
+    "myaccount.google.com",
+    "nodejs.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,103 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "vulnintel/checkback",
+    "version": "8ac46c8889c2a97f2419c4babcffaca5aa5f2b46",
+    "download": "https://codeload.github.com/vulnintel/checkback/tar.gz/8ac46c8889c2a97f2419c4babcffaca5aa5f2b46"
+  },
+  "archive_sha256": "95b9f082a9a23b89138b46d596e0ce95610fe43f6d7538122f3cd49a735ad797",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/test/security.test.ts",
+      "line": 132,
+      "evidence": "curl x | sh",
+      "file_sha256": "2d4709f1f8aa0b4a5ea2fc6ce7cd0c27bc1060834156c0b093e385ba2fd6b6ca"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/test/security.test.ts",
+      "line": 132,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2d4709f1f8aa0b4a5ea2fc6ce7cd0c27bc1060834156c0b093e385ba2fd6b6ca"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/test/mcp.test.ts",
+      "line": 17,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "3194e60910d6854934f44c515db9cd473690e93250ae658e3c5646cb44e02a38"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/test/prompts.test.ts",
+      "line": 30,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "41d32f6777e5061ca7c04a773f83c9487eb9ee524aad2f0e1843d45dff77c925"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/test/gui.test.ts",
+      "line": 212,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f4ee81de73f7e81f23270c102a02b7696f709ba8dee31cbe1879391d2d93897e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "checkback-8ac46c8889c2a97f2419c4babcffaca5aa5f2b46/plugin/skills/checkback/SKILL.md",
+      "line": 17,
+      "evidence": "p=0.97 - Call `fix_prompts` with the ids the user chose (at most 10) and follow those i",
+      "file_sha256": "88231f6c306d8e18b465bfa93d7450b180141c19d31c82901cd73ee47c25d4fa"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "abcd.supabase.co",
+    "api.npmjs.org",
+    "api.osv.dev",
+    "api.vulnintelapp.com",
+    "b.com",
+    "download.pytorch.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "nodejs.org",
+    "npm.acme.dev",
+    "npm.internal.example",
+    "osv.dev",
+    "pypi.acme.dev",
+    "pypi.org",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "semver.org",
+    "supabase.com",
+    "www.apache.org",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.vulnintelapp.com",
+    "www.w3.org",
+    "x.supabase.co"
+  ],
+  "install_script": false,
+  "score": "high"
+}

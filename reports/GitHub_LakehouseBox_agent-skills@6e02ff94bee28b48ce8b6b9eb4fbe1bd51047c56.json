@@ -1,0 +1,119 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "LakehouseBox/agent-skills",
+    "version": "6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56",
+    "download": "https://codeload.github.com/LakehouseBox/agent-skills/tar.gz/6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56"
+  },
+  "archive_sha256": "94e4fd966f8149fb791997518690654f033fc5b6065dd0b581e9eb45076b2603",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-keep-fresh/references/scheduled-sql.md",
+      "line": 93,
+      "evidence": "p=0.97 Every URL is then a row, in the list's order, with one more column, error: NULL ",
+      "file_sha256": "59f14bb33e2cd50f46c05627e0c4598f4f1584b56d5a2daaceed5a5eaf1db90f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-keep-fresh/references/scheduled-sql.md",
+      "line": 95,
+      "evidence": "p=0.95 Finding the links that answer, without ignore_errors. A query that reads only fi",
+      "file_sha256": "59f14bb33e2cd50f46c05627e0c4598f4f1584b56d5a2daaceed5a5eaf1db90f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-keep-fresh/references/scheduled-sql.md",
+      "line": 425,
+      "evidence": "p=0.94 A person who can write to the catalog can also make and change a SQL sink there:",
+      "file_sha256": "59f14bb33e2cd50f46c05627e0c4598f4f1584b56d5a2daaceed5a5eaf1db90f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox/SKILL.md",
+      "line": 34,
+      "evidence": "curl -fsSL https://lakehousebox.com/install.sh | sh",
+      "file_sha256": "9306dc27d0bb50427dd1dbf327bd54204c6f218e12779bacfa1b1299c2d7f583"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox/references/agent-setup.md",
+      "line": 13,
+      "evidence": "curl -fsSL https://lakehousebox.com/install.sh | sh",
+      "file_sha256": "0008c8a1a271adf50d306b9450605cf405bae360c92063f3edb991dffff71cbd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-load-data/SKILL.md",
+      "line": 44,
+      "evidence": "p=0.98 A load is not done until the next agent, or the person's colleague, can read the",
+      "file_sha256": "031e837de886ef8ce7b09c852f6ca004ee747b1f93d9b964550ae52fab3eb463"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-home-assistant/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.97 The person wants their Home Assistant history kept for years and answers about i",
+      "file_sha256": "2e92a7d11de21b7ddc9673df6a2ec3f554d30afb928aa4e2dfc53e8d417bac8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agent-skills-6e02ff94bee28b48ce8b6b9eb4fbe1bd51047c56/skills/lakehousebox-home-assistant/references/instructions.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://lakehousebox.com/install.sh | sh",
+      "file_sha256": "a519ae374b2110a02b3016f6791bf9f80e58082d38d712d1c07e080df7e9bb30"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "api.example.org",
+    "api.lakehousebox.com",
+    "api.open-meteo.com",
+    "api.partner.example",
+    "browser.portolan-sdi.org",
+    "catalog.lakehousebox.com",
+    "data.example.com",
+    "duckdb.org",
+    "earthquake.usgs.gov",
+    "example.org",
+    "extensions.duckdb.org",
+    "github.com",
+    "glama.ai",
+    "gtfs.ovapi.nl",
+    "in.lakehousebox.com",
+    "lakehousebox.com",
+    "mcp.lakehousebox.com",
+    "mcp.linear.app",
+    "opendata.aemet.es",
+    "portolan--madrid.s3.amazonaws.com",
+    "portolan-sdi.github.io",
+    "public-catalog.lakehousebox.com",
+    "public-files.lakehousebox.com",
+    "public-s3.lakehousebox.com",
+    "s3.amazonaws.com",
+    "s3.lakehousebox.com",
+    "saihweb.chsegura.es",
+    "source.coop",
+    "www.example.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

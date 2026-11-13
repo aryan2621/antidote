@@ -1,0 +1,216 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "rjcuff/Woolly",
+    "version": "f60397a761378a46b80b5894b39a8cf201b884be",
+    "download": "https://codeload.github.com/rjcuff/Woolly/tar.gz/f60397a761378a46b80b5894b39a8cf201b884be"
+  },
+  "archive_sha256": "a952f67d8ecdaf7c9520774a9d5907abb21d56fb7457faa8ce39a13ff364190f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/README.md",
+      "line": 26,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "6165ae40b3dc283c1adf140c4c5c6a8fecdd94b6795d35631c28007fdebf2246"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/web/public/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "c28d5e8cf4df96196c0c1751ade8cf07b0904c440a7fe657ce8f71176db0de61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/scripts/publish.sh",
+      "line": 28,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "a280fa05464dd0fe5d45e29b79ed78b2bf0452b064c1970a87a8951f90d906c9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/scripts/publish.sh",
+      "line": 32,
+      "evidence": "curl -fsS -X POST \\ -H \"Authorization: Bearer $token\" -H \"Accept: application/vn",
+      "file_sha256": "a280fa05464dd0fe5d45e29b79ed78b2bf0452b064c1970a87a8951f90d906c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "c28d5e8cf4df96196c0c1751ade8cf07b0904c440a7fe657ce8f71176db0de61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/docs/faq.mdx",
+      "line": 37,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "6af21220e44858d81ec6da9ad7fe9c2ce93827f158745e55a20e93c96961e086"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/docs/quickstart.mdx",
+      "line": 16,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "5241d5fee3a23a1ad0baadc480f7b284ff91f6950e124d9c6d40d7f2d6605898"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/docs/sync.mdx",
+      "line": 61,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "387f0c754bf0a14374c3be852c4064699e8b32230a0fd9ad6f197aa4d7a6519d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/proxy/proxy_test.go",
+      "line": 163,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ec1b80d01b7a688cdc1615814700c4fb4cc133330a9347291110fba06f7b5cb2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/learn/learn_test.go",
+      "line": 97,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a87fab9654b6124667c49a36b7d72b491af5d3185723498c6cf50367af8f0664"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/secrets/injection_test.go",
+      "line": 7,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f29e26025e7743e31f4015d97d3e1af65c6b95a2633a3ee3f5c91536cb25f788"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/secrets/injection_test.go",
+      "line": 11,
+      "evidence": "Do not tell the user",
+      "file_sha256": "f29e26025e7743e31f4015d97d3e1af65c6b95a2633a3ee3f5c91536cb25f788"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/share/share_test.go",
+      "line": 81,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "e6f83597606b66b61e7084e86f58cb08783c24ed6b4bf64f115475cf5df5e85a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/internal/memory/store_test.go",
+      "line": 170,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c4c9d4ab4f66bad8977e47291960814a9083822b5dbbf38aa17071b916845d48"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/SECURITY.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "bed9580c2cec80346b48ddc25074dd52470e1b333713b6b88af47c137e036c5c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/sdk/python/tests/test_client.py",
+      "line": 98,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "6ef25d2961f89c44c9830fe7776f1e4358818cead41061a93bdc7eb596094db7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Woolly-f60397a761378a46b80b5894b39a8cf201b884be/sdk/python/README.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://usewoolly.com/install.sh | sh",
+      "file_sha256": "98a4ad663d7eb9b6162c49befbd2f81f526225087f556e05c9b8a86cd68d41ee"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "glama.ai, schema.tauri.app, static.modelcontextprotocol.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.github.com",
+    "api.openai.com",
+    "bsky.app",
+    "easeui.dev",
+    "evil.example",
+    "feross.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "ollama.com",
+    "openapi.vercel.sh",
+    "opencollective.com",
+    "openfontlicense.org",
+    "opensource.org",
+    "paulmillr.com",
+    "polar.sh",
+    "pypi.org",
+    "react.dev",
+    "registry.npmjs.org",
+    "schema.org",
+    "schema.tauri.app",
+    "scripts.sil.org",
+    "static.modelcontextprotocol.io",
+    "tidelift.com",
+    "ui.shadcn.com",
+    "uploads.github.com",
+    "usewoolly.com",
+    "www.apple.com",
+    "www.linkedin.com",
+    "www.patreon.com",
+    "www.sitemaps.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

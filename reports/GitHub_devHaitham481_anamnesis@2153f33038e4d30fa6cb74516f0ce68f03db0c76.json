@@ -1,0 +1,102 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "devHaitham481/anamnesis",
+    "version": "2153f33038e4d30fa6cb74516f0ce68f03db0c76",
+    "download": "https://codeload.github.com/devHaitham481/anamnesis/tar.gz/2153f33038e4d30fa6cb74516f0ce68f03db0c76"
+  },
+  "archive_sha256": "33b18293a27dc7723c057b603e5cad5ddb32dd4fd1702721d2d25ce7d6ca02a1",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/src/anamnesis/cli/setup_cmd.py",
+      "line": 40,
+      "evidence": "curl | sh",
+      "file_sha256": "10386f6bbfb3ed82a5b7ad2fbb58c613a647fcc172b1bd95ce2783fa0fdb423c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/tests/test_setup.py",
+      "line": 62,
+      "evidence": "curl | sh",
+      "file_sha256": "380ca8b00608af8c54d6cb5be0837e7e7ed61001a3ce89bf98a70ae58f3d9ce1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/tests/test_memory.py",
+      "line": 374,
+      "evidence": "curl | sh",
+      "file_sha256": "3ee7d5c527c028c6c235a98aeb29532a2d5436514dbe33acfd629b72dfc16b47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/README.md",
+      "line": 40,
+      "evidence": "curl -LsSf https://devhaitham481.github.io/anamnesis/install.sh | sh",
+      "file_sha256": "55fa35833e0a9ea8e30f98d7f98115b3a79b54482bb87f57e28b9836ae8b1169"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/site/index.html",
+      "line": 193,
+      "evidence": "curl -LsSf https://devhaitham481.github.io/anamnesis/install.sh | sh",
+      "file_sha256": "0365c2bcdce34d97f5fbb6a8cb19d890011d892f94f46e343b9ee864b1e6db8e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/site/install.sh",
+      "line": 4,
+      "evidence": "curl -LsSf https://devhaitham481.github.io/anamnesis/install.sh | sh",
+      "file_sha256": "9b21247ac97d6584145536a20203e9ec05638ea2b4f90e0edca2ab70d2e68ad4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "anamnesis-2153f33038e4d30fa6cb74516f0ce68f03db0c76/site/install.sh",
+      "line": 35,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "9b21247ac97d6584145536a20203e9ec05638ea2b4f90e0edca2ab70d2e68ad4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "anam-x.fly.dev",
+    "anam.fly.dev",
+    "anamnesis-test.fly.dev",
+    "astral.sh",
+    "cdnjs.cloudflare.com",
+    "claude.ai",
+    "devhaitham481.github.io",
+    "docs.astral.sh",
+    "evil.example",
+    "fly.io",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.shields.io",
+    "memory.example.com",
+    "modelcontextprotocol.io",
+    "my-node.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "www.textualize.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

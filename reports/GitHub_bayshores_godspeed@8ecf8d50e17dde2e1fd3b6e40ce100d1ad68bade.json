@@ -1,0 +1,102 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "bayshores/godspeed",
+    "version": "8ecf8d50e17dde2e1fd3b6e40ce100d1ad68bade",
+    "download": "https://codeload.github.com/bayshores/godspeed/tar.gz/8ecf8d50e17dde2e1fd3b6e40ce100d1ad68bade"
+  },
+  "archive_sha256": "79a348237b2105f85e6ae4c9d9f8c19ca9bf52d70ad55ab41453609aa9c48644",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "godspeed-8ecf8d50e17dde2e1fd3b6e40ce100d1ad68bade/integrations/skills/godspeed/references/data-format.md",
+      "line": 113,
+      "evidence": "p=0.99 This is an illustrative fragment, not a valid complete question fixture. Tool ar",
+      "file_sha256": "75f1e1f602e7a15dd127b59fd834ed992ab583a19b94019acef41df394093acd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "godspeed-8ecf8d50e17dde2e1fd3b6e40ce100d1ad68bade/src/backend/agent/prompts/shared/20-question-tools.md",
+      "line": 32,
+      "evidence": "p=0.91 Ask, then end your turn — his answer determines the next. He may ask you somethi",
+      "file_sha256": "06aeff50ca7944ff693b5d78422f9ad33621b40048ad242a6b5d03d91b8018ba"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "godspeed-8ecf8d50e17dde2e1fd3b6e40ce100d1ad68bade/tests/backend/render-halley.test.tsx",
+      "line": 469,
+      "evidence": "\\u{202e}",
+      "file_sha256": "037b7ec86f66dd1490fd4d3e0b73f4b867870f7d99ed3246d9908437b1001197"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "docs.example.com, example.test, www.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "arxiv.org",
+    "attacker.example",
+    "britannica.com",
+    "claude.com",
+    "developers.openai.com",
+    "devguide.python.org",
+    "docs.example.com",
+    "docs.python.org",
+    "dotenvx.com",
+    "eslint.org",
+    "evil.example",
+    "example.com",
+    "example.edu",
+    "example.invalid",
+    "example.test",
+    "excalidraw.com",
+    "feross.org",
+    "fsf.org",
+    "github.com",
+    "huggingface.co",
+    "iep.utm.edu",
+    "katex-security.invalid",
+    "learnatgodspeed.com",
+    "nasa.gov",
+    "nodejs.org",
+    "opencollective.com",
+    "paulmillr.com",
+    "paypal.me",
+    "peps.python.org",
+    "polar.sh",
+    "r.jina.ai",
+    "registry.npmjs.org",
+    "thirdparty.invalid",
+    "tidelift.com",
+    "ui.shadcn.com",
+    "unpkg.com",
+    "untrusted.invalid",
+    "www.apple.com",
+    "www.example.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.python.org",
+    "www.sigmajs.org",
+    "www.w3.org",
+    "x.example",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}
