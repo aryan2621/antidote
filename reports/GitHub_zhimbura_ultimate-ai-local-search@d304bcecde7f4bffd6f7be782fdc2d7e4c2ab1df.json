@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zhimbura/ultimate-ai-local-search",
+    "version": "d304bcecde7f4bffd6f7be782fdc2d7e4c2ab1df",
+    "download": "https://codeload.github.com/zhimbura/ultimate-ai-local-search/tar.gz/d304bcecde7f4bffd6f7be782fdc2d7e4c2ab1df"
+  },
+  "archive_sha256": "e7cb81930664c4729f8c86af18cb588983dec7ad029afacc5860fe3a62bfc88a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ultimate-ai-local-search-d304bcecde7f4bffd6f7be782fdc2d7e4c2ab1df/install.sh",
+      "line": 402,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "0b77db1d10fc4ff60d42fa01c99ae42c4dc44a4974620498a1ac659f3672dcd4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "ultimate-ai-local-search-d304bcecde7f4bffd6f7be782fdc2d7e4c2ab1df/install.sh",
+      "line": 402,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "0b77db1d10fc4ff60d42fa01c99ae42c4dc44a4974620498a1ac659f3672dcd4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.5",
+    "127.0.0.1",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "backup.example.com",
+    "cluster.example",
+    "embarkstudios.github.io",
+    "embeddings.example.com",
+    "errors.pydantic.dev",
+    "example.com",
+    "github.com",
+    "lmstudio.ai",
+    "localhost.example.com",
+    "milvus.local",
+    "ollama.com",
+    "openrouter.ai",
+    "rustup.rs",
+    "www.w3.org",
+    "zilliz.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

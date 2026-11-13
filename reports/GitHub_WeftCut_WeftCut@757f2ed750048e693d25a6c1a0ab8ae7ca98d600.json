@@ -1,0 +1,363 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "WeftCut/WeftCut",
+    "version": "757f2ed750048e693d25a6c1a0ab8ae7ca98d600",
+    "download": "https://codeload.github.com/WeftCut/WeftCut/tar.gz/757f2ed750048e693d25a6c1a0ab8ae7ca98d600"
+  },
+  "archive_sha256": "0a9d0c47b909b274929c21c1bbec0d3748b3713d15067acfff8a619bb67155be",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 104,
+      "evidence": "execSync(`\"${bin}\" -version`, { encoding: 'utf8' })",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 154,
+      "evidence": "execSync(`curl -L --progress-bar -o \"${outPath}\" \"${url}\"`, { stdio: 'inherit' }",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 221,
+      "evidence": "execSync(`tar -xf \"${zipPath}\" -C \"${tmp}\" \"${innerPath}\"`, { stdio: 'inherit' }",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 223,
+      "evidence": "execSync(`move \"${extracted}\" \"${bin}\"`, { stdio: 'inherit', shell: true })",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 231,
+      "evidence": "execSync(`tar -xf \"${zipPath}\" -C \"${tmp}\" \"${innerProbePath}\"`, { stdio: 'inher",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 233,
+      "evidence": "execSync(`move \"${extractedProbe}\" \"${probeBin}\"`, { stdio: 'inherit', shell: tr",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 262,
+      "evidence": "execSync( `tar -xJf \"${tarPath}\" -C \"${dest}\" --strip-components=2 --wildcards '",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 272,
+      "evidence": "execSync( `tar -xJf \"${tarPath}\" -C \"${dest}\" --strip-components=2 --wildcards '",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 301,
+      "evidence": "execSync(`unzip -o \"${ffmpegZip}\" ffmpeg -d \"${dest}\"`, { stdio: 'inherit' })",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg.mjs",
+      "line": 312,
+      "evidence": "execSync(`unzip -o \"${ffprobeZip}\" ffprobe -d \"${dest}\"`, { stdio: 'inherit' })",
+      "file_sha256": "6f0cda61a75c3ada07fb57c55fce36187c26de5564043c37db9ae5b9345c0260"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 156,
+      "evidence": "execSync(`command -v ${cmd}`, { stdio: 'ignore' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 174,
+      "evidence": "execSync(`curl -fL --progress-bar -o \"${dest}\" \"${url}\"`, { stdio: 'inherit' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 205,
+      "evidence": "execSync(`unzip -q \"${condaPath}\" \"pkg-*.tar.zst\" -d \"${exdir}\"`, { stdio: 'inhe",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 207,
+      "evidence": "execSync(`tar --zstd -xf \"${join(exdir, pkg)}\" -C \"${exdir}\" lib info/licenses`,",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 256,
+      "evidence": "execSync( 'curl -fL --progress-bar --connect-timeout 20 --retry 3 --retry-connre",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 285,
+      "evidence": "execSync(`otool -L \"${path}\"`, { encoding: 'utf8' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 294,
+      "evidence": "execSync(`install_name_tool ${args.join(' ')} \"${path}\"`)",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 320,
+      "evidence": "execSync(`tar -xf \"${archivePath}\" -C \"${work}\"`, { stdio: 'inherit' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 329,
+      "evidence": "execSync(`./configure ${configureArgs.join(' ')}`, { cwd: src, stdio: 'inherit' ",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 330,
+      "evidence": "execSync(`make -j${cpus().length}`, { cwd: src, stdio: 'inherit' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 332,
+      "evidence": "execSync(`\"${join(prefix, 'bin', 'ffmpeg')}\" -version`, { encoding: 'utf8' })",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 394,
+      "evidence": "execSync(`curl -L --progress-bar -o \"${archivePath}\" \"${url}\"`, { stdio: 'inheri",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 408,
+      "evidence": "execSync(`tar -xf \"${archivePath}\" -C \"${tmpdir()}\" ${members.map((m) => `\"${m}\"",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/fetch-ffmpeg-lgpl.mjs",
+      "line": 428,
+      "evidence": "execSync(`\"${join(dest, 'bin', cfg.exe)}\" -version`, { encoding: 'utf8', env: ba",
+      "file_sha256": "ae4f45868104be7e6a42eab7744f33c7245578c2d1deb806fec1112cc07c6301"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/napi-build-core.mjs",
+      "line": 15,
+      "evidence": "execSync(`napi build --release ${sysroot.args} ${args} --output-dir native`, { s",
+      "file_sha256": "0327708cd9a32ae580b7ed9bcfe9479dea2f3f0f282dba02b394d6390a614d67"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/release.test.mjs",
+      "line": 82,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ce874d51b82bacbc199924b7e15f27d7cd135a1017dc011d79bb2872f5b51f32"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/release.mjs",
+      "line": 135,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "d0e0cf82f71bc779f8ac234e213aa8563fbf815994c7d89f40dd2cb0859a078d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/apps/desktop/scripts/napi-build-decode.mjs",
+      "line": 57,
+      "evidence": "execSync( `napi build --platform --release ${sysroot.args} --manifest-path nativ",
+      "file_sha256": "2ce767e3b16b99a7544786b666fea05c194627e8f668cd4fcb66c776c215b30e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/docs/setup.md",
+      "line": 50,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "50e0d862ba25761c81205048f4745c796089cd9cd16283f0553ca989fa29195f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "WeftCut-757f2ed750048e693d25a6c1a0ab8ae7ca98d600/docs/releases.md",
+      "line": 50,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "e63c369a32470121d66ee0db750dc21d36e734fa7cdc4cb8e3b7b8b0c17a017c"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "go.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.5",
+    "127.0.0.1",
+    "a.mov",
+    "aka.ms",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.producthunt.com",
+    "api.star-history.com",
+    "audio.conform",
+    "baked.conform",
+    "chromium.googlesource.com",
+    "commons.wikimedia.org",
+    "conda-static.anaconda.org",
+    "conda.anaconda.org",
+    "creativecommons.org",
+    "discord.gg",
+    "dotenvx.com",
+    "example.com",
+    "example.invalid",
+    "feross.org",
+    "ffmpeg.martin-riedl.de",
+    "ffmpeg.org",
+    "fonts.google.com",
+    "fsf.org",
+    "git.ffmpeg.org",
+    "github.com",
+    "glama.ai",
+    "go.dev",
+    "huggingface.co",
+    "img.shields.io",
+    "learn.microsoft.com",
+    "locize.com",
+    "lucide.dev",
+    "modelcontextprotocol.io",
+    "napi.rs",
+    "npmmirror.com",
+    "opencollective.com",
+    "openfontlicense.org",
+    "p.mp4",
+    "paulmillr.com",
+    "polar.sh",
+    "raw.githubusercontent.com",
+    "ready.conform",
+    "registry.npmjs.org",
+    "sh.rustup.rs",
+    "test.invalid",
+    "tidelift.com",
+    "tone.conform",
+    "ui.shadcn.com",
+    "unpkg.com",
+    "upload.wikimedia.org",
+    "weftcut.com",
+    "www.apache.org",
+    "www.buymeacoffee.com",
+    "www.electronjs.org",
+    "www.gnu.org",
+    "www.gyan.dev",
+    "www.i18next.com",
+    "www.locize.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.producthunt.com",
+    "www.star-history.com",
+    "www.w3.org",
+    "x.conform"
+  ],
+  "install_script": false,
+  "score": "high"
+}

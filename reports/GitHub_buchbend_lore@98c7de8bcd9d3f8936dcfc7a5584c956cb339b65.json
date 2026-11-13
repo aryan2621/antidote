@@ -1,0 +1,100 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "buchbend/lore",
+    "version": "98c7de8bcd9d3f8936dcfc7a5584c956cb339b65",
+    "download": "https://codeload.github.com/buchbend/lore/tar.gz/98c7de8bcd9d3f8936dcfc7a5584c956cb339b65"
+  },
+  "archive_sha256": "b2a3799ab110b22c9ecb07cff1b0199cd2009afea06e943fc34c213350c0cd54",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/lib/lore_cli/integrations.py",
+      "line": 408,
+      "evidence": "curl -fsSL {_INSTALL_SH_URL} | bash",
+      "file_sha256": "21450866d2069586def336c9c95e0d331547752944e8b22746b37a2339e0296b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/tests/test_install_dispatcher.py",
+      "line": 213,
+      "evidence": "curl | sh",
+      "file_sha256": "4a88400701990f08b09558d9361fc98b950d0613d269f402ae53da9cc8f18234"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/README.md",
+      "line": 95,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/buchbend/lore/main/install.sh | sh",
+      "file_sha256": "af3e0b35dc0fa534a3e63a1b815bd8ce8e9355cead72a8ba802ffe06cc017b5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/skills/experiment/SKILL.md",
+      "line": 14,
+      "evidence": "p=0.96 Write two lines in the conversation, before you start anything:",
+      "file_sha256": "eaa3aec626f95801550fed55b6cc8eb669d23d1facd85766fc759c32845f4c7e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/skills/triage/PAGE.md",
+      "line": 51,
+      "evidence": "p=0.96 ## The answer prompt",
+      "file_sha256": "29e228be817a5d7328ac2dcd94494ed9a8738ec5ce37fd8948f767feb1368d4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/buchbend/lore/main/install.sh | sh",
+      "file_sha256": "7eedd6835d1dcd0ecf860db5a1f7d48bb12d488a9fcc96c5dc82b3f1373363f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "lore-98c7de8bcd9d3f8936dcfc7a5584c956cb339b65/docs/how-to/onboarding.md",
+      "line": 21,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/buchbend/lore/main/install.sh | sh",
+      "file_sha256": "b4a8b570c13e46b89241ad2463725252d82465d92d18a5998d4684a1559bc62a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "arxiv.org",
+    "creativecommons.org",
+    "diataxis.fr",
+    "docs.gitlab.com",
+    "docs.vale.sh",
+    "engineering.contentsquare.com",
+    "example.invalid",
+    "example.org",
+    "github.com",
+    "keepachangelog.com",
+    "matplotlib.org",
+    "pipx.pypa.io",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "vale.sh",
+    "w.example.org",
+    "wiki.example.org",
+    "www.humanlayer.dev",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

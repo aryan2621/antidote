@@ -1,0 +1,89 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kajisho5/ffmpeg-skill",
+    "version": "92dabd8372dafd033055a3b22d3fb71b39ac3cfd",
+    "download": "https://codeload.github.com/kajisho5/ffmpeg-skill/tar.gz/92dabd8372dafd033055a3b22d3fb71b39ac3cfd"
+  },
+  "archive_sha256": "7894d50da8b9c2ecfdef63315660cbab53ce5b99dd573e44c1a808e213a03250",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ffmpeg-skill-92dabd8372dafd033055a3b22d3fb71b39ac3cfd/.claude/skills/destructive-operations/SKILL.md",
+      "line": 73,
+      "evidence": "p=0.97 The guard needs to answer \"is every tracked path inside the directory this comma",
+      "file_sha256": "2c2065c00f49cb9d6747d353a9911bccd29318c43de224a89d80577aa629fdd7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ffmpeg-skill-92dabd8372dafd033055a3b22d3fb71b39ac3cfd/tests/test_contract.py",
+      "line": 538,
+      "evidence": "curl\", \"wget\", \"bash\", \"|sh",
+      "file_sha256": "fdc8525f313059add2ecbed8f3c14eb4ae2b503a5b1e4707111c789fa29b97bb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ffmpeg-skill-92dabd8372dafd033055a3b22d3fb71b39ac3cfd/tests/test_contract.py",
+      "line": 8039,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fdc8525f313059add2ecbed8f3c14eb4ae2b503a5b1e4707111c789fa29b97bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ffmpeg-skill-92dabd8372dafd033055a3b22d3fb71b39ac3cfd/.github/scripts/publish_plugin_branch.sh",
+      "line": 88,
+      "evidence": "curl\", \"wget\", \"bash\", \"|sh",
+      "file_sha256": "cb2ad60768d635c8d52c681cb27e9e49eeafc3aad92aab505f8762a5e56bff62"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.com",
+    "api.scorecard.dev",
+    "archive.org",
+    "cdn.jsdelivr.net",
+    "docs.anthropic.com",
+    "docs.npmjs.com",
+    "doi.org",
+    "download.blender.org",
+    "example.com",
+    "ffmpeg.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "google.github.io",
+    "img.photographyblog.com",
+    "img.shields.io",
+    "johnvansickle.com",
+    "kajisho5.github.io",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "scorecard.dev",
+    "snyk.io",
+    "static.modelcontextprotocol.io",
+    "storage.googleapis.com",
+    "token.actions.githubusercontent.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.rtings.com",
+    "www.smpte-ra.org",
+    "www.w3.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
