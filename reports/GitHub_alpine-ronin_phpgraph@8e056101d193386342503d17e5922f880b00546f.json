@@ -1,0 +1,83 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "alpine-ronin/phpgraph",
+    "version": "8e056101d193386342503d17e5922f880b00546f",
+    "download": "https://codeload.github.com/alpine-ronin/phpgraph/tar.gz/8e056101d193386342503d17e5922f880b00546f"
+  },
+  "archive_sha256": "8b1ab429e9bf6e2c16e5280307815920fbe15d91493724a9ec63e48671729382",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phpgraph-8e056101d193386342503d17e5922f880b00546f/README.fr.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/alpine-ronin/phpgraph/main/install.",
+      "file_sha256": "01fe17f705a8074ee7b4083bbbf27bed4824f793daf5b7f9041a641ac516c757"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phpgraph-8e056101d193386342503d17e5922f880b00546f/README.md",
+      "line": 52,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/alpine-ronin/phpgraph/main/install.",
+      "file_sha256": "ae4d35e1f0e67f40b814c9725a3cd50ff88924567e39d459940d29aeb2c199b5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phpgraph-8e056101d193386342503d17e5922f880b00546f/install.sh",
+      "line": 6,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/alpine-ronin/phpgraph/main/install.",
+      "file_sha256": "4f20b154c371d11464da5f6ab8d56ac6e2f54bb614e69964b8b179e8d5b3e839"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "phpgraph-8e056101d193386342503d17e5922f880b00546f/install.sh",
+      "line": 62,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "4f20b154c371d11464da5f6ab8d56ac6e2f54bb614e69964b8b179e8d5b3e839"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.example.com",
+    "api.github.com",
+    "api.vendor.example",
+    "cboden.dev",
+    "clue.engineering",
+    "getcomposer.org",
+    "github.com",
+    "img.shields.io",
+    "irc.libera.chat",
+    "liberapay.com",
+    "localheinz.com",
+    "mabe.berlin",
+    "opencollective.com",
+    "packagist.com",
+    "packagist.org",
+    "phpstan.org",
+    "phpunit.de",
+    "raw.githubusercontent.com",
+    "robbast.nl",
+    "seld.be",
+    "semver.org",
+    "sorgalla.com",
+    "static.modelcontextprotocol.io",
+    "symfony.com",
+    "thanks.dev",
+    "tidelift.com",
+    "www.github.com",
+    "www.naderman.de",
+    "www.php-fig.org",
+    "wyrihaximus.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

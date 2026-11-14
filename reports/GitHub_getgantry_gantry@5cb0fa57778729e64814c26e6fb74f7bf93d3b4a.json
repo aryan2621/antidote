@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "getgantry/gantry",
+    "version": "5cb0fa57778729e64814c26e6fb74f7bf93d3b4a",
+    "download": "https://codeload.github.com/getgantry/gantry/tar.gz/5cb0fa57778729e64814c26e6fb74f7bf93d3b4a"
+  },
+  "archive_sha256": "e9f5ce8dfe70a2b3f9b0bce31eb0f75a23beb98e9bf0f784344dd0a58dd30f9a",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "gantry-5cb0fa57778729e64814c26e6fb74f7bf93d3b4a/README.md",
+      "line": 252,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ba84ef80d1519f461fb379ddf6d074e5da6020c60899cbe1765a5784e5d80319"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "10.0.0.1, dev.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "1.2.3.4",
+    "10.0.0.1",
+    "127.0.0.1",
+    "192.168.64.3",
+    "192.168.64.5",
+    "api.test",
+    "box.lan",
+    "box.local",
+    "brew.sh",
+    "dev.example",
+    "developers.cloudflare.com",
+    "example.com",
+    "getgantry.github.io",
+    "ghcr.io",
+    "github.com",
+    "img.shields.io",
+    "index.docker.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "random-words-here.trycloudflare.com",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "x.trycloudflare.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

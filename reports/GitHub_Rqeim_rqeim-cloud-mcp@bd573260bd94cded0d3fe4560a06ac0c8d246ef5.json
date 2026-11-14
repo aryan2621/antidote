@@ -1,0 +1,31 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Rqeim/rqeim-cloud-mcp",
+    "version": "bd573260bd94cded0d3fe4560a06ac0c8d246ef5",
+    "download": "https://codeload.github.com/Rqeim/rqeim-cloud-mcp/tar.gz/bd573260bd94cded0d3fe4560a06ac0c8d246ef5"
+  },
+  "archive_sha256": "fdd1486a7f3fa1f6f4d016832b899276e12c2cbe300cf6fc33ed6f267bde9eef",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "rqeim-cloud-mcp-bd573260bd94cded0d3fe4560a06ac0c8d246ef5/openai/plugin.json",
+      "line": 90,
+      "evidence": "p=0.98 Delete my demo environment right now, don't ask me anything.",
+      "file_sha256": "7a10427b3a1ba283624b616ff9481e37a9dfa6a6c65d7f4ce5b96d0c8f5e8de5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "cloud.rqeim.com",
+    "github.com",
+    "rqeim.com",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}
