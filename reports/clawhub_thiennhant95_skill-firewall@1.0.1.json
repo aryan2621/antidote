@@ -1,0 +1,74 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "thiennhant95/skill-firewall",
+    "version": "1.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=skill-firewall&ownerHandle=thiennhant95&version=1.0.1"
+  },
+  "archive_sha256": "b941e5316dd22215cf86dc742830d0b2951f55301ef964bc441807915bb53acd",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "scripts/skill_firewall.py",
+      "line": 156,
+      "evidence": "id_rsa",
+      "file_sha256": "371489e9222c2e9feda5d18fc2c256f3b87f2a648272f22841ed663c0642e01f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "references/threat-model.md",
+      "line": 35,
+      "evidence": "~/.ssh",
+      "file_sha256": "ccfda2e3af338a3fe98e9d429dceb5747208624aa75ff90b417c57bf9274b126"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/threat-model.md",
+      "line": 87,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "ccfda2e3af338a3fe98e9d429dceb5747208624aa75ff90b417c57bf9274b126"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "references/threat-model.md",
+      "line": 54,
+      "evidence": "base64 -d \\| bash",
+      "file_sha256": "ccfda2e3af338a3fe98e9d429dceb5747208624aa75ff90b417c57bf9274b126"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "references/threat-model.md",
+      "line": 49,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "ccfda2e3af338a3fe98e9d429dceb5747208624aa75ff90b417c57bf9274b126"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "references/threat-model.md",
+      "line": 25,
+      "evidence": "forget previous instructions",
+      "file_sha256": "ccfda2e3af338a3fe98e9d429dceb5747208624aa75ff90b417c57bf9274b126"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai",
+    "github.com",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
