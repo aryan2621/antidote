@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@frequencytalk/agent",
+    "version": "0.2.3",
+    "download": null
+  },
+  "archive_sha256": "fd7aafc619760f87dd2200f0705a3b2b64aefdca92d93d7357ae691c43d3b36e",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "package/dist/index.js.map",
+      "line": 1,
+      "evidence": "\\u{e0067}",
+      "file_sha256": "f42ace2418027e6edcfce756e83361c7ec97dbda8da8c09b76144a4600bfb96f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "package/dist/mcp/server.js.map",
+      "line": 1,
+      "evidence": "\\u{e0067}",
+      "file_sha256": "f0209fa46fbfa1b2df72cbdb2ab03da7e5bc266cee77cfecd3215dc26c054801"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "package/dist/cli.js.map",
+      "line": 1,
+      "evidence": "\\u{e0067}",
+      "file_sha256": "2e4b66875a552071c69858b6f8f73a64209bdbc926c555ccfcdf1c6210ac0a16"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent.frequencytalk.com",
+    "frequencytalk.com",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
