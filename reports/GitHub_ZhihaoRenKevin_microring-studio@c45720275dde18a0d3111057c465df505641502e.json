@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ZhihaoRenKevin/microring-studio",
+    "version": "c45720275dde18a0d3111057c465df505641502e",
+    "download": "https://codeload.github.com/ZhihaoRenKevin/microring-studio/tar.gz/c45720275dde18a0d3111057c465df505641502e"
+  },
+  "archive_sha256": "55ea9ba9fa170ba89cc5c180db3277dba44a85159307bf504e78f81255fb66fb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "microring-studio-c45720275dde18a0d3111057c465df505641502e/src/microring/build_standalone.py",
+      "line": 156,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "bdfd5e740d16918051e4b4a1c641bf3b656e87817b4ef061ff7d263a64d0669b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "microring-studio-c45720275dde18a0d3111057c465df505641502e/README.md",
+      "line": 181,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "655749a0ebed5b535541ea245b55f7f35fd021364cc1dbcc3d559cd80002d9ef"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.anthropic.com",
+    "api.openai.com",
+    "astral.sh",
+    "codespaces.new",
+    "doi.org",
+    "github.com",
+    "img.shields.io",
+    "orcid.org",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

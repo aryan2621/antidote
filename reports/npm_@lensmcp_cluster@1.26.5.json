@@ -1,0 +1,31 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@lensmcp/cluster",
+    "version": "1.26.5",
+    "download": null
+  },
+  "archive_sha256": "e1815af5a812bc580fc634cc3efbbafe7b82e3506b5c91fd7b0b204c7e995ef1",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "package/executors/gateway/runtime/docker-sweep.js",
+      "line": 1,
+      "evidence": "fs.readdirSync((0,exports.dockerRunsDir)(e))",
+      "file_sha256": "35bbba2d9bb259fc2068015befeb6c953fb7551a7757610930e12395a2de468a"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "app.foodguard.local",
+    "github.com",
+    "json-schema.org",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

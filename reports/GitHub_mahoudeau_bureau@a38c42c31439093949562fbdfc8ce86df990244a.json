@@ -1,0 +1,99 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "mahoudeau/bureau",
+    "version": "a38c42c31439093949562fbdfc8ce86df990244a",
+    "download": "https://codeload.github.com/mahoudeau/bureau/tar.gz/a38c42c31439093949562fbdfc8ce86df990244a"
+  },
+  "archive_sha256": "934ebd3ee4cb4de9900168bcbae2e8fe073ba6f3810f16c641669fee090e45b9",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "bureau-a38c42c31439093949562fbdfc8ce86df990244a/test/markdown.test.js",
+      "line": 245,
+      "evidence": "\\u{202e}",
+      "file_sha256": "a74f70e3409d5e3eb3a10be0c04a6a888d2da96acb3e48a4779f1dc99074a818"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "bureau-a38c42c31439093949562fbdfc8ce86df990244a/test/security.test.js",
+      "line": 176,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e2a7286bfaaa2f77991526393a8b2ea0dc44dbe7450b3f034a2e2adf2bd878a2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "bureau-a38c42c31439093949562fbdfc8ce86df990244a/connectors/claude-code/hub.sh",
+      "line": 44,
+      "evidence": "security find-generic-password -s \"${BUREAU_KEYCHAIN_SERVICE:-bureau-hub}\" -a \"$",
+      "file_sha256": "11ce887860f56bd0d8294b7a68149975039bcb3648b58991a9ed7ed8399bea0b"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "a.example, b.example, cloud.example, id.example, new.example, www.apple.com, your.hub, your.nextcloud",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.b",
+    "a.example",
+    "api.example.com",
+    "api.github.com",
+    "b.example",
+    "bureau.example.com",
+    "bureau.mathieu.dev",
+    "cla-assistant.io",
+    "claude.ai",
+    "cloud.example",
+    "dossier.example",
+    "elsewhere.example",
+    "evil.example",
+    "example.com",
+    "fonts.googleapis.com",
+    "fsf.org",
+    "git-scm.com",
+    "github.com",
+    "hub.example",
+    "hub.example.com",
+    "id.example",
+    "id.omako.dev",
+    "keepachangelog.com",
+    "new.example",
+    "not-bureau.example",
+    "ok.example",
+    "scripts.sil.org",
+    "semver.org",
+    "someone-else.example",
+    "static.modelcontextprotocol.io",
+    "that.example",
+    "www.apache.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.getbureau.dev",
+    "www.gnu.org",
+    "www.mathieu.dev",
+    "www.omako.fr",
+    "www.q.r",
+    "www.w3.org",
+    "x.y",
+    "your.hub",
+    "your.nextcloud",
+    "z.w"
+  ],
+  "install_script": false,
+  "score": "high"
+}
