@@ -1,0 +1,123 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Kortexio/ContextMemory",
+    "version": "daddface4b1dc097784a6797e1cad6d2f77df45c",
+    "download": "https://codeload.github.com/Kortexio/ContextMemory/tar.gz/daddface4b1dc097784a6797e1cad6d2f77df45c"
+  },
+  "archive_sha256": "57356957e6582d1203ffa7167e41fcbe6a76fa95e6172e665d4dae9dcfa9f8ae",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/src/ContextMemory.Infrastructure/Migrations/20260921194500_BackfillGuardrailPatternsConfig.cs",
+      "line": 25,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "95afd3ce04d05603a364fd7940184c69ec64f9eb10ea8fd2c2eff4b09e3931f4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/src/ContextMemory.Infrastructure/Migrations/20260921230000_ScrubPortugueseFromSystemCatalog.cs",
+      "line": 81,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9f24d6de838aa4735bdf79581877620023a5e7e622e016f97b2ab640fa95616a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/src/ContextMemory.Core/Agentic/Seed/agentic-catalog.json",
+      "line": 549,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "31000d669b1544f7bf83190db027027410a19a8c6345c480d7eb902612c21015"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/src/ContextMemory.Core/Agentic/Seed/agentic-catalog.json",
+      "line": 429,
+      "evidence": "p=1.00 Reject final answers that ignore failed tool steps.",
+      "file_sha256": "31000d669b1544f7bf83190db027027410a19a8c6345c480d7eb902612c21015"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/src/ContextMemory.Core/Agentic/Seed/agentic-catalog.json",
+      "line": 543,
+      "evidence": "p=1.00 Detect jailbreak / ignore-previous-instructions patterns in user or answer.",
+      "file_sha256": "31000d669b1544f7bf83190db027027410a19a8c6345c480d7eb902612c21015"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/tests/ContextMemory.Api.Tests/AgenticExtendedGuardrailsTests.cs",
+      "line": 13,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "696ba74f89327615054edf8288629b5598b5bd4f5a1c820dd2ca61d4bdda4fad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ContextMemory-daddface4b1dc097784a6797e1cad6d2f77df45c/Dockerfile.sandbox-runtime",
+      "line": 20,
+      "evidence": "curl -sL https://aka.ms/InstallAzureCLIDeb | bash",
+      "file_sha256": "91f420f838c34a2683170af153563b9ce8aab1ddab9f3d01d32eaec0ccdc3c4b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "aka.ms",
+    "api.example.com",
+    "api.github.com",
+    "api.kortexio.io",
+    "api.linkedin.com",
+    "api.loganalytics.azure.com",
+    "api.openai.com",
+    "api.search.brave.com",
+    "api.tavily.com",
+    "cdn.jsdelivr.net",
+    "cursor.com",
+    "dev.to",
+    "docs.docker.com",
+    "dotnet.microsoft.com",
+    "evil.com",
+    "evil.example.com",
+    "example.com",
+    "example.test",
+    "external.zuora.example",
+    "fonts.googleapis.com",
+    "fsf.org",
+    "github.com",
+    "gpu-box.lan",
+    "host.docker.internal",
+    "img.shields.io",
+    "internal.zuora.example",
+    "json-schema.org",
+    "json.schemastore.org",
+    "kortexio.io",
+    "llm.example.test",
+    "login.example.com",
+    "login.microsoftonline.com",
+    "mcp.example.com",
+    "mcp.example.test",
+    "pool.eastus.dynamicsessions.io",
+    "prod.cursor.com",
+    "registry.npmjs.org",
+    "www.conventionalcommits.org",
+    "www.gnu.org",
+    "www.kortexio.io",
+    "www.linkedin.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

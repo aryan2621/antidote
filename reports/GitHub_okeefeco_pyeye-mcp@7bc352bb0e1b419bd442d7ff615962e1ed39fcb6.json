@@ -1,0 +1,67 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "okeefeco/pyeye-mcp",
+    "version": "7bc352bb0e1b419bd442d7ff615962e1ed39fcb6",
+    "download": "https://codeload.github.com/okeefeco/pyeye-mcp/tar.gz/7bc352bb0e1b419bd442d7ff615962e1ed39fcb6"
+  },
+  "archive_sha256": "75cc8cd9675d0397f9067d4f908261a3d7331e8d6a673e17c3d03bb7cc90020b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pyeye-mcp-7bc352bb0e1b419bd442d7ff615962e1ed39fcb6/setup.sh",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3de2d6434b0e2d0a928d96255c68d1b0341e1e8b231ccfe9e8e040313b39657c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pyeye-mcp-7bc352bb0e1b419bd442d7ff615962e1ed39fcb6/CLAUDE.md",
+      "line": 3,
+      "evidence": "p=0.98 This file loads modular Claude behavior instructions. The actual instructions ar",
+      "file_sha256": "67e952f7ca5e3388f3cb72d3edcb0d8e357f6696d9f09a7bd03e6585dd846dea"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "peps.python.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "astral.sh",
+    "codecov.io",
+    "docs.astral.sh",
+    "docs.github.com",
+    "docs.pytest.org",
+    "docs.python-guide.org",
+    "docs.python.org",
+    "factoryboy.readthedocs.io",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "jedi.readthedocs.io",
+    "keepachangelog.com",
+    "peps.python.org",
+    "pypi.org",
+    "pytest-benchmark.readthedocs.io",
+    "pytest-cov.readthedocs.io",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "test.pypi.org",
+    "www.python.org",
+    "www.sphinx-doc.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

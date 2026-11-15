@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "slfguardian/slf-guardian-mcp",
+    "version": "d61e2232f3c0e34677f0e6768b7fc6e4734b2293",
+    "download": "https://codeload.github.com/slfguardian/slf-guardian-mcp/tar.gz/d61e2232f3c0e34677f0e6768b7fc6e4734b2293"
+  },
+  "archive_sha256": "8f9005992488b968c0ab389d9c63a25077881865f52d8256f8fa8ea14ec310d8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "slf-guardian-mcp-d61e2232f3c0e34677f0e6768b7fc6e4734b2293/src/slf_guardian_mcp/server.py",
+      "line": 34,
+      "evidence": "curl | bash",
+      "file_sha256": "05198f5f28750a44602af2618b054efbfb33d8320326d2baef425049ba22f4cb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "slf-guardian-mcp-d61e2232f3c0e34677f0e6768b7fc6e4734b2293/src/slf_guardian_mcp/server.py",
+      "line": 103,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "05198f5f28750a44602af2618b054efbfb33d8320326d2baef425049ba22f4cb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "slf-guardian-mcp-d61e2232f3c0e34677f0e6768b7fc6e4734b2293/README.md",
+      "line": 80,
+      "evidence": "curl | bash",
+      "file_sha256": "8f7c04a2a79b44a938a26112e64c16256719ca8107c505122743938edafee3e8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "slf-guardian-mcp-d61e2232f3c0e34677f0e6768b7fc6e4734b2293/README.md",
+      "line": 66,
+      "evidence": "do not tell the user",
+      "file_sha256": "8f7c04a2a79b44a938a26112e64c16256719ca8107c505122743938edafee3e8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "github.com",
+    "slfguardian.com",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

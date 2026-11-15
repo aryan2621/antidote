@@ -1,0 +1,48 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "vicmaster/framesmith",
+    "version": "ff102c325c204b9ca5e6b1a026df93b55fefa9e4",
+    "download": "https://codeload.github.com/vicmaster/framesmith/tar.gz/ff102c325c204b9ca5e6b1a026df93b55fefa9e4"
+  },
+  "archive_sha256": "553cfd33a9fee961ab6cde5c07deaf09981029a1fec8107f489411b74f2a9d6e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "framesmith-ff102c325c204b9ca5e6b1a026df93b55fefa9e4/src/screenshot.ts",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "129fb0119753d6a132b0c6bfc9ba6e613a22fc90ea268d75f5b6554f6ac0c8af"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "app.local",
+    "cdn.example.com",
+    "example.com",
+    "fonts.bunny.net",
+    "fonts.google.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.shields.io",
+    "leanpub.com",
+    "lucide.dev",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "opensource.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "staging.example.com",
+    "victorvelazquez.dev",
+    "www.magmalabs.io",
+    "www.w3.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

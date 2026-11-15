@@ -1,0 +1,33 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "bestforsmart-spec/codex-extended-memory",
+    "version": "f5d638f8f20369d577a56db493788908960b548d",
+    "download": "https://codeload.github.com/bestforsmart-spec/codex-extended-memory/tar.gz/f5d638f8f20369d577a56db493788908960b548d"
+  },
+  "archive_sha256": "6920d03708b52405a44a674f918e522057c135a26f54e5da1e3a392eef309205",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "codex-extended-memory-f5d638f8f20369d577a56db493788908960b548d/install.sh",
+      "line": 100,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "7a0598b4ba7f867cb4bd6b99847fb02c7b83312c7333511cfab2e11179deb493"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "github.com",
+    "ollama.com",
+    "schemas.microsoft.com",
+    "t.me",
+    "www.apple.com",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
