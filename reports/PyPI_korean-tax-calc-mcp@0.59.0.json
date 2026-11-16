@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "korean-tax-calc-mcp",
+    "version": "0.59.0",
+    "download": null
+  },
+  "archive_sha256": "565263d3c7ae391ff7f68dc2938e934ee37f4a5ac6eb32ba739ec9d8d7bee513",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "korean_tax_calc_mcp-0.59.0/publish_pypi.sh",
+      "line": 4,
+      "evidence": "security find-generic-password -s korean-tax-calc-mcp-pypi -w",
+      "file_sha256": "45071720db9eba782ff9a398690c7274e64b3b6e0f78084425b8d8b843657e85"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "schemas.openxmlformats.org, upstageai.github.io, www.contributor-covenant.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.upstage.ai",
+    "api.vworld.kr",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "law.go.kr",
+    "open.law.go.kr",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "schemas.openxmlformats.org",
+    "static.modelcontextprotocol.io",
+    "upstageai.github.io",
+    "www.contributor-covenant.org",
+    "www.law.go.kr",
+    "www.upstage.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

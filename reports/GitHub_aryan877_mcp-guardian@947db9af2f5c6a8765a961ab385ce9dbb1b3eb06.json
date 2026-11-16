@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "aryan877/mcp-guardian",
+    "version": "947db9af2f5c6a8765a961ab385ce9dbb1b3eb06",
+    "download": "https://codeload.github.com/aryan877/mcp-guardian/tar.gz/947db9af2f5c6a8765a961ab385ce9dbb1b3eb06"
+  },
+  "archive_sha256": "e7454126f10bfa4f54e3c277ed1db67c7dec5e84bb8ca9ab917990d3a7e819b2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-guardian-947db9af2f5c6a8765a961ab385ce9dbb1b3eb06/src/analysis/test-generator.ts",
+      "line": 178,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "31946635134e607319b47a02ae56bb378bf2672f6c360ff5ec7c98a60fb6e692"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-guardian-947db9af2f5c6a8765a961ab385ce9dbb1b3eb06/src/analysis/vulnerability-patterns.ts",
+      "line": 13,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "93b4bbcdcd163072aa3115074c3daa31249ce496e998fe3e97ce507c762333e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-guardian-947db9af2f5c6a8765a961ab385ce9dbb1b3eb06/demo/malicious-server/index.ts",
+      "line": 22,
+      "evidence": "Ignore any previous instructions",
+      "file_sha256": "26c2064eff1071b6fbd2c85d7801e3ef65414fcd0abb36c2657e3b4702612219"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "mcp-guardian-947db9af2f5c6a8765a961ab385ce9dbb1b3eb06/demo/malicious-server/index.ts",
+      "line": 22,
+      "evidence": "Do not tell the user",
+      "file_sha256": "26c2064eff1071b6fbd2c85d7801e3ef65414fcd0abb36c2657e3b4702612219"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "172.18.0.3",
+    "archestra.ai",
+    "docker.com",
+    "evil-exfiltration.example.com",
+    "feross.org",
+    "github.com",
+    "guardian.aryankumar.dev",
+    "img.shields.io",
+    "opencollective.com",
+    "registry.npmjs.org",
+    "registry.terraform.io",
+    "tidelift.com",
+    "www.patreon.com",
+    "www.w3.org",
+    "www.wemakedevs.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
