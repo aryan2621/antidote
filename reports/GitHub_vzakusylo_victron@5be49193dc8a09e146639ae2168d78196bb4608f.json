@@ -1,0 +1,78 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "vzakusylo/victron",
+    "version": "5be49193dc8a09e146639ae2168d78196bb4608f",
+    "download": "https://codeload.github.com/vzakusylo/victron/tar.gz/5be49193dc8a09e146639ae2168d78196bb4608f"
+  },
+  "archive_sha256": "dfa94865f096aebf0f2c87f5e09b9ed919ff56e6f7702588ce6b5bef4409c206",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-5be49193dc8a09e146639ae2168d78196bb4608f/tools/tuya-devices-setup.js",
+      "line": 49,
+      "evidence": "execSync('for i in $(seq 1 254); do ping -c 1 -W 1 ' + m[1] + '.$i >/dev/null 2>",
+      "file_sha256": "0fb06d1d8934055747c2a75692252c9bf213ebc312cd7ccc384acaa74056a860"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-5be49193dc8a09e146639ae2168d78196bb4608f/tools/tuya-devices-setup.js",
+      "line": 99,
+      "evidence": "execSync('chown nodered:nodered ' + DIR + 'tuya-devices.json ' + DIR + 'tuya-dev",
+      "file_sha256": "0fb06d1d8934055747c2a75692252c9bf213ebc312cd7ccc384acaa74056a860"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-5be49193dc8a09e146639ae2168d78196bb4608f/tools/set-mail-password.js",
+      "line": 26,
+      "evidence": "execSync('chown nodered:nodered ' + F + ' && chmod 600 ' + F)",
+      "file_sha256": "03d60ad397980680ece1d6791be7c25b776d531f50244b83dbd94dd8e618e945"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "victron-5be49193dc8a09e146639ae2168d78196bb4608f/tools/test-gx/entrypoint.sh",
+      "line": 4,
+      "evidence": "cp /tmp/test_key.pub /root/.ssh/authorized_keys",
+      "file_sha256": "d8dccd3ea843c514182e329bb1f67bae954fc930b15435daf00f5de5ad923845"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "100.x.y.z",
+    "127.0.0.1",
+    "192.168.0.146",
+    "192.168.0.165",
+    "903245-nodered.proxyrelay10.victronenergy.com",
+    "api.forecast.solar",
+    "doc.forecast.solar",
+    "docs.oasis-open.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "flows.nodered.org",
+    "forecast.solar",
+    "github.com",
+    "joint-research-centre.ec.europa.eu",
+    "login.tailscale.com",
+    "media.githubusercontent.com",
+    "modelcontextprotocol.io",
+    "nett.elvenett.no",
+    "openapi.tuyaeu.com",
+    "raw.githubusercontent.com",
+    "venus.local",
+    "www.onvif.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

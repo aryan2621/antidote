@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "aiwcorpo/mcp-platform",
+    "version": "b386cc4ed1214f655c85801f43aa1a670dcbb426",
+    "download": "https://codeload.github.com/aiwcorpo/mcp-platform/tar.gz/b386cc4ed1214f655c85801f43aa1a670dcbb426"
+  },
+  "archive_sha256": "f3bdcf79f900a0cc764c01a8f25eff1b1b64c1dcce8a5eeea67d3a7251352a8d",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-platform-b386cc4ed1214f655c85801f43aa1a670dcbb426/README.md",
+      "line": 217,
+      "evidence": "<system>",
+      "file_sha256": "bfdbbf965562e2bf4fefe24878c3a6536563653059732c60211dd4ef7199bf97"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-platform-b386cc4ed1214f655c85801f43aa1a670dcbb426/keycloak/realm-mcp.json",
+      "line": 1275,
+      "evidence": "p=0.92 Second factor: asked here unless this login already used an OTP at level 1; a us",
+      "file_sha256": "3cba0543cb5fb5a94dd46e612800973b0ca2e72fbc53fbe3fde0a5f9e51931d3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-platform-b386cc4ed1214f655c85801f43aa1a670dcbb426/keycloak/realm-mcp.json",
+      "line": 1344,
+      "evidence": "p=0.99 Level 2 without any OTP used in this login: refused",
+      "file_sha256": "3cba0543cb5fb5a94dd46e612800973b0ca2e72fbc53fbe3fde0a5f9e51931d3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "backend.corp.test",
+    "claude.ai",
+    "github.com",
+    "host.docker.internal",
+    "keycloak.internal",
+    "mcp-credential-broker.internal",
+    "mcp-gateway.internal",
+    "mcp.aiwcorpo.pl",
+    "mcp.localhost",
+    "openbao.internal",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

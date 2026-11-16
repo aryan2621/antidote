@@ -1,0 +1,1008 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "mcpgawk",
+    "version": "0.1.90",
+    "download": null
+  },
+  "archive_sha256": "fd9ae4a5bd7a5f584088471a6bde1e4546579e7697945864735633a56e8ee6a8",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/CHANGELOG.md",
+      "line": 350,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "29a0b991d2e1edae4dab32bef889f06b33bfaec84e5e80933d41e4a0cf03fd56"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/src/mcpgawk/demo.py",
+      "line": 57,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "76c6afa95bf10fd879833011476dad5e169068819cd0f53cea0ce847ee1563a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/src/mcpgawk/label.py",
+      "line": 590,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "657d406034eb6d4a450acd7d4b40be5fbc69a424d1334ce4461ef93acdad2409"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "mcpgawk-0.1.90/src/mcpgawk/signals.py",
+      "line": 351,
+      "evidence": "\\u{202a}",
+      "file_sha256": "6b0c94801bea04afb4ea66317d3af23eec51c9ce59fcb225d59d1ad5f794d3a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcpgawk-0.1.90/src/mcpgawk/signals.py",
+      "line": 600,
+      "evidence": "curl|bash",
+      "file_sha256": "6b0c94801bea04afb4ea66317d3af23eec51c9ce59fcb225d59d1ad5f794d3a3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_canary_signals.py",
+      "line": 48,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a74d9ec134267792f425b6a19e3b1e828c2b7250b5a9713994d6b85b3660afc5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/tests/test_canary_signals.py",
+      "line": 42,
+      "evidence": "<important>",
+      "file_sha256": "a74d9ec134267792f425b6a19e3b1e828c2b7250b5a9713994d6b85b3660afc5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcpgawk-0.1.90/tests/test_canary_signals.py",
+      "line": 154,
+      "evidence": "curl -fsSL https://example.com/i.sh | bash",
+      "file_sha256": "a74d9ec134267792f425b6a19e3b1e828c2b7250b5a9713994d6b85b3660afc5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_skills.py",
+      "line": 151,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "d2fec66fb4cd97323e37eb605a1db96c09ce5e8c99b0f2e463a7ea048ff57fdf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcpgawk-0.1.90/tests/test_skills.py",
+      "line": 3,
+      "evidence": "curl|bash",
+      "file_sha256": "d2fec66fb4cd97323e37eb605a1db96c09ce5e8c99b0f2e463a7ea048ff57fdf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_measure.py",
+      "line": 25,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "3e7d306335b25df827b83b8da2ca1584661e6b6dd0241b91961187d2c0268469"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/tests/test_one_rule_every_surface.py",
+      "line": 31,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "7d367625c087aa70b22762b4b6743c137053d4197c4efdfe6dadc00068c4fa0d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/tests/test_drift.py",
+      "line": 26,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "97fba388a442fa6c57c3ff7abadd95ea99e771d29376f96d2fb1c2fb1777cd68"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_panel_e2e.py",
+      "line": 91,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ea80f8267cf9d5baa0f74cd158d3e61027eff550fac72b243ea58a94995b1909"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/tests/test_drift_invariants.py",
+      "line": 282,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "3f17d8398037bf3e8d01e816eb51b196d3e87a06a82d9e191495a490daa2b5ea"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_demo.py",
+      "line": 179,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5cc14d235138193f2c4936f70481778cdd02eba1f8111688196e620d199a70c6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcpgawk-0.1.90/tests/test_signals.py",
+      "line": 46,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "d385090364fdc99fad065a68feb232c9322fd9d1dc54ece73c241e7a2f8d28cc"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "mcpgawk-0.1.90/tests/test_signals.py",
+      "line": 47,
+      "evidence": "Do not tell the user",
+      "file_sha256": "d385090364fdc99fad065a68feb232c9322fd9d1dc54ece73c241e7a2f8d28cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcpgawk-0.1.90/tests/test_signals.py",
+      "line": 44,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "d385090364fdc99fad065a68feb232c9322fd9d1dc54ece73c241e7a2f8d28cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 423,
+      "evidence": "p=0.92 Load code from the specified file. If both code and filename are provided, code ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 9671,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 101216,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 101216,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 105301,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122565,
+      "evidence": "p=0.97 \\u{a}  ABOUT THIS TOOL:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/tool-churn-2026/data/live-probe-churn-2026-10-04.json",
+      "line": 122609,
+      "evidence": "p=0.94 \\u{a}  About this tool:\\u{a}  - This tool is part of a toolchain that generates and prov",
+      "file_sha256": "7a673353f07cae1d7ed9045b52a99c36adc4980c41ba3c4af503cc2dcace1a3b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 380,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 380,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 380,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 22977,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 28364,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 28364,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-recent-releases-2026-10-20.json",
+      "line": 28364,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "6e3512f1abd0b1096b51bbc8d90e89af05d4ddb66a4a585ec4abc31fe88228aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-latest-2026-10-22.json",
+      "line": 115,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "c8489631ff25bd7820b4c69bdebbeae651d2671ddc53e8b2460360cc5046f453"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-latest-2026-10-22.json",
+      "line": 1422,
+      "evidence": "p=0.90 Optional prompt text to enter into the dialog.",
+      "file_sha256": "c8489631ff25bd7820b4c69bdebbeae651d2671ddc53e8b2460360cc5046f453"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-latest-2026-10-22.json",
+      "line": 14478,
+      "evidence": "p=0.93 A detailed tool for dynamic and reflective problem-solving through thoughts.\\u{a}Thi",
+      "file_sha256": "c8489631ff25bd7820b4c69bdebbeae651d2671ddc53e8b2460360cc5046f453"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcpgawk-0.1.90/research/token-cost-2026/data/live-probe-latest-2026-10-22.json",
+      "line": 15078,
+      "evidence": "p=0.96 This tool will take in the user prompt, search shopify.dev, and return relevant ",
+      "file_sha256": "c8489631ff25bd7820b4c69bdebbeae651d2671ddc53e8b2460360cc5046f453"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcpgawk-0.1.90/.github/workflows/bare-machine-install.yml",
+      "line": 98,
+      "evidence": "curl -LsSf --connect-timeout 15 https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "771c146bc0b3b29b3119cd5422ef9d52be21bdc99723d7d421dabe80886a9fe4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "-asdf.com",
+    "127.0.0.1",
+    "a.com",
+    "ajv.js.org",
+    "aka.ms",
+    "anthropic.com",
+    "api.example.com",
+    "api.lemonsqueezy.com",
+    "api.producthunt.com",
+    "app.codecov.io",
+    "asdf.c",
+    "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf.com",
+    "badgen.net",
+    "base64.guru",
+    "blog.izs.me",
+    "blog.stevenlevithan.com",
+    "bsky.app",
+    "bundlephobia.com",
+    "codecov.io",
+    "coveralls.io",
+    "datatracker.ietf.org",
+    "david-dm.org",
+    "deepwiki.com",
+    "developer.mozilla.org",
+    "discord.gg",
+    "docs.npmjs.com",
+    "example.com",
+    "example.net.il",
+    "example.org",
+    "examples.com",
+    "fetch.spec.whatwg.org",
+    "gawk.dev",
+    "gist.github.com",
+    "git.new",
+    "github-actions-badge-u3jn4tfpocch.runkit.sh",
+    "github.com",
+    "gitmoji.dev",
+    "google.com",
+    "hono.dev",
+    "img.shields.io",
+    "invalid.com",
+    "jongleberry.com",
+    "json-schema.org",
+    "jsr.io",
+    "keepachangelog.com",
+    "marketplace.visualstudio.com",
+    "mcp-example.com",
+    "mcp.example.com",
+    "mcp.gawk.dev",
+    "mcp.inkeep.com",
+    "mimesniff.spec.whatwg.org",
+    "modelcontextprotocol.github.io",
+    "modelcontextprotocol.io",
+    "my.local",
+    "nativerse-ventures.com",
+    "nodei.co",
+    "nodejs.org",
+    "npm-stat.com",
+    "npm.im",
+    "npmjs.com",
+    "npmjs.org",
+    "open-vsx.org",
+    "opencollective.com",
+    "openid.net",
+    "opensource.org",
+    "other.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "semver.org",
+    "spec.modelcontextprotocol.io",
+    "speedtest.net",
+    "stackoverflow.com",
+    "static.modelcontextprotocol.io",
+    "sub.example.co.uk",
+    "sub.example.com",
+    "test.com",
+    "thekevinscott.com",
+    "tidelift.com",
+    "tjholowaychuk.com",
+    "tools.ietf.org",
+    "travis-ci.org",
+    "ts-ast-viewer.com",
+    "twitter.com",
+    "url.spec.whatwg.org",
+    "versionbadg.es",
+    "www.apache.org",
+    "www.coderabbit.ai",
+    "www.example.com",
+    "www.github.com",
+    "www.npmjs.com",
+    "www.npmjs.org",
+    "www.postgresql.org",
+    "www.producthunt.com",
+    "www.rfc-editor.org",
+    "www.typescriptlang.org",
+    "www.w3.org",
+    "x.com",
+    "youtu.be",
+    "zod.dev"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

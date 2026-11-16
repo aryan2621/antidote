@@ -1,0 +1,96 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@asitis/mcp",
+    "version": "0.4.3",
+    "download": null
+  },
+  "archive_sha256": "466bf6025ac32072a489ecac771b3d49bfc6c343a861a6e21e7d3f34a7ccb81a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/CHANGELOG.md",
+      "line": 50,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5fac703e64bbac6c94c56e785c4456973c17bb152a3463743b3536eabd27232e"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/asitis.mjs",
+      "line": 169,
+      "evidence": "~/.ssh",
+      "file_sha256": "2a65801e48ed45f3f5f25f288bb56c0e0297bbf7af0dea73c59bdab0e013315c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/asitis.mjs",
+      "line": 169,
+      "evidence": "wget|bash",
+      "file_sha256": "2a65801e48ed45f3f5f25f288bb56c0e0297bbf7af0dea73c59bdab0e013315c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "package/dist/asitis-mcp.mjs",
+      "line": 244,
+      "evidence": "~/.ssh",
+      "file_sha256": "00af91da1d4fb7d762cdd7a48bf3e31a6ff68107e4a56197db557fe12f562367"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/asitis-mcp.mjs",
+      "line": 244,
+      "evidence": "wget|bash",
+      "file_sha256": "00af91da1d4fb7d762cdd7a48bf3e31a6ff68107e4a56197db557fe12f562367"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agents.md",
+    "agentskills.io",
+    "antigravity.google",
+    "apiiro.com",
+    "arxiv.org",
+    "asitis.app",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "cursor.com",
+    "docs.cline.bot",
+    "docs.devin.ai",
+    "docs.github.com",
+    "git-scm.com",
+    "github.blog",
+    "github.com",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "json-schema.org",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "learn.chatgpt.com",
+    "nvd.nist.gov",
+    "platform.claude.com",
+    "pubs.opengroup.org",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "snyk.io",
+    "spec.commonmark.org",
+    "trojansource.codes",
+    "www.aikido.dev",
+    "www.pillar.security",
+    "www.rfc-editor.org",
+    "www.unicode.org",
+    "yaml.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

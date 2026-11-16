@@ -1,0 +1,81 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "morajabi/poo",
+    "version": "80a15e88fa3351b59a52053ec3d9322c4d4d9d0b",
+    "download": "https://codeload.github.com/morajabi/poo/tar.gz/80a15e88fa3351b59a52053ec3d9322c4d4d9d0b"
+  },
+  "archive_sha256": "d8d914e366c9989a870a554e25e8679083ea9bc0045fa695d00144944733e0bf",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/README.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/morajabi/poo/main/install.sh | sh",
+      "file_sha256": "39450ceb38f0fe834ecd8dea8b6ba19f36e48952ae44e918aef9b9bd7fa0c678"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/skill/poo/SKILL.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/morajabi/poo/main/install.sh | sh",
+      "file_sha256": "ee2ab25d8f2a766be74f71880679be0d7de1cb81ec9b865f5e3b549b408f6fa4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/install.sh",
+      "line": 2,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/morajabi/poo/main/install.sh | sh",
+      "file_sha256": "7b3f1bb4b7c7b0888e6bbe6202aeb5c3007da88ef38271bdc5593cafc48b3189"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/docs/releasing.md",
+      "line": 96,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "a27a1c1f799ca155c2dc4687724ee8fb44883229074904cbcd03d4d9027d427e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/app/Sources/Poo/Onboarding.swift",
+      "line": 764,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/morajabi/poo/main/install.sh | sh",
+      "file_sha256": "302cea0dc404f73c252f0207f1977fdeddaa693be90f2d0506e61b8788b9e418"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "poo-80a15e88fa3351b59a52053ec3d9322c4d4d9d0b/.github/workflows/release.yml",
+      "line": 242,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/install.s",
+      "file_sha256": "dcedc56480b3f1d6b8e9c288ace8fdedf88618fb6ff29b670100b26617db156f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "anysphere.cursor-deeplink",
+    "bford.info",
+    "claude.ai",
+    "github.com",
+    "img.shields.io",
+    "raw.githubusercontent.com",
+    "sparkle-project.org",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

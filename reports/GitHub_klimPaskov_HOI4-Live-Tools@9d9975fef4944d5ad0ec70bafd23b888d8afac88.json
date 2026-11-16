@@ -1,0 +1,110 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "klimPaskov/HOI4-Live-Tools",
+    "version": "9d9975fef4944d5ad0ec70bafd23b888d8afac88",
+    "download": "https://codeload.github.com/klimPaskov/HOI4-Live-Tools/tar.gz/9d9975fef4944d5ad0ec70bafd23b888d8afac88"
+  },
+  "archive_sha256": "64a51b52b6648c1cb3fbb08a878ba8efb4a01ca6ba66156285eeaf5fcdf4fd86",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/AGENTS.md",
+      "line": 1,
+      "evidence": "p=1.00 # Codex instructions",
+      "file_sha256": "cd5fb0843e2a551425e9de6d5bb691676b32514d6905b11b2b15db770d1c2085"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/README.md",
+      "line": 43,
+      "evidence": "curl -fsSL https://github.com/klimPaskov/HOI4-Live-Tools/releases/latest/downloa",
+      "file_sha256": "2cdf3cd52f3b3abaa135cfcfdb6dd0e47d2dd620606fdaef894df547bd798a83"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/README.md",
+      "line": 291,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "2cdf3cd52f3b3abaa135cfcfdb6dd0e47d2dd620606fdaef894df547bd798a83"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 2022,
+      "evidence": "p=0.93 no new wing while this many wings match the entry",
+      "file_sha256": "464a4c1cf8d01e2fa207f937c9a64705ceaaab2040165ff9e6b21f4c9163392e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 2938,
+      "evidence": "p=0.94 alert names the alert rule ignores",
+      "file_sha256": "464a4c1cf8d01e2fa207f937c9a64705ceaaab2040165ff9e6b21f4c9163392e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 3128,
+      "evidence": "p=0.97 without a line efficiency read, a production line not added by the executor with",
+      "file_sha256": "464a4c1cf8d01e2fa207f937c9a64705ceaaab2040165ff9e6b21f4c9163392e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/native/src/doctor.rs",
+      "line": 110,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "db9a38c8354f922ffb1395926cbd07c665e9da5f10aeca54b0311f62c1ddff36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "HOI4-Live-Tools-9d9975fef4944d5ad0ec70bafd23b888d8afac88/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://github.com/klimPaskov/HOI4-Live-Tools/releases/latest/downloa",
+      "file_sha256": "f24ae3d1a61f559584d2ffad0dfe886cb239527fc8c88b0be3933da315f3e0d3"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "developer.apple.com",
+    "discord.gg",
+    "docs.brew.sh",
+    "example.invalid",
+    "ffmpeg.org",
+    "formulae.brew.sh",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "ko-fi.com",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "modelcontextprotocol.io",
+    "raw.githubusercontent.com",
+    "wiki.fex-emu.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.python.org",
+    "www.x.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
