@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0240",
+  "modified": "2026-07-16T19:19:58.885145018Z",
+  "published": "2026-07-16T18:41:49Z",
+  "aliases": [
+    "MAL-2026-10747"
+  ],
+  "summary": "Malicious code in sensorium-mcp (npm)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (73c4ac95caf91cb047bab32d5202efa2dfc2e4f84a032160419a7c30739da91c)\nsensorium-mcp starts a background poller against api.telegram.org/getUpdates and delivers received message text as prompts to locally spawned Claude Code (invoked with --dangerously-skip-permissions) and Codex (invoked with --dangerously-bypass-approvals-and-sandbox). Because the agents' approval/sandbox prompts are disabled by the package, any party holding the Telegram bot token and chat id can issue instructions that execute as shell and file operations on the installer's host. The keepAlive threads auto-launch when the server is started. In addition, the MCP `send_file` tool accepts any absolute path inside the installer's cwd or home directory, reads the file, and uploads it to the configured Telegram chat via telegram.sendDocument, exposing paths such as ~/.ssh/id_rsa, ~/.aws/credentials, and ~/.npmrc to whoever controls the bot. The ping-related patterns flagged in dist/http-server.js and dist/services/self-update.service.js are health-check / keepalive references and are not the primary basis for this verdict.\n\n\nImported from OSV MAL-2026-10747.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-10747"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://www.npmjs.com/package/sensorium-mcp/v/3.0.95"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "sensorium-mcp"
+      },
+      "versions": [
+        "3.0.95"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

