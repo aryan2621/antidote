@@ -1,0 +1,67 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@copado/agentia-cli",
+    "version": "1.10.0",
+    "download": null
+  },
+  "archive_sha256": "02e6e225313377f9949ab77dd07f4c6a00c3d5df57a74e35bcd661c4ad7542f5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/templates/skills/agentia/SKILL.md",
+      "line": 22,
+      "evidence": "p=0.95 Use the applicable installed domain skill for detailed instructions:",
+      "file_sha256": "96fa0e71db8cff2fcacabccb8982573e3748e4ba07ea5f9142e6b6f9c9c52838"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/oclif.manifest.json",
+      "line": 3650,
+      "evidence": "p=0.98 Ignore unsupported manifest asset arrays instead of failing",
+      "file_sha256": "5a0433a59ac58133efdf7408d94a03094f305fe9ce5b60c3f66ac9090ebefe01"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/oclif.manifest.json",
+      "line": 20759,
+      "evidence": "p=0.97 Manual Task instructions",
+      "file_sha256": "5a0433a59ac58133efdf7408d94a03094f305fe9ce5b60c3f66ac9090ebefe01"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ca.pipeline.copado.com",
+    "crt.invalid",
+    "dev.api.copado.com",
+    "dev.azure.com",
+    "developer.copado.com",
+    "eu.pipeline.copado.com",
+    "example.com",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "login.salesforce.com",
+    "oclif.io",
+    "plugin-registry-9c120c.gitlab.io",
+    "proxy.example.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "robotic.copado.com",
+    "soap.sforce.com",
+    "test.api.copado.com",
+    "uat.pipeline.copado.com",
+    "us.pipeline.copado.com",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

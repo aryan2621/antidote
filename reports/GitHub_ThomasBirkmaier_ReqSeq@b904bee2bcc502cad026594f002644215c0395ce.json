@@ -1,0 +1,111 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "b904bee2bcc502cad026594f002644215c0395ce",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/b904bee2bcc502cad026594f002644215c0395ce"
+  },
+  "archive_sha256": "892a81f4a841af3c246a4725424658d1cc3364fd55de15a3563252aa8cb7800f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/docs/guide/how-to/install-reqseq.md",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "f147e821fb4f62441f4799159545b3be3385ba6a66992e5c60ee54b68842b4c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/schemas/generated/mcp-tools.json",
+      "line": 5373,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "0dba8444aad83a33287517c951da8828296c6a50a1f429d9453936b3e0c43920"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/schemas/generated/mcp-tools.json",
+      "line": 10037,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "0dba8444aad83a33287517c951da8828296c6a50a1f429d9453936b3e0c43920"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/schemas/generated/openapi.json",
+      "line": 4305,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "f90e1e8ba0aa0c1938b5043a0c4a54beac131728bd1c59d63d75bc8baa01c972"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/schemas/generated/openapi.json",
+      "line": 13587,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "f90e1e8ba0aa0c1938b5043a0c4a54beac131728bd1c59d63d75bc8baa01c972"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/schemas/commands/baseline.get.json",
+      "line": 203,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "d3bd5a13840cabc325b70b49d8d1609a3b1ffd6d94ca72d5fce2593c3719293a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/packages/core/src/generated/contracts.json",
+      "line": 6091,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "55966a4e13587ed2dc92beb82c626d5015efac3f048c99b6ce1a1a9553bc2c61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-b904bee2bcc502cad026594f002644215c0395ce/packages/core/src/generated/contracts.json",
+      "line": 11603,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "55966a4e13587ed2dc92beb82c626d5015efac3f048c99b6ce1a1a9553bc2c61"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.0.2.1",
+    "a.b",
+    "api.github.com",
+    "c.d",
+    "ci.example.com",
+    "e.org",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mcp.context7.com",
+    "reqseq.dev",
+    "thomasbirkmaier.github.io",
+    "www.npmjs.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

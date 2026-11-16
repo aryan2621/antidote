@@ -1,0 +1,251 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "noory-code/noory-ai",
+    "version": "1ebb567829db80da5f0ed2395f6c8a81b663984a",
+    "download": "https://codeload.github.com/noory-code/noory-ai/tar.gz/1ebb567829db80da5f0ed2395f6c8a81b663984a"
+  },
+  "archive_sha256": "d682e484540927c317d183428f454c873413010cea678ac66c41e9c6bdce51f7",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/evonest/AGENTS.md",
+      "line": 1,
+      "evidence": "p=1.00 # Evonest Codex Instructions",
+      "file_sha256": "d5150c1ed1c07abe9fa10d540400ca545e4f592361787aaa88d6ae441c31d7e1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/evonest/tests/test_scout.py",
+      "line": 334,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "5135f1aeeee594df0675541d9bbb6db51ffe30ec15e058c57b7d26078ab26995"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/evonest/tests/test_phases.py",
+      "line": 786,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "85ae1a26ef6c297558d97d4325b3cce34c812b599bb41118e22091a3b9abd3c5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/evonest/tests/test_meta_observe.py",
+      "line": 394,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "505726d80ee3ca582558d6770ffd646ad02000fbf21dd7ef5429e10e26197844"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/rag/README.md",
+      "line": 56,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh \\| sh",
+      "file_sha256": "e63a36a8f460e6d5f16b9cbab7b43c289b10acebb76d886bd0065a0c0c64a3a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/rag/skills/rag-help/SKILL.md",
+      "line": 46,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh \\| sh",
+      "file_sha256": "60361d33767729327456f18f5c2c11310ca2c8fcd8b912b31ea8e6f333c67cea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/rag/skills/init-rag/SKILL.md",
+      "line": 76,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "c8b1fc7fd05c6a7c088bc0cd073f37243ac547dc4f5a5b1a5f5c8104179ddc52"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/stage/skills/stage-work/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.96 Do not judge scale, name a kind, propose a card, or open a file before those thr",
+      "file_sha256": "4954341a59de6158dbf0fa2e80e0d11be84c92cd10d1b86d4cff2732c634b371"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/stage/scripts/tests/python_shell_command.py",
+      "line": 11,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "d2d5da95147c6a1a6d14b8873a8d20e34c7b6fd95034bc7442e668daf2c8dd6f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/research/llm-work/integration/evidence/2026-10-07-release/stage-windows-repairs-local.log",
+      "line": 4,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "da0a4253673137024c0e01a877fa17776457693bb0ec700403627c7c4afa666c"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/research/llm-work/integration/evidence/2026-10-07-release/stage-windows-third-failure.log",
+      "line": 151,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "f20dd6c04761e5c5e0cc2aadd6a87ce9fec786f76d8a4837975450899aa27f81"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/research/llm-work/integration/evidence/2026-10-07-release/windows-review.jsonl",
+      "line": 14,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "4183eeaa8b90fc23d4e97ddff2e88dcd0364209a7c4f912bb7d3067e773216b5"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000305/_story.md",
+      "line": 90,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "fb3587a9c15cc27b5aaab64a23a6fbcd7d0e931873134bafc37b321fd22d35a9"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000302/_story.md",
+      "line": 93,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "513cfead938e9269a5497481ff3e501d36a8435f6b02bc1de19f87f27ef4c509"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000315/_story.md",
+      "line": 83,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "9229d09eb05505b4b0664c04d9191e0790adc3c4e5c50682f389402640d7eb39"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000307/_story.md",
+      "line": 94,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "000c9a41f17ba91ae5f1621d5da92d496101333d438ba0fd90911abb84d3e0ab"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000306/_story.md",
+      "line": 93,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "5d1f98815a8706b337ff9b0d7d2f682ed794b66ba4ec34ded55fa61a8084feba"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000300/_story.md",
+      "line": 100,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "b535edfaa00c6a882fbfc777d7e9e7165c0ed3207da55f2a8ad0296ad763a535"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000317/_story.md",
+      "line": 83,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "c6aef7c75a463cf11562707bb1fd30f2c8584a8bd8e9e6d5c3c8e5b1247ec36b"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "noory-ai-1ebb567829db80da5f0ed2395f6c8a81b663984a/.stage/official/work/archive/items/W-00000270/_story.md",
+      "line": 100,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "7239851481ef14bcd28a523419650f2aabe997a0f63931f66413eab3f64bcdaa"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "about.fb.com",
+    "aclanthology.org",
+    "ai.google.dev",
+    "api.example.com",
+    "arxiv.org",
+    "astral.sh",
+    "business.facebook.com",
+    "cheatsheetseries.owasp.org",
+    "code.claude.com",
+    "criticalthinkingtext.wordpress.com",
+    "dart.dev",
+    "developer.android.com",
+    "developer.apple.com",
+    "developer.mozilla.org",
+    "developers.openai.com",
+    "docs.flutter.dev",
+    "docs.ollama.com",
+    "docs.python.org",
+    "docs.typesafe.ai",
+    "docs.x.ai",
+    "elsewhere.example",
+    "example.com",
+    "files.pythonhosted.org",
+    "flutter.dev",
+    "fvm.app",
+    "github.blog",
+    "github.com",
+    "help.finchcare.com",
+    "huggingface.co",
+    "ico.org.uk",
+    "learn.chatgpt.com",
+    "m3.material.io",
+    "martinfowler.com",
+    "melos.invertase.dev",
+    "modelcontextprotocol.io",
+    "other.example",
+    "pencil.ai",
+    "proceedings.mlr.press",
+    "pub.dev",
+    "pypi.org",
+    "research.meta.ai",
+    "research.monash.edu",
+    "schemas.android.com",
+    "services.gradle.org",
+    "support.google.com",
+    "typesafe.ai",
+    "webllm.mlc.ai",
+    "www.16personalities.com",
+    "www.anthropic.com",
+    "www.apple.com",
+    "www.facebook.com",
+    "www.nist.gov",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

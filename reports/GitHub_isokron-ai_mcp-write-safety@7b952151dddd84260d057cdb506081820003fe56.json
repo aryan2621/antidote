@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "isokron-ai/mcp-write-safety",
+    "version": "7b952151dddd84260d057cdb506081820003fe56",
+    "download": "https://codeload.github.com/isokron-ai/mcp-write-safety/tar.gz/7b952151dddd84260d057cdb506081820003fe56"
+  },
+  "archive_sha256": "bcafe7a405d8e37295057a07cc8047e704fa9e574a0b81b83f0eccd68d42c7bc",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-write-safety-7b952151dddd84260d057cdb506081820003fe56/integrations/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 83,
+      "evidence": "p=0.97 **MWS-RES-1 (MUST).** *Applies when* the tool writes. Report success only when t",
+      "file_sha256": "47e3f3ef711dc094f9e2f3f6f1a494e7cb650704dbbec2a2e53e815961a78574"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-write-safety-7b952151dddd84260d057cdb506081820003fe56/integrations/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.95 **MWS-ATOM-1 (MUST).** *Applies when* a tool writes more than one item, or makes",
+      "file_sha256": "47e3f3ef711dc094f9e2f3f6f1a494e7cb650704dbbec2a2e53e815961a78574"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-write-safety-7b952151dddd84260d057cdb506081820003fe56/integrations/skills/mcp-write-safe-caller/SKILL.md",
+      "line": 77,
+      "evidence": "p=0.94 All-or-nothing is a SHOULD in MWS, not a MUST (MWS-ATOM-2). The MUST is that a w",
+      "file_sha256": "4f6e31faa70442bff6fa356a3cdc896a2d535b1b6028f90b412142455b29900b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "api.example.com",
+    "arxiv.org",
+    "ashutosh2308bhardwaj.github.io",
+    "backend.invalid",
+    "backend.test",
+    "blog.modelcontextprotocol.io",
+    "cheatsheetseries.owasp.org",
+    "creativecommons.org",
+    "datatracker.ietf.org",
+    "developercertificate.org",
+    "docs.oasis-open.org",
+    "docs.stripe.com",
+    "example.com",
+    "example.test",
+    "github.com",
+    "google.aip.dev",
+    "innocent.test",
+    "isokron.ai",
+    "jepsen.io",
+    "json-schema.org",
+    "jsonapi.org",
+    "modelcontextprotocol.io",
+    "mws.invalid",
+    "owasp.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "tracker.example.com",
+    "tracker.prod.example.com",
+    "www.apache.org",
+    "www.npmjs.com",
+    "www.rfc-editor.org",
+    "www.vldb.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,57 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "okeefeco/pyeye-mcp",
+    "version": "d320ee724e574891e5fc136f6a046f74681aabe6",
+    "download": "https://codeload.github.com/okeefeco/pyeye-mcp/tar.gz/d320ee724e574891e5fc136f6a046f74681aabe6"
+  },
+  "archive_sha256": "4c549aa986ba5ea2d24525c69a8a6d7c31e72aa97c751693de318c2eac1c132c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pyeye-mcp-d320ee724e574891e5fc136f6a046f74681aabe6/setup.sh",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3de2d6434b0e2d0a928d96255c68d1b0341e1e8b231ccfe9e8e040313b39657c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pyeye-mcp-d320ee724e574891e5fc136f6a046f74681aabe6/CLAUDE.md",
+      "line": 3,
+      "evidence": "p=0.98 This file loads modular Claude behavior instructions. The actual instructions ar",
+      "file_sha256": "67e952f7ca5e3388f3cb72d3edcb0d8e357f6696d9f09a7bd03e6585dd846dea"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "codecov.io",
+    "docs.astral.sh",
+    "docs.github.com",
+    "docs.pytest.org",
+    "docs.python-guide.org",
+    "docs.python.org",
+    "factoryboy.readthedocs.io",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "jedi.readthedocs.io",
+    "keepachangelog.com",
+    "peps.python.org",
+    "pypi.org",
+    "pytest-benchmark.readthedocs.io",
+    "pytest-cov.readthedocs.io",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "test.pypi.org",
+    "www.python.org",
+    "www.sphinx-doc.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

