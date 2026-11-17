@@ -1,0 +1,544 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "hieudoanm/grobid.rs",
+    "version": "c72bf38fd7cc7597129de6cf353f21b61d6fdd2f",
+    "download": "https://codeload.github.com/hieudoanm/grobid.rs/tar.gz/c72bf38fd7cc7597129de6cf353f21b61d6fdd2f"
+  },
+  "archive_sha256": "16850444be57552dd01c274a28946d8f720edb555f73d95cceaa91c90807c74a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/README.md",
+      "line": 197,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts/",
+      "file_sha256": "fdb1f535cfa99521d1a3e868a47d4a722516905d4f035fdbaf10e06a194b43b7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/crates/grobid-core/tests/fixtures/pdf/Degeneracy in the neurological model of auditory speech repetition.pdf",
+      "line": 879,
+      "evidence": "\\u{202e}",
+      "file_sha256": "2da10964359ca2f39f0f7e23507b2fbadd873a8ce8d37a62b56b0b4c591a24b1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/assets/branding/svg/demo.svg",
+      "line": 27,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hieudoanm/grobid-cli/master/scripts",
+      "file_sha256": "878f37b9e6e4efea3e88bd9394bf8d9fc53c226598c39ed2c90561812009d410"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/scripts/install.sh",
+      "line": 37,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts",
+      "file_sha256": "f2f67d7bc2f1ce7dc708aaa51f0130aa75857ed95e27b0cca443e3f1019e492d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/scripts/install.sh",
+      "line": 37,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts",
+      "file_sha256": "f2f67d7bc2f1ce7dc708aaa51f0130aa75857ed95e27b0cca443e3f1019e492d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/docs/06-release.md",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts/",
+      "file_sha256": "9f08b42ace67971972f3e4f0474e482b388aa5a3d51955181a04bc0f483f831f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src/app/page.tsx",
+      "line": 112,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts/",
+      "file_sha256": "76edec8c16eaffffaaa45e92624b23bcf09d3ad2c24f1d599318b87c72fe9817"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/docs/guides/release.md",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hieudoanm/grobid.rs/master/scripts/",
+      "file_sha256": "7a6df12e48d2136779519b36bbd135651408625f09b41c8c3e194545880b0a7f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 510,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 546,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 618,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 792,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1062,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 1572,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2046,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2208,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2214,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2220,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2238,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/macOS-schema.json",
+      "line": 2244,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 283,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 372,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 283,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 402,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 462,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 622,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 283,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 883,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1343,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1738,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1879,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1884,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1889,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1904,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/acl-manifests.json",
+      "line": 1909,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "0d2cb823d8388843203bf9b706d0fef9d90022a59f0bf146f8c8a4be04f8f55c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 510,
+      "evidence": "p=0.91 Enables the insert command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 546,
+      "evidence": "p=0.93 Enables the prepend command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 618,
+      "evidence": "p=0.91 Enables the text command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 792,
+      "evidence": "p=0.91 Enables the normalize command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 438,
+      "evidence": "p=0.91 Enables the new command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1062,
+      "evidence": "p=0.91 Enables the print command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 1572,
+      "evidence": "p=0.98 Enables the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2046,
+      "evidence": "p=0.96 Denies the set_ignore_cursor_events command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2208,
+      "evidence": "p=0.97 Enables the ask command without any pre-configured scope. (**DEPRECATED**: This ",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2214,
+      "evidence": "p=0.95 Enables the confirm command without any pre-configured scope. (**DEPRECATED**: T",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2220,
+      "evidence": "p=0.92 Enables the message command without any pre-configured scope.",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2238,
+      "evidence": "p=0.96 Denies the ask command without any pre-configured scope. (**DEPRECATED**: This i",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "grobid.rs-c72bf38fd7cc7597129de6cf353f21b61d6fdd2f/packages/landing/src-tauri/gen/schemas/desktop-schema.json",
+      "line": 2244,
+      "evidence": "p=0.93 Denies the confirm command without any pre-configured scope. (**DEPRECATED**: Th",
+      "file_sha256": "f7490a88a4c680b3012c38b4bb151da11224326441d2335b9bd5dc31728328e2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.crossref.org",
+    "arxiv.org",
+    "beerys.github.io",
+    "bhfdatasciencecentre.org",
+    "cdn.jsdelivr.net",
+    "cjslpa.ca",
+    "creativecommons.org",
+    "crossmark.crossref.org",
+    "crossref.org",
+    "docs.docker.com",
+    "docs.renovatebot.com",
+    "doi.org",
+    "dx.doi.org",
+    "github.com",
+    "hieudoanm.github.io",
+    "img.shields.io",
+    "journals.lww.com",
+    "json-schema.org",
+    "modelcontextprotocol.io",
+    "mydomain.dev",
+    "ns.adobe.com",
+    "onlinelibrary.wiley.com",
+    "orcid.org",
+    "paypal.me",
+    "prismstandard.org",
+    "proceedings.neurips.cc",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "rustup.rs",
+    "schema.org",
+    "schema.tauri.app",
+    "schemas.android.com",
+    "turbo.build",
+    "unpkg.com",
+    "urlpattern.spec.whatwg.org",
+    "www.aiim.org",
+    "www.contributor-covenant.org",
+    "www.docker.com",
+    "www.extensis.com",
+    "www.fil.ion.ucl.ac.uk",
+    "www.iec.ch",
+    "www.mdpi.com",
+    "www.mr-confon.de",
+    "www.nature.com",
+    "www.neurocaregroup.com",
+    "www.niso.org",
+    "www.optoacoustics.com",
+    "www.tandfonline.com",
+    "www.tei-c.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

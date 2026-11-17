@@ -1,0 +1,181 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AmrDab/clawdcursor",
+    "version": "7ac45e78118c6bbd18abb1b50047ef0a3d4cb148",
+    "download": "https://codeload.github.com/AmrDab/clawdcursor/tar.gz/7ac45e78118c6bbd18abb1b50047ef0a3d4cb148"
+  },
+  "archive_sha256": "f823307108a03f9d76fe684d04f15641ccb45830ea6a4f386a49e4a48fb7b5d7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/CHANGELOG.md",
+      "line": 2397,
+      "evidence": "curl … | bash",
+      "file_sha256": "f3bf045e6aeb9c414c18d4ff2b59db31a19fedc7507883a7892dd8ae805b414b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/src/surface/uninstall.ts",
+      "line": 155,
+      "evidence": "curl -fsSL https://clawdcursor.com/install.sh | bash",
+      "file_sha256": "565564742fbf23a2feafb0f75c673aa2369272ed41348cb59828f5a42e853685"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/src/__tests__/fixtures/linux-scripts-driver.py",
+      "line": 522,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f1fe166b3527d533823a1d9513d3ae12cc8881b036ff063c67b41decda897863"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/src/__tests__/window-scope-invoke.system.test.ts",
+      "line": 115,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fc1c8b742a71f0e283bf5ba1c58f9ccfd43ce9c492cca8a9476f41afaa26c3e7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/src/__tests__/find-untrusted-wrap.test.ts",
+      "line": 29,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c85859293c1cc34279158e086524145670b903bef88664ac749202033eb12f4e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/src/__tests__/cdp-driver-frames.test.ts",
+      "line": 254,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "5c081c7735b2fc5c938477deb5af2ed3735a4cdb1b9e7d84c1326d598cd9363f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/README.md",
+      "line": 280,
+      "evidence": "curl -fsSL https://clawdcursor.com/install.sh | bash",
+      "file_sha256": "a256ff3122e37b2fc268570d7393c3081a27ed45c96781f17982af155a37fb2b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/scripts/test-macos-fixes.sh",
+      "line": 74,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "59880b54141b521b46f808e8f1d071788f751a06cc85b9be98fa887682ac90b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/docs/index.html",
+      "line": 97,
+      "evidence": "curl -fsSL https://clawdcursor.com/install.sh | bash",
+      "file_sha256": "60601dbcc2393186b9d75dae7e77d4c233564c9d094716e083b3e836c5e08a2b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/docs/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://clawdcursor.com/install.sh | bash",
+      "file_sha256": "2dca53eb228b0fb4226dffb0d284bed9e4e460afa6c7e69269e4d01554df6258"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "clawdcursor-7ac45e78118c6bbd18abb1b50047ef0a3d4cb148/docs/llms.txt",
+      "line": 44,
+      "evidence": "curl -fsSL https://clawdcursor.com/install.sh | bash",
+      "file_sha256": "4f990c3f1ddcd7b6a1c303da9b69a947078f2aac8b50c112c5b7288189e64459"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "ads.example, app.example, bank.example, bank.example.com, claude.com, editor.example, forms.example, libraries.dev, nowhere.example, telemetry.clawdcursor.com, vitest.dev, x.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "ads.example",
+    "api.clawdcursor.com",
+    "api.github.com",
+    "api.openai.com",
+    "app.example",
+    "bank.example",
+    "bank.example.com",
+    "claude.com",
+    "clawdcursor.com",
+    "cursor.com",
+    "discord.gg",
+    "docs.github.com",
+    "dotenvx.com",
+    "editor.example",
+    "eslint.org",
+    "evil.example",
+    "example.com",
+    "feross.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "forms.example",
+    "gh.io",
+    "github.com",
+    "glama.ai",
+    "help.figma.com",
+    "img.shields.io",
+    "json-schema.org",
+    "ko-fi.com",
+    "libraries.dev",
+    "mail.example.com",
+    "news.ycombinator.com",
+    "nodejs.org",
+    "nowhere.example",
+    "opencollective.com",
+    "openrouter.ai",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "support.discordapp.com",
+    "support.office.com",
+    "support.spotify.com",
+    "telemetry.clawdcursor.com",
+    "tidelift.com",
+    "visualstudio.microsoft.com",
+    "vitest.dev",
+    "vscode.dev",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

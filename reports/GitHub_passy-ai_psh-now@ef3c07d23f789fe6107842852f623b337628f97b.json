@@ -1,0 +1,348 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "passy-ai/psh-now",
+    "version": "ef3c07d23f789fe6107842852f623b337628f97b",
+    "download": "https://codeload.github.com/passy-ai/psh-now/tar.gz/ef3c07d23f789fe6107842852f623b337628f97b"
+  },
+  "archive_sha256": "be93e3df9147a41c5f31f38099cdd58820e5b7977dc44e7e40b5a9da9800b180",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/src/routes/discovery.ts",
+      "line": 90,
+      "evidence": "curl -fsSL ${base}/install.sh | sh",
+      "file_sha256": "995dbe07fa69a5c837449d0f9e662413c3baae6c42225079bd1ef10edc460aa1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/README.md",
+      "line": 268,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "2321198c2dbe9d9831e7e94897a546ad2155c93758401112c7b07486bf28a9ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/AGENTS.md",
+      "line": 52,
+      "evidence": "curl …/install.sh | sh",
+      "file_sha256": "1e00ed26a7c3d9148febc36159a31f9c3c8ebf9427c1f00514df6d9127ce7548"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/SKILL.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "9bf9372ed59caebd035eb00eec4ebba51c7264cf9d49f86e8af29ef024c9765c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/SKILL.md",
+      "line": 120,
+      "evidence": "p=0.95 The paste command is one line on purpose, and it carries `-y`: the skills CLI wa",
+      "file_sha256": "9bf9372ed59caebd035eb00eec4ebba51c7264cf9d49f86e8af29ef024c9765c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/SKILL.md",
+      "line": 565,
+      "evidence": "p=0.91 **`status: \"answered\"` is not a yes and not a no.** The human typed their own wo",
+      "file_sha256": "9bf9372ed59caebd035eb00eec4ebba51c7264cf9d49f86e8af29ef024c9765c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/scripts/psh.sh",
+      "line": 148,
+      "evidence": "curl -fsSL %s/install.sh | sh",
+      "file_sha256": "e68e89d91d3114ec97f37c4fc98d9cf79735134113a9d143f7bd9c0ca8fa5bcd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/skills/psh-now/scripts/setup.sh",
+      "line": 672,
+      "evidence": "curl -fsSL $HOST/install.sh | sh",
+      "file_sha256": "50cb019092d5e6832f1a07e8ad876a10efb3b6112c4bad0bfb1279bb1e45cb38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/reserved-names/README.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://psh.now/install.sh | bash",
+      "file_sha256": "16db54a36c64b07eae8e93adc2c4752d016cf5fd787137fe59fc9ee8cc26c710"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/reserved-names/psh-now/README.md",
+      "line": 8,
+      "evidence": "curl -fsSL https://psh.now/install.sh | bash",
+      "file_sha256": "31b5eb7cd3654e87229ac24a0c89da091aff09ea0e05bc8798c0f81e9df76cb1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/reserved-names/psh-now-cli/package.json",
+      "line": 4,
+      "evidence": "curl -fsSL https://psh.now/install.sh | bash",
+      "file_sha256": "ac3d97eceb0ef759f37281654dc585f082e0c50cd0c7c8ddf806ac2b80535bb7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/reserved-names/psh-now-cli/README.md",
+      "line": 8,
+      "evidence": "curl -fsSL https://psh.now/install.sh | bash",
+      "file_sha256": "c3b9e020156750ccbca9cd0f3eef0f566168e62e6c09d93f288adb16fe8e0a92"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "fb2f95356fd254d0eadc5bf8350ac9e6f3fbe4b23aab9c5914405f8676231f5d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/scripts/build-agent-pages.ts",
+      "line": 224,
+      "evidence": "curl -fsSL ${HOST}/install.sh | sh",
+      "file_sha256": "400936e40830848b601f5044d415f2c221e837ce45d2b080e16df1d07b270172"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/docs/how-it-works.md",
+      "line": 41,
+      "evidence": "curl …/install.sh | sh",
+      "file_sha256": "ad4ca2d58e07aded042216eac68d40b4db35f90116340b1624c66821fc6cda65"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/docs/prompt-templates.md",
+      "line": 115,
+      "evidence": "curl -fsSL <host>/install.sh \\| bash",
+      "file_sha256": "d3d8f7e687c4ae3f5e24eb36bf31d7a743d578b41b0a8114699309fcf230b2fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/docs/install-contract.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "5f36d1b94d8015593716c3ec84b28de88c1f941a8cd0a1e2217a207fd34330ec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/public/self-hosting.html",
+      "line": 175,
+      "evidence": "curl -fsSL https://psh.example.com/install.sh | sh",
+      "file_sha256": "7c73f51e59c9cab43bdc98bbf7075bed4fe434328e62042c144b57d5dfc74f61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/public/docs.html",
+      "line": 143,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "61239336462695feab0cc58c4d1988941a6687f008d25c46916b4f54dd8d6965"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/warp.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "d4ce5c17e982f29571f0e89158443168f8e2a4c19628998b8020295ad398aa99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/trae.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "8238945ffbaee740047c866f1f1bc684a763b54c1a16806e800c7eb5d679e7f5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/qwen-code.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "92b108d37e1c3c4431727929926d915c7d5edd0a08a726572ed7b9b470a02f9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/claude-code.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "1c9d1d7fa76527bec54442fdad2c6af5b53e31fd3ba8834ff14c4c83d1ec8678"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/codex.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "45ff6d2b9cfb8cf0563861919afd301186ee9cd7688892de323cfa406b209b32"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/cursor.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "c6ca918d12dbed35ad06b86288875b6dc262cf0469e3ea6b92018e427678becd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/windsurf.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "b4e2e507ee949671b02732ca1d26f4fd91d44c6fc207ea39e8d8d88047705ad6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/hermes-agent.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "3c59e4a0b3a119c142790ba5fdad4e86b8a8904b7fb1473620fee74321d73d45"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/opencode.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "96ccf569c82b3bb5fd5b8d9950157825a2f07c4e95553c8ed566b08f45ec053e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/website/agents/cline.html",
+      "line": 12,
+      "evidence": "curl -fsSL https://psh.now/install.sh | sh",
+      "file_sha256": "2c25a7e7bcfda8d431b5359bbfa5864c3cc8ee735a5f47dbe37efa0c910155d8"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "psh-now-ef3c07d23f789fe6107842852f623b337628f97b/tools/psh-notch/PSHNotch.swift",
+      "line": 273,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "b36df16a9bc76c58a81aaf0d6883410494b77b4e90f08deee445b03218a796ae"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.0.239",
+    "absolum.nl",
+    "agentpeek.app",
+    "api.github.com",
+    "api.resend.com",
+    "auraplusplus.com",
+    "bun.sh",
+    "certbot.eff.org",
+    "clutch.co",
+    "dailypings.com",
+    "elysiajs.com",
+    "example.invalid",
+    "fazier.com",
+    "findly.tools",
+    "firsto.co",
+    "github.com",
+    "here.now",
+    "huzzler.so",
+    "indiehunt.io",
+    "keepachangelog.com",
+    "launchigniter.com",
+    "live.dodopayments.com",
+    "makerhunt.io",
+    "neeed.directory",
+    "opencollective.com",
+    "orm.drizzle.team",
+    "paulmillr.com",
+    "probe.invalid",
+    "ps.abslm.nl",
+    "psh.example.com",
+    "psh.now",
+    "pshhome.share.zrok.io",
+    "pushary.com",
+    "refer-hospitality-immediate-donors.trycloudflare.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "schemas.agentskills.io",
+    "semver.org",
+    "shipboost.io",
+    "sidehunt.io",
+    "skills.sh",
+    "smollaunch.com",
+    "sourceforge.net",
+    "startupbase.io",
+    "static.modelcontextprotocol.io",
+    "test.dodopayments.com",
+    "tinyhunt.dev",
+    "trylaunch.ai",
+    "twelve.tools",
+    "uno.directory",
+    "www.apple.com",
+    "www.launchvault.dev",
+    "www.npmjs.com",
+    "www.sitemaps.org",
+    "www.skills.sh",
+    "www.startupfa.st",
+    "www.startupranking.com",
+    "www.toolpilot.ai",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

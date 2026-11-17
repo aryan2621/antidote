@@ -1,0 +1,137 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Classevelabs/rai",
+    "version": "02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1",
+    "download": "https://codeload.github.com/Classevelabs/rai/tar.gz/02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1"
+  },
+  "archive_sha256": "85be3555879baa2a10e9de0fe37acf6b711a2fa842376042b039cb6cf47ba3b8",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/launchers/rai-studio.sh",
+      "line": 82,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "0a16b86030d133a803df8f99fac8a61875a6fd8c1c4469b469def8c3c53022bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/INSTALL.md",
+      "line": 60,
+      "evidence": "curl -fsSL https://github.com/Classevelabs/rai/releases/latest/download/install.",
+      "file_sha256": "537a7eb73a53c6d7669a965eed11dc42f678329dd780363215791e4b79ee37a6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/INSTALL.md",
+      "line": 126,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "537a7eb73a53c6d7669a965eed11dc42f678329dd780363215791e4b79ee37a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/README.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://github.com/Classevelabs/rai/releases/latest/download/install.",
+      "file_sha256": "f56849b244a76b86c91486865c4f1a4208a4655e8fca5b9b2f4b19fc3f55bbb3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/installers/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://github.com/Classevelabs/rai/releases/latest/download/install.",
+      "file_sha256": "1a2a77a4355e686931cf66eb5662f1712055e6653142730ed2977ab81ae1a1ed"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/docs/TROUBLESHOOTING.md",
+      "line": 22,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "f95b16f6f01e63e3394d85b572b981ce621cf219624072b2a546533c4c1d93b7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/.github/workflows/release.yml",
+      "line": 250,
+      "evidence": "curl -fsSL https://github.com/Classevelabs/rai/releases/latest/download/install.",
+      "file_sha256": "866bf68647f4a4bcbd42136e6a459775d096c5a54423c508191496f113331153"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/.github/workflows/clean-room.yml",
+      "line": 247,
+      "evidence": "curl -fsSL \"$REPO_URL/releases/download/$TAG/install.sh\" | sh",
+      "file_sha256": "df7a4ef020fa3ff623a6af5ecb34ae0833b7a3e495162f9e855eb263b5c7704c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/.github/workflows/dist.yml",
+      "line": 225,
+      "evidence": "curl -fsSL https://github.com/Classevelabs/rai/releases/latest/download/install.",
+      "file_sha256": "cf7f87af09a8bb89a48d30c216205447d16dc47a4ddfabed524984c3a496ccf0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "rai-02b0b95c5e2225e6ea72d5fb3289ce368cb9b7d1/.github/workflows/dist.yml",
+      "line": 238,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "cf7f87af09a8bb89a48d30c216205447d16dc47a4ddfabed524984c3a496ccf0"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "cli.github.com, crates.io, docs.rs, rustup.rs, sh.rustup.rs",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "127.23.4.5",
+    "api.example.test",
+    "api.openai.com",
+    "attacker.example",
+    "classeve.com",
+    "cli.github.com",
+    "crates.io",
+    "docs.rs",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "index.crates.io",
+    "keepachangelog.com",
+    "opensource.org",
+    "rustup.rs",
+    "sh.rustup.rs",
+    "uploads.github.com",
+    "www.apache.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

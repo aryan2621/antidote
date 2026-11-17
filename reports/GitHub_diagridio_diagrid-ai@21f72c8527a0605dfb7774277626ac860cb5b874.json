@@ -1,0 +1,66 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "diagridio/diagrid-ai",
+    "version": "21f72c8527a0605dfb7774277626ac860cb5b874",
+    "download": "https://codeload.github.com/diagridio/diagrid-ai/tar.gz/21f72c8527a0605dfb7774277626ac860cb5b874"
+  },
+  "archive_sha256": "8e60a155c2801374d20736650dc983038e5a31da35467547eeea9db7f7c32172",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "diagrid-ai-21f72c8527a0605dfb7774277626ac860cb5b874/skills/diagrid-workflow-from-diagram/reference/ir-schema.md",
+      "line": 85,
+      "evidence": "p=0.97 If the diagram depicts something outside ordinary business process logic, emit o",
+      "file_sha256": "e5d414ad84387bc26c26fd202d504ed166853c0bdd3387168ae9f91198ad535e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "diagrid-ai-21f72c8527a0605dfb7774277626ac860cb5b874/skills/diagrid-app-tunnels/SKILL.md",
+      "line": 44,
+      "evidence": "curl -o- https://downloads.diagrid.io/cli/install.sh | bash",
+      "file_sha256": "363aa78b7f6f3655ce84d771d50fccec4f7311c016f5fab23c172f8159345f3c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "diagrid-ai-21f72c8527a0605dfb7774277626ac860cb5b874/skills/diagrid-workflow-determinism/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.93 Two properties make this the hardest class of bug in the system:",
+      "file_sha256": "63a070c7c6ac6deb21416d7811e38a85adbb17a3ee181357b94901d7a0947827"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "add-skill.vercel.sh",
+    "api.nuget.org",
+    "api.r1.diagrid.io",
+    "catalyst.diagrid.io",
+    "cdn.jsdelivr.net",
+    "code.visualstudio.com",
+    "diagrid.io",
+    "docs.diagrid.io",
+    "downloads.diagrid.io",
+    "example.com",
+    "github.com",
+    "mcp.cloud.r1.diagrid.io",
+    "mcp.cloud.staging.diagrid.dev",
+    "proxy.golang.org",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "repo1.maven.org",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.omg.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

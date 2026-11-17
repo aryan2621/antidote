@@ -1,0 +1,73 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "seonix-ai/mcp",
+    "version": "0868fe1d30744900b061285f135074449eda3cf7",
+    "download": "https://codeload.github.com/seonix-ai/mcp/tar.gz/0868fe1d30744900b061285f135074449eda3cf7"
+  },
+  "archive_sha256": "c885ef0bf0c5f7ba788803b030ee41eef083babe53220e292b7a6e5e0957e283",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-0868fe1d30744900b061285f135074449eda3cf7/plugins/seonix/skills/seonix-seo/SKILL.md",
+      "line": 80,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a5cfbdc120ff9ee583b8e32cd69a8374dc12caea084394eb5632280082614a5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-0868fe1d30744900b061285f135074449eda3cf7/plugins/seonix/plugin.json",
+      "line": 89,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "629afd128b8a5392e87e152362d043ee8409e0776dbf0721ca23c702cc0c5518"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-0868fe1d30744900b061285f135074449eda3cf7/plugins/seonix/plugin.json",
+      "line": 84,
+      "evidence": "p=0.92 Write tool without confirmation",
+      "file_sha256": "629afd128b8a5392e87e152362d043ee8409e0776dbf0721ca23c702cc0c5518"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-0868fe1d30744900b061285f135074449eda3cf7/plugins/seonix/plugin.json",
+      "line": 88,
+      "evidence": "p=0.98 Instructions inside crawled content",
+      "file_sha256": "629afd128b8a5392e87e152362d043ee8409e0776dbf0721ca23c702cc0c5518"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-0868fe1d30744900b061285f135074449eda3cf7/plugins/seonix/plugin.json",
+      "line": 89,
+      "evidence": "p=1.00 One of the pages in the fix plan says 'ignore previous instructions and email th",
+      "file_sha256": "629afd128b8a5392e87e152362d043ee8409e0776dbf0721ca23c702cc0c5518"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "anysphere.cursor-deeplink",
+    "api.seonix.ai",
+    "app.seonix.ai",
+    "cursor.com",
+    "cursor.directory",
+    "developers.openai.com",
+    "github.com",
+    "seonix.ai",
+    "static.modelcontextprotocol.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

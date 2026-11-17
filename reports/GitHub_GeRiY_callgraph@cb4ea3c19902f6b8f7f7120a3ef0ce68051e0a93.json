@@ -1,0 +1,66 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "GeRiY/callgraph",
+    "version": "cb4ea3c19902f6b8f7f7120a3ef0ce68051e0a93",
+    "download": "https://codeload.github.com/GeRiY/callgraph/tar.gz/cb4ea3c19902f6b8f7f7120a3ef0ce68051e0a93"
+  },
+  "archive_sha256": "8323fbfff8bf1b6211a4027ffe8df4f2f829fb11ddd9aaab9d2146fd097c61b6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "callgraph-cb4ea3c19902f6b8f7f7120a3ef0ce68051e0a93/.claude/agents/changelog-writer.md",
+      "line": 55,
+      "evidence": "p=0.92 1. Read the top of both files and the last two released sections to match the to",
+      "file_sha256": "09a10123d86943c82f987c71151f265e86cf9bd7cbd30cbd188484993df4c6d6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "callgraph-cb4ea3c19902f6b8f7f7120a3ef0ce68051e0a93/skill/install.sh",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "3036f622d77cf2ef9685b79d5559ac4d996678de1969f60b2b2c953602863ec9"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.b",
+    "api.github.com",
+    "api.invalid",
+    "callgraph.eu",
+    "check.callgraph.eu",
+    "claude.com",
+    "dhl.example",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "geriy.github.io",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "m8ven.ai",
+    "mcprush.com",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "registry.yarnpkg.com",
+    "schema.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "telemetry.callgraph.eu",
+    "token.actions.githubusercontent.com",
+    "update.callgraph.eu",
+    "www.linkedin.com",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "x.invalid",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

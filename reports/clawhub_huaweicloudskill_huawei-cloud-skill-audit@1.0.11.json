@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huaweicloudskill/huawei-cloud-skill-audit",
+    "version": "1.0.11",
+    "download": "https://clawhub.ai/api/v1/download?slug=huawei-cloud-skill-audit&ownerHandle=huaweicloudskill&version=1.0.11"
+  },
+  "archive_sha256": "b26f0ca785a5167a010ed4dbc347b33744a579c7fcf1348fac593f2567302600",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/skill_audit.py",
+      "line": 190,
+      "evidence": "curl|sh",
+      "file_sha256": "54dc19e3c61a1d294fa1c38419bdaa69ef87888069223daa2e0c4522d0937dcf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/checks/runtime_security_rules.json",
+      "line": 549,
+      "evidence": "wget|bash",
+      "file_sha256": "0a923d33044c08551ecb5d8d321a8fae2013354c3f09eb120e23ff49884dd008"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "scripts/checks/skillspector_rules.json",
+      "line": 945,
+      "evidence": "p=0.98 Instruction Override",
+      "file_sha256": "1cc3a526908508b39718cdacc64d7b1f93982b017ef190abba7beacddf0dca97"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "skills-dataset.developer.huaweicloud.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "clawhub.ai",
+    "gh-proxy.com",
+    "gh.ddlc.top",
+    "gitcode.com",
+    "github.com",
+    "gitleaks.io",
+    "opengw.clouddeveloper.club",
+    "skills-dataset.developer.huaweicloud.com",
+    "support.huaweicloud.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
