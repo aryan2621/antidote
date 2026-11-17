@@ -1,0 +1,84 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Wen5555/OriMem",
+    "version": "84bab706194bf8d647fef08f5feab0081e1762e2",
+    "download": "https://codeload.github.com/Wen5555/OriMem/tar.gz/84bab706194bf8d647fef08f5feab0081e1762e2"
+  },
+  "archive_sha256": "d1b5c0fb04157a21bdc88a0b8d453d1103281308a7bfd1e5734bebb0a4d8f764",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/scripts/install.sh",
+      "line": 4,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Wen5555/OriMem/main/scripts/install",
+      "file_sha256": "86558ce841f48b8015d83647f4c641bafd98a8db5ec5b6dd2b115e66810ba909"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/scripts/install.sh",
+      "line": 35,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "86558ce841f48b8015d83647f4c641bafd98a8db5ec5b6dd2b115e66810ba909"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/README.zh-CN.md",
+      "line": 46,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Wen5555/OriMem/main/scripts/install",
+      "file_sha256": "dbac38160ddcd7b0601516b7ff62f483b12f2f40825ffbd7819b4d8db66a50d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/integrations/dsh/README.md",
+      "line": 23,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Wen5555/OriMem/main/scripts/install",
+      "file_sha256": "5de3a2d1f2369cd6becad60c2a8f3a5eda1630ee5c994f71670482571f669cfd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/integrations/dsh/README.zh.md",
+      "line": 23,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Wen5555/OriMem/main/scripts/install",
+      "file_sha256": "c001ea0c8deb129438fe3315388529cda01db4c8f7ebf3f49ae4a57368571bba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "OriMem-84bab706194bf8d647fef08f5feab0081e1762e2/README.md",
+      "line": 48,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Wen5555/OriMem/main/scripts/install",
+      "file_sha256": "fbdbf9203e0830e234a13456386ee48f3da4fa876a5550d13b8b9c15508997a0"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "astral.sh",
+    "docs.astral.sh",
+    "github.com",
+    "glama.ai",
+    "hf-mirror.com",
+    "huggingface.co",
+    "img.shields.io",
+    "pypi.org",
+    "pypi.tuna.tsinghua.edu.cn",
+    "raw.githubusercontent.com",
+    "registry.npmmirror.com",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

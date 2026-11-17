@@ -1,0 +1,90 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "daz-mcp-server",
+    "version": "0.8.0",
+    "download": null
+  },
+  "archive_sha256": "f3c541ff3ec645142eff50315a2980af31305d98e30cc22a5702f44d27ed5aea",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "daz_mcp_server-0.8.0/PKG-INFO",
+      "line": 77,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "073a8a2b16e383ed6369044e96b1e7ce675e5d35c3e4483f1c3613fc88ccdcb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "daz_mcp_server-0.8.0/CLAUDE.md",
+      "line": 113,
+      "evidence": "p=0.94 **Critical rules:** - Explicit user or orchestrator instructions override this B",
+      "file_sha256": "411447b6804d99afa121d9948447f3df7189f9a71a93393c968fb9f7a81d7532"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "daz_mcp_server-0.8.0/README.md",
+      "line": 59,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "ea396f661b4e25215cb4190255e257d12b21b6718d52e28089b560a00ff79be3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "daz_mcp_server-0.8.0/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "78a78638dd40cc31a78828ed1ebdb3db0ffb489083319967669172a4b803d772"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "daz_mcp_server-0.8.0/AGENTS.md",
+      "line": 100,
+      "evidence": "p=0.94 **Critical rules:** - Explicit user or orchestrator instructions override this B",
+      "file_sha256": "78a78638dd40cc31a78828ed1ebdb3db0ffb489083319967669172a4b803d772"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "high",
+      "id": "AGT-F-TYPOSQUAT",
+      "summary": "Name is within 2 edits of popular package `dcc-mcp-server`",
+      "path": null,
+      "line": null,
+      "evidence": null,
+      "file_sha256": null
+    },
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-17T04:39:31.515372Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "astral.sh",
+    "bluemoonfoundry.github.io",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "github.com",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "www.daz3d.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

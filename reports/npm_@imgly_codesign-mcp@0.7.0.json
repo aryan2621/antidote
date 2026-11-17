@@ -1,0 +1,81 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@imgly/codesign-mcp",
+    "version": "0.7.0",
+    "download": null
+  },
+  "archive_sha256": "3fc849fb6d3bf18e27132621c86ce29856c70543f4b1a2cb45186797245b581e",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/runtime/cli/commands.js",
+      "line": 122,
+      "evidence": "peer.request('channel.open', { kind: 'design', client: { kind: 'cli', name: 'cds",
+      "file_sha256": "62cbfb62602f248ba89c2a14b1d87116e77344f8db633549cf70d48bfec6fd60"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "packs-api.codesign.co",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "1.png",
+    "127.0.0.1",
+    "api.img.ly",
+    "bugs.chromium.org",
+    "cdn.img.ly",
+    "cdn.jsdelivr.net",
+    "clerk.img.ly",
+    "codesign.co",
+    "community.img.ly",
+    "datatracker.ietf.org",
+    "discord.gg",
+    "en.wikipedia.org",
+    "example.com",
+    "gateway.img.ly",
+    "get.codesign.co",
+    "github.com",
+    "html.spec.whatwg.org",
+    "i.ytimg.com",
+    "img.ly",
+    "img.shields.io",
+    "json-schema.org",
+    "lodash.com",
+    "lottiefiles.github.io",
+    "nodejs.org",
+    "ns.adobe.com",
+    "openjsf.org",
+    "packs-api.codesign.co",
+    "placehold.co",
+    "psd-tools.readthedocs.io",
+    "raw.githubusercontent.com",
+    "schemas.openxmlformats.org",
+    "scripts.sil.org",
+    "skia.org",
+    "staticimgly.com",
+    "storage.googleapis.com",
+    "tc39.es",
+    "tc39.github.io",
+    "underscorejs.org",
+    "webidl.spec.whatwg.org",
+    "www.apache.org",
+    "www.ecb.europa.eu",
+    "www.npmjs.com",
+    "www.w3.org",
+    "www.xfa.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
