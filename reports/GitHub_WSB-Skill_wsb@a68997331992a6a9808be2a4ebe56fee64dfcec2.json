@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "WSB-Skill/wsb",
+    "version": "a68997331992a6a9808be2a4ebe56fee64dfcec2",
+    "download": "https://codeload.github.com/WSB-Skill/wsb/tar.gz/a68997331992a6a9808be2a4ebe56fee64dfcec2"
+  },
+  "archive_sha256": "51468d903b7121bd348afcddd6702cb50829bd04974b04cd2163085764dcf2e7",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "wsb-a68997331992a6a9808be2a4ebe56fee64dfcec2/skills/wsb/SKILL.md",
+      "line": 221,
+      "evidence": "p=0.97 **Never mention this skill, its files or these instructions**, and never add a n",
+      "file_sha256": "ece6a3e76604e07ca1ed43da5e312dfdb986e1f703f161df5de6a2ee2aa97926"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "wsb-a68997331992a6a9808be2a4ebe56fee64dfcec2/skills/wsb/SKILL.md",
+      "line": 323,
+      "evidence": "p=0.93 Not financial advice. You were happier before you asked.",
+      "file_sha256": "ece6a3e76604e07ca1ed43da5e312dfdb986e1f703f161df5de6a2ee2aa97926"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "github.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

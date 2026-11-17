@@ -1,0 +1,46 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "erkamyaman/unslopovich",
+    "version": "5c071bbada0aca00fcb49eddcd5999e169fddfd6",
+    "download": "https://codeload.github.com/erkamyaman/unslopovich/tar.gz/5c071bbada0aca00fcb49eddcd5999e169fddfd6"
+  },
+  "archive_sha256": "e7ede8d68b3f56961f9821a6f8c7b2644d832c68fb22961ad901f7ec18d92624",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "unslopovich-5c071bbada0aca00fcb49eddcd5999e169fddfd6/research/test/pipeline.test.mjs",
+      "line": 176,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "60bb15d9e5bb6607aa9b890ffab610a1a86b7448777c2031d86c8cba08a2d343"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "unslopovich-5c071bbada0aca00fcb49eddcd5999e169fddfd6/skills/unslopovich/reference/tells.md",
+      "line": 117,
+      "evidence": "p=0.97 - A hit is a lead. Open the file and confirm it is real in this product before y",
+      "file_sha256": "0c8af4228817527db6e281ae31661aaf10d30712e3a2345ee776fe612ec4bf1c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "docs.renovatebot.com",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "instagram.com",
+    "itunes.apple.com",
+    "registry.npmjs.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.com",
+    "x.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

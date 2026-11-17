@@ -1,0 +1,36 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "jpeetz/prompt-engineering-concepts",
+    "version": "1.0.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=prompt-engineering-concepts&ownerHandle=jpeetz&version=1.0.0"
+  },
+  "archive_sha256": "165bcca7e454de5bd33fecc4a3e2ab247102568b8b197d27740ba73241678c1b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evals/evals.json",
+      "line": 67,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "b32a57810e6607c52e759d08e365b316a18da98a79176945077f45479e928358"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evals/evals.json",
+      "line": 67,
+      "evidence": "p=1.00 Someone is trying to jailbreak our assistant with 'ignore previous instructions'",
+      "file_sha256": "b32a57810e6607c52e759d08e365b316a18da98a79176945077f45479e928358"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

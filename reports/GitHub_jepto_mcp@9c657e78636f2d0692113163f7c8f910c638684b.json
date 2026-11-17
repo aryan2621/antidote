@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jepto/mcp",
+    "version": "9c657e78636f2d0692113163f7c8f910c638684b",
+    "download": "https://codeload.github.com/jepto/mcp/tar.gz/9c657e78636f2d0692113163f7c8f910c638684b"
+  },
+  "archive_sha256": "4d3749b457839f669e5831faa9f8ea5fbfcaec612158342a55c0033e019767be",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-9c657e78636f2d0692113163f7c8f910c638684b/ai-visibility/schema.json",
+      "line": 684,
+      "evidence": "p=0.94 Prompt for the answer.",
+      "file_sha256": "ab73ccb15ffebd50480d544a9f5be6f693202298fef0e3f49230646581ef41ab"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-9c657e78636f2d0692113163f7c8f910c638684b/ai-visibility/schema.json",
+      "line": 40,
+      "evidence": "p=0.99 Share of answers mentioning this entity (0–100).",
+      "file_sha256": "ab73ccb15ffebd50480d544a9f5be6f693202298fef0e3f49230646581ef41ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-9c657e78636f2d0692113163f7c8f910c638684b/ai-visibility/schema.json",
+      "line": 1021,
+      "evidence": "p=0.90 Brand mention slots as a share of all brand and competitor mention slots in answ",
+      "file_sha256": "ab73ccb15ffebd50480d544a9f5be6f693202298fef0e3f49230646581ef41ab"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "app.jepto.com",
+    "chatgpt.com",
+    "claude.ai",
+    "github.com",
+    "mcp.jepto.com",
+    "static.jepto.com",
+    "static.modelcontextprotocol.io",
+    "www.jepto.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

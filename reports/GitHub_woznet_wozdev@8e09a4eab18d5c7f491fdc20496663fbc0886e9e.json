@@ -1,0 +1,51 @@
+{
+  "item": {
+    "source": "github:claude-skills",
+    "ecosystem": "GitHub",
+    "name": "woznet/wozdev",
+    "version": "8e09a4eab18d5c7f491fdc20496663fbc0886e9e",
+    "download": "https://codeload.github.com/woznet/wozdev/tar.gz/8e09a4eab18d5c7f491fdc20496663fbc0886e9e"
+  },
+  "archive_sha256": "21fae142fc8cd5d19b09671f627701d6dd4228229a65ac17d36d235052f972cd",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "wozdev-8e09a4eab18d5c7f491fdc20496663fbc0886e9e/skills/optimize-prompt/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.97 Rewrite or draft a prompt so the model reading it gets everything it needs and n",
+      "file_sha256": "729e58de11e11b7cc3e3b1562683093c3c3c6f5453d0c673e3fcb87886e928f4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "wozdev-8e09a4eab18d5c7f491fdc20496663fbc0886e9e/skills/optimize-prompt/references/token-economy.md",
+      "line": 7,
+      "evidence": "p=0.95 Find the largest part first. In most real prompts the instructions are a small s",
+      "file_sha256": "4b4c5366f57c0ddaf0bfd371ffa8daaf5028f77f25d2b275496c07a65bdda58b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "wozdev-8e09a4eab18d5c7f491fdc20496663fbc0886e9e/skills/optimize-prompt/references/token-economy.md",
+      "line": 85,
+      "evidence": "p=0.95 A prompt controls how much the model writes back. State the length and shape wan",
+      "file_sha256": "4b4c5366f57c0ddaf0bfd371ffa8daaf5028f77f25d2b275496c07a65bdda58b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "example.com",
+    "github.com",
+    "jqlang.org",
+    "packages.microsoft.com",
+    "raw.githubusercontent.com",
+    "www.powershellgallery.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
