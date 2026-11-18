@@ -1,0 +1,40 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "turbo-notify/turbo-notify-virtual-attendant",
+    "version": "0.3.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=turbo-notify-virtual-attendant&ownerHandle=turbo-notify&version=0.3.0"
+  },
+  "archive_sha256": "9fd4d1381a60ad48c4e54988c4286903375ced75ab3890a0d0f019a19cc71ab3",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 82,
+      "evidence": "p=0.98 - Answer in a group, or message someone who has not written first. - Invent a pr",
+      "file_sha256": "de752c57d275c471314e82bead1fba98cd0fb4858af47a57abad2c46c7d350ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "scripts/tn_assist/sanitize.py",
+      "line": 12,
+      "evidence": "\\u{202a}",
+      "file_sha256": "344a8b18b576c86bbb47a24677113044f40134ee2d81d130e552edee71a8927b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.turbonotify.com",
+    "clawhub.ai",
+    "github.com",
+    "mcp.turbonotify.com",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

