@@ -1,0 +1,128 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "klimPaskov/HOI4-Live-Tools",
+    "version": "3f9d2711e71b0fce9671ec076e55eab92ecc9c81",
+    "download": "https://codeload.github.com/klimPaskov/HOI4-Live-Tools/tar.gz/3f9d2711e71b0fce9671ec076e55eab92ecc9c81"
+  },
+  "archive_sha256": "c686764c9faa4b0e6c5f5b5bd9f1241913fb7f3d926c5a5559b5536fbb2a2f78",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/native/src/doctor.rs",
+      "line": 110,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "db9a38c8354f922ffb1395926cbd07c665e9da5f10aeca54b0311f62c1ddff36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/docs/CAMPAIGN_GUIDE.md",
+      "line": 20,
+      "evidence": "curl -fsSL https://github.com/klimPaskov/HOI4-Live-Tools/releases/latest/downloa",
+      "file_sha256": "5dfc945feb8b584434f08f9df453ecc9e731148c8bf4c0b287fdaaab1fd5e568"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 2679,
+      "evidence": "p=0.93 no new wing while this many wings match the entry",
+      "file_sha256": "99bba7499005f7d53f21d8f9f7180c8e56e2123a25d20aee8103bd6c93452776"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 4078,
+      "evidence": "p=0.94 alert names the alert rule ignores",
+      "file_sha256": "99bba7499005f7d53f21d8f9f7180c8e56e2123a25d20aee8103bd6c93452776"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 4314,
+      "evidence": "p=0.97 without a line efficiency read, a production line not added by the executor with",
+      "file_sha256": "99bba7499005f7d53f21d8f9f7180c8e56e2123a25d20aee8103bd6c93452776"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/skills/hoi4-campaign-playbook/plan.schema.json",
+      "line": 4398,
+      "evidence": "p=0.96 alert name -> why the plan leaves it open (strategist lint alerts.owner: every g",
+      "file_sha256": "99bba7499005f7d53f21d8f9f7180c8e56e2123a25d20aee8103bd6c93452776"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://github.com/klimPaskov/HOI4-Live-Tools/releases/latest/downloa",
+      "file_sha256": "f24ae3d1a61f559584d2ffad0dfe886cb239527fc8c88b0be3933da315f3e0d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/README.md",
+      "line": 43,
+      "evidence": "curl -fsSL https://github.com/klimPaskov/HOI4-Live-Tools/releases/latest/downloa",
+      "file_sha256": "5f34e43f7258418376851cda41cb89e0419c92be90c838c2c4f90758331c985e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/README.md",
+      "line": 302,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5f34e43f7258418376851cda41cb89e0419c92be90c838c2c4f90758331c985e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "HOI4-Live-Tools-3f9d2711e71b0fce9671ec076e55eab92ecc9c81/AGENTS.md",
+      "line": 1,
+      "evidence": "p=1.00 # Codex instructions",
+      "file_sha256": "cd5fb0843e2a551425e9de6d5bb691676b32514d6905b11b2b15db770d1c2085"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "developer.apple.com",
+    "discord.gg",
+    "docs.brew.sh",
+    "example.invalid",
+    "ffmpeg.org",
+    "formulae.brew.sh",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "ko-fi.com",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "modelcontextprotocol.io",
+    "raw.githubusercontent.com",
+    "wiki.fex-emu.com",
+    "www.apache.org",
+    "www.apple.com",
+    "www.python.org",
+    "www.x.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,88 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "isokron-ai/mcp-writecheck-action",
+    "version": "b899594d003fd959efa820742eef9f263ba721ec",
+    "download": "https://codeload.github.com/isokron-ai/mcp-writecheck-action/tar.gz/b899594d003fd959efa820742eef9f263ba721ec"
+  },
+  "archive_sha256": "174aa129a4e2d221d211d33f770456c41292abbff3e2519dbed99b33b4d95060",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 83,
+      "evidence": "p=0.97 **MWS-RES-1 (MUST).** *Applies when* the tool writes. Report success only when t",
+      "file_sha256": "076e2eed34c8b212a68a420f825def501000cbaccf91a60c07cfab567e4e60e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.95 **MWS-ATOM-1 (MUST).** *Applies when* a tool writes more than one item, or makes",
+      "file_sha256": "076e2eed34c8b212a68a420f825def501000cbaccf91a60c07cfab567e4e60e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/skills/mcp-write-safe-caller/SKILL.md",
+      "line": 77,
+      "evidence": "p=0.94 All-or-nothing is a SHOULD in MWS, not a MUST (MWS-ATOM-2). The MUST is that a w",
+      "file_sha256": "4f6e31faa70442bff6fa356a3cdc896a2d535b1b6028f90b412142455b29900b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/plugin/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 83,
+      "evidence": "p=0.97 **MWS-RES-1 (MUST).** *Applies when* the tool writes. Report success only when t",
+      "file_sha256": "076e2eed34c8b212a68a420f825def501000cbaccf91a60c07cfab567e4e60e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/plugin/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.95 **MWS-ATOM-1 (MUST).** *Applies when* a tool writes more than one item, or makes",
+      "file_sha256": "076e2eed34c8b212a68a420f825def501000cbaccf91a60c07cfab567e4e60e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-b899594d003fd959efa820742eef9f263ba721ec/plugin/skills/mcp-write-safe-caller/SKILL.md",
+      "line": 77,
+      "evidence": "p=0.94 All-or-nothing is a SHOULD in MWS, not a MUST (MWS-ATOM-2). The MUST is that a w",
+      "file_sha256": "4f6e31faa70442bff6fa356a3cdc896a2d535b1b6028f90b412142455b29900b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "codeload.github.com",
+    "creativecommons.org",
+    "docs.github.com",
+    "evil.example",
+    "evil.test",
+    "example.com",
+    "example.test",
+    "github.com",
+    "isokron.ai",
+    "mws.invalid",
+    "registry.npmjs.org",
+    "registry.npmjs.org.evil.example",
+    "www.apache.org",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

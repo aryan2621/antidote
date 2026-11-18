@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@guardbee/mcp-security-proxy",
+    "version": "1.41.0",
+    "download": null
+  },
+  "archive_sha256": "d705464c666f6d6acce97e55a026310e3b722362c78b7c754ebb402c35f263d8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 227,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "492531ee017de53261132631cb01771176c19ae1cee19acdcba1ed38555c6f1f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 227,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "492531ee017de53261132631cb01771176c19ae1cee19acdcba1ed38555c6f1f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a2a-protocol.org",
+    "api.anthropic.com",
+    "api.githubcopilot.com",
+    "api.openai.com",
+    "app.guardbee.ai",
+    "billing-agent.internal",
+    "dc.acme.com",
+    "files.internal.example",
+    "gateway.example",
+    "github.com",
+    "guardbee.acme.internal",
+    "guardbee.ai",
+    "guardbee.github.io",
+    "img.shields.io",
+    "json.schemastore.org",
+    "login.acme.com",
+    "login.microsoftonline.com",
+    "mcp.linear.app",
+    "otel-collector.example.com",
+    "pypi.org",
+    "registry.npmjs.org",
+    "research-agent.internal",
+    "sso.example",
+    "www.apache.org",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

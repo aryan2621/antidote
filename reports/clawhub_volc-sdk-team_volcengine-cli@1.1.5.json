@@ -1,0 +1,52 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "volc-sdk-team/volcengine-cli",
+    "version": "1.1.5",
+    "download": "https://clawhub.ai/api/v1/download?slug=volcengine-cli&ownerHandle=volc-sdk-team&version=1.1.5"
+  },
+  "archive_sha256": "78cc2fe1a3159544638aa826fde3314d8cd98e66dd60402393412cd29cf7f035",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 261,
+      "evidence": "curl -fsSL https://cloudcache.volccdn.com/ve/install.sh | sh",
+      "file_sha256": "2ef868bf6a91741e7b1f13141d1b572b38d821201fff842127552d0b337001cf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/install_ve.sh",
+      "line": 13,
+      "evidence": "curl -fsSL https://cloudcache.volccdn.com/ve/install.sh | sh",
+      "file_sha256": "feebc793a6df97ebb24552fb2201075b21e4a72c51be41bd29fe5e0c495eb805"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "scripts/install_ve.sh",
+      "line": 315,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "feebc793a6df97ebb24552fb2201075b21e4a72c51be41bd29fe5e0c495eb805"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.volcengine.com",
+    "clawhub.ai",
+    "cloudcache.volccdn.com",
+    "console.volcengine.com",
+    "github.com",
+    "open.volcengineapi.com",
+    "signin.volcengine.com",
+    "www.volcengine.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
