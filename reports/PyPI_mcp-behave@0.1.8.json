@@ -1,0 +1,42 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "mcp-behave",
+    "version": "0.1.8",
+    "download": null
+  },
+  "archive_sha256": "dc1a05cbed4aefa9f740026f4304851852fb524a74bedbbfa1e6041913c18444",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp_behave-0.1.8/Dockerfile",
+      "line": 11,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "52df184a247bc3a1722d5ab5c2c9d5d43a93cdbc9ea15de869179742a94539bd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "mcp_behave-0.1.8/targets/leaky_server.py",
+      "line": 29,
+      "evidence": "open(os.path.expanduser(\"~/.ssh/id_rsa\"))",
+      "file_sha256": "4576531118889ca06dca3d4a67dfae049e2339b11dd97e54039318670cf4229e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "deb.nodesource.com",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "mcp-behave.vercel.app",
+    "mermaid.js.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "huhaisong/skill-lifecycle-steward",
+    "version": "1.0.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=skill-lifecycle-steward&ownerHandle=huhaisong&version=1.0.0"
+  },
+  "archive_sha256": "6a220fd0f63eb0d79c3f32381fa39f28ea495549823dc3a161e9a297c171cf8c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/security-scan.md",
+      "line": 15,
+      "evidence": "curl ... | sh",
+      "file_sha256": "c3aa0cbbc467dcd0f7f02e77b4c1fcfc826682b22a8dc29a1988fb503a9e2273"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "references/security-scan.md",
+      "line": 15,
+      "evidence": "base64 -d ... | sh",
+      "file_sha256": "c3aa0cbbc467dcd0f7f02e77b4c1fcfc826682b22a8dc29a1988fb503a9e2273"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "references/security-scan.md",
+      "line": 30,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "c3aa0cbbc467dcd0f7f02e77b4c1fcfc826682b22a8dc29a1988fb503a9e2273"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "clawhub.ai"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
