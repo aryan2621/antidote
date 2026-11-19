@@ -1,0 +1,204 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "hridaya423/phonedriver",
+    "version": "cdc34664c42f00420beac91e1940783ec91aea8e",
+    "download": "https://codeload.github.com/hridaya423/phonedriver/tar.gz/cdc34664c42f00420beac91e1940783ec91aea8e"
+  },
+  "archive_sha256": "e2c3eacd07f42dadf4356f56d1372be6327f2d5c606e4c3086a347e8fcc146b8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/.claude/skills/verify-secrets/SKILL.md",
+      "line": 20,
+      "evidence": "p=0.93 All checks are in `crates/cli/tests/secret_property.rs`. The fake phone there (`",
+      "file_sha256": "896ca3ea88d903b38a21d6f042b1a137b8c9298bfbeb41dc82af13b990765002"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/SKILL.md",
+      "line": 86,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/SKILL.md",
+      "line": 67,
+      "evidence": "p=0.91 Unlocking the phone, a USB debugging prompt, a biometric prompt and a trust-this",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/SKILL.md",
+      "line": 81,
+      "evidence": "p=0.99 - The user's own passwords, codes and payment details go in only when the user g",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/crates/core/src/inject.rs",
+      "line": 164,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2786b17b18e7e0279db11e895fd149510befec36c896cb4448a30ac6e4efe346"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/crates/core/src/render.rs",
+      "line": 1179,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "460d5efa6623aa60f60533635c8681dcd7b241d569cea393bce9d62914389e63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/progress.md",
+      "line": 819,
+      "evidence": "\\u{202a}",
+      "file_sha256": "86ee70ad6717e3eb7b847d67b1fb23128a20afbda3363af62042bb156d267093"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/progress.md",
+      "line": 315,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "86ee70ad6717e3eb7b847d67b1fb23128a20afbda3363af62042bb156d267093"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/site/content/docs/install.md",
+      "line": 62,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf {{REPO}}/releases/latest/download/phonedri",
+      "file_sha256": "94254323db46735d98b9c1a735dba9123993a55e841ab3bd2b18c5c08b74bd05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/docs/reference.md",
+      "line": 36,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hridaya423/phonedriver/",
+      "file_sha256": "13438bb6a00b39c8251d0842fdefb7efc48c13eaa87929255bc08e4960c9db38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/.github/workflows/release.yml",
+      "line": 67,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/re",
+      "file_sha256": "d17ec8b257fca489222e90295e21bc4ba7214ed7d7c115bd4322e69b294e373d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/packaging/plugin/skills/phonedriver/SKILL.md",
+      "line": 86,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/packaging/plugin/skills/phonedriver/SKILL.md",
+      "line": 67,
+      "evidence": "p=0.91 Unlocking the phone, a USB debugging prompt, a biometric prompt and a trust-this",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "phonedriver-cdc34664c42f00420beac91e1940783ec91aea8e/packaging/plugin/skills/phonedriver/SKILL.md",
+      "line": 81,
+      "evidence": "p=0.99 - The user's own passwords, codes and payment details go in only when the user g",
+      "file_sha256": "d5258fa04ce2ceb473d50e459ab14b5ae5786f72d09df6baff1a672f17f597c2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "docs.swmansion.com, form.example, simulator-use.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "android.googlesource.com",
+    "api.github.com",
+    "api.indexnow.org",
+    "apilevels.com",
+    "appium.github.io",
+    "arxiv.org",
+    "axodotdev.github.io",
+    "blog.rom1v.com",
+    "code.visualstudio.com",
+    "com.android.contacts",
+    "cursor.com",
+    "design.how",
+    "developer.android.com",
+    "developers.openai.com",
+    "dl.google.com",
+    "docs.cline.bot",
+    "docs.swmansion.com",
+    "en.wikipedia.org",
+    "example.com",
+    "example.net",
+    "example.org",
+    "form.example",
+    "fsf.org",
+    "geminicli.com",
+    "github.com",
+    "glama.ai",
+    "httpbin.org",
+    "img.shields.io",
+    "insiders.vscode.dev",
+    "openfontlicense.org",
+    "phonedriver.dev",
+    "phonedriver.vercel.app",
+    "playwright.dev",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "schema.org",
+    "schemas.android.com",
+    "scripts.sil.org",
+    "services.gradle.org",
+    "sh.rustup.rs",
+    "simonwillison.net",
+    "simulator-use.dev",
+    "static.modelcontextprotocol.io",
+    "tailscale.com",
+    "www.apache.org",
+    "www.dominos.co.uk",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.w3.org",
+    "zed.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

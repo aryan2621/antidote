@@ -1,0 +1,92 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "NoamElyasim/ClearDay-daily-task-board-for-Mac",
+    "version": "99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8",
+    "download": "https://codeload.github.com/NoamElyasim/ClearDay-daily-task-board-for-Mac/tar.gz/99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8"
+  },
+  "archive_sha256": "a76af37337eeb8cc7754bac28be8dee901cd3c974d181f098b818526ed1d47c8",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/CHANGELOG.md",
+      "line": 90,
+      "evidence": "curl … | bash",
+      "file_sha256": "1d6caebd3ac40a5021ce74007992d89b1e32e337ad9062012371049f6efcda7d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/src/main/updates.mjs",
+      "line": 71,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/${REPO}/${tag}/install.sh | bash",
+      "file_sha256": "132d862b5c040e98745abfb7e428eb7d391c92d79c8d81d27a3ac06cec83b284"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/README.md",
+      "line": 267,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NoamElyasim/ClearDay-daily-task-boa",
+      "file_sha256": "ac256bb782fb505f1e9b6fbcca74952ec8446ee29a40f561b5ffdff727b1be2c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/README.md",
+      "line": 292,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ac256bb782fb505f1e9b6fbcca74952ec8446ee29a40f561b5ffdff727b1be2c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/NoamElyasim/ClearDay-daily-task-boa",
+      "file_sha256": "e620fa939bc9a04bb96e04ca634531a5da6b4b6ed5a74b596bfe8aa9ec255c44"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ClearDay-daily-task-board-for-Mac-99aa484bddd6cec9ae9d96fa69a794c6aa72c5d8/install.sh",
+      "line": 178,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "e620fa939bc9a04bb96e04ca634531a5da6b4b6ed5a74b596bfe8aa9ec255c44"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "account.apple.com",
+    "api.github.com",
+    "clearday.app",
+    "developer.apple.com",
+    "dotenvx.com",
+    "evil.example",
+    "example.com",
+    "feross.org",
+    "freesound.org",
+    "github.com",
+    "m8ven.ai",
+    "opencollective.com",
+    "openfontlicense.org",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "tidelift.com",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
