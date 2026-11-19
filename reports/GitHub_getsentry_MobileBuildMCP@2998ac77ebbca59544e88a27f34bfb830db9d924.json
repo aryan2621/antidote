@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "getsentry/MobileBuildMCP",
+    "version": "2998ac77ebbca59544e88a27f34bfb830db9d924",
+    "download": "https://codeload.github.com/getsentry/MobileBuildMCP/tar.gz/2998ac77ebbca59544e88a27f34bfb830db9d924"
+  },
+  "archive_sha256": "7e6e30ea7cca58db4a7d88a58225336c7a7d4a4829c08e6128a8294199c36cc2",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "MobileBuildMCP-2998ac77ebbca59544e88a27f34bfb830db9d924/src/utils/environment.ts",
+      "line": 31,
+      "evidence": "execSync(`ps -o command= -p ${parentPid}`, { encoding: 'utf8', timeout: 1000, })",
+      "file_sha256": "0e119fadbd17fcc49f82a5b56ddf4267ffd010a7e60ce24c2cc490c831ff13fe"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "MobileBuildMCP-2998ac77ebbca59544e88a27f34bfb830db9d924/.agents/skills/mobilebuildmcp-docs-command-review/SKILL.md",
+      "line": 23,
+      "evidence": "p=0.97 - A changelog bullet, example, or migration instruction tells users to run a rem",
+      "file_sha256": "94bc54ab4218ce9dab544b91310d0bc9ba32d233ba4a1170154c0380ba67f45f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentskills.io",
+    "api.atmosweather.example",
+    "api.github.com",
+    "badge.fury.io",
+    "deepwiki.com",
+    "developer.apple.com",
+    "eslint.org",
+    "example.com",
+    "example.invalid",
+    "feross.org",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mcp.sentry.dev",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "open.sentry.io",
+    "opencollective.com",
+    "opensource.org",
+    "paulmillr.com",
+    "pkg.pr.new",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "staging.example.com",
+    "static.modelcontextprotocol.io",
+    "tidelift.com",
+    "unpkg.com",
+    "www.agentaudit.dev",
+    "www.apple.com",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "xcodebuildmcp.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

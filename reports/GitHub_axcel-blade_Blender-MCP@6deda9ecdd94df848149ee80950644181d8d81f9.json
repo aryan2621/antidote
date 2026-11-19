@@ -1,0 +1,117 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "axcel-blade/Blender-MCP",
+    "version": "6deda9ecdd94df848149ee80950644181d8d81f9",
+    "download": "https://codeload.github.com/axcel-blade/Blender-MCP/tar.gz/6deda9ecdd94df848149ee80950644181d8d81f9"
+  },
+  "archive_sha256": "91a6d33b624ba9947bf7da24c67387bf548f690fb5c6c798865106ba15015e50",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/README.md",
+      "line": 46,
+      "evidence": "curl -LsSf https://axcel-blade.github.io/Blender-MCP/install.sh | sh",
+      "file_sha256": "b8f6c6bb9d1f8fb616428e21a6a1ae4ce070463629582af298fb562e501e5441"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/installers/linux/install.sh",
+      "line": 7,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3de46cc5eacd3d56deae83c85ee6df7cff309c2b503939975fbcf99b13d92819"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/installers/linux/install.sh",
+      "line": 7,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3de46cc5eacd3d56deae83c85ee6df7cff309c2b503939975fbcf99b13d92819"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/installers/macos/install.sh",
+      "line": 10,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d22a9f393d3942edb921ec0e28335e45c55efdb2f015e3211def92e7a6af5c91"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/installers/macos/install.sh",
+      "line": 10,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d22a9f393d3942edb921ec0e28335e45c55efdb2f015e3211def92e7a6af5c91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/site/src/pages/index.astro",
+      "line": 10,
+      "evidence": "curl -LsSf https://axcel-blade.github.io/Blender-MCP/install.sh | sh",
+      "file_sha256": "96dae5cd8964cd79c3aef4144935ea3dd0e198b29be29802732781b0c47898de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/site/public/install.sh",
+      "line": 4,
+      "evidence": "curl -LsSf https://axcel-blade.github.io/Blender-MCP/install.sh | sh",
+      "file_sha256": "24f794e8f5cdd8b838da910c9c9c1e692caf906f5fc4cf0ebfb5778c8d8fa8fc"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/site/public/install.sh",
+      "line": 23,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "24f794e8f5cdd8b838da910c9c9c1e692caf906f5fc4cf0ebfb5778c8d8fa8fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Blender-MCP-6deda9ecdd94df848149ee80950644181d8d81f9/docs/INSTALLATION.md",
+      "line": 24,
+      "evidence": "curl -LsSf https://axcel-blade.github.io/Blender-MCP/install.sh | sh",
+      "file_sha256": "ae4c1c22435aa2684f55e05f7e7a1d3162db7f36475b03227dae73d369f72e04"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.poly.pizza",
+    "api.polyhaven.com",
+    "api.sketchfab.com",
+    "astral.sh",
+    "axcel-blade.github.io",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "polyhaven.com",
+    "pypi.org",
+    "semver.org",
+    "www.blender.org",
+    "www.contributor-covenant.org",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

