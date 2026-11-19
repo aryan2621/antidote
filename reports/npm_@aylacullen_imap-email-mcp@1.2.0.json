@@ -1,0 +1,43 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@aylacullen/imap-email-mcp",
+    "version": "1.2.0",
+    "download": null
+  },
+  "archive_sha256": "833a057b91fd303d57a4f17da33a1de9ea0521bbcf1aa740c640794587db2253",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "package/save-password.sh",
+      "line": 47,
+      "evidence": "security find-generic-password -s \"$NAME\"",
+      "file_sha256": "a9d8b1c66099e566b316b6b3b324c4a0ed3754ff7b3f67de959d22cbcbd3a9eb"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-19T05:04:38.915Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "appleid.apple.com",
+    "github.com",
+    "modelcontextprotocol.io",
+    "myaccount.google.com",
+    "nodejs.org",
+    "proton.me",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
