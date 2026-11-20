@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "okeefeco/pyeye-mcp",
+    "version": "1292586ee3bc11291a43211d1329749d70776028",
+    "download": "https://codeload.github.com/okeefeco/pyeye-mcp/tar.gz/1292586ee3bc11291a43211d1329749d70776028"
+  },
+  "archive_sha256": "01ed2c7b7382c812733c40d5e9fdc5ea39379017a27c05b919642abb807db70e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pyeye-mcp-1292586ee3bc11291a43211d1329749d70776028/setup.sh",
+      "line": 9,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "3de2d6434b0e2d0a928d96255c68d1b0341e1e8b231ccfe9e8e040313b39657c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "pyeye-mcp-1292586ee3bc11291a43211d1329749d70776028/CLAUDE.md",
+      "line": 3,
+      "evidence": "p=0.98 This file loads modular Claude behavior instructions. The actual instructions ar",
+      "file_sha256": "3126ae4324818decb90118f30a603425ec877265e1469db92c926949a4e0ae78"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1, code.claude.com, code.visualstudio.com, example.invalid, example.org, modelcontextprotocol.io, okeefeco.github.io, pipx.pypa.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "astral.sh",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "codecov.io",
+    "docs.astral.sh",
+    "docs.github.com",
+    "docs.pytest.org",
+    "docs.python-guide.org",
+    "docs.python.org",
+    "example.invalid",
+    "example.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "modelcontextprotocol.io",
+    "okeefeco.github.io",
+    "peps.python.org",
+    "pipx.pypa.io",
+    "pypi.org",
+    "pytest-cov.readthedocs.io",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "test.pypi.org",
+    "www.python.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

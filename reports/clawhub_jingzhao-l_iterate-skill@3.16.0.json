@@ -1,0 +1,93 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "jingzhao-l/iterate-skill",
+    "version": "3.16.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=iterate-skill&ownerHandle=jingzhao-l&version=3.16.0"
+  },
+  "archive_sha256": "f89efb7c4af4e35b7153e41021e9c3ff22e71fc44cf8e69f69c0496e4292bc7f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "RELEASE.md",
+      "line": 360,
+      "evidence": "curl .../main/scripts/install.sh | bash",
+      "file_sha256": "765a3d6cbdf38e95c05efc286355fcde2b60a8954a403756235b1874c58c6b01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CHANGELOG.md",
+      "line": 346,
+      "evidence": "curl|bash",
+      "file_sha256": "040495b8679a7d79ab9e794baaf5c33cde746c7d9c5c16d35d55114ef4cb76fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iterate_cli/personalize.py",
+      "line": 224,
+      "evidence": "curl … | sh",
+      "file_sha256": "6cf0444fd58a9ded247711306262b37c7abc05c21accb409ef6685ac98dc754e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 162,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a private-key -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 163,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a passphrase -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 194,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a private-key -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "api.github.com",
+    "api.github.com.evil",
+    "api.github.com.evil.com",
+    "api.npmjs.org",
+    "api.skillhub.cn",
+    "api.skillhub.tencent.com",
+    "clawhub.ai",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "modelscope.cn",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "release-assets.githubusercontent.com",
+    "semver.org",
+    "skillhub.cloud.tencent.com",
+    "skills.sh",
+    "www.conventionalcommits.org",
+    "www.npmjs.com",
+    "www.orcarouter.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

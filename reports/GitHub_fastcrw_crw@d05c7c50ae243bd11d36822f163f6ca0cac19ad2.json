@@ -1,0 +1,1593 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "fastcrw/crw",
+    "version": "d05c7c50ae243bd11d36822f163f6ca0cac19ad2",
+    "download": "https://codeload.github.com/fastcrw/crw/tar.gz/d05c7c50ae243bd11d36822f163f6ca0cac19ad2"
+  },
+  "archive_sha256": "a5c1e26184219bc2bcfc57a2535e81b82ed39f48e89002aa4dc47b88764a8b1f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/AGENTS.md",
+      "line": 3,
+      "evidence": "p=0.92 Root instructions for working in this repository. Read this first. Scoped `AGENT",
+      "file_sha256": "7c5c1baf728d9697f903e516021b4a39c70dd61cbaf73708e4cc7cf9eda27fd1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/README.md",
+      "line": 38,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f8ee32f321145e7f99a669a630894c1eb8e6c407fd4361b8368954f38ff4edb4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-extract/src/judge.rs",
+      "line": 186,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ea7fac88a292e83ab0d007ecdec258d179d4123c5a90000c3446a95f866ae90c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-extract/src/untrusted.rs",
+      "line": 75,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "aec76fa58d989573313979fb625444a9dc88b315377eecbbff8e7cf008d2d2ee"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-extract/tests/extract_tests.rs",
+      "line": 788,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4ca20b0b7380cfa8e87c9128e63e73f6c2dea71baf643292c9fff25973320223"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-extract/tests/judge_tests.rs",
+      "line": 92,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "5d9f5528164a407d719d4d07e9f91023c68a9634b9fa2ac143c7f361c883952a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-cli/src/commands/setup/agents.rs",
+      "line": 147,
+      "evidence": "curl … | sh",
+      "file_sha256": "7d3cdb225528df8ac17e2a3ddac00a2cd3577297550bea249e6702ba07416ca0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/crates/crw-cli/src/main.rs",
+      "line": 53,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b7aef28e56b9273b91b9311524d86cb8f3a9dfe1e704f624db45ac0e7249a740"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/sdks/python/README.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "1d3606a0dae9ae5a07b37692a297e007b18381be685ee47f39d607f3ee400009"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/deepseek-web-scraping-byok-tutorial.md",
+      "line": 253,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "b1e37314f0b06d6c2339d57d07e9cd2205e7074ecd4b662be893f0286d7ec8b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/langchain-crw-rag-tutorial.md",
+      "line": 37,
+      "evidence": "curl -fsSL https://fastcrw.com/install | bash",
+      "file_sha256": "f430cbdc63c36c9020cbdb13f49423fc72b36d3383be15b13314176818441a27"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/openclaw-web-scraping-crw.md",
+      "line": 46,
+      "evidence": "curl -fsSL https://fastcrw.com/install | bash",
+      "file_sha256": "34f95fe781d156f1bd9853908c2bac5726c3c9483a51f0a44dc3f4c5c5eb9d36"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/web-search-api-for-ai-agents.md",
+      "line": 274,
+      "evidence": "curl -fsSL https://fastcrw.com/install | bash",
+      "file_sha256": "3aa4108ca784df93d576e7876b4b57be90e13cf49885c735fe15b36acbc523a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/crw-on-5-dollar-vps.md",
+      "line": 75,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "b6f3268500a76152dffb39a7217a966f7a133ed3569230cf51be2d23175b5074"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/mcp-web-scraping.md",
+      "line": 396,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "cdb6d84f35367bb87a1695ec8575fe00e5f4611f0fd153d7fddeb9870b0093ca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/crw-v0-7-0-llm-release.md",
+      "line": 170,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "06d2edb27e805c6e0a017a995213d91c92ef2f48eb888801d5742a8a9ddb018c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/blog/browser-automation-ai-agents.md",
+      "line": 404,
+      "evidence": "curl -fsSL https://fastcrw.com/install | bash",
+      "file_sha256": "8c3e755b94690bbde063641fb2fef5958108255bdd9e7fb6145ec442c885a4d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "34bcc23bb39f9fd76a24f0f99d54b52b42f1161df20f6d39e05560156b1ecd24"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/tls-fingerprint-walls/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0e8a12f8a1056438412806bcde7d69b230c889d7ccea02944ee8b01f219d1e81"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/choose-endpoint/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c49a2a8d29c2900766d5ea563af18cc6d5418984d240e4f2de98b32cf5e85c73"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/glossary/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f230fe8795d6b712f32cc96413fc5b65dd4340f1587edf9907e03b741ea05df1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/v1/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-js-spa/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "17f13e19f374491d44d3de00d543a8b20cad9789b3d3fe4f1a18d67d4cb8eeed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/migrate-from-firecrawl/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "32b3d3a66f44c8720f16bc1855506441eba3e79565ff2f0e5d8e58807a349335"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/crw-browse/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b408306c1016f5d43eb34b00282552b4adf33696621afeccd417e97583474113"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/map/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "45be646fdbc15e8e3fca6bc547974bda36fcd1a14b67c4560d2c5e69ecb1332e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "9f1a45c36d6bef016a3868eb18ef26b33ea274f23d5fbb7ec5c6363a82bdf4d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-rag/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "41eb746f5d82f24ab801cf5eaca53963d5338f1e66cf6e167c6e6f8bdcbdc2ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/scrape/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/pergamon/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "87fc7bf889b065d6eb382e10c78bc323e84ee76e1709b29c9186cc8173ad5275"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/scraping/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "9ffe1f9922a3a61b6e6e6e4ab03df11a2ff0683747a795a4043d41c9be4d3232"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/js-rendering/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "7b32b1892c6938f7fc52a888ad0217de612f4a73d97a377ae8ecf3246fc29a3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/integrations/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a0631a0fcbdde010e0e5803d4f8a044ef209b3179ac96fb56c63756342761a7a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/integrations/sdk-examples/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e16d701efabe2a75824b97c0770e48ecfb2eb492b7ba67de068fedbe73374831"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/v2-api/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "d643bbb32d460a69b4b829b87c54062441873390d46d325eb02078e07e8212c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "aba4eb56b5ae0972d571f298536faf403e75fdf7057cc276719f0cd950a3fd91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/scrape/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/crawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/crawl/get-crawl-status/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/introduction/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "aba4eb56b5ae0972d571f298536faf403e75fdf7057cc276719f0cd950a3fd91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/extract/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0f56925043e11ff6bcd2835394a69ebc900862f94bacbe8ae59ed96bc713740e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/search/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4e3f997a443b96b6926b6d769acc33fd4202091a99463db3f1a9ba4b7d49b2b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/endpoint/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api-reference/crawl-url/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/self-hosting/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "928109a94bf792bdc8bd337f6b393e9f32d593c9441cee9f909e4fbdeca95313"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/sdk-reference/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "1c5abc04738f1b7d87e48aecde23a5db5464d8e6d9b55926135d6cd926f24e20"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/changelog/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "6b87234577f0682b0c77afafa3644536d8d1a657ca7c19b7a5770514eddde408"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/crawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/introduction/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "37d61be426a706504d1e832fa2fab9908cc8987e548d24f29dcd70b2dc184dbd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/authentication/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "31e96ae051df6bf050402604f235ec7eb2e0207ba5aec4ebf4cea2bb23e02809"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/llms-full.txt",
+      "line": 1004,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "beb74e15aca1b7133f1adfcf1f086ba51351e3baa9cdf6cf5928e858847f0208"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/pdf-parsing/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "7c9b19ce61781b18b1c6069ec747e3e0e1c5b623c5296128b3b1779943347f5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/credit-costs/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b4bed4d5d092def8cfa094c31b7c5f5d9badcef6af39d530b4950de43a8efe80"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/output-formats/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "fae4ee2cc9b83e5d8f6500117d9f28bc291aa25807b00171dac7d2a97ef4aa0a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/extract/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b617ea0e09aacac86bd4609928bd1cc1623af6ed39e036485d37f09e46397be8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-batch/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "d60438c15c8113be5246a327fc346e99751945a22d77c166a77cc853f05becc1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/data-sources/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e1aa64e71a84bed8ccb82d1f3cab9c400074896e14c8b4f3cb552002a05f74a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/features/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/features/scrape/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/features/crawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/features/extract/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0f56925043e11ff6bcd2835394a69ebc900862f94bacbe8ae59ed96bc713740e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/features/search/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4e3f997a443b96b6926b6d769acc33fd4202091a99463db3f1a9ba4b7d49b2b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/crates/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0345d7b33e40c3bc22af1744776a356a2dd51cffed1de6645d24d3debf49dc7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/installation/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "41cd2bddc1fd1b2acb38eceb42ab0bcad2d8a9760987908b204b26c8cd7754ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/search/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "991fbfc2715229c1d79921cc09653dbe47a056578aa8eaecfbeafd0f8230d9ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/rest-api/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "837911e6bb27971e5d88cf347932ca7ffddf44f01ce333d8dccac0d8cd90a35d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/sdks/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c0a76dd0b15ebbf7c9b1c854faabb6559eda3c90025d55441dad99d6b483ca8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/sdks/python/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c0a76dd0b15ebbf7c9b1c854faabb6559eda3c90025d55441dad99d6b483ca8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/sdks/typescript/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c0a76dd0b15ebbf7c9b1c854faabb6559eda3c90025d55441dad99d6b483ca8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/capabilities/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "6056008eb96af3d57ab74449e52fcd9dd072442d711f40a80a3bc98e90f1aac8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/configuration/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a502708b3e07654badcb487891752d4d4269a83d11141a786b39b407ec8457ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/rate-limits/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f3d0dd37ca0b37f0cc1d741f0763568684ce396a87d52c5d77c72ffba79807b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/quick-start/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "7d2a319242094e0af7116e2d954ac13edcd63a0f190ea4efa4191ff9dfab0b4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/proxies/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b9231b8eeda9f1b272c17acbdc835446699f48dc231c96378df7e5277ed73458"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/monitoring/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "aa5a0a91451384626e91e4a48e740ecbf240c7d86bcc47a12131137c8fb92dad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/mcp-clients/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "400decf840dfb456488da3e4b3a9e4ef8530b4ed3de5c8f52bd0311023c5a68d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/enrich/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "958b8a419a72972829c9f01ac6e222bc93bd0e84fddfecb2d56f3e6343f6f500"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/tls-fingerprint-walls/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "15b224c678c1081522ef4d2d03ee04a728f7b1eefb579ed77cda8e82eb80dbf4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/choose-endpoint/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "14b17bed114f0ef47f76412d9c3b2f2b4996132a4228d6f2215b3b4c431ca8f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/glossary/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "9e28bb3bcc4142e14edbed5f681db07605dd15e37602d6d9e6ccbbab825364a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/v1/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-js-spa/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "06712568c125dfd363814adfcbb60c82a80175d5349454e24199c2052d2ca458"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/migrate-from-firecrawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "56d06c62a06073f313f8e522f0408b26e35e9884eabe050a289e35306b005638"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/crw-browse/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "eb5c2c6bcc465820bf122075ffee50192ef3353226f8849db4d7a906499a5137"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-rag/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0977b729a9d3f50c2b762abb2ff4c8c72cc20737a8ef3da100c3d8920ca3c2a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/scrape/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/pergamon/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "d7e34e4d6628aca4f2e77bb2f2f09c43fc876737ef04f584025b147d68cef4eb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/scraping/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/js-rendering/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "5c19cd336d641c3de81bfc5337df28f0be380222524b36d9f16e0878e52393d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/integrations/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "760b68aaa13f38977ad637498ce51929e87fabc78d6415ab91686fc71f482521"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/v2-api/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4770ba1a570aeebc03be1b3d9b9bbcf99491d91654a2376e5be456537471ff6b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/self-hosting/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0944c397ec03a8fead418755786ad75e929f38b8a1c75b811e6705cce95bc13f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/sdk-reference/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c0a76dd0b15ebbf7c9b1c854faabb6559eda3c90025d55441dad99d6b483ca8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/changelog/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "7f32d7682cf93dd38082116e7cd0807195e3600fd26bbf108e27277fd9f68ecd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/crawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/introduction/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "553934290faa885c3c88f25a2bedaf368ad09935cbfcaff62ddfc738ab96b606"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/authentication/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b7fb9029318235330b0eecb47522e98d0546c541921d4d03ee73b07bb339aee9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/pdf-parsing/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "08ada23a5ba5c3af99bdbeb9c5d125ee867524704381576e3eafeb19206a8b76"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/credit-costs/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "8dd34c9c915dc4400a220b03ca1c96a28bb3eb417e0164ca97450fc7d74ca630"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/output-formats/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e6f2521d465bfbd217057edb9d9ab6e120b1d8f9be9df1cd01e86d1873963778"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/extract/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0f56925043e11ff6bcd2835394a69ebc900862f94bacbe8ae59ed96bc713740e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-batch/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "7f4c781cf7aa150418048515854eef9f2ef40fb7f78687466408e77d70e0f21f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/installation.md",
+      "line": 27,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a91470598634af77698ee3b3bd0f1701abd71763016edfaa315f07a6f444ebce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/data-sources/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "54988c1814f3f17e4d7278207d610be078a2373260d3b65da90323d6a371668e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/migrate-from-firecrawl.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "118623ded1c8db3b18ad0d288b66c802e76ec73b60e68e193949625690f1e07f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/crates/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c7e41689cc6215b703a7eb7dd6327bc3e553d99feb0582c43a76ccbf5fed15c8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/installation/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "c69e62ea25a520f702c13c226681634c6087cb75f13a5498c0ad66ee4ee157bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/search/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4e3f997a443b96b6926b6d769acc33fd4202091a99463db3f1a9ba4b7d49b2b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/mcp.md",
+      "line": 46,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "81bf8344012d074092f3019d9f4991eb000b4f8e42e9b955bb816c20a1b357c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/rest-api/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "aba4eb56b5ae0972d571f298536faf403e75fdf7057cc276719f0cd950a3fd91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/capabilities/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4e18fe97955529be31ed384f0cf3aaea9422165077bf7cf50fdd0415106449c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/configuration/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "824fc8bb62f1019c21dad6cc5060a9a6ff8fceaed0c1f621bae30317bba4a264"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/rate-limits/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f6a9b0b96f34607a95d9fa31117f2513874bbed47fc1ccea42df7d8e4819f29d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/quick-start/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "83e294901eaa66c63e9642372357abaebe88c33ff1187641c7158911708841a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/proxies/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0b7b186ad3b3250b3aadf2a89dad3762aecf5a57f0f9f3c2a770ae5281a9f258"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/monitoring/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "ca62a1a2a8e7ba32b713548c5bf934cc51676f4a77725e72eb851c194038f4ea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/mcp-clients/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0723c9ab3c4ec4b8c38f1ef00789969a305c82e77424c28a6f70ca8cf68a677d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/enrich/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "261a07206e0f37f69b4764ea09fbc7fd6c4367dfa60e1b0266151c00c3b8ef8b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-pdf/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "2c8e2ef2912ab07d380c4f26e615764261b51b8d86c256dc050d7187c3d5f116"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/agent-onboarding/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "de2d3885a8f10c4ed7bc0904922e5e76d4e216fbabadc73413c1b58d9c76c84e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/compatibility/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "8c7df80a21916dadf58719e420c5cf2e266c8a94303e1d5c8220836a3b5e1748"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/mcp/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "5ad7e299ccf6f348a14f90a7406a3af7bf28f5ace23fabe4c4af6a5b37f72155"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/research-api/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4da745032234216e6e9e7ec6d80f8f4b61f9f99e5d1dd3b69da24248f039f3ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/playground/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98f477ede7d7e6bb757080a4519c5241c4dc5cf16ab9f8c59eb152cdc5a934c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/troubleshooting/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e2f5fd08efd03922d923264058c8c673b38cf1e5666bea02e47847f9488047aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/error-codes/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "78dba407aed5718af24f76bb9865b363c7bfa54bac6ccf3c2cf42f26e26bc63d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/response-shapes/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "dd06da09704b112aa0122044e1f091caca37ead4bf31d5e3e883a304ab7089a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/architecture/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "8c45528bc4b37dee6faad02da3d2912fafa35a4c2379c3b2a88f98bf0b524a5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-mcp-5min/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e7764f1e90f13ebca902008ec2a44173ae0bd63830cbbf6307fa6bf0ba7b25bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/docker/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a39598c0d231312197071ce78a08789c4d20348ed40563d6e5c8e823e457368b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/crawling/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-product-catalog/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "792250883f8ac0f92e979122be447a68a8ab3d7c144d7677c17a4d70ce1fc0a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/recipe-monitoring/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f582f006c213e59b254e25cf039417259be2c41a42cb8d85079847c67aaa0a43"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/sdk-examples/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e16d701efabe2a75824b97c0770e48ecfb2eb492b7ba67de068fedbe73374831"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docs/self-hosting-hardening/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a858b6a006303a73d8117295d37e716477ac098aa7e6df11a3253cb3e84387a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-pdf/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "d7fc5ecc17a6a083f5ed9d5fdcd7297fa6ed8374dd85448601a4a33291619206"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/agent-onboarding/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "843891927c436814fd42d29b38e0545c9ee16b2ea2b874f3635c9c511a4074ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/map/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0a91afeae26443d72fc10ec87eaca6b7c702d33f2f58d10b1e10c1e564afc89f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "aba4eb56b5ae0972d571f298536faf403e75fdf7057cc276719f0cd950a3fd91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/scrape/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "98d13796e3f3ad2f6d740ab532e26bf8e46370d69000384f2c3bfca2a067d822"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/crawl/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "642df0371748aaa10bf835a20a661d09e3ea4ce7953c261767fb150447174eeb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/extract/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0f56925043e11ff6bcd2835394a69ebc900862f94bacbe8ae59ed96bc713740e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/api/search/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "4e3f997a443b96b6926b6d769acc33fd4202091a99463db3f1a9ba4b7d49b2b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/compatibility/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a65932c2ee7a855b64d8642abea1b58b77b10ba14c83491cdcd78ebac88dee26"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/mcp/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "0d2720a80d6767cb770dca31793678835645dec5f855e38cc20c7afcf49ccca4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/research-api/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "5c50877232c94403043e848f4b360e67cbaef3941ba0e444d4bda4f22bc20f46"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/playground/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "accbcddf83f3161c86703d14871f11c6036a37bdcb1f8824447ba7e36ce8bba0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/troubleshooting/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "548a607a8edaac85389b0d713260d6d7d6506f5ed1b703a708feb0bae678ca98"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/error-codes/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "fa9d8860ed5017efd8ef427272eadb92755c13c8ac657861fe0f6f052ab65f16"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/get-started/quickstart/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "83e294901eaa66c63e9642372357abaebe88c33ff1187641c7158911708841a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/response-shapes/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "440f5a05273209e7299704ae12280cf74c897d804ee24f3a05a3ab1999f28933"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/quickstart/index.html",
+      "line": 236,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "83e294901eaa66c63e9642372357abaebe88c33ff1187641c7158911708841a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/architecture/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "b39718f54cc874f445f75439e75957854b8a061cc37eb3596e8bc11573a8488d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-mcp-5min/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "f8a44931574c7961ab98e12ec67246eaa1943947b37739e07a705b8ba7ec35a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/docker/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "313cae022403f1171905ee11e7059b9f573883bea10b9cc86ac28cf381fd6c80"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/crawling/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "a4eda394485ea02c3cbd48d241bc32fb8f1f822e52a5836c1cebbb72026fb31f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-product-catalog/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "019df5a941ec05e81eb06b27519f751000c1def672d5115d2f41ddfcb70d8003"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/recipe-monitoring/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "451cfc1674e395364e3a0b098762ffc43b23f89c0cd9514f48e11e9cee63f95f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/sdk-examples/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "5211481893fbcb491102ac060dbd9e528929b033d4570a46cd36294653eb9731"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/docs/self-hosting-hardening/index.html",
+      "line": 234,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "e6db7c27baea1d2f8f369f939dbcacb4c3cf7d3931e67bf9ada248255a8cb493"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/README.zh-CN.md",
+      "line": 32,
+      "evidence": "curl -fsSL https://fastcrw.com/install | sh",
+      "file_sha256": "77ed28ef40c12bf288d765545980d896f5dd454af0f5327e343033f9c1dbf9c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "crw-d05c7c50ae243bd11d36822f163f6ca0cac19ad2/.github/CONTRIBUTING.md",
+      "line": 25,
+      "evidence": "curl https://sh.rustup.rs -sSf \\| sh",
+      "file_sha256": "dc35225899a3b3beb5ecae73ea322b7eaeff4a081765af82a6ec3a9fc6ddd872"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "a.com",
+    "a.example",
+    "ad.example",
+    "ads.example",
+    "api-docs.deepseek.com",
+    "api.anthropic.com",
+    "api.deepseek.com",
+    "api.example",
+    "api.example.com",
+    "api.example.jp",
+    "api.fastcrw.com",
+    "api.firecrawl.dev",
+    "api.openai.com",
+    "api.star-history.com",
+    "api.tavily.com",
+    "apt.fastcrw.com",
+    "arxiv.org",
+    "attacker.example.com",
+    "barrons.com",
+    "bigcharts.marketwatch.com",
+    "books.toscrape.com",
+    "captcha-delivery.com",
+    "cdn.com",
+    "cdn.example.com",
+    "cdn.example.net",
+    "cdn.shopify.com",
+    "chromedevtools.github.io",
+    "collector.px-cloud.net",
+    "crates.io",
+    "custom-endpoint.example.com",
+    "datasets-server.huggingface.co",
+    "docs.anthropic.com",
+    "docs.example.com",
+    "docs.fastcrw.com",
+    "docs.python.org",
+    "docs.tavily.com",
+    "e.com",
+    "elsewhere.example",
+    "en.m.wikipedia.org",
+    "en.wikipedia.org",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "fastcrw.com",
+    "firecrawl.dev",
+    "gateway.example",
+    "github.blog",
+    "github.com",
+    "global.factiva.com",
+    "html.spec.whatwg.org",
+    "httpbin.org",
+    "images.example.com",
+    "img.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mock.fastcrw.com",
+    "news.example",
+    "news.example.com",
+    "news.ycombinator.com",
+    "not-the-real-source.example",
+    "ok.com",
+    "openai.com",
+    "other.com",
+    "other.example",
+    "other.example.com",
+    "parse.firecrawl.dev",
+    "prev.example",
+    "proxy.internal",
+    "pypi.org",
+    "quotes.toscrape.com",
+    "raw.githubusercontent.com",
+    "searchconsole.googleapis.com",
+    "simple.wikipedia.org",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "stripe.com",
+    "sub.example.com",
+    "this-domain-does-not-exist-xyz123.com",
+    "unused.invalid",
+    "w.wiki",
+    "www.barrons.com",
+    "www.example.com",
+    "www.firecrawl.dev",
+    "www.fnlondon.com",
+    "www.google.com",
+    "www.googleapis.com",
+    "www.kiwi.com",
+    "www.npmjs.com",
+    "www.raspberrypi.com",
+    "www.skills.sh",
+    "www.star-history.com",
+    "www.w3.org",
+    "x.com",
+    "x.example",
+    "x.example.com",
+    "x.openai.azure.com",
+    "x.y"
+  ],
+  "install_script": false,
+  "score": "high"
+}

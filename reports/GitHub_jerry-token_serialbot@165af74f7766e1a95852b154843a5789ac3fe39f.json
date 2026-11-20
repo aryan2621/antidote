@@ -1,0 +1,75 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jerry-token/serialbot",
+    "version": "165af74f7766e1a95852b154843a5789ac3fe39f",
+    "download": "https://codeload.github.com/jerry-token/serialbot/tar.gz/165af74f7766e1a95852b154843a5789ac3fe39f"
+  },
+  "archive_sha256": "5dd935c8ab6c88d0d4adf88d9b8cd66bf480b2f23ac3ca246e037df14218afbb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "serialbot-165af74f7766e1a95852b154843a5789ac3fe39f/README.md",
+      "line": 133,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "bac8099a50c7ce31db8b54cc6e835eec226e13bd17095c7b114e0eae98b19f56"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "serialbot-165af74f7766e1a95852b154843a5789ac3fe39f/README.zh-CN.md",
+      "line": 133,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "6ce2eb89937b32ec0d3fb7b251b73c99f50c133d6f3a8de7df3bb465a2815dc4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "serialbot-165af74f7766e1a95852b154843a5789ac3fe39f/.github/release-notes.md",
+      "line": 23,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "988a75bd9b780c948f8bf2d26b51cc9c02f4b42af2a0e3c244790b50bd6f8f0d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "192.168.4.1, api.github.com, scripts.sil.org, serialbot.aiany.cc, serialbot.aiany.cc.evil.example, x.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0.0.0.0",
+    "10.0.0.2",
+    "127.0.0.1",
+    "192.168.1.10",
+    "192.168.4.1",
+    "api.github.com",
+    "embarkstudios.github.io",
+    "evil.example",
+    "fsf.org",
+    "github.com",
+    "img.shields.io",
+    "no-such-host.invalid",
+    "opencollective.com",
+    "registry.npmjs.org",
+    "schema.tauri.app",
+    "scripts.sil.org",
+    "serialbot.aiany.cc",
+    "serialbot.aiany.cc.evil.example",
+    "tidelift.com",
+    "www.gnu.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

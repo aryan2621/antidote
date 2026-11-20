@@ -1,0 +1,63 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "sigedev01-bit/siluzan-cso",
+    "version": "1.1.46",
+    "download": "https://clawhub.ai/api/v1/download?slug=siluzan-cso&ownerHandle=sigedev01-bit&version=1.1.46"
+  },
+  "archive_sha256": "26d85692a0bb1be67c2e63d7befefb68c69e8b117bd8741e7a7ae0c058fe8fd5",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash",
+      "file_sha256": "f7c23c8b4c6ec4f0e4d0e1ed2ad8d56ad78cdebcc06b3efe7ec8c7bee65d7924"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 61,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "f7c23c8b4c6ec4f0e4d0e1ed2ad8d56ad78cdebcc06b3efe7ec8c7bee65d7924"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "scripts/install.sh",
+      "line": 75,
+      "evidence": "curl -fsSL https://install-node.vercel.app/lts | bash -s -- --yes",
+      "file_sha256": "f7c23c8b4c6ec4f0e4d0e1ed2ad8d56ad78cdebcc06b3efe7ec8c7bee65d7924"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "95152.douyin.com",
+    "accounts.google.com",
+    "api.siluzan.com",
+    "cdn.example.com",
+    "clawhub.ai",
+    "creator.douyin.com",
+    "cso.siluzan.com",
+    "deb.nodesource.com",
+    "dev.azure.com",
+    "git-scm.com",
+    "install-node.vercel.app",
+    "nodejs.org",
+    "open.douyin.com",
+    "registry.npmmirror.com",
+    "rpm.nodesource.com",
+    "school.jinritemai.com",
+    "staticpn.siluzan.com",
+    "unpkg.com",
+    "www.siluzan.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
