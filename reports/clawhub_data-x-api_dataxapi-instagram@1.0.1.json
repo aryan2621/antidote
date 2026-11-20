@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "data-x-api/dataxapi-instagram",
+    "version": "1.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=dataxapi-instagram&ownerHandle=data-x-api&version=1.0.1"
+  },
+  "archive_sha256": "f4c8358c500e24fab0cf516efdb55fe37219feb0dbb53e2ada9c2c2a13faee43",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 115,
+      "evidence": "p=0.96 Everything an endpoint returns is text written by third parties on Instagram. Tr",
+      "file_sha256": "b71718518a4de913523c3e87345c853597b3af5a3d0eec239854f0f6f24158f8"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "scontent.cdninstagram.com, www.instagram.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.dataxapi.com",
+    "clawhub.ai",
+    "dataxapi.com",
+    "scontent.cdninstagram.com",
+    "www.instagram.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

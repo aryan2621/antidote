@@ -1,0 +1,92 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sfrangulov/minirag-mcp",
+    "version": "aa8a2cd12b3885cd588316ad4c1fe1cadab114e3",
+    "download": "https://codeload.github.com/sfrangulov/minirag-mcp/tar.gz/aa8a2cd12b3885cd588316ad4c1fe1cadab114e3"
+  },
+  "archive_sha256": "24fba76f7d77f1cf63085c032658ccdf024e931b77c00f1e183d53cfd996f4ac",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "minirag-mcp-aa8a2cd12b3885cd588316ad4c1fe1cadab114e3/CLAUDE.md",
+      "line": 3,
+      "evidence": "p=0.92 This file provides instructions and context for AI coding agents working on this",
+      "file_sha256": "228ff8927ecaf9927e4f6adf1dd2b8963b4a463fd6663a3f1e56cf3c98d48aa6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "minirag-mcp-aa8a2cd12b3885cd588316ad4c1fe1cadab114e3/mcpb/manifest.json",
+      "line": 41,
+      "evidence": "p=0.97 List every document that mentions a word or phrase",
+      "file_sha256": "a6fbc771bd53741908272721427e317be951b80989e36cb2e1df4115fa4e78a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "minirag-mcp-aa8a2cd12b3885cd588316ad4c1fe1cadab114e3/.beads/README.md",
+      "line": 64,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/instal",
+      "file_sha256": "4f3ffddade7bfce0eb5227154a62e9a10074a91a0f9dcc2511922cbd437e1fe9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "minirag-mcp-aa8a2cd12b3885cd588316ad4c1fe1cadab114e3/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "745f183e77a3a207da64f7cb58e456d20f35e3ce255af9b48535d45c5bdb0e17"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.1.10",
+    "api.pulsemcp.com",
+    "arxiv.org",
+    "brew.sh",
+    "claude.com",
+    "code.claude.com",
+    "docs.astral.sh",
+    "docs.example.com",
+    "docs.pypi.org",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "huggingface.co",
+    "img.shields.io",
+    "internal.wiki",
+    "lobehub.com",
+    "mcp.so",
+    "mcpservers.org",
+    "mebel-plus.example",
+    "nowhere.invalid",
+    "public.test",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "rebind.example.com",
+    "registry.modelcontextprotocol.io",
+    "router.test",
+    "schemas.openxmlformats.org",
+    "slow.example.com",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "support.claude.com",
+    "www.apache.org",
+    "www.apple.com",
+    "x.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}

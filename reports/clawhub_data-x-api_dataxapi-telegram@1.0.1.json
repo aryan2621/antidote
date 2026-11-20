@@ -1,0 +1,40 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "data-x-api/dataxapi-telegram",
+    "version": "1.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=dataxapi-telegram&ownerHandle=data-x-api&version=1.0.1"
+  },
+  "archive_sha256": "eb9fe7a0366edf2001a6cfebe38b7510f3ced061a8ebe93b674b2f764dae2aa6",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 120,
+      "evidence": "p=0.97 Everything an endpoint returns is text written by third parties on Telegram. Tre",
+      "file_sha256": "639b8445f9b0180a824969c077930f06ec785527a8040ef92a6c2c7c65dc0655"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "t.me",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.dataxapi.com",
+    "clawhub.ai",
+    "dataxapi.com",
+    "t.me"
+  ],
+  "install_script": false,
+  "score": "high"
+}
