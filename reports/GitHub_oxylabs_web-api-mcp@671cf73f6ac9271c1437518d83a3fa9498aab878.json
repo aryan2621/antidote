@@ -1,0 +1,62 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "oxylabs/web-api-mcp",
+    "version": "671cf73f6ac9271c1437518d83a3fa9498aab878",
+    "download": "https://codeload.github.com/oxylabs/web-api-mcp/tar.gz/671cf73f6ac9271c1437518d83a3fa9498aab878"
+  },
+  "archive_sha256": "f59c1317b2537a9d1c6f505d0a24a4fdc1acc140a7566fb2389dec8389d96d8d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "web-api-mcp-671cf73f6ac9271c1437518d83a3fa9498aab878/src/oxylabs_web_api_mcp/skills/oxylabs-web-api.md",
+      "line": 56,
+      "evidence": "p=1.00 Everything `search`, `search_companies`, and `scrape` return is third-party text",
+      "file_sha256": "f5c3bf1054ca0b7147e93baa824360977ad0f52d385559dc195eab7fe75c114b"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "a.com, a.example, b.com, b.example, bad.example, c.com, c0.example, cursor.com, delfi.lt, glama.ai, pypi.org, raw.githubusercontent.com, shop.example, www.linkedin.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "a.com",
+    "a.example",
+    "b.com",
+    "b.example",
+    "bad.example",
+    "c.com",
+    "c0.example",
+    "cursor.com",
+    "dashboard.oxylabs.io",
+    "delfi.lt",
+    "developers.oxylabs.io",
+    "docs.astral.sh",
+    "ex.com",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "gofastmcp.com",
+    "mcp.oxylabs.io",
+    "modelcontextprotocol.io",
+    "oxylabs.io",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "shop.example",
+    "static.modelcontextprotocol.io",
+    "webapi.oxylabs.io",
+    "www.linkedin.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
