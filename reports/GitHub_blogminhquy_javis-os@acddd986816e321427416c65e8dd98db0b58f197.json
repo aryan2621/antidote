@@ -1,0 +1,631 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "blogminhquy/javis-os",
+    "version": "acddd986816e321427416c65e8dd98db0b58f197",
+    "download": "https://codeload.github.com/blogminhquy/javis-os/tar.gz/acddd986816e321427416c65e8dd98db0b58f197"
+  },
+  "archive_sha256": "f2e0882c7465a476011277a7952881b511f1b18a8f1f6c929650cc752326f5ac",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/packaging/macos/get-javis.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "e683d95fb58912ec3c725f7721d0843949e5c297ce0b338eed92a90db892aa35"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/packaging/macos/get-javis.sh",
+      "line": 35,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "e683d95fb58912ec3c725f7721d0843949e5c297ce0b338eed92a90db892aa35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/chatbot_reply_policy.py",
+      "line": 132,
+      "evidence": "\\u{202a}",
+      "file_sha256": "39fc60d3d47c64531d1737353e5c784e8a35922b5f2f5fa0c9041eb7a89c0b5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/claude_cli.py",
+      "line": 479,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "c47366faa4fd327dfd0f94afaa0b0f18a7366b70f9aac4b9f5c548c5a6ea350e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/claude_cli.py",
+      "line": 1809,
+      "evidence": "subprocess.Popen(f'start \"Javis - Dang nhap MCP Codex\" cmd /k codex mcp login {s",
+      "file_sha256": "c47366faa4fd327dfd0f94afaa0b0f18a7366b70f9aac4b9f5c548c5a6ea350e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/customer_profile.py",
+      "line": 63,
+      "evidence": "\\u{202a}",
+      "file_sha256": "a0247ea1b9301958b1c14ed45840c4b1b9ca92bb766638385bfd1ebf62d4396f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/grok_cli.py",
+      "line": 89,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "802a8b85213e5b2fd570c046411aeb51d7b180339b22d97829f97c69928b6299"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/server/antigravity_cli.py",
+      "line": 55,
+      "evidence": "curl -fsSL https://antigravity.google/cli/install.sh | bash",
+      "file_sha256": "5b9de0acda742a66f86888acc64105742d7d97ba2a2678d8998e8d7878860007"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/CLAUDE.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "e91e1937e92713517e0107817a418d80f936adda0338623e1c2d4ddf150ec798"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/install.sh",
+      "line": 282,
+      "evidence": "curl -fsSL $1 | bash",
+      "file_sha256": "c931b25a7158fe3a8610437815184d294fff80dbe043680cbc79fe0098b46fb2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/dashboard/console.js",
+      "line": 3272,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "b0597b91a247d360c5d235ed619553762bd5074e6eee744b243990740410c6a9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/QUICKSTART.en.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "eb69d16b8508a62fff1d8fb78e35d90613ea3f7267fae658baceb396b2be5bd9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/DEPLOY.md",
+      "line": 50,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "59efb163cce942722fc73e92e3638ebfbd7be336223c558af9b11c51a549df26"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_install_service_account.py",
+      "line": 166,
+      "evidence": "curl -fsSL \"$3\" | bash",
+      "file_sha256": "3b666bb07cb0ed7629b7cced761fe6810bc9223aa3211d68423b0f33ca974756"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_webhook_triggers_0198.py",
+      "line": 85,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "c414bda901d2c07ab3bfec4f681890d90f6eb76ff46fd93c80266f40dce564bf"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_project_learned.py",
+      "line": 126,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "89967c1cdae9f9f101b917a4ea6e7b67a408b02aa304d94fa8d6996f9c6e4ec3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_ignore_files.py",
+      "line": 68,
+      "evidence": "(ROOT / \".dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "81168175994798c446a9f4d513f5df8726577a86b6669db10f076389427b6b66"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_hidden_unicode.py",
+      "line": 42,
+      "evidence": "\\u{202e}",
+      "file_sha256": "fe8f2072d8fb2e5b37bc89b3257ab5319e434103a04261c95a1398eb075a001c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_desktop_installer.py",
+      "line": 241,
+      "evidence": "curl -fsSL {raw}packaging/macos/get-javis.sh | bash",
+      "file_sha256": "6edc17d3335bbc1afe0164cd83661a6f035c1027f4a3806625e956a86c06c707"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_learn_tu_viec_nen.py",
+      "line": 123,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "a778fa3f88e4e5ef75118eb3bac1de2580b398de1a8c0e838f4bd417ddb33840"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_reply_policy_api.py",
+      "line": 218,
+      "evidence": "curl https://x.io | sh",
+      "file_sha256": "6377c798e80be97a8f8fa70f612c9b56a038c5bc39d00a802955dfe32e41363c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_learn_agent_workflow.py",
+      "line": 140,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "f28010a82a0165cd0fb4de8a6cc4fe265ba57eb3955a19f36bdc1ab300e2aca5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_voice_live_language.py",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e15ecc35a0e3c3b0f1b1b2767ed6990d18d7798c5ee3ac98a2d5b1e4961ba8ac"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/tests/python/test_coding_terminal.py",
+      "line": 50,
+      "evidence": "curl | sh",
+      "file_sha256": "52288b59067815f53d90670abb792ec527a076767064b28db1e05015ae9aaded"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/README.md",
+      "line": 253,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "1996ddf13d7badcdb0b4ea5124e6c734798525c3d89d7127f4853e70582dbf41"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/en/22-self-learning.md",
+      "line": 18,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "efafd466e66f6172ff1372d28fc4adfdc2624366cd5744bbf978c4c12d6b7452"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/en/10-models-and-engines.md",
+      "line": 132,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "89801fe98b0d431938a7781b074efaab7b5d3bbabaa9501e60c9c27bce5f0445"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/en/25-chatbots.md",
+      "line": 320,
+      "evidence": "ignore the previous instructions",
+      "file_sha256": "737c12bd7219eaa8818dfd8052af2795a4b6d303be752853196e1ed6b0af7cc2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/es/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "e37241955d79ef253178eec8d1d8658002bd41b617ba59ff2830357336710f5b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/es/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "59584dbd65c05a2b3fd6de5f16a45a55789f1290c90edcb79430d3895dae0995"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/pt-BR/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "83a76ba00d98d1a3da25695c1c6de37843094330b3e0f94dcd7030444d8c44dc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/pt-BR/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "4a412127bfd016038090f26e65ea52889f946aba38548ac10069652e213ae0c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ja/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "061b7609bf5b6cbace5891f93e003b5287c8355bcc79fb62f518ec279a10ff87"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ja/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "43775d2a8ec3fa2cad0adcd3685d526df55e4cdb255288a1944a90541740ef37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/id/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "a9a804da343a32b2e3d7b2e3989763f6498555a9b5bee2c5318ea31225604fc7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/id/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "434aba7a940b1604f605b557205c121627c2dcad9cfd05d353fbef94a4403da4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/vi/README.md",
+      "line": 172,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "aaea38090e20767e6703093b7b267c939daa65c57ea2cb3704ad9f056057227c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/fr/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "7ea9082562b03cff42bda19b1d7a435264e56f2445c5b85d51f2d91bbbf629d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/fr/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "c61c61cf3149587d0a064cf0500f39f7a3f08c4b56a7b5161fa699e92442b2d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ru/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "1e2c8a6711e592335b921727063059534af4000f693be45f6b2406bc2b2cbdc4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ru/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "73071c4ef91800aecdd6cf0fbcf821f8804dee89483c99eb999489e7d0fddbf7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/hi/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "6952d507ceb7ae51f6326deba36cd4a432547e527feadbb14185c9c68a6e5fe7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/hi/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "4d82c01fdafa9d614d1979099c15630ae72570eaf248ef800638c4427865e197"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/zh/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "417f618520b3df5e1ac735a09fc05227d64fbd8c03da7cf95ce28fd6eede4b99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/zh/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "3daa29e4f327409d248e2770a991d4ba6f51e007de5d6b94f8a042211cdd8ff7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/de/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "ffaa6b45c3042b9ff292d61b022e16158caa94c684bfb7e08c9093f893528eb9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/de/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "d7f3412cd9e15a28aa054ce13584746870093f8de6adccdba839efb31d775b23"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ko/README.md",
+      "line": 283,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "84218ed9290c689edb34e1ca68070bbc294fd327c0d11063949607db4a863452"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/i18n/ko/QUICKSTART.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "4a5fd9664c5fa3a0d7d111bdd2ae475e16610c141091e50506e6f850163721a8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docs/10-models-va-engine.md",
+      "line": 132,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "0d33a14656aa7900dcff6486249be9d9c632fdaf1f20b4b036660d010d3066b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/CHANGELOG.md",
+      "line": 6871,
+      "evidence": "curl | bash",
+      "file_sha256": "ccb0f701f4a08204b9741bb3d23e4fb0912e771e718101a0d64477bfafa44d19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/DEPLOY.en.md",
+      "line": 54,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "03adf0e7c42a5919982cdc8833e0aed9f0dd924bc82d175e1cc5ada2eb887be5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/QUICKSTART.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blogminhquy/javis-os/main/packaging",
+      "file_sha256": "615650f98380f3973bcd15cb699dc508dbd6a173325388c28ad13f932d1acf3a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docker-compose.hostinger.yml",
+      "line": 35,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "e8b5c03749724abf73584bfce9b1af4185fa254a8090a12fbe6cac243365650f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docker/entrypoint.sh",
+      "line": 117,
+      "evidence": "curl -fsSL --max-time 300 \"$3\" | bash",
+      "file_sha256": "9205ed9e586598af103f9542ed1013f3ebca21d2d7b823f14d8e1c68ae182f2c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "javis-os-acddd986816e321427416c65e8dd98db0b58f197/docker/entrypoint.sh",
+      "line": 117,
+      "evidence": "curl -fsSL --max-time 300 \"$3\" | bash",
+      "file_sha256": "9205ed9e586598af103f9542ed1013f3ebca21d2d7b823f14d8e1c68ae182f2c"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "0.0.0.0, 169.254.169.254, 192.168.1.20, a.b, a.vn, api.anthropic.com, api.apify.com, api.deepseek.com, api.elevenlabs.io, api.example.com, api.github.com, api.groq.com, api.ipify.org, api.openai.com, api.search.brave.com, api.tavily.com, api.telegram.org, api.ten-dich-vu.com, api.weixin.qq.com, astral.sh, auth.openai.com, botcake.io, cdn.jsdelivr.net, chatgpt.com, claude.ai, codeload.github.com, console.cloud.google.com, dash.cloudflare.com, developers.google.com, docs.astral.sh, docs.composio.dev, docs.google.com, domain.com, elevenlabs.io, generativelanguage.googleapis.com, ghcr.io, git-scm.com, graph-video.facebook.com, graph.facebook.com, graph.threads.net, html.duckduckgo.com, icanhazip.com, ifconfig.me, integrate.api.nvidia.com, ipinfo.io, javis.srv, lucide.dev, mcp.abc.com, mcp.cloudflare.com, mcp.spacemail.com, myaccount.google.com, ollama.mien-cua-toi.com, purl.org, pypi.org, registry.npmjs.org, rupload.facebook.com, schemas.openxmlformats.org, slack.com, substack.com, ten-mien.com, threads.net, vi.wikipedia.org, www.apache.org, www.facebook.com, www.instagram.com, www.reddit.com, www.threads.net, www.youtube.com, x.com, your-javis.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0.0.0.0",
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.1.20",
+    "a.b",
+    "a.vn",
+    "ai.google.dev",
+    "antigravity.google",
+    "api.anthropic.com",
+    "api.apify.com",
+    "api.deepseek.com",
+    "api.elevenlabs.io",
+    "api.example.com",
+    "api.github.com",
+    "api.groq.com",
+    "api.ipify.org",
+    "api.openai.com",
+    "api.search.brave.com",
+    "api.tavily.com",
+    "api.telegram.org",
+    "api.ten-dich-vu.com",
+    "api.weixin.qq.com",
+    "astral.sh",
+    "auth.openai.com",
+    "bot-api.zaloplatforms.com",
+    "botcake.io",
+    "cdn.jsdelivr.net",
+    "chatgpt.com",
+    "claude.ai",
+    "codeload.github.com",
+    "connect.composio.dev",
+    "console.cloud.google.com",
+    "crm.example.com",
+    "dash.cloudflare.com",
+    "deb.nodesource.com",
+    "developers.facebook.com",
+    "developers.google.com",
+    "discord.com",
+    "docs.astral.sh",
+    "docs.composio.dev",
+    "docs.google.com",
+    "docs.pancake.biz",
+    "domain.com",
+    "elevenlabs.io",
+    "generativelanguage.googleapis.com",
+    "ghcr.io",
+    "git-scm.com",
+    "github.com",
+    "graph-video.facebook.com",
+    "graph.facebook.com",
+    "graph.threads.net",
+    "html.duckduckgo.com",
+    "icanhazip.com",
+    "ifconfig.me",
+    "integrate.api.nvidia.com",
+    "ipinfo.io",
+    "javis.example.com",
+    "javis.srv",
+    "javisos.com",
+    "learn.microsoft.com",
+    "lucide.dev",
+    "mcp.abc.com",
+    "mcp.cloudflare.com",
+    "mcp.facebook.com",
+    "mcp.spacemail.com",
+    "myaccount.google.com",
+    "nodejs.org",
+    "oauth.zaloapp.com",
+    "ollama.com",
+    "ollama.mien-cua-toi.com",
+    "open.feishu.cn",
+    "open.larksuite.com",
+    "openapi.zalo.me",
+    "openrouter.ai",
+    "pkg.cloudflare.com",
+    "purl.org",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "rupload.facebook.com",
+    "schemas.openxmlformats.org",
+    "script.google.com",
+    "slack.com",
+    "substack.com",
+    "ten-mien.com",
+    "threads.net",
+    "vi.wikipedia.org",
+    "www.apache.org",
+    "www.apple.com",
+    "www.facebook.com",
+    "www.googleapis.com",
+    "www.instagram.com",
+    "www.python.org",
+    "www.reddit.com",
+    "www.threads.net",
+    "www.w3.org",
+    "www.youtube.com",
+    "x.ai",
+    "x.com",
+    "your-javis.example.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,104 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "tecnologicachile/mail-mcp",
+    "version": "5e15fab8c32523fc1ae7134ba846937d35ae48b0",
+    "download": "https://codeload.github.com/tecnologicachile/mail-mcp/tar.gz/5e15fab8c32523fc1ae7134ba846937d35ae48b0"
+  },
+  "archive_sha256": "6aea08eb7ec03aeab0897b0b4956fbb53b9227bd6658bf8762111ffd28082d35",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/AGENTS.md",
+      "line": 16,
+      "evidence": "p=1.00 No repository-specific Cursor or Copilot instruction files were found:",
+      "file_sha256": "430b42927227d9ce8776f8ff9e2e281757d8b7636884ae86bf31b8704ac91d90"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/README.md",
+      "line": 545,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tecnologicachile/mail-m",
+      "file_sha256": "a858d7566a44716ec2552b70694a02cc5e92893787bc528e86b37bff42d32e15"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/.github/workflows/release.yml",
+      "line": 77,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/axodotdev/cargo-dist/re",
+      "file_sha256": "abf985ad40b42624344cb1a6e265fba224e1eafc0e7b4ea39ffd93016bf565a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/site/index.html",
+      "line": 229,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tecnologicachile/mail-m",
+      "file_sha256": "a3be5bc6e67cf07967cbd9f0e2dd16d565f2fc933ac5b5709e7c010f5c6851fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/site/llms.txt",
+      "line": 7,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tecnologicachile/mail-m",
+      "file_sha256": "db5b8696503152005633a8b75e1cf6232d8171128899dc0e10191e95d0ea8501"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mail-mcp-5e15fab8c32523fc1ae7134ba846937d35ae48b0/site/llms-full.txt",
+      "line": 47,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tecnologicachile/mail-m",
+      "file_sha256": "8fd107b8b96446966950787bc3a53fbcd8b8f7d4a040a82d884e7e463ed942e8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "account.live.com",
+    "account.microsoft.com",
+    "accounts.zoho.com",
+    "admin.microsoft.com",
+    "api.github.com",
+    "appleid.apple.com",
+    "axodotdev.github.io",
+    "developers.google.com",
+    "entra.microsoft.com",
+    "github.com",
+    "glama.ai",
+    "graph.microsoft.com",
+    "img.shields.io",
+    "learn.microsoft.com",
+    "login.microsoft.com",
+    "login.microsoftonline.com",
+    "mail-mcp.tecnologicachile.cl",
+    "myaccount.google.com",
+    "mysignins.microsoft.com",
+    "oauth2.googleapis.com",
+    "opensource.org",
+    "outlook.office.com",
+    "outlook.office365.com",
+    "portal.azure.com",
+    "raw.githubusercontent.com",
+    "schema.org",
+    "schemas.microsoft.com",
+    "schemas.xmlsoap.org",
+    "sh.rustup.rs",
+    "tecnologicachile.cl",
+    "www.fastmail.com",
+    "www.sitemaps.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

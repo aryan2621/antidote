@@ -1,0 +1,83 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "craftos-mcp",
+    "version": "0.7.0",
+    "download": null
+  },
+  "archive_sha256": "96ef13ac9f7f6a848caf92198937af20e50d8a7f648b80da8fd7a8f84d74d837",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/apps/cli/dist/commands/doctor.js",
+      "line": 149,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ee41b71a3235a293342f93cc6a9435004a573fe00ba0e053f54c60ebb149868f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/README.md",
+      "line": 886,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "a6ffabaa236b0dc3051db892cec7f68d9db030344c269b2003df0edf99ebbb74"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "json-schema.org, nodejs.org, signpath.io, signpath.org",
+      "file_sha256": null
+    },
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 5 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-16T22:33:05.113Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "api.modrinth.com",
+    "cdn.modrinth.com",
+    "codeberg.org",
+    "discord.com",
+    "dx.doi.org",
+    "en.wikipedia.org",
+    "gist.github.com",
+    "github.com",
+    "gitlab.com",
+    "json-schema.org",
+    "marketplace.visualstudio.com",
+    "modelcontextprotocol.io",
+    "modrinth.com",
+    "mozilla.org",
+    "nodejs.org",
+    "open-vsx.org",
+    "pastebin.com",
+    "phoenix.madefor.cc",
+    "pinestore.cc",
+    "raw.githubusercontent.com",
+    "rogiedoji.com",
+    "signpath.io",
+    "signpath.org",
+    "techtastic.github.io",
+    "tweaked.cc",
+    "vcpkg.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
