@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@yafldev/mcp",
+    "version": "0.1.10",
+    "download": null
+  },
+  "archive_sha256": "bc625f82e27729bdff6268e725eb0b118e7e44a9571e18ebc19b986977dba5e1",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/README.md",
+      "line": 43,
+      "evidence": "curl -fsSL https://yafl.dev/install.sh | sh",
+      "file_sha256": "c4ddb6ca1df0d13ed55e78372aea53e9408df7136c98401ad2d3912005087ff2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/dist/skills/yafl-file-transfer/SKILL.md",
+      "line": 85,
+      "evidence": "curl -fsSL https://yafl.dev/install.sh | sh",
+      "file_sha256": "51eb5bb7f72b53dfd39fe022237406d6c1ddb8ba59a2e6904a4ce531b22f9c03"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "high",
+      "id": "AGT-F-TYPOSQUAT",
+      "summary": "Name is within 2 edits of popular package `@maildev/mcp`",
+      "path": null,
+      "line": null,
+      "evidence": null,
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "github.com",
+    "modelcontextprotocol.io",
+    "www.npmjs.com",
+    "yafl.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}
