@@ -1,0 +1,66 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "audio-studio-mcp",
+    "version": "1.3.1",
+    "download": null
+  },
+  "archive_sha256": "e81bf6fc5971116b11dd56692f64657f16ec653797017791b3ffd47bfe8abe0a",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio_studio_mcp-1.3.1/install.sh",
+      "line": 78,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "0b3127ed982954aca6e35e02a939da0d0cf7bf74d0833f6a9362b3786d7f76f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "audio_studio_mcp-1.3.1/install.sh",
+      "line": 78,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "0b3127ed982954aca6e35e02a939da0d0cf7bf74d0833f6a9362b3786d7f76f6"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 6 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-16T05:41:37.119213Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "astral.sh",
+    "codeload.github.com",
+    "docs.astral.sh",
+    "download-r2.pytorch.org",
+    "download.pytorch.org",
+    "evil.example",
+    "ffmpeg.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "kanaworksai-hue.github.io",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "pytorch.org",
+    "raw.githubusercontent.com",
+    "scripts.sil.org",
+    "static.modelcontextprotocol.io",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

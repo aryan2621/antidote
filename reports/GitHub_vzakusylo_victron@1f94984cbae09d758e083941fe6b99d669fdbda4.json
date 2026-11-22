@@ -1,0 +1,96 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "vzakusylo/victron",
+    "version": "1f94984cbae09d758e083941fe6b99d669fdbda4",
+    "download": "https://codeload.github.com/vzakusylo/victron/tar.gz/1f94984cbae09d758e083941fe6b99d669fdbda4"
+  },
+  "archive_sha256": "9241373cf253d94b23457e04febac72c3f19494c7cfbe622e371895eadcf055e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "victron-1f94984cbae09d758e083941fe6b99d669fdbda4/tools/test-gx/entrypoint.sh",
+      "line": 4,
+      "evidence": "cp /tmp/test_key.pub /root/.ssh/authorized_keys",
+      "file_sha256": "d8dccd3ea843c514182e329bb1f67bae954fc930b15435daf00f5de5ad923845"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-1f94984cbae09d758e083941fe6b99d669fdbda4/tools/tuya-devices-setup.js",
+      "line": 49,
+      "evidence": "execSync('for i in $(seq 1 254); do ping -c 1 -W 1 ' + m[1] + '.$i >/dev/null 2>",
+      "file_sha256": "0fb06d1d8934055747c2a75692252c9bf213ebc312cd7ccc384acaa74056a860"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-1f94984cbae09d758e083941fe6b99d669fdbda4/tools/tuya-devices-setup.js",
+      "line": 99,
+      "evidence": "execSync('chown nodered:nodered ' + DIR + 'tuya-devices.json ' + DIR + 'tuya-dev",
+      "file_sha256": "0fb06d1d8934055747c2a75692252c9bf213ebc312cd7ccc384acaa74056a860"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "victron-1f94984cbae09d758e083941fe6b99d669fdbda4/tools/set-mail-password.js",
+      "line": 26,
+      "evidence": "execSync('chown nodered:nodered ' + F + ' && chmod 600 ' + F)",
+      "file_sha256": "03d60ad397980680ece1d6791be7c25b776d531f50244b83dbd94dd8e618e945"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "archive.ubuntu.com, azure.archive.ubuntu.com, forecast.example.invalid, other-test-source.invalid, registry.npmjs.org, security.ubuntu.com, socket.example.invalid, www.utcp.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "100.x.y.z",
+    "127.0.0.1",
+    "192.168.0.146",
+    "192.168.0.165",
+    "903245-nodered.proxyrelay10.victronenergy.com",
+    "api.forecast.solar",
+    "archive.ubuntu.com",
+    "azure.archive.ubuntu.com",
+    "doc.forecast.solar",
+    "docs.oasis-open.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "flows.nodered.org",
+    "forecast.example.invalid",
+    "forecast.solar",
+    "github.com",
+    "joint-research-centre.ec.europa.eu",
+    "login.tailscale.com",
+    "media.githubusercontent.com",
+    "modelcontextprotocol.io",
+    "nett.elvenett.no",
+    "openapi.tuyaeu.com",
+    "other-test-source.invalid",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "security.ubuntu.com",
+    "socket.example.invalid",
+    "venus.local",
+    "www.onvif.org",
+    "www.utcp.io",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

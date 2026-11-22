@@ -1,0 +1,50 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Hela-Ecosystem/project-mcp",
+    "version": "7829ff63853c3603323a3985352aa5ae4c0a389c",
+    "download": "https://codeload.github.com/Hela-Ecosystem/project-mcp/tar.gz/7829ff63853c3603323a3985352aa5ae4c0a389c"
+  },
+  "archive_sha256": "d596f5e73fde916fceeea49058d094a5c5233d55336b14ebf68461086e5b661c",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "project-mcp-7829ff63853c3603323a3985352aa5ae4c0a389c/skills/guardian-wall/SKILL.md",
+      "line": 28,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "5e4208336d1ba6454dad0a3e480528e5a3d71250384e0650418c8fbbe6c5c690"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "project-mcp-7829ff63853c3603323a3985352aa5ae4c0a389c/skills/guardian-wall/SKILL.md",
+      "line": 27,
+      "evidence": "p=1.00 The following patterns are high-risk and should be flagged immediately: - `Ignor",
+      "file_sha256": "5e4208336d1ba6454dad0a3e480528e5a3d71250384e0650418c8fbbe6c5c690"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "aquasecurity.github.io",
+    "attacker.com",
+    "cli.github.com",
+    "en.wikipedia.org",
+    "eslint.org",
+    "example.com",
+    "feross.org",
+    "fsf.org",
+    "github.com",
+    "opencollective.com",
+    "parceljs.org",
+    "registry.npmjs.org",
+    "tidelift.com",
+    "www.gnu.org",
+    "www.patreon.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

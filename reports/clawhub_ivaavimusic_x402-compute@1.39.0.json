@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "ivaavimusic/x402-compute",
+    "version": "1.39.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=x402-compute&ownerHandle=ivaavimusic&version=1.39.0"
+  },
+  "archive_sha256": "eca78551647936834b383b3220134b48a06c503689294b96a12c380d616648e4",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 666,
+      "evidence": "curl -sSf https://grid.x402compute.cc/install.sh | sh",
+      "file_sha256": "07852191401f83f439f211c091e49acb9d7ae7743219e184ed9bd145f55e24b3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "scripts/provision.py",
+      "line": 279,
+      "evidence": "open(args.ssh_key_file, \"r\", encoding=\"utf-8\")",
+      "file_sha256": "51b56ca4af62d5d021291df76d472f1f8f0c44934bc0f6011b65c97d55011cec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "references/node-operator.md",
+      "line": 52,
+      "evidence": "curl -sSf https://grid.x402compute.cc/install.sh | sh",
+      "file_sha256": "12dd7f0d16a3655526f40fd5750567942fcfaf5b502e5d7cdf0f152c45152a4b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "references/processors.md",
+      "line": 161,
+      "evidence": "Never tell a user",
+      "file_sha256": "698af77ecd0289dfc4a995247256d14ed77cfe6b63af179d8d510c0176d176f5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "ai.x402compute.cc",
+    "api.mainnet-beta.solana.com",
+    "clawhub.ai",
+    "cloud.x402compute.cc",
+    "compute.x402layer.cc",
+    "docs.x402layer.cc",
+    "github.com",
+    "grid.x402compute.cc",
+    "mcp.x402layer.cc",
+    "openrouter.ai",
+    "processors.x402compute.cc",
+    "staking.x402layer.cc",
+    "studio.x402layer.cc",
+    "x402compute.cc"
+  ],
+  "install_script": false,
+  "score": "high"
+}

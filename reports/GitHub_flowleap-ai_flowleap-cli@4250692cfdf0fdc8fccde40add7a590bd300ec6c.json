@@ -1,0 +1,87 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "flowleap-ai/flowleap-cli",
+    "version": "4250692cfdf0fdc8fccde40add7a590bd300ec6c",
+    "download": "https://codeload.github.com/flowleap-ai/flowleap-cli/tar.gz/4250692cfdf0fdc8fccde40add7a590bd300ec6c"
+  },
+  "archive_sha256": "35a638f7d95fb937846b6aa8040b9eb1a3785b18640101fbbcdc2894380462be",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "flowleap-cli-4250692cfdf0fdc8fccde40add7a590bd300ec6c/src/commands/upgrade.rs",
+      "line": 100,
+      "evidence": "curl -fsSL {INSTALL_SH_URL} | sh",
+      "file_sha256": "c0627f2a74f0ee486c0508dff8d42a2e2b5e138128fbb5990e2121c664cdcab7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "flowleap-cli-4250692cfdf0fdc8fccde40add7a590bd300ec6c/docs/prd/0001-cli-remediation-and-multi-harness.md",
+      "line": 10,
+      "evidence": "curl|sh",
+      "file_sha256": "7a412a35b10c13b227e526de3c734465dab8b3c54ec19021c2984dd4d446e970"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "flowleap-cli-4250692cfdf0fdc8fccde40add7a590bd300ec6c/skills/flowleap/SKILL.md",
+      "line": 71,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/flowleap-ai/flowleap-cli/main/insta",
+      "file_sha256": "e0ea5fa1dbe77eac1c8cd55b68d84fc38a07a627e1bd3b63e7c04e79e7471dce"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "flowleap-cli-4250692cfdf0fdc8fccde40add7a590bd300ec6c/README.md",
+      "line": 233,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/flowleap-ai/flowleap-cli/main/insta",
+      "file_sha256": "89eca9f3ac9c634ba73b6217aa78dbb61f1ee2f7c4788d8541216e855703c8a0"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "flowleap-cli-4250692cfdf0fdc8fccde40add7a590bd300ec6c/README.md",
+      "line": 249,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "89eca9f3ac9c634ba73b6217aa78dbb61f1ee2f7c4788d8541216e855703c8a0"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.flowleap.co",
+    "api.github.com",
+    "clerk.flowleap.co",
+    "custom.api.example.com",
+    "data.uspto.gov",
+    "developers.epo.org",
+    "docs.npmjs.com",
+    "example.com",
+    "flowleap.co",
+    "flowleap.patent-ai",
+    "github.com",
+    "json-schema.org",
+    "modelcontextprotocol.io",
+    "patents.google.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "test.example.com",
+    "worldwide.espacenet.com",
+    "www.ecfr.gov",
+    "www.epo.org",
+    "www.flowleap.co",
+    "www.govinfo.gov",
+    "www.uspto.gov",
+    "www.wipo.int"
+  ],
+  "install_script": false,
+  "score": "high"
+}

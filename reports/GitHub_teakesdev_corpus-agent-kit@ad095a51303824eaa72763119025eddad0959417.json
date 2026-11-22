@@ -1,0 +1,58 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "teakesdev/corpus-agent-kit",
+    "version": "ad095a51303824eaa72763119025eddad0959417",
+    "download": "https://codeload.github.com/teakesdev/corpus-agent-kit/tar.gz/ad095a51303824eaa72763119025eddad0959417"
+  },
+  "archive_sha256": "351a8d443257f4c06890eda37bf78d405fc225216180898c23edf7955c1adfda",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "corpus-agent-kit-ad095a51303824eaa72763119025eddad0959417/plugins/corpus-codex/skills/corpus-business-formation/SKILL.md",
+      "line": 33,
+      "evidence": "p=1.00 If you say any of those without showing the warning itself, you have failed this",
+      "file_sha256": "1bff8666666c9c01189ce249b8b3631107207d4e0cfc41f469fe68f026dfc4a2"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "corpus-agent-kit-ad095a51303824eaa72763119025eddad0959417/autopilot/test/plan.test.ts",
+      "line": 701,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f4bdbb193b0b2b577dc4bed7ec0e396ebb5d9da16f1e83505c34b8e5d60c355f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "agentskills.io",
+    "corpus-4hw3j0gf6-teakesdev-7793s-projects.vercel.app",
+    "corpuslaw.us",
+    "corpuslaw.us.evil.test",
+    "cursor.com",
+    "dashscope-intl.aliyuncs.com",
+    "devpost.com",
+    "evil.test",
+    "fonts.googleapis.com",
+    "github.com",
+    "glama.ai",
+    "help.aliyun.com",
+    "img.shields.io",
+    "opencollective.com",
+    "paypal.me",
+    "qwen.invalid",
+    "registry.npmjs.org",
+    "smithery.ai",
+    "tidelift.com",
+    "www.apache.org",
+    "www.census.gov",
+    "www.irs.gov"
+  ],
+  "install_script": false,
+  "score": "high"
+}

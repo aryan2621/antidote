@@ -1,0 +1,65 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "dev-pikapik/unity-mcp-driver",
+    "version": "b9b99e60fbb887a8918364dc7dc5b372bf46c0d4",
+    "download": "https://codeload.github.com/dev-pikapik/unity-mcp-driver/tar.gz/b9b99e60fbb887a8918364dc7dc5b372bf46c0d4"
+  },
+  "archive_sha256": "c18f6701833f0ebc408136afb97f75e2cd9b2bd345f1acb2d3e0ed07afe8ab0f",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "unity-mcp-driver-b9b99e60fbb887a8918364dc7dc5b372bf46c0d4/UDriver.Mcp.Tests/Snapshots/tools-list.json",
+      "line": 343,
+      "evidence": "p=0.98 Tell the UDriver developer that UDriver itself let you down: a tool failed, gave",
+      "file_sha256": "138c126e11d38bc95402c62c25c17bba2d7c171869a87632d654cc1ad38c780e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "unity-mcp-driver-b9b99e60fbb887a8918364dc7dc5b372bf46c0d4/UDriver.Mcp.Tests/Snapshots/tools-list.json",
+      "line": 2372,
+      "evidence": "p=0.96 Forget all findings after answering.",
+      "file_sha256": "138c126e11d38bc95402c62c25c17bba2d7c171869a87632d654cc1ad38c780e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.uca.cloud.unity3d.com, cdp.cloud.unity3d.com, config.uca.cloud.unity3d.com, dashboard.unity3d.com, dev.unity-mcp-driver-dev.orb.local, engine-data.services.api.unity.com, engine-data.unity3d.com, evil.example, example.com, github.com, keepachangelog.com, packages.unity.com, perf-events.cloud.unity3d.com, schemas.microsoft.com, semver.org, www.apache.org, www.apple.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.uca.cloud.unity3d.com",
+    "cdp.cloud.unity3d.com",
+    "config.uca.cloud.unity3d.com",
+    "dashboard.unity3d.com",
+    "dev.unity-mcp-driver-dev.orb.local",
+    "dotnet.microsoft.com",
+    "engine-data.services.api.unity.com",
+    "engine-data.unity3d.com",
+    "evil.example",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "packages.unity.com",
+    "perf-events.cloud.unity3d.com",
+    "schemas.microsoft.com",
+    "semver.org",
+    "www.apache.org",
+    "www.apple.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

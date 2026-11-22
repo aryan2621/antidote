@@ -1,0 +1,144 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "brain-core-mcp",
+    "version": "0.11.0",
+    "download": null
+  },
+  "archive_sha256": "bf31eb0716b8249c77f169348557d546170df66a11da3c0783e01e4aea0dd075",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/PKG-INFO",
+      "line": 65,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "3d9d7cab227e9485d7eb27bd1fe3faff9f2c00c1b569c62926d681d2c326911b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/src/brain_core/templates/agent/.claude/rules/05-system.md",
+      "line": 16,
+      "evidence": "curl | sh",
+      "file_sha256": "258abadddd628fe534c222fbba397e759eb5f8c87f68c4195f5b8e8aa6c8d41f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/src/brain_core/installer.py",
+      "line": 229,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "9cec41425a3ea8f7a6035fe49bbe81fdc5184022040800aa806f923b5c901949"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/docs/launch/SHOW_HN.md",
+      "line": 14,
+      "evidence": "curl … | bash",
+      "file_sha256": "231f31c4d6465ae18150ab043e0556d161fde5caa6fce7e65ed6ce2e297ce487"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "4b3a5854e48953dc9a4ed95d5a7889a1ad140b3f3f41b29c50d0080258965894"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "brain_core_mcp-0.11.0/install.sh",
+      "line": 64,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "4b3a5854e48953dc9a4ed95d5a7889a1ad140b3f3f41b29c50d0080258965894"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/CHANGELOG.md",
+      "line": 445,
+      "evidence": "curl … | sudo bash",
+      "file_sha256": "26c7b5bb8f30593d64f3d51ebd2f2d870bce8562d0e98a8c7e17f1b59ab5ae95"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/tests/unit/test_hook.py",
+      "line": 35,
+      "evidence": "curl -fsSL https://x/i.sh | bash",
+      "file_sha256": "0816552c02382707ff6a348cd7cf69f282c989cc209683ee4650a4d52e91fdbb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "brain_core_mcp-0.11.0/README.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/xy-claude/brain-core/main/install.s",
+      "file_sha256": "042fbd4b7e51342f3b49d11c91c1c11babb424765ad3617e877cd0617f15c2bc"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "alexgarcia.xyz, arxiv.org, hindsight.vectorize.io, microsoft.github.io, neo4j.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example",
+    "alexgarcia.xyz",
+    "api.example.com",
+    "api.github.com",
+    "arxiv.org",
+    "astral.sh",
+    "b.example",
+    "c.example",
+    "cmd.test",
+    "code.claude.com",
+    "docs.test",
+    "downloads.claude.ai",
+    "example.com",
+    "example.org",
+    "files.pythonhosted.org",
+    "git-scm.com",
+    "github.com",
+    "glama.ai",
+    "hindsight.vectorize.io",
+    "hooks.slack.com",
+    "img.shields.io",
+    "keepachangelog.com",
+    "microsoft.github.io",
+    "neo4j.com",
+    "nodejs.org",
+    "platform.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.w3.org",
+    "x.dev",
+    "x.example",
+    "x.test",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

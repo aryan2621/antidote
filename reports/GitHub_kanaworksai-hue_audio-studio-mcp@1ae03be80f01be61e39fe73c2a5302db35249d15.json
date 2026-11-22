@@ -1,0 +1,58 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kanaworksai-hue/audio-studio-mcp",
+    "version": "1ae03be80f01be61e39fe73c2a5302db35249d15",
+    "download": "https://codeload.github.com/kanaworksai-hue/audio-studio-mcp/tar.gz/1ae03be80f01be61e39fe73c2a5302db35249d15"
+  },
+  "archive_sha256": "59ad8a76c0c35142c7e0fa61de48a1b25372c618b391304f46f25b904d2463be",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "audio-studio-mcp-1ae03be80f01be61e39fe73c2a5302db35249d15/install.sh",
+      "line": 78,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "0b3127ed982954aca6e35e02a939da0d0cf7bf74d0833f6a9362b3786d7f76f6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "audio-studio-mcp-1ae03be80f01be61e39fe73c2a5302db35249d15/install.sh",
+      "line": 78,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "0b3127ed982954aca6e35e02a939da0d0cf7bf74d0833f6a9362b3786d7f76f6"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "astral.sh",
+    "codeload.github.com",
+    "docs.astral.sh",
+    "docs.nvidia.com",
+    "download-r2.pytorch.org",
+    "download.pytorch.org",
+    "evil.example",
+    "ffmpeg.org",
+    "files.pythonhosted.org",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "kanaworksai-hue.github.io",
+    "modelcontextprotocol.io",
+    "pypi.org",
+    "pytorch.org",
+    "raw.githubusercontent.com",
+    "scripts.sil.org",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.w3.org",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

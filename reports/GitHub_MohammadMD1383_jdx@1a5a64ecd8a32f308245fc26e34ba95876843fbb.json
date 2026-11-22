@@ -1,0 +1,128 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "MohammadMD1383/jdx",
+    "version": "1a5a64ecd8a32f308245fc26e34ba95876843fbb",
+    "download": "https://codeload.github.com/MohammadMD1383/jdx/tar.gz/1a5a64ecd8a32f308245fc26e34ba95876843fbb"
+  },
+  "archive_sha256": "28afbcad447925ec05026af327573c0f4db73deba2e1b172fde3a1fe364334b0",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/docs/PROPOSAL.md",
+      "line": 1262,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "96b6808f80028cf21af032c6ec3553d4a47c27aec5d5a2d5825644cf7b3158f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/docs/guide/installation.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "a8324670c180f8d7b753c86dcd7769f5a55eb2c0f391478f2044abad77bf45c5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/docs/guide/installation.md",
+      "line": 72,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "a8324670c180f8d7b753c86dcd7769f5a55eb2c0f391478f2044abad77bf45c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/install-release.sh",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "a2f66e047efa907c62bb1a5db61e911b60fe2fbc36b75e6573751e68671e687d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/README.md",
+      "line": 16,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "b452d768d57ebebc348bf8e954ba0ee55152ccb9d4d3e6a2d2e7c6fff76311fc"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/README.md",
+      "line": 122,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "b452d768d57ebebc348bf8e954ba0ee55152ccb9d4d3e6a2d2e7c6fff76311fc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-1a5a64ecd8a32f308245fc26e34ba95876843fbb/site/src/main/kotlin/dev/jdx/site/Layout.kt",
+      "line": 31,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/${repoSlug()}/main/install-release.",
+      "file_sha256": "44a01f9ffc31d481f9d130eeba454ed44d89440ec3dd3821af27c11ebfc4c12d"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "glama.ai, registry.modelcontextprotocol.io, static.modelcontextprotocol.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example.com",
+    "aiderdesk.dev",
+    "antigravity.google",
+    "apache.org",
+    "api.github.com",
+    "b.example.com",
+    "cursor.com",
+    "docs.devin.ai",
+    "example.com",
+    "example.test",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jdx.dev",
+    "jdx.example.dev",
+    "kilo.ai",
+    "llmstxt.org",
+    "m8ven.ai",
+    "mcp.example.com",
+    "mirror.example",
+    "mirror.example.com",
+    "mohammadmd1383.github.io",
+    "opencode.ai",
+    "other.example",
+    "other.example.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "repo.example.com",
+    "repo.maven.apache.org",
+    "schema.org",
+    "services.gradle.org",
+    "static.modelcontextprotocol.io",
+    "unused.invalid",
+    "www.apache.org",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "xml.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
