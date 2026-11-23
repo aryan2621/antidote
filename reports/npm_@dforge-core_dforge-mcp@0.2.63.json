@@ -1,0 +1,64 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@dforge-core/dforge-mcp",
+    "version": "0.2.63",
+    "download": null
+  },
+  "archive_sha256": "723aa9a951f0116ed6cdf15115ac3ace0461690b6ee0120ffdbaa2ed77dfe615",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/dforge-module-discovery/SKILL.md",
+      "line": 8,
+      "evidence": "p=0.96 You are the first conversation about a module. The user knows their business, no",
+      "file_sha256": "d8f37ceb793201da119d086e164cea279c47f6f4eb6f5f8b712b1ee16042f287"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/README.md",
+      "line": 250,
+      "evidence": "curl … | bash",
+      "file_sha256": "013dbb828866c674ce7e001ed9c4d37b8618d9361c3e6d201d3b6d11a01459a2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/CHANGELOG.md",
+      "line": 1812,
+      "evidence": "curl … | bash",
+      "file_sha256": "f14d496fef4df8137b7bf3da02623ce45129c0c9c1620bbb740099e2617751d8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "10.0.0.5",
+    "api.stripe.com",
+    "api.weather.gov",
+    "cdn.jsdelivr.net",
+    "dbml.dbdiagram.io",
+    "dforge.dev",
+    "example.com",
+    "gist.github.com",
+    "github.com",
+    "icons.getbootstrap.com",
+    "json-schema.org",
+    "mathiasbynens.be",
+    "raw.githubusercontent.com",
+    "schemas.openxmlformats.org",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "upload.example.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

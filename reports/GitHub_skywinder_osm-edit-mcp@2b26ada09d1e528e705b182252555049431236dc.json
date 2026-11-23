@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "skywinder/osm-edit-mcp",
+    "version": "2b26ada09d1e528e705b182252555049431236dc",
+    "download": "https://codeload.github.com/skywinder/osm-edit-mcp/tar.gz/2b26ada09d1e528e705b182252555049431236dc"
+  },
+  "archive_sha256": "87ad8294da03eee7c487cf8f872cdbf65755462aa6141f83141bb378cda68214",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "osm-edit-mcp-2b26ada09d1e528e705b182252555049431236dc/scripts/install_with_uv.sh",
+      "line": 12,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b095df30051e1256a3782cb58bf3fd8d962a548f937e28ef552ba6df1347b90d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "osm-edit-mcp-2b26ada09d1e528e705b182252555049431236dc/scripts/install_with_uv.sh",
+      "line": 12,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b095df30051e1256a3782cb58bf3fd8d962a548f937e28ef552ba6df1347b90d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example.test",
+    "api.openstreetmap.org",
+    "api06.dev.openstreetmap.org",
+    "astral.sh",
+    "custom.example",
+    "dev.example",
+    "dev.overpass-api.de",
+    "docs.astral.sh",
+    "example.org",
+    "example.test",
+    "files.pythonhosted.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "keepachangelog.com",
+    "legacy.example",
+    "lobehub.com",
+    "market.lobehub.com",
+    "modelcontextprotocol.io",
+    "nominatim.openstreetmap.org",
+    "nominatim.org",
+    "operations.osmfoundation.org",
+    "other.example.test",
+    "overpass-api.de",
+    "prod.example",
+    "pypi.org",
+    "routing.example.com",
+    "semver.org",
+    "taginfo.openstreetmap.org",
+    "trusted.example",
+    "valhalla.github.io",
+    "wiki.openstreetmap.org",
+    "www.conventionalcommits.org",
+    "www.openstreetmap.org",
+    "www.topografix.com",
+    "yourdomain.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

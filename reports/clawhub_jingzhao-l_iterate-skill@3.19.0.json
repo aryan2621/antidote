@@ -1,0 +1,93 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "jingzhao-l/iterate-skill",
+    "version": "3.19.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=iterate-skill&ownerHandle=jingzhao-l&version=3.19.0"
+  },
+  "archive_sha256": "b5248520e9a686a9360a9456dacf8f03b0fcd41c33d85c39bb26d2f16fa895bf",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 162,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a private-key -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 163,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a passphrase -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "tools/gpg-signing.sh",
+      "line": 194,
+      "evidence": "security find-generic-password -s \"$KEYCHAIN_SERVICE\" -a private-key -w",
+      "file_sha256": "4f70224d21a9ac595705f6615b312ec6d68f590eb832a1af2b8b54d2055a3abb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "iterate_cli/personalize.py",
+      "line": 224,
+      "evidence": "curl … | sh",
+      "file_sha256": "6cf0444fd58a9ded247711306262b37c7abc05c21accb409ef6685ac98dc754e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "CHANGELOG.md",
+      "line": 384,
+      "evidence": "curl|bash",
+      "file_sha256": "8be93c9b1c2c35d7478d1ef3bcf6a90470bec472526ea3035bf255c343396e53"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "RELEASE.md",
+      "line": 395,
+      "evidence": "curl .../main/scripts/install.sh | bash",
+      "file_sha256": "7154f1686d6345f20af059d9044f74dda17d40e40792885e9b20d1d90ca83442"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "api.github.com",
+    "api.github.com.evil",
+    "api.github.com.evil.com",
+    "api.npmjs.org",
+    "api.skillhub.cn",
+    "api.skillhub.tencent.com",
+    "clawhub.ai",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "modelscope.cn",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "release-assets.githubusercontent.com",
+    "semver.org",
+    "skillhub.cloud.tencent.com",
+    "skills.sh",
+    "www.conventionalcommits.org",
+    "www.npmjs.com",
+    "www.orcarouter.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}
