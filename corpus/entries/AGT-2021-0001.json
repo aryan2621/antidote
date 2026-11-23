@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2021-0001",
+  "modified": "2026-09-13T11:56:31.857641533Z",
+  "published": "2021-10-12T16:03:43Z",
+  "aliases": [
+    "GHSA-pgjj-866w-fc5c",
+    "CVE-2021-21278"
+  ],
+  "summary": "rsshub: Risk of code injection",
+  "details": "### Impact\nSome routes use `eval` or `Function constructor`, which may be injected by the target site with unsafe code, causing server-side security issues\n\n### Patches\nTemporarily removed the problematic route and added a `no-new-func` rule to eslint\nSelf-built users should upgrade to 7f1c430 and later as soon as possible\n\n### Credits\nTencent Woodpecker Security Team\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [https://github.com/DIYgod/RSSHub/issues](https://github.com/DIYgod/RSSHub/issues)\n* Email us at [i@diygod.me](mailto:i@diygod.me)\n\nImported from OSV GHSA-pgjj-866w-fc5c.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-pgjj-866w-fc5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/security/advisories/GHSA-pgjj-866w-fc5c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/commit/7f1c43094e8a82e4d8f036ff7d42568fed00699d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/DIYgod/RSSHub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/rsshub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "rsshub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

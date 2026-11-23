@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0243",
+  "modified": "2026-09-24T19:45:04.810662975Z",
+  "published": "2026-09-24T19:36:57Z",
+  "aliases": [
+    "GHSA-fm8p-53ww-hf6w",
+    "CVE-2026-61742"
+  ],
+  "summary": "@bytebase/dbhub: DBHub HTTP transport DNS rebinding allows unauthenticated browser-origin SQL execution",
+  "details": "### Summary\n\nDBHub `0.21.2` exposes an unauthenticated HTTP MCP endpoint when started with the documented HTTP transport mode, for example `--transport http --port 8080`.\n\nThe HTTP server attempts to protect browser-origin access by checking whether the `Origin` hostname equals the `Host` hostname, then reflecting the validated `Origin` into `Access-Control-Allow-Origin`. This does not stop DNS rebinding. After an attacker-controlled hostname rebinds to a victim-accessible DBHub HTTP server, both `Origin` and `Host` can contain the attacker-controlled hostname, so DBHub accepts the request and dispatches MCP tool calls.\n\nAs a result, a malicious website can deterministically invoke DBHub MCP tools from the victim's browser without prompt injection or model involvement. With the default demo configuration this can read and write the demo SQLite database; with a real configured database, the same primitive can read, enumerate, and potentially write database contents depending on DBHub's configured tool permissions and database credentials.\n\nRecommended severity: High. It may become Critical when HTTP transport is connected to production or broadly privileged database credentials.\n\n### Details\n\nAffected target:\n\n- Package: `@bytebase/dbhub`\n- Version tested: `0.21.2`\n- Repository commit tested: `72adfdcf7bcfe46b25edbc776ce096006eba9b02`\n- Affected mode: HTTP transport (`--transport http`)\n- Default package transport: stdio\n- Not affected by this specific browser-origin vector: stdio transport\n\nRelevant code path: `src/server.ts`\n\nThe HTTP server installs a middleware that:\n\n1. reads `req.headers.origin`;\n2. extracts the hostname from `req.headers.host`;\n3. parses the hostname from `Origin`;\n4. rejects only when the two hostnames differ;\n5. reflects the validated `Origin` into `Access-Control-Allow-Origin`;\n6. enables credentials with `Access-Control-Allow-Credentials: true`.\n\nRelevant code:\n\n```ts\nconst origin = req.headers.origin;\n\nif (origin) {\n  const host = (req.headers.host ?? '').split(':')[0].toLowerCase();\n  try {\n    const originHost = new URL(origin).hostname.toLowerCase();\n    if (originHost !== host) {\n      return res.status(403).json({\n        error: 'Forbidden',\n        message: 'Origin does not match Host header (DNS rebinding protection)',\n      });\n    }\n  } catch {\n    return res.status(400).json({ error: 'Bad Request', message: 'Malformed Origin header' });\n  }\n}\n\nres.header('Access-Control-Allow-Origin', origin || 'http://localhost');\nres.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');\nres.header('Access-Control-Allow-Headers', 'Content-Type, Mcp-Session-Id');\nres.header('Access-Control-Allow-Credentials', 'true');\n```\n\nThis blocks a simple cross-origin request such as:\n\n```http\nHost: localhost:8080\nOrigin: http://attacker.example\n```\n\nHowever, it accepts the DNS rebinding request shape:\n\n```http\nHost: dbhub-rebind.example:8080\nOrigin: http://dbhub-rebind.example\n```\n\nIn a browser attack, the victim visits an attacker-controlled page such as `http://dbhub-rebind.example:8080`. The attacker initially resolves that hostname to the attacker's web server, serves JavaScript, then rebinds the hostname to the victim-accessible DBHub address on the same port. The browser can then send requests where the request host and browser origin are both the attacker-controlled hostname. The current check treats that as trusted because it verifies equality, not membership in an explicit allowed-host or allowed-origin policy.\n\nNo authorization token, per-server secret, or CSRF-style capability is required before `/mcp` accepts JSON-RPC tool calls in HTTP mode. Therefore, once the rebinding request shape passes the hostname equality check, the browser can invoke the same MCP tools as an intended HTTP MCP client.\n\nSuggested remediation:\n\n- Bind HTTP transport to `127.0.0.1` by default and require explicit opt-in for `0.0.0.0` or non-loopback hosts.\n- Add an explicit allowed-hosts policy instead of accepting arbitrary\n\nImported from OSV GHSA-fm8p-53ww-hf6w.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-fm8p-53ww-hf6w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytebase/dbhub/security/advisories/GHSA-fm8p-53ww-hf6w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61742"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytebase/dbhub/pull/340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytebase/dbhub/commit/5bf5c3242a22e94871dfdf53913c84a5025b7381"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/bytebase/dbhub"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bytebase/dbhub/releases/tag/v0.22.6"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@bytebase/dbhub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.22.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}

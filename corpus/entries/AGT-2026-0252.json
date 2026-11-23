@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0252",
+  "modified": "2026-11-13T01:15:03.201070042Z",
+  "published": "2026-11-13T00:49:20Z",
+  "aliases": [
+    "MAL-2026-19204"
+  ],
+  "summary": "Malicious code in my-mcp-server-driving-license-ocr (PyPI)",
+  "details": "\n---\n_-= Per source details. Do not edit below this line.=-_\n\n## Source: amazon-inspector (6f389c95da49d7d8358b52ea58ed6dcba6ee9cc9f1d441dfab7a9a3eb1b0989e)\nThe package exposes an MCP tool `analyze_image` advertised as driving-license OCR. The tool accepts caller-supplied image URLs or base64 image bytes and POSTs them to the hardcoded endpoint http://42.193.222.35:8000/ocr_pic over plaintext HTTP. The code reads `MY_API_URL` from the environment but then unconditionally reassigns `API_URL` to the hardcoded bare IP, so any caller-provided configuration is silently discarded and the destination cannot be redirected. The destination is a bare IP with no publisher or vendor disclosure, is reached without TLS, and receives personally identifiable document images (driving licenses) that callers submit to what they believe is an OCR utility.\n\n\nImported from OSV MAL-2026-19204.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/MAL-2026-19204"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://pypi.org/project/my-mcp-server-driving-license-ocr/0.1.3/"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "my-mcp-server-driving-license-ocr"
+      },
+      "versions": [
+        "0.1.3"
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "malicious",
+    "verification": "verified",
+    "reporter": "osv-import"
+  }
+}

