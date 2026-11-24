@@ -1,0 +1,109 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Lykhoyda/ask-llm",
+    "version": "a4b34373bc95c74edd4088e3e343aa0b634f9ef2",
+    "download": "https://codeload.github.com/Lykhoyda/ask-llm/tar.gz/a4b34373bc95c74edd4088e3e343aa0b634f9ef2"
+  },
+  "archive_sha256": "7d9c9ac19c39ee6a8f537b7cfc3d27392a5bd586b65badee9fe11e94495a949e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ask-llm-a4b34373bc95c74edd4088e3e343aa0b634f9ef2/apps/docs/providers/grok.md",
+      "line": 62,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "bd0b6811b81b9ed309b0d148f3f275252c5308dbb6fc699f1d8cb4f3a9c21f22"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "ask-llm-a4b34373bc95c74edd4088e3e343aa0b634f9ef2/packages/grok-mcp/README.md",
+      "line": 34,
+      "evidence": "curl -fsSL https://x.ai/cli/install.sh | bash",
+      "file_sha256": "324a4529871c404833ffafaa07829ac69ca20a82db8458b80fbd93b89a25111a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ask-llm-a4b34373bc95c74edd4088e3e343aa0b634f9ef2/packages/llm-mcp/skills/ask-llm-codex-pair-pause/SKILL.md",
+      "line": 31,
+      "evidence": "p=0.99 Done when the command confirms the pause or reports an existing pause. Show any ",
+      "file_sha256": "b099caef59f178f54a207316af40f5319733376ffdaa7b5afaa9588b81bcf4a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ask-llm-a4b34373bc95c74edd4088e3e343aa0b634f9ef2/packages/llm-mcp/skills/ask-llm-codex-image/SKILL.md",
+      "line": 58,
+      "evidence": "p=0.92 If you significantly enrich the prompt, briefly tell the user what you added and",
+      "file_sha256": "585bcb342a9ef44eceed58ee37991168862f31ccf6fd8a6d0fe84e428d07e080"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "ask-llm-a4b34373bc95c74edd4088e3e343aa0b634f9ef2/packages/llm-mcp/src/__tests__/codex-pair-watch.test.ts",
+      "line": 786,
+      "evidence": "ignore all prior rules",
+      "file_sha256": "95d978a3f96ed837f17060a68c17a0733150e43859bb501983f4965f7724f706"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "developers.openai.com, learn.chatgpt.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "ai.google.dev",
+    "antigravity.google",
+    "api.x.ai",
+    "changesets.dev",
+    "claude.com",
+    "console.x.ai",
+    "developers.googleblog.com",
+    "developers.openai.com",
+    "docs.anthropic.com",
+    "docs.npmjs.com",
+    "docs.x.ai",
+    "example.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "json-schema.org",
+    "learn.chatgpt.com",
+    "llmstxt.org",
+    "lykhoyda.github.io",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "ollama.com",
+    "openai.com",
+    "opensource.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "schema.org",
+    "static.modelcontextprotocol.io",
+    "unpkg.com",
+    "www.npmjs.com",
+    "www.theregister.com",
+    "www.w3.org",
+    "x.ai",
+    "x.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

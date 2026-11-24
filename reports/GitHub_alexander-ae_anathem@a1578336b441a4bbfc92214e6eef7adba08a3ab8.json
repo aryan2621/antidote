@@ -1,0 +1,94 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "alexander-ae/anathem",
+    "version": "a1578336b441a4bbfc92214e6eef7adba08a3ab8",
+    "download": "https://codeload.github.com/alexander-ae/anathem/tar.gz/a1578336b441a4bbfc92214e6eef7adba08a3ab8"
+  },
+  "archive_sha256": "da02ccbc569b4f0c1df6883e0f31da03a1947a9029abdae660e471c643302586",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/tests/recent_test.rs",
+      "line": 605,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "0d63aa439786a91b77a5648fe283a102fed9dec49183e7f4addd8202a0566736"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/AGENTS.md",
+      "line": 146,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "d90e87590dded549d6f066f92082b0d89b4a375b445ec9ef9dbe60e67afd0361"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/README.md",
+      "line": 108,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "ddd7494fb04a3e07738d015cc72a30c068fe19e4c529b7569057b5507d03afaf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/docs/installation.md",
+      "line": 19,
+      "evidence": "curl ... | sh",
+      "file_sha256": "d9a73623b5c05cf54096abf96dcd821dc03c8b90c3be5bd76bfc84843e263443"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/docs/installation.md",
+      "line": 94,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "d9a73623b5c05cf54096abf96dcd821dc03c8b90c3be5bd76bfc84843e263443"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "anathem-a1578336b441a4bbfc92214e6eef7adba08a3ab8/scripts/install.sh",
+      "line": 222,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "4e86deea2ab3b807f3a67b8489fe627f95565972693bdb3db453c8291af5eaa1"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.deepseek.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.deepseek.com",
+    "api.openai.com",
+    "asciinema.org",
+    "github.com",
+    "gitlab.com",
+    "jedisct1.github.io",
+    "keepachangelog.com",
+    "ko-fi.com",
+    "livingbrain.com",
+    "opencode.ai",
+    "semver.org",
+    "sh.rustup.rs",
+    "www.anthropic.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

