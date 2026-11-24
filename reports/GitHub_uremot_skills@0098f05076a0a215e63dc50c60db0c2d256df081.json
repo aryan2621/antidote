@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "uremot/skills",
+    "version": "0098f05076a0a215e63dc50c60db0c2d256df081",
+    "download": "https://codeload.github.com/uremot/skills/tar.gz/0098f05076a0a215e63dc50c60db0c2d256df081"
+  },
+  "archive_sha256": "149c23424fd4fbba371a075150585186393b3262373267930ea004a4edf3a2fb",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-0098f05076a0a215e63dc50c60db0c2d256df081/skills/uremot-chat/SKILL.md",
+      "line": 94,
+      "evidence": "p=0.99 Rae acknowledges that message as `working`, then `done` with a result link or `d",
+      "file_sha256": "db9c144ce9741e69d40a607e3770a2a21eb461a3c234fe412807bdcf329c42c3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-0098f05076a0a215e63dc50c60db0c2d256df081/skills/uremot-setup/SKILL.md",
+      "line": 14,
+      "evidence": "p=0.95 Say this before anything is installed. On Linux, a Compute runs its desks in a c",
+      "file_sha256": "9ba6a330bfe242c8f2db33a363ad19d3d389803d820f1969fdf97a004c5aeb87"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "console.uremot.com",
+    "docs.docker.com",
+    "example.com",
+    "git.example.com",
+    "github.com",
+    "go.dev",
+    "mcp.uremot.com",
+    "packages.debian.org",
+    "uremot.com",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

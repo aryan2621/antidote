@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "turantekin/Parrot",
+    "version": "6cf4ecd5fcc1875e09093bbfc15ab26dec5d5ed8",
+    "download": "https://codeload.github.com/turantekin/Parrot/tar.gz/6cf4ecd5fcc1875e09093bbfc15ab26dec5d5ed8"
+  },
+  "archive_sha256": "cbc1f2eec8f6019afc9a0dc9a84a7769780ff35ada1e67565ddbbc9f8424359b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-T-0007",
+      "summary": "Reads SSH keys, cloud credentials or the macOS keychain",
+      "path": "Parrot-6cf4ecd5fcc1875e09093bbfc15ab26dec5d5ed8/scripts/publish.sh",
+      "line": 144,
+      "evidence": "security find-generic-password -s parrot-site-deploy-hook -w",
+      "file_sha256": "9470bf0379913c21f306cd4e42a2a7f9a66702d09ee3a617ae4d556686ff184b"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "fake-llm.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "account.apple.com",
+    "acme.com",
+    "acme.zoom.us",
+    "anysphere.cursor-deeplink",
+    "api.anthropic.com",
+    "api.deepgram.com",
+    "api.groq.com",
+    "api.typesafe.ai",
+    "buymeacoffee.com",
+    "claude.ai",
+    "claude.com",
+    "console.anthropic.com",
+    "docs.google.com",
+    "example.com",
+    "fake-llm.test",
+    "fsf.org",
+    "github.com",
+    "hooks.zapier.com",
+    "img.shields.io",
+    "linktr.ee",
+    "ollama.com",
+    "openparrot.app",
+    "openrouter.ai",
+    "people.xiph.org",
+    "scripts.sil.org",
+    "sparkle-project.org",
+    "static.modelcontextprotocol.io",
+    "turantekin.github.io",
+    "www.andymatuschak.org",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.gnu.org",
+    "www.xiph.org",
+    "x.com",
+    "zoom.us"
+  ],
+  "install_script": false,
+  "score": "high"
+}

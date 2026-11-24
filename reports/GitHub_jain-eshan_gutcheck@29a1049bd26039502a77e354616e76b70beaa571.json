@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "jain-eshan/gutcheck",
+    "version": "29a1049bd26039502a77e354616e76b70beaa571",
+    "download": "https://codeload.github.com/jain-eshan/gutcheck/tar.gz/29a1049bd26039502a77e354616e76b70beaa571"
+  },
+  "archive_sha256": "2d8e33821352f0def85db4bc049fa25402b9087ae6d62830b4a4d047b4d50c84",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "gutcheck-29a1049bd26039502a77e354616e76b70beaa571/SKILL.md",
+      "line": 65,
+      "evidence": "p=0.98 > I'm your research buddy. Tell me an idea, a problem you keep hitting, a topic,",
+      "file_sha256": "4c2c744e34b9d3674a7aaedb25528925de7366176566f8826fc26ce56471f43f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "gutcheck-29a1049bd26039502a77e354616e76b70beaa571/setup",
+      "line": 19,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "35983b25e37f7ad65ea576ce9ad625448112038ee4a00043c63d5fd677097901"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.github.com",
+    "api.opencorporates.com",
+    "apps.apple.com",
+    "astral.sh",
+    "cdn.jsdelivr.net",
+    "claude.com",
+    "console.cloud.google.com",
+    "docs.astral.sh",
+    "files.pythonhosted.org",
+    "github.com",
+    "habitly.app",
+    "hn.algolia.com",
+    "hyperframes.heygen.com",
+    "intake-logging.wikimedia.org",
+    "itunes.apple.com",
+    "meta.wikimedia.org",
+    "modelcontextprotocol.io",
+    "news.example",
+    "news.google.com",
+    "news.ycombinator.com",
+    "oauth.reddit.com",
+    "opencorporates.com",
+    "play.google.com",
+    "pub.example",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "reddit.com",
+    "rss.reddit.com",
+    "scripts.sil.org",
+    "support.google.com",
+    "trends.google.com",
+    "wikimedia.org",
+    "www.googleapis.com",
+    "www.reddit.com",
+    "www.w3.org",
+    "www.youtube.com",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

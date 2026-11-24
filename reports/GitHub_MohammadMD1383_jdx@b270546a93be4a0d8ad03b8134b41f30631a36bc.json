@@ -1,0 +1,118 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "MohammadMD1383/jdx",
+    "version": "b270546a93be4a0d8ad03b8134b41f30631a36bc",
+    "download": "https://codeload.github.com/MohammadMD1383/jdx/tar.gz/b270546a93be4a0d8ad03b8134b41f30631a36bc"
+  },
+  "archive_sha256": "d7c168800e841bec215c2cf3655d9362a89e1d54de4858ecb36a495f109716e4",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/docs/PROPOSAL.md",
+      "line": 1262,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "96b6808f80028cf21af032c6ec3553d4a47c27aec5d5a2d5825644cf7b3158f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/docs/guide/installation.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "a8324670c180f8d7b753c86dcd7769f5a55eb2c0f391478f2044abad77bf45c5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/docs/guide/installation.md",
+      "line": 72,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "a8324670c180f8d7b753c86dcd7769f5a55eb2c0f391478f2044abad77bf45c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/install-release.sh",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "a2f66e047efa907c62bb1a5db61e911b60fe2fbc36b75e6573751e68671e687d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/README.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "9f99c7cf718a7f524cab837f881921e0eb5fd2d7644f2dfcba01d0b1dc67c59b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/README.md",
+      "line": 123,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "9f99c7cf718a7f524cab837f881921e0eb5fd2d7644f2dfcba01d0b1dc67c59b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-b270546a93be4a0d8ad03b8134b41f30631a36bc/site/src/main/kotlin/dev/jdx/site/Layout.kt",
+      "line": 31,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/${repoSlug()}/main/install-release.",
+      "file_sha256": "44a01f9ffc31d481f9d130eeba454ed44d89440ec3dd3821af27c11ebfc4c12d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.example.com",
+    "aiderdesk.dev",
+    "antigravity.google",
+    "apache.org",
+    "api.github.com",
+    "b.example.com",
+    "cursor.com",
+    "docs.devin.ai",
+    "example.com",
+    "example.test",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jdx.dev",
+    "jdx.example.dev",
+    "kilo.ai",
+    "llmstxt.org",
+    "m8ven.ai",
+    "mcp.example.com",
+    "mirror.example",
+    "mirror.example.com",
+    "mohammadmd1383.github.io",
+    "opencode.ai",
+    "other.example",
+    "other.example.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "repo.example.com",
+    "repo.maven.apache.org",
+    "schema.org",
+    "services.gradle.org",
+    "static.modelcontextprotocol.io",
+    "unused.invalid",
+    "www.apache.org",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "xml.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

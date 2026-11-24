@@ -1,0 +1,44 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@ask-llm/mcp",
+    "version": "1.8.1",
+    "download": null
+  },
+  "archive_sha256": "461df8e2646000c10e56a9d7f96baf0cac8256a57bd6f818d4eb3e500b91d9c7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/ask-llm-codex-image/SKILL.md",
+      "line": 58,
+      "evidence": "p=0.92 If you significantly enrich the prompt, briefly tell the user what you added and",
+      "file_sha256": "585bcb342a9ef44eceed58ee37991168862f31ccf6fd8a6d0fe84e428d07e080"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/ask-llm-codex-pair-pause/SKILL.md",
+      "line": 31,
+      "evidence": "p=0.99 Done when the command confirms the pause or reports an existing pause. Show any ",
+      "file_sha256": "b099caef59f178f54a207316af40f5319733376ffdaa7b5afaa9588b81bcf4a0"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "antigravity.google",
+    "api.x.ai",
+    "console.x.ai",
+    "developers.googleblog.com",
+    "docs.x.ai",
+    "github.com",
+    "lykhoyda.github.io",
+    "ollama.com",
+    "x.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

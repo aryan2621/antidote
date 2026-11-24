@@ -1,0 +1,99 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Meliorate-agency/vps-panel",
+    "version": "d38315be8a17e60e0c24aea8f385841c24aee399",
+    "download": "https://codeload.github.com/Meliorate-agency/vps-panel/tar.gz/d38315be8a17e60e0c24aea8f385841c24aee399"
+  },
+  "archive_sha256": "dd3d5e9085c008f2bb2fa444993b0511146bf45cab1ae8065ba9fd2792cd3c0e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "vps-panel-d38315be8a17e60e0c24aea8f385841c24aee399/scripts/install.sh",
+      "line": 173,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash",
+      "file_sha256": "ad0ccda15df15dd370cb03d2784c6473111e04c5c65b9f15442859666772183a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "vps-panel-d38315be8a17e60e0c24aea8f385841c24aee399/scripts/install.sh",
+      "line": 173,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_22.x | bash -",
+      "file_sha256": "ad0ccda15df15dd370cb03d2784c6473111e04c5c65b9f15442859666772183a"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "vps-panel-d38315be8a17e60e0c24aea8f385841c24aee399/scripts/install.sh",
+      "line": 189,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --defaul",
+      "file_sha256": "ad0ccda15df15dd370cb03d2784c6473111e04c5c65b9f15442859666772183a"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "203.0.113.0, 203.0.113.5, 203.0.113.87, a.example, docs.example.com, example.com.au, get.geojs.io, hooks.example.com, ipinfo.io, p.example.com, ref.example, shop.example, shop.example.com, www.example.com, x.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "203.0.113.0",
+    "203.0.113.5",
+    "203.0.113.87",
+    "a.example",
+    "acme-v02.api.letsencrypt.org",
+    "api.example.com",
+    "api.ipify.org",
+    "api.telegram.org",
+    "blog.example.com",
+    "deb.nodesource.com",
+    "docs.example.com",
+    "example.com",
+    "example.com.au",
+    "feross.org",
+    "fsf.org",
+    "get.geojs.io",
+    "github.com",
+    "help.github.com",
+    "hooks.example.com",
+    "hooks.slack.com",
+    "img.shields.io",
+    "ipinfo.io",
+    "login.tailscale.com",
+    "n8n.example.com",
+    "new.example.com",
+    "opencollective.com",
+    "p.example.com",
+    "panel.example.com",
+    "paulmillr.com",
+    "pkgs.tailscale.com",
+    "pma.example.com",
+    "ref.example",
+    "registry.npmjs.org",
+    "rspamd.com",
+    "sh.rustup.rs",
+    "shop.example",
+    "shop.example.com",
+    "tidelift.com",
+    "www.example.com",
+    "www.gnu.org",
+    "www.patreon.com",
+    "www.w3.org",
+    "x.example",
+    "x.example.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
