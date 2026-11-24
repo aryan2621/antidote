@@ -1,0 +1,93 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "roomi-fields/osc-bridge",
+    "version": "0f171f02fc6f790f955410f0e3de20f625c778e0",
+    "download": "https://codeload.github.com/roomi-fields/osc-bridge/tar.gz/0f171f02fc6f790f955410f0e3de20f625c778e0"
+  },
+  "archive_sha256": "a4d5150ba45d864ab8dadad1f56862f9aa3d0f11fcc89141b10a6640f5d05111",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "osc-bridge-0f171f02fc6f790f955410f0e3de20f625c778e0/.beads/README.md",
+      "line": 64,
+      "evidence": "curl -sSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/instal",
+      "file_sha256": "cae1648db67c27f1d86f92ed110119445356e23bb18a5df57e73a7f476619267"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "osc-bridge-0f171f02fc6f790f955410f0e3de20f625c778e0/scripts/ci_preparer.sh",
+      "line": 17,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+      "file_sha256": "cc039494fc3f1c1838209e268d56a9bf71c3f897927851c33b18a53d2d1dbf97"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "osc-bridge-0f171f02fc6f790f955410f0e3de20f625c778e0/scripts/ci_preparer.sh",
+      "line": 17,
+      "evidence": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profil",
+      "file_sha256": "cc039494fc3f1c1838209e268d56a9bf71c3f897927851c33b18a53d2d1dbf97"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "mcptry.com, sh.rustup.rs, turborepo.com, vitest.dev, w3id.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example",
+    "acme.example",
+    "app.example",
+    "creativecommons.org",
+    "docs.electra.one",
+    "electra.one",
+    "evil.example",
+    "example.org",
+    "forum.electra.one",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "localhost.evil.example",
+    "mcp.osc-bridge.roomi-fields.com",
+    "mcp.synthhub.roomi-fields.com",
+    "mcptry.com",
+    "midi.guide",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "opensoundcontrol.stanford.edu",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "semver.org",
+    "sh.rustup.rs",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "synthhub.roomi-fields.com",
+    "tidelift.com",
+    "turborepo.com",
+    "userguides.novationmusic.com",
+    "vitest.dev",
+    "w3id.org",
+    "www.deepsonic.ch",
+    "www.gnu.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

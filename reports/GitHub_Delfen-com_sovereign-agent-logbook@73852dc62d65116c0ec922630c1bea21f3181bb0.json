@@ -1,0 +1,55 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Delfen-com/sovereign-agent-logbook",
+    "version": "73852dc62d65116c0ec922630c1bea21f3181bb0",
+    "download": "https://codeload.github.com/Delfen-com/sovereign-agent-logbook/tar.gz/73852dc62d65116c0ec922630c1bea21f3181bb0"
+  },
+  "archive_sha256": "66042da41412291190f7ce096b4606efb4d641e4c5185fbe9403c941da7bb228",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "sovereign-agent-logbook-73852dc62d65116c0ec922630c1bea21f3181bb0/skills/sovereign-agent-logbook/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.99 This skill contains no model-specific instructions. It has been written to read ",
+      "file_sha256": "4d71f9a92090f83bf175dfc5ace28ed9845123e79debbaa06e621171e1502975"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "img.youtube.com, youtu.be",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "abstra.io",
+    "artificialintelligenceact.eu",
+    "delfen.ai",
+    "eur-lex.europa.eu",
+    "example.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "img.youtube.com",
+    "jsonlines.org",
+    "modelcontextprotocol.io",
+    "pdm-project.org",
+    "pypi.org",
+    "python-poetry.org",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.apache.org",
+    "youtu.be"
+  ],
+  "install_script": false,
+  "score": "high"
+}

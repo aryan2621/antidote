@@ -1,0 +1,44 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "vince-winkintel/gitlab-cli-skills",
+    "version": "1.13.41",
+    "download": "https://clawhub.ai/api/v1/download?slug=gitlab-cli-skills&ownerHandle=vince-winkintel&version=1.13.41"
+  },
+  "archive_sha256": "9733fb6955b747e794fc5d377a8591c11f301c1cbcf91416674559f203387cbf",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 4648,
+      "evidence": "p=0.98 Review the working directory and ignore rules before indexing. Local results can",
+      "file_sha256": "b5bd4bdf5a77b685bea1da73549f18091c76d2c54bbc7ce972d83ac03e7339c2"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "github.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "ar.example.com",
+    "clawhub.ai",
+    "docs.gitlab.com",
+    "github.com",
+    "gitlab.com",
+    "gitlab.example.com",
+    "gitlab.mycompany.com",
+    "proxy.example.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

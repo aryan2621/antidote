@@ -1,0 +1,47 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "volveezz/tusk-mcp",
+    "version": "4e8b6fd74d3a4446bdc2b405c8ff1c8ae0064932",
+    "download": "https://codeload.github.com/volveezz/tusk-mcp/tar.gz/4e8b6fd74d3a4446bdc2b405c8ff1c8ae0064932"
+  },
+  "archive_sha256": "85e33697b2c1795ae916176bdb2cbbf017c12b8457ec71d1277c58ca94332b33",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "tusk-mcp-4e8b6fd74d3a4446bdc2b405c8ff1c8ae0064932/src/setup.ts",
+      "line": 172,
+      "evidence": "exec(`powershell -STA -NoProfile -EncodedCommand ${encoded}`, (err, stdout) => {",
+      "file_sha256": "b9ee77e7689041e1885c7b0e9dec465e83edcba4eaa8814dfec4bc94ddd6b689"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "tusk-mcp-4e8b6fd74d3a4446bdc2b405c8ff1c8ae0064932/src/setup.ts",
+      "line": 222,
+      "evidence": "exec(`powershell -STA -NoProfile -EncodedCommand ${encoded}`, (err, stdout) => {",
+      "file_sha256": "b9ee77e7689041e1885c7b0e9dec465e83edcba4eaa8814dfec4bc94ddd6b689"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "tusk-mcp-4e8b6fd74d3a4446bdc2b405c8ff1c8ae0064932/src/tunnel.ts",
+      "line": 12,
+      "evidence": "readFile(options.sshKey, 'utf-8')",
+      "file_sha256": "23def95210894af7a1f2e6af0e4b903adc86a69156e3a0cb841a1fbc7161c8fa"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "github.com",
+    "static.modelcontextprotocol.io"
+  ],
+  "install_script": false,
+  "score": "high"
+}
