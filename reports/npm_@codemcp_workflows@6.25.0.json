@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@codemcp/workflows",
+    "version": "6.25.0",
+    "download": null
+  },
+  "archive_sha256": "dcd847b2198ce2c2b166ac7ccd5ced162ec1092f07289ea7a6af85e5227494e0",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/state-machine-schema.json",
+      "line": 91,
+      "evidence": "p=0.97 Default instructions when entering this state",
+      "file_sha256": "5f920cb6ceb6d3cab0b14eee2e9aabe10900694f4a997418b1aec3aa30bb4a05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/state-machine-schema.json",
+      "line": 120,
+      "evidence": "p=0.90 Additional instructions to combine with target state's default instructions (opt",
+      "file_sha256": "5f920cb6ceb6d3cab0b14eee2e9aabe10900694f4a997418b1aec3aa30bb4a05"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/resources/state-machine-schema.json",
+      "line": 139,
+      "evidence": "p=0.99 Prompt or instructions for the review perspective",
+      "file_sha256": "5f920cb6ceb6d3cab0b14eee2e9aabe10900694f4a997418b1aec3aa30bb4a05"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "package/packages/core/dist/git-manager.js",
+      "line": 74,
+      "evidence": "execSync(`git commit -m \"${message}\"`, { cwd: projectPath, encoding: 'utf-8', st",
+      "file_sha256": "d923e41aef54e7e2b34d1d511a1dada444af7747fb15e79c70d8f3a9265fec15"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agentic-rpl.netlify.app",
+    "arc42.org",
+    "badge.fury.io",
+    "codemcp.github.io",
+    "cognitect.com",
+    "docs.arc42.org",
+    "en.wikipedia.org",
+    "fsf.org",
+    "gist.github.com",
+    "github.com",
+    "json-schema.org",
+    "mathiasbynens.be",
+    "mrsimpson.github.io",
+    "opencode.ai",
+    "raw.githubusercontent.com",
+    "readme.md",
+    "software-architektur.tv",
+    "spec.openapis.org",
+    "stackoverflow.com",
+    "tools.ietf.org",
+    "www.anthropic.com",
+    "www.gnu.org",
+    "www.npmjs.com",
+    "www.safaribooksonline.com",
+    "www.w3.org",
+    "www.youtube.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
