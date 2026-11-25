@@ -1,0 +1,61 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "nauro",
+    "version": "1.23.1",
+    "download": null
+  },
+  "archive_sha256": "cbcad41ee970b8a358aed9ad64e84dfd945002f5820cf9f4399f7568a5d9d112",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nauro-1.23.1/PKG-INFO",
+      "line": 66,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "b3d5d0ea543c196fcb0565c752c6569a1d5c1dc34e6370a64ad4a9b09290e838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nauro-1.23.1/src/nauro/agents/nauro-reviewer.md",
+      "line": 39,
+      "evidence": "p=0.93 - Meaningfully impacts accuracy, performance, security, or maintainability - Dis",
+      "file_sha256": "27dbb89c1935f6aac81ee79857ad0f2c200db3bb2c329eabd6b013474b3d3560"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nauro-1.23.1/src/nauro/agents/nauro-tech-lead.md",
+      "line": 85,
+      "evidence": "p=0.96 You SURFACE without a store write:",
+      "file_sha256": "2d848c8c913ae19c72a9a6a8ac43e85d17f04014847317db6e498612baf27ef8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nauro-1.23.1/README.md",
+      "line": 26,
+      "evidence": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+      "file_sha256": "22a13159a5463c460087444ea81c7a0df1af6aa37bb859f2abe8b7b41952bb77"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "astral.sh",
+    "cursor.com",
+    "developers.openai.com",
+    "docs.astral.sh",
+    "github.com",
+    "mcp.nauro.ai",
+    "nauro.ai",
+    "www.apache.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
