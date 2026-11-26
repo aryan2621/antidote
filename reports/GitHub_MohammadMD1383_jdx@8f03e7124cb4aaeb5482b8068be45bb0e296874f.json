@@ -1,0 +1,129 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "MohammadMD1383/jdx",
+    "version": "8f03e7124cb4aaeb5482b8068be45bb0e296874f",
+    "download": "https://codeload.github.com/MohammadMD1383/jdx/tar.gz/8f03e7124cb4aaeb5482b8068be45bb0e296874f"
+  },
+  "archive_sha256": "fa4bd44f894947d4938703d7e29607efd986ca0c86d0f74620941ce1d74a914b",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/README.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "e00b542e54442e7aed8b86f16d517026160e1356db54cb4c8fb561ace7068919"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/README.md",
+      "line": 123,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "e00b542e54442e7aed8b86f16d517026160e1356db54cb4c8fb561ace7068919"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/install-release.sh",
+      "line": 10,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "a2f66e047efa907c62bb1a5db61e911b60fe2fbc36b75e6573751e68671e687d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/docs/guide/installation.md",
+      "line": 17,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/MohammadMD1383/jdx/main/install-rel",
+      "file_sha256": "0b958e04d849ca84a567b7c7cc6405e20fd6f208871313a20ba5494ef635be48"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/docs/guide/installation.md",
+      "line": 72,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "0b958e04d849ca84a567b7c7cc6405e20fd6f208871313a20ba5494ef635be48"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/docs/PROPOSAL.md",
+      "line": 1320,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5106b407dbc95ed20164a1bffd1bd3180abf8dcc8751003c39c22bc1f6560ce2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "jdx-8f03e7124cb4aaeb5482b8068be45bb0e296874f/site/src/main/kotlin/dev/jdx/site/Layout.kt",
+      "line": 31,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/${repoSlug()}/main/install-release.",
+      "file_sha256": "9149b06db7c363adb1442f16e7118a1025c63c462bf9bbe77696b93573f2adc1"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "mirror.test",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.example.com",
+    "aiderdesk.dev",
+    "antigravity.google",
+    "apache.org",
+    "api.github.com",
+    "b.example.com",
+    "cursor.com",
+    "docs.devin.ai",
+    "example.com",
+    "example.test",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "jdx.dev",
+    "jdx.example.dev",
+    "kilo.ai",
+    "llmstxt.org",
+    "m8ven.ai",
+    "mcp.example.com",
+    "mirror.example",
+    "mirror.example.com",
+    "mirror.test",
+    "mohammadmd1383.github.io",
+    "opencode.ai",
+    "other.example",
+    "other.example.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "repo.example.com",
+    "repo.maven.apache.org",
+    "schema.org",
+    "services.gradle.org",
+    "static.modelcontextprotocol.io",
+    "unused.invalid",
+    "www.apache.org",
+    "www.sitemaps.org",
+    "www.w3.org",
+    "xml.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

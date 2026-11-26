@@ -1,0 +1,68 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "codeofaxel/kiln",
+    "version": "1.6.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=kiln&ownerHandle=codeofaxel&version=1.6.0"
+  },
+  "archive_sha256": "ee699eb9291088cd64bd022ef24ccc3758880666af0854653927df366e1d4786",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "README.md",
+      "line": 70,
+      "evidence": "curl -fsSL https://www.kiln3d.com/install.sh | sh",
+      "file_sha256": "1e56e756e1f22cd921b1249c5b8f90b84e7f9717fee8d186434d3e5f9fa37203"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 95,
+      "evidence": "p=0.97 Make them without being asked, and say what you did in one sentence.",
+      "file_sha256": "7258c39661983cd524bf5e8424a5b471a7671a06a536b001aeb6fc4693f46e38"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "raw.githubusercontent.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "192.168.1.100",
+    "api.kiln3d.com",
+    "astral.sh",
+    "docs.astral.sh",
+    "example.com",
+    "fsf.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "kiln3d.com",
+    "lobehub.com",
+    "mcptoplist.com",
+    "octopi.local",
+    "octoprint.org",
+    "openscad.org",
+    "pepy.tech",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "smithery.ai",
+    "static.modelcontextprotocol.io",
+    "www.gnu.org",
+    "www.kiln3d.com",
+    "www.prusa3d.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

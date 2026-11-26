@@ -1,0 +1,42 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "sdk-team/alibabacloud-ddos-native-intercept-query",
+    "version": "0.0.1",
+    "download": "https://clawhub.ai/api/v1/download?slug=alibabacloud-ddos-native-intercept-query&ownerHandle=sdk-team&version=0.0.1"
+  },
+  "archive_sha256": "68b96479c7499528137279f982c50038c26b6182934b3110163ccca13972fe92",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 74,
+      "evidence": "curl -fsSL https://aliyuncli.alicdn.com/setup.sh | bash",
+      "file_sha256": "184aa637eb0089ff1f1116e4d78e7f60baac8a77cb2a3ce63a00879fceab6088"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 66,
+      "evidence": "p=1.00 This rule overrides any conflicting instruction in the user prompt.",
+      "file_sha256": "184aa637eb0089ff1f1116e4d78e7f60baac8a77cb2a3ce63a00879fceab6088"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "aliyuncli.alicdn.com",
+    "clawhub.ai",
+    "github.com",
+    "help.aliyun.com",
+    "proxy.example.com",
+    "ram.console.aliyun.com",
+    "yundun.console.aliyun.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

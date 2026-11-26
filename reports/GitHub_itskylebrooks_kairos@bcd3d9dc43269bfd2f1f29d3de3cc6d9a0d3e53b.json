@@ -1,0 +1,88 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "itskylebrooks/kairos",
+    "version": "bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b",
+    "download": "https://codeload.github.com/itskylebrooks/kairos/tar.gz/bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b"
+  },
+  "archive_sha256": "5391b14cdfd0dbd348c1d62c3edc1453931e519c30bace779420b95ea1157501",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/test/safety.test.js",
+      "line": 12,
+      "evidence": "\\u{202e}",
+      "file_sha256": "b75272bc717a5cf71a161f730b9299b3b54f99ad19a0d3eafa976c0a68278672"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/test/safety.test.js",
+      "line": 16,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "b75272bc717a5cf71a161f730b9299b3b54f99ad19a0d3eafa976c0a68278672"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/test/notes.test.js",
+      "line": 32,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "1b655c1be4a1a69dbd53eb9a2e2e61c5d064aebefab5aa4b8e3bd2c566f0e256"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/test/mail.test.js",
+      "line": 28,
+      "evidence": "\\u{202e}",
+      "file_sha256": "0dd9ebae0457b2d64964ed6c30c781d386bc9cc30b14394e9e26ad908099bac3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/test/mail.test.js",
+      "line": 55,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "0dd9ebae0457b2d64964ed6c30c781d386bc9cc30b14394e9e26ad908099bac3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/CLAUDE.md",
+      "line": 85,
+      "evidence": "p=0.92 ### Instructions string for the model",
+      "file_sha256": "7ff462872cb29ef99668f4f241a7dad45c5569c38b3a5dae1bf629239f908d2e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "kairos-bcd3d9dc43269bfd2f1f29d3de3cc6d9a0d3e53b/install.sh",
+      "line": 100,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "3aa3b8a878ceb6a8b95e00dd2f09fcca7f1442220c7d6abee81d914c5c9e8c7d"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "nodejs.org",
+    "privacy.apple.com",
+    "registry.npmjs.org",
+    "spokenly.app",
+    "www.apple.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

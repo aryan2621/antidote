@@ -1,0 +1,59 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "vicmaster/framesmith",
+    "version": "e58604711e642bbac0088926417eb73280932206",
+    "download": "https://codeload.github.com/vicmaster/framesmith/tar.gz/e58604711e642bbac0088926417eb73280932206"
+  },
+  "archive_sha256": "be765150bba970021e6cda72a171be117b3da9a8cb604d6273d9a44e8e034405",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "framesmith-e58604711e642bbac0088926417eb73280932206/src/screenshot.ts",
+      "line": 32,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "129fb0119753d6a132b0c6bfc9ba6e613a22fc90ea268d75f5b6554f6ac0c8af"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "evil.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "app.local",
+    "cdn.example.com",
+    "evil.example",
+    "example.com",
+    "fonts.bunny.net",
+    "fonts.google.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "github.com",
+    "img.shields.io",
+    "leanpub.com",
+    "lucide.dev",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "opensource.org",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "staging.example.com",
+    "victorvelazquez.dev",
+    "www.magmalabs.io",
+    "www.w3.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}

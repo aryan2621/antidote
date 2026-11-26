@@ -1,0 +1,45 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Arakiss/nahuali",
+    "version": "4ab6eb79c4bae320d09471fe535d8f06eaef9edb",
+    "download": "https://codeload.github.com/Arakiss/nahuali/tar.gz/4ab6eb79c4bae320d09471fe535d8f06eaef9edb"
+  },
+  "archive_sha256": "379cbbdbca1a8c84786060180ee4cd056dcafedfe21ac867bbe44763f25a7eba",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nahuali-4ab6eb79c4bae320d09471fe535d8f06eaef9edb/skills/nahuali/SKILL.md",
+      "line": 58,
+      "evidence": "p=0.97 `nahuali answer ASK \"text\"` closes an ask and makes it a decision. Answers are t",
+      "file_sha256": "6ee577f2eb05e62d7f72bacfeb1eac9ea44d3fce6849dc205479debcdeb076e9"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nahuali-4ab6eb79c4bae320d09471fe535d8f06eaef9edb/skills/nahuali/SKILL.md",
+      "line": 136,
+      "evidence": "p=0.96 One line, about the tool, not about the work: a verb or flag you expected and di",
+      "file_sha256": "6ee577f2eb05e62d7f72bacfeb1eac9ea44d3fce6849dc205479debcdeb076e9"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "github.com",
+    "huggingface.co",
+    "img.shields.io",
+    "keepachangelog.com",
+    "memory.example.com",
+    "semver.org",
+    "surrealdb.com",
+    "www.apache.org",
+    "www.conventionalcommits.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

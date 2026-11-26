@@ -1,0 +1,105 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "isokron-ai/mcp-writecheck-action",
+    "version": "cb78eab252be368e81db0f27b78d01a844a81bde",
+    "download": "https://codeload.github.com/isokron-ai/mcp-writecheck-action/tar.gz/cb78eab252be368e81db0f27b78d01a844a81bde"
+  },
+  "archive_sha256": "ed1f92e27ee6de07055a0412d1131195d4f79151cc8bb9c40e6b6982dac6b491",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 83,
+      "evidence": "p=0.97 **MWS-RES-1 (MUST).** *Applies when* the tool writes. Report success only when t",
+      "file_sha256": "aec3680c6f798e418012cdb30c155ff89e4a567b9f48f76e40488d1a4cee2e01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.95 **MWS-ATOM-1 (MUST).** *Applies when* a tool writes more than one item, or makes",
+      "file_sha256": "aec3680c6f798e418012cdb30c155ff89e4a567b9f48f76e40488d1a4cee2e01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/skills/mcp-write-safe-caller/SKILL.md",
+      "line": 77,
+      "evidence": "p=0.94 All-or-nothing is a SHOULD in MWS, not a MUST (MWS-ATOM-2). The MUST is that a w",
+      "file_sha256": "1ed432005aa23e1aeb652909c39e476cc217492e6dd1c866a3212e7f87b5d0ae"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/plugin/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 83,
+      "evidence": "p=0.97 **MWS-RES-1 (MUST).** *Applies when* the tool writes. Report success only when t",
+      "file_sha256": "aec3680c6f798e418012cdb30c155ff89e4a567b9f48f76e40488d1a4cee2e01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/plugin/skills/mcp-write-safe-builder/SKILL.md",
+      "line": 104,
+      "evidence": "p=0.95 **MWS-ATOM-1 (MUST).** *Applies when* a tool writes more than one item, or makes",
+      "file_sha256": "aec3680c6f798e418012cdb30c155ff89e4a567b9f48f76e40488d1a4cee2e01"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "mcp-writecheck-action-cb78eab252be368e81db0f27b78d01a844a81bde/plugin/skills/mcp-write-safe-caller/SKILL.md",
+      "line": 77,
+      "evidence": "p=0.94 All-or-nothing is a SHOULD in MWS, not a MUST (MWS-ATOM-2). The MUST is that a w",
+      "file_sha256": "1ed432005aa23e1aeb652909c39e476cc217492e6dd1c866a3212e7f87b5d0ae"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "example.org, feross.org, json-schema.org, paulmillr.com, raw.githubusercontent.com, www.isokron.ai, www.patreon.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "codeload.github.com",
+    "creativecommons.org",
+    "docs.github.com",
+    "evil.example",
+    "evil.test",
+    "example.com",
+    "example.org",
+    "example.test",
+    "feross.org",
+    "github.com",
+    "isokron.ai",
+    "json-schema.org",
+    "mws.invalid",
+    "paulmillr.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "registry.npmjs.org.evil.example",
+    "www.apache.org",
+    "www.isokron.ai",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,338 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ThomasBirkmaier/ReqSeq",
+    "version": "d3658fd2617a0ce75291bcc0931783886d18b71b",
+    "download": "https://codeload.github.com/ThomasBirkmaier/ReqSeq/tar.gz/d3658fd2617a0ce75291bcc0931783886d18b71b"
+  },
+  "archive_sha256": "b2d6459cc55b4c185e5322cc358a6e697d9c1e951b602f1b60de8268473dc103",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/verification/SR-078.md",
+      "line": 17,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "9663a0c970f551d14332f73e0762af369bcf73e49122650ab72c1bc2f1580d66"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/commands/tool.guide.json",
+      "line": 41,
+      "evidence": "p=0.92 How the guide names a command: `cli` as a call of the command line (`reqseq elem",
+      "file_sha256": "46aaa9f9b412e7aac2df9f3275423ab0a8ef695e47ff639aca28f0a137c7d24e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/commands/baseline.get.json",
+      "line": 245,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "4df55f6db455ed84ce0854d576614b2bfbbf32f08877cf4d0727f02ebe27da0a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/commands/element.create.json",
+      "line": 74,
+      "evidence": "p=0.93 Give the element the identifier after the highest of its type with the same iden",
+      "file_sha256": "bb20694f5e2cde7a3a9c4ac6569cf65c40e4b207b54d15f31e9d0f02e09662d1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/filter.schema.json",
+      "line": 199,
+      "evidence": "p=0.95 Elements that element.search finds for this query in all fields (SR-068, SR-220 ",
+      "file_sha256": "af681a07578a423e7910f0d30ce274f3d4e153a37cc96756364ab70b4b931364"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/common.schema.json",
+      "line": 79,
+      "evidence": "p=0.93 A property or status definition that no type has any more and that stays, as ele",
+      "file_sha256": "58449b78de80ea4197ceaee873124f5a2568f0596d5b424d2d0b5aa055ced35e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/common.schema.json",
+      "line": 1121,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "58449b78de80ea4197ceaee873124f5a2568f0596d5b424d2d0b5aa055ced35e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 2742,
+      "evidence": "p=0.92 How the guide names a command: `cli` as a call of the command line (`reqseq elem",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 6977,
+      "evidence": "p=0.92 Give the element the identifier after the highest of its type with the same iden",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 9114,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 19470,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 21931,
+      "evidence": "p=0.95 A property or status definition that no type has any more and that stays, as ele",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 19470,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/openapi.json",
+      "line": 24730,
+      "evidence": "p=0.98 Elements that element.search finds for this query in all fields: every word in t",
+      "file_sha256": "b81cbf04b6c5356cb3eb4d8bbcc4b333ab417fb784130c8f96a25715a233fb6e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 476,
+      "evidence": "p=0.95 A property or status definition that no type has any more and that stays, as ele",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 1674,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 3275,
+      "evidence": "p=0.98 Elements that element.search finds for this query in all fields: every word in t",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 5701,
+      "evidence": "p=0.92 How the guide names a command: `cli` as a call of the command line (`reqseq elem",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 8111,
+      "evidence": "p=0.92 Give the element the identifier after the highest of its type with the same iden",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 9242,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 1674,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/schemas/generated/mcp-tools.json",
+      "line": 14921,
+      "evidence": "p=0.91 The difference of an element since a baseline: its old and new text, acceptance ",
+      "file_sha256": "a50a9a333f5bd84df43a6137e25fa697dabcdd094d071df3814abea71ddda945"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 486,
+      "evidence": "p=0.95 A property or status definition that no type has any more and that stays, as ele",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 1684,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 3293,
+      "evidence": "p=0.98 Elements that element.search finds for this query in all fields: every word in t",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 7217,
+      "evidence": "p=0.92 How the guide names a command: `cli` as a call of the command line (`reqseq elem",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 14149,
+      "evidence": "p=0.92 Give the element the identifier after the highest of its type with the same iden",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 19337,
+      "evidence": "p=0.94 Write the change; without it nothing is written. A written file also gets the cu",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/packages/core/src/generated/contracts.json",
+      "line": 1684,
+      "evidence": "p=0.91 Elements of the baseline in a repository that is not on this machine.",
+      "file_sha256": "2946b80d0fa61b6ba10698e5bb1a3429422a7570aafe8ed0fb4e85353fd9306e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "ReqSeq-d3658fd2617a0ce75291bcc0931783886d18b71b/docs/guide/how-to/install-reqseq.md",
+      "line": 39,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "08b4bd660752b01c119e1ec0a253a3a0e3e54756ca93afd9ad7d2a765fa78e1a"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "0x7f.0.0.1, 127.1, 127.200.0.9, 192.0.2.10, 192.0.2.7, 192.0.2.8, 192.0.2.9, app.localhost, ipc.localhost, nodejs.org, other.example, scripts.sil.org, www.apple.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "0x7f.0.0.1",
+    "127.0.0.1",
+    "127.1",
+    "127.200.0.9",
+    "192.0.2.1",
+    "192.0.2.10",
+    "192.0.2.7",
+    "192.0.2.8",
+    "192.0.2.9",
+    "api.github.com",
+    "app.localhost",
+    "ci.example.com",
+    "creativecommons.org",
+    "daringfireball.net",
+    "e.org",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "git.example.com",
+    "github.com",
+    "img.shields.io",
+    "ipc.localhost",
+    "json-schema.org",
+    "mcp.context7.com",
+    "mozilla.org",
+    "nodejs.org",
+    "openjsf.org",
+    "other.example",
+    "reqseq.dev",
+    "scripts.sil.org",
+    "t.example",
+    "thomasbirkmaier.github.io",
+    "underscorejs.org",
+    "www.apache.org",
+    "www.apple.com",
+    "www.omg.org",
+    "www.w3.org",
+    "x.org",
+    "x.test"
+  ],
+  "install_script": false,
+  "score": "high"
+}
