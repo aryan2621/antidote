@@ -1,0 +1,43 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sergiparpal/burgess",
+    "version": "aacda67edf159ca8758f5c95c1c2d28843e54ed7",
+    "download": "https://codeload.github.com/sergiparpal/burgess/tar.gz/aacda67edf159ca8758f5c95c1c2d28843e54ed7"
+  },
+  "archive_sha256": "cc6357ee066cbba548c64546d4ce70804bd78456f890f792108ead98ae16f67a",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "burgess-aacda67edf159ca8758f5c95c1c2d28843e54ed7/agents/evaluator.md",
+      "line": 128,
+      "evidence": "p=0.98 If the prompt file or the rag folder is missing, say which one and stop: the com",
+      "file_sha256": "366b9235df1252e6c28a7cf33f6e745a8e0b36a07769eead5d114c3a57dc74ca"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "api.openalex.org, doi.org, example.org, nowhere.example, openalex.org, x.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "api.openalex.org",
+    "doi.org",
+    "example.org",
+    "github.com",
+    "nowhere.example",
+    "openalex.org",
+    "x.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

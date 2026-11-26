@@ -1,0 +1,76 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@anthonymercer/mcplint",
+    "version": "0.4.0",
+    "download": null
+  },
+  "archive_sha256": "bb9e16c1a1818da89b3a966c5ed8173971b84011c20d8af133b93e9559336792",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 38,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "ce8a1f148c86f834baf5f664dc4ed915f044b350717aa89ec605abe16f35a4f7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/docs/rules/safety-prompt-injection.md",
+      "line": 34,
+      "evidence": "p=1.00 The exact patterns matched (see `src/core/rules/safety.ts`): `ignore/disregard (",
+      "file_sha256": "148c9a3a4b044cf69e37782e1754a3aad0c856099323d85dc8dbbe0ffb923f9b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/docs/rules/naming-generic.md",
+      "line": 36,
+      "evidence": "p=0.94 Override severity with `\"severities\": {\"naming/generic\": \"error\"}` (tighten it) ",
+      "file_sha256": "b27ab407eba6c0ff7ce46ad84bcf6635a31bf031b39884fcf326a96cf63a7113"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-26T05:51:15.040Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "185.199.108.153",
+    "ajv.js.org",
+    "antonsoo.github.io",
+    "blog.trailofbits.com",
+    "developers.openai.com",
+    "docs.oasis-open.org",
+    "embracethered.com",
+    "en.wikipedia.org",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "json-schema.org",
+    "mcp.context7.com",
+    "modelcontextprotocol.io",
+    "platform.claude.com",
+    "platform.openai.com",
+    "raw.githubusercontent.com",
+    "reproducible-builds.org",
+    "www.npmjs.com",
+    "www.rfc-editor.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

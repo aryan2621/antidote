@@ -1,0 +1,82 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@antonsoloviev/mcplint",
+    "version": "0.3.3",
+    "download": null
+  },
+  "archive_sha256": "4859a39c798346b7437914d35008660f48daa40bd1747328628148e2de08495e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "package/README.md",
+      "line": 21,
+      "evidence": "ignore all previous instructions",
+      "file_sha256": "7f54f9f84fe972672cf1e343e17cdc4600c067f4ac5a5261bbdc55b2d7bf6a3f"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "package/README.md",
+      "line": 177,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "7f54f9f84fe972672cf1e343e17cdc4600c067f4ac5a5261bbdc55b2d7bf6a3f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/docs/rules/safety-prompt-injection.md",
+      "line": 23,
+      "evidence": "p=1.00 The exact patterns matched (see `src/core/rules/safety.ts`): `ignore/disregard (",
+      "file_sha256": "754b51de8a7f3df466dac163d6454d2c6a3e201a987877d053217fff03c97d90"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/docs/rules/safety-prompt-injection.md",
+      "line": 40,
+      "evidence": "p=0.92 If you wrote this: don't — a tool description should describe the tool's own beh",
+      "file_sha256": "754b51de8a7f3df466dac163d6454d2c6a3e201a987877d053217fff03c97d90"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/docs/rules/naming-generic.md",
+      "line": 38,
+      "evidence": "p=0.94 Override severity with `\"severities\": {\"naming/generic\": \"error\"}` (tighten it) ",
+      "file_sha256": "3545bbd04fa3427dfba4bed0ec3588bb42d309134fe71e97cd8996e15cb8879c"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "185.199.108.153",
+    "ajv.js.org",
+    "antonsoo.github.io",
+    "blog.trailofbits.com",
+    "developers.openai.com",
+    "docs.oasis-open.org",
+    "embracethered.com",
+    "en.wikipedia.org",
+    "example.com",
+    "github.com",
+    "img.shields.io",
+    "invariantlabs.ai",
+    "json-schema.org",
+    "mcp.context7.com",
+    "modelcontextprotocol.io",
+    "platform.claude.com",
+    "platform.openai.com",
+    "raw.githubusercontent.com",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

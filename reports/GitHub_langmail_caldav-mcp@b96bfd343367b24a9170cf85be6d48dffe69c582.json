@@ -1,0 +1,72 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "langmail/caldav-mcp",
+    "version": "b96bfd343367b24a9170cf85be6d48dffe69c582",
+    "download": "https://codeload.github.com/langmail/caldav-mcp/tar.gz/b96bfd343367b24a9170cf85be6d48dffe69c582"
+  },
+  "archive_sha256": "ba1f6145fdc20a4889f953cd083288c93205ffde5af9dad81dcd4d13326fd722",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "caldav-mcp-b96bfd343367b24a9170cf85be6d48dffe69c582/.agents/skills/mcp-tool-design/SKILL.md",
+      "line": 170,
+      "evidence": "p=0.92 Run this on any PR that adds or changes a tool.",
+      "file_sha256": "c8ab3e05fc4545bd3780806a313cfc062f8e3cb0c47d0d32e470f213d37ed4d1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "caldav-mcp-b96bfd343367b24a9170cf85be6d48dffe69c582/.agents/skills/upgrade-dependency/SKILL.md",
+      "line": 78,
+      "evidence": "p=0.96 Take the first that applies, and say what you picked and why before you change a",
+      "file_sha256": "cbbb6084428379ecf699077baeb6727ce0ab3d209e9b3b753e9e54eb0d4c54b4"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "arxiv.org",
+    "aws.amazon.com",
+    "badge.fury.io",
+    "biomejs.dev",
+    "blog.modelcontextprotocol.io",
+    "caldav.example.com",
+    "choosealicense.com",
+    "cloud.example.com",
+    "dav.example.com",
+    "developers.openai.com",
+    "evil.example",
+    "example.com",
+    "feross.org",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "ko-fi.com",
+    "langmail.me",
+    "modelcontextprotocol.io",
+    "opencollective.com",
+    "other.example.com",
+    "platform.claude.com",
+    "registry.npmjs.org",
+    "ro14nd.de",
+    "static.modelcontextprotocol.io",
+    "tally.so",
+    "tidelift.com",
+    "unpkg.com",
+    "www.anthropic.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.npmjs.com",
+    "www.patreon.com",
+    "www.speakeasy.com",
+    "www.ultracite.ai",
+    "your-caldav-server.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

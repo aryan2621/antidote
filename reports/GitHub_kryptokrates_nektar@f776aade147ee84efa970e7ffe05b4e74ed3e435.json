@@ -1,0 +1,213 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "kryptokrates/nektar",
+    "version": "f776aade147ee84efa970e7ffe05b4e74ed3e435",
+    "download": "https://codeload.github.com/kryptokrates/nektar/tar.gz/f776aade147ee84efa970e7ffe05b4e74ed3e435"
+  },
+  "archive_sha256": "58fe0fa6c31eb12fc2ed0ababf83e1bc2d3799d610f197882e64a9554b51447e",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/.devin/skills/cold-start/references/tipping-playbooks.md",
+      "line": 42,
+      "evidence": "p=0.95 1. **Density by design.** Every new user arrives knowing at least one person ins",
+      "file_sha256": "d40b83eaf5c7c53306dc7ea262eadbf85b980f2df5d8c46acaccec84a79bdfc6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/deploy/hub/templates/cloud-init.yaml",
+      "line": 22,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/deploy/h",
+      "file_sha256": "834523475d7eafc9c3208de1cc315a95b862edcc0ff0da427f61d928bb41c3a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/deploy/hub/install.sh",
+      "line": 24,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "bf3facba6998b0e57ddb15efc369d8fbb752cdd0c7f1b1759914192762452ab3"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/deploy/hub/install.sh",
+      "line": 24,
+      "evidence": "curl -fsSL https://get.docker.com | sh",
+      "file_sha256": "bf3facba6998b0e57ddb15efc369d8fbb752cdd0c7f1b1759914192762452ab3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/deploy/agent/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/deploy/a",
+      "file_sha256": "36bf705081baaea1beacc9821c598f1096660ec92c4cfc9dcfd9457ea18c6de0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/deploy/agent/README.md",
+      "line": 35,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/deploy/a",
+      "file_sha256": "54cc2d67ef9b47461cc3a8d6f3a2d6cb2751fb2f2db3216773f929d913bac846"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/README.md",
+      "line": 18,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "f95f466b4995ccf5f5cd3104aaaa0540b72456a62b9b0a62c2aa488001a6fb99"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/docs/JOIN-TESTNET.md",
+      "line": 44,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "d66ff8e07a18895db154d4525489aeaabf5806f6c7e37ff2b6b06ad5f2a9a952"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/docs/ADVANCED-INSTALL.md",
+      "line": 4,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "9ab1454e992c38b0c9a6376f8f813d9303693c70453af13b9064133d80ed62f7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/install/nektar",
+      "line": 364,
+      "evidence": "curl -fsSL \"$RAW_BASE/deploy/hub/install.sh\" | bash",
+      "file_sha256": "faa0bf01e18e1671b5b3a0b3fb6451aa3b47ec5be4d856314d0773c44c8f8d51"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/install/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "deec534d183b064ab7e75297bdf707d5c3488d6dd8162d4edfc07d5a18d71d1b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/internal/server/http_memory.go",
+      "line": 84,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "4627280ece9fb083058ebb241eea9c432195fee7169c79d1bb4f1dc0176f821e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/internal/server/http_market.go",
+      "line": 283,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/deploy/h",
+      "file_sha256": "f73defa3ec7b52a6281acc704b6d6e7aedcfe756d531ad3f3b8dd4c571d634d7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "nektar-f776aade147ee84efa970e7ffe05b4e74ed3e435/site/index.html",
+      "line": 141,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/kryptokrates/nektar/master/install/",
+      "file_sha256": "01b8314acf57675226ee3a05162ce207f93fd169eca3b3a06671ee77045e2bf9"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "10.0.0.15, 10.0.0.5, 192.168.65.254, api.anthropic.com, api.ipify.org, api.typesafe.ai, arcade-eu-1.bsvblockchain.tech, arcade-testnet-us-1.bsvblockchain.tech, arcade-v2-us-1.bsvblockchain.tech, bsvblockchain.com, docs.docker.com, get.docker.com, hub.example.com, ifconfig.me, jev.remote-hub.example, mainnet-chaintracks.babbage.systems, metadata.google.internal, nektar.local, openrouter.ai, railway.app, raw.githubusercontent.com, static.modelcontextprotocol.io, sub.localhost, svelte.dev, test.bananablocks.com, testnet.nektar.run, untrusted-z.example, w1.example, w2.example, www.docker.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.15",
+    "10.0.0.5",
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.65.254",
+    "1bsv.net",
+    "api.anthropic.com",
+    "api.ipify.org",
+    "api.openai.com",
+    "api.typesafe.ai",
+    "api.whatsonchain.com",
+    "arcade-eu-1.bsvblockchain.tech",
+    "arcade-testnet-us-1.bsvblockchain.tech",
+    "arcade-v2-testnet-us-1.bsvblockchain.tech",
+    "arcade-v2-us-1.bsvblockchain.tech",
+    "bitcoinmagazine.com",
+    "bsvblockchain.com",
+    "docs.docker.com",
+    "evil.example",
+    "evil.example.com",
+    "fee.org",
+    "get.docker.com",
+    "github.com",
+    "help.openai.com",
+    "host-a.example",
+    "host-b.example",
+    "host.docker.internal",
+    "hub.example.com",
+    "ifconfig.me",
+    "img.shields.io",
+    "jev.remote-hub.example",
+    "mainnet-chaintracks.babbage.systems",
+    "market.example",
+    "marp.app",
+    "metadata.google.internal",
+    "nektar.local",
+    "nektar.run",
+    "openai.com",
+    "openrouter.ai",
+    "railway.app",
+    "raw.githubusercontent.com",
+    "singulargrit.substack.com",
+    "static.modelcontextprotocol.io",
+    "sub.localhost",
+    "svelte.dev",
+    "test.bananablocks.com",
+    "test.whatsonchain.com",
+    "testnet.nektar.run",
+    "untrusted-z.example",
+    "w1.example",
+    "w2.example",
+    "whatsonchain.com",
+    "wirearchy.com",
+    "www.cnbc.com",
+    "www.dariov.com",
+    "www.docker.com",
+    "www.nateliason.com",
+    "www.themarginalian.org",
+    "www.theverge.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
