@@ -1,0 +1,79 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "@copado/agentia-cli",
+    "version": "1.17.0",
+    "download": null
+  },
+  "archive_sha256": "dd81c39c4231932ae62a12356e87f102105a198023208e105a80787f485d75bb",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/templates/skills/agentia/SKILL.md",
+      "line": 32,
+      "evidence": "p=0.95 Use the applicable installed domain skill for detailed instructions:",
+      "file_sha256": "06b926bcfb5cddf08e1edad238602c867016c5e189fc06a949ebcfbf96612cb5"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/oclif.manifest.json",
+      "line": 11272,
+      "evidence": "p=0.98 Ignore unsupported manifest asset arrays instead of failing",
+      "file_sha256": "51b3f757827d339cb687a34a893f64fcaf4e139846ef0c4f38eb4c3136a37bf7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/oclif.manifest.json",
+      "line": 22513,
+      "evidence": "p=0.97 Manual Task instructions",
+      "file_sha256": "51b3f757827d339cb687a34a893f64fcaf4e139846ef0c4f38eb4c3136a37bf7"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "json.schemastore.org",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "ca.pipeline.copado.com",
+    "crt.invalid",
+    "dev.api.copado.com",
+    "dev.azure.com",
+    "developer.copado.com",
+    "eu.pipeline.copado.com",
+    "example.com",
+    "github.com",
+    "gitlab.com",
+    "img.shields.io",
+    "json.schemastore.org",
+    "login.salesforce.com",
+    "na.api.copado.com",
+    "oclif.io",
+    "plugin-registry-9c120c.gitlab.io",
+    "proxy.example.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "robotic.copado.com",
+    "soap.sforce.com",
+    "test.api.copado.com",
+    "uat.pipeline.copado.com",
+    "us.pipeline.copado.com",
+    "www.npmjs.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

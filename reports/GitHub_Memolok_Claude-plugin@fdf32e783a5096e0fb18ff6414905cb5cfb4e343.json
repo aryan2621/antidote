@@ -1,0 +1,165 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Memolok/Claude-plugin",
+    "version": "fdf32e783a5096e0fb18ff6414905cb5cfb4e343",
+    "download": "https://codeload.github.com/Memolok/Claude-plugin/tar.gz/fdf32e783a5096e0fb18ff6414905cb5cfb4e343"
+  },
+  "archive_sha256": "977cc5b5143361cac75397a0e4af9b15fee1f3aefb9227364bce61b9e7178e23",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/agents/ledger-scout.md",
+      "line": 12,
+      "evidence": "p=0.99 Everything you read is discarded when you finish. That is the point of you: a sw",
+      "file_sha256": "c986f5f3639379ad53b8338cfabbdb614969e93d0adc23508f773b1bf350f343"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/manage-notes/SKILL.md",
+      "line": 140,
+      "evidence": "p=0.98 > I can't point the record at the note — nothing in the ledger can reference one",
+      "file_sha256": "52bbc0384901a3daf1390b6720d63dcca852564ff8e81d85850512af3d070bc8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/references/expected-outcomes.md",
+      "line": 3,
+      "evidence": "p=0.95 At the moment of commitment you are asked for one more thing beyond the choice a",
+      "file_sha256": "26838182d15216b46c8d0210404e0f3cda98528db84d9dae4207ac7ae025a185"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/references/supersession-and-withdrawal.md",
+      "line": 19,
+      "evidence": "p=0.94 What separates the two is what happens to everything you *did not* mention. **An",
+      "file_sha256": "7f35ef625b22761edf7372c95a3832c42eaa564fc8c426dc836ad1a98e57eca5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/references/solo-practitioners.md",
+      "line": 17,
+      "evidence": "p=0.94 Think of it as hats. The you wearing the carpenter hat has a different working c",
+      "file_sha256": "13549020668206d4a8cc64071a3f69352bed790abe3e5aaf9e4746fdd1939331"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/references/common-objections.md",
+      "line": 35,
+      "evidence": "p=0.93 A one-line configuration change where you took the obvious value needs no record",
+      "file_sha256": "1443ead78a17029a24bb6ff0937df4773d3ac8bb9c45c16a676752043ff150e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/SKILL.md",
+      "line": 39,
+      "evidence": "p=0.94 Skimming the map, recognizing the topic and composing a plausible answer out of ",
+      "file_sha256": "f77887d2f94dfab36ea5038e007d3e39649f86aafaeeb8d45028d3bc44322f35"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/help/SKILL.md",
+      "line": 109,
+      "evidence": "p=0.93 **\"There is no way to X\" is not the same claim, and must not be read as one.** M",
+      "file_sha256": "f77887d2f94dfab36ea5038e007d3e39649f86aafaeeb8d45028d3bc44322f35"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/wrap-up/SKILL.md",
+      "line": 106,
+      "evidence": "p=0.99 This is **eligibility, not an inventory.** You are not being asked to walk the w",
+      "file_sha256": "a3e059ab3ca592d8fa76021f808f463490e980b8376f2eb8eb261a60283dcfd7"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/record-decision/references/matter-closure.md",
+      "line": 22,
+      "evidence": "p=0.93 **You will never be asked which record answers which input, and you must not vol",
+      "file_sha256": "c613d257ceaf832a99c70b383837963dd4c8fed30c6596f7b4072ce249c62cea"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/record-decision/references/patch-payloads.md",
+      "line": 88,
+      "evidence": "p=0.92 Legal and expected while staged. De-sharpening a Need that absorbed the answer i",
+      "file_sha256": "219dbc43833cb3bb047c3534d2986d6f7618f0ce3fd00167d54b6313af31614a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/record-decision/references/intake-fork.md",
+      "line": 54,
+      "evidence": "p=0.91 Note what would have made this the wrong call: *\"it must use Python for pandas a",
+      "file_sha256": "41c880a180300482043e1dcb2ff97d22502518bbc4f18d78f7c40f0f60c17816"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/memolok-method/references/write-failures.md",
+      "line": 11,
+      "evidence": "p=0.96 The write did **not** happen. Nothing was captured, and the record you were shap",
+      "file_sha256": "76b699782731c353f0170e031313126bd243cc811801e58a549a0e0e8ea27637"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/memolok-method/references/agents-md-block.md",
+      "line": 41,
+      "evidence": "p=0.91 If you cannot write to that folder, say nothing and write nothing.",
+      "file_sha256": "dc34cd670ea883ca7ef40f6a2f8a6a20a6e57bdcea3c632df9c46901f8281ab5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "Claude-plugin-fdf32e783a5096e0fb18ff6414905cb5cfb4e343/skills/memolok-method/references/tools-catalog.md",
+      "line": 39,
+      "evidence": "p=0.91 Every kind can be told apart by its prefix. Bodies are Crockford base32 — the te",
+      "file_sha256": "f691ac250ea3b50303b3cda361c11b33e9b15b70a111b70cbdb39ba171cc3357"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "mcp.memolok.ai",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "app.memolok.ai",
+    "mcp.memolok.ai",
+    "www.memolok.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

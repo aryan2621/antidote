@@ -1,0 +1,122 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Aricept094/negaresh",
+    "version": "32abb1f579ceee0b976dc5fb563878ccabd50a80",
+    "download": "https://codeload.github.com/Aricept094/negaresh/tar.gz/32abb1f579ceee0b976dc5fb563878ccabd50a80"
+  },
+  "archive_sha256": "3b81abb404d666ed26fae52d3786df27cd1e2e4d8088b15de808cb3825fc0f8d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/skills/negaresh/references/rules-discourse.md",
+      "line": 47,
+      "evidence": "p=0.97 *توصیه · منبع\\u{200c}دار · فقط: academic، professional، journalistic، general_nonfictio",
+      "file_sha256": "0740c59895c94f79ff60c869047b900eb4f48fb8035710db2e45021ef7f254ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/skills/negaresh/references/rules-grammar.md",
+      "line": 722,
+      "evidence": "p=0.95 *توصیه · منبع\\u{200c}دار · فقط: academic، professional، journalistic، general_nonfictio",
+      "file_sha256": "649e12827fff4d7278fb6c9f36631b11c6d7810196bd13b3eb9911159b511a88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/skills/negaresh/references/rules-grammar.md",
+      "line": 747,
+      "evidence": "p=0.93 *توصیه · منبع\\u{200c}دار · فقط: academic، professional، journalistic، general_nonfictio",
+      "file_sha256": "649e12827fff4d7278fb6c9f36631b11c6d7810196bd13b3eb9911159b511a88"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/skills/negaresh/references/rules-punctuation.md",
+      "line": 258,
+      "evidence": "\\u{202e}",
+      "file_sha256": "7f9a059c2180a3c3df9e728bc6fdfff2d7e2be2a78da7d82ac4437c1ccf0caba"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/tests/test_precision.py",
+      "line": 276,
+      "evidence": "\\u{202e}",
+      "file_sha256": "1a742f15d981efbcde8e2cc2c0ea7d82dd188932607cf3352ae9bd387884f271"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/src/negaresh/mechanics.py",
+      "line": 56,
+      "evidence": "\\u{202a}",
+      "file_sha256": "e861c1c113f31b6821b65159023686a010d2ce5bcd493e23b58864f8eab05610"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/src/negaresh/data/corpus.json",
+      "line": 1,
+      "evidence": "\\u{202e}",
+      "file_sha256": "b656f130998e0ba0ed50a1a425defabd26ed36d5444f46df19ab37edd6baf964"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/docs/RULEBOOK.md",
+      "line": 1215,
+      "evidence": "\\u{202e}",
+      "file_sha256": "25ac02877cb7c40087c56cc0ec5e94db2fd095ae2db17225250091861909da0d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "negaresh-32abb1f579ceee0b976dc5fb563878ccabd50a80/corpus/rules/punctuation.json",
+      "line": 24,
+      "evidence": "\\u{202e}",
+      "file_sha256": "0e58d71e3acf212c4face7acce44fc243b42d5cb5b6ec00c05830c3f355bafa5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "anysphere.cursor-deeplink",
+    "chat.openai.com",
+    "chatgpt.com",
+    "claude.ai",
+    "docs.astral.sh",
+    "example.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "insiders.vscode.dev",
+    "lrr.modares.ac.ir",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "www.cssp.cnrs.fr",
+    "www.rjnsq.ir",
+    "www.unicode.org",
+    "www.w3.org",
+    "x.ir",
+    "your-name.trycloudflare.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

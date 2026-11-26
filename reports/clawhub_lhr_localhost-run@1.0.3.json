@@ -1,0 +1,37 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "lhr/localhost-run",
+    "version": "1.0.3",
+    "download": "https://clawhub.ai/api/v1/download?slug=localhost-run&ownerHandle=lhr&version=1.0.3"
+  },
+  "archive_sha256": "5ca90ee7789c2d496e3b6ee46db14a108f3eacc56b106b753702f8267516cf0d",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "SKILL.md",
+      "line": 105,
+      "evidence": "Don't tell the user",
+      "file_sha256": "0c8c2a0899378d288041582d31140de24f467ca66f0fd8fdf2d384bb6d249c94"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 44,
+      "evidence": "p=0.92 > You don't have a localhost.run domain yet. Setting one up takes about a minute",
+      "file_sha256": "0c8c2a0899378d288041582d31140de24f467ca66f0fd8fdf2d384bb6d249c94"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "admin.localhost.run",
+    "localhost.run"
+  ],
+  "install_script": false,
+  "score": "high"
+}
