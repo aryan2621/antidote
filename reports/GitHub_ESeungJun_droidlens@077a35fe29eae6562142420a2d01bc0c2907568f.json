@@ -1,0 +1,111 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ESeungJun/droidlens",
+    "version": "077a35fe29eae6562142420a2d01bc0c2907568f",
+    "download": "https://codeload.github.com/ESeungJun/droidlens/tar.gz/077a35fe29eae6562142420a2d01bc0c2907568f"
+  },
+  "archive_sha256": "2b5b6e5c02c674f0b8c4b980a85c367f1b0f33e3d9080ebaf5cafb9733cab109",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/README.ko.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ESeungJun/droidlens/master/scripts/",
+      "file_sha256": "63e2383a52276323e0b2f155692978a4a25823602ca5e835cc410c9b61c46580"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/README.ko.md",
+      "line": 52,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "63e2383a52276323e0b2f155692978a4a25823602ca5e835cc410c9b61c46580"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/README.md",
+      "line": 39,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ESeungJun/droidlens/master/scripts/",
+      "file_sha256": "1a6874848a584c54ab14315ab5d1c81405252f551c2e183b05973ca99df2bf78"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/README.md",
+      "line": 52,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "1a6874848a584c54ab14315ab5d1c81405252f551c2e183b05973ca99df2bf78"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/apps/desktop/src/main/updater.ts",
+      "line": 332,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "889110c9fe80716c56ded84d2cb5607e6b9ca1fb8a021325b3242c761576748b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/scripts/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/ESeungJun/droidlens/master/scripts/",
+      "file_sha256": "f3a0895d8225f16d8d90ecbb31a1c9247fd5b7b93c4c6b955172fa1483d6912e"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "droidlens-077a35fe29eae6562142420a2d01bc0c2907568f/scripts/install.sh",
+      "line": 75,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "f3a0895d8225f16d8d90ecbb31a1c9247fd5b7b93c4c6b955172fa1483d6912e"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "a.com",
+    "acme.atlassian.net",
+    "api.ex.com",
+    "api.example.com",
+    "api.figma.com",
+    "api.github.com",
+    "cdn.example.com",
+    "claude.com",
+    "developer.android.com",
+    "evil.example",
+    "example.atlassian.net",
+    "example.com",
+    "figma-alpha-api.s3.us-west-2.amazonaws.com",
+    "github.com",
+    "jitpack.io",
+    "jsonplaceholder.typicode.com",
+    "m.example.com",
+    "medium.com",
+    "raw.githubusercontent.com",
+    "schemas.android.com",
+    "schemas.openxmlformats.org",
+    "services.gradle.org",
+    "velog.io",
+    "www.apache.org",
+    "www.conventionalcommits.org",
+    "www.figma.com",
+    "www.npmjs.com",
+    "www.w3.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

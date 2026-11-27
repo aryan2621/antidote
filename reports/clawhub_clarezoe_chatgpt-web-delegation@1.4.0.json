@@ -1,0 +1,39 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "clarezoe/chatgpt-web-delegation",
+    "version": "1.4.0",
+    "download": "https://clawhub.ai/api/v1/download?slug=chatgpt-web-delegation&ownerHandle=clarezoe&version=1.4.0"
+  },
+  "archive_sha256": "8e4ac6932fae038fb102ce71fda9e34120a4b0e572988f1f90baced969c3c5c5",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 87,
+      "evidence": "p=1.00 Write the browser prompt so ChatGPT finishes without asking anything:",
+      "file_sha256": "c86c04c2b5107988b9ff1dabf1293bfde10dd941d5f84d81ea4a8a8153576242"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 372,
+      "evidence": "p=0.94 Stage two asks three logically separate Choice decisions using the same sanitize",
+      "file_sha256": "c86c04c2b5107988b9ff1dabf1293bfde10dd941d5f84d81ea4a8a8153576242"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.typesafe.ai",
+    "chatgpt.com",
+    "example.invalid",
+    "untrusted.example.invalid"
+  ],
+  "install_script": false,
+  "score": "high"
+}

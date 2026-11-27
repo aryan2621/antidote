@@ -1,0 +1,42 @@
+{
+  "item": {
+    "source": "mcp-registry",
+    "ecosystem": "npm",
+    "name": "orla-cli",
+    "version": "0.5.5",
+    "download": null
+  },
+  "archive_sha256": "779b04f6b36c8c677faf4bf23a4285a4fe97e4db0ffb64959265b4efba3b863e",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/orla-categorize/SKILL.md",
+      "line": 19,
+      "evidence": "p=0.99 Everything the tools return arrives wrapped in a `notice` that says the content ",
+      "file_sha256": "416579d8aa77609919f449ae4fd4bfa378b849b9bbd0d590c7ea80d0011d7cb3"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "antigravity.google, cursor.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "antigravity.google",
+    "app.orla.finance",
+    "cursor.com",
+    "github.com",
+    "orla.finance"
+  ],
+  "install_script": false,
+  "score": "high"
+}

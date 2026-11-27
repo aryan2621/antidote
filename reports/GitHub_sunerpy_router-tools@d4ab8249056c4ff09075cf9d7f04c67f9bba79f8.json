@@ -1,0 +1,71 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "sunerpy/router-tools",
+    "version": "d4ab8249056c4ff09075cf9d7f04c67f9bba79f8",
+    "download": "https://codeload.github.com/sunerpy/router-tools/tar.gz/d4ab8249056c4ff09075cf9d7f04c67f9bba79f8"
+  },
+  "archive_sha256": "e87fb8ccdb01dfb0ee057613915b77104d39c7e780cd4c2e6cd00f7f7c168bf4",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "router-tools-d4ab8249056c4ff09075cf9d7f04c67f9bba79f8/docs/readme/README.en.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/sunerpy/router-tools/main/scripts/i",
+      "file_sha256": "0a773b3cb86a9bc95af108708808d87ac4bda3dd5e695db65c020e27e1f566e1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "router-tools-d4ab8249056c4ff09075cf9d7f04c67f9bba79f8/docs/readme/README.en.md",
+      "line": 69,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "0a773b3cb86a9bc95af108708808d87ac4bda3dd5e695db65c020e27e1f566e1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "router-tools-d4ab8249056c4ff09075cf9d7f04c67f9bba79f8/README.md",
+      "line": 40,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/sunerpy/router-tools/main/scripts/i",
+      "file_sha256": "218edb2e918e2dc04860a17a54ecccee6b7fc475767755dc1b50c1bd16e9ea03"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "router-tools-d4ab8249056c4ff09075cf9d7f04c67f9bba79f8/README.md",
+      "line": 69,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "218edb2e918e2dc04860a17a54ecccee6b7fc475767755dc1b50c1bd16e9ea03"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "192.168.1.5",
+    "192.168.31.1",
+    "192.168.31.10",
+    "api.github.com",
+    "code.claude.com",
+    "docs.github.com",
+    "evil.example",
+    "github.com",
+    "img.shields.io",
+    "learn.chatgpt.com",
+    "learn.microsoft.com",
+    "nodejs.org",
+    "opencode.ai",
+    "raw.githubusercontent.com",
+    "wails.io",
+    "www.w3.org",
+    "www.workbuddy.cn"
+  ],
+  "install_script": false,
+  "score": "high"
+}

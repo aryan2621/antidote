@@ -1,0 +1,54 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "rockets-cn/unihiker-k10-platformio",
+    "version": "0.1.11",
+    "download": "https://clawhub.ai/api/v1/download?slug=unihiker-k10-platformio&ownerHandle=rockets-cn&version=0.1.11"
+  },
+  "archive_sha256": "731aabb0d2edb778142643250905829ca5f2954d3763e45829daf58564ff088b",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "references/platformio-workshop.md",
+      "line": 78,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "8c3df7b3b6bd44f90a9901242e31afd4939303ddb5b56771323a370598da5660"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "scripts/prepare-macos-offline-installer.sh",
+      "line": 286,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "6ff0b5ccce312d9d2315cb5c2a6e90a2b0f10ea4e555f98ba43e0ced460007b1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "SKILL.md",
+      "line": 105,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "fae4fcd931664e01bb6c8e73ef635524f3b87cd45fa639288973d5ce612a37d5"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "docs.platformio.org",
+    "gh-proxy.com",
+    "ghfast.top",
+    "github.com",
+    "rsproxy.cn",
+    "rustup.rs",
+    "www.dfrobot.com.cn",
+    "www.qr-code-generator.com",
+    "www.unihiker.com",
+    "www.unihiker.com.cn"
+  ],
+  "install_script": false,
+  "score": "high"
+}
