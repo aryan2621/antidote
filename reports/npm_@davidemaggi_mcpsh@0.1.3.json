@@ -1,0 +1,54 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@davidemaggi/mcpsh",
+    "version": "0.1.3",
+    "download": null
+  },
+  "archive_sha256": "b153f4dc162a64ca091a5481baac6d04b200666e37f79115bedf8223204aaf7f",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "package/README.md",
+      "line": 78,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/davidemaggi/mcpsh/main/install.sh \\",
+      "file_sha256": "5b6e997e6ff5cee8bf1791121f9f6e58150f010b7207c293a58033eaece6765b"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "package/README.md",
+      "line": 89,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "5b6e997e6ff5cee8bf1791121f9f6e58150f010b7207c293a58033eaece6765b"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-PACKAGE",
+      "summary": "Package first published 0 day(s) ago",
+      "path": null,
+      "line": null,
+      "evidence": "2026-11-27T19:08:47.431Z",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "agentskills.io",
+    "api.githubcopilot.com",
+    "docs.astral.sh",
+    "docs.github.com",
+    "github.com",
+    "img.shields.io",
+    "mcp.example.com",
+    "modelcontextprotocol.io",
+    "raw.githubusercontent.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

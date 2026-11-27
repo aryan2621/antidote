@@ -1,0 +1,41 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "alnovis/munin",
+    "version": "e9c2220e6cc2c855ced5010386ce98c5affa0c0c",
+    "download": "https://codeload.github.com/alnovis/munin/tar.gz/e9c2220e6cc2c855ced5010386ce98c5affa0c0c"
+  },
+  "archive_sha256": "be76d4b564fc3df49466bddcde3aeedea45f9b088441037f3151f6483c7efc01",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "munin-e9c2220e6cc2c855ced5010386ce98c5affa0c0c/docs/RELEASING.md",
+      "line": 89,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "71643b5dcca025a51b1764454be12ed9da0971ebea9781c955425563edd9455d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "munin-e9c2220e6cc2c855ced5010386ce98c5affa0c0c/docs/INSTALL.md",
+      "line": 37,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "72eecb591fd49e17ce64f941f7f712a2a2b86baf27da2019539a49ee66ac90cd"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "docs.rs",
+    "github.com",
+    "keepachangelog.com",
+    "opencode.ai",
+    "semver.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

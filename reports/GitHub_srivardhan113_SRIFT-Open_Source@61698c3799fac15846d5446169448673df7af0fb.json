@@ -1,0 +1,470 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "srivardhan113/SRIFT-Open_Source",
+    "version": "61698c3799fac15846d5446169448673df7af0fb",
+    "download": "https://codeload.github.com/srivardhan113/SRIFT-Open_Source/tar.gz/61698c3799fac15846d5446169448673df7af0fb"
+  },
+  "archive_sha256": "3148b3daff184ec97a2d3d9783d5cad062ed2fee4435a19f740a257c491a6210",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/.cursorrules",
+      "line": 22,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "8e0593899a3a5f8002d8d1bd7399afa068088e61647e651ee7e29509d57bc9ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/pypi/readme.py",
+      "line": 58,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "97655f2e2b1e2583baa39431435c6bf534bc813966f9a8a62c7c4e9ef018e164"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/pypi/README.md",
+      "line": 112,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "cff621cffc26d1818a9b14f748d755c8e646dfb1b927c75a6a98b67875ac486c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/index.js",
+      "line": 1809,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "1d3e006ade9cfee006afdbc31a5bca6536a731e5a5603963036f6162882de619"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/index.js",
+      "line": 1732,
+      "evidence": "\\u{202a}",
+      "file_sha256": "1d3e006ade9cfee006afdbc31a5bca6536a731e5a5603963036f6162882de619"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/index.js",
+      "line": 16554,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: \"ignore\" })",
+      "file_sha256": "1d3e006ade9cfee006afdbc31a5bca6536a731e5a5603963036f6162882de619"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/index.js",
+      "line": 17264,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: \"ignore\" })",
+      "file_sha256": "1d3e006ade9cfee006afdbc31a5bca6536a731e5a5603963036f6162882de619"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/daemon.js",
+      "line": 1770,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "79cd45a29c70e29ea484b208785e296bed3aa097028ea59cca50c1691135f18d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/dist/daemon.js",
+      "line": 1592,
+      "evidence": "\\u{202a}",
+      "file_sha256": "79cd45a29c70e29ea484b208785e296bed3aa097028ea59cca50c1691135f18d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/packages/cli/README.md",
+      "line": 111,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "bda4cf9cb12b0ba3c02a618e5b6b6fb2c7b1114c423c4e3e92e9654191be6020"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/.agents/skills/peerknock/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.91 The first time this skill is available, tell your human, in your own words: that",
+      "file_sha256": "626b3736a83758563004ba0a91509e608a400c4badf8515495d346b3bbc8f7c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/server-card.json",
+      "line": 71,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "0a20054a40349436755b303148465ee5f2b10db7e45f9afcc4ea7b0cf4227165"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/mcp-registry.json",
+      "line": 71,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "2368589adccabbc09d4adca8dd2eb1693164fbfab65668130a349ca87e96a133"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/compat.json",
+      "line": 28,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "edf91c07bbdcd3bf0c27ddaab953c3bc839ca747429311e70bd5d7834479e3da"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/agent-skills/peerknock/SKILL.md",
+      "line": 24,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "c7da0b1c8dff057049ba45de157693e562e264b7813d893fb853f08462e1b2df"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/agent-skills/peerknock/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.91 The first time this skill is available, tell your human, in your own words: that",
+      "file_sha256": "c7da0b1c8dff057049ba45de157693e562e264b7813d893fb853f08462e1b2df"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/specs/agent-skills/get-company-info/SKILL.md",
+      "line": 18,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "5248701fdad3fabfb048b0e498d3ca02813496fb8129e3331f438426a4f10093"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/ai-instructions.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "6177fa6a2588ba9bcd5d32459987c666247dc4d5bf7267853e4291efca8573f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/docs/llms-full.txt",
+      "line": 207,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "101b463b35f535f6ee27c39b7b389691a1d83a90f17fc60073312f53ef35dff3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/docs/about.md",
+      "line": 62,
+      "evidence": "curl -fsSL https://srift.app/install.sh \\| sh",
+      "file_sha256": "c4ed944a24c108fa817f5ef87d37f3b88a440e00878609ab2f6f89afc25ff240"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/docs/ai-instructions.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "6177fa6a2588ba9bcd5d32459987c666247dc4d5bf7267853e4291efca8573f3"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/docs/AGENTS.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "9f9807cf4e99c561fb4d7bbd085f2c6dee9fa6cc0730e07298431623044bde2c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/docs/llms.txt",
+      "line": 7,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "4e960942bed44c711cffba0f4e4cef55b25756431f4644496ae160bca951e9fd"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/README.md",
+      "line": 80,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "a8df4dd8a394c3c1a1a1ee7a7071b4531e14f24b4bac529651b054c83a478c9f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/install/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "9a4cfd18ec5015f989fbe19c5e02528ef823bd8aad92716450d93724c9234733"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/install/run.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://srift.app/run.sh | sh",
+      "file_sha256": "c5db061f7b4794aa72461d1f76a552d2748fe34b6fbe38bc5a4dbc895084139f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/plugin/skills/peerknock/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.91 The first time this skill is available, tell your human, in your own words: that",
+      "file_sha256": "626b3736a83758563004ba0a91509e608a400c4badf8515495d346b3bbc8f7c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/client.ts",
+      "line": 627,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "6b37bf16b758e98bb373c5855d41081671b902b02358c9a835d1b207aad02c10"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.js",
+      "line": 1809,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "fcb02ed546a476aa7eaea3a0fbffe86d20aada6fc3d64be871bd0d5e3a7994ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.js",
+      "line": 1732,
+      "evidence": "\\u{202a}",
+      "file_sha256": "fcb02ed546a476aa7eaea3a0fbffe86d20aada6fc3d64be871bd0d5e3a7994ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.js",
+      "line": 16554,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: \"ignore\" })",
+      "file_sha256": "fcb02ed546a476aa7eaea3a0fbffe86d20aada6fc3d64be871bd0d5e3a7994ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.js",
+      "line": 17264,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: \"ignore\" })",
+      "file_sha256": "fcb02ed546a476aa7eaea3a0fbffe86d20aada6fc3d64be871bd0d5e3a7994ed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.ts",
+      "line": 200,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "b591cbf7d4359df1c54b2a479b34b22923d9be9df5fc0c3321ce2d403b5f1617"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.ts",
+      "line": 450,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: 'ignore' })",
+      "file_sha256": "b591cbf7d4359df1c54b2a479b34b22923d9be9df5fc0c3321ce2d403b5f1617"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-T-0001",
+      "summary": "Runs a shell command built from a dynamic string (command injection / staged payload)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/index.ts",
+      "line": 1254,
+      "evidence": "execSync(`powershell -NoProfile -Command \"${psCmd}\"`, { stdio: 'ignore' })",
+      "file_sha256": "b591cbf7d4359df1c54b2a479b34b22923d9be9df5fc0c3321ce2d403b5f1617"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/get.ts",
+      "line": 72,
+      "evidence": "\\u{202a}",
+      "file_sha256": "ad26f17ef7ba4fa447221412772f38aaa0b8b5f70887c4c2b95273f46766cec1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/daemon.js",
+      "line": 1769,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "73519c25ef8f0c12992e95b781cf43dc133f71af469efdaf62e7cfe1be55854f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/cli/daemon.js",
+      "line": 1591,
+      "evidence": "\\u{202a}",
+      "file_sha256": "73519c25ef8f0c12992e95b781cf43dc133f71af469efdaf62e7cfe1be55854f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/skills/peerknock/SKILL.md",
+      "line": 18,
+      "evidence": "p=0.91 The first time this skill is available, tell your human, in your own words: that",
+      "file_sha256": "626b3736a83758563004ba0a91509e608a400c4badf8515495d346b3bbc8f7c1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/clawhub/srift-peerknock/SKILL.md",
+      "line": 34,
+      "evidence": "p=0.91 The first time this skill is available, tell your human, in your own words: that",
+      "file_sha256": "8fa8ae54b27e3519fe3277b0050df5574e42974f28a79165ed1c0870b5deb8d9"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/AGENTS.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://srift.app/install.sh | sh",
+      "file_sha256": "9f9807cf4e99c561fb4d7bbd085f2c6dee9fa6cc0730e07298431623044bde2c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/scripts/seed-agents/install.sh",
+      "line": 22,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_20.x | bash",
+      "file_sha256": "64d370ab7c48ca342f0dc91a7dc624972abc3f777c0fc3660800f20d4f600d91"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/scripts/seed-agents/install.sh",
+      "line": 22,
+      "evidence": "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -",
+      "file_sha256": "64d370ab7c48ca342f0dc91a7dc624972abc3f777c0fc3660800f20d4f600d91"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "SRIFT-Open_Source-61698c3799fac15846d5446169448673df7af0fb/CHANGELOG.md",
+      "line": 614,
+      "evidence": "curl -fsSL https://srift.app/run.sh | sh",
+      "file_sha256": "5d503958722195f449f2c6b7d5920d8b003cdabd2e77aa323b79e6540c7ff105"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "a2a-protocol.org",
+    "acme.com",
+    "agent-network-protocol.com",
+    "agent-plugins.org",
+    "agents.md",
+    "aifunding.me",
+    "aka.ms",
+    "anysphere.cursor-deeplink",
+    "api.perplexity.ai",
+    "api.x.ai",
+    "arxiv.org",
+    "chat.openai.com",
+    "claude.ai",
+    "claude.com",
+    "csrc.nist.gov",
+    "cursor.directory",
+    "datatracker.ietf.org",
+    "deb.nodesource.com",
+    "developer.mozilla.org",
+    "developers.googleblog.com",
+    "developers.openai.com",
+    "docs.brew.sh",
+    "gemini.google.com",
+    "github.com",
+    "glama.ai",
+    "img.shields.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "kiro.dev",
+    "linkedin.com",
+    "maven.apache.org",
+    "modelcontextprotocol.io",
+    "nodejs.org",
+    "opensource.org",
+    "perplexity.ai",
+    "platform.openai.com",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "replit.com",
+    "schemas.agentskills.io",
+    "semver.org",
+    "smithery.ai",
+    "srift.app",
+    "static.modelcontextprotocol.io",
+    "tracker.btorrent.xyz",
+    "tracker.files.fm",
+    "tracker.openwebtorrent.com",
+    "tracker.webtorrent.dev",
+    "w3id.org",
+    "wiki.archlinux.org",
+    "www.agentmail.to",
+    "www.npmjs.com",
+    "www.python.org",
+    "www.w3.org",
+    "zylos.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

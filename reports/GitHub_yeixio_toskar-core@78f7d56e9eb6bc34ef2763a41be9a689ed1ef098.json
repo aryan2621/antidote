@@ -1,0 +1,640 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "yeixio/toskar-core",
+    "version": "78f7d56e9eb6bc34ef2763a41be9a689ed1ef098",
+    "download": "https://codeload.github.com/yeixio/toskar-core/tar.gz/78f7d56e9eb6bc34ef2763a41be9a689ed1ef098"
+  },
+  "archive_sha256": "eb39b3cd363d497c44209c18fb9382b38f0f84592d2271ad7047839c47c24fc9",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/.github/workflows/benchmark-script.yml",
+      "line": 82,
+      "evidence": "curl | sh",
+      "file_sha256": "555f5c79576673568065cfeb493dbbe039d29f93237bfbab2f2cd42f7207c988"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/tests/quality/task_safety.json",
+      "line": 23,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "1401bd0278499f04e9e5b60e33a0af7b259b44d175fbcfc886a504ca2ebfc1d7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/tests/quality/topics.json",
+      "line": 176,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "564300d2c93e00c98aed84144c783d111f61f984c1b1be96fb68e6e31f8ba8e3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/tests/quality/doorstep.json",
+      "line": 63,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "50bd142a5367a6518f830fe407efbd9bf4282706061148f9388f904ac718a732"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/tests/quality/text.json",
+      "line": 1931,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "a0f19a94f811582c4746b5caa379f548406f6fd8135235cc804ba4ac55a61fae"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/screenshot/api.go",
+      "line": 47,
+      "evidence": "curl -fsSL `+base+`/install.sh | sh",
+      "file_sha256": "c758278dfc9a99f17d4734ec062b4d892500e4b6323223fc32aebc020ee150d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/tools/shellrisk_test.go",
+      "line": 14,
+      "evidence": "curl http://x | sh",
+      "file_sha256": "da069103f03ea762ba9037fa84ed673258efaf491ab5125e444d6789908024fb"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0103",
+      "summary": "Decodes a base64 payload and executes it",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/tools/shellrisk_test.go",
+      "line": 14,
+      "evidence": "base64 -d | sh",
+      "file_sha256": "da069103f03ea762ba9037fa84ed673258efaf491ab5125e444d6789908024fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/orchestrator/builtin/simple/loop_test.go",
+      "line": 361,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "6803e622a2162f84f4f2f8729bc4088d952c2b5e20dc2851b31faaedf17ab71c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/app/join.go",
+      "line": 131,
+      "evidence": "curl -fsSL %s/install.sh | sh",
+      "file_sha256": "79f55d9446bacf99e56c0ebda0adbf77258caa1845346925b1a1bbd9619dc42b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/internal/untrusted/untrusted_test.go",
+      "line": 70,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "23dd73e2936d2102b6a2eb8b1aced092987d8eeb1ca2223e876a78c5679f6eb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.12.2.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "2ba4a17ae1977f5e54e16a4a0e7a1175e71ffda4f6119a1d7d8ba03bb62fe1fe"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.14.1.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "6c81d597cdfb779902073cd2ca40e5fb8e50214d5e753232ac2d1ee2386a0dbc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.13.1.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "87af94cc5e29183f08366b828a4696b1e57c18cf36f195d159f9d5d81d382510"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.13.0.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "89da991f2f362dbf8202495c0638596926d17d6dbb2e15b591b992176628d709"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/cli.md",
+      "line": 138,
+      "evidence": "curl … | sh",
+      "file_sha256": "f55143bf8826c6a51250a90bce55a540ffe5201d1a46bd31a0394ce27cb6bd72"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/features/ai-experience-platform.md",
+      "line": 1414,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "4755d6ccb578074c51b11c23594a261669a04ab6c3764ac777132169e999a2f8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/features/one-line-node-join.md",
+      "line": 28,
+      "evidence": "curl -sfL https://github.com/yeixio/toskar-core/releases/latest/download/install",
+      "file_sha256": "6a853854175016fe335405bfa09baa318ec0c83d91519d9fa874b300feec12c6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.12.1.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "18819c6f7641ab40c234003e4abc1e60df94a45575c45d211caec8a75ebfd10f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/user-guide/guide.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "f1d525992662df19666e50f4c054434a0cca4b531dbefa0c5ae86a0eae1cadb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/clustering.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "7002e0a8bd1716d4b1cc36775d56420ce5e2bebf6e3c33c63af532791382bd26"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.14.0.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "11d1c2a5da4cd6d0a789f9045ab297e44c7614e7d2c569ec4bc6560808a4bc45"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.12.0.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "564d38571f87464c63cf9c4915971042a3b47c1e358c1c7484ae62092933b5aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.15.1.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "bfe67bf0d6a0bee3c224a15f8c605cab5bee7cda9335e0114cb7f7917940fdb0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.12.3.json",
+      "line": 128,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "dcb557e9b41ce3ec282a54fe592a6c744ba35c5f925f95a48d080ae57f8da52e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.14.2.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "8c1aa0083f455a9343cb9c071662a89a964ba5c3cf3fdf18d53c2c8656dfe08d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/1.15.0.json",
+      "line": 137,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "eb2aadc00de29ae9c10e05a4046afa36387aefb18adea796e9776e958ed50e70"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/docs/ci.md",
+      "line": 27,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "e9441173c995a177671765db4afc4690ca411a08cc0ba97b54cc24255175e62f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/train.json",
+      "line": 101,
+      "evidence": "p=0.99 Baue einen kleinen Assistenten, der eine Aufgabe gut beherrscht. Zeig ihm mit Be",
+      "file_sha256": "39796fa2fdda6014056677372217e49792c4f86f206200fae65b122b67d9a63f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/train.json",
+      "line": 162,
+      "evidence": "p=0.99 Die Anweisungen werden mit jeder Nachricht gesendet und jedem Trainingsbeispiel ",
+      "file_sha256": "39796fa2fdda6014056677372217e49792c4f86f206200fae65b122b67d9a63f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/train.json",
+      "line": 341,
+      "evidence": "p=0.98 Beide Seiten bekommen dieselben Anweisungen und dasselbe verbundene Wissen, der ",
+      "file_sha256": "39796fa2fdda6014056677372217e49792c4f86f206200fae65b122b67d9a63f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/knowledge.json",
+      "line": 4,
+      "evidence": "p=0.96 Gib Toskar deine eigenen Dateien und Daten, etwa Kataloge, Preislisten, Richtlin",
+      "file_sha256": "e168630a62e46f26e406b0aa67567dce0dfa11158ebcc9fe0526be017eff4fc8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/memory.json",
+      "line": 4,
+      "evidence": "p=0.93 Kurze Fakten, die Toskar über dich und deine Arbeit behält, etwa deine Vorlieben",
+      "file_sha256": "7388ffd607ce5a610927a0f46a4e435ccbfffca8b4130029279b1b3104a6c76e"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/diagnostics.json",
+      "line": 216,
+      "evidence": "p=0.95 Die Wartezeit vom Senden einer Nachricht bis zum ersten Wort der Antwort, in der",
+      "file_sha256": "1110b0df98150b60617b62a6ef5dfc74ffb1b146719326ab8673481117aca8fb"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/settings.json",
+      "line": 107,
+      "evidence": "p=0.92 Wenn du das Fenster schließt, laufen Chat, API und deine Zeitpläne weiter. Toska",
+      "file_sha256": "bea429594403e6a35145a97a10aaf99adda304ce1d135ffaa1ee0225eea8c931"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/de/settings.json",
+      "line": 260,
+      "evidence": "p=0.91 Toskar arbeitet auf diesem Computer. Hier siehst du, wann ein Chat, eine Automat",
+      "file_sha256": "bea429594403e6a35145a97a10aaf99adda304ce1d135ffaa1ee0225eea8c931"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/fr/train.json",
+      "line": 387,
+      "evidence": "p=0.99 Instructions à utiliser comme prompt système",
+      "file_sha256": "e814e34d33984bfc3f97a6d96d64ddd09e1eb30b787d0d06d6b7b41a9d54b606"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/fr/mobile.json",
+      "line": 1265,
+      "evidence": "p=1.00 Instructions et mémoire",
+      "file_sha256": "c118f55ce1273a3ce81b843fbff154f05b8ad8c4a92a90e4d6bba0ec6d471dd2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/en/train.json",
+      "line": 162,
+      "evidence": "p=0.95 The instructions are sent with every message and added to every training example",
+      "file_sha256": "aa9d9aab01095f2fc814c76af045bb85edaa9a126ebbb1c6f4964140dd9c3c48"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/en/train.json",
+      "line": 383,
+      "evidence": "p=1.00 Instructions to use as the system prompt",
+      "file_sha256": "aa9d9aab01095f2fc814c76af045bb85edaa9a126ebbb1c6f4964140dd9c3c48"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/en/projects.json",
+      "line": 14,
+      "evidence": "p=0.95 Chats in this project share its instructions, files, and memory.",
+      "file_sha256": "3184ef1c11fb79b9d0fe78995415718e1a2be815178b148f2b91ed3784ac18f0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/en/apiAccess.json",
+      "line": 336,
+      "evidence": "p=0.92 Some apps that speak Ollama's API only look for it on port 11434. Turn this on a",
+      "file_sha256": "4e70f68b1bdc3ad8301bc69203336b21e95a37cdc16f0ed00ec67711aa5927b2"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/i18n/locales/en/mobile.json",
+      "line": 734,
+      "evidence": "p=0.99 Instructions and memory",
+      "file_sha256": "bb73a6144f1058ad7f7a07878375d4f4b446d9037b4f61ad49ff26ca87e8152a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/README.md",
+      "line": 89,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "f1cdd50c086097e6925e283d288c740b78254469ee5d3d4a368439f5833630eb"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/examples/ci/forgejo/triage.yml",
+      "line": 20,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "c344464a2cd5ab14e6acac4628df495a1a1dd3b286b8f4fb23fabd47e8039aa4"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/examples/ci/gitlab/gitlab-ci.yml",
+      "line": 28,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "1f96c4b1ee2dbe174de9800dd21910697df770da1fa3deec2214e16b67f686af"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/cmd/devctl/join_test.go",
+      "line": 110,
+      "evidence": "curl -fsSL https://example/install.sh | sh",
+      "file_sha256": "2c36148640e982041b0da7ae8145515f2bb0153c1476ca0328d441af9b40e9e5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/cmd/devctl/chat_core.go",
+      "line": 172,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "91a2b0b9488a6e8ccabc901b48356a97911ee7433e36027fb17bad274fe308b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/cmd/qualityrun/ask.go",
+      "line": 27,
+      "evidence": "curl | sh",
+      "file_sha256": "84445fed37d34b67e7a24cbc4a786e7907be7e595d9379f770d2293b2a5c0f51"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/web/src/features/nodes/JoinByCommand.test.tsx",
+      "line": 23,
+      "evidence": "curl -fsSL https://example/install.sh | sh",
+      "file_sha256": "da39db61ad9800bed839598c92b7f4f88b4286b0eb3b05943a121243e24ac943"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/web/src/i18n/rtl.test.ts",
+      "line": 53,
+      "evidence": "\\u{202e}",
+      "file_sha256": "be665605d870b5c011e9cf093270b203d8a4b7529381accda503b347d8ac7f61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/packaging/release-install.md",
+      "line": 6,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "c9a95673e60b84c4c5c64ee2c121875f2fc6c5b1a44ad9e2ab7884ef4a614a20"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/scripts/benchmark.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://toskar.ai/benchmark.sh | sh",
+      "file_sha256": "d2e0b158da285928fe3a626a02e00b52342c53b380c1ec1220b70396c3be6589"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/scripts/benchmark.sh",
+      "line": 73,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "d2e0b158da285928fe3a626a02e00b52342c53b380c1ec1220b70396c3be6589"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/scripts/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://github.com/yeixio/toskar-core/releases/latest/download/instal",
+      "file_sha256": "5cd6f9e994263d2d8ea071f4acd205f2917fb40a77a47314d6b0687616c7ddcc"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/scripts/install.sh",
+      "line": 310,
+      "evidence": "xattr -dr com.apple.quarantine",
+      "file_sha256": "5cd6f9e994263d2d8ea071f4acd205f2917fb40a77a47314d6b0687616c7ddcc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "toskar-core-78f7d56e9eb6bc34ef2763a41be9a689ed1ef098/CHANGELOG.md",
+      "line": 1026,
+      "evidence": "curl -fsSL https://toskar.ai/benchmark.sh | sh",
+      "file_sha256": "d73d7750e0ef939485e3a4e97ffd493280a3678582adf1383a1c95588a0fca58"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "169.254.169.254, 192.168.1.1, 203.0.113.5, api.example.com, cache.lan, cdn.example.org, coins.example, coppa.example, danastires.com, duckduckgo.com, e.com, elsewhere.example, exampel.invalid, example.invalid, example.test, homeassistant.local, html.duckduckgo.com, huggingface.co.evil.test, huggingface.co.example.com, ifconfig.me, mcp.notion.com, nas.local, news.example, ntfy.example.com, proxy.golang.org, rebind.example, relay.toskar.ai, schemas.xmlsoap.org, scripts.sil.org, toskar.test, weather.example, weather.gov, www.apache.org, www.danastires.com, www.example.org, www.youtube.com, x.com, x.example, x.y",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "169.254.169.254",
+    "192.168.1.1",
+    "192.168.1.10",
+    "192.168.1.20",
+    "203.0.113.5",
+    "api.example.com",
+    "api.github.com",
+    "api.openai.com",
+    "cache.lan",
+    "cdn.example.org",
+    "claude.ai",
+    "coins.example",
+    "commons.wikimedia.org",
+    "coppa.example",
+    "danastires.com",
+    "dev.meta.ai",
+    "docs.nvidia.com",
+    "duckduckgo.com",
+    "e.com",
+    "elsewhere.example",
+    "exampel.invalid",
+    "example.com",
+    "example.invalid",
+    "example.test",
+    "fonts.gstatic.com",
+    "forecast.weather.gov",
+    "fsf.org",
+    "github.com",
+    "go.dev",
+    "heritagecoffee.com",
+    "homeassistant.local",
+    "html.duckduckgo.com",
+    "huggingface.co",
+    "huggingface.co.evil.test",
+    "huggingface.co.example.com",
+    "ifconfig.me",
+    "json.schemastore.org",
+    "juneaumarathon.org",
+    "juneauoutdoorcenter.com",
+    "mcp.notion.com",
+    "modelfit.io",
+    "nas.local",
+    "news.example",
+    "nominatim.openstreetmap.org",
+    "ntfy.example.com",
+    "ntfy.sh",
+    "overpass-api.de",
+    "proxy.golang.org",
+    "public.example",
+    "raw.githubusercontent.com",
+    "rebind.example",
+    "relay.toskar.ai",
+    "routing.openstreetmap.de",
+    "rpmfusion.org",
+    "schemas.openxmlformats.org",
+    "schemas.xmlsoap.org",
+    "scripts.sil.org",
+    "setup.example.com",
+    "shop.example",
+    "shop.example.com",
+    "surlybikes.com",
+    "toskar.ai",
+    "toskar.test",
+    "unite.ai",
+    "unsloth.ai",
+    "weather.com",
+    "weather.example",
+    "weather.gov",
+    "wiki.debian.org",
+    "wttr.in",
+    "www.accuweather.com",
+    "www.amd.com",
+    "www.apache.org",
+    "www.coindesk.com",
+    "www.coppajuneau.com",
+    "www.danastires.com",
+    "www.example.com",
+    "www.example.org",
+    "www.glaciergardens-example.com",
+    "www.gnu.org",
+    "www.intel.com",
+    "www.juneauempire.com",
+    "www.localscore.ai",
+    "www.mountrobertstramway-example.com",
+    "www.nvidia.com",
+    "www.nytimes.com",
+    "www.openstreetmap.org",
+    "www.seriouseats.com",
+    "www.theverge.com",
+    "www.travel-example.com",
+    "www.w3.org",
+    "www.worksmancycles.com",
+    "www.xe.com",
+    "www.youtube.com",
+    "x.com",
+    "x.example",
+    "x.y",
+    "yeix.io",
+    "zizebikes.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

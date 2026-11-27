@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@ask-llm/mcp",
+    "version": "1.9.0",
+    "download": null
+  },
+  "archive_sha256": "77fb74e5299545856ec828215c4e1b309eaaed299bf5c956e25c71103476d9e4",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/ask-llm-codex-image/SKILL.md",
+      "line": 58,
+      "evidence": "p=0.92 If you significantly enrich the prompt, briefly tell the user what you added and",
+      "file_sha256": "585bcb342a9ef44eceed58ee37991168862f31ccf6fd8a6d0fe84e428d07e080"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "package/skills/ask-llm-codex-pair-pause/SKILL.md",
+      "line": 31,
+      "evidence": "p=0.99 Done when the command confirms the pause or reports an existing pause. Show any ",
+      "file_sha256": "b099caef59f178f54a207316af40f5319733376ffdaa7b5afaa9588b81bcf4a0"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "datatracker.ietf.org, json-schema.org, raw.githubusercontent.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "antigravity.google",
+    "api.x.ai",
+    "console.x.ai",
+    "datatracker.ietf.org",
+    "docs.x.ai",
+    "github.com",
+    "json-schema.org",
+    "lykhoyda.github.io",
+    "ollama.com",
+    "raw.githubusercontent.com",
+    "x.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

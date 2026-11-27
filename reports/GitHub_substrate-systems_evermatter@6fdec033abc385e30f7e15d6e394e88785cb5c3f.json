@@ -1,0 +1,820 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "substrate-systems/evermatter",
+    "version": "6fdec033abc385e30f7e15d6e394e88785cb5c3f",
+    "download": "https://codeload.github.com/substrate-systems/evermatter/tar.gz/6fdec033abc385e30f7e15d6e394e88785cb5c3f"
+  },
+  "archive_sha256": "329fb01ef8c018f10caca3497c300ee8e21ddaf8e9597d615655f947594465b6",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/tests/test_client_artifacts.py",
+      "line": 1616,
+      "evidence": "\\u{202e}",
+      "file_sha256": "d4f062891fc05dec3408a351bb737ac1250a664623961ad06782ac9362cf55b0"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/tests/test_hook_skills.py",
+      "line": 92,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "66d955dd3fc558b335d8c35b286fb56f82b45077ea51680610febd8358d58b7d"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/tests/test_workflow_contracts.py",
+      "line": 1302,
+      "evidence": "ignore earlier rules",
+      "file_sha256": "673af6a3d55a86eb5ed6105a85604963f1560d6395f8fccc20d495304029a2a1"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/tests/test_media_jobs.py",
+      "line": 523,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "a4598e40c092baf785e9ac59f3e9381c1e8d1c2662cc9f97166c91387bdb55aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/benchmarks/membench/outcome/incidents/cases/sensitive-material-custody.json",
+      "line": 149,
+      "evidence": "p=0.94 True if the answer says it will not keep the full card number or security code a",
+      "file_sha256": "2e207959474cc2484de51a0432d9b9ae6dfa13e1e543cee92aefe4a6bcab3050"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/benchmarks/membench/templates/t16_governance_audiences.py",
+      "line": 125,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "2b248ae2a1dc3ae99e1a82e06b22dabd887b5abec3d00d7184a569a0110a4e0c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-defrag/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-research/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-reflect/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-ingest/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-review/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-media/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-continue/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-capture/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/openai/skills/evermatter-curate/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-defrag/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-research/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-reflect/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-ingest/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-review/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-media/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-continue/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-capture/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-connector-hooks/skills/evermatter-curate/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-defrag/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-research/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-reflect/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-ingest/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-review/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-media/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-continue/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-capture/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude-hooks/skills/evermatter-curate/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-defrag/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-research/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-reflect/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-ingest/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-review/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-media/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-continue/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-capture/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/cloud/generated/claude/skills/evermatter-curate/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-defrag/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-research/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-reflect/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-ingest/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-review/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-media/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-continue/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-capture/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/plugins/claude-code/skills/evermatter-curate/references/engagement.md",
+      "line": 3,
+      "evidence": "p=1.00 Read this before proactive capture or when you interpret prominence. On a client",
+      "file_sha256": "81c2971af1ea4e35ef5048445d6b8233a686ddcf814327392ef96cc4f664239f"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0002",
+      "summary": "Reads SSH keys, cloud credentials, keychains or browser profiles",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/infra/cloud-rehearsal/src/cloud_rehearsal/original_fixity.py",
+      "line": 323,
+      "evidence": "ctx.stack.k3s.kubeconfig.read_text()",
+      "file_sha256": "226f525be27de9a146b01b8b2c51ebb2036e8e048ed275927bac0c26e513d9a5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.agents/skills/openspec-archive-change/SKILL.md",
+      "line": 144,
+      "evidence": "p=0.91 Before a selected sync writes any main spec, run `openspec instructions specs --",
+      "file_sha256": "8ea5eb23ac050a781616c7b951228c9763f62fccb7e0a6537f286679f1c01a08"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.agents/skills/openspec-bulk-archive-change/SKILL.md",
+      "line": 188,
+      "evidence": "p=0.91 Before step 8 writes the first main spec or moves any change, fetch every requir",
+      "file_sha256": "ecdd713771651c50970c4ccf8167d5ecb0e2dbdffecc3f471f18123db31ab35c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.agents/skills/openspec-continue-change/SKILL.md",
+      "line": 126,
+      "evidence": "p=0.96 If the `instruction` field directs you to use a specific skill or command to cre",
+      "file_sha256": "66c2eba5d06c3650719bc2813e0a54c85761a1a08aea358bd0dbe0052fe7d7a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.agents/skills/openspec-sync-specs/SKILL.md",
+      "line": 87,
+      "evidence": "p=0.93 Before the first main-spec write, obtain one current specs-rule snapshot: - If a",
+      "file_sha256": "75556d2ca69892525698a0c681e0c3deead1e25f3b7b9be5449eaaf1621f026b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/QUICKSTART.md",
+      "line": 25,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/substrate-systems/evermatter/main/s",
+      "file_sha256": "ba443415e7fdbfc754fb55ac7a54761eac373b0e50e41b3c69ae72b1c712dc64"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.claude/skills/openspec-archive-change/SKILL.md",
+      "line": 144,
+      "evidence": "p=0.91 Before a selected sync writes any main spec, run `openspec instructions specs --",
+      "file_sha256": "8ea5eb23ac050a781616c7b951228c9763f62fccb7e0a6537f286679f1c01a08"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.claude/skills/openspec-bulk-archive-change/SKILL.md",
+      "line": 188,
+      "evidence": "p=0.91 Before step 8 writes the first main spec or moves any change, fetch every requir",
+      "file_sha256": "ecdd713771651c50970c4ccf8167d5ecb0e2dbdffecc3f471f18123db31ab35c"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.claude/skills/openspec-continue-change/SKILL.md",
+      "line": 126,
+      "evidence": "p=0.96 If the `instruction` field directs you to use a specific skill or command to cre",
+      "file_sha256": "66c2eba5d06c3650719bc2813e0a54c85761a1a08aea358bd0dbe0052fe7d7a6"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/.claude/skills/openspec-sync-specs/SKILL.md",
+      "line": 87,
+      "evidence": "p=0.93 Before the first main-spec write, obtain one current specs-rule snapshot: - If a",
+      "file_sha256": "75556d2ca69892525698a0c681e0c3deead1e25f3b7b9be5449eaaf1621f026b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/src/exomem/_scaffold/_Schema/SKILL.md",
+      "line": 369,
+      "evidence": "p=0.93 **Standing delegation does not exist in v1.** \"Always allow this\" or \"do this ki",
+      "file_sha256": "bfd229fe8a283150f6714fb72444cf638638b7d07c09c82b823975ab58fe457f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/README.md",
+      "line": 55,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/substrate-systems/evermatter/main/s",
+      "file_sha256": "3068b4bdd30b1ef41dc1fa06a93459dc20d78d7fa85c61318c3825a9f7fc3598"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/CONTRIBUTING.md",
+      "line": 34,
+      "evidence": "curl -LsSf https://astral.sh/uv/0.11.28/install.sh | sh",
+      "file_sha256": "98797f4304e1961682e056b1ad1cb37a46966561362afc179ec38ba0ff36be0b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/scripts/install.sh",
+      "line": 5,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/substrate-systems/evermatter/main/s",
+      "file_sha256": "7409dd99320cba25fa61a7729d768736e9973d725544d76daac72fdeb915d014"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/scripts/prove-sensing-transport.py",
+      "line": 260,
+      "evidence": "Ignore prior instructions",
+      "file_sha256": "e956ee2bc377f88b61ca2cd6f062d67767a12e31f875be0413d781d630d62832"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "evermatter-6fdec033abc385e30f7e15d6e394e88785cb5c3f/scripts/install.ps1",
+      "line": 103,
+      "evidence": "curl|sh",
+      "file_sha256": "bcb203957b67767f97e0cb39de59a766a0381b4ad3cd50f70e162f71bcf9c5c8"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "10.0.0.7, 169.254.169.254, a.invalid, api.github.test, api.openai.com, app.example.test, b.invalid, broker.example, cell-beta.cell-beta-test.svc.cluster.local, census.example, chatgpt.example, civic.example, client.example, cooperative.example, coordinator.example, coordinator.example.com, desktop.example.com, desktop.ops.example.test, dotenv.example.com, elsewhere.example, evil.cloudflareaccess.com, examine.com, example.org, exported.example.com, from-dotenv.invalid, independent.test, invalid.example, issuer.example, journal.example, laptop.example.com, laptop.ops.example.test, memory.invalid, new.example.com, observer.invalid, old.example.com, one.test, other-install.example.test, other.example.test, other.invalid, pre-existing.example.com, preprints.example, prismstandard.org, private-target.invalid, publisher.example, s3.cell-data.example, s3.example.test, s3.founder.example, same.test, schema.invalid, school.example, secret-host.invalid, storage.invalid, team.cloudflareaccess.example, tides.example, unused.example, wrong-host.example.com, www.postgresql.org, x.dev, x.example",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "10.0.0.7",
+    "127.0.0.1",
+    "127.2.3.4",
+    "169.254.169.254",
+    "192.0.2.1",
+    "a.invalid",
+    "api.github.com",
+    "api.github.test",
+    "api.openai.com",
+    "app.example.test",
+    "archive.example",
+    "b.invalid",
+    "broker.example",
+    "capture.example",
+    "cell-beta.cell-beta-test.svc.cluster.local",
+    "cell.local",
+    "census.example",
+    "chatgpt.example",
+    "civic.example",
+    "claude.ai",
+    "client.example",
+    "cloud.example",
+    "cooperative.example",
+    "coordinator.example",
+    "coordinator.example.com",
+    "desktop.example.com",
+    "desktop.ops.example.test",
+    "doi.org",
+    "dotenv.example.com",
+    "download.pytorch.org",
+    "elsewhere.example",
+    "evil.cloudflareaccess.com",
+    "examine.com",
+    "example.com",
+    "example.invalid",
+    "example.org",
+    "example.test",
+    "exomem.dev",
+    "exomem.example.test",
+    "exomem.substratesystems.io",
+    "exported.example.com",
+    "files.example",
+    "files.invalid",
+    "flag.example",
+    "from-dotenv.invalid",
+    "get.helm.sh",
+    "ghcr.io",
+    "github.com",
+    "huggingface.co",
+    "independent.test",
+    "invalid.example",
+    "issuer.example",
+    "journal.example",
+    "json-schema.org",
+    "kb.example.com",
+    "kubernetes.default.svc",
+    "kubernetes.default.svc.cluster.local",
+    "laptop.example.com",
+    "laptop.ops.example.test",
+    "lease.example",
+    "memory.example",
+    "memory.example.test",
+    "memory.invalid",
+    "new.example.com",
+    "observer.invalid",
+    "old.example.com",
+    "one.test",
+    "openrouter.ai",
+    "other-install.example.test",
+    "other.example.test",
+    "other.invalid",
+    "pre-existing.example.com",
+    "preprints.example",
+    "prismstandard.org",
+    "private-target.invalid",
+    "provider.invalid",
+    "publisher.example",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "replica.example",
+    "s3.cell-data.example",
+    "s3.example.test",
+    "s3.founder.example",
+    "same.test",
+    "schema.invalid",
+    "school.example",
+    "secret-host.invalid",
+    "staging.example",
+    "storage.example",
+    "storage.invalid",
+    "team.cloudflareaccess.example",
+    "tides.example",
+    "unused.example",
+    "viewer.example",
+    "wrong-host.example.com",
+    "www.postgresql.org",
+    "www.w3.org",
+    "x.dev",
+    "x.example",
+    "you.ngrok-free.dev"
+  ],
+  "install_script": false,
+  "score": "high"
+}

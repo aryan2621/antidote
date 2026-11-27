@@ -1,0 +1,87 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "grahambrooks/symgraph",
+    "version": "d2eacd12d5c860939aa7a1376b3ea79222f700a1",
+    "download": "https://codeload.github.com/grahambrooks/symgraph/tar.gz/d2eacd12d5c860939aa7a1376b3ea79222f700a1"
+  },
+  "archive_sha256": "0f90bfea05105ea55404273cc9e145d98c95bc40c8d4d4ffb30fc87ee84aa888",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/install.sh",
+      "line": 97,
+      "evidence": "curl | bash",
+      "file_sha256": "8e2e32ba112e61266f7647d96985f09df8d370ad261861ee424e445e737fab7f"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/docs/review-2026-09-20.md",
+      "line": 210,
+      "evidence": "curl | bash",
+      "file_sha256": "cf58ae0b8bdf78e92d9f1e613967a78c5e8a27933dd0262daf9bf1cb395b50b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/docs/adr/0001-storage-engine.md",
+      "line": 190,
+      "evidence": "curl | bash",
+      "file_sha256": "920647c7525ce9bdac20c6fa2c7b6439de113ba7500c24a1d0b9a0655e459fd8"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/README.md",
+      "line": 57,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/grahambrooks/symgraph/main/install.",
+      "file_sha256": "d552176dc5d3c2206b3230a9e0ece5847b03c0a9628892e94c7589fae7795041"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/devcontainer-feature/src/symgraph/install.sh",
+      "line": 34,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/${REPO}/main/install.sh\" | bash",
+      "file_sha256": "0d60182c90ffd274e89417dbde1d1d00281e7f7d1fadb9a1cda89a985118a0dd"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-T-0005",
+      "summary": "Runs code downloaded at run time (curl/wget piped or substituted into an interpreter)",
+      "path": "symgraph-d2eacd12d5c860939aa7a1376b3ea79222f700a1/devcontainer-feature/src/symgraph/install.sh",
+      "line": 34,
+      "evidence": "curl -fsSL \"https://raw.githubusercontent.com/${REPO}/main/install.sh\" | bash -s",
+      "file_sha256": "0d60182c90ffd274e89417dbde1d1d00281e7f7d1fadb9a1cda89a985118a0dd"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "crates.io",
+    "developers.openai.com",
+    "docs.github.com",
+    "github.com",
+    "img.shields.io",
+    "modelcontextprotocol.io",
+    "opensource.org",
+    "prek.j178.dev",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "rubygems.org",
+    "www.rust-lang.org",
+    "www.schemastore.org",
+    "x.example"
+  ],
+  "install_script": false,
+  "score": "high"
+}

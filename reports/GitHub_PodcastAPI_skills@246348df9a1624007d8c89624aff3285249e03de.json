@@ -1,0 +1,56 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "PodcastAPI/skills",
+    "version": "246348df9a1624007d8c89624aff3285249e03de",
+    "download": "https://codeload.github.com/PodcastAPI/skills/tar.gz/246348df9a1624007d8c89624aff3285249e03de"
+  },
+  "archive_sha256": "173834d51023d68f3aed3bdba173c5df4080686b100071ab49fb6ec7d9b4ba42",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-246348df9a1624007d8c89624aff3285249e03de/evals/cases.json",
+      "line": 200,
+      "evidence": "p=0.98 Our mock test creates a playlist and adds an episode, but GET does not return ou",
+      "file_sha256": "388bf56dd5d2033dd925969fcaab5d1c826bd5d8b013cba388436955c16fce4a"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "skills-246348df9a1624007d8c89624aff3285249e03de/AGENTS.md",
+      "line": 1,
+      "evidence": "p=0.96 # Agent Instructions",
+      "file_sha256": "42a9697b25eca6efb0379ee3841cad7bb3917e1b847badad1af990eb726b67a8"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "agentskills.io",
+    "antigravity.google",
+    "chatgpt.com",
+    "claude.com",
+    "code.claude.com",
+    "code.visualstudio.com",
+    "cursor.com",
+    "developers.google.com",
+    "developers.openai.com",
+    "github.com",
+    "learn.chatgpt.com",
+    "listen-api-test.listennotes.com",
+    "listen-api.listennotes.com",
+    "mcp.listennotes.com",
+    "raw.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "www.listennotes.com",
+    "www.listennotes.help",
+    "www.perplexity.ai",
+    "www.podcastapi.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}
