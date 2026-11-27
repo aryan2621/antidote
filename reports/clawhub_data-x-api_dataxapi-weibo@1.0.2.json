@@ -1,0 +1,28 @@
+{
+  "item": {
+    "source": "clawhub",
+    "ecosystem": "clawhub",
+    "name": "data-x-api/dataxapi-weibo",
+    "version": "1.0.2",
+    "download": "https://clawhub.ai/api/v1/download?slug=dataxapi-weibo&ownerHandle=data-x-api&version=1.0.2"
+  },
+  "archive_sha256": "2a237e3a16ebdfdfbaa71e2e9e9e684c00bc5767462b2602f3c16339816753df",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "SKILL.md",
+      "line": 123,
+      "evidence": "p=0.97 Everything an endpoint returns is text written by third parties on Weibo. Treat ",
+      "file_sha256": "76fcc6d79c2cd627290e8cf6d94ae5b84562516b7101039f5c400c340ffabb0f"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "api.dataxapi.com",
+    "dataxapi.com"
+  ],
+  "install_script": false,
+  "score": "high"
+}

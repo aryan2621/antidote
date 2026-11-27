@@ -1,0 +1,44 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "tarkleHQ/tarkle-mcp-server",
+    "version": "3ab5fa0cae073ae814bc6ab2f841b53a3a28959e",
+    "download": "https://codeload.github.com/tarkleHQ/tarkle-mcp-server/tar.gz/3ab5fa0cae073ae814bc6ab2f841b53a3a28959e"
+  },
+  "archive_sha256": "4920aa52f94209eb120e3b26765ca88c32288e4e8ec93c2444e6dfdc355f6b32",
+  "findings": [
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "tarkle-mcp-server-3ab5fa0cae073ae814bc6ab2f841b53a3a28959e/lhm.plugin.json",
+      "line": 557,
+      "evidence": "p=0.97 Tell the Tarkle team what went wrong or what is missing while you used this conn",
+      "file_sha256": "a720e14591a5ae51acc010f461792b543ed77352f2c4ba44c53b6cca4ceb61a0"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "tarkle-mcp-server-3ab5fa0cae073ae814bc6ab2f841b53a3a28959e/lhm.plugin.json",
+      "line": 581,
+      "evidence": "p=0.92 What the person asked for, what you called (tool and input shape, without secret",
+      "file_sha256": "a720e14591a5ae51acc010f461792b543ed77352f2c4ba44c53b6cca4ceb61a0"
+    }
+  ],
+  "flags": [],
+  "domains": [
+    "agent-plugins.org",
+    "github.com",
+    "mcp.tarkle.tech",
+    "skills.sh",
+    "static.modelcontextprotocol.io",
+    "tarkle.tech",
+    "www.acme.com",
+    "www.apache.org",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}
