@@ -1,0 +1,86 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "diagridio/diagrid-ai",
+    "version": "cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f",
+    "download": "https://codeload.github.com/diagridio/diagrid-ai/tar.gz/cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f"
+  },
+  "archive_sha256": "e5718c5f3eae4f3ef0b17b1d5c6c46fb8d39e81946edbeaaf16a10a3b5ad405d",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "diagrid-ai-cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f/skills/diagrid-workflow-determinism/SKILL.md",
+      "line": 24,
+      "evidence": "p=0.93 Two properties make this the hardest class of bug in the system:",
+      "file_sha256": "63a070c7c6ac6deb21416d7811e38a85adbb17a3ee181357b94901d7a0947827"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "diagrid-ai-cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f/skills/diagrid-debug/SKILL.md",
+      "line": 299,
+      "evidence": "p=0.94 Give the user a link to the resource you are talking about, so they can look at ",
+      "file_sha256": "f6678d25a2a30f180ec12e026dd1110eda609e96a6994146739bf562d1e491f5"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "diagrid-ai-cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f/skills/diagrid-app-tunnels/SKILL.md",
+      "line": 44,
+      "evidence": "curl -o- https://downloads.diagrid.io/cli/install.sh | bash",
+      "file_sha256": "776ab629dca4b44d6eae4ae6eb5db24d27497f256c07a9112b7895fd11e5a71d"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "diagrid-ai-cdc3f5b0ebbe8081115f65bb48fb611b1d639e7f/skills/diagrid-workflow-from-diagram/reference/ir-schema.md",
+      "line": 85,
+      "evidence": "p=0.97 If the diagram depicts something outside ordinary business process logic, emit o",
+      "file_sha256": "e5d414ad84387bc26c26fd202d504ed166853c0bdd3387168ae9f91198ad535e"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "crm.example.com, docs.dapr.io",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "add-skill.vercel.sh",
+    "api.nuget.org",
+    "api.r1.diagrid.io",
+    "catalyst.diagrid.io",
+    "code.visualstudio.com",
+    "crm.example.com",
+    "diagrid.io",
+    "docs.dapr.io",
+    "docs.diagrid.io",
+    "downloads.diagrid.io",
+    "example.com",
+    "github.com",
+    "mcp.cloud.r1.diagrid.io",
+    "mcp.cloud.staging.diagrid.dev",
+    "proxy.golang.org",
+    "pypi.org",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "repo1.maven.org",
+    "static.modelcontextprotocol.io",
+    "www.apache.org",
+    "www.omg.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

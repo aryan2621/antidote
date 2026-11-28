@@ -1,0 +1,154 @@
+{
+  "item": {
+    "source": "github:mcp-server",
+    "ecosystem": "GitHub",
+    "name": "Soflutionltd/McpHub",
+    "version": "3faf10b09d473e1f2c5a3d43214923c857e87fdb",
+    "download": "https://codeload.github.com/Soflutionltd/McpHub/tar.gz/3faf10b09d473e1f2c5a3d43214923c857e87fdb"
+  },
+  "archive_sha256": "65840fe7a3507c6b5f491eed1e63dc7ce0ba3828623d645f52a023e5b5e094dc",
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/src/toolguard.rs",
+      "line": 11,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "2333d93ed62442265a6d0cfe30e969b6244bdb4826ef55ba86b66f30f823ee34"
+    },
+    {
+      "severity": "critical",
+      "id": "AGT-R-0005",
+      "summary": "Hidden directive block (<IMPORTANT>/<SYSTEM>) that points the agent at credentials or config files",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/src/toolguard.rs",
+      "line": 363,
+      "evidence": "<important>",
+      "file_sha256": "2333d93ed62442265a6d0cfe30e969b6244bdb4826ef55ba86b66f30f823ee34"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/README.md",
+      "line": 373,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "8bfda153a40582f180f7f89b11275cd58f4ff55d8e9405503f2c0be963152bec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/README.md",
+      "line": 69,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Soflutionltd/McpHub/main/get.sh | b",
+      "file_sha256": "8bfda153a40582f180f7f89b11275cd58f4ff55d8e9405503f2c0be963152bec"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/README.md",
+      "line": 86,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "8bfda153a40582f180f7f89b11275cd58f4ff55d8e9405503f2c0be963152bec"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/docs/assets/security.svg",
+      "line": 66,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "f09d10449984e3e917aee1fe15eb2ad0cbc7eb17a98e3b254c1c85c9424f5e11"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0003",
+      "summary": "Text tries to override the agent's earlier instructions",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/docs/assets/build_assets.py",
+      "line": 262,
+      "evidence": "ignore previous instructions",
+      "file_sha256": "742e10e14fe0d82a92ff6c329ad695af441795729dcacae01dcbeb001b1da4b2"
+    },
+    {
+      "severity": "medium",
+      "id": "AGT-R-0102",
+      "summary": "Downloads a script and pipes it straight into a shell",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/get.sh",
+      "line": 3,
+      "evidence": "curl -fsSL https://raw.githubusercontent.com/Soflutionltd/McpHub/main/get.sh | b",
+      "file_sha256": "42774ea840c6a3b835835246998ba6972aac35f660433472fb225c69842071b7"
+    },
+    {
+      "severity": "high",
+      "id": "AGT-R-0105",
+      "summary": "Strips macOS Gatekeeper quarantine from a downloaded file (ClawHavoc-style stealer delivery)",
+      "path": "McpHub-3faf10b09d473e1f2c5a3d43214923c857e87fdb/get.sh",
+      "line": 46,
+      "evidence": "xattr -d com.apple.quarantine",
+      "file_sha256": "42774ea840c6a3b835835246998ba6972aac35f660433472fb225c69842071b7"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "low",
+      "id": "AGT-F-NEW-DOMAINS",
+      "summary": "Contacts domains the previous version did not",
+      "path": null,
+      "line": null,
+      "evidence": "a.example.com, api.example.com, api.githubcopilot.com, api.supabase.com, dash.cloudflare.com, evil.example.com, exemple.fr, mcp.atlassian.com, mcp.cloudflare.com, mcp.context7.com, mcp.example.com, mcp.figma.com, mcp.linear.app, mcp.notion.com, mcp.stripe.com, mcp.supabase.com, mcp.svelte.dev, mcp.vercel.com, supabase.com, x.example, x.example.com",
+      "file_sha256": null
+    }
+  ],
+  "domains": [
+    "127.0.0.1",
+    "a.com",
+    "a.example.com",
+    "agent.aqara.com",
+    "api.cloudflare.com",
+    "api.example.com",
+    "api.github.com",
+    "api.githubcopilot.com",
+    "api.mcp.github.com",
+    "api.supabase.com",
+    "b.com",
+    "dash.cloudflare.com",
+    "docs.astral.sh",
+    "evil.example",
+    "evil.example.com",
+    "example.com",
+    "exemple.fr",
+    "github.com",
+    "img.shields.io",
+    "mcp.atlassian.com",
+    "mcp.cloudflare.com",
+    "mcp.context7.com",
+    "mcp.example.com",
+    "mcp.figma.com",
+    "mcp.linear.app",
+    "mcp.notion.com",
+    "mcp.sentry.dev",
+    "mcp.stripe.com",
+    "mcp.supabase.com",
+    "mcp.svelte.dev",
+    "mcp.vercel.com",
+    "mcp.x.com",
+    "opencollective.com",
+    "raw.githubusercontent.com",
+    "registry.modelcontextprotocol.io",
+    "registry.npmjs.org",
+    "soflution.com",
+    "static.modelcontextprotocol.io",
+    "supabase.com",
+    "weather.acme.dev",
+    "www.apple.com",
+    "www.w3.org",
+    "x.com",
+    "x.dev",
+    "x.example",
+    "x.example.com"
+  ],
+  "install_script": false,
+  "score": "critical"
+}
